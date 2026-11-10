@@ -1,11 +1,14 @@
-//! Canonical numeric JSON subset. No text parser, process configuration or global RNG.
+//! Canonical numeric JSON and optional exact native quantity evaluation.
 mod decimal_math;
+#[cfg(all(feature = "quantity", not(target_arch = "wasm32")))]
+mod quantity;
 use num_bigint::BigInt;
 use num_integer::Integer;
 use num_rational::BigRational as Q;
 use num_traits::{One, Signed, ToPrimitive, Zero};
 use serde_json::{json, Value as J};
 use std::collections::BTreeMap;
+const QUANTITY_SCHEMA: &str = "plurimath.evaluate.quantity/1";
 const SCHEMA: &str = "plurimath.evaluate.numeric/1";
 type E = &'static str;
 #[derive(Clone)]
@@ -55,6 +58,14 @@ fn name(s: &str) -> bool {
     let mut b = s.bytes();
     matches!(b.next(),Some(c) if c.is_ascii_alphabetic()||c==b'_')
         && b.all(|c| c.is_ascii_alphanumeric() || c == b'_')
+}
+fn binding_decimal(s: &str) -> bool {
+    let unsigned = s.strip_prefix('-').unwrap_or(s);
+    let mut pieces = unsigned.split('.');
+    let digits = |part: &str| !part.is_empty() && part.bytes().all(|c| c.is_ascii_digit());
+    pieces.next().is_some_and(digits)
+        && pieces.next().map_or(true, digits)
+        && pieces.next().is_none()
 }
 fn qparse(s: &str) -> Result<Q, E> {
     let parts: Vec<_> = s.split(['e', 'E']).collect();
@@ -545,12 +556,7 @@ fn run(req: &J) -> Result<J, E> {
     let mut bindings = BTreeMap::new();
     for (key, value) in raw_bindings {
         let s = value.as_str();
-        let trimmed = s.strip_prefix('-').unwrap_or(s);
-        let p: Vec<_> = trimmed.split('.').collect();
-        if p.len() > 2
-            || p.iter()
-                .any(|p| p.is_empty() || !p.bytes().all(|c| c.is_ascii_digit()))
-        {
+        if !binding_decimal(s) {
             return Err("InvalidBindingError");
         }
         bindings.insert(
@@ -584,22 +590,60 @@ fn run(req: &J) -> Result<J, E> {
     }
 }
 pub fn evaluate_json(input: &str) -> String {
-    let mut out =
-        json!({"schema":SCHEMA,"engine":"plurimath.numeric/1","grammar":"plurimath.numeric-ast/1"});
-    let response = serde_json::from_str::<J>(input)
-        .map_err(|_| "InvalidRequest")
-        .and_then(|j| run(&j));
-    match response {
-        Ok(r) => {
-            out["ok"] = json!(true);
-            out["result"] = r
-        }
-        Err(e) => {
-            out["ok"] = json!(false);
-            out["error"] = json!({"code":e})
+    let parsed = serde_json::from_str::<J>(input)
+        .map(|mut request| {
+            request.sort_all_objects();
+            request
+        })
+        .map_err(|_| "InvalidRequest");
+    if let Ok(request) = &parsed {
+        if request["schema"] == QUANTITY_SCHEMA {
+            return quantity_wire(request);
         }
     }
-    serde_json::to_string(&out).expect("JSON value serialization")
+    let mut out =
+        json!({"schema":SCHEMA,"engine":"plurimath.numeric/1","grammar":"plurimath.numeric-ast/1"});
+    match parsed.and_then(|request| run(&request)) {
+        Ok(result) => {
+            out["ok"] = json!(true);
+            out["result"] = result;
+        }
+        Err(error) => {
+            out["ok"] = json!(false);
+            out["error"] = json!({"code":error});
+        }
+    }
+    serialize(out)
+}
+
+fn serialize(mut output: J) -> String {
+    // AsciiUnits enables serde_json's preserve_order feature. Keep both
+    // profiles byte-stable regardless of Cargo feature unification.
+    output.sort_all_objects();
+    serde_json::to_string(&output).expect("JSON value serialization")
+}
+
+fn quantity_wire(_request: &J) -> String {
+    let mut out = json!({
+        "schema": QUANTITY_SCHEMA,
+        "engine": "plurimath.quantity/1",
+        "grammar": "plurimath.numeric-ast/1",
+    });
+    #[cfg(all(feature = "quantity", not(target_arch = "wasm32")))]
+    let result = quantity::run(_request);
+    #[cfg(not(all(feature = "quantity", not(target_arch = "wasm32"))))]
+    let result: Result<J, J> = Err(json!({"code": "UnavailableProfileError"}));
+    match result {
+        Ok(value) => {
+            out["ok"] = json!(true);
+            out["result"] = value;
+        }
+        Err(error) => {
+            out["ok"] = json!(false);
+            out["error"] = error;
+        }
+    }
+    serialize(out)
 }
 
 // ABI v1: borrowed UTF-8 bytes in, owned NUL-terminated UTF-8 JSON out.
