@@ -5,7 +5,7 @@ edition = "2021"
 license = "BSD-2-Clause"
 publish = false
 description = "Canonical numeric and optional native quantity JSON evaluator"
-include = ["src/**", "tests/**", "fixtures/**", "include/**", "bindings/python/**/*.py", "bindings/typescript/**", "bindings/js/**", "scripts/**", "examples/**", "Cargo.toml", "Cargo.lock", "README.md", "LICENSE", "NOTICE", "package.json"]
+include = ["/src/**", "/tests/**", "/fixtures/**", "/include/**", "/bindings/python/**/*.py", "/bindings/typescript/**", "/bindings/js/**", "/scripts/**", "/examples/**", "/Cargo.toml", "/Cargo.lock", "/README.md", "/LICENSE", "/NOTICE", "/package.json"]
 
 [lib]
 name = "plurimath_numeric"
