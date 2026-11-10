@@ -31,3 +31,48 @@ fn supplemental_numeric_wires() {
         );
     }
 }
+
+#[test]
+fn nonfinite_recovery_wires() {
+    let fixture: serde_json::Value =
+        serde_json::from_str(include_str!("../fixtures/numeric-nonfinite-v1.json")).unwrap();
+    for case in fixture["cases"].as_array().unwrap() {
+        let input = serde_json::to_string(&case["request"]).unwrap();
+        assert_eq!(
+            plurimath_numeric::evaluate_json(&input),
+            case["expected_wire"].as_str().unwrap(),
+            "nonfinite case {}",
+            case["id"]
+        );
+    }
+}
+
+#[test]
+fn bignum_identity_wires() {
+    let fixture: serde_json::Value =
+        serde_json::from_str(include_str!("../fixtures/numeric-bignum-v1.json")).unwrap();
+    for case in fixture["cases"].as_array().unwrap() {
+        let input = serde_json::to_string(&case["request"]).unwrap();
+        assert_eq!(
+            plurimath_numeric::evaluate_json(&input),
+            case["expected_wire"].as_str().unwrap(),
+            "bignum case {}",
+            case["id"]
+        );
+    }
+}
+
+#[test]
+fn validation_priority_wires() {
+    let fixture: serde_json::Value =
+        serde_json::from_str(include_str!("../fixtures/numeric-validation-v1.json")).unwrap();
+    for case in fixture["cases"].as_array().unwrap() {
+        let input = serde_json::to_string(&case["request"]).unwrap();
+        assert_eq!(
+            plurimath_numeric::evaluate_json(&input),
+            case["expected_wire"].as_str().unwrap(),
+            "validation case {}",
+            case["id"]
+        );
+    }
+}

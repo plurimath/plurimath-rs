@@ -1,6 +1,7 @@
 //! Canonical numeric JSON subset. No text parser, process configuration or global RNG.
 mod decimal_math;
 use num_bigint::BigInt;
+use num_integer::Integer;
 use num_rational::BigRational as Q;
 use num_traits::{One, Signed, ToPrimitive, Zero};
 use serde_json::{json, Value as J};
@@ -152,7 +153,13 @@ impl N {
     fn q(&self) -> Option<Q> {
         match self {
             Self::Exact(q, _) => Some(q.clone()),
-            Self::Decimal(d) => Some(d.q()),
+            Self::Decimal(d) => {
+                if d.finite() {
+                    Some(d.q())
+                } else {
+                    None
+                }
+            }
             _ => None,
         }
     }
@@ -278,6 +285,21 @@ fn accuracy(values: &[N]) -> String {
         "exact".into()
     }
 }
+// Ruby math.c get_double_rshift, mirrored by the pinned TS libm.ts.
+fn math_log(value: &N) -> Result<f64, E> {
+    if let N::Exact(q, true) = value {
+        if q.is_positive() && q.numer().bits() >= 1024 {
+            let shift = q.numer().bits() - 53;
+            let reduced = (q.numer() >> shift as usize).to_f64().unwrap();
+            return Ok(reduced.ln() + shift as f64 * std::f64::consts::LN_2);
+        }
+    }
+    let x = value.f();
+    if x < 0.0 {
+        return Err("MathDomainError");
+    }
+    Ok(x.ln())
+}
 struct Eval {
     strict: bool,
     guard: Option<u32>,
@@ -322,12 +344,7 @@ impl Eval {
             "sin" => x.sin(),
             "cos" => x.cos(),
             "exp" => x.exp(),
-            "log" => {
-                if x < 0.0 {
-                    return Err("MathDomainError");
-                };
-                x.ln()
-            }
+            "log" => math_log(&values[0])?,
             "power" => {
                 let y = values[1].f();
                 if x < 0.0 && y.fract() != 0.0 {
@@ -410,6 +427,28 @@ impl Eval {
                             return Err("DivisionByZeroError");
                         };
                         if exp.denom().is_one() {
+                            let integer =
+                                matches!(a, N::Exact(_, true)) && matches!(b, N::Exact(_, true));
+                            if base.is_one() {
+                                return Ok(N::Exact(Q::one(), integer));
+                            }
+                            if base == Q::from_integer((-1).into()) {
+                                return Ok(N::Exact(
+                                    Q::from_integer(if exp.numer().is_odd() {
+                                        (-1).into()
+                                    } else {
+                                        1.into()
+                                    }),
+                                    integer,
+                                ));
+                            }
+                            if base.is_zero() {
+                                return Ok(N::Exact(
+                                    if exp.is_zero() { Q::one() } else { Q::zero() },
+                                    integer,
+                                ));
+                            }
+
                             let n = exp.numer().to_i32().ok_or("UnsupportedExpressionError")?;
                             if n.unsigned_abs() > 100000 {
                                 return Err("UnsupportedExpressionError");
@@ -492,32 +531,37 @@ fn run(req: &J) -> Result<J, E> {
             Some(n as u32)
         }
     };
-    let mut bindings = BTreeMap::new();
+    let mut raw_bindings = Vec::new();
     if let Some(m) = req.get("bindings") {
         for (k, v) in m.as_object().ok_or("InvalidRequest")? {
             let s = v.as_str().ok_or("InvalidRequest")?;
             if !name(k) || !decimal(s) {
                 return Err("InvalidRequest");
-            };
-            let trimmed = s.strip_prefix('-').unwrap_or(s);
-            let p: Vec<_> = trimmed.split('.').collect();
-            if p.len() > 2
-                || p.iter()
-                    .any(|p| p.is_empty() || !p.bytes().all(|c| c.is_ascii_digit()))
-            {
-                return Err("InvalidBindingError");
-            };
-            bindings.insert(
-                k.clone(),
-                if mode == "strict" {
-                    N::Exact(qparse(s)?, false)
-                } else {
-                    N::Float(s.parse().map_err(|_| "InvalidBindingError")?)
-                },
-            );
+            }
+            raw_bindings.push((k.clone(), s.to_owned()));
         }
-    };
+    }
     ast(&req["ast"], 0)?;
+    let mut bindings = BTreeMap::new();
+    for (key, value) in raw_bindings {
+        let s = value.as_str();
+        let trimmed = s.strip_prefix('-').unwrap_or(s);
+        let p: Vec<_> = trimmed.split('.').collect();
+        if p.len() > 2
+            || p.iter()
+                .any(|p| p.is_empty() || !p.bytes().all(|c| c.is_ascii_digit()))
+        {
+            return Err("InvalidBindingError");
+        }
+        bindings.insert(
+            key,
+            if mode == "strict" {
+                N::Exact(qparse(s)?, false)
+            } else {
+                N::Float(s.parse().map_err(|_| "InvalidBindingError")?)
+            },
+        );
+    }
     let mut ev = Eval {
         strict: mode == "strict",
         guard,
@@ -526,7 +570,9 @@ fn run(req: &J) -> Result<J, E> {
     };
     match ev.eval(&req["ast"]) {
         Ok(n) => {
-            if matches!(n,N::Float(x) if !x.is_finite()) {
+            if matches!(n,N::Float(x) if !x.is_finite())
+                || matches!(&n,N::Decimal(d) if !d.finite())
+            {
                 return Err("NonFiniteResultError");
             };
             Ok(json!({"value":n.wire(),"boundaries":ev.boundaries,"deferred":false}))

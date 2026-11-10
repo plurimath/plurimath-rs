@@ -9,28 +9,65 @@ pub(crate) struct D {
     pub c: BigInt,
     pub s: i64,
     pub nz: bool,
+    special: i8,
 }
 impl D {
+    pub(crate) fn finite(&self) -> bool {
+        self.special == 0
+    }
+    fn infinity(negative: bool) -> Self {
+        Self {
+            c: 0.into(),
+            s: 0,
+            nz: false,
+            special: if negative { -1 } else { 1 },
+        }
+    }
+    fn nan() -> Self {
+        Self {
+            c: 0.into(),
+            s: 0,
+            nz: false,
+            special: 2,
+        }
+    }
+    fn is_nan(&self) -> bool {
+        self.special == 2
+    }
+
     pub fn new(mut c: BigInt, mut s: i64, nz: bool) -> Self {
         if c.is_zero() {
-            return Self { c, s: 0, nz };
+            return Self {
+                c,
+                s: 0,
+                nz,
+                special: 0,
+            };
         }
         while (&c % 10u8).is_zero() {
             c /= 10u8;
             s += 1
         }
-        Self { c, s, nz: false }
+        Self {
+            c,
+            s,
+            nz: false,
+            special: 0,
+        }
     }
     fn int(n: i64) -> Self {
         Self::new(n.into(), 0, false)
     }
     pub(crate) fn negative(&self) -> bool {
-        self.c.is_negative() || self.nz
+        self.special == -1 || self.finite() && (self.c.is_negative() || self.nz)
     }
     fn zero(&self) -> bool {
-        self.c.is_zero()
+        self.finite() && self.c.is_zero()
     }
     fn exp(&self) -> i64 {
+        if !self.finite() {
+            return 0;
+        }
         if self.zero() {
             0
         } else {
@@ -38,6 +75,9 @@ impl D {
         }
     }
     fn significant(&self) -> u32 {
+        if !self.finite() {
+            return 0;
+        }
         if self.zero() {
             0
         } else {
@@ -45,6 +85,9 @@ impl D {
         }
     }
     pub fn precision(&self) -> u32 {
+        if !self.finite() {
+            return 0;
+        }
         if self.zero() {
             0
         } else {
@@ -58,6 +101,9 @@ impl D {
         }
     }
     fn words(&self) -> i64 {
+        if !self.finite() {
+            return 1;
+        }
         if self.zero() {
             1
         } else {
@@ -83,8 +129,11 @@ impl D {
         }
     }
     fn float(x: f64) -> Result<Self, E> {
-        if !x.is_finite() {
-            return Err("NonFiniteResultError");
+        if x.is_nan() {
+            return Ok(Self::nan());
+        }
+        if x.is_infinite() {
+            return Ok(Self::infinity(x.is_sign_negative()));
         };
         if x == 0.0 {
             return Ok(Self::new(0.into(), 0, x.is_sign_negative()));
@@ -114,6 +163,16 @@ impl D {
         Ok(d)
     }
     pub(crate) fn f(&self) -> f64 {
+        if self.is_nan() {
+            return f64::NAN;
+        }
+        if !self.finite() {
+            return if self.negative() {
+                f64::NEG_INFINITY
+            } else {
+                f64::INFINITY
+            };
+        }
         if self.zero() {
             return if self.nz { -0.0 } else { 0.0 };
         }
@@ -124,9 +183,19 @@ impl D {
         })
     }
     pub fn wire(&self) -> J {
+        if !self.finite() {
+            return json!({"kind":"decimal","value":match self.special {2=>"NaN",-1=>"-Infinity",_=>"Infinity"},"precision":0});
+        }
+
         json!({"kind":"decimal","value":if self.zero(){if self.nz{"-0.0"}else{"0.0"}.to_owned()}else{format!("{}0.{}e{}",if self.negative(){"-"}else{""},self.c.abs(),self.exp())},"precision":self.precision()})
     }
     pub fn neg(&self) -> Self {
+        if self.is_nan() {
+            return self.clone();
+        }
+        if !self.finite() {
+            return Self::infinity(!self.negative());
+        }
         Self::new(
             -self.c.clone(),
             self.s,
@@ -134,15 +203,41 @@ impl D {
         )
     }
     fn abs(&self) -> Self {
+        if self.is_nan() {
+            return self.clone();
+        }
+        if !self.finite() {
+            return Self::infinity(false);
+        }
         Self::new(self.c.abs(), self.s, false)
     }
     fn round(&self, p: u32) -> Self {
+        if !self.finite() {
+            return self.clone();
+        }
         if p == 0 || self.zero() || self.significant() <= p {
             return self.clone();
         };
         Self::fromq(&self.q(), p)
     }
     fn add(&self, b: &Self, p: u32) -> Self {
+        if self.is_nan() || b.is_nan() {
+            return Self::nan();
+        }
+        if !self.finite() || !b.finite() {
+            return if !self.finite() && !b.finite() {
+                if self.negative() == b.negative() {
+                    self.clone()
+                } else {
+                    Self::nan()
+                }
+            } else if !self.finite() {
+                self.clone()
+            } else {
+                b.clone()
+            };
+        }
+
         if self.zero() && b.zero() {
             return Self::new(0.into(), 0, self.negative() && b.negative());
         };
@@ -158,6 +253,17 @@ impl D {
         self.add(&b.neg(), p)
     }
     fn mul(&self, b: &Self, p: u32) -> Self {
+        if self.is_nan() || b.is_nan() {
+            return Self::nan();
+        }
+        if !self.finite() || !b.finite() {
+            return if self.zero() || b.zero() {
+                Self::nan()
+            } else {
+                Self::infinity(self.negative() != b.negative())
+            };
+        }
+
         Self::new(
             &self.c * &b.c,
             self.s + b.s,
@@ -166,6 +272,28 @@ impl D {
         .round(p)
     }
     fn div(&self, b: &Self, p: u32) -> Self {
+        if self.is_nan() || b.is_nan() {
+            return Self::nan();
+        }
+        let negative = self.negative() != b.negative();
+        if !self.finite() {
+            return if !b.finite() {
+                Self::nan()
+            } else {
+                Self::infinity(negative)
+            };
+        }
+        if !b.finite() {
+            return Self::new(0.into(), 0, negative);
+        }
+        if b.zero() {
+            return if self.zero() {
+                Self::nan()
+            } else {
+                Self::infinity(negative)
+            };
+        }
+
         assert!(!b.zero());
         if self.zero() {
             return Self::new(0.into(), 0, self.negative() != b.negative());
@@ -176,9 +304,15 @@ impl D {
         self.div(b, (self.precision().max(b.precision()) + 16).max(32))
     }
     fn shift(&self, n: i64) -> Self {
+        if !self.finite() {
+            return self.clone();
+        }
         Self::new(self.c.clone(), self.s + n, self.nz)
     }
     fn truncate(&self, n: i64) -> Self {
+        if !self.finite() {
+            return self.clone();
+        }
         if self.zero() || self.s >= -n {
             return self.clone();
         };
@@ -189,9 +323,20 @@ impl D {
         self.q().numer().div_floor(self.q().denom())
     }
     fn compare(&self, b: &Self) -> std::cmp::Ordering {
+        if !self.finite() || !b.finite() {
+            let rank = |x: &D| if x.finite() { 0 } else { x.special };
+            return rank(self).cmp(&rank(b));
+        }
+
         self.q().cmp(&b.q())
     }
     fn sqrt(&self, p: u32) -> Result<Self, E> {
+        if self.special == 1 {
+            return Ok(self.clone());
+        }
+        if self.is_nan() {
+            return Err("NonFiniteResultError");
+        }
         if self.negative() && !self.zero() {
             return Err("NonFiniteResultError");
         };
@@ -273,11 +418,18 @@ fn exp_split(x: &D, p: u32) -> D {
     )
 }
 fn exp(x: &D, p: u32) -> Result<D, E> {
+    if x.is_nan() {
+        return Ok(D::nan());
+    }
+    if !x.finite() {
+        return Ok(if x.negative() { D::int(0) } else { x.clone() });
+    }
+
     if x.exp() >= 21 {
         return if x.negative() {
             Ok(D::int(0))
         } else {
-            Err("NonFiniteResultError")
+            Ok(D::infinity(false))
         };
     }
     if x.zero() {
@@ -306,11 +458,18 @@ fn exp(x: &D, p: u32) -> Result<D, E> {
     Ok(y.round(p))
 }
 fn log(x: &D, p: u32) -> Result<D, E> {
+    if x.is_nan() {
+        return Ok(D::nan());
+    }
+
     if x.negative() && !x.zero() {
         return Err("MathDomainError");
     };
     if x.zero() {
-        return Err("NonFiniteResultError");
+        return Ok(D::infinity(true));
+    }
+    if !x.finite() {
+        return Ok(x.clone());
     };
     if x.compare(&D::int(1)).is_eq() {
         return Ok(D::int(0));
@@ -407,21 +566,65 @@ fn sin_zero(x: &D, p: u32) -> Result<D, E> {
     }
 }
 fn trig(x: &D, p: u32, cosine: bool) -> Result<D, E> {
+    if !x.finite() {
+        return Ok(D::nan());
+    }
     let n = p + 16;
     let (sign, reduced) = sin_reduce(x, n, cosine)?;
     Ok(sin_zero(&reduced, n)?.mul(&D::int(sign), p))
 }
 fn power(x: &D, y: &D, p: u32) -> Result<D, E> {
+    if x.is_nan() || y.is_nan() {
+        return Ok(D::nan());
+    }
+    if !y.finite() {
+        if x.negative() {
+            if (x.compare(&D::int(-1)).is_lt() && y.negative())
+                || (x.compare(&D::int(-1)).is_gt() && !y.negative())
+            {
+                return Ok(D::int(0));
+            }
+            return Err("MathDomainError");
+        }
+        return Ok(if x.compare(&D::int(1)).is_lt() {
+            if y.negative() {
+                D::infinity(false)
+            } else {
+                D::int(0)
+            }
+        } else if x.compare(&D::int(1)).is_eq() {
+            D::int(1)
+        } else if y.negative() {
+            D::int(0)
+        } else {
+            D::infinity(false)
+        });
+    }
+    if !x.finite() {
+        if y.zero() {
+            return Ok(D::int(1));
+        }
+        let whole = y.q().is_integer();
+        let odd = whole && y.q().to_integer().is_odd();
+        if y.negative() {
+            return Ok(D::new(0.into(), 0, x.negative() && odd));
+        }
+        if x.negative() && !whole {
+            return Err("MathDomainError");
+        }
+        return Ok(D::infinity(x.negative() && odd));
+    }
+
     if y.zero() {
         return Ok(D::int(1));
     };
     let integral = y.q().is_integer();
     if x.zero() {
-        return if y.negative() {
-            Err("NonFiniteResultError")
+        return Ok(if y.negative() {
+            D::infinity(x.negative() && integral && y.q().to_integer().is_odd())
         } else {
-            Ok(D::int(0))
-        };
+            D::int(0)
+        });
     }
     if x.negative() {
         if !integral {

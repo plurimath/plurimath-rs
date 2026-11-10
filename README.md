@@ -60,9 +60,11 @@ Tests compare every wire byte, including IEEE bits, precision, signed zeros,
 boundary order and errors. The reference generation script takes explicit
 adapter/input/output paths and does not edit the producer worktree.
 
-Current scope limits: integer exponents are capped at magnitude100000 and
-literal decimal exponents at magnitude1000000. These conservative resource
+Current scope limits: nontrivial integer powers are capped at exponent magnitude 100,000 and
+literal decimal exponents at magnitude 1,000,000. These conservative resource
 bounds are not the TypeScript engine's separate bit-size preflight policy.
-Nonfinite decimal-intermediate recovery remains a known gap; direct final
-nonfinite results have typed refusals. Platform proof is Linux native,
+Nonfinite decimal intermediates remain available for subsequent recovery; only
+nonfinite final results receive the reference typed refusal. The 13 nonfinite-recovery, 9 large-integer identity/logarithm and 3 validation-
+priority probes are separate source-derived supplemental sets.
+Platform proof is Linux native,
 Node WASM and Chrome WASM; other native platforms are not verified locally.
