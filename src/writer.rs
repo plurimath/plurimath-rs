@@ -57,12 +57,17 @@ fn dump(x: &Xml, depth: usize) -> String {
                 );
             };
             format!(
-                "{pad}<{n}{at}>\n{}\n{pad}</{n}>",
+                "{pad}<{n}{at}>\n{}{}</{n}>",
                 c.iter()
                     .filter(|v| !matches!(v, Xml::Text(s) if s.is_empty()))
                     .map(|v| dump(v, depth + 1))
                     .collect::<Vec<_>>()
-                    .join("\n")
+                    .join("\n"),
+                if matches!(c.last(), Some(Xml::Text(_))) {
+                    String::new()
+                } else {
+                    format!("\n{pad}")
+                }
             )
         }
     }
@@ -166,6 +171,10 @@ fn fence_text(m: &Model, f: &str) -> Result<String, String> {
     Ok(match f {
         "latex" => format!("{} {body} {}", if ["{:", ":}"].contains(&a.as_str()) { a.replace(':', "") } else { a }, if ["{:", ":}"].contains(&b.as_str()) { b.replace(':', "") } else { b }),
         "html" => format!("<i>{a}</i>{body}<i>{b}</i>"),
+        "unicodemath" if m.field("parameter_one")["class"] == "Math::Symbols::Paren::Vert"
+            || (m.field("parameter_one")["class"] == "Math::Symbols::Symbol"
+                && m.field("parameter_one")["fields"]["value"]
+                    .as_str().is_some_and(|s| s.contains('|'))) => format!("{a}({body}){b}"),
         _ => format!("{a}{body}{b}"),
     })
 }
@@ -796,7 +805,9 @@ fn render_text(m: &Model, f: &str) -> Result<String, String> {
                 .collect::<Result<Vec<_>, _>>()?;
             let joined = c.join(" ");
             if f == "unicodemath" {
-                text_content::decode(&joined)
+                static SLASH_SPACING: std::sync::OnceLock<regex::Regex> = std::sync::OnceLock::new();
+                let spacing = SLASH_SPACING.get_or_init(|| regex::Regex::new(r"(?-u:\s)/(?-u:\s)").unwrap());
+                text_content::decode(&joined).map(|s| spacing.replace_all(&s, "/").into_owned())
             } else {
                 Ok(joined)
             }
@@ -818,7 +829,9 @@ fn render_text(m: &Model, f: &str) -> Result<String, String> {
             let a = child(m.field("parameter_one"), f)?;
             let b = child(m.field("parameter_two"), f)?;
             Ok(match f {
-                "asciimath" => format!("frac({a})({b})"),
+                "asciimath" => format!("frac{}{}",
+                    if present(m.field("parameter_one")) {format!("({a})")} else {String::new()},
+                    if present(m.field("parameter_two")) {format!("({b})")} else {String::new()}),
                 "latex" => format!("\\frac{{{a}}}{{{b}}}"),
                 "html" => format!(
                     "{}{}",
