@@ -278,10 +278,20 @@ fn tolerance(uncertainty: f64, digits: u32) -> Result<Q> {
     if !uncertainty.is_finite() || uncertainty <= 0.0 {
         return Err(numerical("adaptive tolerance needs positive uncertainty"));
     }
-    let rounded = roundq(&exact_text(&uncertainty.to_string())?, digits)
+    exact_tolerance(&exact_text(&uncertainty.to_string())?, u64::from(digits))
+}
+
+pub(super) fn exact_tolerance(uncertainty: &Q, digits: u64) -> Result<Q> {
+    if !(1..=12).contains(&digits) {
+        return Err(invalid("tolerance significant_digits must lie in1..12"));
+    }
+    if !uncertainty.is_positive() {
+        return Err(numerical("adaptive tolerance needs positive uncertainty"));
+    }
+    let rounded = roundq(uncertainty, digits as u32)
         .q()
         .expect("finite rounded uncertainty");
-    let place = crate::exponent(&rounded) - i64::from(digits) + 1;
+    let place = crate::exponent(&rounded) - digits as i64 + 1;
     Ok(if place >= 0 {
         Q::new(crate::pow10(place as u32), number(2))
     } else {

@@ -11,6 +11,7 @@ mod propagation;
 mod sampling_model;
 mod statistics;
 mod taylor;
+mod validation;
 
 pub(crate) const SCHEMA: &str = "plurimath.evaluate.gum/1";
 type Result<T> = std::result::Result<T, Error>;
@@ -222,6 +223,7 @@ fn dispatch(request: &J) -> Result<J> {
         "grouped_type_a" => statistics::grouped(params),
         "component" => propagation::component(params),
         "coverage" => coverage::evaluate(params),
+        "validate_coverage" => validation::evaluate(params),
         "conformity" => conformity::evaluate(params),
         "linear_calibration" => calibration::fit(params),
         "predict_calibration" => calibration::predict(params),

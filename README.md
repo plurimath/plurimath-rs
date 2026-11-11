@@ -196,6 +196,13 @@ Errors carry a typed code and message.
 - `coverage` uses a portable Rust binary64 backend, with normal or
   Student-t factors, probability 0.5–0.999, Student-t degrees of freedom
   1–10000, and 1–8 significant digits.
+- `validate_coverage` compares supplied GUF endpoints with stabilized adaptive
+  MCM metadata for one declared interval and probability. The MCM tolerance
+  must be at least five times tighter; endpoint equality at the GUF tolerance
+  passes. This is a metadata-comparison diagnostic: it trusts the supplied
+  result fields. Ruby compatibility includes accepting negative supplied MCM
+  tolerance, matching out-of-range probabilities, and ignoring trailing bound
+  entries. The result carries no claim of provenance or physical adequacy.
 - `monte_carlo` accepts an ordinary AST, ordered `{name,pdf}` inputs, four
   explicit seeds, independent sampling, probability, interval selection,
   significant and guard digits, and a sample budget. It uses centered exact

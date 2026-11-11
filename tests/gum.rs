@@ -271,3 +271,8 @@ fn published_joint_and_rational_monte_carlo_profiles() {
 fn ruby_annex_calibration_and_implicit_cases() {
     assert_frozen(include_str!("../fixtures/gum-annex-methods.json"), 22);
 }
+
+#[test]
+fn source_coverage_metadata_diagnostics() {
+    assert_frozen(include_str!("../fixtures/coverage-validation.json"), 49);
+}
