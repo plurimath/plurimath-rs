@@ -1,6 +1,7 @@
 //! Procedural source-writer port; unported nodes/options fail, never return approximations.
 mod scripts;
 mod styles;
+mod font_styles;
 mod symbol_content;
 mod table_xml;
 mod tables;
@@ -759,6 +760,7 @@ fn render_text(m: &Model, f: &str) -> Result<String, String> {
     if m.class == "Math::Function::FontStyle::Normal" {
         return normal_text(m, f);
     }
+    if font_styles::handles(m) { return font_styles::text(m, f); }
     if ["Text", "Mbox", "Left", "Right"].contains(&m.kind()) {
         return text_content::text_writer(m, f);
     }
@@ -876,6 +878,7 @@ fn render_xml(
     if m.class == "Math::Function::FontStyle::Normal" {
         return normal_xml(m, f, spacing, allow_templates);
     }
+    if font_styles::handles(m) { return font_styles::xml(m, f, spacing, allow_templates); }
 
     if ["Text", "Mbox", "Left", "Right"].contains(&m.kind()) {
         return text_content::xml_writer(m, f);
