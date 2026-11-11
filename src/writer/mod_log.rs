@@ -3,18 +3,18 @@ use super::{attrs, control_properties, el, run, text, Model, Value, WriterContex
 fn truthy(value: &Value) -> bool {
     !value.is_null() && value != false
 }
-fn child(value: &Value, format: &str) -> Result<String, String> {
-    super::multiscripts::child(value, format)
+fn child(value: &Value, format: &str, ctx: &super::WriterContext) -> Result<String, String> {
+    super::multiscripts::child(value, format, ctx)
 }
-fn safe(value: &Value, format: &str) -> Result<String, String> {
+fn safe(value: &Value, format: &str, ctx: &super::WriterContext) -> Result<String, String> {
     if value.is_null() {
         Ok(String::new())
     } else {
-        child(value, format)
+        child(value, format, ctx)
     }
 }
-fn parens(value: &Value) -> Result<String, String> {
-    let output = child(value, "unicodemath")?;
+fn parens(value: &Value, ctx: &super::WriterContext) -> Result<String, String> {
+    let output = child(value, "unicodemath", ctx)?;
     Ok(if value["class"] == "Math::Function::Fenced" {
         output
     } else {
@@ -62,21 +62,21 @@ pub(super) fn handles(m: &Model) -> bool {
         "Math::Function::Mod" | "Math::Function::Log"
     )
 }
-pub(super) fn text_writer(m: &Model, f: &str) -> Result<String, String> {
+pub(super) fn text_writer(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     let a = m.field("parameter_one");
     let b = m.field("parameter_two");
     if m.class == "Math::Function::Mod" {
         return match f {
-            "asciimath" => Ok(format!("{} mod {}", safe(a, f)?, safe(b, f)?)),
+            "asciimath" => Ok(format!("{} mod {}", safe(a, f, ctx)?, safe(b, f, ctx)?)),
             "latex" => Ok(format!(
                 "{} \\mod {}",
                 if truthy(a) {
-                    format!("{{{}}}", child(a, f)?)
+                    format!("{{{}}}", child(a, f, ctx)?)
                 } else {
                     String::new()
                 },
                 if truthy(b) {
-                    format!("{{{}}}", child(b, f)?)
+                    format!("{{{}}}", child(b, f, ctx)?)
                 } else {
                     String::new()
                 }
@@ -84,17 +84,17 @@ pub(super) fn text_writer(m: &Model, f: &str) -> Result<String, String> {
             "html" => Ok(format!(
                 "{}<i>mod</i>{}",
                 if truthy(a) {
-                    format!("<i>{}</i>", child(a, f)?)
+                    format!("<i>{}</i>", child(a, f, ctx)?)
                 } else {
                     String::new()
                 },
                 if truthy(b) {
-                    format!("<i>{}</i>", child(b, f)?)
+                    format!("<i>{}</i>", child(b, f, ctx)?)
                 } else {
                     String::new()
                 }
             )),
-            "unicodemath" => Ok(format!("{}mod{}", safe(a, f)?, safe(b, f)?)),
+            "unicodemath" => Ok(format!("{}mod{}", safe(a, f, ctx)?, safe(b, f, ctx)?)),
             _ => Err("unported Mod text format".into()),
         };
     }
@@ -110,18 +110,18 @@ pub(super) fn text_writer(m: &Model, f: &str) -> Result<String, String> {
         }
         let marker = if upper { "^" } else { "_" };
         match f {
-            "asciimath" => output.push_str(&format!("{marker}({})", child(value, f)?)),
+            "asciimath" => output.push_str(&format!("{marker}({})", child(value, f, ctx)?)),
             "latex" => output.push_str(&format!(
                 "{marker}{}",
-                super::nary::latex_wrapped_with_value(value, child(value, f)?)?
+                super::nary::latex_wrapped_with_value(value, child(value, f, ctx)?)?
             )),
             "html" => {
                 let tag = if upper { "sup" } else { "sub" };
-                output.push_str(&format!("<{tag}>{}</{tag}>", child(value, f)?));
+                output.push_str(&format!("<{tag}>{}</{tag}>", child(value, f, ctx)?));
             }
             "unicodemath" => {
-                if mini(value)? || (upper && super::prime_symbol(value)?) {
-                    output.push_str(&child(value, f)?);
+                if mini(value)? || (upper && super::prime_symbol(value, ctx)?) {
+                    output.push_str(&child(value, f, ctx)?);
                 } else if value["class"]
                     == if upper {
                         "Math::Function::Power"
@@ -129,9 +129,9 @@ pub(super) fn text_writer(m: &Model, f: &str) -> Result<String, String> {
                         "Math::Function::Base"
                     }
                 {
-                    output.push_str(&format!("{marker}{}", child(value, f)?));
+                    output.push_str(&format!("{marker}{}", child(value, f, ctx)?));
                 } else {
-                    output.push_str(&format!("{marker}{}", parens(value)?));
+                    output.push_str(&format!("{marker}{}", parens(value, ctx)?));
                 }
             }
             _ => unreachable!(),

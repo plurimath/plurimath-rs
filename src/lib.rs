@@ -1,3 +1,4 @@
+mod json_request;
 pub mod source_values;
 pub mod html_parse;
 pub mod model;
@@ -123,12 +124,20 @@ pub fn request(v: &Value) -> Value {
 pub extern "C" fn plurimath_facade_abi_version() -> u32 {
     1
 }
+/// Decode one bounded UTF-8 JSON request through the same transport as the C ABI.
+pub fn request_json(bytes: &[u8]) -> Value {
+    if bytes.len() > 16 * 1024 * 1024 {
+        return json!({"abi_version":1,"ok":false,"error":{"code":"invalid_input","message":"oversized request"}});
+    }
+    match json_request::decode(bytes) { Ok(value) => request(&value), Err(error) => error }
+}
+
 #[no_mangle]
 pub unsafe extern "C" fn plurimath_facade_json(
     input: *const u8,
     len: usize,
 ) -> *mut std::ffi::c_char {
-    let result=std::panic::catch_unwind(||{if input.is_null()||len>16*1024*1024{return json!({"abi_version":1,"ok":false,"error":{"code":"invalid_input","message":"null or oversized request"}})}let bytes=std::slice::from_raw_parts(input,len);match serde_json::from_slice::<Value>(bytes){Ok(v)=>request(&v),Err(e)=>json!({"abi_version":1,"ok":false,"error":{"code":"invalid_json","message":e.to_string()}})}}).unwrap_or_else(|_|json!({"abi_version":1,"ok":false,"error":{"code":"internal_error","message":"native panic"}}));
+    let result=std::panic::catch_unwind(||{if input.is_null()||len>16*1024*1024{return json!({"abi_version":1,"ok":false,"error":{"code":"invalid_input","message":"null or oversized request"}})}let bytes=std::slice::from_raw_parts(input,len);request_json(bytes)}).unwrap_or_else(|_|json!({"abi_version":1,"ok":false,"error":{"code":"internal_error","message":"native panic"}}));
     std::ffi::CString::new(result.to_string())
         .unwrap()
         .into_raw()

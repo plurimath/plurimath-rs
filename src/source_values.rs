@@ -246,8 +246,20 @@ pub fn writer_admission(model: &crate::model::Model) -> Result<(), String> {
         .collect::<Result<Vec<_>, _>>()?
         .iter()
         .any(sensitive);
+    // Empty own fence options carry no key-kind ambiguity. Nested nodes retain
+    // their individual admission checks; nonempty typed fence attributes remain gated.
+    if model.kind() == "Fenced" {
+        let mut default_options = true;
+        for (name, tag) in &metadata.fields {
+            let value = decode(tag, Domain::Literal, Profile::RubyValuesV1)?;
+            default_options &= if name == "options" {
+                matches!(&value, RubyValue::Nil) || matches!(&value, RubyValue::Hash(entries) if entries.is_empty())
+            } else { !self::sensitive(&value) };
+        }
+        if default_options { return Ok(()); }
+    }
     if sensitive
-        && !["Number", "Nary", "Sum", "Prod", "Int", "Oint", "Mpadded"].contains(&model.kind())
+        && !["Number", "Nary", "Sum", "Prod", "Int", "Oint", "Mpadded", "Limits", "Underset", "Underover", "Frac"].contains(&model.kind())
     {
         return Err(format!(
             "unported provenance-aware source writer {}",

@@ -420,30 +420,6 @@
       "id": "leaf-split-3-true-1",
       "format": "omml",
       "reason": "unported promised Ruby source object interpolation/inspection"
-    },
-    {
-      "fixture": "reference",
-      "id": "intent-unicodemath-531:mathml",
-      "format": "mathml",
-      "reason": "fraction option profile not yet ported"
-    },
-    {
-      "fixture": "reference",
-      "id": "intent-unicodemath-531-off:mathml",
-      "format": "mathml",
-      "reason": "fraction option profile not yet ported"
-    },
-    {
-      "fixture": "reference",
-      "id": "intent-unicodemath-532:mathml",
-      "format": "mathml",
-      "reason": "fraction option profile not yet ported"
-    },
-    {
-      "fixture": "reference",
-      "id": "intent-unicodemath-532-off:mathml",
-      "format": "mathml",
-      "reason": "fraction option profile not yet ported"
     }
   ]
 }

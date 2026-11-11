@@ -13,26 +13,26 @@ fn data() -> &'static Value {
 fn truthy(v: &Value) -> bool {
     !v.is_null() && v != false
 }
-fn child(v: &Value, f: &str) -> Result<String, String> {
-    super::multiscripts::child(v, f)
+fn child(v: &Value, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
+    super::multiscripts::child(v, f, ctx)
 }
-fn safe(v: &Value, f: &str) -> Result<String, String> {
+fn safe(v: &Value, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     if v.is_null() {
         Ok(String::new())
     } else {
-        child(v, f)
+        child(v, f, ctx)
     }
 }
-fn parens(v: &Value) -> Result<String, String> {
-    let value = child(v, "unicodemath")?;
+fn parens(v: &Value, ctx: &super::WriterContext) -> Result<String, String> {
+    let value = child(v, "unicodemath", ctx)?;
     Ok(if v["class"] == "Math::Function::Fenced" {
         value
     } else {
         format!("({value})")
     })
 }
-fn first_wrap(v: &Value, f: &str) -> Result<String, String> {
-    let value = child(v, f)?;
+fn first_wrap(v: &Value, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
+    let value = child(v, f, ctx)?;
     if v["class"] == "Math::Formula" {
         Ok(if f == "latex" {
             format!("{{{value}}}")
@@ -44,7 +44,7 @@ fn first_wrap(v: &Value, f: &str) -> Result<String, String> {
     }
 }
 fn named_options(m: &Model) -> Result<RubyValue, String> {
-    source::decode(m.field("options"), Domain::NamedOptions, Profile::Canonical)
+    source::field(m, "options", Domain::NamedOptions)
 }
 fn ruby_truthy(v: &RubyValue) -> bool {
     !matches!(v, RubyValue::Nil | RubyValue::Bool(false))
@@ -89,7 +89,7 @@ fn raw_symbol(v: &Value) -> Result<Option<String>, String> {
     }
     Ok(data()["symbol_hex"][&m.class].as_str().map(str::to_owned))
 }
-fn under_unicode(m: &Model) -> Result<String, String> {
+fn under_unicode(m: &Model, ctx: &super::WriterContext) -> Result<String, String> {
     let a = m.field("parameter_one");
     let b = m.field("parameter_two");
     let raw = raw_symbol(a)?;
@@ -100,13 +100,13 @@ fn under_unicode(m: &Model) -> Result<String, String> {
             .values()
             .any(|v| v == s)
     }) {
-        return Ok(format!("{}{}", child(a, "unicodemath")?, parens(b)?));
+        return Ok(format!("{}{}", child(a, "unicodemath", ctx)?, parens(b, ctx)?));
     }
     if ["Math::Function::Obrace", "Math::Function::Ubrace"]
         .iter()
         .any(|kind| b["class"] == *kind)
     {
-        return Ok(format!("{}_{}", child(b, "unicodemath")?, parens(a)?));
+        return Ok(format!("{}_{}", child(b, "unicodemath", ctx)?, parens(a, ctx)?));
     }
     if let Some(raw) = raw {
         if data()["diacritic_belows"]
@@ -120,10 +120,10 @@ fn under_unicode(m: &Model) -> Result<String, String> {
                 .values()
                 .any(|v| v == &raw)
         {
-            return Ok(format!("{}{raw}", parens(b)?));
+            return Ok(format!("{}{raw}", parens(b, ctx)?));
         }
     }
-    Ok(format!("{}┬{}", parens(b)?, child(a, "unicodemath")?))
+    Ok(format!("{}┬{}", parens(b, ctx)?, child(a, "unicodemath", ctx)?))
 }
 fn source_integer(v: &RubyValue) -> Result<i128, String> {
     let text = match v {
@@ -168,37 +168,19 @@ fn source_integer(v: &RubyValue) -> Result<i128, String> {
     Ok(if negative { -number } else { number })
 }
 fn fraction_lookup(m: &Model) -> Result<String, String> {
-    let mut fields = vec![];
-    for key in ["parameter_one", "parameter_two"] {
-        let node = Model::from_value(m.field(key))?;
-        let value = if matches!(node.kind(), "Text" | "Ms") {
-            node.field("parameter_one")
-        } else {
-            node.fields
-                .get("value")
-                .ok_or("source_render_error: fraction field has no value accessor")?
-        };
-        fields.push(source_integer(&source::decode(
-            value,
-            Domain::Literal,
-            Profile::Canonical,
-        )?)?);
+    let mut fields=vec![];
+    for key in ["parameter_one","parameter_two"] {
+        let node=Model::from_value(m.field(key))?;
+        let value_key=if ["Math::Function::Text","Math::Function::Ms"].contains(&node.class.as_str()) {
+            "parameter_one"
+        } else if ["Math::Number","Math::Formula","Math::Symbols::Symbol"].contains(&node.class.as_str()) || data()["symbol_hex"].get(&node.class).is_some() {
+            "value"
+        } else {return Err(format!("unported promised fraction value accessor for {}",node.class));};
+        fields.push(source_integer(&source::field(&node,value_key,Domain::Literal)?)?);
     }
-    Ok(data()["unicode_fractions"]
-        .as_object()
-        .unwrap()
-        .iter()
-        .find(|(_, v)| {
-            v.as_array().is_some_and(|v| {
-                v.len() == 2
-                    && v[0].as_i64().map(i128::from) == Some(fields[0])
-                    && v[1].as_i64().map(i128::from) == Some(fields[1])
-            })
-        })
-        .map(|(key, _)| key.clone())
-        .unwrap_or_default())
+    Ok(data()["unicode_fractions"].as_object().unwrap().iter().find(|(_,v)|v.as_array().is_some_and(|v|v.len()==2&&v[0].as_i64().map(i128::from)==Some(fields[0])&&v[1].as_i64().map(i128::from)==Some(fields[1]))).map(|(key,_)|key.clone()).unwrap_or_default())
 }
-fn fraction_unicode(m: &Model) -> Result<String, String> {
+fn fraction_unicode(m: &Model, ctx: &super::WriterContext) -> Result<String, String> {
     let options = named_options(m)?;
     if !matches!(options, RubyValue::Nil) {
         if lookup(&options, "unicodemath_fraction")?.is_some_and(ruby_truthy) {
@@ -207,8 +189,8 @@ fn fraction_unicode(m: &Model) -> Result<String, String> {
     }
     let a = m.field("parameter_one");
     let b = m.field("parameter_two");
-    let first = if truthy(a) { parens(a)? } else { String::new() };
-    let second = if truthy(b) { parens(b)? } else { String::new() };
+    let first = if truthy(a) { parens(a, ctx)? } else { String::new() };
+    let second = if truthy(b) { parens(b, ctx)? } else { String::new() };
     if !truthy(m.field("options")) {
         return Ok(format!("{first}/{second}"));
     }
@@ -218,8 +200,8 @@ fn fraction_unicode(m: &Model) -> Result<String, String> {
     if lookup(&options, "displaystyle")?.is_some() {
         return Ok(format!(
             "{}⊘{}",
-            child(a, "unicodemath")?,
-            child(b, "unicodemath")?
+            child(a, "unicodemath", ctx)?,
+            child(b, "unicodemath", ctx)?
         ));
     }
     if lookup(&options, "ldiv")?.is_some() {
@@ -236,7 +218,7 @@ pub(super) fn handles(m: &Model) -> bool {
             | "Math::Function::Frac"
     )
 }
-pub(super) fn text_writer(m: &Model, f: &str) -> Result<String, String> {
+pub(super) fn text_writer(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     let a = m.field("parameter_one");
     let b = m.field("parameter_two");
     let c = m.field("parameter_three");
@@ -249,7 +231,7 @@ pub(super) fn text_writer(m: &Model, f: &str) -> Result<String, String> {
         };
         for v in fields {
             if truthy(v) {
-                out.push_str(&format!("<i>{}</i>", child(v, f)?));
+                out.push_str(&format!("<i>{}</i>", child(v, f, ctx)?));
             }
         }
         return Ok(out);
@@ -260,13 +242,13 @@ pub(super) fn text_writer(m: &Model, f: &str) -> Result<String, String> {
                 let mut out = "frac".to_string();
                 for v in [a, b] {
                     if truthy(v) {
-                        out.push_str(&format!("({})", child(v, f)?));
+                        out.push_str(&format!("({})", child(v, f, ctx)?));
                     }
                 }
                 Ok(out)
             }
-            "latex" => Ok(format!("\\frac{{{}}}{{{}}}", safe(a, f)?, safe(b, f)?)),
-            "unicodemath" => fraction_unicode(m),
+            "latex" => Ok(format!("\\frac{{{}}}{{{}}}", safe(a, f, ctx)?, safe(b, f, ctx)?)),
+            "unicodemath" => fraction_unicode(m, ctx),
             _ => Err("unported fraction text format".into()),
         };
     }
@@ -276,7 +258,7 @@ pub(super) fn text_writer(m: &Model, f: &str) -> Result<String, String> {
                 let mut out = "underset".to_string();
                 for v in [a, b] {
                     if truthy(v) {
-                        out.push_str(&format!("({})", child(v, f)?));
+                        out.push_str(&format!("({})", child(v, f, ctx)?));
                     }
                 }
                 Ok(out)
@@ -285,25 +267,25 @@ pub(super) fn text_writer(m: &Model, f: &str) -> Result<String, String> {
                 let mut out = "\\underset".to_string();
                 for v in [a, b] {
                     if truthy(v) {
-                        out.push_str(&super::nary::latex_wrapped_with_value(v, child(v, f)?)?);
+                        out.push_str(&super::nary::latex_wrapped_with_value(v, child(v, f, ctx)?)?);
                     }
                 }
                 Ok(out)
             }
-            "unicodemath" => under_unicode(m),
+            "unicodemath" => under_unicode(m, ctx),
             _ => Err("unported Underset text format".into()),
         };
     }
     match f {
         "asciimath" | "latex" if !(f == "latex" && m.kind() == "Limits") => {
             let mut out = if truthy(a) {
-                first_wrap(a, f)?
+                first_wrap(a, f, ctx)?
             } else {
                 String::new()
             };
             for (v, mark) in [(b, "_"), (c, "^")] {
                 if truthy(v) {
-                    let body = child(v, f)?;
+                    let body = child(v, f, ctx)?;
                     out.push_str(&format!(
                         "{mark}{}",
                         if f == "latex" {
@@ -318,44 +300,44 @@ pub(super) fn text_writer(m: &Model, f: &str) -> Result<String, String> {
         }
         "latex" => Ok(format!(
             "{}\\limits_{}^{}",
-            safe(a, f)?,
+            safe(a, f, ctx)?,
             if truthy(b) {
-                format!("{{{}}}", child(b, f)?)
+                format!("{{{}}}", child(b, f, ctx)?)
             } else {
                 String::new()
             },
             if truthy(c) {
-                format!("{{{}}}", child(c, f)?)
+                format!("{{{}}}", child(c, f, ctx)?)
             } else {
                 String::new()
             }
         )),
         "unicodemath" => {
-            let mut out = safe(a, f)?;
+            let mut out = safe(a, f, ctx)?;
             if m.kind() == "Limits" {
                 if truthy(c) {
                     let no_wrap = c["class"] == "Math::Function::Power"
                         || (a["class"] == "Math::Function::Power"
-                            && super::prime_symbol(&a["fields"]["parameter_two"])?);
+                            && super::prime_symbol(&a["fields"]["parameter_two"], ctx)?);
                     out.push_str(&format!(
                         "┴{}",
-                        if no_wrap { child(c, f)? } else { parens(c)? }
+                        if no_wrap { child(c, f, ctx)? } else { parens(c, ctx)? }
                     ));
                 }
                 if truthy(b) {
                     out.push_str(&format!(
                         "┬{}",
                         if b["class"] == "Math::Function::Base" {
-                            child(b, f)?
+                            child(b, f, ctx)?
                         } else {
-                            parens(b)?
+                            parens(b, ctx)?
                         }
                     ));
                 }
             } else {
                 for (v, mark) in [(b, "┬"), (c, "┴")] {
                     if truthy(v) {
-                        out.push_str(&format!("{mark}{}", parens(v)?));
+                        out.push_str(&format!("{mark}{}", parens(v, ctx)?));
                     }
                 }
             }
@@ -507,42 +489,21 @@ pub(super) fn xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, S
 
 /// Core#prime_unicode? compares declared source spellings, never decoded glyphs.
 pub(super) fn source_prime(value: &Value) -> Result<bool, String> {
-    let Ok(model) = Model::from_value(value) else {
-        return Ok(false);
-    };
-    if !model.class.starts_with("Math::Symbols::") {
-        return Ok(false);
-    }
-    fn contains(value: &Value, needle: &str) -> Result<bool, String> {
+    let Ok(model)=Model::from_value(value)else{return Ok(false)};
+    if !model.class.starts_with("Math::Symbols::"){return Ok(false);}
+    fn contains(value:&RubyValue,needle:&str)->Result<bool,String>{
+        let needle=RubyValue::String(needle.into());
         match value {
-            Value::String(s) => Ok(s.contains(needle)),
-            Value::Array(v) => Ok(v.iter().any(|v| v == needle)),
-            _ => Err("source_render_error: prime source value has no include? method".into()),
+            RubyValue::String(value)=>if let RubyValue::String(needle)=needle {Ok(value.contains(&needle))}else{unreachable!()},
+            RubyValue::Array(values)=>Ok(values.iter().any(|value|source::equal(value,&needle))),
+            RubyValue::Hash(values)=>Ok(values.iter().any(|(key,_)|source::eql(key,&needle))),
+            _=>Err("source_render_error: prime source value has no include? method".into())
         }
     }
-    let declared = model.field("value");
-    if !declared.is_null() && contains(declared, "&#x27;")? {
-        return Ok(true);
-    }
-    let raw = if model.class == "Math::Symbols::Symbol" {
-        declared.clone()
-    } else {
-        data()["symbol_hex"][&model.class].clone()
-    };
-    for prime in data()["primes"]
-        .as_object()
-        .ok_or("source prime declarations absent")?
-        .values()
-    {
-        if contains(
-            &raw,
-            prime
-                .as_str()
-                .ok_or("source prime spelling is not a String")?,
-        )? {
-            return Ok(true);
-        }
-    }
+    let declared=source::field(&model,"value",Domain::Literal)?;
+    if !matches!(declared,RubyValue::Nil)&&contains(&declared,"&#x27;")?{return Ok(true);}
+    let raw=if model.class=="Math::Symbols::Symbol"{declared}else{source::decode(&data()["symbol_hex"][&model.class],Domain::Literal,Profile::Canonical)?};
+    for prime in data()["primes"].as_object().ok_or("source prime declarations absent")?.values(){if contains(&raw,prime.as_str().ok_or("source prime spelling is not a String")?)?{return Ok(true);}}
     Ok(false)
 }
 pub(super) fn underset_line_breaking(node: &mut Value, obj: &mut Vec<Value>) -> Result<(), String> {
@@ -582,4 +543,21 @@ mod source_predicate_tests {
             }
         }
     }
+}
+
+#[cfg(test)]
+mod source_symbol_predicates {
+ use super::*;
+ #[test]
+ fn lazy_source_classes_preserve_prime_predicates() {
+  let fixture:Value=serde_json::from_str(include_str!("../../fixtures/final-writer-options/symbol-getters-source.json")).unwrap();
+  let mut count=0;
+  for row in fixture["prime_checks"].as_array().unwrap() {
+   let actual=source_prime(&row["model"]);
+   if let Some(value)=row["value"].as_bool(){assert_eq!(actual.unwrap(),value,"{}",row["model"])}
+   else {assert_eq!(row["error"]["class"],"NoMethodError");assert!(actual.unwrap_err().starts_with("source_render_error:"));}
+   count+=1;
+  }
+  assert_eq!(count,1459);
+ }
 }

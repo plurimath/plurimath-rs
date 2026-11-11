@@ -260,6 +260,7 @@ dependencies = [
  "plurimath-amath",
  "plurimath-umath",
  "regex",
+ "serde",
  "serde_json",
  "unitsdb-rs",
 ]

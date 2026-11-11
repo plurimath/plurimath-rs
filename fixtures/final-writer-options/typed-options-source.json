@@ -1,0 +1,2227 @@
+{
+  "rows": [
+    {
+      "id": "frac-typed-0",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "60fd5f2a937c85c78ea4687ed09b655a073e47cc556ba7a636e85ef320492785",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Function::Frac",
+                    [
+                      [
+                        "parameter_one",
+                        [
+                          "node",
+                          "Math::Number",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "1"
+                              ]
+                            ],
+                            [
+                              "mini_sub_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "mini_sup_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "base",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "parameter_two",
+                        [
+                          "node",
+                          "Math::Number",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "2"
+                              ]
+                            ],
+                            [
+                              "mini_sub_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "mini_sup_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "base",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "options",
+                        [
+                          "hash",
+                          [
+                            [
+                              [
+                                "symbol",
+                                "unicodemath_fraction"
+                              ],
+                              [
+                                "bool",
+                                true
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "writers": {
+        "asciimath": {
+          "output": "frac(1)(2)"
+        },
+        "latex": {
+          "output": "\\frac{1}{2}"
+        },
+        "html": {
+          "output": "<i>1</i><i>2</i>"
+        },
+        "unicodemath": {
+          "output": "½"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mfrac unicodemath_fraction=\"true\">\n      <mn>1</mn>\n      <mn>2</mn>\n    </mfrac>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:f>\n      <m:fPr>\n        <m:type m:val=\"bar\"/>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:fPr>\n      <m:num>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:num>\n      <m:den>\n        <m:r>\n          <m:t>2</m:t>\n        </m:r>\n      </m:den>\n    </m:f>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "frac-typed-1",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "60fd5f2a937c85c78ea4687ed09b655a073e47cc556ba7a636e85ef320492785",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Function::Frac",
+                    [
+                      [
+                        "parameter_one",
+                        [
+                          "node",
+                          "Math::Number",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "1"
+                              ]
+                            ],
+                            [
+                              "mini_sub_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "mini_sup_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "base",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "parameter_two",
+                        [
+                          "node",
+                          "Math::Number",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "2"
+                              ]
+                            ],
+                            [
+                              "mini_sub_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "mini_sup_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "base",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "options",
+                        [
+                          "hash",
+                          [
+                            [
+                              [
+                                "string",
+                                "unicodemath_fraction"
+                              ],
+                              [
+                                "bool",
+                                true
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "writers": {
+        "asciimath": {
+          "output": "frac(1)(2)"
+        },
+        "latex": {
+          "output": "\\frac{1}{2}"
+        },
+        "html": {
+          "output": "<i>1</i><i>2</i>"
+        },
+        "unicodemath": {
+          "output": ""
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mfrac unicodemath_fraction=\"true\">\n      <mn>1</mn>\n      <mn>2</mn>\n    </mfrac>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:f>\n      <m:fPr>\n        <m:type m:val=\"bar\"/>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:fPr>\n      <m:num>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:num>\n      <m:den>\n        <m:r>\n          <m:t>2</m:t>\n        </m:r>\n      </m:den>\n    </m:f>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "frac-typed-2",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "60fd5f2a937c85c78ea4687ed09b655a073e47cc556ba7a636e85ef320492785",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Function::Frac",
+                    [
+                      [
+                        "parameter_one",
+                        [
+                          "node",
+                          "Math::Number",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "1"
+                              ]
+                            ],
+                            [
+                              "mini_sub_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "mini_sup_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "base",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "parameter_two",
+                        [
+                          "node",
+                          "Math::Number",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "2"
+                              ]
+                            ],
+                            [
+                              "mini_sub_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "mini_sup_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "base",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "options",
+                        [
+                          "hash",
+                          [
+                            [
+                              [
+                                "symbol",
+                                "linethickness"
+                              ],
+                              [
+                                "string",
+                                "0"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "writers": {
+        "asciimath": {
+          "output": "frac(1)(2)"
+        },
+        "latex": {
+          "output": "\\frac{1}{2}"
+        },
+        "html": {
+          "output": "<i>1</i><i>2</i>"
+        },
+        "unicodemath": {
+          "output": "(1)¦(2)"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mfrac linethickness=\"0\">\n      <mn>1</mn>\n      <mn>2</mn>\n    </mfrac>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:f>\n      <m:fPr>\n        <m:type m:val=\"noBar\"/>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:fPr>\n      <m:num>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:num>\n      <m:den>\n        <m:r>\n          <m:t>2</m:t>\n        </m:r>\n      </m:den>\n    </m:f>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "frac-typed-3",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "60fd5f2a937c85c78ea4687ed09b655a073e47cc556ba7a636e85ef320492785",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Function::Frac",
+                    [
+                      [
+                        "parameter_one",
+                        [
+                          "node",
+                          "Math::Number",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "1"
+                              ]
+                            ],
+                            [
+                              "mini_sub_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "mini_sup_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "base",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "parameter_two",
+                        [
+                          "node",
+                          "Math::Number",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "2"
+                              ]
+                            ],
+                            [
+                              "mini_sub_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "mini_sup_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "base",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "options",
+                        [
+                          "hash",
+                          [
+                            [
+                              [
+                                "string",
+                                "linethickness"
+                              ],
+                              [
+                                "string",
+                                "0"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "writers": {
+        "asciimath": {
+          "output": "frac(1)(2)"
+        },
+        "latex": {
+          "output": "\\frac{1}{2}"
+        },
+        "html": {
+          "output": "<i>1</i><i>2</i>"
+        },
+        "unicodemath": {
+          "output": ""
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mfrac linethickness=\"0\">\n      <mn>1</mn>\n      <mn>2</mn>\n    </mfrac>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:f>\n      <m:fPr>\n        <m:type m:val=\"bar\"/>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:fPr>\n      <m:num>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:num>\n      <m:den>\n        <m:r>\n          <m:t>2</m:t>\n        </m:r>\n      </m:den>\n    </m:f>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "frac-typed-4",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "60fd5f2a937c85c78ea4687ed09b655a073e47cc556ba7a636e85ef320492785",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Function::Frac",
+                    [
+                      [
+                        "parameter_one",
+                        [
+                          "node",
+                          "Math::Number",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "1"
+                              ]
+                            ],
+                            [
+                              "mini_sub_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "mini_sup_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "base",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "parameter_two",
+                        [
+                          "node",
+                          "Math::Number",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "2"
+                              ]
+                            ],
+                            [
+                              "mini_sub_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "mini_sup_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "base",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "options",
+                        [
+                          "hash",
+                          [
+                            [
+                              [
+                                "symbol",
+                                "bevelled"
+                              ],
+                              [
+                                "bool",
+                                true
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "writers": {
+        "asciimath": {
+          "output": "frac(1)(2)"
+        },
+        "latex": {
+          "output": "\\frac{1}{2}"
+        },
+        "html": {
+          "output": "<i>1</i><i>2</i>"
+        },
+        "unicodemath": {
+          "output": ""
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mfrac bevelled=\"true\">\n      <mn>1</mn>\n      <mn>2</mn>\n    </mfrac>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:f>\n      <m:fPr>\n        <m:type m:val=\"bar\"/>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:fPr>\n      <m:num>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:num>\n      <m:den>\n        <m:r>\n          <m:t>2</m:t>\n        </m:r>\n      </m:den>\n    </m:f>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "frac-typed-5",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "60fd5f2a937c85c78ea4687ed09b655a073e47cc556ba7a636e85ef320492785",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Function::Frac",
+                    [
+                      [
+                        "parameter_one",
+                        [
+                          "node",
+                          "Math::Number",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "1"
+                              ]
+                            ],
+                            [
+                              "mini_sub_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "mini_sup_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "base",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "parameter_two",
+                        [
+                          "node",
+                          "Math::Number",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "2"
+                              ]
+                            ],
+                            [
+                              "mini_sub_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "mini_sup_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "base",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "options",
+                        [
+                          "hash",
+                          [
+                            [
+                              [
+                                "string",
+                                "bevelled"
+                              ],
+                              [
+                                "bool",
+                                true
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "writers": {
+        "asciimath": {
+          "output": "frac(1)(2)"
+        },
+        "latex": {
+          "output": "\\frac{1}{2}"
+        },
+        "html": {
+          "output": "<i>1</i><i>2</i>"
+        },
+        "unicodemath": {
+          "output": ""
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mfrac bevelled=\"true\">\n      <mn>1</mn>\n      <mn>2</mn>\n    </mfrac>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:f>\n      <m:fPr>\n        <m:type m:val=\"bar\"/>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:fPr>\n      <m:num>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:num>\n      <m:den>\n        <m:r>\n          <m:t>2</m:t>\n        </m:r>\n      </m:den>\n    </m:f>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "frac-typed-6",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "60fd5f2a937c85c78ea4687ed09b655a073e47cc556ba7a636e85ef320492785",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Function::Frac",
+                    [
+                      [
+                        "parameter_one",
+                        [
+                          "node",
+                          "Math::Number",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "1"
+                              ]
+                            ],
+                            [
+                              "mini_sub_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "mini_sup_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "base",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "parameter_two",
+                        [
+                          "node",
+                          "Math::Number",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "2"
+                              ]
+                            ],
+                            [
+                              "mini_sub_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "mini_sup_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "base",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "options",
+                        [
+                          "hash",
+                          [
+                            [
+                              [
+                                "symbol",
+                                "choose"
+                              ],
+                              [
+                                "bool",
+                                false
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "writers": {
+        "asciimath": {
+          "output": "frac(1)(2)"
+        },
+        "latex": {
+          "output": "\\frac{1}{2}"
+        },
+        "html": {
+          "output": "<i>1</i><i>2</i>"
+        },
+        "unicodemath": {
+          "output": ""
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mfrac>\n      <mn>1</mn>\n      <mn>2</mn>\n    </mfrac>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:f>\n      <m:fPr>\n        <m:type m:val=\"bar\"/>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:fPr>\n      <m:num>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:num>\n      <m:den>\n        <m:r>\n          <m:t>2</m:t>\n        </m:r>\n      </m:den>\n    </m:f>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "frac-typed-7",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "60fd5f2a937c85c78ea4687ed09b655a073e47cc556ba7a636e85ef320492785",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Function::Frac",
+                    [
+                      [
+                        "parameter_one",
+                        [
+                          "node",
+                          "Math::Number",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "1"
+                              ]
+                            ],
+                            [
+                              "mini_sub_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "mini_sup_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "base",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "parameter_two",
+                        [
+                          "node",
+                          "Math::Number",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "2"
+                              ]
+                            ],
+                            [
+                              "mini_sub_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "mini_sup_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "base",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "options",
+                        [
+                          "hash",
+                          [
+                            [
+                              [
+                                "string",
+                                "choose"
+                              ],
+                              [
+                                "bool",
+                                false
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "writers": {
+        "asciimath": {
+          "output": "frac(1)(2)"
+        },
+        "latex": {
+          "output": "\\frac{1}{2}"
+        },
+        "html": {
+          "output": "<i>1</i><i>2</i>"
+        },
+        "unicodemath": {
+          "output": ""
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mfrac choose=\"false\">\n      <mn>1</mn>\n      <mn>2</mn>\n    </mfrac>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:f>\n      <m:fPr>\n        <m:type m:val=\"bar\"/>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:fPr>\n      <m:num>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:num>\n      <m:den>\n        <m:r>\n          <m:t>2</m:t>\n        </m:r>\n      </m:den>\n    </m:f>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "underset-typed-0",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "60fd5f2a937c85c78ea4687ed09b655a073e47cc556ba7a636e85ef320492785",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Function::Underset",
+                    [
+                      [
+                        "parameter_one",
+                        [
+                          "node",
+                          "Math::Number",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "1"
+                              ]
+                            ],
+                            [
+                              "mini_sub_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "mini_sup_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "base",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "parameter_two",
+                        [
+                          "node",
+                          "Math::Symbols::Symbol",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "x"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "options",
+                        [
+                          "hash",
+                          [
+                            [
+                              [
+                                "symbol",
+                                "accentunder"
+                              ],
+                              [
+                                "bool",
+                                true
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "writers": {
+        "asciimath": {
+          "output": "underset(1)(x)"
+        },
+        "latex": {
+          "output": "\\underset{1}{x}"
+        },
+        "html": {
+          "output": "<i>1</i><i>x</i>"
+        },
+        "unicodemath": {
+          "output": "(x)┬1"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <munder accentunder=\"true\">\n      <mi>x</mi>\n      <mn>1</mn>\n    </munder>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:groupChr>\n      <m:groupChrPR>\n        <m:chr m:val=\"_\"/>\n        <m:pos m:val=\"bot\"/>\n      </m:groupChrPR>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n      </m:e>\n    </m:groupChr>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "underset-typed-1",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "60fd5f2a937c85c78ea4687ed09b655a073e47cc556ba7a636e85ef320492785",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Function::Underset",
+                    [
+                      [
+                        "parameter_one",
+                        [
+                          "node",
+                          "Math::Number",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "1"
+                              ]
+                            ],
+                            [
+                              "mini_sub_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "mini_sup_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "base",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "parameter_two",
+                        [
+                          "node",
+                          "Math::Symbols::Symbol",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "x"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "options",
+                        [
+                          "hash",
+                          [
+                            [
+                              [
+                                "string",
+                                "accentunder"
+                              ],
+                              [
+                                "bool",
+                                true
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "writers": {
+        "asciimath": {
+          "output": "underset(1)(x)"
+        },
+        "latex": {
+          "output": "\\underset{1}{x}"
+        },
+        "html": {
+          "output": "<i>1</i><i>x</i>"
+        },
+        "unicodemath": {
+          "output": "(x)┬1"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <munder accentunder=\"true\">\n      <mi>x</mi>\n      <mn>1</mn>\n    </munder>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:limLow>\n      <m:limLowPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limLowPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:lim>\n    </m:limLow>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "underset-typed-2",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "60fd5f2a937c85c78ea4687ed09b655a073e47cc556ba7a636e85ef320492785",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Function::Underset",
+                    [
+                      [
+                        "parameter_one",
+                        [
+                          "node",
+                          "Math::Number",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "1"
+                              ]
+                            ],
+                            [
+                              "mini_sub_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "mini_sup_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "base",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "parameter_two",
+                        [
+                          "node",
+                          "Math::Symbols::Symbol",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "x"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "options",
+                        [
+                          "hash",
+                          [
+                            [
+                              [
+                                "symbol",
+                                "accentunder"
+                              ],
+                              [
+                                "string",
+                                "false"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "writers": {
+        "asciimath": {
+          "output": "underset(1)(x)"
+        },
+        "latex": {
+          "output": "\\underset{1}{x}"
+        },
+        "html": {
+          "output": "<i>1</i><i>x</i>"
+        },
+        "unicodemath": {
+          "output": "(x)┬1"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <munder accentunder=\"false\">\n      <mi>x</mi>\n      <mn>1</mn>\n    </munder>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:groupChr>\n      <m:groupChrPR>\n        <m:chr m:val=\"_\"/>\n        <m:pos m:val=\"bot\"/>\n      </m:groupChrPR>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n      </m:e>\n    </m:groupChr>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "underset-typed-3",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "60fd5f2a937c85c78ea4687ed09b655a073e47cc556ba7a636e85ef320492785",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Function::Underset",
+                    [
+                      [
+                        "parameter_one",
+                        [
+                          "node",
+                          "Math::Number",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "1"
+                              ]
+                            ],
+                            [
+                              "mini_sub_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "mini_sup_sized",
+                              [
+                                "bool",
+                                false
+                              ]
+                            ],
+                            [
+                              "base",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "parameter_two",
+                        [
+                          "node",
+                          "Math::Symbols::Symbol",
+                          [
+                            [
+                              "value",
+                              [
+                                "string",
+                                "x"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "options",
+                        [
+                          "hash",
+                          [
+                            [
+                              [
+                                "string",
+                                "accentunder"
+                              ],
+                              [
+                                "string",
+                                "false"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "writers": {
+        "asciimath": {
+          "output": "underset(1)(x)"
+        },
+        "latex": {
+          "output": "\\underset{1}{x}"
+        },
+        "html": {
+          "output": "<i>1</i><i>x</i>"
+        },
+        "unicodemath": {
+          "output": "(x)┬1"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <munder accentunder=\"false\">\n      <mi>x</mi>\n      <mn>1</mn>\n    </munder>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:limLow>\n      <m:limLowPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limLowPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:lim>\n    </m:limLow>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "fenced-typed-0",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "60fd5f2a937c85c78ea4687ed09b655a073e47cc556ba7a636e85ef320492785",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Function::Fenced",
+                    [
+                      [
+                        "parameter_one",
+                        [
+                          "node",
+                          "Math::Symbols::Paren::Lround",
+                          [
+                            [
+                              "value",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "parameter_two",
+                        [
+                          "array",
+                          [
+                            [
+                              "node",
+                              "Math::Function::Frac",
+                              [
+                                [
+                                  "parameter_one",
+                                  [
+                                    "node",
+                                    "Math::Number",
+                                    [
+                                      [
+                                        "value",
+                                        [
+                                          "string",
+                                          "1"
+                                        ]
+                                      ],
+                                      [
+                                        "mini_sub_sized",
+                                        [
+                                          "bool",
+                                          false
+                                        ]
+                                      ],
+                                      [
+                                        "mini_sup_sized",
+                                        [
+                                          "bool",
+                                          false
+                                        ]
+                                      ],
+                                      [
+                                        "base",
+                                        [
+                                          "nil"
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "parameter_two",
+                                  [
+                                    "node",
+                                    "Math::Number",
+                                    [
+                                      [
+                                        "value",
+                                        [
+                                          "string",
+                                          "2"
+                                        ]
+                                      ],
+                                      [
+                                        "mini_sub_sized",
+                                        [
+                                          "bool",
+                                          false
+                                        ]
+                                      ],
+                                      [
+                                        "mini_sup_sized",
+                                        [
+                                          "bool",
+                                          false
+                                        ]
+                                      ],
+                                      [
+                                        "base",
+                                        [
+                                          "nil"
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "options",
+                                  [
+                                    "hash",
+                                    [
+                                      [
+                                        [
+                                          "symbol",
+                                          "choose"
+                                        ],
+                                        [
+                                          "bool",
+                                          true
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "parameter_three",
+                        [
+                          "node",
+                          "Math::Symbols::Paren::Rround",
+                          [
+                            [
+                              "value",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "options",
+                        [
+                          "hash",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "writers": {
+        "asciimath": {
+          "output": "(frac(1)(2))"
+        },
+        "latex": {
+          "output": "( \\frac{1}{2} )"
+        },
+        "html": {
+          "output": "<i>(</i><i>1</i><i>2</i><i>)</i>"
+        },
+        "unicodemath": {
+          "output": "(1)⒞(2)"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mo>(</mo>\n      <mfrac>\n        <mn>1</mn>\n        <mn>2</mn>\n      </mfrac>\n      <mo>)</mo>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:d>\n      <m:dPr>\n        <m:begChr m:val=\"(\"/>\n        <m:sepChr m:val=\"\"/>\n        <m:endChr m:val=\")\"/>\n      </m:dPr>\n      <m:e>\n        <m:f>\n          <m:fPr>\n            <m:type m:val=\"bar\"/>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:fPr>\n          <m:num>\n            <m:r>\n              <m:t>1</m:t>\n            </m:r>\n          </m:num>\n          <m:den>\n            <m:r>\n              <m:t>2</m:t>\n            </m:r>\n          </m:den>\n        </m:f>\n      </m:e>\n    </m:d>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "fenced-typed-1",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "60fd5f2a937c85c78ea4687ed09b655a073e47cc556ba7a636e85ef320492785",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Function::Fenced",
+                    [
+                      [
+                        "parameter_one",
+                        [
+                          "node",
+                          "Math::Symbols::Paren::Lround",
+                          [
+                            [
+                              "value",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "parameter_two",
+                        [
+                          "array",
+                          [
+                            [
+                              "node",
+                              "Math::Function::Frac",
+                              [
+                                [
+                                  "parameter_one",
+                                  [
+                                    "node",
+                                    "Math::Number",
+                                    [
+                                      [
+                                        "value",
+                                        [
+                                          "string",
+                                          "1"
+                                        ]
+                                      ],
+                                      [
+                                        "mini_sub_sized",
+                                        [
+                                          "bool",
+                                          false
+                                        ]
+                                      ],
+                                      [
+                                        "mini_sup_sized",
+                                        [
+                                          "bool",
+                                          false
+                                        ]
+                                      ],
+                                      [
+                                        "base",
+                                        [
+                                          "nil"
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "parameter_two",
+                                  [
+                                    "node",
+                                    "Math::Number",
+                                    [
+                                      [
+                                        "value",
+                                        [
+                                          "string",
+                                          "2"
+                                        ]
+                                      ],
+                                      [
+                                        "mini_sub_sized",
+                                        [
+                                          "bool",
+                                          false
+                                        ]
+                                      ],
+                                      [
+                                        "mini_sup_sized",
+                                        [
+                                          "bool",
+                                          false
+                                        ]
+                                      ],
+                                      [
+                                        "base",
+                                        [
+                                          "nil"
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "options",
+                                  [
+                                    "hash",
+                                    [
+                                      [
+                                        [
+                                          "string",
+                                          "choose"
+                                        ],
+                                        [
+                                          "bool",
+                                          true
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "parameter_three",
+                        [
+                          "node",
+                          "Math::Symbols::Paren::Rround",
+                          [
+                            [
+                              "value",
+                              [
+                                "nil"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "options",
+                        [
+                          "hash",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "writers": {
+        "asciimath": {
+          "output": "(frac(1)(2))"
+        },
+        "latex": {
+          "output": "( \\frac{1}{2} )"
+        },
+        "html": {
+          "output": "<i>(</i><i>1</i><i>2</i><i>)</i>"
+        },
+        "unicodemath": {
+          "output": "()"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mo>(</mo>\n      <mfrac choose=\"true\">\n        <mn>1</mn>\n        <mn>2</mn>\n      </mfrac>\n      <mo>)</mo>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:d>\n      <m:dPr>\n        <m:begChr m:val=\"(\"/>\n        <m:sepChr m:val=\"\"/>\n        <m:endChr m:val=\")\"/>\n      </m:dPr>\n      <m:e>\n        <m:f>\n          <m:fPr>\n            <m:type m:val=\"bar\"/>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:fPr>\n          <m:num>\n            <m:r>\n              <m:t>1</m:t>\n            </m:r>\n          </m:num>\n          <m:den>\n            <m:r>\n              <m:t>2</m:t>\n            </m:r>\n          </m:den>\n        </m:f>\n      </m:e>\n    </m:d>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    }
+  ],
+  "source_head": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+  "mutations": 0
+}

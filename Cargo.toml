@@ -8,9 +8,10 @@ publish = false
 name = "plurimath_facade"
 crate-type = ["rlib", "cdylib"]
 [dependencies]
+serde = "=1.0.229"
 regex = "1"
 amath = { package = "plurimath-amath", path = "../../compatibility/amath-rs" }
-serde_json = { version = "=1.0.140", features = ["arbitrary_precision", "preserve_order"] }
+serde_json = { version = "=1.0.140", features = ["arbitrary_precision", "preserve_order", "unbounded_depth", "raw_value"] }
 latexmath = { path = "../../compatibility/latexmath-rs" }
 umath = { package = "plurimath-umath", path = "../../compatibility/umath-rs" }
 moxml = { git = "https://github.com/lutaml/moxml-rs", rev = "c55a7ecf60764d75a7a0ef54f0e483ec40df4b73" }

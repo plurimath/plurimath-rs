@@ -1,6 +1,8 @@
 //! Procedural source-writer port; unported nodes/options fail, never return approximations.
 mod layout_nodes;
 mod generic_nary;
+mod final_options;
+mod mod_log;
 mod intent_nodes;
 mod leaf_nodes;
 mod operators;
@@ -130,12 +132,7 @@ fn symbol(m: &Model, f: &str) -> Result<String, String> {
             });
         }
         if f == "unicodemath" {
-            if m.field("mini_sub_sized") == true || m.field("mini_sup_sized") == true {
-                return Err("unported promised mini-sized symbol".into());
-            }
-            if m.field("slashed") == true || ["&", "@", "^"].contains(&value.as_str()) {
-                return Ok(format!("\\{value}"));
-            }
+            if let Some(value)=fences::symbol_unicode(&m.value())? {return Ok(value);}
         }
         return Ok(value);
     }
@@ -494,20 +491,8 @@ fn special_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, Stri
         vec![el("m:borderBoxPr", props), el("m:e", body)],
     )])
 }
-fn prime_symbol(v: &Value, ctx: &WriterContext) -> Result<bool, String> {
-    let Ok(m) = Model::from_value(v) else {
-        return Ok(false);
-    };
-    if !m.class.starts_with("Math::Symbols::") {
-        return Ok(false);
-    }
-    let txt = render_text(&m, "unicodemath", ctx)?;
-    Ok([
-        "′", "″", "‴", "⁗", "&#x27;", "&#x2032;", "&#x2033;", "&#x2034;", "&#x2057;",
-    ]
-    .iter()
-    .any(|p| txt.contains(p)))
-}
+fn prime_symbol(v: &Value, _ctx: &WriterContext) -> Result<bool, String> { final_options::source_prime(v) }
+
 fn power_accent(v: &Value, ctx: &WriterContext) -> Result<bool, String> {
     let Ok(m) = Model::from_value(v) else {
         return Ok(false);
@@ -783,6 +768,9 @@ fn render_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, String
     if underline::handles(m) {return underline::text_writer(m,f,ctx)}
     if table_text::handles(m) {return table_text::render(m,f,ctx)}
     if m.class=="Math::Symbols::Comma"&&f=="asciimath"&&ctx.table {return Ok("\",\"".into())}
+    if mod_log::handles(m) {return mod_log::text_writer(m,f,ctx);}
+    if m.class=="Math::Function::None" {return multiscripts::child(&m.value(),f,ctx);}
+    if final_options::handles(m) {return final_options::text_writer(m,f,ctx);}
     if layout_nodes::handles(m) { return layout_nodes::text_writer(m, f, ctx); }
     if fences::handles(m) { return fences::text(m, f, ctx); }
     if m.class == "Math::Function::Nary" { return generic_nary::text_writer(m, f, ctx); }
@@ -1193,6 +1181,9 @@ fn render_xml_inner(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>,
     if ["Math::Function::Intent","Math::Function::Arg"].contains(&m.class.as_str()) { return intent_nodes::xml(m,f,ctx); }
     if leaf_nodes::handles(m) {return leaf_nodes::xml(m,f,ctx);}
     if underline::handles(m) {return underline::xml(m,f,ctx)}
+    if m.class=="Math::Function::Log" {return mod_log::log_xml(m,f,ctx);}
+    if m.class=="Math::Function::None" {return multiscripts::xml_child(&m.value(),f,ctx);}
+    if final_options::handles(m) {return final_options::xml(m,f,ctx);}
     if layout_nodes::handles(m) { return layout_nodes::xml(m, f, ctx); }
     if m.class == "Math::Function::Mod" { return line_break_overrides::mod_xml(m, f, ctx); }
     if fences::handles(m) { return fences::xml(m, f, ctx); }
@@ -2620,6 +2611,8 @@ fn core_updated_values(
     Ok(())
 }
 fn source_line_breaking(node: &mut Value, obj: &mut Vec<Value>) -> Result<(), String> {
+    if node["class"]=="Math::Function::Log" {return mod_log::log_line_breaking(node,obj);}
+    if node["class"]=="Math::Function::Underset" {return final_options::underset_line_breaking(node,obj); }
     if node["class"] == "Math::Function::Fenced" { return fences::line_breaking(node, obj); }
     let m = Model::from_value(node)
         .map_err(|_| "source_render_error: non-node cannot receive line_breaking")?;

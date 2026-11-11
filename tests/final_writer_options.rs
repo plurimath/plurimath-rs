@@ -103,3 +103,22 @@ fn source_display_callers_and_actual_unicode_fraction_parse() {
         34,
     );
 }
+
+#[test]
+fn lazy_prime_inside_intent_keeps_source_mathml_bytes() {
+ let row:serde_json::Value=serde_json::from_str(include_str!("../fixtures/final-writer-options/lazy-prime-intent.json")).unwrap();
+ let actual=plurimath_facade::request(&serde_json::json!({"op":"write","model":row["case"]["input"]["model"],"format":row["output_format"],"options":row["case"]["options"]}));
+ assert_eq!(actual["ok"],true,"{actual}");assert_eq!(actual["output"],row["case"]["expected"]);
+}
+
+#[test]
+fn typed_fraction_and_underset_keyword_kinds_keep_source_writer_bytes() {
+ let fixture:serde_json::Value=serde_json::from_str(include_str!("../fixtures/final-writer-options/typed-options-source.json")).unwrap();let mut count=0;
+ for row in fixture["rows"].as_array().unwrap(){
+  for (format,expected)in row["writers"].as_object().unwrap(){
+   let actual=plurimath_facade::request(&serde_json::json!({"op":"write","source_profile":"plurimath.ruby-values/1","model":row["document"],"format":format}));
+   assert_eq!(actual["ok"],true,"{} {format}: {actual}",row["id"]);assert_eq!(actual["output"],expected["output"],"{} {format}",row["id"]);count+=1;
+  }
+ }
+ assert_eq!(count,84);
+}

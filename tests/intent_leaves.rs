@@ -74,7 +74,7 @@ fn existing_source_model_reference() {
     check(
         "reference",
         include_str!("../fixtures/intent-leaves/reference-source.json"),
-        (74, 66, 4, 4),
+        (74, 70, 4, 0),
     );
 }
 

@@ -72,3 +72,24 @@ The qualified writer slice includes both variants of the seven layout/n-ary
 collision pairs and two Number Array/Hash pairs. This profile fixes their type
 ambiguity rather than changing archived canonical oracles. Other formatter,
 transformation and writer contexts retain explicit capability limits.
+
+The combined native kernel also qualifies typed fraction/underset keyword keys
+and default-option fenced fractions against 84 actual Ruby writer outcomes.
+A fence with nonempty typed options remains explicitly gated pending its complete
+attribute accessor port; this is an incomplete promised capability, not an
+accepted source refusal. The source prime predicate registry is generated from
+all 1,459 existing symbol classes rather than only already-loaded Ruby classes.
+
+Serialized requests use one bounded JSON decoder through `request_json` and the
+C ABI: at most 16 MiB, 1,024 object/array nesting levels, and 1,000,000
+transport nodes (including object keys). JSON syntax remains
+Serde's responsibility. This transport budget is separate from the existing
+notation parser and model-converter budgets. Excessive nesting returns a typed
+`resource_limit` with `resource.kind = "json_nesting"`; accepted parser-created
+models can be written back without Serde's default 128-level decoder cutoff.
+No worker-thread stack size is changed.
+
+Deep transport decoding validates through Serde's iterative `RawValue` parser
+and assembles containers on a bounded heap stack. Scalar decoding still uses
+Serde, including arbitrary-precision Number behavior. It does not enlarge caller
+stacks or change the existing notation-parser depth budgets.

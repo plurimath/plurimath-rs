@@ -92,29 +92,31 @@ fn delimiter(v: &Value, f: &str, ctx: &super::WriterContext) -> Result<Option<St
     }
 }
 fn choose(v: &Value) -> bool {
-    v["class"] == "Math::Function::Frac"
-        && v["fields"]["options"]
-            .as_object()
-            .is_some_and(|o| o.contains_key("choose"))
+    if v["class"]!="Math::Function::Frac" {return false;}
+    let Ok(model)=Model::from_value(v)else{return false};
+    crate::source_values::field(&model,"options",crate::source_values::Domain::NamedOptions).ok().is_some_and(|options|options.get_symbol("choose").is_some())
 }
+
+fn choose_truthy(v: &Value) -> Result<bool, String> {
+    use crate::source_values::{field, Domain, RubyValue};
+    let options=field(&Model::from_value(v)?,"options",Domain::NamedOptions)?;
+    Ok(options.get_symbol("choose").is_some_and(|value|!matches!(value,RubyValue::Nil|RubyValue::Bool(false))))
+}
+
 fn child_model(v: &Value) -> Result<Value, String> {
     if !v.is_object() {
         return Err(source_error("Fenced text child is not a node"));
     }
-    let mut v = v.clone();
-    // Frac's choose flag is consumed by Fenced's Unicode path; the other writers
-    // explicitly omit it from fraction attributes and otherwise ignore it.
-    if choose(&v) && v["fields"]["options"].as_object().unwrap().len() == 1 {
-        v["fields"]["options"] = Value::Null;
-    }
+    let v = v.clone();
     Ok(v)
 }
-fn ordinary_child(v: &Value, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
-    if f == "unicodemath" && v["class"] == "Math::Symbols::Symbol" {
+pub(super) fn symbol_unicode(v: &Value) -> Result<Option<String>, String> {
+    if v["class"] != "Math::Symbols::Symbol" {return Ok(None);}
+
         let fields = &v["fields"];
         let value = fields["value"].as_str();
         if present(&fields["slashed"]) || value.is_some_and(|s| ["&", "@", "^"].contains(&s)) {
-            return Ok(format!("\\{}", scalar(&fields["value"])?));
+            return Ok(Some(format!("\\{}", scalar(&fields["value"])?)));
         }
         let prefix = if present(&fields["mini_sub_sized"]) {
             Some("SUB")
@@ -134,25 +136,25 @@ fn ordinary_child(v: &Value, f: &str, ctx: &super::WriterContext) -> Result<Stri
             let data = &data["mini_constants"];
             for suffix in ["ALPHABETS", "OPERATORS"] {
                 if let Some(s) = data[format!("{prefix}_{suffix}")][value].as_str() {
-                    return Ok(s.into());
+                    return Ok(Some(s.into()));
                 }
             }
             if let Some(groups) = data[format!("{prefix}_PARENTHESIS")].as_object() {
                 for group in groups.values() {
                     if let Some(s) = group[value].as_str() {
-                        return Ok(s.into());
+                        return Ok(Some(s.into()));
                     }
                 }
             }
-            return Ok(String::new());
+            return Ok(Some(String::new()));
         }
-    }
-
-    if f == "unicodemath" && choose(v) && v["fields"]["options"].as_object().unwrap().len() == 1 {
-        return Ok(String::new()); // Frac#to_unicodemath falls through to nil.
-    }
-    child(&child_model(v)?, f, ctx)
+    Ok(None)
 }
+fn ordinary_child(v: &Value, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
+    if f=="unicodemath" {if let Some(value)=symbol_unicode(v)? {return Ok(value);}}
+    child(&child_model(v)?,f,ctx)
+}
+
 fn fraction_part(v: &Value, ctx: &super::WriterContext) -> Result<String, String> {
     if !present(v) {
         return Ok(String::new());
@@ -417,6 +419,18 @@ fn attributes(v: &Value) -> Result<Vec<(String, String)>, String> {
         .collect()
 }
 pub(super) fn xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
+    if f=="mathml" {
+        if let Some(first)=m.field("parameter_two").as_array().and_then(|values|values.first()) {
+            if first["class"]=="Math::Function::Frac" {
+                use crate::source_values::{field,Domain,RubyValue};
+                let options=field(&Model::from_value(first)?,"options",Domain::NamedOptions)?;
+                if !matches!(options,RubyValue::Nil|RubyValue::Hash(_)) {
+                    return Err("source_render_error: fenced fraction options have no key? method".into());
+                }
+            }
+        }
+    }
+
     xml_with_options(m, f, ctx, &json!({"separators":""}))
 }
 pub(super) fn xml_with_options(
@@ -433,23 +447,7 @@ pub(super) fn xml_with_options(
             }
             continue;
         }
-        let mut nodes = strict_slot_xml(&child_model(v)?, f, ctx, false)?;
-        if f == "omml" && choose(v) {
-            // Frac#fpr_element emits its default bar type whenever node options
-            // exist, even when the only flag is Fenced's choose marker.
-            for node in &mut nodes {
-                if let Xml::El(name, _, children) = node {
-                    if name == "m:f" {
-                        if let Some(Xml::El(_, _, properties)) = children.first_mut() {
-                            properties.insert(
-                                0,
-                                attrs("m:type", vec![("m:val".into(), "bar".into())], vec![]),
-                            );
-                        }
-                    }
-                }
-            }
-        }
+        let nodes = strict_slot_xml(&child_model(v)?, f, ctx, false)?;
         body.extend(nodes);
     }
     if f == "mathml" && ctx.intent {
@@ -515,7 +513,7 @@ pub(super) fn xml_with_options(
 pub(super) fn intent(m: &Model, node: &mut Xml) -> Result<(), String> {
     let first = m.field("parameter_two").as_array().and_then(|a| a.first());
     if let Some(v) = first {
-        if choose(v) && present(&v["fields"]["options"]["choose"]) {
+        if choose(v) && choose_truthy(v)? {
             let children = super::xml_nodes_mut(node)?;
             let fraction = children
                 .get_mut(1)
