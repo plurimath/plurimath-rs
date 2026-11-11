@@ -1,8 +1,10 @@
 //! Procedural source-writer port; unported nodes/options fail, never return approximations.
+mod operators;
 mod accents;
 mod scripts;
 mod styles;
 mod font_styles;
+mod nary;
 mod symbol_content;
 mod table_xml;
 mod tables;
@@ -740,6 +742,7 @@ fn normal_xml(
     Ok(c)
 }
 fn render_text(m: &Model, f: &str) -> Result<String, String> {
+    if m.class == "Math::Function::PowerBase" { return operators::text_writer(m,f); }
     if accents::handles(m) {
         return accents::text(m, f);
     }
@@ -765,6 +768,7 @@ fn render_text(m: &Model, f: &str) -> Result<String, String> {
         return normal_text(m, f);
     }
     if font_styles::handles(m) { return font_styles::text(m, f); }
+    if nary::handles(m) { return nary::text(m, f); }
     if ["Text", "Mbox", "Left", "Right"].contains(&m.kind()) {
         return text_content::text_writer(m, f);
     }
@@ -856,6 +860,8 @@ fn render_xml(
     spacing: bool,
     allow_templates: bool,
 ) -> Result<Vec<Xml>, String> {
+    if m.class=="Math::Function::PowerBase" || (f=="omml" && ["Math::Function::Mod","Math::Function::Sqrt"].contains(&m.class.as_str())) { return operators::xml_writer(m,f,spacing,allow_templates); }
+
     if accents::handles(m) {
         return accents::xml(m, f, spacing, allow_templates);
     }
@@ -886,6 +892,7 @@ fn render_xml(
         return normal_xml(m, f, spacing, allow_templates);
     }
     if font_styles::handles(m) { return font_styles::xml(m, f, spacing, allow_templates); }
+    if nary::handles(m) { return nary::xml(m, f, spacing, allow_templates); }
 
     if ["Text", "Mbox", "Left", "Right"].contains(&m.kind()) {
         return text_content::xml_writer(m, f);
