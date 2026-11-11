@@ -1,4 +1,5 @@
 //! Procedural source-writer port; unported nodes/options fail, never return approximations.
+mod scripts;
 mod symbol_content;
 mod tables;
 mod templates;
@@ -735,6 +736,9 @@ fn normal_xml(
     Ok(c)
 }
 fn render_text(m: &Model, f: &str) -> Result<String, String> {
+    if m.kind() == "Base" {
+        return scripts::text(m, f);
+    }
     if m.class.starts_with("Math::Function::Table::") {
         return tables::render(m, f);
     }
@@ -841,6 +845,9 @@ fn render_xml(
     spacing: bool,
     allow_templates: bool,
 ) -> Result<Vec<Xml>, String> {
+    if m.kind() == "Base" {
+        return scripts::xml(m, f, spacing, allow_templates);
+    }
     if m.kind() == "Unitsml" {
         return render_xml(&derived_units(m)?, f, spacing, allow_templates);
     }
