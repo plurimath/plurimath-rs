@@ -1,0 +1,8 @@
+{
+  "source": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "source_files": {
+    "lib/plurimath/math/function/substack.rb": "770dab815dcfd4df7c56bbd19fe9c603fc057f11c690e6426207b251d93acd64",
+    "lib/plurimath/math/function/msline.rb": "012577c623330bd6e6fc427da2d68dfe8c96bb9680f1de8acea0b5da7715cbe5",
+    "lib/plurimath/math/function/mglyph.rb": "86c3ef7537297e0fa9136617d9cc646d4a7db5199e408922ada89a9ef84e1693"
+  }
+}

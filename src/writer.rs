@@ -1,5 +1,6 @@
 //! Procedural source-writer port; unported nodes/options fail, never return approximations.
 mod operators;
+mod stacked;
 mod accents;
 mod scripts;
 mod styles;
@@ -58,6 +59,7 @@ fn dump(x: &Xml, depth: usize) -> String {
             format!(
                 "{pad}<{n}{at}>\n{}\n{pad}</{n}>",
                 c.iter()
+                    .filter(|v| !matches!(v, Xml::Text(s) if s.is_empty()))
                     .map(|v| dump(v, depth + 1))
                     .collect::<Vec<_>>()
                     .join("\n")
@@ -742,6 +744,7 @@ fn normal_xml(
     Ok(c)
 }
 fn render_text(m: &Model, f: &str) -> Result<String, String> {
+    if stacked::handles_text(m) { return stacked::text(m, f); }
     if m.class == "Math::Function::PowerBase" { return operators::text_writer(m,f); }
     if accents::handles(m) {
         return accents::text(m, f);
@@ -860,6 +863,7 @@ fn render_xml(
     spacing: bool,
     allow_templates: bool,
 ) -> Result<Vec<Xml>, String> {
+    if ["Substack", "Msline", "Mglyph"].contains(&m.kind()) { return stacked::xml(m, f, spacing, allow_templates); }
     if m.class=="Math::Function::PowerBase" || (f=="omml" && ["Math::Function::Mod","Math::Function::Sqrt"].contains(&m.class.as_str())) { return operators::xml_writer(m,f,spacing,allow_templates); }
 
     if accents::handles(m) {

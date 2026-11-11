@@ -125,7 +125,8 @@ fn cell(cell: &Model, format: &str, spacing: bool, templates: bool) -> Result<Ve
     let items = values(cell.field("parameter_one"), "table cell")?;
     if format == "mathml" {
         if items.first().is_some_and(vertical_bar) {
-            return Ok(Vec::new());
+            // Td returns an empty String, which Ox inserts as a text child.
+            return Ok(vec![text("")]);
         }
         Ok(vec![attrs(
             "mtd",
@@ -141,6 +142,10 @@ fn cell(cell: &Model, format: &str, spacing: bool, templates: bool) -> Result<Ve
 }
 fn row(row: &Model, format: &str, spacing: bool, templates: bool) -> Result<Vec<Xml>, String> {
     let cells = values(row.field("parameter_one"), "table row")?;
+    // Tr#remove_hline dereferences first.parameter_one before insertion.
+    if format == "mathml" && cells.is_empty() {
+        return Err("source_render_error: empty Tr has no first cell for remove_hline".into());
+    }
     let mut content = Vec::new();
     for (index, value) in cells.iter().enumerate() {
         let mut value = model(value)?;
