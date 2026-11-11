@@ -160,6 +160,17 @@ Errors carry a typed code and message.
   `propagate_covariance` also validates a symmetric, positive-semidefinite
   covariance matrix. `propagate_vector` retains output covariance. First-order
   independent propagation reports Welch–Satterthwaite status.
+- `linear_calibration` fits the unweighted H.3 line with an explicit reference
+  temperature, negligible abscissa uncertainty, and independent common-variance
+  residuals. `predict_calibration` requires a fitted result, a target of
+  `mean_correction` or `new_observation`, and negligible temperature uncertainty.
+  The latter target includes residual variance; adequacy remains unassessed.
+- `propagate_implicit` accepts caller-supplied output roots, residuals and a
+  nonnegative residual tolerance, output/input Jacobians, and input covariance.
+  It solves the sensitivities by exact pivoting and preserves output covariance.
+  It refuses singular output Jacobians and residuals beyond the declared bound;
+  it does not solve roots. `correlation_matrix` derives rounded correlations
+  from a checked covariance matrix, retaining null for zero-variance entries.
 - `analyze` accepts the ordinary AST and an ordered `inputs` array of
   `{name,estimate,component}` records. It computes exact first through third
   derivatives for rational arithmetic and constant integer powers. Calls are

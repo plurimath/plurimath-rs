@@ -458,3 +458,45 @@ pub(super) fn transform(params: &J) -> Result<J> {
         "engine":engine("JCGM100-2008-equation13-v1"),
     }))
 }
+
+pub(super) fn correlations(params: &J) -> Result<J> {
+    fields(params, &["covariance", "guard_digits"])?;
+    let matrix = checked(&params["covariance"])?;
+    let digits = guard(
+        &params["guard_digits"],
+        992,
+        "guard_digits must be positive",
+    )?;
+    matrix
+        .iter()
+        .enumerate()
+        .map(|(i, row)| {
+            matrix
+                .iter()
+                .enumerate()
+                .map(|(j, other)| {
+                    let product = &row[i] * &other[j];
+                    if product.is_zero() {
+                        return Ok(J::Null);
+                    }
+                    let numerator = &row[j];
+                    if numerator.pow(2) == product {
+                        return Ok(decimal_payload(if numerator.is_negative() {
+                            "-1".to_owned()
+                        } else {
+                            "1".to_owned()
+                        }));
+                    }
+                    let divisor = exact_text(&root_decimal(&product, digits + 8)?)?;
+                    let quotient = roundq(numerator, digits + 8)
+                        .q()
+                        .expect("rounded exact numerator")
+                        / divisor;
+                    Ok(decimal_payload(fmt_decimal(roundq(&quotient, digits))))
+                })
+                .collect::<Result<Vec<_>>>()
+                .map(|row| json!(row))
+        })
+        .collect::<Result<Vec<_>>>()
+        .map(|rows| json!(rows))
+}

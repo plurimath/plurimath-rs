@@ -266,3 +266,8 @@ fn published_joint_and_rational_monte_carlo_profiles() {
     }
     assert!(failures.is_empty(), "{}", failures.join("\n"));
 }
+
+#[test]
+fn ruby_annex_calibration_and_implicit_cases() {
+    assert_frozen(include_str!("../fixtures/gum-annex-methods.json"), 22);
+}

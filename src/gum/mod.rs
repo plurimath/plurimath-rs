@@ -2,8 +2,10 @@ use super::{decimal, guard_sqrt, qparse, roundq, BigInt, J, N, Q};
 use num_traits::{Signed, Zero};
 use serde_json::json;
 
+mod calibration;
 mod conformity;
 mod coverage;
+mod implicit;
 mod monte_carlo;
 mod propagation;
 mod sampling_model;
@@ -196,6 +198,13 @@ fn root_decimal(value: &Q, digits: u32) -> Result<String> {
         .map_err(|_| invalid("negative variance"))
 }
 
+fn decimal_payload(mut text: String) -> J {
+    if !text.contains('.') {
+        text.push_str(".0");
+    }
+    json!({"decimal":text})
+}
+
 fn engine(method: &str) -> J {
     json!({"name":"plurimath-rust","version":env!("CARGO_PKG_VERSION"),"method":method})
 }
@@ -214,6 +223,10 @@ fn dispatch(request: &J) -> Result<J> {
         "component" => propagation::component(params),
         "coverage" => coverage::evaluate(params),
         "conformity" => conformity::evaluate(params),
+        "linear_calibration" => calibration::fit(params),
+        "predict_calibration" => calibration::predict(params),
+        "propagate_implicit" => implicit::propagate(params),
+        "correlation_matrix" => propagation::correlations(params),
         "monte_carlo" => monte_carlo::evaluate(params),
         "propagate" => propagation::independent(params),
         "analyze" => taylor::analyze(params),

@@ -76,3 +76,20 @@ fn validation_priority_wires() {
         );
     }
 }
+
+#[test]
+fn source_annex_h_guarded_numeric_wires() {
+    let fixture: serde_json::Value =
+        serde_json::from_str(include_str!("../fixtures/numeric-annex-h.json")).unwrap();
+    let mut failures = Vec::new();
+    for case in fixture["cases"].as_array().unwrap() {
+        let got = plurimath_numeric::evaluate_json(&case["request"].to_string());
+        if got != case["expected_wire"].as_str().unwrap() {
+            failures.push(format!(
+                "{} ({}) got {} expected {}",
+                case["id"], case["source"], got, case["expected_wire"]
+            ));
+        }
+    }
+    assert!(failures.is_empty(), "{}", failures.join("\n"));
+}
