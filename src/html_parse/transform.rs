@@ -411,6 +411,27 @@ pub(super) fn transform(tree: &Value, _input: &str) -> Result<Value, Value> {
 mod tests {
     use super::*;
     #[test]
+    fn original_source_scope_and_base_prefix_captures_keep_model_semantics() {
+        let fixture: Value = serde_json::from_str(include_str!(
+            "../../fixtures/html-parse/source-scope-cases.json"
+        ))
+        .unwrap();
+        let mut accepted = 0;
+        for row in fixture["rows"].as_array().unwrap() {
+            if row.get("model").is_none() {
+                continue;
+            }
+            assert_eq!(
+                transform(&row["captures"], row["input"].as_str().unwrap()).unwrap(),
+                row["model"],
+                "source HTML scope {}",
+                row["id"]
+            );
+            accepted += 1;
+        }
+        assert_eq!(accepted, 19);
+    }
+    #[test]
     fn original_ruby_html_captures_preserve_all_common_model_shapes() {
         let fixture: Value =
             serde_json::from_str(include_str!("../../fixtures/html-parse/source-models.json"))
