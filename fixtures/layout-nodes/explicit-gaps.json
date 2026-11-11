@@ -1,0 +1,25 @@
+{
+  "profile": "canonical-source-values-v1",
+  "gaps": [
+    {
+      "id": "unary-function-model-phantom-mpadded-hphantom:unicodemath",
+      "format": "unicodemath",
+      "reason": "unported promised conditional phantom/mpadded profile"
+    },
+    {
+      "id": "unary-function-model-phantom-mpadded-vphantom:unicodemath",
+      "format": "unicodemath",
+      "reason": "unported promised conditional phantom/mpadded profile"
+    },
+    {
+      "id": "unary-function-model-phantom-mpadded-smash:unicodemath",
+      "format": "unicodemath",
+      "reason": "unported promised conditional phantom/mpadded profile"
+    },
+    {
+      "id": "unary-function-model-phantom-mpadded-no-options:unicodemath",
+      "format": "unicodemath",
+      "reason": "unported promised conditional phantom/mpadded profile"
+    }
+  ]
+}
