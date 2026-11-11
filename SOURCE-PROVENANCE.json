@@ -1,0 +1,62 @@
+{
+  "sources": [
+    {
+      "path": "workspace/core/ts-ci-fix/src/generated/asciimath/symbols.ts",
+      "sha256": "4b35594b8dd9e9fdc5cb75dc7ce7e1e83f73db60020e212c29620f895ea6e492"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/generated/latex/symbols.ts",
+      "sha256": "1b8fba0890faf85f93adb57266e62b9e2308c87260a3ab3e846580821083f0e5"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/generated/unicodemath/symbols.ts",
+      "sha256": "f105d4684b24b8295c8ad70623d27ed0a54c2682c6e43c684cbe61af43464f14"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/generated/mathml/symbols.ts",
+      "sha256": "ce03ff70fd7483c748c9fddc04b288a5619b7aea8c28e8debfea094363d5126b"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/generated/omml/symbols.ts",
+      "sha256": "b41b8fc75fd84fc19e7153836df09839040f58fc8e14a988d27cbc7fdb90d0a3"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/generated/html/symbols.ts",
+      "sha256": "98c0f2bd2bd2ac12a68b50376a90b6884f49906aa5b8f6af92d0b82d028e1fdf"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/core/generated/symbol-canonical.ts",
+      "sha256": "19d41c09f772117a1779a3f836c1cf251613e03cfbe05be5b1c4b685eb064ca1"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/generated/asciimath/input.ts",
+      "sha256": "44a0b1a4a3035912e5ca36ae30a891ff594ea86954c06bfd372a086a698edb74"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/generated/asciimath/transform-registry.ts",
+      "sha256": "c02381d28efd65193076643ddd4f43cf1b13947897645e3d3d78642904837efd"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/generated/mathml/render-tables.ts",
+      "sha256": "7d6f3250af40ad3d4ad73784ef192e58cb12cea5f93f84a13d93cbd6c840f8d8"
+    }
+  ],
+  "counts": {
+    "asciimath": 1459,
+    "latex": 1459,
+    "unicodemath": 1459,
+    "mathml": 1459,
+    "omml": 1459,
+    "html": 1459,
+    "input": 3276,
+    "canonical": 1459,
+    "unary_keywords": 33,
+    "unary_mi": 33
+  },
+  "policy": "Static source-data extraction only. No Node/Ruby product runtime bridge.",
+  "upstream_ruby": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "upstream_ts": "a5348ddcc74370382624b00b88af71eda50fe77a",
+  "amath_native": "d176af8c6d2df7fcdab7f2e83ab6d24ef92dd3c8",
+  "source_scope": "Common IR and procedural source port; numeric evaluator8f is separate and unchanged.",
+  "source_oracle_sha256": "8847b4472448d6af0bf308cadf21b71ad6344e5d1a78fcabec207b97d01abc87"
+}

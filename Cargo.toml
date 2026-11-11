@@ -1,0 +1,15 @@
+[package]
+name = "plurimath-facade"
+version = "0.1.0"
+edition = "2021"
+license = "BSD-2-Clause"
+publish = false
+[lib]
+name = "plurimath_facade"
+crate-type = ["rlib", "cdylib"]
+[dependencies]
+amath = { package = "plurimath-amath", path = "../../compatibility/amath-rs" }
+serde_json = { version = "=1.0.140", features = ["arbitrary_precision", "preserve_order"] }
+[profile.dev]
+debug = 0
+incremental = false
