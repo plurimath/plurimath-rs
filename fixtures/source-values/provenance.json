@@ -1,0 +1,18 @@
+{
+  "profile": "ruby4-source-values/1",
+  "runtime": "ruby4.0.1 e04267a14b",
+  "source_module_sha256": "981023e047e71e9a4d9f83b1d9b2b7487c6c74da002f18abd49d3c7365f02fc3",
+  "producer_sha256": "7c816131b6fca5f971d4e8184d536f10e26789565b712e1beffe27dd2e31bc74",
+  "payload_sha256": "04f4cea38edfe2c40dc7f20c371a826f956598f5e443a5adc9339bcc1e79ac74",
+  "qualified": {
+    "source_inspection_rows": 53,
+    "exact_inspection_and_to_s": 51,
+    "explicit_non_ascii_symbol_inspection_gates": 2
+  },
+  "policies": [
+    "Canonical NamedOptions/Attributes domain binds current Hash keys to source Symbols; values remain literalJSON types.",
+    "Nested hashes defaultLiteral and require explicit schema domain rebinding.",
+    "Typed profile never rebinds key kinds; Floatbits preserved but display remains gated.",
+    "Ruby4Hash inspection uses symbol labels and preserves String-key arrows; Hash equality ignores entry order."
+  ]
+}
