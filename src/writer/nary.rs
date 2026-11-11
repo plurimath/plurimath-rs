@@ -338,6 +338,9 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
     }
 }
 fn math_child(v: &Value, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
+    if v["class"]=="Math::Function::None" {
+        return super::generic_nary::slot(v,"mathml",ctx);
+    }
     strict_slot_xml(&ordinary_numbers(v), "mathml", ctx, false)
 }
 fn omml_child(v: &Value, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
@@ -605,11 +608,33 @@ fn mathml(m: &Model, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
         c.is_null()
     };
     if no_body {
+        // Sum and Int return before intentify; Prod and Oint call it even
+        // without an operand. This difference is source-visible.
+        if ctx.intent && matches!(m.kind(), "Prod" | "Oint") {
+            super::generic_nary::family_intent(m, &mut bounds)?;
+        }
         return Ok(vec![bounds]);
     }
     let mut row = vec![bounds];
-    row.extend(math_child(c, ctx)?);
-    Ok(vec![el("mrow", row)])
+    let mut operand = math_child(c, ctx)?;
+    if ctx.intent {
+        if operand.len() != 1 {
+            return Err("source_render_error: nary operand has no single XML name".into());
+        }
+        let operand = operand.remove(0);
+        row.push(if matches!(&operand,Xml::El(n,_,_)if n=="mrow") {
+            operand
+        } else {
+            el("mrow", vec![operand])
+        });
+    } else {
+        row.extend(operand);
+    }
+    let mut result = el("mrow", row);
+    if ctx.intent {
+        super::generic_nary::family_intent(m, &mut result)?;
+    }
+    Ok(vec![result])
 }
 pub(super) fn xml(
     m: &Model,
@@ -621,4 +646,29 @@ pub(super) fn xml(
         "omml" => omml(m, ctx),
         _ => Err(format!("unknown n-ary XML format {f}")),
     }
+}
+
+/// Source overrides skip the upper limit. Prod deliberately retains its
+/// original upper/operand fields after a lower-limit continuation.
+pub(super) fn line_breaking(node: &mut Value, obj: &mut Vec<Value>) -> Result<(), String> {
+    let m = Model::from_value(node)?;
+    super::source_break_child(&mut node["fields"]["parameter_one"], obj, true)?;
+    if !obj.is_empty() {
+        let lower = super::filter_source_values(std::mem::take(obj));
+        let continuation = super::new_source_node(
+            &m.class,
+            serde_json::json!({"parameter_one":lower,"parameter_two":node["fields"]["parameter_two"],"parameter_three":node["fields"]["parameter_three"],"hide_function_name":true}),
+        );
+        *obj = vec![continuation];
+        if m.kind() != "Prod" {
+            node["fields"]["parameter_two"] = Value::Null;
+            node["fields"]["parameter_three"] = Value::Null;
+        }
+        return Ok(());
+    }
+    super::source_break_child(&mut node["fields"]["parameter_three"], obj, true)?;
+    if !obj.is_empty() {
+        *obj = vec![super::filter_source_values(std::mem::take(obj))];
+    }
+    Ok(())
 }

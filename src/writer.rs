@@ -9,6 +9,7 @@ mod scripts;
 mod styles;
 mod font_styles;
 mod fences;
+mod line_break_overrides;
 mod nary;
 mod symbol_content;
 mod table_xml;
@@ -1161,6 +1162,7 @@ fn render_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, Strin
     Ok(nodes)
 }
 fn render_xml_inner(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
+    if m.class == "Math::Function::Mod" { return line_break_overrides::mod_xml(m, f, ctx); }
     if fences::handles(m) { return fences::xml(m, f, ctx); }
     if m.class == "Math::Formula" && f == "mathml" && ctx.intent
         && present(m.field("left_right_wrapper"))
@@ -2589,6 +2591,8 @@ fn source_line_breaking(node: &mut Value, obj: &mut Vec<Value>) -> Result<(), St
     let m = Model::from_value(node)
         .map_err(|_| "source_render_error: non-node cannot receive line_breaking")?;
     let kind = m.kind();
+    if line_break_overrides::handles(&m) { return line_break_overrides::line_breaking(node, obj); }
+    if nary::handles(&m) { return nary::line_breaking(node, obj); }
     if m.class == "Math::Function::Nary" { return generic_nary::line_breaking(node, obj); }
     if kind == "Multiscript" {
         source_break_child(&mut node["fields"]["parameter_one"], obj, true)?;
