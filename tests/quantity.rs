@@ -199,7 +199,7 @@ fn source_caller_register_wires() {
     // byte and gives the expectation for the bundled data; the legacy fixture
     // itself stays the frozen UnitsDB 2.2.0 (c2c7d18) profile.
     let profile: Value = serde_json::from_str(include_str!(
-        "../fixtures/source-profile-unitsdb-060b566.json"
+        "../fixtures/source-profile-unitsdb-bc089c0.json"
     ))
     .unwrap();
     let superseded: std::collections::BTreeMap<&str, &Value> = profile["superseded_legacy_rows"]
@@ -229,13 +229,13 @@ fn source_caller_register_wires() {
 
 #[cfg(feature = "quantity")]
 #[test]
-fn source_profile_unitsdb_060b566_definitions() {
+fn source_profile_unitsdb_bc089c0_definitions() {
     let profile: Value = serde_json::from_str(include_str!(
-        "../fixtures/source-profile-unitsdb-060b566.json"
+        "../fixtures/source-profile-unitsdb-bc089c0.json"
     ))
     .unwrap();
     let probes = profile["definition_probes"].as_array().unwrap();
-    assert_eq!(probes.len(), 9);
+    assert_eq!(probes.len(), 16);
     for probe in probes {
         assert_eq!(
             plurimath_numeric::evaluate_json(probe["request_json"].as_str().unwrap()),
@@ -259,4 +259,21 @@ fn source_profile_unitsdb_060b566_definitions() {
     );
     // A cwt (UK) registration no longer leaks into cwt (US).
     assert_eq!(wire("def-cwt-us-uk-register-no-leak")["ok"], false);
+    // Gram-force from data alone: 1 gf = 0.00980665 N, 1 kp = 1 kgf = 1000 gf = 9.80665 N.
+    let converted = |id: &str| wire(id)["result"]["converted"]["magnitude"].clone();
+    assert_eq!(converted("def-gf-N-no-register"), "196133/20000000");
+    assert_eq!(converted("def-kp-N-no-register"), "196133/20000");
+    assert_eq!(converted("def-kgf-N-no-register"), "196133/20000");
+    assert_eq!(converted("def-kp-gf-no-register"), "1000");
+    assert_eq!(converted("def-kp-kgf-no-register"), "1");
+    // Every unit resolved by symbol: only the data-changed units differ from 2.2.0.
+    for change in profile["unit_resolution_changes"].as_array().unwrap() {
+        assert_eq!(
+            plurimath_numeric::evaluate_json(change["request_json"].as_str().unwrap()),
+            change["expected_wire"].as_str().unwrap(),
+            "{}",
+            change["id"]
+        );
+    }
+    assert_eq!(profile["unit_resolution_changes"].as_array().unwrap().len(), 11);
 }
