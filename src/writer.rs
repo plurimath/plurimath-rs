@@ -17,6 +17,8 @@ mod nary;
 mod symbol_content;
 mod table_xml;
 mod tables;
+mod table_text;
+mod underline;
 mod templates;
 mod text_content;
 use crate::model::Model;
@@ -32,14 +34,16 @@ enum Xml {
 struct WriterContext<'a> {
     formatter: Option<&'a formatter_context::FormatterRequest>,
     formula_input: Option<&'a Value>,
+    table: bool,
     source_format: &'a str,
     display_style: bool,
     unary_function_spacing: bool,
     intent: bool,
 }
 impl<'a> WriterContext<'a> {
+    fn with_table(self)->Self {Self {table:true,..self}}
     fn with_formula<'b>(&'b self, model:&'b Model)->WriterContext<'b> {
-        WriterContext {formatter:self.formatter,formula_input:Some(model.field("input_string")),source_format:self.source_format,display_style:self.display_style,unary_function_spacing:self.unary_function_spacing,intent:self.intent}
+        WriterContext {table:self.table,formatter:self.formatter,formula_input:Some(model.field("input_string")),source_format:self.source_format,display_style:self.display_style,unary_function_spacing:self.unary_function_spacing,intent:self.intent}
     }
     fn with_display_style(self, display_style: bool) -> Self {
         Self {
@@ -49,7 +53,7 @@ impl<'a> WriterContext<'a> {
     }
 }
 impl Default for WriterContext<'_> {
- fn default()->Self {Self {display_style:true,unary_function_spacing:true,intent:false,formatter:None,formula_input:None,source_format:"asciimath"}}
+ fn default()->Self {Self {display_style:true,unary_function_spacing:true,intent:false,formatter:None,table:false,formula_input:None,source_format:"asciimath"}}
 }
 fn el(n: &str, c: Vec<Xml>) -> Xml {
     Xml::El(n.into(), vec![], c)
@@ -771,6 +775,9 @@ fn normal_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, Strin
 fn render_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, String> {
     let scoped;
     let ctx=if m.class=="Math::Formula"||m.class.starts_with("Math::Formula::") {scoped=ctx.with_formula(m);&scoped}else{ctx};
+    if underline::handles(m) {return underline::text_writer(m,f,ctx)}
+    if table_text::handles(m) {return table_text::render(m,f,ctx)}
+    if m.class=="Math::Symbols::Comma"&&f=="asciimath"&&ctx.table {return Ok("\",\"".into())}
     if layout_nodes::handles(m) { return layout_nodes::text_writer(m, f, ctx); }
     if fences::handles(m) { return fences::text(m, f, ctx); }
     if m.class == "Math::Function::Nary" { return generic_nary::text_writer(m, f, ctx); }
@@ -1177,6 +1184,7 @@ fn render_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, Strin
     Ok(nodes)
 }
 fn render_xml_inner(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
+    if underline::handles(m) {return underline::xml(m,f,ctx)}
     if layout_nodes::handles(m) { return layout_nodes::xml(m, f, ctx); }
     if m.class == "Math::Function::Mod" { return line_break_overrides::mod_xml(m, f, ctx); }
     if fences::handles(m) { return fences::xml(m, f, ctx); }
@@ -2900,6 +2908,7 @@ pub fn write(model: &Value, format: &str, options: &Value) -> Result<String, Str
     let formula_input=m.field("input_string").clone();
     let context = WriterContext {
         formatter: formatter_request.as_ref(),
+        table:false,
         formula_input: if m.class=="Math::Formula"||m.class.starts_with("Math::Formula::") {Some(&formula_input)}else{None},
         source_format: format,
         display_style: ds == true || ds == "true",

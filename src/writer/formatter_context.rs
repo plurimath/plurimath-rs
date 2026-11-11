@@ -116,3 +116,5 @@ pub(super) fn scope_error(ctx:&super::WriterContext,error:String)->String {
  value["message"]=json!(format!("[plurimath] Error: Failed to parse the following formula with type `{}`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n{}\n---- FORMULA END ----\n",ctx.source_format,input));
  value["cause"]=cause;wire_error(value)
 }
+
+pub(super) fn source_error(ctx:&super::WriterContext,class:&str,message:String)->String {scope_error(ctx,wire_error(json!({"code":"render_error","source_class":class,"message":message})))}

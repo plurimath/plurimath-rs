@@ -45,10 +45,10 @@ fn set_attribute(attributes: &mut Vec<(String, String)>, name: &str, value: Stri
         attributes.push((name.into(), value));
     }
 }
-fn table_attributes(table: &Model, rows: &[Value]) -> Result<Vec<(String, String)>, String> {
+fn table_attributes(table: &Model, rows: &[Value], ctx: &WriterContext) -> Result<Vec<(String, String)>, String> {
     let first = model(
         rows.first()
-            .ok_or("unported source empty table attribute access")?,
+            .ok_or_else(||super::formatter_context::source_error(ctx,"NoMethodError","undefined method parameter_one for nil in Table#column_lines".into()))?,
     )?;
     let mut columns = Vec::<String>::new();
     for (index, cell) in values(first.field("parameter_one"), "table row")?
@@ -105,6 +105,7 @@ fn parenthesis(value: &Value, format: &str) -> Result<String, String> {
         );
     }
     let glyph = super::symbol(&delimiter, format)?;
+    if format=="mathml"&&["&#x3016;","&#x3017;","&#x2524;","&#x251c;"].contains(&glyph.as_str()){return Ok(String::new())}
     // Source OMML sets an attribute through its XML adapter, which decodes
     // numeric character references before serializing the attribute value.
     crate::xml_parse::source_entity_decode(&glyph)
@@ -180,7 +181,7 @@ fn omml_table(table: &Model, rows: &[Value], ctx: &WriterContext) -> Result<Vec<
         let options = table
             .field("options")
             .as_object()
-            .ok_or("unported source single-column table options access refusal")?;
+            .ok_or_else(||super::formatter_context::source_error(ctx,"NoMethodError","undefined method [] for nil Table options".into()))?;
         single = ["frame", "columnlines", "rowlines"].iter().all(|key| {
             let value = options.get(*key).unwrap_or(&Value::Null);
             value.is_null() || value == "" || value == "none"
@@ -193,15 +194,11 @@ fn omml_table(table: &Model, rows: &[Value], ctx: &WriterContext) -> Result<Vec<
         content.push(el("m:eqArrPr", vec![control_properties()]));
     } else {
         name = "m:m";
-        let count = values(
-            model(rows.first().ok_or("unported source empty matrix")?)?.field("parameter_one"),
-            "table row",
-        )?
-        .len();
+        let count = if let Some(first)=rows.first(){values(model(first)?.field("parameter_one"),"table row")?.len().to_string()}else{String::new()};
         let properties = el(
             "m:mcPr",
             vec![
-                attrs("m:count", vec![("m:val".into(), count.to_string())], vec![]),
+                attrs("m:count", vec![("m:val".into(), count)], vec![]),
                 attrs("m:mcJc", vec![("m:val".into(), "center".into())], vec![]),
             ],
         );
@@ -249,7 +246,7 @@ fn table(table: &Model, format: &str, ctx: &WriterContext) -> Result<Vec<Xml>, S
     if format == "omml" {
         return omml_table(table, rows, ctx);
     }
-    let attributes = table_attributes(table, rows)?;
+    let attributes = table_attributes(table, rows, ctx)?;
     let mut content = Vec::new();
     for value in rows {
         content.extend(render(&model(value)?, format, ctx)?);

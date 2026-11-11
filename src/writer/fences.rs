@@ -574,7 +574,7 @@ mod tests {
         let reference: Value =
             serde_json::from_str(include_str!("../../fixtures/fences/caller-reference.json"))
                 .unwrap();
-        let ctx = WriterContext { formula_input:None,source_format:"asciimath", formatter: None,
+        let ctx = WriterContext {table:false, formula_input:None,source_format:"asciimath", formatter: None,
             display_style: true,
             unary_function_spacing: true,
             intent: false,
