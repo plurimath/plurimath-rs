@@ -111,6 +111,23 @@ fn child(v: &Value, f: &str) -> Result<String, String> {
         render_text(&Model::from_value(v)?, f)
     }
 }
+// Fenced#symbol_or_paren uses MathML content for HTML, and decoded
+// OMML delimiter values. An ASCII spelling is not the XML delimiter.
+fn fence_delimiter(value: &Value, format: &str) -> Result<String, String> {
+    let model = Model::from_value(value)?;
+    if model.class.starts_with("Math::Symbols::Paren::") {
+        let id = model.class.strip_prefix("Math::Symbols::").unwrap();
+        return match format {
+            "html" | "mathml" => crate::symbols::tables()["mathml"][id]["text"]
+                .as_str()
+                .map(str::to_owned)
+                .ok_or_else(|| "unported source fence MathML content".into()),
+            "omml" => text_content::decode(&symbol(&model, "omml")?),
+            _ => child(value, format),
+        };
+    }
+    value_text(model.field("value"))
+}
 fn fence_text(m: &Model, f: &str) -> Result<String, String> {
     if !m.field("parameter_one").is_object() || !m.field("parameter_three").is_object() {
         return Err("unported promised nullable/raw fence delimiter profile".into());
@@ -119,8 +136,16 @@ fn fence_text(m: &Model, f: &str) -> Result<String, String> {
     if !options.is_null() && options.as_object().map_or(true, |o| !o.is_empty()) {
         return Err("unported promised fence options".into());
     }
-    let a = child(m.field("parameter_one"), f)?;
-    let b = child(m.field("parameter_three"), f)?;
+    let a = if f == "html" {
+        fence_delimiter(m.field("parameter_one"), f)?
+    } else {
+        child(m.field("parameter_one"), f)?
+    };
+    let b = if f == "html" {
+        fence_delimiter(m.field("parameter_three"), f)?
+    } else {
+        child(m.field("parameter_three"), f)?
+    };
     let body = m
         .field("parameter_two")
         .as_array()
@@ -867,8 +892,8 @@ fn render_xml(
             if !m.field("parameter_one").is_object() || !m.field("parameter_three").is_object() {
                 return Err("unported promised nullable/raw fence delimiter profile".into());
             }
-            let a = child(m.field("parameter_one"), "asciimath")?;
-            let b = child(m.field("parameter_three"), "asciimath")?;
+            let a = fence_delimiter(m.field("parameter_one"), f)?;
+            let b = fence_delimiter(m.field("parameter_three"), f)?;
             let options = m.field("options");
             if !options.is_null() && options.as_object().map_or(true, |o| !o.is_empty()) {
                 return Err("unported promised fence options".into());
