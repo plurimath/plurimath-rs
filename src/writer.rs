@@ -1086,25 +1086,8 @@ fn update_partial_arguments(nodes: &mut [Xml]) {
     }
 }
 
-fn radical_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
-    let value = m.field("parameter_one");
-    if f == "mathml" {
-        return Ok(vec![el("msqrt", strict_slot_xml(value, f, ctx, false)?)]);
-    }
-    Ok(vec![el(
-        "m:rad",
-        vec![
-            el(
-                "m:radPr",
-                vec![
-                    attrs("m:degHide", vec![("m:val".into(), "on".into())], vec![]),
-                    control_properties(),
-                ],
-            ),
-            el("m:deg", vec![]),
-            el("m:e", omml_slot(value, f, ctx)?),
-        ],
-    )])
+fn radical_mathml(m: &Model, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
+    Ok(vec![el("msqrt", strict_slot_xml(m.field("parameter_one"), "mathml", ctx, false)?)])
 }
 fn delimiter_unary_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     let kind = m.kind();
@@ -1179,8 +1162,8 @@ fn render_xml_inner(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>,
     if ["Substack", "Msline", "Mglyph"].contains(&m.kind()) { return stacked::xml(m, f, ctx); }
     if nary::handles(m) { return nary::xml(m, f, ctx); }
     if m.class == "Math::Function::PowerBase" || (f == "omml" && ["Math::Function::Mod", "Math::Function::Sqrt"].contains(&m.class.as_str())) { return operators::xml_with_style(m, f, ctx, Some(ctx.display_style)); }
-    if m.class == "Math::Function::Sqrt" {
-        return radical_xml(m, f, ctx);
+    if m.class == "Math::Function::Sqrt" && f == "mathml" {
+        return radical_mathml(m, ctx);
     }
     if matches!(
         m.class.as_str(),
