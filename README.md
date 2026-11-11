@@ -4,11 +4,13 @@ Native source port progressing toward the full eight-input/six-writer contract. 
 
 The accepted AsciiMath PARG stage supplies syntax; this package converts its captures into the existing source `{class, fields}` common wire. Arbitrary field values, nulls, lists and plain hashes survive model storage. Common-wire storage is not class-semantic validation.
 
-The initial exact10-model/60-writer slice covers numbers, ordinary symbols, arithmetic rows, fractions and round grouping. The current candidate additionally has source-backed AsciiMath, LaTeX, UnicodeMath, MathML, OMML and XML-valid HTML/MathML input routes, and source-produced guarded writer skeletons. These routes are partial; Default UnitsML and unit-only PMA routes delegate accepted unit/parser components; measured PMA, the actual HTML grammar and remaining baseline cases are incomplete. Static generated symbol data covers1459symbols; context/option behavior still needs qualification. Unported promised formats/classes/options return `unported_capability` and remain incomplete. This refusal is not acceptance of reduced programme scope.
+The current default-profile AsciiMath conversion matches160 source models. HTML uses the existing source grammar with a portable captured-tag comparison and the source capture transforms:544 source common models and23 source parser refusals match through the native C ABI. The source graph contains no dynamic callback IDs. LaTeX, UnicodeMath, MathML, OMML, UnitsML and unit-only PMA routes also use accepted parser components; their remaining source families and writer/options profiles stay incomplete. Measured PMA, nondefault HTML options and remaining writer classes/options return explicit incomplete errors. Refusal is not acceptance of a reduced programme scope.
+
+The full eight-input/six-writer contract remains in progress. Common IR is source-backed; generated per-class Rust API parity and universal writer parity are not claimed.
 
 ## C ABI
 
-`plurimath_facade_abi_version() ==1`; `plurimath_facade_json(input,length)` returns owned UTF-8 JSON; call `plurimath_facade_free` exactly once. The input remains caller-owned. Maximum request16MiB; capture-transform depth128. Requests:
+`plurimath_facade_abi_version() ==1`; `plurimath_facade_json(input,length)` returns owned UTF-8 JSON; call `plurimath_facade_free` exactly once. The input remains caller-owned. Maximum request16MiB. Parser resource policies are explicit: AsciiMath capture depth budget1024; HTML preserves its source100-container normalization boundary. Requests:
 
 ```json
 {"op":"parse","format":"asciimath","input":"x+y","options":{}}

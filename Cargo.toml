@@ -8,6 +8,7 @@ publish = false
 name = "plurimath_facade"
 crate-type = ["rlib", "cdylib"]
 [dependencies]
+regex = "1"
 amath = { package = "plurimath-amath", path = "../../compatibility/amath-rs" }
 serde_json = { version = "=1.0.140", features = ["arbitrary_precision", "preserve_order"] }
 latexmath = { path = "../../compatibility/latexmath-rs" }
@@ -22,3 +23,6 @@ parsanol = { git = "https://github.com/parsanol/parsanol-rs", rev = "20d5e6cebca
 [profile.dev]
 debug = 0
 incremental = false
+
+[patch."https://github.com/parsanol/parsanol-rs"]
+parsanol = { path = "../../compatibility/parsanol-rs-html/parsanol" }

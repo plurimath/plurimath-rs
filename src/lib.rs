@@ -1,3 +1,4 @@
+pub mod html_parse;
 pub mod model;
 pub mod parser;
 pub mod pma_parse;
@@ -15,6 +16,20 @@ pub fn stage_tree(input: &str) -> Result<Value, String> {
         .map_err(|e| e.to_string())
 }
 pub fn request(v: &Value) -> Value {
+    if v["op"] == "parse" && v["format"] == "html" {
+        let Some(input) = v["input"].as_str() else {
+            return json!({"abi_version":1,"ok":false,"error":{"code":"invalid_request","message":"input must be a string"}});
+        };
+        return match html_parse::parse(input, v.get("options").unwrap_or(&json!({}))) {
+            Ok(model) => {
+                let mut response = json!({"abi_version":1,"ok":true});
+                response["model"] = model;
+                response
+            }
+            Err(error) => json!({"abi_version":1,"ok":false,"error":error}),
+        };
+    }
+
     if v["op"] == "parse" && v["format"] == "pma" {
         let Some(input) = v["input"].as_str() else {
             return json!({"abi_version":1,"ok":false,"error":{"code":"invalid_request","message":"input must be a string"}});
@@ -49,7 +64,7 @@ pub fn request(v: &Value) -> Value {
         };
     }
 
-    if v["op"] == "parse" && ["mathml", "omml", "html"].iter().any(|f| v["format"] == *f) {
+    if v["op"] == "parse" && ["mathml", "omml"].iter().any(|f| v["format"] == *f) {
         let Some(input) = v["input"].as_str() else {
             return json!({"abi_version":1,"ok":false,"error":{"code":"invalid_request","message":"input must be a string"}});
         };

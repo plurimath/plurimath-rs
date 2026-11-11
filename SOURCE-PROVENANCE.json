@@ -123,5 +123,21 @@
     "additional_profiles": 53,
     "policy": "Per-field type guards and parameterized source fragments only, no observed input-value lookup.",
     "validation_invocations": 212
+  },
+  "html_source_profile": {
+    "grammar_source_sha256": "b6262929322518d8d14381a4d67b86460c7e019b3baef3c8b5bc2db7b6398d9e",
+    "artifact_sha256": "ba690fbcc14909960d1241f3bdac899aa8e624b75ab0e6ec3829e276e67b20ae",
+    "artifact_checksum": "sha256:b1cb3fff495ef91f9898bbaadcb084180a722c9e860424843512bbef4d18d7d9",
+    "grammar_atoms": 593,
+    "ascii_state_match_operations": 6,
+    "runtime_repository": "parsanol/parsanol-rs",
+    "runtime_base": "533e2425a5bde4a177e90a0c4fc8d22fdaacc987",
+    "runtime_candidate": "5a4920ad59b187e5735f0f0f5fd735b4119f2f04",
+    "producer": "scripts/export-html-grammar.rb",
+    "source_transform_patterns": 78,
+    "qualified_default_models": 544,
+    "qualified_source_parser_refusals": 23,
+    "wasm_transport": "pending",
+    "nondefault_options": "incomplete"
   }
 }
