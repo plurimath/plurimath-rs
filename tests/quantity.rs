@@ -7,7 +7,7 @@ fn run(request: Value) -> Value {
     serde_json::from_str(&evaluate_json(&request.to_string())).unwrap()
 }
 
-#[cfg(all(feature = "quantity", not(target_arch = "wasm32")))]
+#[cfg(feature = "quantity")]
 mod native {
     use super::*;
     use std::collections::BTreeMap;
@@ -181,7 +181,7 @@ mod native {
     }
 }
 
-#[cfg(not(all(feature = "quantity", not(target_arch = "wasm32"))))]
+#[cfg(not(feature = "quantity"))]
 #[test]
 fn numeric_only_build_refuses_quantity_profile() {
     let result = run(json!({"schema":PROFILE,"ast":{"type":"number","text":"1"}}));

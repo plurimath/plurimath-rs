@@ -1,7 +1,7 @@
 # Plurimath numeric Rust kernel
 
 Local numeric JSON kernel with a Rust API, ABI-v1 C library, standalone WASM,
-and thin Python/TypeScript transports. The optional native quantity profile
+and thin Python/TypeScript transports. The optional quantity profile
 uses the same ordinary AST. The format facade, GUM and full F40 qualification
 are outside this package's scope.
 
@@ -69,12 +69,11 @@ priority probes are separate source-derived supplemental sets.
 Platform proof is Linux native,
 Node WASM and Chrome WASM; other native platforms are not verified locally.
 
-## Native quantity requests
+## Quantity requests
 
 Build the local Rust/C package with `cargo build --locked --features quantity`.
-The feature uses the adjacent AsciiUnits and UnitsML Rust packages. The default
-build and WASM build support the frozen numeric profile. A quantity request
-to either returns `UnavailableProfileError`.
+The feature uses the adjacent AsciiUnits and UnitsML Rust packages. The default build supports the frozen numeric profile. A quantity request
+to a default build returns `UnavailableProfileError`.
 
 ```json
 {
@@ -117,3 +116,22 @@ and illegal scale operations produce typed refusals. A zero divisor returns
 conversion case onto the ordinary AST. The result verifies conversion to kW
 and the power dimension vector. Named quantity-kind classification is outside
 this profile.
+
+### Quantity WASM
+
+Build with `cargo build --locked --lib --features quantity --target wasm32-unknown-unknown`.
+Use the `wasm-bindgen` CLI version pinned by Cargo.lock with `--target web`
+to generate the host glue and processed WASM. The AsciiUnits runtime uses the
+platform random source through those generated imports. Use the existing
+ABI transport with the initialized exports.
+
+```typescript
+import init from "./wasm/plurimath_numeric.js";
+import {numericKernelFromExports} from "./bindings/js/kernel.js";
+
+const kernel = numericKernelFromExports(await init());
+const wire = kernel.evaluateJson(JSON.stringify(request));
+```
+
+The default numeric-only WASM retains the existing `numericKernel(bytes)`
+loader.

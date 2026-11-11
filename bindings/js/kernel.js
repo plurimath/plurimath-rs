@@ -1,6 +1,9 @@
 export async function numericKernel(bytes) {
     const { instance } = await WebAssembly.instantiate(bytes, {});
-    const native = instance.exports;
+    return numericKernelFromExports(instance.exports);
+}
+/** Use exports initialized by the generated WASM host glue. */
+export function numericKernelFromExports(native) {
     if (native.plurimath_numeric_abi_version() !== 1)
         throw new Error("unsupported numeric kernel ABI");
     const encoder = new TextEncoder(), decoder = new TextDecoder("utf-8", { fatal: true });

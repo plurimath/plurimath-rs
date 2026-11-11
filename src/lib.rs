@@ -1,6 +1,6 @@
-//! Canonical numeric JSON and optional exact native quantity evaluation.
+//! Canonical numeric JSON and optional exact quantity evaluation.
 mod decimal_math;
-#[cfg(all(feature = "quantity", not(target_arch = "wasm32")))]
+#[cfg(feature = "quantity")]
 mod quantity;
 use num_bigint::BigInt;
 use num_integer::Integer;
@@ -629,9 +629,9 @@ fn quantity_wire(_request: &J) -> String {
         "engine": "plurimath.quantity/1",
         "grammar": "plurimath.numeric-ast/1",
     });
-    #[cfg(all(feature = "quantity", not(target_arch = "wasm32")))]
+    #[cfg(feature = "quantity")]
     let result = quantity::run(_request);
-    #[cfg(not(all(feature = "quantity", not(target_arch = "wasm32"))))]
+    #[cfg(not(feature = "quantity"))]
     let result: Result<J, J> = Err(json!({"code": "UnavailableProfileError"}));
     match result {
         Ok(value) => {

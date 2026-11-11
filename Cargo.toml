@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 license = "BSD-2-Clause"
 publish = false
-description = "Canonical numeric and optional native quantity JSON evaluator"
+description = "Canonical numeric and optional quantity JSON evaluator"
 include = ["/src/**", "/tests/**", "/fixtures/**", "/include/**", "/bindings/python/**/*.py", "/bindings/typescript/**", "/bindings/js/**", "/scripts/**", "/examples/**", "/Cargo.toml", "/Cargo.lock", "/README.md", "/LICENSE", "/NOTICE", "/package.json"]
 
 [lib]
@@ -21,7 +21,6 @@ num-rational = "=0.4.2"
 num-traits = "=0.2.19"
 num-integer = "=0.1.47"
 
-[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 asciiunits = { version = "=0.1.0", path = "../../units-native/asciiunits-rs", optional = true }
 unitsml-rs = { version = "=0.1.0", path = "../../units-native/unitsml-rs", optional = true }
 

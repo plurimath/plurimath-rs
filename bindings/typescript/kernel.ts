@@ -1,6 +1,6 @@
-/** Thin WASM ABI-v1 transport; the Rust library owns numeric semantics. */
+/** Thin WASM ABI-v1 transport; the Rust library owns evaluation semantics. */
 export interface NumericKernel { evaluateJson(input: string): string; evaluate(request: unknown): unknown }
-interface Exports extends WebAssembly.Exports {
+export interface NumericKernelExports {
   memory: WebAssembly.Memory;
   plurimath_numeric_abi_version(): number;
   plurimath_numeric_alloc(length: number): number;
@@ -10,7 +10,11 @@ interface Exports extends WebAssembly.Exports {
 }
 export async function numericKernel(bytes: BufferSource): Promise<NumericKernel> {
   const {instance} = await WebAssembly.instantiate(bytes, {});
-  const native = instance.exports as Exports;
+  return numericKernelFromExports(instance.exports as unknown as NumericKernelExports);
+}
+
+/** Use exports initialized by the generated WASM host glue. */
+export function numericKernelFromExports(native: NumericKernelExports): NumericKernel {
   if (native.plurimath_numeric_abi_version() !== 1) throw new Error("unsupported numeric kernel ABI");
   const encoder = new TextEncoder(), decoder = new TextDecoder("utf-8", {fatal: true});
   const evaluateJson = (input: string): string => {
