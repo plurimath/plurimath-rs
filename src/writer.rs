@@ -1,5 +1,7 @@
 //! Procedural source-writer port; unported nodes/options fail, never return approximations.
 mod operators;
+mod numbers;
+mod multiscripts;
 mod stacked;
 mod accents;
 mod scripts;
@@ -753,6 +755,8 @@ fn normal_xml(
     Ok(c)
 }
 fn render_text(m: &Model, f: &str) -> Result<String, String> {
+    if numbers::handles(m) { return numbers::text(m, f); }
+    if ["Math::Function::Multiscript", "Math::Function::Linebreak"].contains(&m.class.as_str()) { return multiscripts::text(m, f); }
     if stacked::handles_text(m) { return stacked::text(m, f); }
     if m.class == "Math::Function::PowerBase" { return operators::text_writer(m,f); }
     if accents::handles(m) {
@@ -803,7 +807,7 @@ fn render_text(m: &Model, f: &str) -> Result<String, String> {
                 .iter()
                 .map(|v| child(v, f))
                 .collect::<Result<Vec<_>, _>>()?;
-            let joined = c.join(" ");
+            let joined = c.join(if f == "unicodemath" && m.kind() == "Formula" { numbers::unicode_separator(m) } else { " " });
             if f == "unicodemath" {
                 static SLASH_SPACING: std::sync::OnceLock<regex::Regex> = std::sync::OnceLock::new();
                 let spacing = SLASH_SPACING.get_or_init(|| regex::Regex::new(r"(?-u:\s)/(?-u:\s)").unwrap());
@@ -876,6 +880,8 @@ fn render_xml(
     spacing: bool,
     allow_templates: bool,
 ) -> Result<Vec<Xml>, String> {
+    if numbers::handles(m) { return numbers::xml(m, f); }
+    if ["Math::Function::Multiscript", "Math::Function::Linebreak"].contains(&m.class.as_str()) { return multiscripts::xml(m, f, spacing, allow_templates); }
     if ["Substack", "Msline", "Mglyph"].contains(&m.kind()) { return stacked::xml(m, f, spacing, allow_templates); }
     if m.class=="Math::Function::PowerBase" || (f=="omml" && ["Math::Function::Mod","Math::Function::Sqrt"].contains(&m.class.as_str())) { return operators::xml_writer(m,f,spacing,allow_templates); }
 
