@@ -26,7 +26,7 @@ fn child(v: &Value, f: &str) -> Result<String, String> {
     }
     render_text(&m, f)
 }
-fn slot(v: &Value, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
+pub(super) fn slot(v: &Value, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     if f == "omml" && !truthy(v) {
         return Ok(vec![run("&#8203;")]);
     }
@@ -431,6 +431,29 @@ fn apply_nary_intent(m: &Model, node: &mut Xml) -> Result<(), String> {
     let name = symbol_declarations()["classes"][class]["intent_name"]
         .as_str()
         .unwrap_or(":n-ary");
+    named_nary_intent(node, name)
+}
+fn family_declarations() -> &'static Value {
+    static DATA: std::sync::OnceLock<Value> = std::sync::OnceLock::new();
+    DATA.get_or_init(|| {
+        serde_json::from_str(include_str!(
+            "../../fixtures/nary-family/intent-declarations.json"
+        ))
+        .expect("source family intent names")
+    })
+}
+pub(super) fn family_intent(m: &Model, node: &mut Xml) -> Result<(), String> {
+    let name = family_declarations()["classes"][m.class.as_str()]
+        .as_str()
+        .ok_or("unported nary family intent declaration")?;
+    named_nary_intent(node, name)
+}
+fn named_nary_intent(node: &mut Xml, name: &str) -> Result<(), String> {
+    if super::xml_name(node) != "mrow" {
+        let (low, high) = nary_bounds(node)?;
+        super::xml_attribute(node, "intent", format!("{name}({low},{high})"));
+        return Ok(());
+    }
     let children = super::xml_nodes_mut(node)?;
     let operator = children
         .first_mut()

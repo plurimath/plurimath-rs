@@ -1,0 +1,10 @@
+{
+  "profile": "source-nary-family-intent-declarations-v1",
+  "source_head": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "classes": {
+    "Math::Function::Sum": ":sum",
+    "Math::Function::Prod": ":product",
+    "Math::Function::Int": ":integral",
+    "Math::Function::Oint": ":contour integral"
+  }
+}
