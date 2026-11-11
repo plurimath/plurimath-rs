@@ -59,10 +59,10 @@ impl Generator {
         if let Some(value) = self.normal_spare.take() {
             return Ok(value);
         }
-        let radius = (-2.0 * self.uniform()?.ln()).sqrt();
+        let radius = libm::sqrt(-2.0 * libm::log(self.uniform()?));
         let angle = 2.0 * std::f64::consts::PI * self.uniform()?;
-        self.normal_spare = Some(radius * angle.sin());
-        Ok(radius * angle.cos())
+        self.normal_spare = Some(radius * libm::sin(angle));
+        Ok(radius * libm::cos(angle))
     }
 
     fn student(&mut self, nu: f64) -> Result<f64> {
@@ -79,7 +79,7 @@ impl Generator {
             } else {
                 (4.0 * first - 3.0, second)
             };
-            if v < 1.0 - t.abs() / 2.0 || v < (1.0 + t * t / nu).powf(-(nu + 1.0) / 2.0) {
+            if v < 1.0 - t.abs() / 2.0 || v < libm::pow(1.0 + t * t / nu, -(nu + 1.0) / 2.0) {
                 return Ok(t);
             }
         }
@@ -175,7 +175,7 @@ impl Pdf {
                 -width / 2.0 + width * (generator.uniform()? + generator.uniform()?) / 2.0
             }
             Self::Arcsine(width) => {
-                width / 2.0 * (2.0 * std::f64::consts::PI * generator.uniform()?).sin()
+                width / 2.0 * libm::sin(2.0 * std::f64::consts::PI * generator.uniform()?)
             }
             Self::Trapezoid(width, d) => {
                 let a = -width / 2.0 - d + 2.0 * d * generator.uniform()?;
@@ -208,7 +208,7 @@ impl Moments {
     }
 
     fn uncertainty(&self) -> f64 {
-        (self.squares / (self.count - 1) as f64).sqrt()
+        libm::sqrt(self.squares / (self.count - 1) as f64)
     }
 }
 
@@ -454,7 +454,7 @@ pub(super) fn evaluate(params: &J) -> Result<J> {
                 let values = summaries.iter().map(|summary| summary[key]);
                 let mean = compensated_sum(values.clone()) / n as f64;
                 let squares = compensated_sum(values.map(|value| (value - mean).powi(2)));
-                (key, 2.0 * (squares / (n * (n - 1)) as f64).sqrt())
+                (key, 2.0 * libm::sqrt(squares / (n * (n - 1)) as f64))
             })
             .collect();
         let limit = delta
@@ -603,7 +603,7 @@ impl JointNormal {
                     .to_f64()
                     .filter(|x| x.is_finite())
                     .ok_or_else(range)?;
-                let value = coefficient * variance.sqrt();
+                let value = coefficient * libm::sqrt(variance);
                 if !value.is_finite() || value == 0.0 {
                     return Err(range());
                 }

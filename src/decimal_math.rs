@@ -345,7 +345,7 @@ impl D {
         };
         let e = self.exp().div_euclid(2);
         let reduced = self.shift(-2 * e);
-        let mut y = Self::float(reduced.f().sqrt())?;
+        let mut y = Self::float(libm::sqrt(reduced.f()))?;
         for n in newton(p + 16) {
             y = y.add(&reduced.div(&y, n), n).div(&Self::int(2), n)
         }
@@ -363,10 +363,10 @@ fn newton(p: u32) -> Vec<u32> {
     ps
 }
 fn float_log(x: &D) -> f64 {
-    x.shift(-x.exp()).f().ln() + x.exp() as f64 * 10f64.ln()
+    libm::log(x.shift(-x.exp()).f()) + x.exp() as f64 * libm::log(10.0)
 }
 fn log_gamma(n: usize) -> f64 {
-    (2..n).map(|i| (i as f64).ln()).sum()
+    (2..n).map(|i| libm::log(i as f64)).sum()
 }
 fn first_true(f: impl Fn(usize) -> bool) -> usize {
     let mut diff = 1;
@@ -411,7 +411,7 @@ fn exp_split(x: &D, p: u32) -> D {
         return D::int(1);
     }
     let logx = float_log(&x.abs());
-    let step = first_true(|k| log_gamma(k + 1) - k as f64 * logx > p as f64 * 10f64.ln());
+    let step = first_true(|k| log_gamma(k + 1) - k as f64 * logx > p as f64 * libm::log(10.0));
     D::int(1).add(
         &taylor(x, &(1..=step).map(|i| i as i64).collect::<Vec<_>>(), p),
         0,
@@ -536,7 +536,8 @@ fn sin_split(x: &D, p: u32) -> D {
     };
     let x2 = x.mul(x, p);
     let logx = float_log(&x.abs());
-    let step = first_true(|k| log_gamma(2 * k + 1) - 2.0 * k as f64 * logx > p as f64 * 10f64.ln());
+    let step =
+        first_true(|k| log_gamma(2 * k + 1) - 2.0 * k as f64 * logx > p as f64 * libm::log(10.0));
     let ds = (1..=step)
         .map(|k| -((2 * k) as i64) * (2 * k + 1) as i64)
         .collect::<Vec<_>>();
@@ -665,7 +666,7 @@ fn power(x: &D, y: &D, p: u32) -> Result<D, E> {
     if y.negative() {
         return Ok(D::int(1).div(&power(x, &y.neg(), n)?, result));
     };
-    if integral && (y.exp() as f64) < (result as f64).ln() * 5.0 + 20.0 {
+    if integral && (y.exp() as f64) < libm::log(result as f64) * 5.0 + 20.0 {
         let powprec = n + y.exp().max(0) as u32;
         let mut whole = y
             .q()
@@ -689,7 +690,7 @@ fn power(x: &D, y: &D, p: u32) -> Result<D, E> {
         let le = if x.compare(&D::int(2)).is_lt() {
             x.sub(&D::int(1), 0).exp()
         } else {
-            (x.exp() as f64).log10().round() as i64
+            libm::log10(x.exp() as f64).round() as i64
         };
         n += (y.exp() + le).max(0) as u32
     }

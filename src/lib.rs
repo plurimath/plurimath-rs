@@ -303,14 +303,14 @@ fn math_log(value: &N) -> Result<f64, E> {
         if q.is_positive() && q.numer().bits() >= 1024 {
             let shift = q.numer().bits() - 53;
             let reduced = (q.numer() >> shift as usize).to_f64().unwrap();
-            return Ok(reduced.ln() + shift as f64 * std::f64::consts::LN_2);
+            return Ok(libm::log(reduced) + shift as f64 * std::f64::consts::LN_2);
         }
     }
     let x = value.f();
     if x < 0.0 {
         return Err("MathDomainError");
     }
-    Ok(x.ln())
+    Ok(libm::log(x))
 }
 struct Eval {
     strict: bool,
@@ -350,19 +350,19 @@ impl Eval {
                 if x == 0.0 {
                     0.0
                 } else {
-                    x.sqrt()
+                    libm::sqrt(x)
                 }
             }
-            "sin" => x.sin(),
-            "cos" => x.cos(),
-            "exp" => x.exp(),
+            "sin" => libm::sin(x),
+            "cos" => libm::cos(x),
+            "exp" => libm::exp(x),
             "log" => math_log(&values[0])?,
             "power" => {
                 let y = values[1].f();
                 if x < 0.0 && y.fract() != 0.0 {
                     return Err("MathDomainError");
                 };
-                x.powf(y)
+                libm::pow(x, y)
             }
             _ => return Err("UnsupportedExpressionError"),
         };

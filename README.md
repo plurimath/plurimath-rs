@@ -69,6 +69,11 @@ priority probes are separate source-derived supplemental sets.
 Platform proof is Linux native,
 Node WASM and Chrome WASM; other native platforms are not verified locally.
 
+Binary64 transcendental calls, decimal guard seeds, and Monte Carlo math use
+the pinned portable `libm` implementation on every target. This avoids host
+CRT differences while retaining the frozen JSON wire contract. Exact rational
+and decimal arithmetic keeps its existing algorithms.
+
 ## Quantity requests
 
 Build the local Rust/C package with `cargo build --locked --features quantity`.
