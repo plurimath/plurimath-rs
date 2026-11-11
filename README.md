@@ -135,3 +135,51 @@ const wire = kernel.evaluateJson(JSON.stringify(request));
 
 The default numeric-only WASM retains the existing `numericKernel(bytes)`
 loader.
+
+## Exact statistics and uncertainty
+
+The same Rust and C ABI entry points accept the `plurimath.evaluate.gum/1`
+profile. A request names a method and its parameters.
+
+```json
+{"schema":"plurimath.evaluate.gum/1","method":"type_a","parameters":{"observations":["1","2","3"]}}
+```
+
+Exact inputs accept JSON integers, decimal or fraction strings, and tagged
+`{"decimal":"0.1"}` or `{"rational":["1","10"]}` values. Results use tagged
+rationals for exact values and decimal text where a method declares rounding.
+Errors carry a typed code and message.
+
+- `type_a`, `type_a_covariance`, `series`, and `grouped_type_a` compute
+  sample and mean statistics. Series select axis 0 or 1 and accept a
+  zero-based `[start,length]` window. Grouped estimates require an explicit
+  variance model.
+- `component` derives variance from a declared PDF. Student-t PDF degrees of
+  freedom remain separate from variance-estimate degrees of freedom.
+- `propagate` accepts an estimate, component variances, and gradient.
+  `propagate_covariance` also validates a symmetric, positive-semidefinite
+  covariance matrix. `propagate_vector` retains output covariance. First-order
+  independent propagation reports Welch–Satterthwaite status.
+- `analyze` accepts the ordinary AST and an ordered `inputs` array of
+  `{name,estimate,component}` records. It computes exact first through third
+  derivatives for rational arithmetic and constant integer powers. Calls are
+  refused. Second-order independent propagation requires normal components.
+  Second-order correlated propagation requires explicit multivariate normality
+  and complete symmetric derivative tensors.
+- `coverage` uses the Ruby binary64 convention on GNU/Linux, with normal or
+  Student-t factors, probability 0.5–0.999, Student-t degrees of freedom
+  1–10000, and 1–8 significant digits. Other targets return a typed
+  unsupported-model result for this method.
+- `monte_carlo` accepts an ordinary AST, ordered `{name,pdf}` inputs, four
+  explicit seeds, independent sampling, probability, interval selection,
+  significant and guard digits, and a sample budget. It uses centered exact
+  polynomials with binary64 samples, enhanced Wichmann–Hill draws, and adaptive
+  JCGM 101 stopping. Polynomial terms and degree are bounded at 128 and 32.
+  The sample budget is bounded at 8,000,000. Joint sampling and nonconstant
+  denominators return typed refusals.
+
+The fixtures project sealed Ruby F40 and Annex reference records onto this
+request shape. Engine identity reports the Rust implementation. These checks
+cover selected GUM methods and published input profiles. The full F40 corpus,
+complete Annex H acceptance, and named quantity-kind classification remain
+outside this scope.

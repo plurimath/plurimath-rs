@@ -1,5 +1,6 @@
 //! Canonical numeric JSON and optional exact quantity evaluation.
 mod decimal_math;
+mod gum;
 #[cfg(feature = "quantity")]
 mod quantity;
 use num_bigint::BigInt;
@@ -597,6 +598,9 @@ pub fn evaluate_json(input: &str) -> String {
         })
         .map_err(|_| "InvalidRequest");
     if let Ok(request) = &parsed {
+        if request["schema"] == gum::SCHEMA {
+            return serialize(gum::run(request));
+        }
         if request["schema"] == QUANTITY_SCHEMA {
             return quantity_wire(request);
         }

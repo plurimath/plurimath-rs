@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 license = "BSD-2-Clause"
 publish = false
-description = "Canonical numeric and optional quantity JSON evaluator"
+description = "Canonical numeric, quantity, and GUM JSON evaluator"
 include = ["/src/**", "/tests/**", "/fixtures/**", "/include/**", "/bindings/python/**/*.py", "/bindings/typescript/**", "/bindings/js/**", "/scripts/**", "/examples/**", "/Cargo.toml", "/Cargo.lock", "/README.md", "/LICENSE", "/NOTICE", "/package.json"]
 
 [lib]
