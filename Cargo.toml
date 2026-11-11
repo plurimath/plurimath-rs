@@ -26,3 +26,7 @@ incremental = false
 
 [patch."https://github.com/parsanol/parsanol-rs"]
 parsanol = { path = "../../compatibility/parsanol-rs-html/parsanol" }
+
+# Local, qualified source candidate; no published resolver claim.
+[patch."https://github.com/lutaml/moxml-rs"]
+moxml = { path = "../../xml-recovery/moxml-rs" }

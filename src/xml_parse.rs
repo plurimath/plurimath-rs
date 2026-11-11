@@ -1,7 +1,10 @@
 //! XML-to-common-model conversion over the accepted Moxml document parser.
 //! Constructor and token tables come from the source MathML/OMML translators.
 use crate::model::{formula, node, number};
-use moxml::document::{ContentRow, Document, ElementRow, ParserPolicy};
+use moxml::document::{
+    AttributeWhitespace, ContentRow, ElementRow, ParserPolicy, ReferenceDecodingOptions,
+    ReferenceEngine, TextReferenceRecovery,
+};
 use serde_json::{json, Map, Value};
 use std::sync::OnceLock;
 #[path = "xml_parse/entity_wrapper.rs"]
@@ -1443,8 +1446,16 @@ impl Xml {
 
 pub(crate) fn source_document_rows(input: &str) -> Result<Vec<ElementRow>, Value> {
     let prepared = entity_wrapper::prepare(input);
-    let doc =
-        Document::parse_with(prepared.as_bytes(), &ParserPolicy::default()).map_err(|error| {
+    let doc = ReferenceEngine
+        .parse_with_decoding_options(
+            prepared.as_bytes(),
+            &ParserPolicy::default(),
+            ReferenceDecodingOptions {
+                text_references: TextReferenceRecovery::OxLookahead31,
+                attribute_whitespace: AttributeWhitespace::Preserve,
+            },
+        )
+        .map_err(|error| {
             json!({
                 "code":"PARSE_ERROR",
                 "message":error.to_string(),
