@@ -25,7 +25,7 @@ fn argument(v:&Value,f:&str,ctx:&WriterContext)->Result<Vec<Xml>,String>{
  if !v.is_object(){return Err(error(ctx,"NoMethodError",if f=="omml"{"insert_t_tag"}else{"to_mathml_without_math_tag"}))}
  strict_slot_xml(v,f,ctx,false)
 }
-fn attribute_values(m:&Model,ctx:&WriterContext)->Result<Vec<(String,String)>,String>{
+pub(super) fn attribute_values(m:&Model,ctx:&WriterContext)->Result<Vec<(String,String)>,String>{
  let value=m.field("attributes");
  if !truthy(value)||value.as_array().is_some_and(Vec::is_empty)||value==""{return Ok(vec![])}
  let values=value.as_object().ok_or_else(||error(ctx,"NoMethodError","attributes.empty?/set_attr"))?;

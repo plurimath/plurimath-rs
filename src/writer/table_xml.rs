@@ -104,6 +104,7 @@ fn parenthesis(value: &Value, format: &str) -> Result<String, String> {
             },
         );
     }
+    if format=="mathml" && delimiter.class=="Math::Symbols::Symbol" && matches!(delimiter.field("value").as_str(),Some("{:"|":}")){return Ok(String::new());}
     let glyph = super::symbol(&delimiter, format)?;
     if format=="mathml"&&["&#x3016;","&#x3017;","&#x2524;","&#x251c;"].contains(&glyph.as_str()){return Ok(String::new())}
     // Source OMML sets an attribute through its XML adapter, which decodes
@@ -327,8 +328,39 @@ pub(super) fn render(model: &Model, format: &str, ctx: &WriterContext) -> Result
         | "Math::Function::Table::Bmatrix"
         | "Math::Function::Table::Vmatrix"
         | "Math::Function::Table::Array" => table(model, format, ctx),
+        "Math::Function::Table::Cases" | "Math::Function::Table::Eqarray" => {
+            let mut nodes=table(model,format,ctx)?;
+            if format=="mathml" && ctx.intent {
+                for node in &mut nodes {
+                    if let Xml::El(_,attributes,children)=node {
+                        let mut found=false;
+                        for child in children.iter_mut(){if let Xml::El(name,attributes,_)=child{if name=="mtable"{set_attribute(attributes,"intent",":cases".into());found=true;break;}}}
+                        if model.kind()=="Cases"&&!found{return Err(super::formatter_context::source_error(ctx,"NoMethodError","undefined method '[]=' for nil".into()));}
+                        set_attribute(attributes,"intent",":equations".into());
+                    }
+                }
+            }
+            Ok(nodes)
+        },
         "Math::Function::Tr" => row(model, format, ctx),
         "Math::Function::Td" => cell(model, format, ctx),
         _ => Err(format!("unported source table XML class {}", model.class)),
     }
+}
+
+// Td has a source-specific line-break method: its continuations become a
+// nested table inside the same cell, never a Core Formula replacement.
+pub(super) fn td_line_breaking(node:&mut Value)->Result<(),String>{
+ let parameter=node["fields"]["parameter_one"].clone();
+ let input=if parameter.is_null(){vec![]}else if let Some(values)=parameter.as_array(){values.clone()}else{vec![parameter]};
+ let mut chunks=Vec::<Vec<Value>>::new();let mut current=Vec::new();
+ for value in input {let line=value["class"]=="Math::Function::Linebreak";current.push(value);if line {chunks.push(std::mem::take(&mut current));}}
+ if !current.is_empty(){chunks.push(current);}if chunks.len()<=1{return Ok(());}
+ let marker=chunks[0].pop().ok_or("source_render_error: missing table break marker")?;
+ let value=&marker["fields"]["parameter_one"];
+ if !value.is_null()&&value!=false {
+  if marker["fields"]["attributes"]["linebreakstyle"]=="after"{chunks[0].push(value.clone());}else{chunks[1].insert(0,value.clone());}
+ }
+ let rows=chunks.into_iter().map(|values|serde_json::json!({"class":"Math::Function::Tr","fields":{"parameter_one":[{"class":"Math::Function::Td","fields":{"parameter_one":values,"parameter_two":null}}]}})).collect::<Vec<_>>();
+ node["fields"]["parameter_one"]=serde_json::json!([{"class":"Math::Function::Table","fields":{"value":rows,"open_paren":null,"close_paren":null,"options":{}}}]);Ok(())
 }

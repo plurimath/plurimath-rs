@@ -1,7 +1,7 @@
 //! Source procedures for Limits, Underset, Underover and Frac option profiles.
 use super::{attrs, control_properties, el, text, Model, Value, WriterContext, Xml};
 use crate::source_values::{self as source, Domain, Profile, RubyValue};
-fn data() -> &'static Value {
+pub(super) fn data() -> &'static Value {
     static DATA: std::sync::OnceLock<Value> = std::sync::OnceLock::new();
     DATA.get_or_init(|| {
         serde_json::from_str(include_str!(
@@ -23,7 +23,7 @@ fn safe(v: &Value, f: &str, ctx: &super::WriterContext) -> Result<String, String
         child(v, f, ctx)
     }
 }
-fn parens(v: &Value, ctx: &super::WriterContext) -> Result<String, String> {
+pub(super) fn parens(v: &Value, ctx: &super::WriterContext) -> Result<String, String> {
     let value = child(v, "unicodemath", ctx)?;
     Ok(if v["class"] == "Math::Function::Fenced" {
         value
@@ -77,7 +77,7 @@ fn attribute_pairs(
         .map(|(key, value)| Ok((source::to_s(key)?, source::to_s(value)?)))
         .collect()
 }
-fn raw_symbol(v: &Value) -> Result<Option<String>, String> {
+pub(super) fn raw_symbol(v: &Value) -> Result<Option<String>, String> {
     let Ok(m) = Model::from_value(v) else {
         return Ok(None);
     };

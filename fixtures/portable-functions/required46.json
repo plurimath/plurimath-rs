@@ -1,0 +1,3623 @@
+[
+  {
+    "id": "unary-function-model-phantom-mpadded-hphantom",
+    "profile": "model-options",
+    "format": "unicodemath",
+    "expected": {
+      "output": "⬄(x)"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised conditional phantom/mpadded profile"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Phantom",
+            "fields": {
+              "parameter_one": {
+                "class": "Math::Function::Mpadded",
+                "fields": {
+                  "options": {
+                    "mpadded": {
+                      "depth": "0",
+                      "height": "0"
+                    },
+                    "phantom": true
+                  },
+                  "parameter_one": {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "x"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": null
+  },
+  {
+    "id": "unary-function-model-phantom-mpadded-vphantom",
+    "profile": "model-options",
+    "format": "unicodemath",
+    "expected": {
+      "output": "⇳(x)"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised conditional phantom/mpadded profile"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Phantom",
+            "fields": {
+              "parameter_one": {
+                "class": "Math::Function::Mpadded",
+                "fields": {
+                  "options": {
+                    "mpadded": {
+                      "width": "0"
+                    },
+                    "phantom": true
+                  },
+                  "parameter_one": {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "x"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": null
+  },
+  {
+    "id": "unary-function-model-phantom-mpadded-smash",
+    "profile": "model-options",
+    "format": "unicodemath",
+    "expected": {
+      "output": "⟡(⬍(x))"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised conditional phantom/mpadded profile"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Phantom",
+            "fields": {
+              "parameter_one": {
+                "class": "Math::Function::Mpadded",
+                "fields": {
+                  "options": {
+                    "mpadded": {
+                      "height": "0",
+                      "depth": "0"
+                    },
+                    "phantom": false
+                  },
+                  "parameter_one": {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "x"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": null
+  },
+  {
+    "id": "unary-function-model-phantom-mpadded-no-options",
+    "profile": "model-options",
+    "format": "unicodemath",
+    "expected": {
+      "output": "⟡(⟡(x))"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised conditional phantom/mpadded profile"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Phantom",
+            "fields": {
+              "parameter_one": {
+                "class": "Math::Function::Mpadded",
+                "fields": {
+                  "parameter_one": {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "x"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": null
+  },
+  {
+    "id": "line-break-012",
+    "profile": "model-options",
+    "format": "mathml",
+    "expected": {
+      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mo>[</mo>\n      <mtable>\n        <mtr>\n          <mtd>\n            <mn>1</mn>\n          </mtd>\n          <mtd>\n            <mn>2</mn>\n          </mtd>\n        </mtr>\n        <mtr>\n          <mtd>\n            <mtable>\n              <mtr>\n                <mtd>\n                  <mn>3</mn>\n                </mtd>\n              </mtr>\n              <mtr>\n                <mtd>\n                  <mi>&#x3c3;</mi>\n                </mtd>\n              </mtr>\n            </mtable>\n          </mtd>\n          <mtd>\n            <mn>5</mn>\n          </mtd>\n        </mtr>\n      </mtable>\n      <mo>]</mo>\n    </mrow>\n  </mstyle>\n</math>\n"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported source first table cell value, expected a node array"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Table",
+            "fields": {
+              "close_paren": {
+                "class": "Math::Symbols::Paren::Rsquare",
+                "fields": {
+                  "value": null
+                }
+              },
+              "open_paren": {
+                "class": "Math::Symbols::Paren::Lsquare",
+                "fields": {
+                  "value": null
+                }
+              },
+              "options": {},
+              "value": [
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Number",
+                              "fields": {
+                                "base": null,
+                                "mini_sub_sized": false,
+                                "mini_sup_sized": false,
+                                "value": "1"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Number",
+                              "fields": {
+                                "base": null,
+                                "mini_sub_sized": false,
+                                "mini_sup_sized": false,
+                                "value": "2"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Number",
+                              "fields": {
+                                "base": null,
+                                "mini_sub_sized": false,
+                                "mini_sup_sized": false,
+                                "value": "3"
+                              }
+                            },
+                            {
+                              "class": "Math::Function::Linebreak",
+                              "fields": {
+                                "attributes": {},
+                                "parameter_one": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "&#x3c3;"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Number",
+                              "fields": {
+                                "base": null,
+                                "mini_sub_sized": false,
+                                "mini_sup_sized": false,
+                                "value": "5"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "options": {
+      "splitOnLinebreak": true,
+      "unaryFunctionSpacing": false
+    },
+    "text_input": null
+  },
+  {
+    "id": "line-break-012-display-false",
+    "profile": "model-options",
+    "format": "mathml",
+    "expected": {
+      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mrow>\n      <mo>[</mo>\n      <mtable>\n        <mtr>\n          <mtd>\n            <mn>1</mn>\n          </mtd>\n          <mtd>\n            <mn>2</mn>\n          </mtd>\n        </mtr>\n        <mtr>\n          <mtd>\n            <mtable>\n              <mtr>\n                <mtd>\n                  <mn>3</mn>\n                </mtd>\n              </mtr>\n              <mtr>\n                <mtd>\n                  <mi>&#x3c3;</mi>\n                </mtd>\n              </mtr>\n            </mtable>\n          </mtd>\n          <mtd>\n            <mn>5</mn>\n          </mtd>\n        </mtr>\n      </mtable>\n      <mo>]</mo>\n    </mrow>\n  </mstyle>\n</math>\n"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported source first table cell value, expected a node array"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Table",
+            "fields": {
+              "close_paren": {
+                "class": "Math::Symbols::Paren::Rsquare",
+                "fields": {
+                  "value": null
+                }
+              },
+              "open_paren": {
+                "class": "Math::Symbols::Paren::Lsquare",
+                "fields": {
+                  "value": null
+                }
+              },
+              "options": {},
+              "value": [
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Number",
+                              "fields": {
+                                "base": null,
+                                "mini_sub_sized": false,
+                                "mini_sup_sized": false,
+                                "value": "1"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Number",
+                              "fields": {
+                                "base": null,
+                                "mini_sub_sized": false,
+                                "mini_sup_sized": false,
+                                "value": "2"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Number",
+                              "fields": {
+                                "base": null,
+                                "mini_sub_sized": false,
+                                "mini_sup_sized": false,
+                                "value": "3"
+                              }
+                            },
+                            {
+                              "class": "Math::Function::Linebreak",
+                              "fields": {
+                                "attributes": {},
+                                "parameter_one": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "&#x3c3;"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Number",
+                              "fields": {
+                                "base": null,
+                                "mini_sub_sized": false,
+                                "mini_sup_sized": false,
+                                "value": "5"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "options": {
+      "splitOnLinebreak": true,
+      "unaryFunctionSpacing": false,
+      "displayStyle": false
+    },
+    "text_input": null
+  },
+  {
+    "id": "line-break-078",
+    "profile": "model-options",
+    "format": "mathml",
+    "expected": {
+      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mover>\n      <mrow>\n        <mo>&#x2211;</mo>\n      </mrow>\n      <mo>&#x23de;</mo>\n    </mover>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mo>&#x220f;</mo>\n  </mstyle>\n</math>\n"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Obrace"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Obrace",
+            "fields": {
+              "attributes": {},
+              "parameter_one": {
+                "class": "Math::Formula",
+                "fields": {
+                  "displaystyle": true,
+                  "left_right_wrapper": true,
+                  "value": [
+                    {
+                      "class": "Math::Function::Sum",
+                      "fields": {
+                        "parameter_one": null,
+                        "parameter_three": null,
+                        "parameter_two": null
+                      }
+                    },
+                    {
+                      "class": "Math::Function::Linebreak",
+                      "fields": {
+                        "attributes": {},
+                        "parameter_one": null
+                      }
+                    },
+                    {
+                      "class": "Math::Function::Prod",
+                      "fields": {
+                        "parameter_one": null,
+                        "parameter_three": null,
+                        "parameter_two": null
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "options": {
+      "splitOnLinebreak": true,
+      "unaryFunctionSpacing": false
+    },
+    "text_input": null
+  },
+  {
+    "id": "line-break-078-display-false",
+    "profile": "model-options",
+    "format": "mathml",
+    "expected": {
+      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mover>\n      <mrow>\n        <mo>&#x2211;</mo>\n      </mrow>\n      <mo>&#x23de;</mo>\n    </mover>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mo>&#x220f;</mo>\n  </mstyle>\n</math>\n"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Obrace"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Obrace",
+            "fields": {
+              "attributes": {},
+              "parameter_one": {
+                "class": "Math::Formula",
+                "fields": {
+                  "displaystyle": true,
+                  "left_right_wrapper": true,
+                  "value": [
+                    {
+                      "class": "Math::Function::Sum",
+                      "fields": {
+                        "parameter_one": null,
+                        "parameter_three": null,
+                        "parameter_two": null
+                      }
+                    },
+                    {
+                      "class": "Math::Function::Linebreak",
+                      "fields": {
+                        "attributes": {},
+                        "parameter_one": null
+                      }
+                    },
+                    {
+                      "class": "Math::Function::Prod",
+                      "fields": {
+                        "parameter_one": null,
+                        "parameter_three": null,
+                        "parameter_two": null
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "options": {
+      "splitOnLinebreak": true,
+      "unaryFunctionSpacing": false,
+      "displayStyle": false
+    },
+    "text_input": null
+  },
+  {
+    "id": "line-break-084",
+    "profile": "model-options",
+    "format": "mathml",
+    "expected": {
+      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtable>\n      <mtr>\n        <mtd>\n          <mtable>\n            <mtr>\n              <mtd>\n                <mi>a</mi>\n                <mi>b</mi>\n              </mtd>\n            </mtr>\n            <mtr>\n              <mtd>\n                <mi>d</mi>\n              </mtd>\n            </mtr>\n          </mtable>\n        </mtd>\n      </mtr>\n      <mtr>\n        <mtd>\n          <mtable>\n            <mtr>\n              <mtd>\n                <mi>d</mi>\n              </mtd>\n            </mtr>\n            <mtr>\n              <mtd>\n                <mi>e</mi>\n                <mi>c</mi>\n              </mtd>\n            </mtr>\n          </mtable>\n        </mtd>\n      </mtr>\n    </mtable>\n  </mstyle>\n</math>\n"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported source first table cell value, expected a node array"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Substack",
+            "fields": {
+              "parameter_one": [
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "a"
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "b"
+                              }
+                            },
+                            {
+                              "class": "Math::Function::Linebreak",
+                              "fields": {
+                                "attributes": {},
+                                "parameter_one": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "d"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "d"
+                              }
+                            },
+                            {
+                              "class": "Math::Function::Linebreak",
+                              "fields": {
+                                "attributes": {},
+                                "parameter_one": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "e"
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "c"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "options": {
+      "splitOnLinebreak": true,
+      "unaryFunctionSpacing": false
+    },
+    "text_input": null
+  },
+  {
+    "id": "line-break-084-display-false",
+    "profile": "model-options",
+    "format": "mathml",
+    "expected": {
+      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mtable>\n      <mtr>\n        <mtd>\n          <mtable>\n            <mtr>\n              <mtd>\n                <mi>a</mi>\n                <mi>b</mi>\n              </mtd>\n            </mtr>\n            <mtr>\n              <mtd>\n                <mi>d</mi>\n              </mtd>\n            </mtr>\n          </mtable>\n        </mtd>\n      </mtr>\n      <mtr>\n        <mtd>\n          <mtable>\n            <mtr>\n              <mtd>\n                <mi>d</mi>\n              </mtd>\n            </mtr>\n            <mtr>\n              <mtd>\n                <mi>e</mi>\n                <mi>c</mi>\n              </mtd>\n            </mtr>\n          </mtable>\n        </mtd>\n      </mtr>\n    </mtable>\n  </mstyle>\n</math>\n"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported source first table cell value, expected a node array"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Substack",
+            "fields": {
+              "parameter_one": [
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "a"
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "b"
+                              }
+                            },
+                            {
+                              "class": "Math::Function::Linebreak",
+                              "fields": {
+                                "attributes": {},
+                                "parameter_one": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "d"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "d"
+                              }
+                            },
+                            {
+                              "class": "Math::Function::Linebreak",
+                              "fields": {
+                                "attributes": {},
+                                "parameter_one": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "e"
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "c"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "options": {
+      "splitOnLinebreak": true,
+      "unaryFunctionSpacing": false,
+      "displayStyle": false
+    },
+    "text_input": null
+  },
+  {
+    "id": "line-break-085",
+    "profile": "model-options",
+    "format": "mathml",
+    "expected": {
+      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mover>\n      <mrow></mrow>\n      <mrow>\n        <mrow>\n          <mi>d</mi>\n        </mrow>\n      </mrow>\n    </mover>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mover>\n      <mrow>\n        <mrow>\n          <mi>s</mi>\n          <mo linebreak=\"newline\"/>\n          <mi>p</mi>\n        </mrow>\n      </mrow>\n      <mrow>\n        <mi>e</mi>\n      </mrow>\n    </mover>\n  </mstyle>\n</math>\n"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Stackrel"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Stackrel",
+            "fields": {
+              "parameter_one": {
+                "class": "Math::Formula",
+                "fields": {
+                  "displaystyle": true,
+                  "left_right_wrapper": true,
+                  "value": [
+                    {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "d"
+                      }
+                    },
+                    {
+                      "class": "Math::Function::Linebreak",
+                      "fields": {
+                        "attributes": {},
+                        "parameter_one": null
+                      }
+                    },
+                    {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "e"
+                      }
+                    }
+                  ]
+                }
+              },
+              "parameter_two": {
+                "class": "Math::Formula",
+                "fields": {
+                  "displaystyle": true,
+                  "left_right_wrapper": true,
+                  "value": [
+                    {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "s"
+                      }
+                    },
+                    {
+                      "class": "Math::Function::Linebreak",
+                      "fields": {
+                        "attributes": {},
+                        "parameter_one": null
+                      }
+                    },
+                    {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "p"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "options": {
+      "splitOnLinebreak": true,
+      "unaryFunctionSpacing": false
+    },
+    "text_input": null
+  },
+  {
+    "id": "line-break-085-display-false",
+    "profile": "model-options",
+    "format": "mathml",
+    "expected": {
+      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mover>\n      <mrow></mrow>\n      <mrow>\n        <mrow>\n          <mi>d</mi>\n        </mrow>\n      </mrow>\n    </mover>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mover>\n      <mrow>\n        <mrow>\n          <mi>s</mi>\n          <mo linebreak=\"newline\"/>\n          <mi>p</mi>\n        </mrow>\n      </mrow>\n      <mrow>\n        <mi>e</mi>\n      </mrow>\n    </mover>\n  </mstyle>\n</math>\n"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Stackrel"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Stackrel",
+            "fields": {
+              "parameter_one": {
+                "class": "Math::Formula",
+                "fields": {
+                  "displaystyle": true,
+                  "left_right_wrapper": true,
+                  "value": [
+                    {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "d"
+                      }
+                    },
+                    {
+                      "class": "Math::Function::Linebreak",
+                      "fields": {
+                        "attributes": {},
+                        "parameter_one": null
+                      }
+                    },
+                    {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "e"
+                      }
+                    }
+                  ]
+                }
+              },
+              "parameter_two": {
+                "class": "Math::Formula",
+                "fields": {
+                  "displaystyle": true,
+                  "left_right_wrapper": true,
+                  "value": [
+                    {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "s"
+                      }
+                    },
+                    {
+                      "class": "Math::Function::Linebreak",
+                      "fields": {
+                        "attributes": {},
+                        "parameter_one": null
+                      }
+                    },
+                    {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "p"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "options": {
+      "splitOnLinebreak": true,
+      "unaryFunctionSpacing": false,
+      "displayStyle": false
+    },
+    "text_input": null
+  },
+  {
+    "id": "intent-table-cases",
+    "profile": "model-options",
+    "format": "mathml",
+    "expected": {
+      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\":equations\">\n      <mo>{</mo>\n      <mtable intent=\":cases\">\n        <mtr>\n          <mtd>\n            <mi>a</mi>\n          </mtd>\n          <mtd>\n            <mi>b</mi>\n          </mtd>\n        </mtr>\n        <mtr>\n          <mtd>\n            <mi>c</mi>\n          </mtd>\n          <mtd>\n            <mi>d</mi>\n          </mtd>\n        </mtr>\n      </mtable>\n      <mo></mo>\n    </mrow>\n  </mstyle>\n</math>\n"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Table::Cases"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Table::Cases",
+            "fields": {
+              "close_paren": {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                  "value": ":}"
+                }
+              },
+              "open_paren": {
+                "class": "Math::Symbols::Paren::Lcurly",
+                "fields": {
+                  "value": null
+                }
+              },
+              "options": {},
+              "value": [
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "a"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "b"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "c"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "d"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "options": {
+      "intent": true
+    },
+    "text_input": null
+  },
+  {
+    "id": "intent-table-cases-no-parens",
+    "profile": "model-options",
+    "format": "mathml",
+    "expected": {
+      "error": {
+        "class_": "Plurimath::Math::ParseError"
+      }
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Table::Cases"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Table::Cases",
+            "fields": {
+              "close_paren": null,
+              "open_paren": null,
+              "options": {},
+              "value": [
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "a"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "b"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "c"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "d"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "options": {
+      "intent": true
+    },
+    "text_input": null
+  },
+  {
+    "id": "intent-table-eqarray",
+    "profile": "model-options",
+    "format": "mathml",
+    "expected": {
+      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtable intent=\":equations\">\n      <mtr>\n        <mtd>\n          <mi>a</mi>\n        </mtd>\n        <mtd>\n          <mi>b</mi>\n        </mtd>\n      </mtr>\n      <mtr>\n        <mtd>\n          <mi>c</mi>\n        </mtd>\n        <mtd>\n          <mi>d</mi>\n        </mtd>\n      </mtr>\n    </mtable>\n  </mstyle>\n</math>\n"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Table::Eqarray"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Table::Eqarray",
+            "fields": {
+              "close_paren": {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                  "value": ""
+                }
+              },
+              "open_paren": {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                  "value": ""
+                }
+              },
+              "options": {},
+              "value": [
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "a"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "b"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "c"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "d"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "options": {
+      "intent": true
+    },
+    "text_input": null
+  },
+  {
+    "id": "intent-table-eqarray-parens",
+    "profile": "model-options",
+    "format": "mathml",
+    "expected": {
+      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\":equations\">\n      <mo>(</mo>\n      <mtable intent=\":cases\">\n        <mtr>\n          <mtd>\n            <mi>a</mi>\n          </mtd>\n          <mtd>\n            <mi>b</mi>\n          </mtd>\n        </mtr>\n        <mtr>\n          <mtd>\n            <mi>c</mi>\n          </mtd>\n          <mtd>\n            <mi>d</mi>\n          </mtd>\n        </mtr>\n      </mtable>\n      <mo>)</mo>\n    </mrow>\n  </mstyle>\n</math>\n"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Table::Eqarray"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Table::Eqarray",
+            "fields": {
+              "close_paren": {
+                "class": "Math::Symbols::Paren::Rround",
+                "fields": {
+                  "value": null
+                }
+              },
+              "open_paren": {
+                "class": "Math::Symbols::Paren::Lround",
+                "fields": {
+                  "value": null
+                }
+              },
+              "options": {},
+              "value": [
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "a"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "b"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "c"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "d"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "options": {
+      "intent": true
+    },
+    "text_input": null
+  },
+  {
+    "id": "line-break-012",
+    "profile": "model-options",
+    "format": "omml",
+    "expected": {
+      "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:d>\n      <m:dPr>\n        <m:begChr m:val=\"[\"/>\n        <m:endChr m:val=\"]\"/>\n        <m:sepChr m:val=\"\"/>\n        <m:grow/>\n      </m:dPr>\n      <m:e>\n        <m:m>\n          <m:mPr>\n            <m:mcs>\n              <m:mc>\n                <m:mcPr>\n                  <m:count m:val=\"2\"/>\n                  <m:mcJc m:val=\"center\"/>\n                </m:mcPr>\n              </m:mc>\n            </m:mcs>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:mPr>\n          <m:mr>\n            <m:e>\n              <m:r>\n                <m:t>1</m:t>\n              </m:r>\n            </m:e>\n            <m:e>\n              <m:r>\n                <m:t>2</m:t>\n              </m:r>\n            </m:e>\n          </m:mr>\n          <m:mr>\n            <m:e>\n              <m:eqArr>\n                <m:eqArrPr>\n                  <m:ctrlPr>\n                    <w:rPr>\n                      <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                      <w:i/>\n                    </w:rPr>\n                  </m:ctrlPr>\n                </m:eqArrPr>\n                <m:e>\n                  <m:r>\n                    <m:t>3</m:t>\n                  </m:r>\n                </m:e>\n                <m:e>\n                  <m:r>\n                    <m:t>&#x3c3;</m:t>\n                  </m:r>\n                </m:e>\n              </m:eqArr>\n            </m:e>\n            <m:e>\n              <m:r>\n                <m:t>5</m:t>\n              </m:r>\n            </m:e>\n          </m:mr>\n        </m:m>\n      </m:e>\n    </m:d>\n  </m:oMath>\n</m:oMathPara>\n"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported source table cell value, expected a node array"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Table",
+            "fields": {
+              "close_paren": {
+                "class": "Math::Symbols::Paren::Rsquare",
+                "fields": {
+                  "value": null
+                }
+              },
+              "open_paren": {
+                "class": "Math::Symbols::Paren::Lsquare",
+                "fields": {
+                  "value": null
+                }
+              },
+              "options": {},
+              "value": [
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Number",
+                              "fields": {
+                                "base": null,
+                                "mini_sub_sized": false,
+                                "mini_sup_sized": false,
+                                "value": "1"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Number",
+                              "fields": {
+                                "base": null,
+                                "mini_sub_sized": false,
+                                "mini_sup_sized": false,
+                                "value": "2"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Number",
+                              "fields": {
+                                "base": null,
+                                "mini_sub_sized": false,
+                                "mini_sup_sized": false,
+                                "value": "3"
+                              }
+                            },
+                            {
+                              "class": "Math::Function::Linebreak",
+                              "fields": {
+                                "attributes": {},
+                                "parameter_one": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "&#x3c3;"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Number",
+                              "fields": {
+                                "base": null,
+                                "mini_sub_sized": false,
+                                "mini_sup_sized": false,
+                                "value": "5"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "options": {
+      "splitOnLinebreak": true
+    },
+    "text_input": null
+  },
+  {
+    "id": "line-break-012-display-false",
+    "profile": "model-options",
+    "format": "omml",
+    "expected": {
+      "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:d>\n      <m:dPr>\n        <m:begChr m:val=\"[\"/>\n        <m:endChr m:val=\"]\"/>\n        <m:sepChr m:val=\"\"/>\n        <m:grow/>\n      </m:dPr>\n      <m:e>\n        <m:m>\n          <m:mPr>\n            <m:mcs>\n              <m:mc>\n                <m:mcPr>\n                  <m:count m:val=\"2\"/>\n                  <m:mcJc m:val=\"center\"/>\n                </m:mcPr>\n              </m:mc>\n            </m:mcs>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:mPr>\n          <m:mr>\n            <m:e>\n              <m:r>\n                <m:t>1</m:t>\n              </m:r>\n            </m:e>\n            <m:e>\n              <m:r>\n                <m:t>2</m:t>\n              </m:r>\n            </m:e>\n          </m:mr>\n          <m:mr>\n            <m:e>\n              <m:eqArr>\n                <m:eqArrPr>\n                  <m:ctrlPr>\n                    <w:rPr>\n                      <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                      <w:i/>\n                    </w:rPr>\n                  </m:ctrlPr>\n                </m:eqArrPr>\n                <m:e>\n                  <m:r>\n                    <m:t>3</m:t>\n                  </m:r>\n                </m:e>\n                <m:e>\n                  <m:r>\n                    <m:t>&#x3c3;</m:t>\n                  </m:r>\n                </m:e>\n              </m:eqArr>\n            </m:e>\n            <m:e>\n              <m:r>\n                <m:t>5</m:t>\n              </m:r>\n            </m:e>\n          </m:mr>\n        </m:m>\n      </m:e>\n    </m:d>\n  </m:oMath>\n</m:oMathPara>\n"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported source table cell value, expected a node array"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Table",
+            "fields": {
+              "close_paren": {
+                "class": "Math::Symbols::Paren::Rsquare",
+                "fields": {
+                  "value": null
+                }
+              },
+              "open_paren": {
+                "class": "Math::Symbols::Paren::Lsquare",
+                "fields": {
+                  "value": null
+                }
+              },
+              "options": {},
+              "value": [
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Number",
+                              "fields": {
+                                "base": null,
+                                "mini_sub_sized": false,
+                                "mini_sup_sized": false,
+                                "value": "1"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Number",
+                              "fields": {
+                                "base": null,
+                                "mini_sub_sized": false,
+                                "mini_sup_sized": false,
+                                "value": "2"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Number",
+                              "fields": {
+                                "base": null,
+                                "mini_sub_sized": false,
+                                "mini_sup_sized": false,
+                                "value": "3"
+                              }
+                            },
+                            {
+                              "class": "Math::Function::Linebreak",
+                              "fields": {
+                                "attributes": {},
+                                "parameter_one": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "&#x3c3;"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Number",
+                              "fields": {
+                                "base": null,
+                                "mini_sub_sized": false,
+                                "mini_sup_sized": false,
+                                "value": "5"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "options": {
+      "splitOnLinebreak": true,
+      "displayStyle": false
+    },
+    "text_input": null
+  },
+  {
+    "id": "line-break-078",
+    "profile": "model-options",
+    "format": "omml",
+    "expected": {
+      "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:limUpp>\n      <m:limUppPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limUppPr>\n      <m:e>\n        <m:r>\n          <m:t>&#x2211;</m:t>\n        </m:r>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>⏞</m:t>\n        </m:r>\n      </m:lim>\n    </m:limUpp>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:r>\n      <m:t>&#x220f;</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Obrace"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Obrace",
+            "fields": {
+              "attributes": {},
+              "parameter_one": {
+                "class": "Math::Formula",
+                "fields": {
+                  "displaystyle": true,
+                  "left_right_wrapper": true,
+                  "value": [
+                    {
+                      "class": "Math::Function::Sum",
+                      "fields": {
+                        "parameter_one": null,
+                        "parameter_three": null,
+                        "parameter_two": null
+                      }
+                    },
+                    {
+                      "class": "Math::Function::Linebreak",
+                      "fields": {
+                        "attributes": {},
+                        "parameter_one": null
+                      }
+                    },
+                    {
+                      "class": "Math::Function::Prod",
+                      "fields": {
+                        "parameter_one": null,
+                        "parameter_three": null,
+                        "parameter_two": null
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "options": {
+      "splitOnLinebreak": true
+    },
+    "text_input": null
+  },
+  {
+    "id": "line-break-078-display-false",
+    "profile": "model-options",
+    "format": "omml",
+    "expected": {
+      "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:limUpp>\n      <m:limUppPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limUppPr>\n      <m:e>\n        <m:r>\n          <m:t>&#x2211;</m:t>\n        </m:r>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>⏞</m:t>\n        </m:r>\n      </m:lim>\n    </m:limUpp>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:r>\n      <m:t>&#x220f;</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Obrace"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Obrace",
+            "fields": {
+              "attributes": {},
+              "parameter_one": {
+                "class": "Math::Formula",
+                "fields": {
+                  "displaystyle": true,
+                  "left_right_wrapper": true,
+                  "value": [
+                    {
+                      "class": "Math::Function::Sum",
+                      "fields": {
+                        "parameter_one": null,
+                        "parameter_three": null,
+                        "parameter_two": null
+                      }
+                    },
+                    {
+                      "class": "Math::Function::Linebreak",
+                      "fields": {
+                        "attributes": {},
+                        "parameter_one": null
+                      }
+                    },
+                    {
+                      "class": "Math::Function::Prod",
+                      "fields": {
+                        "parameter_one": null,
+                        "parameter_three": null,
+                        "parameter_two": null
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "options": {
+      "splitOnLinebreak": true,
+      "displayStyle": false
+    },
+    "text_input": null
+  },
+  {
+    "id": "line-break-084",
+    "profile": "model-options",
+    "format": "omml",
+    "expected": {
+      "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:eqArr>\n      <m:eqArrPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:eqArrPr>\n      <m:e>\n        <m:eqArr>\n          <m:eqArrPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:eqArrPr>\n          <m:e>\n            <m:r>\n              <m:t>a</m:t>\n            </m:r>\n            <m:r>\n              <m:t>b</m:t>\n            </m:r>\n          </m:e>\n          <m:e>\n            <m:r>\n              <m:t>d</m:t>\n            </m:r>\n          </m:e>\n        </m:eqArr>\n      </m:e>\n      <m:e>\n        <m:eqArr>\n          <m:eqArrPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:eqArrPr>\n          <m:e>\n            <m:r>\n              <m:t>d</m:t>\n            </m:r>\n          </m:e>\n          <m:e>\n            <m:r>\n              <m:t>e</m:t>\n            </m:r>\n            <m:r>\n              <m:t>c</m:t>\n            </m:r>\n          </m:e>\n        </m:eqArr>\n      </m:e>\n    </m:eqArr>\n  </m:oMath>\n</m:oMathPara>\n"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported source table cell value, expected a node array"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Substack",
+            "fields": {
+              "parameter_one": [
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "a"
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "b"
+                              }
+                            },
+                            {
+                              "class": "Math::Function::Linebreak",
+                              "fields": {
+                                "attributes": {},
+                                "parameter_one": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "d"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "d"
+                              }
+                            },
+                            {
+                              "class": "Math::Function::Linebreak",
+                              "fields": {
+                                "attributes": {},
+                                "parameter_one": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "e"
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "c"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "options": {
+      "splitOnLinebreak": true
+    },
+    "text_input": null
+  },
+  {
+    "id": "line-break-084-display-false",
+    "profile": "model-options",
+    "format": "omml",
+    "expected": {
+      "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:eqArr>\n      <m:eqArrPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:eqArrPr>\n      <m:e>\n        <m:eqArr>\n          <m:eqArrPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:eqArrPr>\n          <m:e>\n            <m:r>\n              <m:t>a</m:t>\n            </m:r>\n            <m:r>\n              <m:t>b</m:t>\n            </m:r>\n          </m:e>\n          <m:e>\n            <m:r>\n              <m:t>d</m:t>\n            </m:r>\n          </m:e>\n        </m:eqArr>\n      </m:e>\n      <m:e>\n        <m:eqArr>\n          <m:eqArrPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:eqArrPr>\n          <m:e>\n            <m:r>\n              <m:t>d</m:t>\n            </m:r>\n          </m:e>\n          <m:e>\n            <m:r>\n              <m:t>e</m:t>\n            </m:r>\n            <m:r>\n              <m:t>c</m:t>\n            </m:r>\n          </m:e>\n        </m:eqArr>\n      </m:e>\n    </m:eqArr>\n  </m:oMath>\n</m:oMathPara>\n"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported source table cell value, expected a node array"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Substack",
+            "fields": {
+              "parameter_one": [
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "a"
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "b"
+                              }
+                            },
+                            {
+                              "class": "Math::Function::Linebreak",
+                              "fields": {
+                                "attributes": {},
+                                "parameter_one": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "d"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "d"
+                              }
+                            },
+                            {
+                              "class": "Math::Function::Linebreak",
+                              "fields": {
+                                "attributes": {},
+                                "parameter_one": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "e"
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "c"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "options": {
+      "splitOnLinebreak": true,
+      "displayStyle": false
+    },
+    "text_input": null
+  },
+  {
+    "id": "line-break-085",
+    "profile": "model-options",
+    "format": "omml",
+    "expected": {
+      "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:limUpp>\n      <m:limUppPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limUppPr>\n      <m:e>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>d</m:t>\n        </m:r>\n      </m:lim>\n    </m:limUpp>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:limUpp>\n      <m:limUppPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limUppPr>\n      <m:e>\n        <m:r>\n          <m:t>s</m:t>\n        </m:r>\n        <m:r>\n          <m:t>p</m:t>\n        </m:r>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>e</m:t>\n        </m:r>\n      </m:lim>\n    </m:limUpp>\n  </m:oMath>\n</m:oMathPara>\n"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Stackrel"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Stackrel",
+            "fields": {
+              "parameter_one": {
+                "class": "Math::Formula",
+                "fields": {
+                  "displaystyle": true,
+                  "left_right_wrapper": true,
+                  "value": [
+                    {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "d"
+                      }
+                    },
+                    {
+                      "class": "Math::Function::Linebreak",
+                      "fields": {
+                        "attributes": {},
+                        "parameter_one": null
+                      }
+                    },
+                    {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "e"
+                      }
+                    }
+                  ]
+                }
+              },
+              "parameter_two": {
+                "class": "Math::Formula",
+                "fields": {
+                  "displaystyle": true,
+                  "left_right_wrapper": true,
+                  "value": [
+                    {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "s"
+                      }
+                    },
+                    {
+                      "class": "Math::Function::Linebreak",
+                      "fields": {
+                        "attributes": {},
+                        "parameter_one": null
+                      }
+                    },
+                    {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "p"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "options": {
+      "splitOnLinebreak": true
+    },
+    "text_input": null
+  },
+  {
+    "id": "line-break-085-display-false",
+    "profile": "model-options",
+    "format": "omml",
+    "expected": {
+      "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:limUpp>\n      <m:limUppPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limUppPr>\n      <m:e>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>d</m:t>\n        </m:r>\n      </m:lim>\n    </m:limUpp>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:limUpp>\n      <m:limUppPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limUppPr>\n      <m:e>\n        <m:r>\n          <m:t>s</m:t>\n        </m:r>\n        <m:r>\n          <m:t>p</m:t>\n        </m:r>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>e</m:t>\n        </m:r>\n      </m:lim>\n    </m:limUpp>\n  </m:oMath>\n</m:oMathPara>\n"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Stackrel"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Stackrel",
+            "fields": {
+              "parameter_one": {
+                "class": "Math::Formula",
+                "fields": {
+                  "displaystyle": true,
+                  "left_right_wrapper": true,
+                  "value": [
+                    {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "d"
+                      }
+                    },
+                    {
+                      "class": "Math::Function::Linebreak",
+                      "fields": {
+                        "attributes": {},
+                        "parameter_one": null
+                      }
+                    },
+                    {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "e"
+                      }
+                    }
+                  ]
+                }
+              },
+              "parameter_two": {
+                "class": "Math::Formula",
+                "fields": {
+                  "displaystyle": true,
+                  "left_right_wrapper": true,
+                  "value": [
+                    {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "s"
+                      }
+                    },
+                    {
+                      "class": "Math::Function::Linebreak",
+                      "fields": {
+                        "attributes": {},
+                        "parameter_one": null
+                      }
+                    },
+                    {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "p"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "options": {
+      "splitOnLinebreak": true,
+      "displayStyle": false
+    },
+    "text_input": null
+  },
+  {
+    "id": "tfn-probe-cases-default-parens",
+    "profile": "model-options",
+    "format": "omml",
+    "expected": {
+      "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:d>\n      <m:dPr>\n        <m:begChr m:val=\"{\"/>\n        <m:endChr m:val=\":}\"/>\n        <m:sepChr m:val=\"\"/>\n        <m:grow/>\n      </m:dPr>\n      <m:e>\n        <m:eqArr>\n          <m:eqArrPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:eqArrPr>\n          <m:e>\n            <m:r>\n              <m:t>a</m:t>\n            </m:r>\n          </m:e>\n          <m:e>\n            <m:r>\n              <m:t>b</m:t>\n            </m:r>\n          </m:e>\n        </m:eqArr>\n      </m:e>\n    </m:d>\n  </m:oMath>\n</m:oMathPara>\n"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Table::Cases"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Table::Cases",
+            "fields": {
+              "close_paren": {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                  "value": ":}"
+                }
+              },
+              "open_paren": {
+                "class": "Math::Symbols::Paren::Lcurly",
+                "fields": {
+                  "value": null
+                }
+              },
+              "options": {},
+              "value": [
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "a"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "class": "Math::Function::Tr",
+                  "fields": {
+                    "parameter_one": [
+                      {
+                        "class": "Math::Function::Td",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "b"
+                              }
+                            }
+                          ],
+                          "parameter_two": null
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": null
+  },
+  {
+    "id": "unary-function-model-msgroup-symbol",
+    "profile": "model-options",
+    "format": "html",
+    "expected": {
+      "error": {
+        "class_": "Plurimath::Math::ParseError"
+      }
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "render_error",
+        "message": "layout to_html does not accept options keyword",
+        "source_class": "ArgumentError"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Msgroup",
+            "fields": {
+              "parameter_one": [
+                {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": null
+  },
+  {
+    "id": "unary-function-model-msgroup-formula",
+    "profile": "model-options",
+    "format": "html",
+    "expected": {
+      "error": {
+        "class_": "Plurimath::Math::ParseError"
+      }
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "render_error",
+        "message": "layout to_html does not accept options keyword",
+        "source_class": "ArgumentError"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Msgroup",
+            "fields": {
+              "parameter_one": [
+                {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Sum",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Ampersand",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_three": null,
+                          "parameter_two": {
+                            "class": "Math::Function::Text",
+                            "fields": {
+                              "lang": null,
+                              "parameter_one": "so"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": null
+  },
+  {
+    "id": "unary-function-model-msgroup-nil",
+    "profile": "model-options",
+    "format": "html",
+    "expected": {
+      "error": {
+        "class_": "Plurimath::Math::ParseError"
+      }
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "render_error",
+        "message": "layout to_html does not accept options keyword",
+        "source_class": "ArgumentError"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Msgroup",
+            "fields": {
+              "parameter_one": null
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": null
+  },
+  {
+    "id": "unary-function-model-msgroup-empty",
+    "profile": "model-options",
+    "format": "html",
+    "expected": {
+      "error": {
+        "class_": "Plurimath::Math::ParseError"
+      }
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "render_error",
+        "message": "layout to_html does not accept options keyword",
+        "source_class": "ArgumentError"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Msgroup",
+            "fields": {
+              "parameter_one": []
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": null
+  },
+  {
+    "id": "unary-function-model-msgroup-hidden",
+    "profile": "model-options",
+    "format": "html",
+    "expected": {
+      "error": {
+        "class_": "Plurimath::Math::ParseError"
+      }
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "render_error",
+        "message": "layout to_html does not accept options keyword",
+        "source_class": "ArgumentError"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Msgroup",
+            "fields": {
+              "hide_function_name": true,
+              "parameter_one": [
+                {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": null
+  },
+  {
+    "id": "ternary-built-rule-all-nil",
+    "profile": "model-options",
+    "format": "html",
+    "expected": {
+      "error": {
+        "class_": "Plurimath::Math::ParseError"
+      }
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "render_error",
+        "message": "layout to_html does not accept options keyword",
+        "source_class": "ArgumentError"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Rule",
+            "fields": {
+              "parameter_one": null,
+              "parameter_three": null,
+              "parameter_two": null
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": null
+  },
+  {
+    "id": "ternary-built-rule-first-only",
+    "profile": "model-options",
+    "format": "html",
+    "expected": {
+      "error": {
+        "class_": "Plurimath::Math::ParseError"
+      }
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "render_error",
+        "message": "layout to_html does not accept options keyword",
+        "source_class": "ArgumentError"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Rule",
+            "fields": {
+              "parameter_one": {
+                "class": "Math::Number",
+                "fields": {
+                  "base": null,
+                  "mini_sub_sized": false,
+                  "mini_sup_sized": false,
+                  "value": "1"
+                }
+              },
+              "parameter_three": null,
+              "parameter_two": null
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": null
+  },
+  {
+    "id": "ternary-built-rule-three-slots",
+    "profile": "model-options",
+    "format": "html",
+    "expected": {
+      "error": {
+        "class_": "Plurimath::Math::ParseError"
+      }
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "render_error",
+        "message": "layout to_html does not accept options keyword",
+        "source_class": "ArgumentError"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Rule",
+            "fields": {
+              "parameter_one": {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                  "value": "x"
+                }
+              },
+              "parameter_three": {
+                "class": "Math::Number",
+                "fields": {
+                  "base": null,
+                  "mini_sub_sized": false,
+                  "mini_sup_sized": false,
+                  "value": "3"
+                }
+              },
+              "parameter_two": {
+                "class": "Math::Number",
+                "fields": {
+                  "base": null,
+                  "mini_sub_sized": false,
+                  "mini_sup_sized": false,
+                  "value": "2"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": null
+  },
+  {
+    "id": "latex-nary-lim-to-infinity",
+    "profile": "text-writers",
+    "format": "asciimath",
+    "expected": {
+      "output": "lim_(x to oo) f (x)"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Lim"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "input_string": "\\lim_{x \\to \\infty} f(x)",
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Lim",
+            "fields": {
+              "parameter_one": {
+                "class": "Math::Formula",
+                "fields": {
+                  "displaystyle": true,
+                  "left_right_wrapper": true,
+                  "value": [
+                    {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    {
+                      "class": "Math::Symbols::Rightarrow",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    {
+                      "class": "Math::Symbols::Oo",
+                      "fields": {
+                        "value": null
+                      }
+                    }
+                  ]
+                }
+              },
+              "parameter_two": null
+            }
+          },
+          {
+            "class": "Math::Symbols::Symbol",
+            "fields": {
+              "value": "f"
+            }
+          },
+          {
+            "class": "Math::Function::Fenced",
+            "fields": {
+              "options": {},
+              "parameter_one": {
+                "class": "Math::Symbols::Paren::Lround",
+                "fields": {
+                  "value": null
+                }
+              },
+              "parameter_three": {
+                "class": "Math::Symbols::Paren::Rround",
+                "fields": {
+                  "value": null
+                }
+              },
+              "parameter_two": [
+                {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": "\\lim_{x \\to \\infty} f(x)"
+  },
+  {
+    "id": "latex-nary-lim-to-infinity",
+    "profile": "text-writers",
+    "format": "latex",
+    "expected": {
+      "output": "\\lim_{x \\to \\infty} f ( x )"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Lim"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "input_string": "\\lim_{x \\to \\infty} f(x)",
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Lim",
+            "fields": {
+              "parameter_one": {
+                "class": "Math::Formula",
+                "fields": {
+                  "displaystyle": true,
+                  "left_right_wrapper": true,
+                  "value": [
+                    {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    {
+                      "class": "Math::Symbols::Rightarrow",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    {
+                      "class": "Math::Symbols::Oo",
+                      "fields": {
+                        "value": null
+                      }
+                    }
+                  ]
+                }
+              },
+              "parameter_two": null
+            }
+          },
+          {
+            "class": "Math::Symbols::Symbol",
+            "fields": {
+              "value": "f"
+            }
+          },
+          {
+            "class": "Math::Function::Fenced",
+            "fields": {
+              "options": {},
+              "parameter_one": {
+                "class": "Math::Symbols::Paren::Lround",
+                "fields": {
+                  "value": null
+                }
+              },
+              "parameter_three": {
+                "class": "Math::Symbols::Paren::Rround",
+                "fields": {
+                  "value": null
+                }
+              },
+              "parameter_two": [
+                {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": "\\lim_{x \\to \\infty} f(x)"
+  },
+  {
+    "id": "latex-nary-lim-to-infinity",
+    "profile": "text-writers",
+    "format": "unicodemath",
+    "expected": {
+      "output": "lim_(x → ∞) f (x)"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Lim"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "input_string": "\\lim_{x \\to \\infty} f(x)",
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Lim",
+            "fields": {
+              "parameter_one": {
+                "class": "Math::Formula",
+                "fields": {
+                  "displaystyle": true,
+                  "left_right_wrapper": true,
+                  "value": [
+                    {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    {
+                      "class": "Math::Symbols::Rightarrow",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    {
+                      "class": "Math::Symbols::Oo",
+                      "fields": {
+                        "value": null
+                      }
+                    }
+                  ]
+                }
+              },
+              "parameter_two": null
+            }
+          },
+          {
+            "class": "Math::Symbols::Symbol",
+            "fields": {
+              "value": "f"
+            }
+          },
+          {
+            "class": "Math::Function::Fenced",
+            "fields": {
+              "options": {},
+              "parameter_one": {
+                "class": "Math::Symbols::Paren::Lround",
+                "fields": {
+                  "value": null
+                }
+              },
+              "parameter_three": {
+                "class": "Math::Symbols::Paren::Rround",
+                "fields": {
+                  "value": null
+                }
+              },
+              "parameter_two": [
+                {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": "\\lim_{x \\to \\infty} f(x)"
+  },
+  {
+    "id": "latex-nary-lim-to-infinity",
+    "profile": "text-writers",
+    "format": "html",
+    "expected": {
+      "output": "<i>lim</i><i>x &#x2192; &#x221e;</i> f <i>(</i>x<i>)</i>"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Lim"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "input_string": "\\lim_{x \\to \\infty} f(x)",
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Lim",
+            "fields": {
+              "parameter_one": {
+                "class": "Math::Formula",
+                "fields": {
+                  "displaystyle": true,
+                  "left_right_wrapper": true,
+                  "value": [
+                    {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    {
+                      "class": "Math::Symbols::Rightarrow",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    {
+                      "class": "Math::Symbols::Oo",
+                      "fields": {
+                        "value": null
+                      }
+                    }
+                  ]
+                }
+              },
+              "parameter_two": null
+            }
+          },
+          {
+            "class": "Math::Symbols::Symbol",
+            "fields": {
+              "value": "f"
+            }
+          },
+          {
+            "class": "Math::Function::Fenced",
+            "fields": {
+              "options": {},
+              "parameter_one": {
+                "class": "Math::Symbols::Paren::Lround",
+                "fields": {
+                  "value": null
+                }
+              },
+              "parameter_three": {
+                "class": "Math::Symbols::Paren::Rround",
+                "fields": {
+                  "value": null
+                }
+              },
+              "parameter_two": [
+                {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": "\\lim_{x \\to \\infty} f(x)"
+  },
+  {
+    "id": "latex-over-under-overset",
+    "profile": "text-writers",
+    "format": "asciimath",
+    "expected": {
+      "output": "overset(x)(y)"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Overset"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "input_string": "\\overset{x}{y}",
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Overset",
+            "fields": {
+              "parameter_one": {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                  "value": "x"
+                }
+              },
+              "parameter_two": {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                  "value": "y"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": "\\overset{x}{y}"
+  },
+  {
+    "id": "latex-over-under-overset",
+    "profile": "text-writers",
+    "format": "latex",
+    "expected": {
+      "output": "\\overset{x}{y}"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Overset"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "input_string": "\\overset{x}{y}",
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Overset",
+            "fields": {
+              "parameter_one": {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                  "value": "x"
+                }
+              },
+              "parameter_two": {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                  "value": "y"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": "\\overset{x}{y}"
+  },
+  {
+    "id": "latex-over-under-overset",
+    "profile": "text-writers",
+    "format": "unicodemath",
+    "expected": {
+      "output": "(y)┴(x)"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Overset"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "input_string": "\\overset{x}{y}",
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Overset",
+            "fields": {
+              "parameter_one": {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                  "value": "x"
+                }
+              },
+              "parameter_two": {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                  "value": "y"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": "\\overset{x}{y}"
+  },
+  {
+    "id": "latex-over-under-overset",
+    "profile": "text-writers",
+    "format": "html",
+    "expected": {
+      "output": "<i>x</i><i>y</i>"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Overset"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "input_string": "\\overset{x}{y}",
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Overset",
+            "fields": {
+              "parameter_one": {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                  "value": "x"
+                }
+              },
+              "parameter_two": {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                  "value": "y"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": "\\overset{x}{y}"
+  },
+  {
+    "id": "latex-over-under-stackrel",
+    "profile": "text-writers",
+    "format": "omml",
+    "expected": {
+      "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:limUpp>\n      <m:limUppPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limUppPr>\n      <m:e>\n        <m:r>\n          <m:t>y</m:t>\n        </m:r>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n      </m:lim>\n    </m:limUpp>\n  </m:oMath>\n</m:oMathPara>\n"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Stackrel"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "input_string": "\\stackrel{x}{y}",
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Stackrel",
+            "fields": {
+              "parameter_one": {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                  "value": "x"
+                }
+              },
+              "parameter_two": {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                  "value": "y"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": "\\stackrel{x}{y}"
+  },
+  {
+    "id": "latex-root-sqrt-frac",
+    "profile": "text-writers",
+    "format": "asciimath",
+    "expected": {
+      "output": "sqrt(frac(1)(2))"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Sqrt"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "input_string": "\\sqrt{\\frac{1}{2}}",
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Sqrt",
+            "fields": {
+              "parameter_one": {
+                "class": "Math::Function::Frac",
+                "fields": {
+                  "parameter_one": {
+                    "class": "Math::Number",
+                    "fields": {
+                      "base": null,
+                      "mini_sub_sized": false,
+                      "mini_sup_sized": false,
+                      "value": "1"
+                    }
+                  },
+                  "parameter_two": {
+                    "class": "Math::Number",
+                    "fields": {
+                      "base": null,
+                      "mini_sub_sized": false,
+                      "mini_sup_sized": false,
+                      "value": "2"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": "\\sqrt{\\frac{1}{2}}"
+  },
+  {
+    "id": "latex-root-sqrt-frac",
+    "profile": "text-writers",
+    "format": "latex",
+    "expected": {
+      "output": "\\sqrt{\\frac{1}{2}}"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Sqrt"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "input_string": "\\sqrt{\\frac{1}{2}}",
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Sqrt",
+            "fields": {
+              "parameter_one": {
+                "class": "Math::Function::Frac",
+                "fields": {
+                  "parameter_one": {
+                    "class": "Math::Number",
+                    "fields": {
+                      "base": null,
+                      "mini_sub_sized": false,
+                      "mini_sup_sized": false,
+                      "value": "1"
+                    }
+                  },
+                  "parameter_two": {
+                    "class": "Math::Number",
+                    "fields": {
+                      "base": null,
+                      "mini_sub_sized": false,
+                      "mini_sup_sized": false,
+                      "value": "2"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": "\\sqrt{\\frac{1}{2}}"
+  },
+  {
+    "id": "latex-root-sqrt-frac",
+    "profile": "text-writers",
+    "format": "unicodemath",
+    "expected": {
+      "output": "√((1)/(2))"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Sqrt"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "input_string": "\\sqrt{\\frac{1}{2}}",
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Sqrt",
+            "fields": {
+              "parameter_one": {
+                "class": "Math::Function::Frac",
+                "fields": {
+                  "parameter_one": {
+                    "class": "Math::Number",
+                    "fields": {
+                      "base": null,
+                      "mini_sub_sized": false,
+                      "mini_sup_sized": false,
+                      "value": "1"
+                    }
+                  },
+                  "parameter_two": {
+                    "class": "Math::Number",
+                    "fields": {
+                      "base": null,
+                      "mini_sub_sized": false,
+                      "mini_sup_sized": false,
+                      "value": "2"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": "\\sqrt{\\frac{1}{2}}"
+  },
+  {
+    "id": "latex-root-sqrt-frac",
+    "profile": "text-writers",
+    "format": "html",
+    "expected": {
+      "output": "<i>sqrt</i><i><i>1</i><i>2</i></i>"
+    },
+    "actual": {
+      "abi_version": 1,
+      "ok": false,
+      "error": {
+        "code": "unported_capability",
+        "message": "unported promised writer node Math::Function::Sqrt"
+      }
+    },
+    "model": {
+      "class": "Math::Formula",
+      "fields": {
+        "displaystyle": true,
+        "input_string": "\\sqrt{\\frac{1}{2}}",
+        "left_right_wrapper": true,
+        "value": [
+          {
+            "class": "Math::Function::Sqrt",
+            "fields": {
+              "parameter_one": {
+                "class": "Math::Function::Frac",
+                "fields": {
+                  "parameter_one": {
+                    "class": "Math::Number",
+                    "fields": {
+                      "base": null,
+                      "mini_sub_sized": false,
+                      "mini_sup_sized": false,
+                      "value": "1"
+                    }
+                  },
+                  "parameter_two": {
+                    "class": "Math::Number",
+                    "fields": {
+                      "base": null,
+                      "mini_sub_sized": false,
+                      "mini_sup_sized": false,
+                      "value": "2"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "options": {},
+    "text_input": "\\sqrt{\\frac{1}{2}}"
+  }
+]

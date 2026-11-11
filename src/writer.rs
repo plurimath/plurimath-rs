@@ -3,6 +3,7 @@ mod layout_nodes;
 mod generic_nary;
 mod final_options;
 mod mod_log;
+mod portable_functions;
 mod intent_nodes;
 mod leaf_nodes;
 mod operators;
@@ -415,7 +416,15 @@ fn special_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, Strin
     match(m.kind(),f){
  ("Phantom","asciimath")=>Ok("\\ ".repeat(unary_slot_text(v,f, ctx)?.chars().count())),
  ("Phantom","html")=>Err("source_render_error: Phantom#to_html accepts no options keyword at the formula writer boundary".into()),
- ("Phantom","unicodemath")=>{if v["class"]=="Math::Function::Mpadded"{return Err("unported promised conditional phantom/mpadded profile".into())}Ok(format!("⟡{}",parens(v,f, ctx)?))},
+ ("Phantom","unicodemath")=>{
+ if v["class"]=="Math::Function::Mpadded" {
+  use crate::source_values::{field,Domain,RubyValue};
+  let child=Model::from_value(v)?;let options=field(&child,"options",Domain::NamedOptions)?;
+  if !matches!(options,RubyValue::Nil|RubyValue::Hash(_)){return Err("source_render_error: Mpadded options have no dig method".into());}
+  if options.get_symbol("phantom").is_some_and(|v|!matches!(v,RubyValue::Nil|RubyValue::Bool(false))){return Ok(format!("{}{}",layout_nodes::phantom_prefix(&child)?,parens(child.field("parameter_one"),f,ctx)?));}
+ }
+ Ok(format!("⟡{}",parens(v,f,ctx)?))
+ },
  ("Cancel","unicodemath")=>Ok(format!("╱{}",if present(v){parens(v,f, ctx)?}else{String::new()})),
  _=>unary_text(m,f, ctx)}
 }
@@ -768,6 +777,7 @@ fn render_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, String
     if underline::handles(m) {return underline::text_writer(m,f,ctx)}
     if table_text::handles(m) {return table_text::render(m,f,ctx)}
     if m.class=="Math::Symbols::Comma"&&f=="asciimath"&&ctx.table {return Ok("\",\"".into())}
+    if portable_functions::handles(m) {return portable_functions::text_writer(m,f,ctx);}
     if mod_log::handles(m) {return mod_log::text_writer(m,f,ctx);}
     if m.class=="Math::Function::None" {return multiscripts::child(&m.value(),f,ctx);}
     if final_options::handles(m) {return final_options::text_writer(m,f,ctx);}
@@ -1181,6 +1191,7 @@ fn render_xml_inner(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>,
     if ["Math::Function::Intent","Math::Function::Arg"].contains(&m.class.as_str()) { return intent_nodes::xml(m,f,ctx); }
     if leaf_nodes::handles(m) {return leaf_nodes::xml(m,f,ctx);}
     if underline::handles(m) {return underline::xml(m,f,ctx)}
+    if matches!(m.kind(),"Stackrel"|"Obrace"|"Sqrt") {return portable_functions::xml(m,f,ctx);}
     if m.class=="Math::Function::Log" {return mod_log::log_xml(m,f,ctx);}
     if m.class=="Math::Function::None" {return multiscripts::xml_child(&m.value(),f,ctx);}
     if final_options::handles(m) {return final_options::xml(m,f,ctx);}
@@ -1280,6 +1291,8 @@ fn render_xml_inner(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>,
             | "Math::Function::Table::Bmatrix"
             | "Math::Function::Table::Vmatrix"
             | "Math::Function::Table::Array"
+            | "Math::Function::Table::Cases"
+            | "Math::Function::Table::Eqarray"
             | "Math::Function::Tr"
             | "Math::Function::Td"
     ) {
@@ -2611,6 +2624,13 @@ fn core_updated_values(
     Ok(())
 }
 fn source_line_breaking(node: &mut Value, obj: &mut Vec<Value>) -> Result<(), String> {
+    if node["class"]=="Math::Function::Td" {return table_xml::td_line_breaking(node);}
+    if node["class"]=="Math::Function::Stackrel" {
+        source_line_breaking(&mut node["fields"]["parameter_one"],obj)?;
+        if !obj.is_empty(){*obj=vec![new_source_node("Math::Function::Stackrel",serde_json::json!({"parameter_one":filter_source_values(std::mem::take(obj)),"parameter_two":node["fields"]["parameter_two"]}))];node["fields"]["parameter_two"]=Value::Null;}
+        return Ok(());
+    }
+
     if node["class"]=="Math::Function::Log" {return mod_log::log_line_breaking(node,obj);}
     if node["class"]=="Math::Function::Underset" {return final_options::underset_line_breaking(node,obj); }
     if node["class"] == "Math::Function::Fenced" { return fences::line_breaking(node, obj); }
@@ -2678,7 +2698,7 @@ fn source_line_breaking(node: &mut Value, obj: &mut Vec<Value>) -> Result<(), St
     }
     let drop = matches!(
         kind,
-        "Vec" | "Dot" | "Ddot" | "Tilde" | "Ubrace" | "Bar" | "Sqrt"
+        "Vec" | "Dot" | "Ddot" | "Tilde" | "Ubrace" | "Obrace" | "Bar" | "Sqrt"
     );
     let delimiter = matches!(kind, "Abs" | "Ceil" | "Floor" | "Norm");
     let font = m.class.starts_with("Math::Function::FontStyle::")
