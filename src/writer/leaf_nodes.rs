@@ -3,40 +3,40 @@ use super::{attrs, el, text, Model, Value, WriterContext, Xml};
 fn truthy(v: &Value) -> bool {
     !v.is_null() && v != false
 }
-fn child(v: &Value, f: &str) -> Result<String, String> {
-    super::multiscripts::child(v, f)
+fn child(v: &Value, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
+    super::multiscripts::child(v, f, ctx)
 }
-fn safe(v: &Value, f: &str) -> Result<String, String> {
+fn safe(v: &Value, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     if v.is_null() {
         Ok(String::new())
     } else {
-        child(v, f)
+        child(v, f, ctx)
     }
 }
-fn compact_text(v: &Value, f: &str) -> Result<String, String> {
+fn compact_text(v: &Value, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     if let Some(values) = v.as_array() {
         values
             .iter()
             .filter(|v| !v.is_null())
-            .map(|v| child(v, f))
+            .map(|v| child(v, f, ctx))
             .collect::<Result<Vec<_>, _>>()
             .map(|s| s.join(if f == "latex" { " " } else { "" }))
     } else {
-        safe(v, f)
+        safe(v, f, ctx)
     }
 }
-fn html_unary(m: &Model, name: &str) -> Result<String, String> {
+fn html_unary(m: &Model, name: &str, ctx: &super::WriterContext) -> Result<String, String> {
     let v = m.field("parameter_one");
     let body = if let Some(values) = v.as_array() {
         Some(
             values
                 .iter()
-                .map(|v| child(v, "html"))
+                .map(|v| child(v, "html", ctx))
                 .collect::<Result<Vec<_>, _>>()?
                 .join(""),
         )
     } else if truthy(v) {
-        Some(child(v, "html")?)
+        Some(child(v, "html", ctx)?)
     } else {
         None
     };
@@ -68,7 +68,7 @@ pub(super) fn handles(m: &Model) -> bool {
         "Math::Function::Sup" | "Math::Function::Root" | "Math::Function::Ms"
     )
 }
-pub(super) fn text_writer(m: &Model, f: &str) -> Result<String, String> {
+pub(super) fn text_writer(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     let a = m.field("parameter_one");
     let b = m.field("parameter_two");
     match m.kind() {
@@ -76,14 +76,14 @@ pub(super) fn text_writer(m: &Model, f: &str) -> Result<String, String> {
             "asciimath" => Ok(format!(
                 "sup{}",
                 if truthy(a) {
-                    compact_text(a, f)?
+                    compact_text(a, f, ctx)?
                 } else {
                     String::new()
                 }
             )),
-            "latex" => Ok(format!("\\sup{{{}}}", compact_text(a, f)?)),
-            "html" => html_unary(m, "&#x2283;"),
-            "unicodemath" => Ok(format!("sup⁡{}", safe(a, f)?)),
+            "latex" => Ok(format!("\\sup{{{}}}", compact_text(a, f, ctx)?)),
+            "html" => html_unary(m, "&#x2283;", ctx),
+            "unicodemath" => Ok(format!("sup⁡{}", safe(a, f, ctx)?)),
             _ => Err("unported Sup format".into()),
         },
         "Root" => match f {
@@ -91,17 +91,17 @@ pub(super) fn text_writer(m: &Model, f: &str) -> Result<String, String> {
                 let mut out = "root".to_string();
                 for v in [a, b] {
                     if truthy(v) {
-                        out.push_str(&format!("({})", child(v, f)?));
+                        out.push_str(&format!("({})", child(v, f, ctx)?));
                     }
                 }
                 Ok(out)
             }
-            "latex" => Ok(format!("\\sqrt[{}]{{{}}}", safe(a, f)?, safe(b, f)?)),
+            "latex" => Ok(format!("\\sqrt[{}]{{{}}}", safe(a, f, ctx)?, safe(b, f, ctx)?)),
             "html" => {
                 let mut out = String::new();
                 for v in [a, b] {
                     if truthy(v) {
-                        out.push_str(&format!("<i>{}</i>", child(v, f)?));
+                        out.push_str(&format!("<i>{}</i>", child(v, f, ctx)?));
                     }
                 }
                 Ok(out)
@@ -109,12 +109,12 @@ pub(super) fn text_writer(m: &Model, f: &str) -> Result<String, String> {
             "unicodemath" => Ok(format!(
                 "√({}&{})",
                 if truthy(a) {
-                    child(a, f)?
+                    child(a, f, ctx)?
                 } else {
                     String::new()
                 },
                 if truthy(b) {
-                    child(b, f)?
+                    child(b, f, ctx)?
                 } else {
                     String::new()
                 }
@@ -124,10 +124,10 @@ pub(super) fn text_writer(m: &Model, f: &str) -> Result<String, String> {
         "Ms" => match f {
             "asciimath" => Ok(format!("\"“{}”\"", ruby_string(a)?)),
             "latex" => Ok(format!("\\text{{“{}”}}", ruby_string(a)?)),
-            "html" => html_unary(m, "ms"),
+            "html" => html_unary(m, "ms", ctx),
             "unicodemath" => {
                 let node = serde_json::json!({"class":"Math::Function::Text","fields":{"parameter_one":a}});
-                super::render_text(&Model::from_value(&node)?, f)
+                super::render_text(&Model::from_value(&node)?, f, ctx)
             }
             _ => Err("unported Ms format".into()),
         },

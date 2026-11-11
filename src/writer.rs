@@ -1,6 +1,8 @@
 //! Procedural source-writer port; unported nodes/options fail, never return approximations.
 mod layout_nodes;
 mod generic_nary;
+mod intent_nodes;
+mod leaf_nodes;
 mod operators;
 mod numbers;
 mod number_formatter;
@@ -773,8 +775,11 @@ fn normal_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, Strin
     Ok(c)
 }
 fn render_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, String> {
+    crate::source_values::writer_admission(m)?;
     let scoped;
     let ctx=if m.class=="Math::Formula"||m.class.starts_with("Math::Formula::") {scoped=ctx.with_formula(m);&scoped}else{ctx};
+    if ["Math::Function::Intent","Math::Function::Arg"].contains(&m.class.as_str()) { return intent_nodes::text(m,f,ctx); }
+    if leaf_nodes::handles(m) {return leaf_nodes::text_writer(m,f,ctx);}
     if underline::handles(m) {return underline::text_writer(m,f,ctx)}
     if table_text::handles(m) {return table_text::render(m,f,ctx)}
     if m.class=="Math::Symbols::Comma"&&f=="asciimath"&&ctx.table {return Ok("\",\"".into())}
@@ -1184,6 +1189,9 @@ fn render_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, Strin
     Ok(nodes)
 }
 fn render_xml_inner(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
+    crate::source_values::writer_admission(m)?;
+    if ["Math::Function::Intent","Math::Function::Arg"].contains(&m.class.as_str()) { return intent_nodes::xml(m,f,ctx); }
+    if leaf_nodes::handles(m) {return leaf_nodes::xml(m,f,ctx);}
     if underline::handles(m) {return underline::xml(m,f,ctx)}
     if layout_nodes::handles(m) { return layout_nodes::xml(m, f, ctx); }
     if m.class == "Math::Function::Mod" { return line_break_overrides::mod_xml(m, f, ctx); }
@@ -2440,6 +2448,7 @@ fn source_class_properties(m: &Model) -> (&'static [&'static str], bool, bool) {
         | "Math::Function::Lim"
         | "Math::Function::Log"
         | "Math::Function::Mod"
+        | "Math::Function::Root"
         | "Math::Function::Over"
         | "Math::Function::Overset"
         | "Math::Function::Power"

@@ -4,11 +4,14 @@ use serde_json::{Map, Value};
 pub struct Model {
     pub class: String,
     pub fields: Map<String, Value>,
+    pub source_values: Option<crate::source_values::Metadata>,
 }
 impl Model {
     pub fn from_value(v: &Value) -> Result<Self, String> {
         let o = v.as_object().ok_or("model must be an object")?;
-        if o.keys().any(|k| k != "class" && k != "fields") {
+        if o.keys()
+            .any(|k| k != "class" && k != "fields" && k != "source_values")
+        {
             return Err("unknown model envelope member".into());
         }
         let class = o
@@ -24,13 +27,43 @@ impl Model {
             .and_then(Value::as_object)
             .ok_or("model.fields must be an object")?
             .clone();
-        Ok(Self { class, fields })
+        let source_values = crate::source_values::metadata(o.get("source_values"))?;
+        if let Some(metadata) = &source_values {
+            crate::source_values::verify_projection(&class, &fields, metadata)?;
+        }
+        Ok(Self {
+            class,
+            fields,
+            source_values,
+        })
     }
     pub fn value(&self) -> Value {
-        serde_json::json!({"class":self.class,"fields":self.fields})
+        {
+            let mut value = serde_json::json!({"class":self.class,"fields":self.fields});
+            if let Some(metadata) = &self.source_values {
+                value["source_values"] = serde_json::json!({"schema":crate::source_values::SCHEMA,"fields":metadata.fields});
+            }
+            value
+        }
     }
     pub fn field(&self, k: &str) -> &Value {
         self.fields.get(k).unwrap_or(&Value::Null)
+    }
+    pub fn profile(&self) -> crate::source_values::Profile {
+        if self.source_values.is_some() {
+            crate::source_values::Profile::RubyValuesV1
+        } else {
+            crate::source_values::Profile::Canonical
+        }
+    }
+    pub fn source_field(&self, name: &str) -> &Value {
+        if let Some(metadata) = &self.source_values {
+            return metadata
+                .fields
+                .get(name)
+                .unwrap_or_else(|| crate::source_values::nil_tag());
+        }
+        self.field(name)
     }
     pub fn kind(&self) -> &str {
         self.class.rsplit("::").next().unwrap_or("")

@@ -89,9 +89,11 @@ pub fn request(v: &Value) -> Value {
                 json!({"model":parser::parse(v["input"].as_str().ok_or("missing input")?,v["format"].as_str().ok_or("missing format")?,v.get("options").unwrap_or(&json!({})))?}),
             ),
             "write" => Ok(
-                json!({"output":writer::write(&v["model"],v["format"].as_str().ok_or("missing format")?,v.get("options").unwrap_or(&json!({})))?}),
+                json!({"output":writer::write(&source_values::request_model(v)?,v["format"].as_str().ok_or("missing format")?,v.get("options").unwrap_or(&json!({})))?}),
             ),
             "model" => Ok(json!({"model":model::Model::from_value(&v["model"])?.value()})),
+            "source_value" => source_values::value_request(v),
+            "source_model" => {source_values::document_model(&v["model"])?;Ok(json!({"model":v["model"]}))},
             _ => Err(format!("unported promised facade operation {op}")),
         }
     })();
@@ -110,7 +112,7 @@ pub fn request(v: &Value) -> Value {
             } else if let Some(message) = message.strip_prefix("source_no_method_error: ") {
                 json!({"abi_version":1,"ok":false,"error":{"code":"render_error","message":message,"source_class":"NoMethodError"}})
             } else if let Some(message) = message.strip_prefix("source_render_error: ") {
-                json!({"abi_version":1,"ok":false,"error":{"code":"render_error","message":message,"source_class":if v["model"]["class"]=="Math::Formula"{"Plurimath::Math::ParseError"}else{"NoMethodError"}}})
+                json!({"abi_version":1,"ok":false,"error":{"code":"render_error","message":message,"source_class":if source_values::request_root_class(v)==Some("Math::Formula"){"Plurimath::Math::ParseError"}else{"NoMethodError"}}})
             } else {
                 json!({"abi_version":1,"ok":false,"error":{"code":"unported_capability","message":message}})
             }

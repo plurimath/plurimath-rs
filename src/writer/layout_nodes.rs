@@ -4,8 +4,8 @@ use crate::source_values::{self as source, Domain, Profile, RubyValue};
 fn truthy(v: &Value) -> bool {
     !v.is_null() && v != false
 }
-fn child(v: &Value, f: &str) -> Result<String, String> {
-    super::multiscripts::child(v, f)
+fn child(v: &Value, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
+    super::multiscripts::child(v, f, ctx)
 }
 fn xml_child(v: &Value, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     super::multiscripts::xml_child(v, f, ctx)
@@ -30,38 +30,38 @@ pub(super) fn handles(m: &Model) -> bool {
             | "Math::Function::Rule"
     )
 }
-fn array_text(v: &Value, f: &str, compact: bool, separator: &str) -> Result<String, String> {
+fn array_text(v: &Value, f: &str, compact: bool, separator: &str, ctx: &super::WriterContext) -> Result<String, String> {
     let values = v
         .as_array()
         .ok_or("source_render_error: layout field has no map method")?;
     values
         .iter()
         .filter(|v| !compact || !v.is_null())
-        .map(|v| child(v, f))
+        .map(|v| child(v, f, ctx))
         .collect::<Result<Vec<_>, _>>()
         .map(|v| v.join(separator))
 }
-fn unary_text(v: &Value, f: &str) -> Result<String, String> {
+fn unary_text(v: &Value, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     if f == "asciimath" && !truthy(v) {
         return Ok(String::new());
     }
     if v.is_array() {
-        return array_text(v, f, true, if f == "latex" { " " } else { "" });
+        return array_text(v, f, true, if f == "latex" { " " } else { "" }, ctx);
     }
     if v.is_null() {
         Ok(String::new())
     } else {
-        child(v, f)
+        child(v, f, ctx)
     }
 }
-fn unary_html(m: &Model) -> Result<String, String> {
+fn unary_html(m: &Model, ctx: &super::WriterContext) -> Result<String, String> {
     let v = m.field("parameter_one");
     let name = m.kind().to_ascii_lowercase();
     let mut result = format!("<i>{name}</i>");
     if v.is_array() {
-        result.push_str(&format!("<i>{}</i>", array_text(v, "html", false, "")?));
+        result.push_str(&format!("<i>{}</i>", array_text(v, "html", false, "", ctx)?));
     } else if truthy(v) {
-        result.push_str(&format!("<i>{}</i>", child(v, "html")?));
+        result.push_str(&format!("<i>{}</i>", child(v, "html", ctx)?));
     }
     Ok(result)
 }
@@ -84,11 +84,11 @@ fn bind_padded(value: RubyValue, profile: Profile) -> Result<RubyValue, String> 
 }
 fn source_options(m: &Model) -> Result<RubyValue, String> {
     bind_padded(
-        source::decode(m.field("options"), Domain::NamedOptions, Profile::Canonical)?,
-        Profile::Canonical,
+        source::field(m,"options", Domain::NamedOptions)?,
+        m.profile(),
     )
 }
-fn padded_unicode(m: &Model) -> Result<String, String> {
+fn padded_unicode(m: &Model, ctx: &super::WriterContext) -> Result<String, String> {
     let v = m.field("parameter_one");
     let options = source_options(m)?;
     if !matches!(options, RubyValue::Nil | RubyValue::Hash(_)) {
@@ -109,7 +109,7 @@ fn padded_unicode(m: &Model) -> Result<String, String> {
                 break;
             }
         }
-        let body = child(v, "unicodemath")?;
+        let body = child(v, "unicodemath", ctx)?;
         let body = if v["class"]
             .as_str()
             .is_some_and(|c| c.starts_with("Math::Function::Fenced"))
@@ -124,17 +124,17 @@ fn padded_unicode(m: &Model) -> Result<String, String> {
         let body = if v.is_null() {
             String::new()
         } else {
-            child(v, "unicodemath")?
+            child(v, "unicodemath", ctx)?
         };
         return Ok(format!("⟡({}&{body})", source::to_s(mask)?));
     }
     Ok(if truthy(v) {
-        format!("⟡({})", child(v, "unicodemath")?)
+        format!("⟡({})", child(v, "unicodemath", ctx)?)
     } else {
         "⟡".into()
     })
 }
-pub(super) fn text_writer(m: &Model, f: &str) -> Result<String, String> {
+pub(super) fn text_writer(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     let v = m.field("parameter_one");
     if f == "html" {
         if matches!(m.kind(), "Rule" | "Msgroup") {
@@ -142,7 +142,7 @@ pub(super) fn text_writer(m: &Model, f: &str) -> Result<String, String> {
                 "source_argument_error: layout to_html does not accept options keyword".into(),
             );
         }
-        return unary_html(m);
+        return unary_html(m, ctx);
     }
     match m.kind() {
         "Merror" => Ok(String::new()),
@@ -157,20 +157,20 @@ pub(super) fn text_writer(m: &Model, f: &str) -> Result<String, String> {
                 ("parameter_three", "{", "}"),
             ] {
                 if truthy(m.field(field)) {
-                    result.push_str(&format!("{open}{}{close}", child(m.field(field), f)?));
+                    result.push_str(&format!("{open}{}{close}", child(m.field(field), f, ctx)?));
                 }
             }
             Ok(result)
         }
-        "Msgroup" => array_text(v, f, false, ""),
+        "Msgroup" => array_text(v, f, false, "", ctx),
         "Longdiv" | "Scarries" | "Mpadded" => match f {
-            "asciimath" | "latex" => unary_text(v, f),
-            "unicodemath" if m.kind() == "Mpadded" => padded_unicode(m),
+            "asciimath" | "latex" => unary_text(v, f, ctx),
+            "unicodemath" if m.kind() == "Mpadded" => padded_unicode(m, ctx),
             "unicodemath" => {
                 let value = if v.is_null() {
                     String::new()
                 } else {
-                    child(v, f)?
+                    child(v, f, ctx)?
                 };
                 Ok(if m.kind() == "Scarries" {
                     format!("scarries⁡{value}")

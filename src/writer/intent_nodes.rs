@@ -3,10 +3,10 @@ use super::{Model, Value, WriterContext, Xml};
 fn truthy(v: &Value) -> bool {
     !v.is_null() && v != false
 }
-fn child(v: &Value, f: &str) -> Result<String, String> {
-    super::multiscripts::child(v, f)
+fn child(v: &Value, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
+    super::multiscripts::child(v, f, ctx)
 }
-pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
+pub(super) fn text(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     let is_arg = m.class == "Math::Function::Arg";
     let first = m.field("parameter_one");
     let second = m.field("parameter_two");
@@ -15,7 +15,7 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
             let mut result = if is_arg { "arg" } else { "intent" }.to_owned();
             for field in [first, second] {
                 if truthy(field) {
-                    result.push_str(&format!("({})", child(field, f)?));
+                    result.push_str(&format!("({})", child(field, f, ctx)?));
                 }
             }
             Ok(result)
@@ -26,7 +26,7 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
                 if truthy(field) {
                     result.push_str(&super::nary::latex_wrapped_with_value(
                         field,
-                        child(field, "latex")?,
+                        child(field, "latex", ctx)?,
                     )?);
                 }
             }
@@ -40,7 +40,7 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
                 vec![first]
             } {
                 if truthy(value) {
-                    out.push_str(&format!("<i>{}</i>", child(value, f)?));
+                    out.push_str(&format!("<i>{}</i>", child(value, f, ctx)?));
                 }
             }
             Ok(out)
@@ -53,16 +53,16 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
                 let first = if first.is_null() {
                     String::new()
                 } else {
-                    child(first, f)?
+                    child(first, f, ctx)?
                 };
                 let second = if second.is_null() {
                     String::new()
                 } else {
-                    child(second, f)?
+                    child(second, f, ctx)?
                 };
                 Ok(format!("ⓐ({second} {first})"))
             } else {
-                Ok(format!("ⓘ({}{})", child(second, f)?, child(first, f)?))
+                Ok(format!("ⓘ({}{})", child(second, f, ctx)?, child(first, f, ctx)?))
             }
         }
         _ => Err("unported ExplicitIntent text format".into()),
@@ -86,7 +86,7 @@ fn metadata(value: &Value) -> Result<(String, bool), String> {
     }
     Err("unported promised Ruby non-string intent metadata inspection".into())
 }
-fn derivative(m: &Model) -> Result<Option<String>, String> {
+fn derivative(m: &Model, ctx: &super::WriterContext) -> Result<Option<String>, String> {
     let first = Model::from_value(m.field("parameter_one"))?;
     if first.class != "Math::Formula" {
         return Ok(None);
@@ -95,7 +95,7 @@ fn derivative(m: &Model) -> Result<Option<String>, String> {
         return Ok(None);
     };
     let power = Model::from_value(power)?;
-    if power.kind() != "Power" || !super::prime_symbol(power.field("parameter_two"))? {
+    if power.kind() != "Power" || !super::prime_symbol(power.field("parameter_two"), ctx)? {
         return Ok(None);
     }
     let base = Model::from_value(power.field("parameter_one"))?;
@@ -137,7 +137,7 @@ pub(super) fn xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, S
     }
     let (mut annotation, derivative_requested) = metadata(m.field("parameter_two"))?;
     if !is_arg && derivative_requested {
-        if let Some(base) = derivative(m)? {
+        if let Some(base) = derivative(m, ctx)? {
             let children = super::xml_nodes(&nodes[0]);
             let fence = children
                 .get(1)

@@ -86,7 +86,7 @@ impl FormatterRequest {
     fn render(&self,m:&Model,target:TargetWriter)->Result<WriterOutput,String> {
         // Source Number#value.to_s. Float/Array/Hash spelling remains explicitly gated
         // by the same default Number conversion rather than guessed here.
-        let source=super::numbers::ordinary_string(m.field("value"))?;
+        let source=if m.profile()==crate::source_values::Profile::RubyValuesV1 {crate::source_values::to_s(&crate::source_values::field(m,"value",crate::source_values::Domain::Literal)?)?}else{super::numbers::ordinary_string(m.field("value"))?};
         let base=match m.field("base") {
             Value::Null|Value::Bool(false)=>None,
             Value::Number(v)=>Some(v.as_i64().ok_or_else(||resource("Number.base exceeds the native i64 range"))?),
