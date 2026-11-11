@@ -1,6 +1,7 @@
 //! Procedural source-writer port; unported nodes/options fail, never return approximations.
 mod scripts;
 mod symbol_content;
+mod table_xml;
 mod tables;
 mod templates;
 mod text_content;
@@ -848,6 +849,20 @@ fn render_xml(
     if m.kind() == "Base" {
         return scripts::xml(m, f, spacing, allow_templates);
     }
+    if matches!(
+        m.class.as_str(),
+        "Math::Function::Table"
+            | "Math::Function::Table::Matrix"
+            | "Math::Function::Table::Pmatrix"
+            | "Math::Function::Table::Bmatrix"
+            | "Math::Function::Table::Vmatrix"
+            | "Math::Function::Table::Array"
+            | "Math::Function::Tr"
+            | "Math::Function::Td"
+    ) {
+        return table_xml::render(m, f, spacing, allow_templates);
+    }
+
     if m.kind() == "Unitsml" {
         return render_xml(&derived_units(m)?, f, spacing, allow_templates);
     }
