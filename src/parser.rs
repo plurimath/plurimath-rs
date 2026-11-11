@@ -1,33 +1,66 @@
 //! Source capture transformation over the accepted stage parser; no text grammar here.
 use crate::model::{formula, node, number};
 use serde_json::{json, Map, Value};
-fn untag(v: &Value) -> Result<Value, String> {
-    if let Some(s) = v.get("slice") {
-        return Ok(s.clone());
+// Parsed::tree already applies stage flatten_shape, unwrap and Renester.
+// Resolve only its source spans, directly on a heap work list; canonical tagged
+// JSON is a diagnostic representation and need not be recursively materialized.
+fn source_capture_tree(root: &Value, source: &str) -> Result<Value, String> {
+    enum Work<'a> {
+        Visit(&'a Value),
+        Array(usize),
+        Object(Vec<String>),
     }
-    if let Some(a) = v.get("array").and_then(Value::as_array) {
-        return a
-            .iter()
-            .map(untag)
-            .collect::<Result<Vec<_>, _>>()
-            .map(Value::Array);
-    }
-    if let Some(a) = v.get("hash").and_then(Value::as_array) {
-        let mut m = Map::new();
-        for pair in a {
-            let key = pair[0]["sym"].as_str().ok_or("invalid stage capture key")?;
-            m.insert(key.into(), untag(&pair[1])?);
+    let mut work = vec![Work::Visit(root)];
+    let mut output = Vec::<Value>::new();
+    while let Some(task) = work.pop() {
+        match task {
+            Work::Visit(Value::Array(values)) => {
+                work.push(Work::Array(values.len()));
+                for value in values.iter().rev() {
+                    work.push(Work::Visit(value));
+                }
+            }
+            Work::Visit(Value::Object(fields)) => {
+                let input_ref = fields.get("offset").is_some_and(Value::is_u64)
+                    && fields.get("length").is_some_and(Value::is_u64)
+                    && fields.keys().all(|k| {
+                        ["offset", "length", "value", "line", "column"].contains(&k.as_str())
+                    });
+                if input_ref {
+                    let text = if let Some(value) = fields.get("value").and_then(Value::as_str) {
+                        value.to_owned()
+                    } else {
+                        let offset = fields["offset"].as_u64().unwrap() as usize;
+                        let count = fields["length"].as_u64().unwrap() as usize;
+                        source
+                            .get(offset..)
+                            .ok_or("stage source span is not a UTF8 byte boundary")?
+                            .chars()
+                            .take(count)
+                            .collect()
+                    };
+                    output.push(Value::String(text));
+                } else {
+                    work.push(Work::Object(fields.keys().cloned().collect()));
+                    for value in fields.values().rev() {
+                        work.push(Work::Visit(value));
+                    }
+                }
+            }
+            Work::Visit(value) => output.push(value.clone()),
+            Work::Array(count) => {
+                let values = output.split_off(output.len() - count);
+                output.push(Value::Array(values));
+            }
+            Work::Object(keys) => {
+                let values = output.split_off(output.len() - keys.len());
+                output.push(Value::Object(keys.into_iter().zip(values).collect()));
+            }
         }
-        return Ok(Value::Object(m));
     }
-    if let Some(a) = v.as_array() {
-        return a
-            .iter()
-            .map(untag)
-            .collect::<Result<Vec<_>, _>>()
-            .map(Value::Array);
-    }
-    Ok(v.clone())
+    output
+        .pop()
+        .ok_or("stage capture lowering produced no value".into())
 }
 fn single(mut a: Vec<Value>) -> Value {
     if a.is_empty() {
@@ -46,13 +79,220 @@ fn unfence(v: Value) -> Value {
     }
     v
 }
-fn tx(v: &Value, depth: usize) -> Result<Vec<Value>, String> {
-    if depth > 128 {
-        return Err("common converter depth limit128".into());
+#[derive(Debug)]
+enum ConversionError {
+    Unported(String),
+    Resource { depth: usize, max_depth: usize },
+}
+impl From<String> for ConversionError {
+    fn from(value: String) -> Self {
+        Self::Unported(value)
     }
-    let m = v
-        .as_object()
-        .ok_or_else(|| format!("unported stage capture value {v}"))?;
+}
+impl From<&str> for ConversionError {
+    fn from(value: &str) -> Self {
+        Self::Unported(value.into())
+    }
+}
+fn tx_rule_0(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
+    if m.contains_key("table_left") && m.contains_key("table_right") && m.contains_key("table_row")
+    {
+        let left = m["table_left"]
+            .get("table_left")
+            .and_then(Value::as_str)
+            .ok_or("unported source table-left shape")?;
+        let right = m["table_right"]
+            .get("table_right")
+            .and_then(Value::as_str)
+            .ok_or("unported source table-right shape")?;
+        let mut rows = tx(&m["table_row"], depth + 1)?;
+        if let Some(rest) = m.get("expr") {
+            rows.extend(tx(rest, depth + 1)?);
+        }
+        if rows.iter().any(|v| v["class"] != "Math::Function::Tr") {
+            return Err("unported non-row source table content".into());
+        }
+        return Ok(Some(vec![node(
+            "Math::Function::Table",
+            json!({"options":{},"open_paren":crate::symbols::symbol(left),"close_paren":crate::symbols::symbol(right),"value":rows}),
+        )]));
+    }
+    Ok(None)
+}
+fn tx_rule_1(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
+    if m.contains_key("open_tr") && m.contains_key("tds_list") {
+        if m.len() != 2 {
+            return Err("unported source table-row fields".into());
+        }
+        return Ok(Some(vec![node(
+            "Math::Function::Tr",
+            json!({"parameter_one":tx(&m["tds_list"],depth+1)?}),
+        )]));
+    }
+    Ok(None)
+}
+fn tx_rule_2(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
+    if let Some(value) = m.get("td") {
+        if m.len() != 1 {
+            return Err("unported combined source Td fields".into());
+        }
+        let contents = tx(value, depth + 1)?;
+        let mut cells = vec![];
+        let mut cell = vec![];
+        for value in contents {
+            if value["class"] == "Math::Symbols::Comma" {
+                cells.push(node(
+                    "Math::Function::Td",
+                    json!({"parameter_one":cell,"parameter_two":null}),
+                ));
+                cell = vec![];
+            } else {
+                cell.push(value);
+            }
+        }
+        cells.push(node(
+            "Math::Function::Td",
+            json!({"parameter_one":cell,"parameter_two":null}),
+        ));
+        return Ok(Some(cells));
+    }
+    Ok(None)
+}
+fn tx_rule_3(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
+    if let Some(row) = m.get("table_row") {
+        let mut rows = tx(row, depth + 1)?;
+        if let Some(rest) = m.get("expr") {
+            rows.extend(tx(rest, depth + 1)?);
+        }
+        if m.keys()
+            .any(|k| !["table_row", "expr"].contains(&k.as_str()))
+        {
+            return Err("unported source table rows".into());
+        }
+        return Ok(Some(rows));
+    }
+    Ok(None)
+}
+fn tx_rule_4(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
+    if m.len() == 2 && m.contains_key("d") && m.contains_key("x") {
+        let d = m["d"].as_str().ok_or("non-text differential d")?;
+        let x = m["x"].as_str().ok_or("non-text differential x")?;
+        return Ok(Some(vec![formula(vec![
+            crate::symbols::symbol(d),
+            crate::symbols::symbol(x),
+        ])]));
+    }
+    Ok(None)
+}
+fn tx_rule_5(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
+    if let Some(text) = m.get("unitsml").and_then(Value::as_str) {
+        if m.len() != 1 {
+            return Err("unported combined UnitsML capture".into());
+        }
+        return Ok(Some(vec![node(
+            "Math::Function::Unitsml",
+            json!({"text":text}),
+        )]));
+    }
+    Ok(None)
+}
+fn tx_rule_6(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
+    if let Some(close) = m.get("rparen").and_then(Value::as_str) {
+        if m.contains_key("lparen") { /* handled by the fenced rule below */
+        } else {
+            let mut out = vec![crate::symbols::symbol(close)];
+            if let Some(rest) = m.get("expr") {
+                out.extend(tx(rest, depth + 1)?);
+            }
+            if m.keys().any(|k| !["rparen", "expr"].contains(&k.as_str())) {
+                return Err("unported closing-paren script capture".into());
+            }
+            return Ok(Some(out));
+        }
+    }
+    Ok(None)
+}
+fn tx_rule_7(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
+    if let Some(name) = m.get("ternary_class").and_then(Value::as_str) {
+        let class = crate::symbols::tables()["class_map"][name]
+            .as_str()
+            .ok_or("unknown source ternary class")?;
+        let a = m
+            .get("base_value")
+            .or_else(|| m.get("base"))
+            .map(|v| tx(v, depth + 1).map(single).map(unfence))
+            .transpose()?
+            .unwrap_or(Value::Null);
+        let b = m
+            .get("power_value")
+            .or_else(|| m.get("power"))
+            .map(|v| tx(v, depth + 1).map(single).map(unfence))
+            .transpose()?
+            .unwrap_or(Value::Null);
+        let c = m
+            .get("third_value")
+            .filter(|v| !v.is_string())
+            .map(|v| tx(v, depth + 1).map(single))
+            .transpose()?
+            .unwrap_or(Value::Null);
+        if m.keys().any(|k| {
+            ![
+                "ternary_class",
+                "base_value",
+                "base",
+                "power_value",
+                "power",
+                "third_value",
+                "expr",
+            ]
+            .contains(&k.as_str())
+        }) {
+            return Err("unported source ternary fields".into());
+        }
+        let mut out = vec![node(
+            class,
+            json!({"parameter_one":a,"parameter_two":b,"parameter_three":c}),
+        )];
+        if let Some(rest) = m.get("expr") {
+            out.extend(tx(rest, depth + 1)?);
+        }
+        return Ok(Some(out));
+    }
+    Ok(None)
+}
+fn tx_rule_8(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
+    if m.contains_key("dividend")
+        && m.contains_key("divisor")
+        && m.get("mod") == Some(&json!("mod"))
+    {
+        return Ok(Some(vec![node(
+            "Math::Function::Mod",
+            json!({"parameter_one":single(tx(&m["dividend"],depth+1)?),"parameter_two":single(tx(&m["divisor"],depth+1)?)}),
+        )]));
+    }
+    Ok(None)
+}
+fn tx_rule_9(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
+    if let Some(left) = m.get("left").and_then(Value::as_str) {
+        let right = m
+            .get("right")
+            .and_then(Value::as_str)
+            .ok_or("source right delimiter must be text")?;
+        if m.len() != 3 || !m.contains_key("left_right_value") {
+            return Err("unported left/right fields".into());
+        }
+        let inner = single(tx(&m["left_right_value"], depth + 1)?);
+        let mut value = formula(vec![
+            node("Math::Function::Left", json!({"parameter_one":left})),
+            inner,
+            node("Math::Function::Right", json!({"parameter_one":right})),
+        ]);
+        value["fields"]["left_right_wrapper"] = json!(false);
+        return Ok(Some(vec![value]));
+    }
+    Ok(None)
+}
+fn tx_rule_10(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if let Some(font) = m.get("fonts_class").and_then(Value::as_str) {
         if !m.contains_key("fonts_value") {
             return Err("unported source font constructor without operand".into());
@@ -68,8 +308,11 @@ fn tx(v: &Value, depth: usize) -> Result<Vec<Value>, String> {
         if let Some(rest) = m.get("expr") {
             out.extend(tx(rest, depth + 1)?)
         }
-        return Ok(out);
+        return Ok(Some(out));
     }
+    Ok(None)
+}
+fn tx_rule_11(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if m.contains_key("color") && m.contains_key("color_value") {
         let a = unfence(single(tx(&m["color"], depth + 1)?));
         let b = unfence(single(tx(&m["color_value"], depth + 1)?));
@@ -80,8 +323,11 @@ fn tx(v: &Value, depth: usize) -> Result<Vec<Value>, String> {
         if let Some(rest) = m.get("expr") {
             out.extend(tx(rest, depth + 1)?)
         }
-        return Ok(out);
+        return Ok(Some(out));
     }
+    Ok(None)
+}
+fn tx_rule_12(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if let Some(t) = m.get("text") {
         let value = if let Some(s) = t.as_str() {
             s.to_owned()
@@ -101,8 +347,11 @@ fn tx(v: &Value, depth: usize) -> Result<Vec<Value>, String> {
         if let Some(rest) = m.get("expr") {
             out.extend(tx(rest, depth + 1)?)
         }
-        return Ok(out);
+        return Ok(Some(out));
     }
+    Ok(None)
+}
+fn tx_rule_13(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if let Some(c) = m.get("comma") {
         let mut out = vec![crate::symbols::symbol(
             c.as_str().ok_or("unported comma capture")?,
@@ -110,8 +359,11 @@ fn tx(v: &Value, depth: usize) -> Result<Vec<Value>, String> {
         if let Some(rest) = m.get("expr") {
             out.extend(tx(rest, depth + 1)?)
         }
-        return Ok(out);
+        return Ok(Some(out));
     }
+    Ok(None)
+}
+fn tx_rule_14(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if m.contains_key("power_base") && m.contains_key("base") {
         if m.keys()
             .any(|k| !["power_base", "base", "expr"].contains(&k.as_str()))
@@ -127,8 +379,11 @@ fn tx(v: &Value, depth: usize) -> Result<Vec<Value>, String> {
         if let Some(rest) = m.get("expr") {
             out.extend(tx(rest, depth + 1)?)
         }
-        return Ok(out);
+        return Ok(Some(out));
     }
+    Ok(None)
+}
+fn tx_rule_15(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if let Some(name) = m.get("binary_class").and_then(Value::as_str) {
         if ["root", "log", "lim"].contains(&name) {
             let class = crate::symbols::tables()["class_map"][name]
@@ -148,19 +403,25 @@ fn tx(v: &Value, depth: usize) -> Result<Vec<Value>, String> {
             if let Some(rest) = m.get("expr") {
                 out.extend(tx(rest, depth + 1)?)
             }
-            return Ok(out);
+            return Ok(Some(out));
         }
     }
+    Ok(None)
+}
+fn tx_rule_16(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if m.contains_key("power_base") && m.contains_key("base_value") && m.contains_key("power_value")
     {
         if m.len() != 3 {
             return Err("unported combined source PowerBase captures".into());
         }
-        return Ok(vec![node(
+        return Ok(Some(vec![node(
             "Math::Function::PowerBase",
             json!({"parameter_one":single(tx(&m["power_base"],depth+1)?),"parameter_two":unfence(single(tx(&m["base_value"],depth+1)?)),"parameter_three":unfence(single(tx(&m["power_value"],depth+1)?))}),
-        )]);
+        )]));
     }
+    Ok(None)
+}
+fn tx_rule_17(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if m.contains_key("power_base") && m.contains_key("power") {
         if m.keys()
             .any(|k| !["power_base", "power", "expr"].contains(&k.as_str()))
@@ -180,8 +441,11 @@ fn tx(v: &Value, depth: usize) -> Result<Vec<Value>, String> {
         if let Some(v) = m.get("expr") {
             out.extend(tx(v, depth + 1)?)
         }
-        return Ok(out);
+        return Ok(Some(out));
     }
+    Ok(None)
+}
+fn tx_rule_18(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if let Some(name) = m.get("unary_class").and_then(Value::as_str) {
         let class = crate::symbols::tables()["class_map"][name]
             .as_str()
@@ -209,44 +473,63 @@ fn tx(v: &Value, depth: usize) -> Result<Vec<Value>, String> {
         if !crate::writer::unary_class(&crate::model::Model::from_value(&model)?)
             && !["Sqrt", "Abs", "Hat", "Bar", "Vec"].contains(&kind)
         {
-            return Err(format!(
-                "unported promised source unary constructor {class}"
-            ));
+            return Err(format!("unported promised source unary constructor {class}").into());
         }
-        return Ok(vec![model]);
+        return Ok(Some(vec![model]));
     }
+    Ok(None)
+}
+fn tx_rule_19(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if m.contains_key("number") && m.len() != 1 {
         return Err("unported source combined number capture".into());
     }
+    Ok(None)
+}
+fn tx_rule_20(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if m.contains_key("symbol") && m.len() != 1 {
         return Err("unported source combined symbol capture".into());
     }
+    Ok(None)
+}
+fn tx_rule_21(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if let Some(n) = m.get("number") {
-        return Ok(vec![number(
+        return Ok(Some(vec![number(
             n.as_str().ok_or("number capture is not source text")?,
-        )]);
+        )]));
     }
+    Ok(None)
+}
+fn tx_rule_22(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if let Some(s) = m.get("symbol") {
-        return Ok(vec![crate::symbols::symbol(
+        return Ok(Some(vec![crate::symbols::symbol(
             s.as_str().ok_or("symbol capture is not source text")?,
-        )]);
+        )]));
     }
+    Ok(None)
+}
+fn tx_rule_23(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if m.contains_key("numerator") && m.contains_key("denominator") {
         let a = unfence(single(tx(&m["numerator"], depth + 1)?));
         let b = unfence(single(tx(&m["denominator"], depth + 1)?));
-        return Ok(vec![node(
+        return Ok(Some(vec![node(
             "Math::Function::Frac",
             json!({"parameter_one":a,"parameter_two":b}),
-        )]);
+        )]));
     }
+    Ok(None)
+}
+fn tx_rule_24(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if m.get("binary_class").and_then(Value::as_str) == Some("frac") {
         let a = unfence(single(tx(&m["base_value"], depth + 1)?));
         let b = unfence(single(tx(&m["power_value"], depth + 1)?));
-        return Ok(vec![node(
+        return Ok(Some(vec![node(
             "Math::Function::Frac",
             json!({"parameter_one":a,"parameter_two":b}),
-        )]);
+        )]));
     }
+    Ok(None)
+}
+fn tx_rule_25(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if m.contains_key("lparen") && m.contains_key("rparen") {
         let a = crate::symbols::symbol(m["lparen"].as_str().ok_or("fence open must be text")?);
         let b = if m["rparen"].is_null() {
@@ -263,10 +546,147 @@ fn tx(v: &Value, depth: usize) -> Result<Vec<Value>, String> {
         } else {
             tx(inner, depth + 1)?
         };
-        return Ok(vec![node(
+        return Ok(Some(vec![node(
             "Math::Function::Fenced",
             json!({"options":{},"parameter_one":a,"parameter_two":body,"parameter_three":b}),
-        )]);
+        )]));
+    }
+    Ok(None)
+}
+fn tx(v: &Value, depth: usize) -> Result<Vec<Value>, ConversionError> {
+    let (mut v, mut depth) = (v, depth);
+    // These source capture wrappers preserve their child's transformed value.
+    // Iterate them instead of retaining a Rust frame for every grammar wrapper.
+    loop {
+        let Some(fields) = v.as_object() else { break };
+        if fields.len() != 1 {
+            break;
+        }
+        let (key, child) = fields.iter().next().unwrap();
+        if ![
+            "expr",
+            "sequence",
+            "frac",
+            "power_base",
+            "base_value",
+            "power_value",
+            "unary",
+            "intermediate_exp",
+            "left_right",
+            "ternary",
+            "mod",
+            "table",
+        ]
+        .contains(&key.as_str())
+        {
+            break;
+        }
+        v = child;
+        depth += 1;
+        if depth > 1024 {
+            return Err(ConversionError::Resource {
+                depth,
+                max_depth: 1024,
+            });
+        }
+    }
+
+    if depth > 1024 {
+        return Err(ConversionError::Resource {
+            depth,
+            max_depth: 1024,
+        });
+    }
+    if let Some(values) = v.as_array() {
+        let mut out = vec![];
+        for value in values {
+            out.extend(tx(value, depth + 1)?);
+        }
+        return Ok(out);
+    }
+    if v.is_null() || v == "" {
+        return Ok(vec![]);
+    }
+    let m = v
+        .as_object()
+        .ok_or_else(|| format!("unported stage capture value {v}"))?;
+    if let Some(out) = tx_rule_0(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_1(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_2(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_3(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_4(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_5(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_6(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_7(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_8(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_9(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_10(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_11(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_12(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_13(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_14(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_15(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_16(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_17(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_18(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_19(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_20(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_21(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_22(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_23(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_24(m, depth)? {
+        return Ok(out);
+    }
+    if let Some(out) = tx_rule_25(m, depth)? {
+        return Ok(out);
     }
     // Fenced operands are unwrapped only at explicit fraction argument positions in source;
     // general grouping remains an unported case until its full source node is available.
@@ -275,8 +695,10 @@ fn tx(v: &Value, depth: usize) -> Result<Vec<Value>, String> {
         match k.as_str() {
             "expr" | "sequence" | "frac" | "power_base" | "base_value" | "power_value"
             | "unary" => out.extend(tx(x, depth + 1)?),
-            "intermediate_exp" => out.extend(tx(x, depth + 1)?),
-            _ => return Err(format!("unported promised AsciiMath capture {k}")),
+            "intermediate_exp" | "left_right" | "ternary" | "mod" | "table" => {
+                out.extend(tx(x, depth + 1)?)
+            }
+            _ => return Err(format!("unported promised AsciiMath capture {k}").into()),
         }
     }
     Ok(out)
@@ -288,12 +710,16 @@ pub enum ParseError {
     InvalidOptions(String),
     Stage(amath::Error),
     Initialization(String),
+    ConverterResource { depth: usize, max_depth: usize },
 }
 impl std::fmt::Display for ParseError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             Self::Unported(s) | Self::InvalidOptions(s) | Self::Initialization(s) => f.write_str(s),
             Self::Stage(e) => e.fmt(f),
+            Self::ConverterResource { depth, max_depth } => {
+                write!(f, "common converter depth {depth} exceeds {max_depth}")
+            }
         }
     }
 }
@@ -321,8 +747,19 @@ pub fn parse(input: &str, format: &str, options: &Value) -> Result<Value, ParseE
         Ok(parser) => parser.parse_legacy(input).map_err(ParseError::Stage),
         Err(message) => Err(ParseError::Initialization(message.clone())),
     })?;
-    let tree = untag(&stage.canonical()).map_err(ParseError::Unported)?;
-    let mut model = formula(tx(&tree, 0).map_err(ParseError::Unported)?);
+    let tree =
+        source_capture_tree(&stage.tree, &stage.parsed_input).map_err(ParseError::Unported)?;
+    let mut values = tx(&tree, 0).map_err(|error| match error {
+        ConversionError::Unported(message) => ParseError::Unported(message),
+        ConversionError::Resource { depth, max_depth } => {
+            ParseError::ConverterResource { depth, max_depth }
+        }
+    })?;
+    let mut model = if values.len() == 1 && values[0]["class"] == "Math::Formula" {
+        values.remove(0)
+    } else {
+        formula(values)
+    };
     model["fields"]["input_string"] = json!(input);
     Ok(model)
 }
@@ -345,6 +782,9 @@ pub fn response(v: &Value) -> Value {
                 }
                 ParseError::Initialization(_) => {
                     json!({"code":"parser_initialization_error","message":e.to_string()})
+                }
+                ParseError::ConverterResource { depth, max_depth } => {
+                    json!({"code":"resource_limit","message":e.to_string(),"resource":{"kind":"common_model_depth","depth":depth,"max_depth":max_depth}})
                 }
                 ParseError::Stage(stage) => {
                     let resource = match stage {
