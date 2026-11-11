@@ -194,12 +194,69 @@ fn source_caller_register_wires() {
     let fixture: Value =
         serde_json::from_str(include_str!("../fixtures/quantity-register.json")).unwrap();
     assert_eq!(fixture["cases"].as_array().unwrap().len(), 32);
+    // Rows whose result changes with the bundled UnitsDB data are listed in
+    // the source-versioned profile, which pins the legacy expectation byte for
+    // byte and gives the expectation for the bundled data; the legacy fixture
+    // itself stays the frozen UnitsDB 2.2.0 (c2c7d18) profile.
+    let profile: Value = serde_json::from_str(include_str!(
+        "../fixtures/source-profile-unitsdb-060b566.json"
+    ))
+    .unwrap();
+    let superseded: std::collections::BTreeMap<&str, &Value> = profile["superseded_legacy_rows"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .map(|row| (row["id"].as_str().unwrap(), row))
+        .collect();
     for case in fixture["cases"].as_array().unwrap() {
+        let id = case["id"].as_str().unwrap();
+        let expected = match superseded.get(id) {
+            Some(row) => {
+                assert_eq!(row["legacy_expected_wire"], case["expected_wire"], "{id}");
+                assert_eq!(row["request_json"], case["request_json"], "{id}");
+                row["expected_wire"].as_str().unwrap()
+            }
+            None => case["expected_wire"].as_str().unwrap(),
+        };
         assert_eq!(
             plurimath_numeric::evaluate_json(case["request_json"].as_str().unwrap()),
-            case["expected_wire"].as_str().unwrap(),
-            "{}",
-            case["id"]
+            expected,
+            "{id}"
         );
     }
+    assert_eq!(superseded.len(), 2);
+}
+
+#[cfg(feature = "quantity")]
+#[test]
+fn source_profile_unitsdb_060b566_definitions() {
+    let profile: Value = serde_json::from_str(include_str!(
+        "../fixtures/source-profile-unitsdb-060b566.json"
+    ))
+    .unwrap();
+    let probes = profile["definition_probes"].as_array().unwrap();
+    assert_eq!(probes.len(), 9);
+    for probe in probes {
+        assert_eq!(
+            plurimath_numeric::evaluate_json(probe["request_json"].as_str().unwrap()),
+            probe["expected_wire"].as_str().unwrap(),
+            "{}",
+            probe["id"]
+        );
+    }
+    // 1 cwt (US) = 100 lb, and with a caller lb register exactly 45.359237 kg.
+    let by_id = |id: &str| probes.iter().find(|p| p["id"] == id).unwrap();
+    let wire = |id: &str| -> Value {
+        serde_json::from_str(by_id(id)["expected_wire"].as_str().unwrap()).unwrap()
+    };
+    assert_eq!(
+        wire("def-cwt-us-to-lb-lb-register")["result"]["converted"]["magnitude"],
+        "100"
+    );
+    assert_eq!(
+        wire("def-cwt-us-to-kg-lb-register")["result"]["converted"]["magnitude"],
+        "45359237/1000000"
+    );
+    // A cwt (UK) registration no longer leaks into cwt (US).
+    assert_eq!(wire("def-cwt-us-uk-register-no-leak")["ok"], false);
 }
