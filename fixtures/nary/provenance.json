@@ -1,0 +1,115 @@
+{
+  "profile": "native-nary-writers-source/1",
+  "reference": {
+    "repository": "https://github.com/plurimath/plurimath",
+    "commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+    "clean_at_generation": true,
+    "ruby": "4.0.1",
+    "xml_engine": "Ox",
+    "license": "BSD-2-Clause",
+    "source_files": {
+      "lib/plurimath/math/core.rb": "e541684dbc5c53fbf8b3c30e0ab2e28c6036cbaa9429ba1caedcf1de9192691d",
+      "lib/plurimath/math/formula.rb": "11561b5d7c6f897f6f8c90acb746275b341921bba12af724238cf631ed96b28f",
+      "lib/plurimath/math/function/arccos.rb": "b52aeb76bcb9af16193d936880c81d0e575d1e572074ea09c86c454f9d9356ff",
+      "lib/plurimath/math/function/arcsin.rb": "001de5c94ba3fe63e858b899d7860e131c69157026ef22dba14df137c315f906",
+      "lib/plurimath/math/function/arctan.rb": "bb5f64dbdcf7130370b4398a9f3e7a146cafba7b6a6005119ac4148702dc0753",
+      "lib/plurimath/math/function/binary_function.rb": "11484864dc3ac876a9c33e5343f5d29dbec3c3e8ce018e6467a44a50a31c2dbc",
+      "lib/plurimath/math/function/cos.rb": "f12f8bff4639953cd88d609d3115ab89ae5934c6c97ecc9e4d6071d937cbf79c",
+      "lib/plurimath/math/function/cosh.rb": "f2d90b29a868952b8f6a104e602a1fac29475b6fc1ffaf388c9e64adaab133dc",
+      "lib/plurimath/math/function/cot.rb": "6fd4e56b217b268cdccf8bd386f2c702ebdc290ecfced0df74ba688197674ad2",
+      "lib/plurimath/math/function/coth.rb": "d1cb4d3a70d305221bcb0a5125913619e07ed0248ae4acc73744684960f83d11",
+      "lib/plurimath/math/function/csc.rb": "e770477959f5f533158425e01665cb369a30b5597b77eb234c1a8a069a9a8b97",
+      "lib/plurimath/math/function/csch.rb": "a292bd9a69bbe88625e51afcd502ba801b227748a6aa938cb0d6df2d96e8ff7d",
+      "lib/plurimath/math/function/deg.rb": "c6edc76b5e0772cc07cd900e9422bfe79275c7e48f20c408b502da8d2c27ea05",
+      "lib/plurimath/math/function/det.rb": "276664a1753827a640a322bca103910ed29a34fa4160ef8a8a5bdc253a8bc865",
+      "lib/plurimath/math/function/dim.rb": "ae37dc6ef4392b7effea59eed5ff0eb9e992b611793f46475baf17844108b038",
+      "lib/plurimath/math/function/exp.rb": "9cda000aed972d3381a8ead226c9674bcb96c00d664ab7b3e3ea0f1310e3d86f",
+      "lib/plurimath/math/function/font_style.rb": "103004ab8db640e7a8b4cbbb13aeb57e78904dcc4370d2bc437cabb6ef4bb5d3",
+      "lib/plurimath/math/function/gcd.rb": "5e9df6ebc5e2378e479cc71bf2f6afb42f7201343c090571bee7ea3177d8d55a",
+      "lib/plurimath/math/function/glb.rb": "3958f3a77bcf24dd387a65898f9039de7b4b6cbd4ccc86f4113b7b900105aa06",
+      "lib/plurimath/math/function/hat.rb": "160d9e00d1aee157c84ce1dc3a34ba43dd6bab4877be2e18c8f53d25272f890d",
+      "lib/plurimath/math/function/int.rb": "f142b40f2aad3ab1b888730a39a3e72830e98682586a98a6248137123f3b32a5",
+      "lib/plurimath/math/function/lcm.rb": "a1a8ff6544b3b43590681f853540130735b18351f07b9729949d362e35487db3",
+      "lib/plurimath/math/function/left.rb": "d6fb0595706edaed1dae4c8b2e3f863df841a7c5185724d7f330e853238d0a02",
+      "lib/plurimath/math/function/lg.rb": "d3a378deb1c049cc8fa61e1ba2a08bacbfaaa061ecdbd53565807565bb05965f",
+      "lib/plurimath/math/function/ln.rb": "2f43636193eb30c577aa695c41f67c37cfde1ef1810bf136990ca5667b52d2bf",
+      "lib/plurimath/math/function/lub.rb": "5f96086afa084250a04d7fd1b9d47126c23ccd7c3fd56a7c623b9965d12f9e79",
+      "lib/plurimath/math/function/max.rb": "f2459b8dca165a4c5db30af63ded6c3a3e7580f5e5712a04d2918ccb2038ee67",
+      "lib/plurimath/math/function/min.rb": "bfe607524aa53457b622e67fa2c810073c37a158dadd97746330d05374fe0571",
+      "lib/plurimath/math/function/nary.rb": "9c684cb10363e631ddcccce044e3c53e8b81cdab879ab3d4e2f2530908720b3d",
+      "lib/plurimath/math/function/obrace.rb": "d3ab50af8637aeded644d7845d7ad389a14e2137d12650df3af490d9433b4905",
+      "lib/plurimath/math/function/oint.rb": "9ce9ea92e9fdef4d67f51b76c758696b71fdf9546dae5b384796fc1deababe95",
+      "lib/plurimath/math/function/prod.rb": "6bf63f7619561b13300c296ccddf5cc2bb0b408cc626e6d2990101a30005c255",
+      "lib/plurimath/math/function/right.rb": "cbc7cc9fd5eb8aa34bcba73d810b1d9fbe830bc5bc9ede32d611ef266a71bfa4",
+      "lib/plurimath/math/function/sec.rb": "28d26c8690b59781c69e0fb79368b16ba65ac85a93a11321a2a203960567de6b",
+      "lib/plurimath/math/function/sech.rb": "8cf3a54291e8e6b8047270611d805e1b2e737047edfae3bb46dd4d1f76f2f068",
+      "lib/plurimath/math/function/sin.rb": "c9e021ea93346f27e3b58432ee330b43157f2a517431254596aba715831f0fab",
+      "lib/plurimath/math/function/sinh.rb": "ffc6d07bac3e747d8e70861c4e51b10c8ea9ae2e8e010a4d9ad4f1fc5e7ffafa",
+      "lib/plurimath/math/function/sum.rb": "9161d5233e25a1a42af3268559804c3d4fe73d9b7ce0b2624ac439a23375f72a",
+      "lib/plurimath/math/function/tan.rb": "cea63a77a21c0d4cc96e9ce05167278e22d8d77e59a89e1b7f8a960588effb30",
+      "lib/plurimath/math/function/tanh.rb": "081dcbaa0cdf737066be9fc4ff96f5b10882469df3748fcfc68d94aec173ea50",
+      "lib/plurimath/math/function/ternary_function.rb": "5f092a4babe027715ccc13be646caf8ad77b0011ed57f6594730e54644ef3300",
+      "lib/plurimath/math/function/text.rb": "77be32dce6d254d766c7f4f8c384d931b0b8ed380a3bab6336edc85e04022caa",
+      "lib/plurimath/math/function/tilde.rb": "6e3146cf7bf9390fc47effc2548c962e61179273030047405187d380d0f2cdc1",
+      "lib/plurimath/math/function/ubrace.rb": "0f6ccbb8bce1fe589d2852743822c0f68a0d51faded0e1febdb6f0bb9b638b4f",
+      "lib/plurimath/math/number.rb": "016df0edb4c52f6eb59fcea3b407c91a3f619ab895e0fa61e6664cd6f7db2b15",
+      "lib/plurimath/math/symbols/symbol.rb": "52f7b190ecc6f6ce7ede96c9a76ef3c610f301865593677fe510421109ef7cfe"
+    }
+  },
+  "frozen": {
+    "path": "source-reference.json",
+    "sha256": "f6fca7de41bb46ccd0cc08ecab81448b10a819e65ecc7af8cbefabcb4e58897c",
+    "cases": 192,
+    "exact_outputs": 836,
+    "source_refusal_classes": 316,
+    "replayed_original_producer_byte_identically": true,
+    "original_producer_sha256": "d10377131755b33e8352f3e7ba0b1438509ea0cc94ae56f49a9930c3c6e6d494"
+  },
+  "independent": {
+    "path": "independent-reference.json",
+    "sha256": "ce03d9679b1e245cf9f3179f1cbe557ee138846b13c5ef88fb60310b5a0dcee7",
+    "cases": 288,
+    "exact_outputs": 1432,
+    "source_refusal_classes": 263,
+    "explicit_unported_observations": 33,
+    "model_mutations": 0,
+    "caller_options": "Each serialized request receives fresh options; source mutation of that private hash is recorded separately."
+  },
+  "producer": {
+    "path": "../../tests/support/export-nary.rb",
+    "sha256": "496903af305469d187ae4463f3f8d54fbec588bdfed300177bd14b560e53b38f",
+    "class_inventory_sha256": "58d83d18b24e73fab305f2f4d463fb893f795ed3208cf9590b62375e7bb555e7",
+    "corpus_helper_sha256": "82630cc145295b12b23443c853b5d2841cd7e293c607092409a050e67fc27868",
+    "bundle_gemfile_sha256": "25f29e5a89e3c52cbd60d184278dd6c31256f48ccccbbb8304d245f84f7b16a9",
+    "bundle_lock_sha256": "9b0406514dcf625caac5b67c59d563f5fce5c7fa769b1a4d5ff6996b15732413"
+  },
+  "reproduce": {
+    "environment": {
+      "PLURIMATH_SOURCE_ROOT": "clean Ruby source checkout",
+      "PLURIMATH_CORPUS_GENERATOR": "source-pinned scripts/generate-corpus.rb",
+      "PLURIMATH_CLASS_INVENTORY": "fixtures/nary/class-inventory.json"
+    },
+    "command": "bundle exec ruby tests/support/export-nary.rb /tmp/nary-data.json /tmp/nary-independent.json"
+  },
+  "determinism": [
+    "different wallclock processes/hash seeds",
+    "TZ UTC vs Pacific/Honolulu",
+    "LC_ALL C.UTF-8 vs C",
+    "cwd root vs tests",
+    "thin class inventory vs full source metadata"
+  ],
+  "source_errors": "Exception classes are qualified; message-byte parity is not claimed.",
+  "remaining": [
+    {
+      "context": "caller mask option before the child renderer",
+      "observations": 24,
+      "owner": "global writer options/context"
+    },
+    {
+      "context": "Unicode floating, array and hash mask stringification",
+      "observations": 9,
+      "owner": "shared Ruby scalar/inspect spelling"
+    }
+  ],
+  "implementation": "Source procedures and measured class/glyph/predicate constants; no whole-input or fixture matching; no runtime Ruby/Node bridge."
+}

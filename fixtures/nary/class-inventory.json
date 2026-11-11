@@ -1,0 +1,471 @@
+{
+  "source": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "original_inventory_sha256": "5328c514fb749b4872d1978d1fcd615963d2c991bd47b4bc4a7a002dabd6e0b3",
+  "rows": [
+    {
+      "class": "Math::Formula"
+    },
+    {
+      "class": "Math::Function::Abs"
+    },
+    {
+      "class": "Math::Function::Arccos"
+    },
+    {
+      "class": "Math::Function::Arcsin"
+    },
+    {
+      "class": "Math::Function::Arctan"
+    },
+    {
+      "class": "Math::Function::Arg"
+    },
+    {
+      "class": "Math::Function::Bar"
+    },
+    {
+      "class": "Math::Function::Base"
+    },
+    {
+      "class": "Math::Function::Cancel"
+    },
+    {
+      "class": "Math::Function::Ceil"
+    },
+    {
+      "class": "Math::Function::Color"
+    },
+    {
+      "class": "Math::Function::Cos"
+    },
+    {
+      "class": "Math::Function::Cosh"
+    },
+    {
+      "class": "Math::Function::Cot"
+    },
+    {
+      "class": "Math::Function::Coth"
+    },
+    {
+      "class": "Math::Function::Csc"
+    },
+    {
+      "class": "Math::Function::Csch"
+    },
+    {
+      "class": "Math::Function::Ddot"
+    },
+    {
+      "class": "Math::Function::Deg"
+    },
+    {
+      "class": "Math::Function::Det"
+    },
+    {
+      "class": "Math::Function::Dim"
+    },
+    {
+      "class": "Math::Function::Dot"
+    },
+    {
+      "class": "Math::Function::Exp"
+    },
+    {
+      "class": "Math::Function::Fenced"
+    },
+    {
+      "class": "Math::Function::Floor"
+    },
+    {
+      "class": "Math::Function::FontStyle"
+    },
+    {
+      "class": "Math::Function::FontStyle::Italic"
+    },
+    {
+      "class": "Math::Function::FontStyle::Monospace"
+    },
+    {
+      "class": "Math::Function::Frac"
+    },
+    {
+      "class": "Math::Function::Gcd"
+    },
+    {
+      "class": "Math::Function::Glb"
+    },
+    {
+      "class": "Math::Function::Hat"
+    },
+    {
+      "class": "Math::Function::Hom"
+    },
+    {
+      "class": "Math::Function::Inf"
+    },
+    {
+      "class": "Math::Function::Int"
+    },
+    {
+      "class": "Math::Function::Intent"
+    },
+    {
+      "class": "Math::Function::Ker"
+    },
+    {
+      "class": "Math::Function::Lcm"
+    },
+    {
+      "class": "Math::Function::Left"
+    },
+    {
+      "class": "Math::Function::Lg"
+    },
+    {
+      "class": "Math::Function::Lim"
+    },
+    {
+      "class": "Math::Function::Liminf"
+    },
+    {
+      "class": "Math::Function::Limits"
+    },
+    {
+      "class": "Math::Function::Limsup"
+    },
+    {
+      "class": "Math::Function::Linebreak"
+    },
+    {
+      "class": "Math::Function::Ln"
+    },
+    {
+      "class": "Math::Function::Log"
+    },
+    {
+      "class": "Math::Function::Longdiv"
+    },
+    {
+      "class": "Math::Function::Lub"
+    },
+    {
+      "class": "Math::Function::Max"
+    },
+    {
+      "class": "Math::Function::Mbox"
+    },
+    {
+      "class": "Math::Function::Merror"
+    },
+    {
+      "class": "Math::Function::Mglyph"
+    },
+    {
+      "class": "Math::Function::Min"
+    },
+    {
+      "class": "Math::Function::Mod"
+    },
+    {
+      "class": "Math::Function::Mpadded"
+    },
+    {
+      "class": "Math::Function::Ms"
+    },
+    {
+      "class": "Math::Function::Msgroup"
+    },
+    {
+      "class": "Math::Function::Msline"
+    },
+    {
+      "class": "Math::Function::Multiscript"
+    },
+    {
+      "class": "Math::Function::Nary"
+    },
+    {
+      "class": "Math::Function::Norm"
+    },
+    {
+      "class": "Math::Function::Obrace"
+    },
+    {
+      "class": "Math::Function::Oint"
+    },
+    {
+      "class": "Math::Function::Over"
+    },
+    {
+      "class": "Math::Function::Overset"
+    },
+    {
+      "class": "Math::Function::Phantom"
+    },
+    {
+      "class": "Math::Function::Power"
+    },
+    {
+      "class": "Math::Function::PowerBase"
+    },
+    {
+      "class": "Math::Function::Prod"
+    },
+    {
+      "class": "Math::Function::Right"
+    },
+    {
+      "class": "Math::Function::Rule"
+    },
+    {
+      "class": "Math::Function::Scarries"
+    },
+    {
+      "class": "Math::Function::Sec"
+    },
+    {
+      "class": "Math::Function::Sech"
+    },
+    {
+      "class": "Math::Function::Sin"
+    },
+    {
+      "class": "Math::Function::Sinh"
+    },
+    {
+      "class": "Math::Function::Sqrt"
+    },
+    {
+      "class": "Math::Function::Stackrel"
+    },
+    {
+      "class": "Math::Function::Substack"
+    },
+    {
+      "class": "Math::Function::Sum"
+    },
+    {
+      "class": "Math::Function::Sup"
+    },
+    {
+      "class": "Math::Function::Table"
+    },
+    {
+      "class": "Math::Function::Table::Array"
+    },
+    {
+      "class": "Math::Function::Table::Bmatrix"
+    },
+    {
+      "class": "Math::Function::Table::Cases"
+    },
+    {
+      "class": "Math::Function::Table::Eqarray"
+    },
+    {
+      "class": "Math::Function::Table::Matrix"
+    },
+    {
+      "class": "Math::Function::Table::Pmatrix"
+    },
+    {
+      "class": "Math::Function::Table::Vmatrix"
+    },
+    {
+      "class": "Math::Function::Tan"
+    },
+    {
+      "class": "Math::Function::Tanh"
+    },
+    {
+      "class": "Math::Function::Td"
+    },
+    {
+      "class": "Math::Function::Text"
+    },
+    {
+      "class": "Math::Function::Tilde"
+    },
+    {
+      "class": "Math::Function::Tr"
+    },
+    {
+      "class": "Math::Function::Ubrace"
+    },
+    {
+      "class": "Math::Function::Ul"
+    },
+    {
+      "class": "Math::Function::Underover"
+    },
+    {
+      "class": "Math::Function::Underset"
+    },
+    {
+      "class": "Math::Function::Vec"
+    },
+    {
+      "class": "Math::Number"
+    },
+    {
+      "class": "Math::Symbols::Ampersand"
+    },
+    {
+      "class": "Math::Symbols::Bigwedge"
+    },
+    {
+      "class": "Math::Symbols::Cap"
+    },
+    {
+      "class": "Math::Symbols::Cdots"
+    },
+    {
+      "class": "Math::Symbols::Clockoint"
+    },
+    {
+      "class": "Math::Symbols::Cntclockoint"
+    },
+    {
+      "class": "Math::Symbols::Comma"
+    },
+    {
+      "class": "Math::Symbols::Coprod"
+    },
+    {
+      "class": "Math::Symbols::Dd"
+    },
+    {
+      "class": "Math::Symbols::Ddots"
+    },
+    {
+      "class": "Math::Symbols::Del"
+    },
+    {
+      "class": "Math::Symbols::Dint"
+    },
+    {
+      "class": "Math::Symbols::Dot"
+    },
+    {
+      "class": "Math::Symbols::Duni"
+    },
+    {
+      "class": "Math::Symbols::Equal"
+    },
+    {
+      "class": "Math::Symbols::Ii"
+    },
+    {
+      "class": "Math::Symbols::Iiiint"
+    },
+    {
+      "class": "Math::Symbols::Iiint"
+    },
+    {
+      "class": "Math::Symbols::Iint"
+    },
+    {
+      "class": "Math::Symbols::Int"
+    },
+    {
+      "class": "Math::Symbols::Intclockwise"
+    },
+    {
+      "class": "Math::Symbols::Intercal"
+    },
+    {
+      "class": "Math::Symbols::Jj"
+    },
+    {
+      "class": "Math::Symbols::Minus"
+    },
+    {
+      "class": "Math::Symbols::Oiiint"
+    },
+    {
+      "class": "Math::Symbols::Oiint"
+    },
+    {
+      "class": "Math::Symbols::Oint"
+    },
+    {
+      "class": "Math::Symbols::Paren::Langle"
+    },
+    {
+      "class": "Math::Symbols::Paren::Lceil"
+    },
+    {
+      "class": "Math::Symbols::Paren::Lcurly"
+    },
+    {
+      "class": "Math::Symbols::Paren::Lfloor"
+    },
+    {
+      "class": "Math::Symbols::Paren::Lround"
+    },
+    {
+      "class": "Math::Symbols::Paren::Lsquare"
+    },
+    {
+      "class": "Math::Symbols::Paren::Norm"
+    },
+    {
+      "class": "Math::Symbols::Paren::Rangle"
+    },
+    {
+      "class": "Math::Symbols::Paren::Rceil"
+    },
+    {
+      "class": "Math::Symbols::Paren::Rcurly"
+    },
+    {
+      "class": "Math::Symbols::Paren::Rfloor"
+    },
+    {
+      "class": "Math::Symbols::Paren::Rround"
+    },
+    {
+      "class": "Math::Symbols::Paren::Rsquare"
+    },
+    {
+      "class": "Math::Symbols::Paren::Vert"
+    },
+    {
+      "class": "Math::Symbols::Planckconst"
+    },
+    {
+      "class": "Math::Symbols::Plus"
+    },
+    {
+      "class": "Math::Symbols::Pm"
+    },
+    {
+      "class": "Math::Symbols::Prime"
+    },
+    {
+      "class": "Math::Symbols::Rightarrow"
+    },
+    {
+      "class": "Math::Symbols::Space"
+    },
+    {
+      "class": "Math::Symbols::Sum"
+    },
+    {
+      "class": "Math::Symbols::Symbol"
+    },
+    {
+      "class": "Math::Symbols::Theta"
+    },
+    {
+      "class": "Math::Symbols::UpcaseDd"
+    },
+    {
+      "class": "Math::Symbols::Vdots"
+    },
+    {
+      "class": "Math::Symbols::Vvv"
+    }
+  ]
+}
