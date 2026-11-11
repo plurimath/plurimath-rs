@@ -175,9 +175,18 @@ fn omml_table(
     for value in rows {
         single &= values(model(value)?.field("parameter_one"), "table row")?.len() == 1;
     }
-    single &= ["frame", "columnlines", "rowlines"]
-        .iter()
-        .all(|key| table.field("options")[*key].is_null());
+    // Source && short-circuits: nil options refuse only when every row has
+    // one cell. nil_option? also treats empty strings and "none" as absent.
+    if single {
+        let options = table
+            .field("options")
+            .as_object()
+            .ok_or("unported source single-column table options access refusal")?;
+        single = ["frame", "columnlines", "rowlines"].iter().all(|key| {
+            let value = options.get(*key).unwrap_or(&Value::Null);
+            value.is_null() || value == "" || value == "none"
+        });
+    }
     let mut content = Vec::new();
     let name;
     if single {

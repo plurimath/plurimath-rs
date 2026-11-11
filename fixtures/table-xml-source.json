@@ -5087,6 +5087,284 @@
         "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtable data-test=\"a&lt;&quot;b\">\n      <mtr>\n        <mtd>\n          <mi>a</mi>\n        </mtd>\n        <mtd>\n          <mi>b</mi>\n        </mtd>\n      </mtr>\n    </mtable>\n  </mstyle>\n</math>\n",
         "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:m>\n      <m:mPr>\n        <m:mcs>\n          <m:mc>\n            <m:mcPr>\n              <m:count m:val=\"2\"/>\n              <m:mcJc m:val=\"center\"/>\n            </m:mcPr>\n          </m:mc>\n        </m:mcs>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:mPr>\n      <m:mr>\n        <m:e>\n          <m:r>\n            <m:t>a</m:t>\n          </m:r>\n        </m:e>\n        <m:e>\n          <m:r>\n            <m:t>b</m:t>\n          </m:r>\n        </m:e>\n      </m:mr>\n    </m:m>\n  </m:oMath>\n</m:oMathPara>\n"
       }
+    },
+    {
+      "id": "tfn-probe-table-nil-options-single-column",
+      "input": {
+        "model": {
+          "class": "Math::Formula",
+          "fields": {
+            "displaystyle": true,
+            "left_right_wrapper": true,
+            "value": [
+              {
+                "class": "Math::Function::Table",
+                "fields": {
+                  "close_paren": null,
+                  "open_paren": null,
+                  "options": null,
+                  "value": [
+                    {
+                      "class": "Math::Function::Tr",
+                      "fields": {
+                        "parameter_one": [
+                          {
+                            "class": "Math::Function::Td",
+                            "fields": {
+                              "parameter_one": [
+                                {
+                                  "class": "Math::Symbols::Symbol",
+                                  "fields": {
+                                    "value": "a"
+                                  }
+                                }
+                              ],
+                              "parameter_two": null
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Table",
+              "fields": {
+                "close_paren": null,
+                "open_paren": null,
+                "options": null,
+                "value": [
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "a"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "outputs": {
+        "omml": {
+          "raises": "Plurimath::Math::ParseError",
+          "raisedIn": "render"
+        }
+      },
+      "source": "Unchanged writer-reference-2928.json case reference"
+    },
+    {
+      "id": "tfn-probe-table-frame-none",
+      "input": {
+        "model": {
+          "class": "Math::Formula",
+          "fields": {
+            "displaystyle": true,
+            "left_right_wrapper": true,
+            "value": [
+              {
+                "class": "Math::Function::Table",
+                "fields": {
+                  "close_paren": null,
+                  "open_paren": null,
+                  "options": {
+                    "frame": "none"
+                  },
+                  "value": [
+                    {
+                      "class": "Math::Function::Tr",
+                      "fields": {
+                        "parameter_one": [
+                          {
+                            "class": "Math::Function::Td",
+                            "fields": {
+                              "parameter_one": [
+                                {
+                                  "class": "Math::Symbols::Symbol",
+                                  "fields": {
+                                    "value": "a"
+                                  }
+                                }
+                              ],
+                              "parameter_two": null
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Table",
+              "fields": {
+                "close_paren": null,
+                "open_paren": null,
+                "options": {
+                  "frame": "none"
+                },
+                "value": [
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "a"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "outputs": {
+        "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:eqArr>\n      <m:eqArrPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:eqArrPr>\n      <m:e>\n        <m:r>\n          <m:t>a</m:t>\n        </m:r>\n      </m:e>\n    </m:eqArr>\n  </m:oMath>\n</m:oMathPara>\n"
+      },
+      "source": "Unchanged writer-reference-2928.json case reference"
+    },
+    {
+      "id": "tfn-probe-table-rowlines-empty",
+      "input": {
+        "model": {
+          "class": "Math::Formula",
+          "fields": {
+            "displaystyle": true,
+            "left_right_wrapper": true,
+            "value": [
+              {
+                "class": "Math::Function::Table",
+                "fields": {
+                  "close_paren": null,
+                  "open_paren": null,
+                  "options": {
+                    "rowlines": ""
+                  },
+                  "value": [
+                    {
+                      "class": "Math::Function::Tr",
+                      "fields": {
+                        "parameter_one": [
+                          {
+                            "class": "Math::Function::Td",
+                            "fields": {
+                              "parameter_one": [
+                                {
+                                  "class": "Math::Symbols::Symbol",
+                                  "fields": {
+                                    "value": "a"
+                                  }
+                                }
+                              ],
+                              "parameter_two": null
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Table",
+              "fields": {
+                "close_paren": null,
+                "open_paren": null,
+                "options": {
+                  "rowlines": ""
+                },
+                "value": [
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "a"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "outputs": {
+        "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:eqArr>\n      <m:eqArrPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:eqArrPr>\n      <m:e>\n        <m:r>\n          <m:t>a</m:t>\n        </m:r>\n      </m:e>\n    </m:eqArr>\n  </m:oMath>\n</m:oMathPara>\n"
+      },
+      "source": "Unchanged writer-reference-2928.json case reference"
     }
   ],
   "provenance": {
