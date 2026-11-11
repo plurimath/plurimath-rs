@@ -21,3 +21,11 @@ Canonical option values currently support null, booleans, strings, and integers 
 Formatter construction errors retain their source class. Number-rendering errors follow Formula's `wrap_render_error` and return `Plurimath::Math::ParseError` with a structured underlying cause. Direct Number rendering retains the underlying source class.
 
 Reference: Ruby `0a1df68a5903d43da13b1e1ef85b6c0523feb1b4`, the 27 formatter/Number/Formula/configuration source files. `fixtures/formatter/ruby-standard66.json` freezes all 396 raw writer outputs. Composite/error fixtures are independent source observations. Comparisons do not normalize XML, entities, or whitespace.
+
+Typed source models may use the same explicit formatter context. The top-level
+`source_profile` applies to model values; `formatterOptions` remains the canonical
+option profile and does not infer Ruby tags from JSON shapes. Number values use
+the qualified source `to_s` accessor, preserving Integer, String, Symbol, Array,
+and Hash distinctions. Float values retain their raw bits but display remains
+explicitly gated. Eleven frozen Ruby source values qualify 66 formatter writer
+outcomes, including exact source errors and their causes.

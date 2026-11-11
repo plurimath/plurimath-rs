@@ -55,3 +55,25 @@ fn construction_errors_stay_outside_formula_render_scope(){
  let row=fixtures().remove(0);let result=request(&json!({"op":"write","model":row["model"],"format":"asciimath","options":{"formatterOptions":{"options":"not a Hash"}}}));
  assert_eq!(result["error"]["source_class"],"Plurimath::ConfigurationError");assert!(result["error"].get("cause").is_none());
 }
+
+#[test]
+fn typed_number_values_keep_source_types_with_explicit_formatter_context() {
+ let fixture:Value=serde_json::from_str(include_str!("../fixtures/formatter/ruby-typed11.json")).unwrap();
+ let mut count=0;
+ for row in fixture["rows"].as_array().unwrap() {
+  for (format, expected) in row["writers"].as_object().unwrap() {
+   let actual=request(&json!({"op":"write","source_profile":"plurimath.ruby-values/1","model":row["document"],"format":format,"options":{"formatterOptions":row["formatter_options"]}}));
+   if expected.get("output").is_some() {
+    assert_eq!(actual["ok"],true,"{} {format}: {actual}",row["id"]);
+    assert_eq!(actual["output"],expected["output"],"{} {format}",row["id"]);
+   } else {
+    assert_eq!(actual["ok"],false,"{} {format}: {actual}",row["id"]);
+    assert_eq!(actual["error"]["source_class"],expected["error"]["class"]);
+    assert_eq!(actual["error"]["message"],expected["error"]["message"]);
+    assert_eq!(actual["error"]["cause"]["source_class"],expected["error"]["cause_class"]);
+   }
+   count+=1;
+  }
+ }
+ assert_eq!(count,66);
+}
