@@ -1,0 +1,2227 @@
+{
+  "profile": "actual-source-shared-symbol-unicode-v1",
+  "ruby": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+  "source_head": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "rows": [
+    {
+      "id": "symbol-shared-0-0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": true,
+                "value": "x"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x"
+        },
+        "latex": {
+          "value": "x"
+        },
+        "html": {
+          "value": "x"
+        },
+        "unicodemath": {
+          "value": "ₓ"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>x</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>x</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-0-1",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sup_sized": true,
+                "value": "x"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x"
+        },
+        "latex": {
+          "value": "x"
+        },
+        "html": {
+          "value": "x"
+        },
+        "unicodemath": {
+          "value": "ˣ"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>x</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>x</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-0-2",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": true,
+                "mini_sup_sized": true,
+                "value": "x"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x"
+        },
+        "latex": {
+          "value": "x"
+        },
+        "html": {
+          "value": "x"
+        },
+        "unicodemath": {
+          "value": "ₓ"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>x</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>x</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-0-3",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "slashed": true,
+                "value": "x"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x"
+        },
+        "latex": {
+          "value": "x"
+        },
+        "html": {
+          "value": "x"
+        },
+        "unicodemath": {
+          "value": "\\x"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>x</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>x</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-0-4",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": false,
+                "value": "x"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x"
+        },
+        "latex": {
+          "value": "x"
+        },
+        "html": {
+          "value": "x"
+        },
+        "unicodemath": {
+          "value": "x"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>x</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>x</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-1-0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": true,
+                "value": "a"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "a"
+        },
+        "latex": {
+          "value": "a"
+        },
+        "html": {
+          "value": "a"
+        },
+        "unicodemath": {
+          "value": "ₐ"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>a</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>a</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-1-1",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sup_sized": true,
+                "value": "a"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "a"
+        },
+        "latex": {
+          "value": "a"
+        },
+        "html": {
+          "value": "a"
+        },
+        "unicodemath": {
+          "value": "ᵃ"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>a</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>a</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-1-2",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": true,
+                "mini_sup_sized": true,
+                "value": "a"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "a"
+        },
+        "latex": {
+          "value": "a"
+        },
+        "html": {
+          "value": "a"
+        },
+        "unicodemath": {
+          "value": "ₐ"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>a</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>a</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-1-3",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "slashed": true,
+                "value": "a"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "a"
+        },
+        "latex": {
+          "value": "a"
+        },
+        "html": {
+          "value": "a"
+        },
+        "unicodemath": {
+          "value": "\\a"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>a</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>a</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-1-4",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": false,
+                "value": "a"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "a"
+        },
+        "latex": {
+          "value": "a"
+        },
+        "html": {
+          "value": "a"
+        },
+        "unicodemath": {
+          "value": "a"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>a</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>a</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-2-0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": true,
+                "value": "ab"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "ab"
+        },
+        "latex": {
+          "value": "ab"
+        },
+        "html": {
+          "value": "ab"
+        },
+        "unicodemath": {
+          "value": ""
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>ab</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>ab</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-2-1",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sup_sized": true,
+                "value": "ab"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "ab"
+        },
+        "latex": {
+          "value": "ab"
+        },
+        "html": {
+          "value": "ab"
+        },
+        "unicodemath": {
+          "value": ""
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>ab</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>ab</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-2-2",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": true,
+                "mini_sup_sized": true,
+                "value": "ab"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "ab"
+        },
+        "latex": {
+          "value": "ab"
+        },
+        "html": {
+          "value": "ab"
+        },
+        "unicodemath": {
+          "value": ""
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>ab</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>ab</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-2-3",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "slashed": true,
+                "value": "ab"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "ab"
+        },
+        "latex": {
+          "value": "ab"
+        },
+        "html": {
+          "value": "ab"
+        },
+        "unicodemath": {
+          "value": "\\ab"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>ab</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>ab</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-2-4",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": false,
+                "value": "ab"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "ab"
+        },
+        "latex": {
+          "value": "ab"
+        },
+        "html": {
+          "value": "ab"
+        },
+        "unicodemath": {
+          "value": "ab"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>ab</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>ab</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-3-0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": true,
+                "value": "0"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "0"
+        },
+        "latex": {
+          "value": "0"
+        },
+        "html": {
+          "value": "0"
+        },
+        "unicodemath": {
+          "value": ""
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>0</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>0</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-3-1",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sup_sized": true,
+                "value": "0"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "0"
+        },
+        "latex": {
+          "value": "0"
+        },
+        "html": {
+          "value": "0"
+        },
+        "unicodemath": {
+          "value": ""
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>0</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>0</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-3-2",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": true,
+                "mini_sup_sized": true,
+                "value": "0"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "0"
+        },
+        "latex": {
+          "value": "0"
+        },
+        "html": {
+          "value": "0"
+        },
+        "unicodemath": {
+          "value": ""
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>0</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>0</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-3-3",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "slashed": true,
+                "value": "0"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "0"
+        },
+        "latex": {
+          "value": "0"
+        },
+        "html": {
+          "value": "0"
+        },
+        "unicodemath": {
+          "value": "\\0"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>0</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>0</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-3-4",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": false,
+                "value": "0"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "0"
+        },
+        "latex": {
+          "value": "0"
+        },
+        "html": {
+          "value": "0"
+        },
+        "unicodemath": {
+          "value": "0"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>0</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>0</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-4-0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": true,
+                "value": "&"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "&"
+        },
+        "latex": {
+          "value": "&"
+        },
+        "html": {
+          "value": "&"
+        },
+        "unicodemath": {
+          "value": "\\&"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>&</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>&</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-4-1",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sup_sized": true,
+                "value": "&"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "&"
+        },
+        "latex": {
+          "value": "&"
+        },
+        "html": {
+          "value": "&"
+        },
+        "unicodemath": {
+          "value": "\\&"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>&</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>&</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-4-2",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": true,
+                "mini_sup_sized": true,
+                "value": "&"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "&"
+        },
+        "latex": {
+          "value": "&"
+        },
+        "html": {
+          "value": "&"
+        },
+        "unicodemath": {
+          "value": "\\&"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>&</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>&</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-4-3",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "slashed": true,
+                "value": "&"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "&"
+        },
+        "latex": {
+          "value": "&"
+        },
+        "html": {
+          "value": "&"
+        },
+        "unicodemath": {
+          "value": "\\&"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>&</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>&</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-4-4",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": false,
+                "value": "&"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "&"
+        },
+        "latex": {
+          "value": "&"
+        },
+        "html": {
+          "value": "&"
+        },
+        "unicodemath": {
+          "value": "\\&"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>&</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>&</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-5-0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": true,
+                "value": "@"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "@"
+        },
+        "latex": {
+          "value": "@"
+        },
+        "html": {
+          "value": "@"
+        },
+        "unicodemath": {
+          "value": "\\@"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>@</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>@</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-5-1",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sup_sized": true,
+                "value": "@"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "@"
+        },
+        "latex": {
+          "value": "@"
+        },
+        "html": {
+          "value": "@"
+        },
+        "unicodemath": {
+          "value": "\\@"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>@</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>@</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-5-2",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": true,
+                "mini_sup_sized": true,
+                "value": "@"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "@"
+        },
+        "latex": {
+          "value": "@"
+        },
+        "html": {
+          "value": "@"
+        },
+        "unicodemath": {
+          "value": "\\@"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>@</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>@</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-5-3",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "slashed": true,
+                "value": "@"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "@"
+        },
+        "latex": {
+          "value": "@"
+        },
+        "html": {
+          "value": "@"
+        },
+        "unicodemath": {
+          "value": "\\@"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>@</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>@</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-5-4",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": false,
+                "value": "@"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "@"
+        },
+        "latex": {
+          "value": "@"
+        },
+        "html": {
+          "value": "@"
+        },
+        "unicodemath": {
+          "value": "\\@"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>@</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>@</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-6-0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": true,
+                "value": "^"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "^"
+        },
+        "latex": {
+          "value": "^"
+        },
+        "html": {
+          "value": "^"
+        },
+        "unicodemath": {
+          "value": "\\^"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>^</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>^</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-6-1",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sup_sized": true,
+                "value": "^"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "^"
+        },
+        "latex": {
+          "value": "^"
+        },
+        "html": {
+          "value": "^"
+        },
+        "unicodemath": {
+          "value": "\\^"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>^</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>^</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-6-2",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": true,
+                "mini_sup_sized": true,
+                "value": "^"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "^"
+        },
+        "latex": {
+          "value": "^"
+        },
+        "html": {
+          "value": "^"
+        },
+        "unicodemath": {
+          "value": "\\^"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>^</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>^</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-6-3",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "slashed": true,
+                "value": "^"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "^"
+        },
+        "latex": {
+          "value": "^"
+        },
+        "html": {
+          "value": "^"
+        },
+        "unicodemath": {
+          "value": "\\^"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>^</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>^</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-6-4",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": false,
+                "value": "^"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "^"
+        },
+        "latex": {
+          "value": "^"
+        },
+        "html": {
+          "value": "^"
+        },
+        "unicodemath": {
+          "value": "\\^"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>^</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>^</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-7-0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": true,
+                "value": "("
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "("
+        },
+        "latex": {
+          "value": "("
+        },
+        "html": {
+          "value": "("
+        },
+        "unicodemath": {
+          "value": "₍"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>(</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>(</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-7-1",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sup_sized": true,
+                "value": "("
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "("
+        },
+        "latex": {
+          "value": "("
+        },
+        "html": {
+          "value": "("
+        },
+        "unicodemath": {
+          "value": ""
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>(</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>(</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-7-2",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": true,
+                "mini_sup_sized": true,
+                "value": "("
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "("
+        },
+        "latex": {
+          "value": "("
+        },
+        "html": {
+          "value": "("
+        },
+        "unicodemath": {
+          "value": "₍"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>(</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>(</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-7-3",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "slashed": true,
+                "value": "("
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "("
+        },
+        "latex": {
+          "value": "("
+        },
+        "html": {
+          "value": "("
+        },
+        "unicodemath": {
+          "value": "\\("
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>(</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>(</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-7-4",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": false,
+                "value": "("
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "("
+        },
+        "latex": {
+          "value": "("
+        },
+        "html": {
+          "value": "("
+        },
+        "unicodemath": {
+          "value": "("
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>(</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>(</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-8-0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": true,
+                "value": ")"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": ")"
+        },
+        "latex": {
+          "value": ")"
+        },
+        "html": {
+          "value": ")"
+        },
+        "unicodemath": {
+          "value": "₎"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>)</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>)</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-8-1",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sup_sized": true,
+                "value": ")"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": ")"
+        },
+        "latex": {
+          "value": ")"
+        },
+        "html": {
+          "value": ")"
+        },
+        "unicodemath": {
+          "value": ""
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>)</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>)</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-8-2",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": true,
+                "mini_sup_sized": true,
+                "value": ")"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": ")"
+        },
+        "latex": {
+          "value": ")"
+        },
+        "html": {
+          "value": ")"
+        },
+        "unicodemath": {
+          "value": "₎"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>)</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>)</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-8-3",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "slashed": true,
+                "value": ")"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": ")"
+        },
+        "latex": {
+          "value": ")"
+        },
+        "html": {
+          "value": ")"
+        },
+        "unicodemath": {
+          "value": "\\)"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>)</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>)</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-8-4",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": false,
+                "value": ")"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": ")"
+        },
+        "latex": {
+          "value": ")"
+        },
+        "html": {
+          "value": ")"
+        },
+        "unicodemath": {
+          "value": ")"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>)</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>)</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-9-0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": true,
+                "value": "α"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "α"
+        },
+        "latex": {
+          "value": "α"
+        },
+        "html": {
+          "value": "α"
+        },
+        "unicodemath": {
+          "value": ""
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>α</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>α</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-9-1",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sup_sized": true,
+                "value": "α"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "α"
+        },
+        "latex": {
+          "value": "α"
+        },
+        "html": {
+          "value": "α"
+        },
+        "unicodemath": {
+          "value": ""
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>α</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>α</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-9-2",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": true,
+                "mini_sup_sized": true,
+                "value": "α"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "α"
+        },
+        "latex": {
+          "value": "α"
+        },
+        "html": {
+          "value": "α"
+        },
+        "unicodemath": {
+          "value": ""
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>α</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>α</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-9-3",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "slashed": true,
+                "value": "α"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "α"
+        },
+        "latex": {
+          "value": "α"
+        },
+        "html": {
+          "value": "α"
+        },
+        "unicodemath": {
+          "value": "\\α"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>α</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>α</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-9-4",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": false,
+                "value": "α"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "α"
+        },
+        "latex": {
+          "value": "α"
+        },
+        "html": {
+          "value": "α"
+        },
+        "unicodemath": {
+          "value": "α"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>α</mi>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>α</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-10-0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": true,
+                "value": null
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": ""
+        },
+        "latex": {
+          "value": ""
+        },
+        "html": {
+          "value": ""
+        },
+        "unicodemath": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `unicodemath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi/>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t/>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-10-1",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sup_sized": true,
+                "value": null
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": ""
+        },
+        "latex": {
+          "value": ""
+        },
+        "html": {
+          "value": ""
+        },
+        "unicodemath": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `unicodemath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi/>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t/>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-10-2",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": true,
+                "mini_sup_sized": true,
+                "value": null
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": ""
+        },
+        "latex": {
+          "value": ""
+        },
+        "html": {
+          "value": ""
+        },
+        "unicodemath": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `unicodemath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi/>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t/>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-10-3",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "slashed": true,
+                "value": null
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": ""
+        },
+        "latex": {
+          "value": ""
+        },
+        "html": {
+          "value": ""
+        },
+        "unicodemath": {
+          "value": "\\"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi/>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t/>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "symbol-shared-10-4",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "mini_sub_sized": false,
+                "value": null
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": ""
+        },
+        "latex": {
+          "value": ""
+        },
+        "html": {
+          "value": ""
+        },
+        "unicodemath": {
+          "value": ""
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi/>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t/>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    }
+  ]
+}
