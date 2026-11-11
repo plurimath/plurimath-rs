@@ -74,6 +74,15 @@ pub(super) fn ordinary_string(v: &Value) -> Result<String, String> {
     }
 }
 pub(super) fn text(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
+    let source_value = if m.profile() == crate::source_values::Profile::RubyValuesV1 {
+        Some(crate::source_values::field(
+            m,
+            "value",
+            crate::source_values::Domain::Literal,
+        )?)
+    } else {
+        None
+    };
     if f == "unicodemath" {
         let map = if truthy(m.field("mini_sub_sized")) {
             Some("mini_sub")
@@ -83,23 +92,35 @@ pub(super) fn text(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<Str
             None
         };
         if let Some(map) = map {
-            let value = m.field("value").as_str().ok_or_else(|| {
-                "source_render_error: Number mini value has no to_sym method".to_owned()
-            })?;
+            let value = if let Some(value) = &source_value {
+                match value {
+                    crate::source_values::RubyValue::String(s)
+                    | crate::source_values::RubyValue::Symbol(s) => s.as_str(),
+                    _ => {
+                        return Err(
+                            "source_render_error: Number mini value has no to_sym method".into(),
+                        )
+                    }
+                }
+            } else {
+                m.field("value").as_str().ok_or_else(|| {
+                    "source_render_error: Number mini value has no to_sym method".to_owned()
+                })?
+            };
             // The complete source value is a digit-map key; multi-digit/missing keys return
             // nil, which the Formula/parent text interpolation renders as an empty string.
             return Ok(data()[map][value].as_str().unwrap_or("").to_owned());
         }
     }
     if let Some(formatter)=ctx.formatter { return formatter.text(m,f).map_err(|error|super::formatter_context::scope_error(ctx,error)); }
-    ordinary_string(m.field("value"))
+    if let Some(value)=source_value {crate::source_values::to_s(&value)} else {ordinary_string(m.field("value"))}
 }
 pub(super) fn xml(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<Vec<Xml>, String> {
     if let Some(formatter)=ctx.formatter {
         if f=="mathml" {return formatter.mathml(m).map_err(|error|super::formatter_context::scope_error(ctx,error))}
         if f=="omml" {return Ok(vec![el("m:r",vec![el("m:t",vec![xml_text(&formatter.text(m,"plain").map_err(|error|super::formatter_context::scope_error(ctx,error))?)])])])}
     }
-    let value = ordinary_string(m.field("value"))?;
+    let value = if m.profile()==crate::source_values::Profile::RubyValuesV1 {crate::source_values::to_s(&crate::source_values::field(m,"value",crate::source_values::Domain::Literal)?)?}else{ordinary_string(m.field("value"))?};
     Ok(vec![if f == "mathml" {
         el("mn", vec![xml_text(&value)])
     } else if f == "omml" {

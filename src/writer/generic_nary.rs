@@ -179,10 +179,14 @@ pub(super) fn text_writer(m: &Model, f: &str, ctx: &super::WriterContext) -> Res
         _ => Err(format!("unported generic Nary text format {f}")),
     }
 }
-fn local_options(m: &Model) -> Result<&serde_json::Map<String, Value>, String> {
-    m.field("options")
-        .as_object()
-        .ok_or("source_render_error: generic Nary options have no [] method".into())
+fn local_options(m: &Model) -> Result<serde_json::Map<String, Value>, String> {
+    if !matches!(
+        crate::source_values::field(m, "options", crate::source_values::Domain::NamedOptions)?,
+        crate::source_values::RubyValue::Hash(_)
+    ) {
+        return Err("source_render_error: generic Nary options have no [] method".into());
+    }
+    crate::source_values::option_map(m, "options")
 }
 fn value_attr(name: &str, value: String) -> Xml {
     attrs(name, vec![("m:val".into(), value)], vec![])
@@ -329,7 +333,21 @@ pub(super) fn xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, S
         }
         properties.push(value_attr(
             "m:limLoc",
-            type_string(options.get("type").unwrap_or(&Value::Null))?,
+            if m.profile() == crate::source_values::Profile::RubyValuesV1 {
+                let source = crate::source_values::field(
+                    m,
+                    "options",
+                    crate::source_values::Domain::NamedOptions,
+                )?;
+                match source.get_symbol("type") {
+                    None
+                    | Some(crate::source_values::RubyValue::Nil)
+                    | Some(crate::source_values::RubyValue::Bool(false)) => "subSup".into(),
+                    Some(value) => crate::source_values::to_s(value)?,
+                }
+            } else {
+                type_string(options.get("type").unwrap_or(&Value::Null))?
+            },
         ));
         if b.is_null() {
             properties.push(value_attr("m:subHide", "1".into()));

@@ -1,6 +1,6 @@
 //! Source procedures for Sum, Prod, Int and Oint (Ruby 0a1df68a).
 //! Catalog constants are measured by tests/support/export-nary.rb; no fixture lookup.
-use super::{WriterContext, attrs, child, el, strict_slot_xml, text as xml_text, Xml};
+use super::{attrs, child, el, strict_slot_xml, text as xml_text, WriterContext, Xml};
 use crate::model::Model;
 use serde_json::Value;
 use std::sync::OnceLock;
@@ -215,16 +215,18 @@ fn unicode_bound(m: &Model, upper: bool, ctx: &super::WriterContext) -> Result<S
     }
     Ok(format!("{sign}{}", parens(v, "unicodemath", ctx)?))
 }
-fn node_mask(m: &Model) -> Result<Option<&Value>, String> {
-    let options = m.field("options");
-    if options.is_null() {
+fn node_mask(m: &Model) -> Result<Option<crate::source_values::RubyValue>, String> {
+    use crate::source_values::{self as sv, Domain, RubyValue};
+    let options = sv::field(m, "options", Domain::NamedOptions)?;
+    if matches!(options, RubyValue::Nil) {
         return Ok(None);
     }
-    options
-        .as_object()
-        .map(|o| o.get("mask"))
-        .ok_or_else(|| source_error("n-ary options have no key? method"))
+    if !matches!(options, RubyValue::Hash(_)) {
+        return Err(source_error("n-ary options have no key? method"));
+    }
+    Ok(options.get_symbol("mask").cloned())
 }
+
 fn ruby_mask_text(v: &Value) -> Result<String, String> {
     match v {
         Value::Null => Ok(String::new()),
@@ -298,7 +300,7 @@ pub(super) fn text(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<Str
             // options remain refused by the parent writer until its context is ported.
             if m.kind() != "Prod" {
                 if let Some(mask) = node_mask(m)? {
-                    result.push_str(&ruby_mask_text(mask)?);
+                    result.push_str(&crate::source_values::to_s(&mask)?);
                 }
             }
             result.push_str(&unicode_bound(m, false, ctx)?);
@@ -338,8 +340,8 @@ pub(super) fn text(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<Str
     }
 }
 fn math_child(v: &Value, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
-    if v["class"]=="Math::Function::None" {
-        return super::generic_nary::slot(v,"mathml",ctx);
+    if v["class"] == "Math::Function::None" {
+        return super::generic_nary::slot(v, "mathml", ctx);
     }
     strict_slot_xml(&ordinary_numbers(v), "mathml", ctx, false)
 }
@@ -420,8 +422,8 @@ fn integer_mask_mod(text: &str) -> u8 {
     }
     // Ruby String#to_i(base10) recognizes only the explicit decimal
     // prefix here; 0x/0b/0o still stop at the initial zero.
-    if bytes.get(i)==Some(&b'0') && matches!(bytes.get(i+1),Some(b'd')|Some(b'D')) {
-        i+=2;
+    if bytes.get(i) == Some(&b'0') && matches!(bytes.get(i + 1), Some(b'd') | Some(b'D')) {
+        i += 2;
     }
     let mut n = 0u8;
     let mut digit = false;
@@ -486,6 +488,21 @@ pub(super) fn mask_mod(v: &Value) -> Result<u8, String> {
         _ => Err(source_error("mask has no to_i method")),
     }
 }
+pub(super) fn source_mask_mod(value: &crate::source_values::RubyValue) -> Result<u8, String> {
+    use crate::source_values::RubyValue;
+    match value {
+        RubyValue::Nil => Ok(0),
+        RubyValue::Integer(v) | RubyValue::String(v) => Ok(integer_mask_mod(v)),
+        RubyValue::Float(bits) => {
+            let value = f64::from_bits(*bits);
+            if !value.is_finite() {
+                return Err(source_error("mask has no finite to_i"));
+            }
+            mask_mod(&serde_json::json!(value))
+        }
+        _ => Err(source_error("mask has no to_i method")),
+    }
+}
 fn element_parts(node: Xml) -> Result<(String, Vec<(String, String)>, Vec<Xml>), String> {
     if let Xml::El(n, a, c) = node {
         Ok((n, a, c))
@@ -493,8 +510,12 @@ fn element_parts(node: Xml) -> Result<(String, Vec<(String, String)>, Vec<Xml>),
         Err("internal n-ary expected element".into())
     }
 }
-fn mask_mathml(node: Xml, mask: &Value, m: &Model) -> Result<Xml, String> {
-    let mask = mask_mod(mask)?;
+fn mask_mathml(
+    node: Xml,
+    mask: &crate::source_values::RubyValue,
+    m: &Model,
+) -> Result<Xml, String> {
+    let mask = source_mask_mod(mask)?;
     let (n, attrs, mut children) = element_parts(node)?;
     let mut name = n;
     let extras = mask & 28;
@@ -599,7 +620,7 @@ fn mathml(m: &Model, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     let mut bounds = el(&tag, args);
     if m.kind() == "Int" {
         if let Some(mask) = node_mask(m)? {
-            bounds = mask_mathml(bounds, mask, m)?;
+            bounds = mask_mathml(bounds, &mask, m)?;
         }
     }
     let no_body = if m.kind() == "Oint" {
@@ -636,11 +657,7 @@ fn mathml(m: &Model, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     }
     Ok(vec![result])
 }
-pub(super) fn xml(
-    m: &Model,
-    f: &str,
-    ctx: &WriterContext,
-) -> Result<Vec<Xml>, String> {
+pub(super) fn xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     match f {
         "mathml" => mathml(m, ctx),
         "omml" => omml(m, ctx),
