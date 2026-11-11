@@ -57,8 +57,9 @@ fn label(s:&str)->bool{
     let mut chars=s.chars();let Some(first)=chars.next()else{return false};
     (first.is_ascii_alphabetic()||first=='_') && chars.enumerate().all(|(i,c)|c.is_ascii_alphanumeric()||c=='_'||(['!','?'].contains(&c)&&i+2==s.len()))
 }
-fn symbol_inspect(s:&str)->String{
-    if label(s)||["+","-","*","/","%","**","<",">","<=",">=","==","===","!=","=~","!~","<=>","<<",">>","&","|","^","~","!","[]","[]=","+@","-@"].contains(&s){format!(":{s}")}else{format!(":{}",quote(s))}
+fn symbol_inspect(s:&str)->Result<String,String>{
+    if !s.is_ascii() || s.starts_with(['@','$']) {return Err("unported source Symbol identifier inspection".into())}
+    if label(s)||s.strip_suffix('=').is_some_and(label)||["+","-","*","/","%","**","<",">","<=",">=","==","===","!=","=~","!~","<=>","<<",">>","&","|","^","~","!","[]","[]=","+@","-@"].contains(&s){Ok(format!(":{s}"))}else{Ok(format!(":{}",quote(s)))}
 }
 pub fn to_s(v:&RubyValue)->Result<String,String>{
     match v {
@@ -70,9 +71,9 @@ pub fn to_s(v:&RubyValue)->Result<String,String>{
 }
 pub fn inspect(v:&RubyValue)->Result<String,String>{
     Ok(match v {
-        RubyValue::Nil=>"nil".into(),RubyValue::Bool(v)=>v.to_string(),RubyValue::Integer(v)=>v.clone(),RubyValue::String(v)=>quote(v),RubyValue::Symbol(v)=>symbol_inspect(v),
+        RubyValue::Nil=>"nil".into(),RubyValue::Bool(v)=>v.to_string(),RubyValue::Integer(v)=>v.clone(),RubyValue::String(v)=>quote(v),RubyValue::Symbol(v)=>symbol_inspect(v)?,
         RubyValue::Array(values)=>format!("[{}]",values.iter().map(inspect).collect::<Result<Vec<_>,_>>()?.join(", ")),
-        RubyValue::Hash(entries)=>format!("{{{}}}",entries.iter().map(|(k,v)|Ok(if let RubyValue::Symbol(s)=k {if label(s){format!("{s}: {}",inspect(v)?)}else{format!("{} => {}",inspect(k)?,inspect(v)?)}}else{format!("{} => {}",inspect(k)?,inspect(v)?)})).collect::<Result<Vec<_>,String>>()?.join(", ")),
+        RubyValue::Hash(entries)=>format!("{{{}}}",entries.iter().map(|(k,v)|Ok(if let RubyValue::Symbol(s)=k {if !s.is_ascii(){return Err("unported source Symbol identifier inspection".into())} if label(s){format!("{s}: {}",inspect(v)?)}else{format!("{}: {}",quote(s),inspect(v)?)}}else{format!("{} => {}",inspect(k)?,inspect(v)?)})).collect::<Result<Vec<_>,String>>()?.join(", ")),
         RubyValue::Float(_)=>return Err("unported source-qualified Ruby Float#inspect".into()),
         RubyValue::Node{..}=>return Err("unported identity-bearing Ruby object inspection".into()),
     })

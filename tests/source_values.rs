@@ -38,3 +38,10 @@ fn actual_ruby_four_inspection_values(){
  for row in data["rows"].as_array().unwrap(){let value=sv::decode(&row["wire"],Domain::Literal,Profile::RubyValuesV1).unwrap();assert_eq!(sv::encode(&value),row["wire"]);match sv::inspect(&value){Ok(actual)=>{assert_eq!(actual,row["inspect"].as_str().unwrap(),"{}",row["id"]);assert_eq!(sv::to_s(&value).unwrap(),row["to_s"].as_str().unwrap());exact+=1},Err(_)=>gated+=1}}
  assert_eq!((exact,gated),(51,2));
 }
+#[test]
+fn unqualified_symbol_inspection_never_returns_a_wrong_success(){
+ let symbol=R::Symbol("α".into());
+ assert_eq!(sv::to_s(&symbol).unwrap(),"α");
+ assert!(sv::inspect(&symbol).is_err());
+ assert!(sv::inspect(&R::Hash(vec![(symbol,R::String("0".into()))])).is_err());
+}
