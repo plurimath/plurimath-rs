@@ -4,9 +4,12 @@ use num_traits::{One, ToPrimitive};
 use serde_json::json;
 use std::{collections::BTreeMap, sync::OnceLock};
 use unitsml_rs::{
-    decode_register, rational, terms_from_asciiunits, Error as UnitError, Quantity, Register,
-    Scale, Unit, WireError,
+    combine_kinds, decode_register, rational, terms_from_asciiunits, Error as UnitError, KindError,
+    Quantity, QuantityKind, Register, Scale, Unit, WireError,
 };
+
+/// A walked value and its optional data-declared quantity kind (F40).
+type Kinded = (Quantity, Option<QuantityKind>);
 
 const MAX_UNIT_BYTES: usize = 4096;
 const MAX_BINDINGS: usize = 256;
@@ -17,6 +20,13 @@ enum Error {
     Request(E),
     Unit(UnitError),
     Parser(&'static str, J),
+    Kind(KindError),
+}
+
+impl From<KindError> for Error {
+    fn from(error: KindError) -> Self {
+        Self::Kind(error)
+    }
 }
 
 impl From<E> for Error {
@@ -36,6 +46,7 @@ impl Error {
         match self {
             Self::Request(code) => json!({"code":code}),
             Self::Parser(code, details) => json!({"code":code,"parser":details}),
+            Self::Kind(error) => json!({"code":error.code(),"detail":error.to_string()}),
             Self::Unit(error) => {
                 let code = match error {
                     UnitError::UnsupportedOperand => "UnsupportedUnitExpressionError",
@@ -92,22 +103,52 @@ fn parse_unit(register: &Register, expression: &str) -> Result<Unit, Error> {
     Ok(register.resolve(&terms_from_asciiunits(&model)?)?)
 }
 
-fn binding(register: &Register, value: &J) -> Result<Quantity, Error> {
+fn binding(register: &Register, value: &J) -> Result<Kinded, Error> {
     if let Some(scalar) = value.as_str() {
-        return Ok(Quantity::scalar(binding_magnitude(scalar)?));
+        return Ok((Quantity::scalar(binding_magnitude(scalar)?), None));
     }
-    keys(value, &["value", "unit", "difference"], &["value", "unit"])?;
+    keys(
+        value,
+        &["value", "unit", "difference", "kind"],
+        &["value", "unit"],
+    )?;
     let magnitude = binding_magnitude(text(value, "value")?)?;
     let unit = parse_unit(register, text(value, "unit")?)?;
     let difference = value
         .get("difference")
         .map_or(Some(false), J::as_bool)
         .ok_or("InvalidRequest")?;
-    Ok(if difference {
+    let kind = match value.get("kind") {
+        None | Some(J::Null) => None,
+        Some(kind) => Some(binding_kind(&unit, kind.as_str().ok_or("InvalidRequest")?)?),
+    };
+    let quantity = if difference {
         Quantity::difference(magnitude, unit)
     } else {
         Quantity::new(magnitude, unit)
-    })
+    };
+    Ok((quantity, kind))
+}
+
+/// `kind` is a UnitsDB quantity identifier or name, or the reserved token
+/// `"primary"`: the flagged primary quantity of a single unit at power 1
+/// (unitsml-ruby `kind: :primary`). The kind's dimension must match the unit's.
+fn binding_kind(unit: &Unit, kind: &str) -> Result<QuantityKind, Error> {
+    let resolved = if kind == "primary" {
+        let single = match unit.terms() {
+            [term] if term.power.is_one() => Some(term.unit.as_str()),
+            _ => None,
+        };
+        single
+            .map(QuantityKind::primary_for_unit)
+            .transpose()?
+            .flatten()
+            .ok_or_else(|| KindError::Unknown("primary".to_owned()))?
+    } else {
+        QuantityKind::resolve(kind)?
+    };
+    resolved.check_dimension(unit.dimension_id())?;
+    Ok(resolved)
 }
 
 fn binding_magnitude(value: &str) -> Result<Q, Error> {
@@ -161,30 +202,38 @@ fn power(base: Quantity, exponent: &Quantity) -> Result<Quantity, Error> {
     }
 }
 
-fn walk(node: &J, bindings: &BTreeMap<String, Quantity>) -> Result<Quantity, Error> {
+/// Kinds follow unitsml-ruby: `+`/`-` refuse incompatible kinds and keep
+/// `left || right`; negation keeps the kind; `*`, `/` and `^` drop it.
+fn walk(node: &J, bindings: &BTreeMap<String, Kinded>) -> Result<Kinded, Error> {
     match text(node, "type")? {
-        "number" => Ok(Quantity::scalar(rational(text(node, "text")?)?)),
+        "number" => Ok((Quantity::scalar(rational(text(node, "text")?)?), None)),
         "variable" => bindings
             .get(text(node, "name")?)
             .cloned()
             .ok_or("MissingVariableError".into()),
         "unary" => {
-            let operand = walk(&node["operand"], bindings)?;
+            let (operand, kind) = walk(&node["operand"], bindings)?;
             if node["operator"] == "-" {
-                Ok(operand.scale_by(&-Q::one())?)
+                Ok((operand.scale_by(&-Q::one())?, kind))
             } else {
-                Ok(operand)
+                Ok((operand, kind))
             }
         }
         "binary" => {
-            let left = walk(&node["left"], bindings)?;
-            let right = walk(&node["right"], bindings)?;
+            let (left, left_kind) = walk(&node["left"], bindings)?;
+            let (right, right_kind) = walk(&node["right"], bindings)?;
             match text(node, "operator")? {
-                "+" => Ok(left.add(&right)?),
-                "-" => Ok(left.subtract(&right)?),
-                "*" => Ok(left.multiply(&right)?),
-                "/" => Ok(left.divide(&right)?),
-                "^" => power(left, &right),
+                "+" => {
+                    let kind = combine_kinds(left_kind.as_ref(), right_kind.as_ref())?;
+                    Ok((left.add(&right)?, kind))
+                }
+                "-" => {
+                    let kind = combine_kinds(left_kind.as_ref(), right_kind.as_ref())?;
+                    Ok((left.subtract(&right)?, kind))
+                }
+                "*" => Ok((left.multiply(&right)?, None)),
+                "/" => Ok((left.divide(&right)?, None)),
+                "^" => Ok((power(left, &right)?, None)),
                 _ => Err("InvalidRequest".into()),
             }
         }
@@ -193,7 +242,7 @@ fn walk(node: &J, bindings: &BTreeMap<String, Quantity>) -> Result<Quantity, Err
     }
 }
 
-fn snapshot(quantity: &Quantity) -> J {
+fn snapshot((quantity, kind): (&Quantity, Option<&QuantityKind>)) -> J {
     let unit = quantity.unit();
     let dimensions: BTreeMap<_, _> = unit
         .dimensions()
@@ -210,14 +259,19 @@ fn snapshot(quantity: &Quantity) -> J {
         Scale::Interval => "interval",
         Scale::Difference => "difference",
     };
-    json!({
+    let mut wire = json!({
         "magnitude": quantity.magnitude().to_string(),
         "canonical_magnitude": quantity.canonical_magnitude().to_string(),
         "dimensions": dimensions,
         "dimension_id": unit.dimension_id(),
         "scale": scale,
         "terms": terms,
-    })
+    });
+    // Only kinded results carry the field, so untyped wires are unchanged.
+    if let Some(kind) = kind {
+        wire["kind"] = json!(kind.id());
+    }
+    wire
 }
 
 fn evaluate(request: &J) -> Result<J, Error> {
@@ -254,7 +308,7 @@ fn evaluate(request: &J) -> Result<J, Error> {
             bindings.insert(key.clone(), binding(&register, value)?);
         }
     }
-    let value = walk(&request["ast"], &bindings)?;
+    let (value, kind) = walk(&request["ast"], &bindings)?;
     let converted = request
         .get("convert_to")
         .map(|target| {
@@ -263,8 +317,8 @@ fn evaluate(request: &J) -> Result<J, Error> {
         })
         .transpose()?;
     Ok(json!({
-        "value": snapshot(&value),
-        "converted": converted.as_ref().map(snapshot),
+        "value": snapshot((&value, kind.as_ref())),
+        "converted": converted.as_ref().map(|c| snapshot((c, kind.as_ref()))),
         "accuracy": {"symbol":"exact"},
     }))
 }
