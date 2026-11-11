@@ -1,4 +1,5 @@
 //! Procedural source-writer port; unported nodes/options fail, never return approximations.
+mod accents;
 mod scripts;
 mod styles;
 mod font_styles;
@@ -140,12 +141,12 @@ fn fence_text(m: &Model, f: &str) -> Result<String, String> {
     if !options.is_null() && options.as_object().map_or(true, |o| !o.is_empty()) {
         return Err("unported promised fence options".into());
     }
-    let a = if f == "html" {
+    let a = if f == "html" || f == "latex" {
         fence_delimiter(m.field("parameter_one"), f)?
     } else {
         child(m.field("parameter_one"), f)?
     };
-    let b = if f == "html" {
+    let b = if f == "html" || f == "latex" {
         fence_delimiter(m.field("parameter_three"), f)?
     } else {
         child(m.field("parameter_three"), f)?
@@ -159,7 +160,7 @@ fn fence_text(m: &Model, f: &str) -> Result<String, String> {
         .collect::<Result<Vec<_>, _>>()?
         .join(if f == "html" { "" } else { " " });
     Ok(match f {
-        "latex" => format!("{a} {body} {b}"),
+        "latex" => format!("{} {body} {}", if ["{:", ":}"].contains(&a.as_str()) { a.replace(':', "") } else { a }, if ["{:", ":}"].contains(&b.as_str()) { b.replace(':', "") } else { b }),
         "html" => format!("<i>{a}</i>{body}<i>{b}</i>"),
         _ => format!("{a}{body}{b}"),
     })
@@ -739,6 +740,9 @@ fn normal_xml(
     Ok(c)
 }
 fn render_text(m: &Model, f: &str) -> Result<String, String> {
+    if accents::handles(m) {
+        return accents::text(m, f);
+    }
     if m.kind() == "Color" {
         return styles::text(m, f);
     }
@@ -852,6 +856,9 @@ fn render_xml(
     spacing: bool,
     allow_templates: bool,
 ) -> Result<Vec<Xml>, String> {
+    if accents::handles(m) {
+        return accents::xml(m, f, spacing, allow_templates);
+    }
     if m.kind() == "Color" {
         return styles::xml(m, f, spacing, allow_templates);
     }
@@ -949,14 +956,16 @@ fn render_xml(
                 c.push(el("mo", vec![text(&b)]));
                 Ok(vec![el("mrow", c)])
             } else {
-                let props = el(
-                    "m:dPr",
-                    vec![
-                        attrs("m:begChr", vec![("m:val".into(), a)], vec![]),
-                        attrs("m:sepChr", vec![("m:val".into(), "".into())], vec![]),
-                        attrs("m:endChr", vec![("m:val".into(), b)], vec![]),
-                    ],
-                );
+                let mut props = vec![];
+                let has_delimiter = |v: &Value| v["class"].as_str().is_some_and(|c| c.starts_with("Math::Symbols::Paren::")) || !v["fields"]["value"].is_null();
+                if has_delimiter(m.field("parameter_one")) {
+                    props.push(attrs("m:begChr", vec![("m:val".into(), a)], vec![]));
+                }
+                props.push(attrs("m:sepChr", vec![("m:val".into(), "".into())], vec![]));
+                if has_delimiter(m.field("parameter_three")) {
+                    props.push(attrs("m:endChr", vec![("m:val".into(), b)], vec![]));
+                }
+                let props = el("m:dPr", props);
                 Ok(vec![el("m:d", vec![props, el("m:e", body)])])
             }
         }
