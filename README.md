@@ -166,10 +166,9 @@ Errors carry a typed code and message.
   refused. Second-order independent propagation requires normal components.
   Second-order correlated propagation requires explicit multivariate normality
   and complete symmetric derivative tensors.
-- `coverage` uses the Ruby binary64 convention on GNU/Linux, with normal or
+- `coverage` uses a portable Rust binary64 backend, with normal or
   Student-t factors, probability 0.5–0.999, Student-t degrees of freedom
-  1–10000, and 1–8 significant digits. Other targets return a typed
-  unsupported-model result for this method.
+  1–10000, and 1–8 significant digits.
 - `monte_carlo` accepts an ordinary AST, ordered `{name,pdf}` inputs, four
   explicit seeds, independent sampling, probability, interval selection,
   significant and guard digits, and a sample budget. It uses centered exact

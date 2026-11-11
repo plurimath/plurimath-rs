@@ -30,11 +30,6 @@ fn frozen_f40_gum_and_series_cases() {
     let cases = fixture["cases"].as_array().unwrap();
     assert_eq!(cases.len(), 39);
     for case in cases {
-        if case["request"]["method"] == "coverage"
-            && !cfg!(all(target_os = "linux", target_env = "gnu"))
-        {
-            continue;
-        }
         let actual = run(&case["request"]);
         let expected = &case["expected"];
         if expected["outcome"] == "ok" {

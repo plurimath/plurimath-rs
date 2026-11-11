@@ -1,25 +1,6 @@
 use super::*;
-
-#[cfg(all(target_os = "linux", target_env = "gnu"))]
 use num_traits::ToPrimitive;
 
-// Ruby's source uses system erfc and lgamma at this binary64 boundary.
-// Keep that backend on the tested target and refuse it elsewhere.
-#[cfg(all(target_os = "linux", target_env = "gnu"))]
-#[link(name = "m")]
-extern "C" {
-    fn erfc(x: f64) -> f64;
-    fn lgamma_r(x: f64, sign: *mut std::ffi::c_int) -> f64;
-}
-
-#[cfg(not(all(target_os = "linux", target_env = "gnu")))]
-pub(super) fn evaluate(_params: &J) -> Result<J> {
-    Err(unsupported(
-        "binary64 coverage backend is unavailable on this target",
-    ))
-}
-
-#[cfg(all(target_os = "linux", target_env = "gnu"))]
 pub(super) fn evaluate(params: &J) -> Result<J> {
     fields(
         params,
@@ -86,7 +67,6 @@ pub(super) fn evaluate(params: &J) -> Result<J> {
     }))
 }
 
-#[cfg(all(target_os = "linux", target_env = "gnu"))]
 fn numerical(message: &'static str) -> Error {
     Error {
         code: "NumericalFailure",
@@ -94,12 +74,10 @@ fn numerical(message: &'static str) -> Error {
     }
 }
 
-#[cfg(all(target_os = "linux", target_env = "gnu"))]
 fn quantile(probability: f64, nu: Option<f64>) -> Result<f64> {
     let cdf = |x| match nu {
         Some(nu) => student_cdf(x, nu),
-        // erfc is total on binary64. It does not use pointer arguments.
-        None => Ok(0.5 * unsafe { erfc(-x / 2.0_f64.sqrt()) }),
+        None => Ok(0.5 * libm::erfc(-x / std::f64::consts::SQRT_2)),
     };
     let mut lower = 0.0;
     let mut upper = 1.0;
@@ -120,27 +98,22 @@ fn quantile(probability: f64, nu: Option<f64>) -> Result<f64> {
     Ok((lower + upper) / 2.0)
 }
 
-#[cfg(all(target_os = "linux", target_env = "gnu"))]
 fn student_cdf(value: f64, nu: f64) -> Result<f64> {
     if value == 0.0 {
         return Ok(0.5);
     }
-    let log_gamma = |x| {
-        let mut sign = 0;
-        // nu and (nu + 1) are positive and the pointer is valid for this call.
-        unsafe { lgamma_r(x, &mut sign) }
-    };
-    let log_constant =
-        log_gamma((nu + 1.0) / 2.0) - log_gamma(nu / 2.0) - 0.5 * (nu * std::f64::consts::PI).ln();
+    let log_constant = libm::lgamma((nu + 1.0) / 2.0)
+        - libm::lgamma(nu / 2.0)
+        - 0.5 * libm::log(nu * std::f64::consts::PI);
     let density = |x: f64| {
         let u = x * x / nu;
         let one_plus = 1.0 + u;
         let log = if one_plus == 1.0 {
             u
         } else {
-            one_plus.ln() * (u / (one_plus - 1.0))
+            libm::log(one_plus) * (u / (one_plus - 1.0))
         };
-        (log_constant - (nu + 1.0) / 2.0 * log).exp()
+        libm::exp(log_constant - (nu + 1.0) / 2.0 * log)
     };
     let values = [density(0.0), density(value / 2.0), density(value)];
     let whole = value * (values[0] + 4.0 * values[1] + values[2]) / 6.0;
@@ -151,7 +124,6 @@ fn student_cdf(value: f64, nu: f64) -> Result<f64> {
     Ok(result.min(1.0))
 }
 
-#[cfg(all(target_os = "linux", target_env = "gnu"))]
 fn integrate(
     f: &impl Fn(f64) -> f64,
     [left, right]: [f64; 2],
