@@ -1,0 +1,2024 @@
+{
+  "profile": "source-lexical-prime-comparison-v1",
+  "ruby": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+  "source_head": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "declarations": {
+    "primes": {
+      "pppprime": "&#x2057;",
+      "ppprime": "&#x2034;",
+      "pprime": "&#x2033;",
+      "prime": "&#x2032;",
+      "sprime": "&#x27;"
+    }
+  },
+  "helpers": [
+    {
+      "id": "prime0",
+      "model": {
+        "class": "Math::Symbols::Symbol",
+        "fields": {
+          "value": "′"
+        }
+      },
+      "prime": false
+    },
+    {
+      "id": "prime1",
+      "model": {
+        "class": "Math::Symbols::Symbol",
+        "fields": {
+          "value": "″"
+        }
+      },
+      "prime": false
+    },
+    {
+      "id": "prime2",
+      "model": {
+        "class": "Math::Symbols::Symbol",
+        "fields": {
+          "value": "‴"
+        }
+      },
+      "prime": false
+    },
+    {
+      "id": "prime3",
+      "model": {
+        "class": "Math::Symbols::Symbol",
+        "fields": {
+          "value": "⁗"
+        }
+      },
+      "prime": false
+    },
+    {
+      "id": "prime4",
+      "model": {
+        "class": "Math::Symbols::Symbol",
+        "fields": {
+          "value": "'"
+        }
+      },
+      "prime": false
+    },
+    {
+      "id": "prime5",
+      "model": {
+        "class": "Math::Symbols::Symbol",
+        "fields": {
+          "value": "&#x27;"
+        }
+      },
+      "prime": true
+    },
+    {
+      "id": "prime6",
+      "model": {
+        "class": "Math::Symbols::Symbol",
+        "fields": {
+          "value": "&#x2032;"
+        }
+      },
+      "prime": true
+    },
+    {
+      "id": "prime7",
+      "model": {
+        "class": "Math::Symbols::Symbol",
+        "fields": {
+          "value": "&#x2033;"
+        }
+      },
+      "prime": true
+    },
+    {
+      "id": "prime8",
+      "model": {
+        "class": "Math::Symbols::Symbol",
+        "fields": {
+          "value": "&#x2034;"
+        }
+      },
+      "prime": true
+    },
+    {
+      "id": "prime9",
+      "model": {
+        "class": "Math::Symbols::Symbol",
+        "fields": {
+          "value": "&#x2057;"
+        }
+      },
+      "prime": true
+    },
+    {
+      "id": "prime10",
+      "model": {
+        "class": "Math::Symbols::Symbol",
+        "fields": {
+          "value": "prefix&#x2032;suffix"
+        }
+      },
+      "prime": true
+    },
+    {
+      "id": "prime11",
+      "model": {
+        "class": "Math::Symbols::Symbol",
+        "fields": {
+          "value": null
+        }
+      },
+      "prime": {
+        "error": {
+          "class": "NoMethodError",
+          "message": "undefined method 'include?' for nil"
+        }
+      }
+    },
+    {
+      "id": "prime12",
+      "model": {
+        "class": "Math::Symbols::Symbol",
+        "fields": {
+          "value": "false"
+        }
+      },
+      "prime": false
+    },
+    {
+      "id": "prime13",
+      "model": {
+        "class": "Math::Symbols::Symbol",
+        "fields": {
+          "value": ""
+        }
+      },
+      "prime": false
+    },
+    {
+      "id": "prime14",
+      "model": {
+        "class": "Math::Symbols::Symbol",
+        "fields": {
+          "value": "&#x2032;"
+        }
+      },
+      "prime": true
+    }
+  ],
+  "rows": [
+    {
+      "id": "power-prime0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Power",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "′"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(′)"
+        },
+        "latex": {
+          "value": "x^{′}"
+        },
+        "html": {
+          "value": "<i>x</i><sup>′</sup>"
+        },
+        "unicodemath": {
+          "value": "x^(′)"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msup>\n      <mi>x</mi>\n      <mi>′</mi>\n    </msup>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:sSup>\n      <m:sSupPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:sSupPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n      </m:e>\n      <m:sup>\n        <m:r>\n          <m:t>′</m:t>\n        </m:r>\n      </m:sup>\n    </m:sSup>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "limits-prime0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Limits",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "′"
+                      }
+                    }
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(′)_(1)^(2)"
+        },
+        "latex": {
+          "value": "x^{′}\\limits_{1}^{2}"
+        },
+        "html": {
+          "value": "<i><i>x</i><sup>′</sup></i><i>1</i><i>2</i>"
+        },
+        "unicodemath": {
+          "value": "x^(′)┴(2)┬(1)"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <munderover>\n      <msup>\n        <mi>x</mi>\n        <mi>′</mi>\n      </msup>\n      <mn>1</mn>\n      <mn>2</mn>\n    </munderover>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:limLow>\n      <m:limLowPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limLowPr>\n      <m:e>\n        <m:limUpp>\n          <m:limUppPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:limUppPr>\n          <m:e>\n            <m:sSup>\n              <m:sSupPr>\n                <m:ctrlPr>\n                  <w:rPr>\n                    <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                    <w:i/>\n                  </w:rPr>\n                </m:ctrlPr>\n              </m:sSupPr>\n              <m:e>\n                <m:r>\n                  <m:t>x</m:t>\n                </m:r>\n              </m:e>\n              <m:sup>\n                <m:r>\n                  <m:t>′</m:t>\n                </m:r>\n              </m:sup>\n            </m:sSup>\n          </m:e>\n          <m:lim>\n            <m:r>\n              <m:t>2</m:t>\n            </m:r>\n          </m:lim>\n        </m:limUpp>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:lim>\n    </m:limLow>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "power-prime1",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Power",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "″"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(″)"
+        },
+        "latex": {
+          "value": "x^{″}"
+        },
+        "html": {
+          "value": "<i>x</i><sup>″</sup>"
+        },
+        "unicodemath": {
+          "value": "x^(″)"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msup>\n      <mi>x</mi>\n      <mi>″</mi>\n    </msup>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:sSup>\n      <m:sSupPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:sSupPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n      </m:e>\n      <m:sup>\n        <m:r>\n          <m:t>″</m:t>\n        </m:r>\n      </m:sup>\n    </m:sSup>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "limits-prime1",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Limits",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "″"
+                      }
+                    }
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(″)_(1)^(2)"
+        },
+        "latex": {
+          "value": "x^{″}\\limits_{1}^{2}"
+        },
+        "html": {
+          "value": "<i><i>x</i><sup>″</sup></i><i>1</i><i>2</i>"
+        },
+        "unicodemath": {
+          "value": "x^(″)┴(2)┬(1)"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <munderover>\n      <msup>\n        <mi>x</mi>\n        <mi>″</mi>\n      </msup>\n      <mn>1</mn>\n      <mn>2</mn>\n    </munderover>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:limLow>\n      <m:limLowPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limLowPr>\n      <m:e>\n        <m:limUpp>\n          <m:limUppPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:limUppPr>\n          <m:e>\n            <m:sSup>\n              <m:sSupPr>\n                <m:ctrlPr>\n                  <w:rPr>\n                    <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                    <w:i/>\n                  </w:rPr>\n                </m:ctrlPr>\n              </m:sSupPr>\n              <m:e>\n                <m:r>\n                  <m:t>x</m:t>\n                </m:r>\n              </m:e>\n              <m:sup>\n                <m:r>\n                  <m:t>″</m:t>\n                </m:r>\n              </m:sup>\n            </m:sSup>\n          </m:e>\n          <m:lim>\n            <m:r>\n              <m:t>2</m:t>\n            </m:r>\n          </m:lim>\n        </m:limUpp>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:lim>\n    </m:limLow>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "power-prime2",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Power",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "‴"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(‴)"
+        },
+        "latex": {
+          "value": "x^{‴}"
+        },
+        "html": {
+          "value": "<i>x</i><sup>‴</sup>"
+        },
+        "unicodemath": {
+          "value": "x^(‴)"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msup>\n      <mi>x</mi>\n      <mi>‴</mi>\n    </msup>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:sSup>\n      <m:sSupPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:sSupPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n      </m:e>\n      <m:sup>\n        <m:r>\n          <m:t>‴</m:t>\n        </m:r>\n      </m:sup>\n    </m:sSup>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "limits-prime2",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Limits",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "‴"
+                      }
+                    }
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(‴)_(1)^(2)"
+        },
+        "latex": {
+          "value": "x^{‴}\\limits_{1}^{2}"
+        },
+        "html": {
+          "value": "<i><i>x</i><sup>‴</sup></i><i>1</i><i>2</i>"
+        },
+        "unicodemath": {
+          "value": "x^(‴)┴(2)┬(1)"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <munderover>\n      <msup>\n        <mi>x</mi>\n        <mi>‴</mi>\n      </msup>\n      <mn>1</mn>\n      <mn>2</mn>\n    </munderover>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:limLow>\n      <m:limLowPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limLowPr>\n      <m:e>\n        <m:limUpp>\n          <m:limUppPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:limUppPr>\n          <m:e>\n            <m:sSup>\n              <m:sSupPr>\n                <m:ctrlPr>\n                  <w:rPr>\n                    <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                    <w:i/>\n                  </w:rPr>\n                </m:ctrlPr>\n              </m:sSupPr>\n              <m:e>\n                <m:r>\n                  <m:t>x</m:t>\n                </m:r>\n              </m:e>\n              <m:sup>\n                <m:r>\n                  <m:t>‴</m:t>\n                </m:r>\n              </m:sup>\n            </m:sSup>\n          </m:e>\n          <m:lim>\n            <m:r>\n              <m:t>2</m:t>\n            </m:r>\n          </m:lim>\n        </m:limUpp>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:lim>\n    </m:limLow>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "power-prime3",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Power",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "⁗"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(⁗)"
+        },
+        "latex": {
+          "value": "x^{⁗}"
+        },
+        "html": {
+          "value": "<i>x</i><sup>⁗</sup>"
+        },
+        "unicodemath": {
+          "value": "x^(⁗)"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msup>\n      <mi>x</mi>\n      <mi>⁗</mi>\n    </msup>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:sSup>\n      <m:sSupPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:sSupPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n      </m:e>\n      <m:sup>\n        <m:r>\n          <m:t>⁗</m:t>\n        </m:r>\n      </m:sup>\n    </m:sSup>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "limits-prime3",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Limits",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "⁗"
+                      }
+                    }
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(⁗)_(1)^(2)"
+        },
+        "latex": {
+          "value": "x^{⁗}\\limits_{1}^{2}"
+        },
+        "html": {
+          "value": "<i><i>x</i><sup>⁗</sup></i><i>1</i><i>2</i>"
+        },
+        "unicodemath": {
+          "value": "x^(⁗)┴(2)┬(1)"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <munderover>\n      <msup>\n        <mi>x</mi>\n        <mi>⁗</mi>\n      </msup>\n      <mn>1</mn>\n      <mn>2</mn>\n    </munderover>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:limLow>\n      <m:limLowPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limLowPr>\n      <m:e>\n        <m:limUpp>\n          <m:limUppPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:limUppPr>\n          <m:e>\n            <m:sSup>\n              <m:sSupPr>\n                <m:ctrlPr>\n                  <w:rPr>\n                    <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                    <w:i/>\n                  </w:rPr>\n                </m:ctrlPr>\n              </m:sSupPr>\n              <m:e>\n                <m:r>\n                  <m:t>x</m:t>\n                </m:r>\n              </m:e>\n              <m:sup>\n                <m:r>\n                  <m:t>⁗</m:t>\n                </m:r>\n              </m:sup>\n            </m:sSup>\n          </m:e>\n          <m:lim>\n            <m:r>\n              <m:t>2</m:t>\n            </m:r>\n          </m:lim>\n        </m:limUpp>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:lim>\n    </m:limLow>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "power-prime4",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Power",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "'"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(')"
+        },
+        "latex": {
+          "value": "x^{'}"
+        },
+        "html": {
+          "value": "<i>x</i><sup>'</sup>"
+        },
+        "unicodemath": {
+          "value": "x^(')"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msup>\n      <mi>x</mi>\n      <mi>'</mi>\n    </msup>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:sSup>\n      <m:sSupPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:sSupPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n      </m:e>\n      <m:sup>\n        <m:r>\n          <m:t>'</m:t>\n        </m:r>\n      </m:sup>\n    </m:sSup>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "limits-prime4",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Limits",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "'"
+                      }
+                    }
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(')_(1)^(2)"
+        },
+        "latex": {
+          "value": "x^{'}\\limits_{1}^{2}"
+        },
+        "html": {
+          "value": "<i><i>x</i><sup>'</sup></i><i>1</i><i>2</i>"
+        },
+        "unicodemath": {
+          "value": "x^(')┴(2)┬(1)"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <munderover>\n      <msup>\n        <mi>x</mi>\n        <mi>'</mi>\n      </msup>\n      <mn>1</mn>\n      <mn>2</mn>\n    </munderover>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:limLow>\n      <m:limLowPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limLowPr>\n      <m:e>\n        <m:limUpp>\n          <m:limUppPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:limUppPr>\n          <m:e>\n            <m:sSup>\n              <m:sSupPr>\n                <m:ctrlPr>\n                  <w:rPr>\n                    <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                    <w:i/>\n                  </w:rPr>\n                </m:ctrlPr>\n              </m:sSupPr>\n              <m:e>\n                <m:r>\n                  <m:t>x</m:t>\n                </m:r>\n              </m:e>\n              <m:sup>\n                <m:r>\n                  <m:t>'</m:t>\n                </m:r>\n              </m:sup>\n            </m:sSup>\n          </m:e>\n          <m:lim>\n            <m:r>\n              <m:t>2</m:t>\n            </m:r>\n          </m:lim>\n        </m:limUpp>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:lim>\n    </m:limLow>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "power-prime5",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Power",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "&#x27;"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(&#x27;)"
+        },
+        "latex": {
+          "value": "x^{&#x27;}"
+        },
+        "html": {
+          "value": "<i>x</i><sup>&#x27;</sup>"
+        },
+        "unicodemath": {
+          "value": "x'"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msup>\n      <mi>x</mi>\n      <mi>&#x27;</mi>\n    </msup>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:sSup>\n      <m:sSupPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:sSupPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n      </m:e>\n      <m:sup>\n        <m:r>\n          <m:t>&#x27;</m:t>\n        </m:r>\n      </m:sup>\n    </m:sSup>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "limits-prime5",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Limits",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "&#x27;"
+                      }
+                    }
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(&#x27;)_(1)^(2)"
+        },
+        "latex": {
+          "value": "x^{&#x27;}\\limits_{1}^{2}"
+        },
+        "html": {
+          "value": "<i><i>x</i><sup>&#x27;</sup></i><i>1</i><i>2</i>"
+        },
+        "unicodemath": {
+          "value": "x'┴2┬(1)"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <munderover>\n      <msup>\n        <mi>x</mi>\n        <mi>&#x27;</mi>\n      </msup>\n      <mn>1</mn>\n      <mn>2</mn>\n    </munderover>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:limLow>\n      <m:limLowPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limLowPr>\n      <m:e>\n        <m:limUpp>\n          <m:limUppPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:limUppPr>\n          <m:e>\n            <m:sSup>\n              <m:sSupPr>\n                <m:ctrlPr>\n                  <w:rPr>\n                    <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                    <w:i/>\n                  </w:rPr>\n                </m:ctrlPr>\n              </m:sSupPr>\n              <m:e>\n                <m:r>\n                  <m:t>x</m:t>\n                </m:r>\n              </m:e>\n              <m:sup>\n                <m:r>\n                  <m:t>&#x27;</m:t>\n                </m:r>\n              </m:sup>\n            </m:sSup>\n          </m:e>\n          <m:lim>\n            <m:r>\n              <m:t>2</m:t>\n            </m:r>\n          </m:lim>\n        </m:limUpp>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:lim>\n    </m:limLow>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "power-prime6",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Power",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "&#x2032;"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(&#x2032;)"
+        },
+        "latex": {
+          "value": "x^{&#x2032;}"
+        },
+        "html": {
+          "value": "<i>x</i><sup>&#x2032;</sup>"
+        },
+        "unicodemath": {
+          "value": "x′"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msup>\n      <mi>x</mi>\n      <mi>&#x2032;</mi>\n    </msup>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:sSup>\n      <m:sSupPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:sSupPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n      </m:e>\n      <m:sup>\n        <m:r>\n          <m:t>&#x2032;</m:t>\n        </m:r>\n      </m:sup>\n    </m:sSup>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "limits-prime6",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Limits",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "&#x2032;"
+                      }
+                    }
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(&#x2032;)_(1)^(2)"
+        },
+        "latex": {
+          "value": "x^{&#x2032;}\\limits_{1}^{2}"
+        },
+        "html": {
+          "value": "<i><i>x</i><sup>&#x2032;</sup></i><i>1</i><i>2</i>"
+        },
+        "unicodemath": {
+          "value": "x′┴2┬(1)"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <munderover>\n      <msup>\n        <mi>x</mi>\n        <mi>&#x2032;</mi>\n      </msup>\n      <mn>1</mn>\n      <mn>2</mn>\n    </munderover>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:limLow>\n      <m:limLowPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limLowPr>\n      <m:e>\n        <m:limUpp>\n          <m:limUppPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:limUppPr>\n          <m:e>\n            <m:sSup>\n              <m:sSupPr>\n                <m:ctrlPr>\n                  <w:rPr>\n                    <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                    <w:i/>\n                  </w:rPr>\n                </m:ctrlPr>\n              </m:sSupPr>\n              <m:e>\n                <m:r>\n                  <m:t>x</m:t>\n                </m:r>\n              </m:e>\n              <m:sup>\n                <m:r>\n                  <m:t>&#x2032;</m:t>\n                </m:r>\n              </m:sup>\n            </m:sSup>\n          </m:e>\n          <m:lim>\n            <m:r>\n              <m:t>2</m:t>\n            </m:r>\n          </m:lim>\n        </m:limUpp>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:lim>\n    </m:limLow>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "power-prime7",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Power",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "&#x2033;"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(&#x2033;)"
+        },
+        "latex": {
+          "value": "x^{&#x2033;}"
+        },
+        "html": {
+          "value": "<i>x</i><sup>&#x2033;</sup>"
+        },
+        "unicodemath": {
+          "value": "x″"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msup>\n      <mi>x</mi>\n      <mi>&#x2033;</mi>\n    </msup>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:sSup>\n      <m:sSupPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:sSupPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n      </m:e>\n      <m:sup>\n        <m:r>\n          <m:t>&#x2033;</m:t>\n        </m:r>\n      </m:sup>\n    </m:sSup>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "limits-prime7",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Limits",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "&#x2033;"
+                      }
+                    }
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(&#x2033;)_(1)^(2)"
+        },
+        "latex": {
+          "value": "x^{&#x2033;}\\limits_{1}^{2}"
+        },
+        "html": {
+          "value": "<i><i>x</i><sup>&#x2033;</sup></i><i>1</i><i>2</i>"
+        },
+        "unicodemath": {
+          "value": "x″┴2┬(1)"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <munderover>\n      <msup>\n        <mi>x</mi>\n        <mi>&#x2033;</mi>\n      </msup>\n      <mn>1</mn>\n      <mn>2</mn>\n    </munderover>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:limLow>\n      <m:limLowPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limLowPr>\n      <m:e>\n        <m:limUpp>\n          <m:limUppPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:limUppPr>\n          <m:e>\n            <m:sSup>\n              <m:sSupPr>\n                <m:ctrlPr>\n                  <w:rPr>\n                    <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                    <w:i/>\n                  </w:rPr>\n                </m:ctrlPr>\n              </m:sSupPr>\n              <m:e>\n                <m:r>\n                  <m:t>x</m:t>\n                </m:r>\n              </m:e>\n              <m:sup>\n                <m:r>\n                  <m:t>&#x2033;</m:t>\n                </m:r>\n              </m:sup>\n            </m:sSup>\n          </m:e>\n          <m:lim>\n            <m:r>\n              <m:t>2</m:t>\n            </m:r>\n          </m:lim>\n        </m:limUpp>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:lim>\n    </m:limLow>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "power-prime8",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Power",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "&#x2034;"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(&#x2034;)"
+        },
+        "latex": {
+          "value": "x^{&#x2034;}"
+        },
+        "html": {
+          "value": "<i>x</i><sup>&#x2034;</sup>"
+        },
+        "unicodemath": {
+          "value": "x‴"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msup>\n      <mi>x</mi>\n      <mi>&#x2034;</mi>\n    </msup>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:sSup>\n      <m:sSupPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:sSupPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n      </m:e>\n      <m:sup>\n        <m:r>\n          <m:t>&#x2034;</m:t>\n        </m:r>\n      </m:sup>\n    </m:sSup>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "limits-prime8",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Limits",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "&#x2034;"
+                      }
+                    }
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(&#x2034;)_(1)^(2)"
+        },
+        "latex": {
+          "value": "x^{&#x2034;}\\limits_{1}^{2}"
+        },
+        "html": {
+          "value": "<i><i>x</i><sup>&#x2034;</sup></i><i>1</i><i>2</i>"
+        },
+        "unicodemath": {
+          "value": "x‴┴2┬(1)"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <munderover>\n      <msup>\n        <mi>x</mi>\n        <mi>&#x2034;</mi>\n      </msup>\n      <mn>1</mn>\n      <mn>2</mn>\n    </munderover>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:limLow>\n      <m:limLowPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limLowPr>\n      <m:e>\n        <m:limUpp>\n          <m:limUppPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:limUppPr>\n          <m:e>\n            <m:sSup>\n              <m:sSupPr>\n                <m:ctrlPr>\n                  <w:rPr>\n                    <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                    <w:i/>\n                  </w:rPr>\n                </m:ctrlPr>\n              </m:sSupPr>\n              <m:e>\n                <m:r>\n                  <m:t>x</m:t>\n                </m:r>\n              </m:e>\n              <m:sup>\n                <m:r>\n                  <m:t>&#x2034;</m:t>\n                </m:r>\n              </m:sup>\n            </m:sSup>\n          </m:e>\n          <m:lim>\n            <m:r>\n              <m:t>2</m:t>\n            </m:r>\n          </m:lim>\n        </m:limUpp>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:lim>\n    </m:limLow>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "power-prime9",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Power",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "&#x2057;"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(&#x2057;)"
+        },
+        "latex": {
+          "value": "x^{&#x2057;}"
+        },
+        "html": {
+          "value": "<i>x</i><sup>&#x2057;</sup>"
+        },
+        "unicodemath": {
+          "value": "x⁗"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msup>\n      <mi>x</mi>\n      <mi>&#x2057;</mi>\n    </msup>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:sSup>\n      <m:sSupPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:sSupPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n      </m:e>\n      <m:sup>\n        <m:r>\n          <m:t>&#x2057;</m:t>\n        </m:r>\n      </m:sup>\n    </m:sSup>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "limits-prime9",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Limits",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "&#x2057;"
+                      }
+                    }
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(&#x2057;)_(1)^(2)"
+        },
+        "latex": {
+          "value": "x^{&#x2057;}\\limits_{1}^{2}"
+        },
+        "html": {
+          "value": "<i><i>x</i><sup>&#x2057;</sup></i><i>1</i><i>2</i>"
+        },
+        "unicodemath": {
+          "value": "x⁗┴2┬(1)"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <munderover>\n      <msup>\n        <mi>x</mi>\n        <mi>&#x2057;</mi>\n      </msup>\n      <mn>1</mn>\n      <mn>2</mn>\n    </munderover>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:limLow>\n      <m:limLowPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limLowPr>\n      <m:e>\n        <m:limUpp>\n          <m:limUppPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:limUppPr>\n          <m:e>\n            <m:sSup>\n              <m:sSupPr>\n                <m:ctrlPr>\n                  <w:rPr>\n                    <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                    <w:i/>\n                  </w:rPr>\n                </m:ctrlPr>\n              </m:sSupPr>\n              <m:e>\n                <m:r>\n                  <m:t>x</m:t>\n                </m:r>\n              </m:e>\n              <m:sup>\n                <m:r>\n                  <m:t>&#x2057;</m:t>\n                </m:r>\n              </m:sup>\n            </m:sSup>\n          </m:e>\n          <m:lim>\n            <m:r>\n              <m:t>2</m:t>\n            </m:r>\n          </m:lim>\n        </m:limUpp>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:lim>\n    </m:limLow>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "power-prime10",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Power",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "prefix&#x2032;suffix"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(prefix&#x2032;suffix)"
+        },
+        "latex": {
+          "value": "x^{prefix&#x2032;suffix}"
+        },
+        "html": {
+          "value": "<i>x</i><sup>prefix&#x2032;suffix</sup>"
+        },
+        "unicodemath": {
+          "value": "xprefix′suffix"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msup>\n      <mi>x</mi>\n      <mi>prefix&#x2032;suffix</mi>\n    </msup>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:sSup>\n      <m:sSupPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:sSupPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n      </m:e>\n      <m:sup>\n        <m:r>\n          <m:t>prefix&#x2032;suffix</m:t>\n        </m:r>\n      </m:sup>\n    </m:sSup>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "limits-prime10",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Limits",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "prefix&#x2032;suffix"
+                      }
+                    }
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(prefix&#x2032;suffix)_(1)^(2)"
+        },
+        "latex": {
+          "value": "x^{prefix&#x2032;suffix}\\limits_{1}^{2}"
+        },
+        "html": {
+          "value": "<i><i>x</i><sup>prefix&#x2032;suffix</sup></i><i>1</i><i>2</i>"
+        },
+        "unicodemath": {
+          "value": "xprefix′suffix┴2┬(1)"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <munderover>\n      <msup>\n        <mi>x</mi>\n        <mi>prefix&#x2032;suffix</mi>\n      </msup>\n      <mn>1</mn>\n      <mn>2</mn>\n    </munderover>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:limLow>\n      <m:limLowPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limLowPr>\n      <m:e>\n        <m:limUpp>\n          <m:limUppPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:limUppPr>\n          <m:e>\n            <m:sSup>\n              <m:sSupPr>\n                <m:ctrlPr>\n                  <w:rPr>\n                    <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                    <w:i/>\n                  </w:rPr>\n                </m:ctrlPr>\n              </m:sSupPr>\n              <m:e>\n                <m:r>\n                  <m:t>x</m:t>\n                </m:r>\n              </m:e>\n              <m:sup>\n                <m:r>\n                  <m:t>prefix&#x2032;suffix</m:t>\n                </m:r>\n              </m:sup>\n            </m:sSup>\n          </m:e>\n          <m:lim>\n            <m:r>\n              <m:t>2</m:t>\n            </m:r>\n          </m:lim>\n        </m:limUpp>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:lim>\n    </m:limLow>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "power-prime11",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Power",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": null
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^()"
+        },
+        "latex": {
+          "value": "x^{}"
+        },
+        "html": {
+          "value": "<i>x</i><sup></sup>"
+        },
+        "unicodemath": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `unicodemath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msup>\n      <mi>x</mi>\n      <mi/>\n    </msup>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:sSup>\n      <m:sSupPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:sSupPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n      </m:e>\n      <m:sup>\n        <m:r>\n          <m:t/>\n        </m:r>\n      </m:sup>\n    </m:sSup>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "limits-prime11",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Limits",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": null
+                      }
+                    }
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^()_(1)^(2)"
+        },
+        "latex": {
+          "value": "x^{}\\limits_{1}^{2}"
+        },
+        "html": {
+          "value": "<i><i>x</i><sup></sup></i><i>1</i><i>2</i>"
+        },
+        "unicodemath": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `unicodemath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <munderover>\n      <msup>\n        <mi>x</mi>\n        <mi/>\n      </msup>\n      <mn>1</mn>\n      <mn>2</mn>\n    </munderover>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:limLow>\n      <m:limLowPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limLowPr>\n      <m:e>\n        <m:limUpp>\n          <m:limUppPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:limUppPr>\n          <m:e>\n            <m:sSup>\n              <m:sSupPr>\n                <m:ctrlPr>\n                  <w:rPr>\n                    <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                    <w:i/>\n                  </w:rPr>\n                </m:ctrlPr>\n              </m:sSupPr>\n              <m:e>\n                <m:r>\n                  <m:t>x</m:t>\n                </m:r>\n              </m:e>\n              <m:sup>\n                <m:r>\n                  <m:t/>\n                </m:r>\n              </m:sup>\n            </m:sSup>\n          </m:e>\n          <m:lim>\n            <m:r>\n              <m:t>2</m:t>\n            </m:r>\n          </m:lim>\n        </m:limUpp>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:lim>\n    </m:limLow>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "power-prime12",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Power",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "false"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(false)"
+        },
+        "latex": {
+          "value": "x^{false}"
+        },
+        "html": {
+          "value": "<i>x</i><sup>false</sup>"
+        },
+        "unicodemath": {
+          "value": "x^(false)"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msup>\n      <mi>x</mi>\n      <mi>false</mi>\n    </msup>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:sSup>\n      <m:sSupPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:sSupPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n      </m:e>\n      <m:sup>\n        <m:r>\n          <m:t>false</m:t>\n        </m:r>\n      </m:sup>\n    </m:sSup>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "limits-prime12",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Limits",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "false"
+                      }
+                    }
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(false)_(1)^(2)"
+        },
+        "latex": {
+          "value": "x^{false}\\limits_{1}^{2}"
+        },
+        "html": {
+          "value": "<i><i>x</i><sup>false</sup></i><i>1</i><i>2</i>"
+        },
+        "unicodemath": {
+          "value": "x^(false)┴(2)┬(1)"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <munderover>\n      <msup>\n        <mi>x</mi>\n        <mi>false</mi>\n      </msup>\n      <mn>1</mn>\n      <mn>2</mn>\n    </munderover>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:limLow>\n      <m:limLowPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limLowPr>\n      <m:e>\n        <m:limUpp>\n          <m:limUppPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:limUppPr>\n          <m:e>\n            <m:sSup>\n              <m:sSupPr>\n                <m:ctrlPr>\n                  <w:rPr>\n                    <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                    <w:i/>\n                  </w:rPr>\n                </m:ctrlPr>\n              </m:sSupPr>\n              <m:e>\n                <m:r>\n                  <m:t>x</m:t>\n                </m:r>\n              </m:e>\n              <m:sup>\n                <m:r>\n                  <m:t>false</m:t>\n                </m:r>\n              </m:sup>\n            </m:sSup>\n          </m:e>\n          <m:lim>\n            <m:r>\n              <m:t>2</m:t>\n            </m:r>\n          </m:lim>\n        </m:limUpp>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:lim>\n    </m:limLow>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "power-prime13",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Power",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^()"
+        },
+        "latex": {
+          "value": "x^{}"
+        },
+        "html": {
+          "value": "<i>x</i><sup></sup>"
+        },
+        "unicodemath": {
+          "value": "x^()"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msup>\n      <mi>x</mi>\n      <mi></mi>\n    </msup>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:sSup>\n      <m:sSupPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:sSupPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n      </m:e>\n      <m:sup>\n        <m:r>\n          <m:t></m:t>\n        </m:r>\n      </m:sup>\n    </m:sSup>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "limits-prime13",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Limits",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": ""
+                      }
+                    }
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^()_(1)^(2)"
+        },
+        "latex": {
+          "value": "x^{}\\limits_{1}^{2}"
+        },
+        "html": {
+          "value": "<i><i>x</i><sup></sup></i><i>1</i><i>2</i>"
+        },
+        "unicodemath": {
+          "value": "x^()┴(2)┬(1)"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <munderover>\n      <msup>\n        <mi>x</mi>\n        <mi></mi>\n      </msup>\n      <mn>1</mn>\n      <mn>2</mn>\n    </munderover>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:limLow>\n      <m:limLowPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limLowPr>\n      <m:e>\n        <m:limUpp>\n          <m:limUppPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:limUppPr>\n          <m:e>\n            <m:sSup>\n              <m:sSupPr>\n                <m:ctrlPr>\n                  <w:rPr>\n                    <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                    <w:i/>\n                  </w:rPr>\n                </m:ctrlPr>\n              </m:sSupPr>\n              <m:e>\n                <m:r>\n                  <m:t>x</m:t>\n                </m:r>\n              </m:e>\n              <m:sup>\n                <m:r>\n                  <m:t></m:t>\n                </m:r>\n              </m:sup>\n            </m:sSup>\n          </m:e>\n          <m:lim>\n            <m:r>\n              <m:t>2</m:t>\n            </m:r>\n          </m:lim>\n        </m:limUpp>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:lim>\n    </m:limLow>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "power-prime14",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Power",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "&#x2032;"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(&#x2032;)"
+        },
+        "latex": {
+          "value": "x^{&#x2032;}"
+        },
+        "html": {
+          "value": "<i>x</i><sup>&#x2032;</sup>"
+        },
+        "unicodemath": {
+          "value": "x′"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msup>\n      <mi>x</mi>\n      <mi>&#x2032;</mi>\n    </msup>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:sSup>\n      <m:sSupPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:sSupPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n      </m:e>\n      <m:sup>\n        <m:r>\n          <m:t>&#x2032;</m:t>\n        </m:r>\n      </m:sup>\n    </m:sSup>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "limits-prime14",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Limits",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "&#x2032;"
+                      }
+                    }
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "x^(&#x2032;)_(1)^(2)"
+        },
+        "latex": {
+          "value": "x^{&#x2032;}\\limits_{1}^{2}"
+        },
+        "html": {
+          "value": "<i><i>x</i><sup>&#x2032;</sup></i><i>1</i><i>2</i>"
+        },
+        "unicodemath": {
+          "value": "x′┴2┬(1)"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <munderover>\n      <msup>\n        <mi>x</mi>\n        <mi>&#x2032;</mi>\n      </msup>\n      <mn>1</mn>\n      <mn>2</mn>\n    </munderover>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:limLow>\n      <m:limLowPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:limLowPr>\n      <m:e>\n        <m:limUpp>\n          <m:limUppPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:limUppPr>\n          <m:e>\n            <m:sSup>\n              <m:sSupPr>\n                <m:ctrlPr>\n                  <w:rPr>\n                    <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                    <w:i/>\n                  </w:rPr>\n                </m:ctrlPr>\n              </m:sSupPr>\n              <m:e>\n                <m:r>\n                  <m:t>x</m:t>\n                </m:r>\n              </m:e>\n              <m:sup>\n                <m:r>\n                  <m:t>&#x2032;</m:t>\n                </m:r>\n              </m:sup>\n            </m:sSup>\n          </m:e>\n          <m:lim>\n            <m:r>\n              <m:t>2</m:t>\n            </m:r>\n          </m:lim>\n        </m:limUpp>\n      </m:e>\n      <m:lim>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:lim>\n    </m:limLow>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    }
+  ]
+}

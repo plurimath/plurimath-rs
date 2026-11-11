@@ -1,0 +1,497 @@
+{
+  "profile": "explicit unported child capabilities; source goldens unchanged",
+  "gaps": [
+    {
+      "fixture": "final",
+      "id": "frac-unicode-cast28-slot0",
+      "format": "asciimath",
+      "reason": "unported promised Ruby Float#to_s Number spelling"
+    },
+    {
+      "fixture": "final",
+      "id": "frac-unicode-cast28-slot0",
+      "format": "latex",
+      "reason": "unported promised Ruby Float#to_s Number spelling"
+    },
+    {
+      "fixture": "final",
+      "id": "frac-unicode-cast28-slot0",
+      "format": "html",
+      "reason": "unported promised Ruby Float#to_s Number spelling"
+    },
+    {
+      "fixture": "final",
+      "id": "frac-unicode-cast28-slot0",
+      "format": "mathml",
+      "reason": "unported promised Ruby Float#to_s Number spelling"
+    },
+    {
+      "fixture": "final",
+      "id": "frac-unicode-cast28-slot0",
+      "format": "omml",
+      "reason": "unported promised Ruby Float#to_s Number spelling"
+    },
+    {
+      "fixture": "final",
+      "id": "frac-unicode-cast28-slot1",
+      "format": "asciimath",
+      "reason": "unported promised Ruby Float#to_s Number spelling"
+    },
+    {
+      "fixture": "final",
+      "id": "frac-unicode-cast28-slot1",
+      "format": "latex",
+      "reason": "unported promised Ruby Float#to_s Number spelling"
+    },
+    {
+      "fixture": "final",
+      "id": "frac-unicode-cast28-slot1",
+      "format": "html",
+      "reason": "unported promised Ruby Float#to_s Number spelling"
+    },
+    {
+      "fixture": "final",
+      "id": "frac-unicode-cast28-slot1",
+      "format": "mathml",
+      "reason": "unported promised Ruby Float#to_s Number spelling"
+    },
+    {
+      "fixture": "final",
+      "id": "frac-unicode-cast28-slot1",
+      "format": "omml",
+      "reason": "unported promised Ruby Float#to_s Number spelling"
+    },
+    {
+      "fixture": "final",
+      "id": "frac-unicode-cast29-slot0",
+      "format": "asciimath",
+      "reason": "unported promised Ruby Float#to_s Number spelling"
+    },
+    {
+      "fixture": "final",
+      "id": "frac-unicode-cast29-slot0",
+      "format": "latex",
+      "reason": "unported promised Ruby Float#to_s Number spelling"
+    },
+    {
+      "fixture": "final",
+      "id": "frac-unicode-cast29-slot0",
+      "format": "html",
+      "reason": "unported promised Ruby Float#to_s Number spelling"
+    },
+    {
+      "fixture": "final",
+      "id": "frac-unicode-cast29-slot0",
+      "format": "mathml",
+      "reason": "unported promised Ruby Float#to_s Number spelling"
+    },
+    {
+      "fixture": "final",
+      "id": "frac-unicode-cast29-slot0",
+      "format": "omml",
+      "reason": "unported promised Ruby Float#to_s Number spelling"
+    },
+    {
+      "fixture": "final",
+      "id": "frac-unicode-cast29-slot1",
+      "format": "asciimath",
+      "reason": "unported promised Ruby Float#to_s Number spelling"
+    },
+    {
+      "fixture": "final",
+      "id": "frac-unicode-cast29-slot1",
+      "format": "latex",
+      "reason": "unported promised Ruby Float#to_s Number spelling"
+    },
+    {
+      "fixture": "final",
+      "id": "frac-unicode-cast29-slot1",
+      "format": "html",
+      "reason": "unported promised Ruby Float#to_s Number spelling"
+    },
+    {
+      "fixture": "final",
+      "id": "frac-unicode-cast29-slot1",
+      "format": "mathml",
+      "reason": "unported promised Ruby Float#to_s Number spelling"
+    },
+    {
+      "fixture": "final",
+      "id": "frac-unicode-cast29-slot1",
+      "format": "omml",
+      "reason": "unported promised Ruby Float#to_s Number spelling"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent0-base1",
+      "format": "asciimath",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent0-base1",
+      "format": "latex",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent0-base1",
+      "format": "html",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent0-base1",
+      "format": "unicodemath",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent0-base1",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent0-base1",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent1-base1",
+      "format": "asciimath",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent1-base1",
+      "format": "latex",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent1-base1",
+      "format": "html",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent1-base1",
+      "format": "unicodemath",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent1-base1",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent1-base1",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent2-base1",
+      "format": "asciimath",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent2-base1",
+      "format": "latex",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent2-base1",
+      "format": "html",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent2-base1",
+      "format": "unicodemath",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent2-base1",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent2-base1",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent3-base1",
+      "format": "asciimath",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent3-base1",
+      "format": "latex",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent3-base1",
+      "format": "html",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent3-base1",
+      "format": "unicodemath",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent3-base1",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent3-base1",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent4-base1",
+      "format": "asciimath",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent4-base1",
+      "format": "latex",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent4-base1",
+      "format": "html",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent4-base1",
+      "format": "unicodemath",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent4-base1",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent4-base1",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent5-base1",
+      "format": "asciimath",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent5-base1",
+      "format": "latex",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent5-base1",
+      "format": "html",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent5-base1",
+      "format": "unicodemath",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent5-base1",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent5-base1",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent6-base1",
+      "format": "asciimath",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent6-base1",
+      "format": "latex",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent6-base1",
+      "format": "html",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent6-base1",
+      "format": "unicodemath",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent6-base1",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent6-base1",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent7-base1",
+      "format": "asciimath",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent7-base1",
+      "format": "latex",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent7-base1",
+      "format": "html",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent7-base1",
+      "format": "unicodemath",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent7-base1",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "underset-accent7-base1",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "fixture": "final",
+      "id": "parsed-1-0",
+      "format": "asciimath",
+      "reason": "unported promised writer node Math::Function::Overset"
+    },
+    {
+      "fixture": "final",
+      "id": "parsed-1-0",
+      "format": "latex",
+      "reason": "unported promised writer node Math::Function::Overset"
+    },
+    {
+      "fixture": "final",
+      "id": "parsed-1-0",
+      "format": "html",
+      "reason": "unported promised writer node Math::Function::Overset"
+    },
+    {
+      "fixture": "final",
+      "id": "parsed-1-0",
+      "format": "unicodemath",
+      "reason": "unported promised writer node Math::Function::Overset"
+    },
+    {
+      "fixture": "final",
+      "id": "parsed-3-0",
+      "format": "asciimath",
+      "reason": "unported promised writer node Math::Function::Table"
+    },
+    {
+      "fixture": "final",
+      "id": "parsed-3-0",
+      "format": "latex",
+      "reason": "unported promised writer node Math::Function::Table"
+    },
+    {
+      "fixture": "final",
+      "id": "parsed-3-0",
+      "format": "html",
+      "reason": "unported promised writer node Math::Function::Table"
+    },
+    {
+      "fixture": "final",
+      "id": "parsed-3-0",
+      "format": "unicodemath",
+      "reason": "unported promised writer node Math::Function::Table"
+    },
+    {
+      "fixture": "affected",
+      "id": "intent-unicodemath-531:mathml",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Intent"
+    },
+    {
+      "fixture": "affected",
+      "id": "intent-unicodemath-531-off:mathml",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Intent"
+    },
+    {
+      "fixture": "affected",
+      "id": "intent-unicodemath-532:mathml",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Intent"
+    },
+    {
+      "fixture": "affected",
+      "id": "intent-unicodemath-532-off:mathml",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Intent"
+    },
+    {
+      "fixture": "affected",
+      "id": "intent-unicodemath-537:mathml",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Intent"
+    },
+    {
+      "fixture": "affected",
+      "id": "intent-unicodemath-537-off:mathml",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Intent"
+    }
+  ]
+}

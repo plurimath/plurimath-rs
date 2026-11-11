@@ -1,0 +1,182 @@
+{
+  "unicode_fractions": {
+    "&#x2153;": [
+      1,
+      3
+    ],
+    "&#x2154;": [
+      2,
+      3
+    ],
+    "&#x2155;": [
+      1,
+      5
+    ],
+    "&#x2156;": [
+      2,
+      5
+    ],
+    "&#x2157;": [
+      3,
+      5
+    ],
+    "&#x2158;": [
+      4,
+      5
+    ],
+    "&#x2159;": [
+      1,
+      6
+    ],
+    "&#x215a;": [
+      5,
+      6
+    ],
+    "&#x2150;": [
+      1,
+      7
+    ],
+    "&#x215b;": [
+      1,
+      8
+    ],
+    "&#x215c;": [
+      3,
+      8
+    ],
+    "&#x215d;": [
+      5,
+      8
+    ],
+    "&#x215e;": [
+      7,
+      8
+    ],
+    "&#x2151;": [
+      1,
+      9
+    ],
+    "&#x2189;": [
+      0,
+      3
+    ],
+    "&#xbd;": [
+      1,
+      2
+    ],
+    "&#xbc;": [
+      1,
+      4
+    ],
+    "&#xbe;": [
+      3,
+      4
+    ]
+  },
+  "horizontal_brackets": {
+    "underbracket": "&#x23b5;",
+    "overbracket": "&#x23b4;",
+    "undershell": "&#x23e1;",
+    "underparen": "&#x23dd;",
+    "underbrace": "&#x23df;",
+    "overshell": "&#x23e0;",
+    "overparen": "&#x23dc;",
+    "overbrace": "&#x23de;"
+  },
+  "diacritic_belows": [
+    "&#x316;",
+    "&#x317;",
+    "&#x318;",
+    "&#x319;",
+    "&#x31c;",
+    "&#x31d;",
+    "&#x31e;",
+    "&#x31f;",
+    "&#x320;",
+    "&#x321;",
+    "&#x322;",
+    "&#x323;",
+    "&#x324;",
+    "&#x325;",
+    "&#x326;",
+    "&#x327;",
+    "&#x328;",
+    "&#x329;",
+    "&#x32a;",
+    "&#x32b;",
+    "&#x32c;",
+    "&#x32d;",
+    "&#x32e;",
+    "&#x32f;",
+    "&#x330;",
+    "&#x331;",
+    "&#x332;",
+    "&#x333;",
+    "&#x339;",
+    "&#x33a;",
+    "&#x33b;",
+    "&#x33c;",
+    "&#x345;",
+    "&#x347;",
+    "&#x348;",
+    "&#x349;",
+    "&#x34d;",
+    "&#x34e;",
+    "&#x353;",
+    "&#x354;",
+    "&#x355;",
+    "&#x356;",
+    "&#x359;",
+    "&#x35a;",
+    "&#x35c;",
+    "&#x35f;",
+    "&#x362;",
+    "&#x20e8;",
+    "&#x20ec;",
+    "&#x20ed;",
+    "&#x20ee;",
+    "&#x20ef;"
+  ],
+  "accent_symbols": {
+    "widetilde": "&#x303;",
+    "widehat": "&#x302;",
+    "ddddot": "&#x20dc;",
+    "breve": "&#x306;",
+    "check": "&#x30c;",
+    "tilde": "&#x303;",
+    "lhvec": "&#x20d0;",
+    "rhvec": "&#x20d1;",
+    "grave": "&#x300;",
+    "dddot": "&#x20db;",
+    "acute": "&#x301;",
+    "ddot": "&#x308;",
+    "lvec": "&#x20d6;",
+    "hvec": "&#x20d1;",
+    "ubar": "&#x332;",
+    "tvec": "&#x20e1;",
+    "dot": "&#x307;",
+    "Bar": "&#x33f;",
+    "bar": "&#x305;",
+    "hat": "&#x302;",
+    "vec": "&#x20d7;"
+  },
+  "symbol_hex": {
+    "Math::Symbols::Comma": "&#x2c;",
+    "Math::Symbols::Hline": "&#x23af;",
+    "Math::Symbols::Paren": null,
+    "Math::Symbols::Paren::CloseParen": "&#x3017;",
+    "Math::Symbols::Paren::Lcurly": null,
+    "Math::Symbols::Paren::Lround": null,
+    "Math::Symbols::Paren::Norm": "&#x2016;",
+    "Math::Symbols::Paren::Rcurly": null,
+    "Math::Symbols::Paren::Rround": null,
+    "Math::Symbols::Paren::Vert": "&#x7c;"
+  },
+  "primes": {
+    "pppprime": "&#x2057;",
+    "ppprime": "&#x2034;",
+    "pprime": "&#x2033;",
+    "prime": "&#x2032;",
+    "sprime": "&#x27;"
+  }
+}
