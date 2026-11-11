@@ -4,7 +4,8 @@ use num_traits::{One, ToPrimitive};
 use serde_json::json;
 use std::{collections::BTreeMap, sync::OnceLock};
 use unitsml_rs::{
-    rational, terms_from_asciiunits, Error as UnitError, Quantity, Register, Scale, Unit,
+    decode_register, rational, terms_from_asciiunits, Error as UnitError, Quantity, Register,
+    Scale, Unit, WireError,
 };
 
 const MAX_UNIT_BYTES: usize = 4096;
@@ -222,14 +223,24 @@ fn snapshot(quantity: &Quantity) -> J {
 fn evaluate(request: &J) -> Result<J, Error> {
     keys(
         request,
-        &["schema", "ast", "bindings", "mode", "convert_to"],
+        &[
+            "schema",
+            "ast",
+            "bindings",
+            "mode",
+            "convert_to",
+            "register",
+        ],
         &["schema", "ast"],
     )?;
     if request.get("mode").is_some_and(|mode| mode != "strict") {
         return Err("InvalidRequest".into());
     }
     ast(&request["ast"], 0)?;
-    let register = Register::default();
+    let register = decode_register(request.get("register")).map_err(|error| match error {
+        WireError::Algebra(error) => Error::Unit(error),
+        WireError::Invalid(_) => Error::Request("InvalidRequest"),
+    })?;
     let mut bindings = BTreeMap::new();
     if let Some(raw) = request.get("bindings") {
         let raw = raw.as_object().ok_or("InvalidRequest")?;

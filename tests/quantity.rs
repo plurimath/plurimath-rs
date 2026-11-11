@@ -187,3 +187,19 @@ fn numeric_only_build_refuses_quantity_profile() {
     let result = run(json!({"schema":PROFILE,"ast":{"type":"number","text":"1"}}));
     assert_eq!(result["error"]["code"], "UnavailableProfileError");
 }
+
+#[cfg(feature = "quantity")]
+#[test]
+fn source_caller_register_wires() {
+    let fixture: Value =
+        serde_json::from_str(include_str!("../fixtures/quantity-register.json")).unwrap();
+    assert_eq!(fixture["cases"].as_array().unwrap().len(), 32);
+    for case in fixture["cases"].as_array().unwrap() {
+        assert_eq!(
+            plurimath_numeric::evaluate_json(case["request_json"].as_str().unwrap()),
+            case["expected_wire"].as_str().unwrap(),
+            "{}",
+            case["id"]
+        );
+    }
+}

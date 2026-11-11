@@ -117,6 +117,17 @@ conversion case onto the ordinary AST. The result verifies conversion to kW
 and the power dimension vector. Named quantity-kind classification is outside
 this profile.
 
+Quantity requests may also include a `register` array. Each record supplies
+`unit` (a known UnitsDB identifier or alias), exact-string `dimensions` and
+`factor`, and optional exact-string `offset`. The shared UnitsML decoder
+validates this metadata; later repeated registrations win. The same register
+resolves both binding units and `convert_to`. Unknown records, inconsistent
+metadata, invalid numbers, and scale restrictions retain typed errors. This
+adds caller-supplied metadata for known records; it does not extend the
+AsciiUnits grammar or invent new unit identities. Arithmetic follows the
+existing UnitsML scale conventions, including aligned displayed-magnitude
+addition for interval units.
+
 ### Quantity WASM
 
 Build with `cargo build --locked --lib --features quantity --target wasm32-unknown-unknown`.
