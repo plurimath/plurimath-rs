@@ -20,6 +20,22 @@ enum Xml {
     El(String, Vec<(String, String)>, Vec<Xml>),
     Text(String),
 }
+/// Per-call source writer state, copied only when a source method overrides it.
+/// Template admission is separate from display style and child options.
+#[derive(Clone, Copy)]
+struct WriterContext {
+    display_style: bool,
+    unary_function_spacing: bool,
+    intent: bool,
+}
+impl WriterContext {
+    fn with_display_style(self, display_style: bool) -> Self {
+        Self {
+            display_style,
+            ..self
+        }
+    }
+}
 fn el(n: &str, c: Vec<Xml>) -> Xml {
     Xml::El(n.into(), vec![], c)
 }
@@ -257,28 +273,18 @@ fn unary_text(m: &Model, f: &str) -> Result<String, String> {
         _ => unreachable!(),
     }
 }
-fn unary_slot_xml(
-    v: &Value,
-    f: &str,
-    spacing: bool,
-    allow_templates: bool,
-) -> Result<Vec<Xml>, String> {
+fn unary_slot_xml(v: &Value, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     if !present(v) {
         return Ok(vec![]);
     }
     if let Some(a) = v.as_array() {
         let mut out = vec![];
         for v in a.iter().filter(|v| !v.is_null()) {
-            out.extend(render_xml(
-                &Model::from_value(v)?,
-                f,
-                spacing,
-                allow_templates,
-            )?)
+            out.extend(render_xml(&Model::from_value(v)?, f, ctx)?)
         }
         Ok(out)
     } else {
-        render_xml(&Model::from_value(v)?, f, spacing, allow_templates)
+        render_xml(&Model::from_value(v)?, f, ctx)
     }
 }
 fn run(s: &str) -> Xml {
@@ -301,11 +307,11 @@ fn word_properties(italic: bool) -> Xml {
 fn control_properties() -> Xml {
     el("m:ctrlPr", vec![word_properties(true)])
 }
-fn unary_xml(m: &Model, f: &str, spacing: bool, allow_templates: bool) -> Result<Vec<Xml>, String> {
+fn unary_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     let name = m.kind().to_lowercase();
     let param = m.field("parameter_one");
     let hide = present(m.field("hide_function_name"));
-    let body = unary_slot_xml(param, f, spacing, allow_templates)?;
+    let body = unary_slot_xml(param, f, ctx)?;
     if f == "mathml" {
         let mi = crate::symbols::tables()["unary_mi"]
             .as_array()
@@ -318,11 +324,19 @@ fn unary_xml(m: &Model, f: &str, spacing: bool, allow_templates: bool) -> Result
         }
         let value = if present(param) {
             c.extend(body);
-            vec![el("mrow", c)]
+            vec![attrs(
+                "mrow",
+                if ctx.intent {
+                    vec![("intent".into(), ":function".into())]
+                } else {
+                    vec![]
+                },
+                c,
+            )]
         } else {
             c
         };
-        if mi && spacing {
+        if mi && ctx.unary_function_spacing {
             let mut children = vec![attrs(
                 "mo",
                 vec![("rspace".into(), "thickmathspace".into())],
@@ -390,8 +404,7 @@ fn special_text(m: &Model, f: &str) -> Result<String, String> {
 fn strict_slot_xml(
     v: &Value,
     f: &str,
-    spacing: bool,
-    allow_templates: bool,
+    ctx: &WriterContext,
     allow_array: bool,
 ) -> Result<Vec<Xml>, String> {
     if v.is_null() {
@@ -403,34 +416,18 @@ fn strict_slot_xml(
             if !v.is_object() {
                 return Err("source_render_error: XML argument is not a node".into());
             }
-            c.extend(render_xml(
-                &Model::from_value(v)?,
-                f,
-                spacing,
-                allow_templates,
-            )?)
+            c.extend(render_xml(&Model::from_value(v)?, f, ctx)?)
         }
         return Ok(c);
     }
     if !v.is_object() {
         return Err("source_render_error: XML argument is not a node".into());
     }
-    render_xml(&Model::from_value(v)?, f, spacing, allow_templates)
+    render_xml(&Model::from_value(v)?, f, ctx)
 }
-fn special_xml(
-    m: &Model,
-    f: &str,
-    spacing: bool,
-    allow_templates: bool,
-) -> Result<Vec<Xml>, String> {
+fn special_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     let v = m.field("parameter_one");
-    let body = strict_slot_xml(
-        v,
-        f,
-        spacing,
-        allow_templates,
-        m.kind() == "Phantom" || f == "omml",
-    )?;
+    let body = strict_slot_xml(v, f, ctx, m.kind() == "Phantom" || f == "omml")?;
     if m.kind() == "Phantom" {
         return Ok(vec![if f == "mathml" {
             el("mphantom", body)
@@ -580,16 +577,23 @@ fn power_text(m: &Model, f: &str) -> Result<String, String> {
         _ => unreachable!(),
     }
 }
-fn power_xml(m: &Model, f: &str, spacing: bool, allow_templates: bool) -> Result<Vec<Xml>, String> {
+fn power_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
+    if f == "mathml"
+        && [m.field("parameter_one"), m.field("parameter_two")]
+            .iter()
+            .any(|value| value.is_array())
+    {
+        return Err("source_render_error: array cannot receive to_mathml_without_math_tag".into());
+    }
     let a = if f == "omml" && !present(m.field("parameter_one")) {
         vec![run("&#8203;")]
     } else {
-        strict_slot_xml(m.field("parameter_one"), f, spacing, allow_templates, true)?
+        strict_slot_xml(m.field("parameter_one"), f, ctx, true)?
     };
     let b = if f == "omml" && !present(m.field("parameter_two")) {
         vec![run("&#8203;")]
     } else {
-        strict_slot_xml(m.field("parameter_two"), f, spacing, allow_templates, true)?
+        strict_slot_xml(m.field("parameter_two"), f, ctx, true)?
     };
     if f == "mathml" {
         let mut c = a;
@@ -697,12 +701,7 @@ fn upright(node: &mut Xml) {
         }
     }
 }
-fn normal_xml(
-    m: &Model,
-    f: &str,
-    spacing: bool,
-    allow_templates: bool,
-) -> Result<Vec<Xml>, String> {
+fn normal_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     let p = m.field("parameter_one");
     if p.is_null() {
         return Ok(vec![if f == "mathml" {
@@ -724,7 +723,7 @@ fn normal_xml(
     let mut c = if f == "omml" && child.kind() == "Text" {
         text_content::direct_omml(&child)?
     } else {
-        render_xml(&child, f, spacing, allow_templates)?
+        render_xml(&child, f, ctx)?
     };
     if f == "mathml" {
         return Ok(vec![attrs(
@@ -874,25 +873,384 @@ fn render_text(m: &Model, f: &str) -> Result<String, String> {
             .unwrap_or_else(|| Err(format!("unported promised writer node {}", m.class))),
     }
 }
-fn render_xml(
-    m: &Model,
-    f: &str,
-    spacing: bool,
-    allow_templates: bool,
-) -> Result<Vec<Xml>, String> {
-    if numbers::handles(m) { return numbers::xml(m, f); }
-    if ["Math::Function::Multiscript", "Math::Function::Linebreak"].contains(&m.class.as_str()) { return multiscripts::xml(m, f, spacing, allow_templates); }
-    if ["Substack", "Msline", "Mglyph"].contains(&m.kind()) { return stacked::xml(m, f, spacing, allow_templates); }
-    if m.class=="Math::Function::PowerBase" || (f=="omml" && ["Math::Function::Mod","Math::Function::Sqrt"].contains(&m.class.as_str())) { return operators::xml_writer(m,f,spacing,allow_templates); }
+fn omml_slot(value: &Value, format: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
+    if !present(value) {
+        return Ok(vec![run("&#8203;")]);
+    }
+    if value
+        .as_array()
+        .is_some_and(|nodes| nodes.iter().any(Value::is_null))
+    {
+        return Err("source_render_error: nil array entry cannot receive insert_t_tag".into());
+    }
+    strict_slot_xml(value, format, ctx, true)
+}
+fn abs_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
+    let value = m.field("parameter_one");
+    if f == "mathml" {
+        let mut content = unary_slot_xml(value, f, ctx)?;
+        if !present(m.field("open_paren")) {
+            content.insert(0, el("mo", vec![text("|")]));
+        }
+        if !present(m.field("close_paren")) {
+            content.push(el("mo", vec![text("|")]));
+        }
+        return Ok(vec![el("mrow", content)]);
+    }
+    let mut props = vec![word_properties(false)];
+    if !present(m.field("open_paren")) {
+        props.push(attrs(
+            "m:begChr",
+            vec![("m:val".into(), "|".into())],
+            vec![],
+        ));
+    }
+    if !present(m.field("close_paren")) {
+        props.push(attrs(
+            "m:endChr",
+            vec![("m:val".into(), "|".into())],
+            vec![],
+        ));
+    }
+    props.push(attrs("m:sepChr", vec![("m:val".into(), "".into())], vec![]));
+    props.push(el("m:grow", vec![]));
+    Ok(vec![el(
+        "m:d",
+        vec![el("m:dPr", props), el("m:e", omml_slot(value, f, ctx)?)],
+    )])
+}
+fn overset_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
+    let first = m.field("parameter_one");
+    let second = m.field("parameter_two");
+    if f == "mathml" {
+        if [first, second].iter().any(|value| {
+            value
+                .as_array()
+                .is_some_and(|values| values.iter().any(Value::is_null))
+        }) {
+            return Err("source_render_error: nil array entry cannot receive mathml_nodes".into());
+        }
+        let mut content = strict_slot_xml(second, f, ctx, true)?;
+        content.extend(strict_slot_xml(first, f, ctx, true)?);
+        let a = match m.field("options") {
+            Value::Null => vec![],
+            Value::Object(values) => values
+                .iter()
+                .filter(|(_, v)| !v.is_null())
+                .map(|(k, v)| {
+                    (
+                        k.clone(),
+                        v.as_str()
+                            .map(str::to_owned)
+                            .unwrap_or_else(|| v.to_string()),
+                    )
+                })
+                .collect(),
+            _ => return Err("source_render_error: overset options must support attributes".into()),
+        };
+        return Ok(vec![attrs("mover", a, content)]);
+    }
+    if !ctx.display_style {
+        let power = crate::model::node(
+            "Math::Function::Power",
+            serde_json::json!({"parameter_one":second,"parameter_two":first}),
+        );
+        return render_xml(&Model::from_value(&power)?, f, ctx);
+    }
+    Ok(vec![el(
+        "m:limUpp",
+        vec![
+            el("m:limUppPr", vec![control_properties()]),
+            el("m:e", omml_slot(second, f, ctx)?),
+            el("m:lim", omml_slot(first, f, ctx)?),
+        ],
+    )])
+}
 
+fn named_limit_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
+    let lower = m.field("parameter_one");
+    let upper = m.field("parameter_two");
+    let name = m.kind().to_lowercase();
+    if !present(lower) && !present(upper) {
+        return Ok(if f == "mathml" {
+            vec![el("mo", vec![text(&name)])]
+        } else {
+            vec![run(&name)]
+        });
+    }
+    if f == "mathml" {
+        let mut content = vec![el("mo", vec![text(&name)])];
+        content.extend(strict_slot_xml(lower, f, ctx, false)?);
+        content.extend(strict_slot_xml(upper, f, ctx, false)?);
+        let tag = if present(lower) && present(upper) {
+            "munderover"
+        } else if present(lower) {
+            "munder"
+        } else {
+            "mover"
+        };
+        return Ok(vec![el(tag, content)]);
+    }
+    let base = crate::model::node("Math::Symbols::Symbol", serde_json::json!({"value":name}));
+    if !ctx.display_style {
+        return render_xml(
+            &Model::from_value(&crate::model::node(
+                "Math::Function::PowerBase",
+                serde_json::json!({"parameter_one":base,"parameter_two":lower,"parameter_three":upper}),
+            ))?,
+            f,
+            ctx,
+        );
+    }
+    let overset = Model::from_value(&crate::model::node(
+        "Math::Function::Overset",
+        serde_json::json!({"parameter_one":upper,"parameter_two":base}),
+    ))?;
+    let top = overset_xml(&overset, f, ctx)?;
+    if !present(lower) {
+        return Ok(top);
+    }
+    Ok(vec![el(
+        "m:limLow",
+        vec![
+            el("m:limLowPr", vec![control_properties()]),
+            el("m:e", top),
+            el("m:lim", omml_slot(lower, f, ctx)?),
+        ],
+    )])
+}
+fn underover_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
+    if f == "mathml" {
+        let mut content = vec![];
+        for key in ["parameter_one", "parameter_two", "parameter_three"] {
+            content.extend(strict_slot_xml(m.field(key), f, ctx, true)?);
+        }
+        return Ok(vec![el("munderover", content)]);
+    }
+    if m.kind() == "Underover" && !ctx.display_style {
+        return render_xml(
+            &Model::from_value(&crate::model::node(
+                "Math::Function::PowerBase",
+                serde_json::json!({"parameter_one":m.field("parameter_one"),"parameter_two":m.field("parameter_two"),"parameter_three":m.field("parameter_three")}),
+            ))?,
+            f,
+            ctx,
+        );
+    }
+    let overset = Model::from_value(&crate::model::node(
+        "Math::Function::Overset",
+        serde_json::json!({"parameter_one":m.field("parameter_three"),"parameter_two":m.field("parameter_one")}),
+    ))?;
+    if !present(m.field("parameter_two")) {
+        return overset_xml(&overset, f, ctx);
+    }
+    if !ctx.display_style {
+        // Limits invokes Underset with the caller's style, unlike Underover's
+        // direct PowerBase branch. Reuse Base, preserving that source boundary.
+        let lower = crate::model::node(
+            "Math::Function::Base",
+            serde_json::json!({"parameter_one":overset.value(),"parameter_two":m.field("parameter_two")}),
+        );
+        return render_xml(&Model::from_value(&lower)?, f, ctx);
+    }
+    Ok(vec![el(
+        "m:limLow",
+        vec![
+            el("m:limLowPr", vec![control_properties()]),
+            el("m:e", overset_xml(&overset, f, ctx)?),
+            el("m:lim", omml_slot(m.field("parameter_two"), f, ctx)?),
+        ],
+    )])
+}
+fn contains_xml_attr(node: &Xml, name: &str, value: &str) -> bool {
+    xml_attr(node, name) == Some(value)
+        || xml_nodes(node)
+            .iter()
+            .any(|child| contains_xml_attr(child, name, value))
+}
+fn update_partial_arguments(nodes: &mut [Xml]) {
+    for index in 0..nodes.len().saturating_sub(1) {
+        if xml_name(&nodes[index]) != "mfrac"
+            || !xml_attr(&nodes[index], "intent")
+                .is_some_and(|value| value.starts_with(":partial-derivative"))
+            || contains_xml_attr(&nodes[index], "arg", "f")
+        {
+            continue;
+        }
+        if matches!(xml_name(&nodes[index + 1]), "mfrac" | "mo") {
+            let intent = xml_attr(&nodes[index], "intent").unwrap().replace("$f", "");
+            xml_attribute(&mut nodes[index], "intent", intent);
+        } else {
+            xml_attribute(&mut nodes[index + 1], "arg", "f".into());
+        }
+    }
+}
+
+fn radical_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
+    let value = m.field("parameter_one");
+    if f == "mathml" {
+        return Ok(vec![el("msqrt", strict_slot_xml(value, f, ctx, false)?)]);
+    }
+    Ok(vec![el(
+        "m:rad",
+        vec![
+            el(
+                "m:radPr",
+                vec![
+                    attrs("m:degHide", vec![("m:val".into(), "on".into())], vec![]),
+                    control_properties(),
+                ],
+            ),
+            el("m:deg", vec![]),
+            el("m:e", omml_slot(value, f, ctx)?),
+        ],
+    )])
+}
+fn delimiter_unary_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
+    let kind = m.kind();
+    let value = m.field("parameter_one");
+    let (left, right) = match kind {
+        "Ceil" => ("&#x2308;", "&#x2309;"),
+        "Floor" => ("&#x230a;", "&#x230b;"),
+        "Norm" => ("&#x2225;", "&#x2225;"),
+        _ => unreachable!(),
+    };
+    if f == "mathml" {
+        let mut content = if kind == "Ceil" {
+            unary_slot_xml(value, f, ctx)?
+        } else {
+            strict_slot_xml(value, f, ctx, false)?
+        };
+        if !present(m.field("open_paren")) {
+            content.insert(0, el("mo", vec![text(left)]));
+        }
+        if !present(m.field("close_paren")) {
+            content.push(el("mo", vec![text(right)]));
+        }
+        return Ok(vec![el("mrow", content)]);
+    }
+    let body = unary_slot_xml(value, f, ctx)?;
+    let left = text_content::decode(left)?;
+    let right = text_content::decode(right)?;
+    if kind == "Ceil" {
+        let mut props = vec![];
+        if !present(m.field("open_paren")) {
+            props.push(attrs("m:begChr", vec![("m:val".into(), left)], vec![]));
+        }
+        props.push(attrs("m:sepChr", vec![("m:val".into(), "".into())], vec![]));
+        if !present(m.field("close_paren")) {
+            props.push(attrs("m:endChr", vec![("m:val".into(), right)], vec![]));
+        }
+        return Ok(vec![el("m:d", vec![el("m:dPr", props), el("m:e", body)])]);
+    }
+    let mark = |value: &str| {
+        el(
+            "m:r",
+            vec![
+                el(
+                    "m:rPr",
+                    vec![attrs("m:sty", vec![("m:val".into(), "p".into())], vec![])],
+                ),
+                el("m:t", vec![text(value)]),
+            ],
+        )
+    };
+    let mut content = vec![];
+    if !present(m.field("open_paren")) {
+        content.push(mark(&left));
+    }
+    content.extend(body);
+    if !present(m.field("close_paren")) {
+        content.push(mark(&right));
+    }
+    Ok(content)
+}
+
+fn render_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
+    let mut nodes = render_xml_inner(m, f, ctx)?;
+    if f == "mathml" && ctx.intent {
+        apply_writer_intent(m, &mut nodes)?;
+    }
+    Ok(nodes)
+}
+fn render_xml_inner(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
+    if numbers::handles(m) { return numbers::xml(m, f); }
+    if m.class == "Math::Function::Multiscript" { return multiscripts::xml(m, f, ctx); }
+    if ["Substack", "Msline", "Mglyph"].contains(&m.kind()) { return stacked::xml(m, f, ctx); }
+    if nary::handles(m) { return nary::xml(m, f, ctx); }
+    if m.class == "Math::Function::PowerBase" || (f == "omml" && ["Math::Function::Mod", "Math::Function::Sqrt"].contains(&m.class.as_str())) { return operators::xml_with_style(m, f, ctx, Some(ctx.display_style)); }
+    if m.class == "Math::Function::Sqrt" {
+        return radical_xml(m, f, ctx);
+    }
+    if matches!(
+        m.class.as_str(),
+        "Math::Function::Ceil" | "Math::Function::Floor" | "Math::Function::Norm"
+    ) {
+        return delimiter_unary_xml(m, f, ctx);
+    }
+    if m.class == "Math::Function::Abs" {
+        return abs_xml(m, f, ctx);
+    }
+    if m.class == "Math::Function::Overset" {
+        return overset_xml(m, f, ctx);
+    }
+    if m.kind() == "Linebreak" {
+        let value = m.field("parameter_one");
+        if !present(value) {
+            return Ok(if f == "mathml" {
+                vec![attrs(
+                    "mo",
+                    vec![("linebreak".into(), "newline".into())],
+                    vec![],
+                )]
+            } else {
+                vec![]
+            });
+        }
+        let mut nodes = strict_slot_xml(value, f, ctx, false)?;
+        if f == "mathml" {
+            if nodes.len() != 1 {
+                return Err(
+                    "source_render_error: linebreak parameter must produce one element".into(),
+                );
+            }
+            if let Xml::El(name, attributes, _) = &mut nodes[0] {
+                *name = "mo".into();
+                if let Some(values) = m.field("attributes").as_object() {
+                    for (key, value) in values {
+                        attributes.push((
+                            key.clone(),
+                            value
+                                .as_str()
+                                .map(str::to_owned)
+                                .unwrap_or_else(|| value.to_string()),
+                        ));
+                    }
+                }
+            }
+        }
+        return Ok(nodes);
+    }
+    if matches!(
+        m.class.as_str(),
+        "Math::Function::Lim" | "Math::Function::Inf"
+    ) {
+        return named_limit_xml(m, f, ctx);
+    }
+    if matches!(
+        m.class.as_str(),
+        "Math::Function::Limits" | "Math::Function::Underover"
+    ) {
+        return underover_xml(m, f, ctx);
+    }
     if accents::handles(m) {
-        return accents::xml(m, f, spacing, allow_templates);
+        return accents::xml(m, f, ctx);
     }
     if m.kind() == "Color" {
-        return styles::xml(m, f, spacing, allow_templates);
+        return styles::xml(m, f, ctx);
     }
     if m.kind() == "Base" {
-        return scripts::xml(m, f, spacing, allow_templates);
+        return scripts::xml(m, f, ctx);
     }
     if matches!(
         m.class.as_str(),
@@ -905,29 +1263,30 @@ fn render_xml(
             | "Math::Function::Tr"
             | "Math::Function::Td"
     ) {
-        return table_xml::render(m, f, spacing, allow_templates);
+        return table_xml::render(m, f, ctx);
     }
 
     if m.kind() == "Unitsml" {
-        return render_xml(&derived_units(m)?, f, spacing, allow_templates);
+        return render_xml(&derived_units(m)?, f, ctx);
     }
     if m.class == "Math::Function::FontStyle::Normal" {
-        return normal_xml(m, f, spacing, allow_templates);
+        return normal_xml(m, f, ctx);
     }
-    if font_styles::handles(m) { return font_styles::xml(m, f, spacing, allow_templates); }
-    if nary::handles(m) { return nary::xml(m, f, spacing, allow_templates); }
+    if font_styles::handles(m) {
+        return font_styles::xml(m, f, ctx);
+    }
 
     if ["Text", "Mbox", "Left", "Right"].contains(&m.kind()) {
         return text_content::xml_writer(m, f);
     }
     if m.kind() == "Power" {
-        return power_xml(m, f, spacing, allow_templates);
+        return power_xml(m, f, ctx);
     }
     if ["Phantom", "Cancel"].contains(&m.kind()) {
-        return special_xml(m, f, spacing, allow_templates);
+        return special_xml(m, f, ctx);
     }
     if unary_class(m) {
-        return unary_xml(m, f, spacing, allow_templates);
+        return unary_xml(m, f, ctx);
     }
     if m.class.starts_with("Math::Symbols::") {
         if m.class == "Math::Symbols::Symbol" {
@@ -951,43 +1310,85 @@ fn render_xml(
             }
         };
         return Ok(vec![if f == "mathml" {
-            el(&tag, vec![text(&s)])
+            let encoded = match m.kind() {
+                "Ii" => Some("ⅈ"),
+                "Jj" => Some("ⅉ"),
+                "Dd" => Some("ⅆ"),
+                "UpcaseDd" => Some("ⅅ"),
+                "Intercal" => Some("transpose"),
+                _ => None,
+            };
+            attrs(
+                &tag,
+                if ctx.intent {
+                    encoded
+                        .map(|value| vec![("intent".into(), value.into())])
+                        .unwrap_or_default()
+                } else {
+                    vec![]
+                },
+                vec![text(&s)],
+            )
         } else {
             el("m:r", vec![el("m:t", vec![text(&s)])])
         }]);
     }
     match m.kind() {
         "Fenced" => {
-            if !m.field("parameter_one").is_object() || !m.field("parameter_three").is_object() {
-                return Err("unported promised nullable/raw fence delimiter profile".into());
-            }
-            let a = fence_delimiter(m.field("parameter_one"), f)?;
-            let b = fence_delimiter(m.field("parameter_three"), f)?;
+            let delimiter = |key: &str| -> Result<String, String> {
+                let value = m.field(key);
+                if value.is_null() {
+                    return Ok(String::new());
+                }
+                if !value.is_object() {
+                    return Err(
+                        "source_render_error: raw fence delimiter cannot receive its writer".into(),
+                    );
+                }
+                fence_delimiter(value, f)
+            };
+            let a = delimiter("parameter_one")?;
+            let b = delimiter("parameter_three")?;
             let options = m.field("options");
             if !options.is_null() && options.as_object().map_or(true, |o| !o.is_empty()) {
                 return Err("unported promised fence options".into());
             }
             let mut body = vec![];
-            for v in m
-                .field("parameter_two")
-                .as_array()
-                .ok_or("fence.parameter_two must be a list")?
-            {
-                body.extend(render_xml(
-                    &Model::from_value(v)?,
-                    f,
-                    spacing,
-                    allow_templates,
-                )?)
+            let values = if m.field("parameter_two").is_null() {
+                &[][..]
+            } else {
+                m.field("parameter_two")
+                    .as_array()
+                    .ok_or("source_render_error: fence parameter must support map")?
+                    .as_slice()
+            };
+            for v in values {
+                if v.is_null() {
+                    if f == "mathml" {
+                        continue;
+                    }
+                    return Err(
+                        "source_render_error: nil fence child cannot receive insert_t_tag".into(),
+                    );
+                }
+                body.extend(render_xml(&Model::from_value(v)?, f, ctx)?)
             }
             if f == "mathml" {
+                if ctx.intent {
+                    update_partial_arguments(&mut body);
+                }
                 let mut c = vec![el("mo", vec![text(&a)])];
                 c.extend(body);
                 c.push(el("mo", vec![text(&b)]));
                 Ok(vec![el("mrow", c)])
             } else {
                 let mut props = vec![];
-                let has_delimiter = |v: &Value| v["class"].as_str().is_some_and(|c| c.starts_with("Math::Symbols::Paren::")) || !v["fields"]["value"].is_null();
+                let has_delimiter = |v: &Value| {
+                    v["class"]
+                        .as_str()
+                        .is_some_and(|c| c.starts_with("Math::Symbols::Paren::"))
+                        || !v["fields"]["value"].is_null()
+                };
                 if has_delimiter(m.field("parameter_one")) {
                     props.push(attrs("m:begChr", vec![("m:val".into(), a)], vec![]));
                 }
@@ -1002,18 +1403,24 @@ fn render_xml(
         "Formula" | "Mrow" | "Mstyle" => {
             let mut c = vec![];
             for v in children(m)? {
-                c.extend(render_xml(
-                    &Model::from_value(&v)?,
-                    f,
-                    spacing,
-                    allow_templates,
-                )?)
+                if f == "mathml" && ctx.intent && source_formula_array(&v) {
+                    return Err(intent_error());
+                }
+                c.extend(render_xml(&Model::from_value(&v)?, f, ctx)?)
+            }
+            if f == "mathml" && ctx.intent {
+                formula_postprocess(&mut c)?;
             }
             if f == "mathml"
                 && m.field("left_right_wrapper") != false
                 && !m.field("left_right_wrapper").is_null()
             {
-                Ok(vec![el("mrow", c)])
+                let a = if ctx.intent && formula_function_intent(m) {
+                    vec![("intent".into(), ":function".into())]
+                } else {
+                    vec![]
+                };
+                Ok(vec![attrs("mrow", a, c)])
             } else {
                 Ok(c)
             }
@@ -1037,18 +1444,18 @@ fn render_xml(
                 el("m:r", vec![el("m:t", vec![text(&s)])])
             }])
         }
-        "Frac" => {
-            if !m.field("options").is_null() {
+        "Frac" | "Over" => {
+            if m.kind() == "Frac" && !m.field("options").is_null() {
                 return Err("fraction option profile not yet ported".into());
             }
             let slot = |key: &str| -> Result<Vec<Xml>, String> {
                 let v = m.field(key);
-                if f == "omml" && !present(v) {
-                    Ok(vec![run("&#8203;")])
+                if f == "omml" {
+                    omml_slot(v, f, ctx)
                 } else if v.is_null() {
                     Ok(vec![])
                 } else {
-                    render_xml(&Model::from_value(v)?, f, spacing, allow_templates)
+                    strict_slot_xml(v, f, ctx, false)
                 }
             };
             let a = slot("parameter_one")?;
@@ -1094,14 +1501,1355 @@ fn render_xml(
                 )])
             }
         }
-        _ => templates::xml_template(m, f, spacing, allow_templates)
+        _ => templates::xml_template(m, f, ctx)
             .unwrap_or_else(|| Err(format!("unported promised writer node {}", m.class))),
     }
 }
+fn formula_function_intent(m: &Model) -> bool {
+    let Some(first) = m
+        .field("value")
+        .as_array()
+        .and_then(|values| values.first())
+    else {
+        return false;
+    };
+    let Ok(first) = Model::from_value(first) else {
+        return false;
+    };
+    if first.class == "Math::Symbols::Symbol" {
+        // UnicodeMath::Constants::UNDEF_UNARY_FUNCTIONS is source-generated data.
+        return matches!(
+            first.field("value").as_str(),
+            Some("arg" | "def" | "erf" | "Im" | "Pr" | "Re" | "tg")
+        );
+    }
+    if !matches!(first.kind(), "Power" | "Base" | "PowerBase") {
+        return false;
+    }
+    let Ok(base) = Model::from_value(first.field("parameter_one")) else {
+        return false;
+    };
+    source_class_properties(&base).2 || font_styles::handles(&base) || base.kind() == "Lim"
+}
+
+fn xml_name(node: &Xml) -> &str {
+    match node {
+        Xml::El(name, _, _) => name,
+        Xml::Text(_) => "",
+    }
+}
+fn xml_nodes(node: &Xml) -> &[Xml] {
+    match node {
+        Xml::El(_, _, nodes) => nodes,
+        Xml::Text(_) => &[],
+    }
+}
+fn xml_nodes_mut(node: &mut Xml) -> Result<&mut Vec<Xml>, String> {
+    match node {
+        Xml::El(_, _, nodes) => Ok(nodes),
+        _ => Err("source_render_error: intent expected an element".into()),
+    }
+}
+fn xml_first_text(node: &Xml) -> &str {
+    match xml_nodes(node).first() {
+        Some(Xml::Text(value)) => value,
+        _ => "",
+    }
+}
+fn xml_attribute(node: &mut Xml, key: &str, value: String) {
+    if let Xml::El(_, attributes, _) = node {
+        if let Some((_, old)) = attributes.iter_mut().find(|(name, _)| name == key) {
+            *old = value;
+        } else {
+            attributes.push((key.into(), value));
+        }
+    }
+}
+fn intent_node_value(node: &mut Xml, field: &str) -> Result<String, String> {
+    let name = xml_name(node);
+    if name == "mo" && xml_first_text(node) == "&#x2b1a;" {
+        return Ok(String::new());
+    }
+    if matches!(name, "mi" | "mo" | "mn") || name == "mrow" && xml_nodes(node).is_empty() {
+        return text_content::decode(xml_first_text(node));
+    }
+    if name == "mrow" && xml_nodes(node).iter().all(|child| xml_name(child) == "mn") {
+        return Ok(xml_nodes(node).iter().map(xml_first_text).collect());
+    }
+    xml_attribute(node, "arg", field.into());
+    Ok(format!("${field}"))
+}
+fn derivative_symbol(node: &Xml) -> bool {
+    let value = xml_first_text(node);
+    value == "d" || value.contains("&#x2146;") || value.contains("&#x2145;")
+}
+fn valid_derivative(node: &Xml) -> bool {
+    if matches!(xml_name(node), "mi" | "mo" | "mn") {
+        return derivative_symbol(node);
+    }
+    xml_nodes(node)
+        .first()
+        .is_some_and(|child| xml_name(child) == "mi" && derivative_symbol(child))
+        && xml_nodes(node).len() >= 2
+}
+fn partial_fraction_field(node: &Xml) -> Result<bool, String> {
+    match xml_name(node) {
+        "mo" => Ok(xml_first_text(node) == "&#x2202;"),
+        "mrow" | "msup" | "msubsup" => {
+            partial_fraction_field(xml_nodes(node).first().ok_or_else(intent_error)?)
+        }
+        _ => Ok(false),
+    }
+}
+fn partial_order(node: &Xml) -> Result<String, String> {
+    let power = if matches!(xml_name(node), "msup" | "msubsup") {
+        Some(node)
+    } else {
+        let mut found = None;
+        for child in xml_nodes(node) {
+            if matches!(child, Xml::Text(_)) {
+                return Err(intent_error());
+            }
+            if matches!(xml_name(child), "msup" | "msubsup") {
+                found = Some(child);
+                break;
+            }
+        }
+        found
+    };
+    let Some(power) = power else {
+        return Ok("1".into());
+    };
+    let exponent = xml_nodes(power).get(1).ok_or_else(intent_error)?;
+    if matches!(xml_name(exponent), "mo" | "mi" | "mn") {
+        text_content::decode(xml_first_text(exponent))
+    } else {
+        Ok("$n".into())
+    }
+}
+fn partial_function(node: &mut Xml) -> Result<String, String> {
+    let script = matches!(xml_name(node), "msup" | "msubsup");
+    let children = xml_nodes_mut(node)?;
+    let after = children.get(1..).ok_or_else(intent_error)?;
+    if after.iter().all(|child| xml_name(child) == "mi") {
+        return text_content::decode(after.first().map(xml_first_text).unwrap_or(""));
+    }
+    if !after.is_empty() && !script {
+        let rest = children.split_off(1);
+        children.push(attrs("mrow", vec![("arg".into(), "$f".into())], rest));
+    }
+    Ok("$f".into())
+}
+fn partial_variables(node: &Xml, siblings: &[Xml]) -> Result<String, String> {
+    match xml_name(node) {
+        "mo" => {
+            let after = siblings.get(1..).ok_or_else(intent_error)?;
+            let mut variables = vec![];
+            for child in after {
+                match xml_name(child) {
+                    "mi" => variables.push(text_content::decode(xml_first_text(child))?),
+                    "msup" | "msubsup" => variables.push(text_content::decode(xml_first_text(
+                        xml_nodes(child).first().ok_or_else(intent_error)?,
+                    ))?),
+                    _ => {}
+                }
+            }
+            Ok(variables.join(","))
+        }
+        "msup" => {
+            let children = xml_nodes(node);
+            let base = children.first().ok_or_else(intent_error)?;
+            let mut variables = vec![];
+            for child in xml_nodes(base) {
+                if xml_first_text(child) == "&#x2202;" {
+                    continue;
+                }
+                if matches!(child, Xml::Text(_)) {
+                    return Err(intent_error());
+                }
+                variables.push(text_content::decode(xml_first_text(child))?);
+            }
+            let exponent = children.get(1).ok_or_else(intent_error)?;
+            if prime_node(exponent) {
+                variables
+                    .last_mut()
+                    .ok_or_else(intent_error)?
+                    .push_str(xml_first_text(exponent));
+            }
+            text_content::decode(&variables.join(","))
+        }
+        "mrow" => partial_variables(
+            xml_nodes(node).first().ok_or_else(intent_error)?,
+            xml_nodes(node),
+        ),
+        _ => Ok(String::new()),
+    }
+}
+fn update_fraction_derivative(m: &Model, node: &mut Xml) -> Result<(), String> {
+    let children = xml_nodes_mut(node)?;
+    let num = children.first().ok_or_else(intent_error)?;
+    if matches!(xml_name(num), "mi" | "mo" | "mn") {
+        return Ok(());
+    }
+    let intent = xml_nodes(num)
+        .first()
+        .and_then(|child| xml_attr(child, "intent"))
+        .unwrap_or("")
+        .to_owned();
+    if !intent.starts_with(":derivative") || !intent.ends_with(",)") {
+        return Ok(());
+    }
+    if m.field("parameter_one")["class"] == "Math::Formula"
+        && m.field("parameter_one")["fields"]["left_right_wrapper"] == false
+    {
+        return Err(intent_error());
+    }
+    let den = children.get(1).ok_or_else(intent_error)?;
+    let den_nodes = xml_nodes(den);
+    let first = den_nodes.first().ok_or_else(intent_error)?;
+    let mut variable = String::new();
+    if xml_name(first) == "mi" {
+        let script = den_nodes.get(1).ok_or_else(intent_error)?;
+        if matches!(xml_name(script), "msub" | "msup") {
+            let base = xml_nodes(script).first().ok_or_else(intent_error)?;
+            if xml_name(base) == "mi" {
+                variable = text_content::decode(xml_first_text(base))?;
+            } else if xml_name(base) == "mrow" {
+                for child in xml_nodes(base) {
+                    if xml_name(child) != "mi" {
+                        break;
+                    }
+                    variable.push_str(&text_content::decode(xml_first_text(child))?);
+                }
+            }
+        }
+    }
+    let first = xml_nodes_mut(&mut children[0])?
+        .first_mut()
+        .ok_or_else(intent_error)?;
+    // Source replaces the final comma and ')' together.
+    xml_attribute(
+        first,
+        "intent",
+        format!("{},{variable})", intent.trim_end_matches(",)")),
+    );
+    Ok(())
+}
+
+fn fraction_derivative_intent(m: &Model, node: &mut Xml) -> Result<(), String> {
+    update_fraction_derivative(m, node)?;
+    let nodes = xml_nodes_mut(node)?;
+    if nodes.is_empty() {
+        return Err(intent_error());
+    }
+    let partial = partial_fraction_field(&nodes[0])?;
+    if partial && partial_fraction_field(nodes.get(1).ok_or_else(intent_error)?)? {
+        let order = partial_order(&nodes[0])?;
+        let function = partial_function(&mut nodes[0])?;
+        let variables = partial_variables(&nodes[1], &[])?;
+        xml_attribute(
+            node,
+            "intent",
+            format!(":partial-derivative({order},{function},{variables})"),
+        );
+        return Ok(());
+    }
+    if !valid_derivative(&nodes[0]) {
+        return Ok(());
+    }
+    if !valid_derivative(nodes.get(1).ok_or_else(intent_error)?) {
+        return Ok(());
+    }
+    let numerator = xml_nodes_mut(&mut nodes[0])?;
+    let value = if numerator.len() <= 1 {
+        return Err(intent_error());
+    } else if matches!(xml_name(&numerator[1]), "mi" | "mo" | "mn") {
+        text_content::decode(xml_first_text(&numerator[1]))?
+    } else {
+        xml_attribute(&mut numerator[1], "arg", "f".into());
+        "$f".into()
+    };
+    let variable = xml_nodes(&nodes[1])
+        .get(1)
+        .map(xml_first_text)
+        .unwrap_or("");
+    let variable = text_content::decode(variable)?;
+    xml_attribute(node, "intent", format!(":derivative(1,{value},{variable})"));
+    Ok(())
+}
+fn apply_writer_intent(m: &Model, nodes: &mut [Xml]) -> Result<(), String> {
+    let Some(node) = nodes.first_mut() else {
+        return Ok(());
+    };
+    match m.kind() {
+        "Abs" => {
+            let child = xml_nodes_mut(node)?
+                .get_mut(1)
+                .ok_or("source_render_error: absolute value intent lacks its argument")?;
+            let value = intent_node_value(child, "a")?;
+            xml_attribute(node, "intent", format!("absolute-value({value})"));
+        }
+        "Lim" | "Inf" if present(m.field("parameter_one")) || present(m.field("parameter_two")) => {
+            xml_attribute(node, "intent", ":function".into())
+        }
+        "Frac" => fraction_derivative_intent(m, node)?,
+        "Fenced" => fenced_intent(m, node)?,
+        "Table" | "Matrix" | "Pmatrix" | "Bmatrix" | "Vmatrix" | "Array"
+            if m.class.starts_with("Math::Function::Table") =>
+        {
+            table_intent(m, node)?
+        }
+        _ => {}
+    }
+    Ok(())
+}
+fn table_intent(m: &Model, node: &mut Xml) -> Result<(), String> {
+    let kind = m.kind();
+    if kind == "Matrix" {
+        return Ok(());
+    }
+    if kind == "Array" && m.field("options").is_null() {
+        return Err("source_render_error: nil table attributes cannot receive merge".into());
+    }
+    if kind == "Table"
+        && xml_name(node) == "mrow"
+        && m.field("open_paren")["class"] != "Math::Symbols::Paren::Norm"
+    {
+        xml_attribute(node, "intent", ":fenced".into());
+    }
+    let row_count = m
+        .field("value")
+        .as_array()
+        .map(Vec::len)
+        .ok_or("source_render_error: table intent requires value.length")?;
+    let column_count = m
+        .field("value")
+        .as_array()
+        .and_then(|rows| rows.first())
+        .and_then(|row| row["fields"]["parameter_one"].as_array())
+        .map(|cells| cells.len().to_string())
+        .unwrap_or_default();
+    let inner_intent = if kind == "Array" {
+        ":equations".into()
+    } else {
+        format!(":matrix({row_count},{column_count})")
+    };
+    if xml_name(node) == "mtable" {
+        xml_attribute(node, "intent", inner_intent);
+    } else {
+        for child in xml_nodes_mut(node)? {
+            if xml_name(child) == "mtable" {
+                xml_attribute(child, "intent", inner_intent.clone());
+                break;
+            }
+        }
+    }
+    let outer = match kind {
+        "Pmatrix" => Some(":parenthesized-matrix"),
+        "Bmatrix" => Some(
+            if m.field("open_paren")["class"] == "Math::Symbols::Paren::Lcurly" {
+                ":curly-braced-matrix"
+            } else {
+                ":bracketed-matrix"
+            },
+        ),
+        "Vmatrix" => Some(
+            if m.field("open_paren")["class"] == "Math::Symbols::Paren::Norm" {
+                ":normed-matrix"
+            } else {
+                ":determinant"
+            },
+        ),
+        _ => None,
+    };
+    if let Some(intent) = outer {
+        xml_attribute(node, "intent", intent.into());
+    }
+    Ok(())
+}
+fn fenced_intent(m: &Model, node: &mut Xml) -> Result<(), String> {
+    let children = xml_nodes_mut(node)?;
+    let open = children
+        .first()
+        .map(xml_first_text)
+        .unwrap_or("")
+        .to_owned();
+    let close = children.last().map(xml_first_text).unwrap_or("").to_owned();
+    let valid_value = |n: &Xml| -> bool {
+        let value = xml_first_text(n);
+        match xml_name(n) {
+            "mrow" => {
+                xml_nodes(n).iter().all(|c| xml_name(c) == "mn")
+                    || xml_nodes(n)
+                        .iter()
+                        .all(|c| matches!(xml_name(c), "mi" | "mo"))
+            }
+            "mi" | "mo" => value.chars().any(|c| c.is_ascii_alphabetic()),
+            "mn" => value.chars().any(|c| c.is_ascii_digit()),
+            _ => false,
+        }
+    };
+    let logical_count = m
+        .field("parameter_two")
+        .as_array()
+        .map(Vec::len)
+        .unwrap_or(0)
+        + 2;
+    if logical_count == 5
+        && m.field("parameter_two")
+            .as_array()
+            .unwrap()
+            .iter()
+            .any(|value| value.is_null() || source_formula_array(value))
+    {
+        return Err(intent_error());
+    }
+    let interval = if logical_count == 5
+        && children.len() == 5
+        && xml_first_text(&children[2]) == ","
+        && valid_value(&children[1])
+        && valid_value(&children[3])
+    {
+        match (open.as_str(), close.as_str()) {
+            ("(", "]") | ("]", "]") => Some("open-closed-interval"),
+            ("[", "]") => Some("closed-interval"),
+            ("[", ")" | "[") => Some("closed-open-interval"),
+            ("]", "[") => Some("open-interval"),
+            _ => None,
+        }
+    } else {
+        None
+    };
+    let intent = if let Some(name) = interval {
+        let endpoint = |node: &mut Xml, field: &str| -> Result<String, String> {
+            let children = xml_nodes(node);
+            if children.len() == 2
+                && matches!(xml_first_text(&children[0]), "&#x2212;" | "-" | "+")
+                && xml_first_text(&children[1]) == "&#x221e;"
+            {
+                return text_content::decode(&format!(
+                    "{}{}",
+                    xml_first_text(&children[0]),
+                    xml_first_text(&children[1])
+                ));
+            }
+            intent_node_value(node, field)
+        };
+        let a = endpoint(&mut children[1], "a")?;
+        let b = endpoint(&mut children[3], "b")?;
+        format!("{name}({a},{b})")
+    } else {
+        ":fenced".into()
+    };
+    xml_attribute(node, "intent", intent);
+    Ok(())
+}
+
+fn intent_error() -> String {
+    "source_render_error: formula intent dereferenced a missing or non-element node".into()
+}
+fn derivative_constant(value: &str) -> bool {
+    matches!(value, "&#x1d451;" | "&#x2145;" | "&#x2146;" | "d")
+}
+fn xml_attr<'a>(node: &'a Xml, key: &str) -> Option<&'a str> {
+    match node {
+        Xml::El(_, attributes, _) => attributes
+            .iter()
+            .find(|(name, _)| name == key)
+            .map(|(_, value)| value.as_str()),
+        _ => None,
+    }
+}
+fn numeric_intent(node: &Xml) -> (String, String) {
+    let value = xml_first_text(node);
+    (
+        value.chars().count().to_string(),
+        value
+            .chars()
+            .map(|c| c.to_string())
+            .collect::<Vec<_>>()
+            .join(","),
+    )
+}
+fn prime_node(node: &Xml) -> bool {
+    matches!(
+        xml_first_text(node),
+        "&#x2032;" | "&#x2033;" | "&#x2034;" | "&#x2057;" | "&#x27;"
+    )
+}
+fn upcase_variable(nodes: &[Xml]) -> Result<String, String> {
+    let mut value = String::new();
+    for node in nodes {
+        match xml_name(node) {
+            "mi" => value.push_str(xml_first_text(node)),
+            "mn" => value = xml_first_text(node).into(),
+            "msub" | "msup" | "msubsup" => {
+                let children = xml_nodes(node);
+                let base = children.first().ok_or_else(intent_error)?;
+                if !matches!(xml_name(base), "mi" | "mn") {
+                    continue;
+                }
+                if xml_name(base) == "mn" {
+                    return Err(intent_error());
+                } // Source adds a node object to String.
+                value.push_str(xml_first_text(base));
+                let script = children
+                    .get(if xml_name(node) == "msubsup" { 2 } else { 1 })
+                    .ok_or_else(intent_error)?;
+                if prime_node(script) {
+                    value.push_str(xml_first_text(script));
+                }
+            }
+            name => {
+                if name == "mfrac" {
+                    value.clear();
+                }
+                break;
+            }
+        }
+    }
+    text_content::decode(&value)
+}
+fn superscript_variable(nodes: &[Xml]) -> Result<String, String> {
+    let mut fence = None;
+    for node in nodes {
+        if matches!(xml_name(node), "mi" | "mn") {
+            continue;
+        }
+        if xml_name(node) == "mrow" && xml_attr(node, "intent") == Some(":fenced") {
+            fence = Some(node);
+        }
+        break;
+    }
+    let Some(fence) = fence else {
+        return Ok(String::new());
+    };
+    let children = xml_nodes(fence).get(1..).ok_or_else(intent_error)?;
+    let start = children
+        .iter()
+        .rposition(|node| xml_name(node) == "mn")
+        .unwrap_or(0);
+    let mut value = String::new();
+    for node in &children[start..] {
+        match xml_name(node) {
+            "msub" | "msup" | "msubsup" => {
+                let children = xml_nodes(node);
+                let base = children.first().ok_or_else(intent_error)?;
+                value.push_str(&text_content::decode(xml_first_text(base))?);
+                let script = children.last().ok_or_else(intent_error)?;
+                if prime_node(script) {
+                    value.push_str(&text_content::decode(xml_first_text(script))?);
+                }
+            }
+            "mi" | "mn" => value.push_str(xml_first_text(node)),
+            _ => break,
+        }
+    }
+    Ok(value)
+}
+fn partial_subscript_intent(node: &Xml) -> Result<String, String> {
+    let script = xml_nodes(node).last().ok_or_else(intent_error)?;
+    let (order, variable) = match xml_name(script) {
+        "mi" => ("1".into(), text_content::decode(xml_first_text(script))?),
+        "mn" => return Err(intent_error()), // Source numeric branch references undefined `node`.
+        "mrow" | "msup" => {
+            let children = if xml_name(script) == "msup" {
+                let base = xml_nodes(script).first().ok_or_else(intent_error)?;
+                if xml_name(base) == "mi" {
+                    return Err(intent_error());
+                } else {
+                    xml_nodes(base).to_vec()
+                }
+            } else {
+                xml_nodes(script).to_vec()
+            };
+            let mut value = String::new();
+            for child in &children {
+                match xml_name(child) {
+                    "mi" => value.push_str(&text_content::decode(xml_first_text(child))?),
+                    "mn" => {
+                        if value.is_empty() {
+                            value.push_str(&numeric_intent(child).1);
+                        }
+                        break;
+                    }
+                    _ => {}
+                }
+            }
+            let order = if value.contains(',') {
+                value.split(',').count()
+            } else {
+                value.chars().count()
+            };
+            let mut variable = if value.contains(',') {
+                value
+            } else {
+                value
+                    .chars()
+                    .map(|c| c.to_string())
+                    .collect::<Vec<_>>()
+                    .join(",")
+            };
+            if xml_name(script) == "msup" && !variable.ends_with(|c: char| c.is_ascii_digit()) {
+                let prime = xml_nodes(script).last().ok_or_else(intent_error)?;
+                if !prime_node(prime) {
+                    return Err(intent_error());
+                }
+                variable.push_str(&text_content::decode(xml_first_text(prime))?);
+            }
+            (order.to_string(), variable)
+        }
+        _ => (String::new(), String::new()),
+    };
+    Ok(format!(":partial-derivative({order},$f,{variable})"))
+}
+fn formula_f_arg(nodes: &mut Vec<Xml>, index: usize) {
+    let mut args = vec![];
+    while index < nodes.len() {
+        match xml_name(&nodes[index]) {
+            "mi" => args.push(nodes.remove(index)),
+            "mrow" => {
+                args.push(nodes.remove(index));
+                break;
+            }
+            "mn" => {
+                if args.is_empty() {
+                    args.push(nodes.remove(index));
+                }
+                break;
+            }
+            _ => break,
+        }
+    }
+    let arg = if args.len() == 1 {
+        let mut node = args.pop().unwrap();
+        xml_attribute(&mut node, "arg", "f".into());
+        node
+    } else {
+        attrs("mrow", vec![("arg".into(), "f".into())], args)
+    };
+    nodes.insert(index, arg);
+}
+// Formula#intent_post_processing runs after all children, including for nested
+// Formula nodes. It deliberately preserves source errors and unusual mutations.
+fn formula_postprocess(nodes: &mut Vec<Xml>) -> Result<(), String> {
+    if nodes
+        .first()
+        .is_some_and(|node| xml_first_text(node) == "&#x2145;")
+    {
+        let second = nodes.get(1).ok_or_else(intent_error)?;
+        if xml_name(second) == "mi" {
+            let mut args = vec![];
+            let mut name = String::new();
+            let mut variable = String::new();
+            loop {
+                let next = nodes.get(1).ok_or_else(intent_error)?;
+                match xml_name(next) {
+                    "mi" => args.push(nodes.remove(1)),
+                    "mrow" => {
+                        for arg in &args {
+                            name.push_str(&text_content::decode(xml_first_text(arg))?);
+                        }
+                        let children = xml_nodes(next);
+                        variable = upcase_variable(
+                            children
+                                .get(1..children.len().saturating_sub(1))
+                                .ok_or_else(intent_error)?,
+                        )?;
+                        args.push(nodes.remove(1));
+                        break;
+                    }
+                    _ => break,
+                }
+            }
+            nodes.insert(
+                0,
+                attrs(
+                    "mrow",
+                    vec![("intent".into(), format!(":derivative(1,{name},{variable})"))],
+                    args,
+                ),
+            );
+        }
+    }
+    let has_subsup = nodes.iter().enumerate().any(|(index, node)| {
+        matches!(xml_name(node), "msub" | "msup" | "msubsup")
+            && nodes
+                .get(index + 1)
+                .is_some_and(|next| xml_name(next) != "mo")
+            && xml_nodes(node)
+                .first()
+                .is_some_and(|base| derivative_constant(xml_first_text(base)))
+    });
+    if has_subsup {
+        let first = nodes
+            .first()
+            .and_then(|node| xml_nodes(node).first())
+            .ok_or_else(intent_error)?;
+        if !matches!(first, Xml::El(..)) {
+            return Err(intent_error());
+        }
+        if derivative_constant(xml_first_text(first)) {
+            let mut index = 0;
+            while index < nodes.len() {
+                let Some(base) = xml_nodes(&nodes[index]).first() else {
+                    index += 1;
+                    continue;
+                };
+                if !matches!(base, Xml::El(..)) || !derivative_constant(xml_first_text(base)) {
+                    index += 1;
+                    continue;
+                }
+                let node_type = xml_name(&nodes[index]).to_owned();
+                let script = xml_nodes(&nodes[index]).get(1).ok_or_else(intent_error)?;
+                let suffix = match node_type.as_str() {
+                    "msub" => {
+                        let (order, variable) = match xml_name(script) {
+                            "mi" => ("1".into(), text_content::decode(xml_first_text(script))?),
+                            "mn" => numeric_intent(script),
+                            "mrow"
+                                if xml_attr(script, "intent") == Some("fenced")
+                                    || !xml_nodes(script).iter().all(|n| xml_name(n) == "mi") =>
+                            {
+                                ("1".into(), String::new())
+                            }
+                            _ => (String::new(), String::new()),
+                        };
+                        format!("({order},$f,{variable})")
+                    }
+                    "msup" => {
+                        let order = match xml_name(script) {
+                            "mi" => return Err(intent_error()),
+                            "mn" => xml_first_text(script).into(),
+                            "mrow" => "$n".into(),
+                            _ => String::new(),
+                        };
+                        format!(
+                            "({order},$f,{})",
+                            text_content::decode(&superscript_variable(&nodes[index + 1..])?)?
+                        )
+                    }
+                    _ => String::new(),
+                };
+                xml_attribute(&mut nodes[index], "intent", format!(":derivative{suffix}"));
+                index += 1;
+                let next = nodes.get(index).ok_or_else(intent_error)?;
+                if matches!(xml_name(next), "mi" | "mrow") {
+                    let after = nodes.get(index + 1).ok_or_else(intent_error)?;
+                    if !matches!(xml_name(after), "mi" | "mrow") {
+                        xml_attribute(&mut nodes[index], "arg", "f".into());
+                    } else {
+                        let terminal = nodes[index..].iter().find(|node| xml_name(node) != "mi");
+                        if !terminal.is_some_and(|node| xml_name(node) == "mrow") {
+                            return Err(intent_error());
+                        }
+                    }
+                    // Source wrap_in_mrow receives an Array slice, and its
+                    // newly created wrapper is not inserted into this formula.
+                }
+                index += 1;
+            }
+        }
+    }
+    let partial = nodes.windows(2).any(|pair| {
+        xml_name(&pair[0]) == "msub"
+            && xml_nodes(&pair[0])
+                .first()
+                .is_some_and(|base| xml_first_text(base) == "&#x2202;")
+    });
+    if partial {
+        let mut index = 0;
+        while index < nodes.len() {
+            if xml_name(&nodes[index]) == "msub"
+                && xml_nodes(&nodes[index])
+                    .first()
+                    .is_some_and(|base| xml_first_text(base) == "&#x2202;")
+            {
+                let intent = partial_subscript_intent(&nodes[index])?;
+                xml_attribute(&mut nodes[index], "intent", intent);
+                formula_f_arg(nodes, index + 1);
+            }
+            index += 1;
+        }
+    }
+    Ok(())
+}
+
+fn source_formula(values: Vec<Value>) -> Value {
+    crate::model::formula(values)
+}
+fn filter_source_values(values: Vec<Value>) -> Value {
+    match values.len() {
+        0 => Value::Null,
+        1 => values.into_iter().next().unwrap(),
+        _ => source_formula(values),
+    }
+}
+fn linebreak_index(values: &[Value]) -> Option<usize> {
+    values.iter().enumerate().find_map(|(index, value)| {
+        (value["class"] == "Math::Function::Linebreak" && index + 1 < values.len()).then_some(index)
+    })
+}
+fn take_direct_line(values: &mut Vec<Value>, index: usize) -> Vec<Value> {
+    let mut tail = values.split_off(index + 1);
+    let br = values.pop().unwrap();
+    if present(&br["fields"]["parameter_one"]) {
+        let param = br["fields"]["parameter_one"].clone();
+        if br["fields"]["attributes"]["linebreakstyle"] == "after" {
+            values.push(param);
+        } else {
+            tail.insert(0, param);
+        }
+    }
+    tail
+}
+fn source_break_child(
+    value: &mut Value,
+    obj: &mut Vec<Value>,
+    optional: bool,
+) -> Result<(), String> {
+    if value.is_null() && optional {
+        return Ok(());
+    }
+    if !value.is_object() || value.get("class").is_none() {
+        return Err("source_render_error: non-node cannot receive line_breaking".into());
+    }
+    source_line_breaking(value, obj)
+}
+fn new_source_node(class: &str, fields: Value) -> Value {
+    crate::model::node(class, fields)
+}
+fn formula_line_breaking(values: &mut Vec<Value>, obj: &mut Vec<Value>) -> Result<(), String> {
+    if let Some(index) = linebreak_index(values) {
+        *obj = take_direct_line(values, index);
+        let mut nested = vec![];
+        formula_line_breaking(values, &mut nested)?;
+        if !nested.is_empty() {
+            obj.insert(
+                0,
+                new_source_node(
+                    "Math::Function::Linebreak",
+                    serde_json::json!({"parameter_one":null,"attributes":{}}),
+                ),
+            );
+            obj.insert(0, source_formula(nested));
+        }
+        return Ok(());
+    }
+    for index in 0..values.len() {
+        source_break_child(&mut values[index], obj, false)?;
+        if !obj.is_empty() {
+            obj.extend(values.split_off(index + 1));
+            break;
+        }
+    }
+    Ok(())
+}
+// Constructor variable order and accessor/ancestry facts measured on source
+// 0a1df68. The exporter and full observations accompany the task evidence.
+fn source_class_properties(m: &Model) -> (&'static [&'static str], bool, bool) {
+    match m.class.as_str() {
+        "Math::Formula" => (
+            &["value", "left_right_wrapper", "displaystyle"],
+            false,
+            false,
+        ),
+        "Math::Function::Abs"
+        | "Math::Function::Arccos"
+        | "Math::Function::Arcsin"
+        | "Math::Function::Arctan"
+        | "Math::Function::Cancel"
+        | "Math::Function::Ceil"
+        | "Math::Function::Cos"
+        | "Math::Function::Cosh"
+        | "Math::Function::Cot"
+        | "Math::Function::Coth"
+        | "Math::Function::Csc"
+        | "Math::Function::Csch"
+        | "Math::Function::Deg"
+        | "Math::Function::Det"
+        | "Math::Function::Dim"
+        | "Math::Function::Exp"
+        | "Math::Function::Floor"
+        | "Math::Function::Gcd"
+        | "Math::Function::Glb"
+        | "Math::Function::Hom"
+        | "Math::Function::Ker"
+        | "Math::Function::Lcm"
+        | "Math::Function::Left"
+        | "Math::Function::Lg"
+        | "Math::Function::Liminf"
+        | "Math::Function::Limsup"
+        | "Math::Function::Ln"
+        | "Math::Function::Longdiv"
+        | "Math::Function::Lub"
+        | "Math::Function::Max"
+        | "Math::Function::Mbox"
+        | "Math::Function::Merror"
+        | "Math::Function::Mglyph"
+        | "Math::Function::Min"
+        | "Math::Function::Mpadded"
+        | "Math::Function::Ms"
+        | "Math::Function::Msgroup"
+        | "Math::Function::Msline"
+        | "Math::Function::Norm"
+        | "Math::Function::Phantom"
+        | "Math::Function::Right"
+        | "Math::Function::Scarries"
+        | "Math::Function::Sec"
+        | "Math::Function::Sech"
+        | "Math::Function::Sin"
+        | "Math::Function::Sinh"
+        | "Math::Function::Sqrt"
+        | "Math::Function::Substack"
+        | "Math::Function::Sup"
+        | "Math::Function::Tan"
+        | "Math::Function::Tanh"
+        | "Math::Function::Tr" => (&["parameter_one"], true, true),
+        "Math::Function::Arg"
+        | "Math::Function::Base"
+        | "Math::Function::Color"
+        | "Math::Function::FontStyle"
+        | "Math::Function::FontStyle::Italic"
+        | "Math::Function::FontStyle::Monospace"
+        | "Math::Function::Frac"
+        | "Math::Function::Inf"
+        | "Math::Function::Intent"
+        | "Math::Function::Lim"
+        | "Math::Function::Log"
+        | "Math::Function::Mod"
+        | "Math::Function::Over"
+        | "Math::Function::Overset"
+        | "Math::Function::Power"
+        | "Math::Function::Stackrel"
+        | "Math::Function::Td" => (&["parameter_one", "parameter_two"], true, false),
+        "Math::Function::Bar"
+        | "Math::Function::Ddot"
+        | "Math::Function::Dot"
+        | "Math::Function::Hat"
+        | "Math::Function::Linebreak"
+        | "Math::Function::Obrace"
+        | "Math::Function::Tilde"
+        | "Math::Function::Ubrace"
+        | "Math::Function::Ul"
+        | "Math::Function::Vec" => (&["parameter_one", "attributes"], true, true),
+        "Math::Function::Fenced" => (
+            &[
+                "parameter_one",
+                "parameter_two",
+                "parameter_three",
+                "options",
+            ],
+            true,
+            false,
+        ),
+        "Math::Function::Int"
+        | "Math::Function::Limits"
+        | "Math::Function::Multiscript"
+        | "Math::Function::Oint"
+        | "Math::Function::PowerBase"
+        | "Math::Function::Prod"
+        | "Math::Function::Rule"
+        | "Math::Function::Sum"
+        | "Math::Function::Underover" => (
+            &["parameter_one", "parameter_two", "parameter_three"],
+            true,
+            false,
+        ),
+        "Math::Function::Nary" => (
+            &[
+                "parameter_one",
+                "parameter_two",
+                "parameter_three",
+                "parameter_four",
+                "options",
+            ],
+            false,
+            false,
+        ),
+        "Math::Function::Table"
+        | "Math::Function::Table::Array"
+        | "Math::Function::Table::Bmatrix"
+        | "Math::Function::Table::Cases"
+        | "Math::Function::Table::Eqarray"
+        | "Math::Function::Table::Matrix"
+        | "Math::Function::Table::Pmatrix"
+        | "Math::Function::Table::Vmatrix" => (
+            &["value", "open_paren", "close_paren", "options"],
+            false,
+            false,
+        ),
+        "Math::Function::Text" => (&["parameter_one", "lang"], true, true),
+        "Math::Function::Underset" => (&["parameter_one", "parameter_two", "options"], true, false),
+        "Math::Number" => (
+            &["value", "mini_sub_sized", "mini_sup_sized", "base"],
+            false,
+            false,
+        ),
+        "Math::Symbols::Ampersand"
+        | "Math::Symbols::Bigwedge"
+        | "Math::Symbols::Cap"
+        | "Math::Symbols::Cdots"
+        | "Math::Symbols::Clockoint"
+        | "Math::Symbols::Cntclockoint"
+        | "Math::Symbols::Comma"
+        | "Math::Symbols::Coprod"
+        | "Math::Symbols::Dd"
+        | "Math::Symbols::Ddots"
+        | "Math::Symbols::Del"
+        | "Math::Symbols::Dint"
+        | "Math::Symbols::Dot"
+        | "Math::Symbols::Duni"
+        | "Math::Symbols::Equal"
+        | "Math::Symbols::Ii"
+        | "Math::Symbols::Iiiint"
+        | "Math::Symbols::Iiint"
+        | "Math::Symbols::Iint"
+        | "Math::Symbols::Int"
+        | "Math::Symbols::Intclockwise"
+        | "Math::Symbols::Intercal"
+        | "Math::Symbols::Jj"
+        | "Math::Symbols::Minus"
+        | "Math::Symbols::Oiiint"
+        | "Math::Symbols::Oiint"
+        | "Math::Symbols::Oint"
+        | "Math::Symbols::Paren::Langle"
+        | "Math::Symbols::Paren::Lceil"
+        | "Math::Symbols::Paren::Lcurly"
+        | "Math::Symbols::Paren::Lfloor"
+        | "Math::Symbols::Paren::Lround"
+        | "Math::Symbols::Paren::Lsquare"
+        | "Math::Symbols::Paren::Norm"
+        | "Math::Symbols::Paren::Rangle"
+        | "Math::Symbols::Paren::Rceil"
+        | "Math::Symbols::Paren::Rcurly"
+        | "Math::Symbols::Paren::Rfloor"
+        | "Math::Symbols::Paren::Rround"
+        | "Math::Symbols::Paren::Rsquare"
+        | "Math::Symbols::Paren::Vert"
+        | "Math::Symbols::Planckconst"
+        | "Math::Symbols::Plus"
+        | "Math::Symbols::Pm"
+        | "Math::Symbols::Prime"
+        | "Math::Symbols::Rightarrow"
+        | "Math::Symbols::Space"
+        | "Math::Symbols::Sum"
+        | "Math::Symbols::Symbol"
+        | "Math::Symbols::Theta"
+        | "Math::Symbols::UpcaseDd"
+        | "Math::Symbols::Vdots"
+        | "Math::Symbols::Vvv" => (&["value"], false, false),
+        _ => (&[], false, false),
+    }
+}
+fn core_variable_keys(m: &Model) -> Vec<String> {
+    let ordered = source_class_properties(m).0;
+    let mut keys: Vec<String> = ordered
+        .iter()
+        .filter(|key| m.fields.contains_key(**key))
+        .map(|key| (*key).to_owned())
+        .collect();
+    for key in m.fields.keys() {
+        if !keys.contains(key) {
+            keys.push(key.clone());
+        }
+    }
+    keys
+}
+fn source_has_hide(m: &Model) -> bool {
+    source_class_properties(m).1
+}
+fn core_updated_values(
+    node: &mut Value,
+    key: &str,
+    obj: &mut Vec<Value>,
+    array_alias: bool,
+) -> Result<(), String> {
+    let m = Model::from_value(node)?;
+    let mut next = node.clone();
+    let mut found = false;
+    for variable in core_variable_keys(&m) {
+        if variable == key {
+            next["fields"][&variable] = filter_source_values(std::mem::take(obj));
+            found = true;
+        } else if found {
+            node["fields"][&variable] = Value::Null;
+        }
+    }
+    if source_has_hide(&m) {
+        next["fields"]["hide_function_name"] = Value::Bool(true);
+    }
+    *obj = vec![next];
+    if array_alias {
+        // Core#updated_object_values stores the *same* Formula object in the
+        // original slot, then obj.update replaces that object's value. Capture
+        // its resulting state explicitly rather than introducing shared state.
+        node["fields"][key] = source_formula(obj.clone());
+    }
+    Ok(())
+}
+fn source_line_breaking(node: &mut Value, obj: &mut Vec<Value>) -> Result<(), String> {
+    let m = Model::from_value(node)
+        .map_err(|_| "source_render_error: non-node cannot receive line_breaking")?;
+    let kind = m.kind();
+    if matches!(kind, "Formula" | "Mrow" | "Mstyle") {
+        let values = node["fields"]["value"]
+            .as_array_mut()
+            .ok_or("source_render_error: formula value must be an array")?;
+        return formula_line_breaking(values, obj);
+    }
+    if kind == "Fenced" {
+        let Some(values) = node["fields"]["parameter_two"].as_array_mut() else {
+            return Ok(());
+        };
+        if let Some(index) = linebreak_index(values) {
+            let tail = take_direct_line(values, index);
+            let mut next = node.clone();
+            next["fields"]["parameter_one"] = Value::Null;
+            next["fields"]["parameter_two"] = Value::Array(tail);
+            node["fields"]["parameter_three"] = Value::Null;
+            *obj = vec![next];
+        }
+        return Ok(());
+    }
+    if kind == "Phantom" {
+        let values = node["fields"]["parameter_one"]
+            .as_array_mut()
+            .ok_or("source_render_error: phantom line breaking requires an array")?;
+        if let Some(index) = linebreak_index(values) {
+            let tail = take_direct_line(values, index);
+            *obj = vec![new_source_node(
+                &m.class,
+                serde_json::json!({"parameter_one":tail}),
+            )];
+            let mut nested = vec![];
+            // UnaryFunction#reprocess_parameter_one calls the same custom
+            // algorithm on the first line before prepending a pending line.
+            source_line_breaking(node, &mut nested)?;
+            if !nested.is_empty() {
+                obj.insert(
+                    0,
+                    new_source_node(
+                        "Math::Function::Linebreak",
+                        serde_json::json!({"parameter_one":null,"attributes":{}}),
+                    ),
+                );
+                obj.insert(
+                    0,
+                    new_source_node(&m.class, serde_json::json!({"parameter_one":nested})),
+                );
+            }
+        } else {
+            for index in 0..values.len() {
+                source_break_child(&mut values[index], obj, false)?;
+                if !obj.is_empty() {
+                    obj.extend(values.split_off(index + 1));
+                    break;
+                }
+            }
+        }
+        return Ok(());
+    }
+    let drop = matches!(
+        kind,
+        "Vec" | "Dot" | "Ddot" | "Tilde" | "Ubrace" | "Bar" | "Sqrt"
+    );
+    let delimiter = matches!(kind, "Abs" | "Ceil" | "Floor" | "Norm");
+    let font = m.class.starts_with("Math::Function::FontStyle::")
+        || m.class == "Math::Function::FontStyle";
+    if drop || delimiter || kind == "Hat" || font {
+        source_break_child(&mut node["fields"]["parameter_one"], obj, !delimiter)?;
+        if obj.is_empty() {
+            return Ok(());
+        }
+        let value = filter_source_values(std::mem::take(obj));
+        if drop {
+            *obj = if value.is_null() { vec![] } else { vec![value] };
+        } else if kind == "Hat" {
+            *obj = vec![new_source_node(
+                "Math::Function::Overset",
+                serde_json::json!({"parameter_one":null,"parameter_two":value}),
+            )];
+        } else if delimiter {
+            *obj = vec![new_source_node(
+                &m.class,
+                serde_json::json!({"parameter_one":value,"open_paren":true,"close_paren":false}),
+            )];
+            node["fields"]["close_paren"] = Value::Bool(true);
+            if !present(m.field("open_paren")) {
+                node["fields"]["open_paren"] = Value::Bool(false);
+            }
+        } else {
+            *obj = vec![new_source_node(
+                &m.class,
+                serde_json::json!({"parameter_one":value,"parameter_two":m.field("parameter_two")}),
+            )];
+        }
+        return Ok(());
+    }
+    if matches!(kind, "Lim" | "Inf") {
+        source_break_child(&mut node["fields"]["parameter_one"], obj, false)?;
+        if !obj.is_empty() {
+            *obj = vec![new_source_node(
+                "Math::Function::Underover",
+                serde_json::json!({"parameter_one":null,"parameter_two":filter_source_values(std::mem::take(obj)),"parameter_three":node["fields"]["parameter_two"]}),
+            )];
+            node["fields"]["parameter_two"] = Value::Null;
+        }
+        return Ok(());
+    }
+    if matches!(kind, "Power" | "Base" | "Frac" | "Over") {
+        source_break_child(&mut node["fields"]["parameter_one"], obj, true)?;
+        if !obj.is_empty() {
+            let mut next = new_source_node(
+                &m.class,
+                serde_json::json!({"parameter_one":filter_source_values(std::mem::take(obj)),"parameter_two":node["fields"]["parameter_two"]}),
+            );
+            if kind == "Frac" {
+                next["fields"]["hide_function_name"] = Value::Bool(true);
+            }
+            if kind == "Over" {
+                node["fields"]["hide_function_name"] = Value::Bool(true);
+            }
+            node["fields"]["parameter_two"] = Value::Null;
+            *obj = vec![next];
+            return Ok(());
+        }
+        if kind == "Power" {
+            return Ok(());
+        }
+        source_break_child(&mut node["fields"]["parameter_two"], obj, true)?;
+        if !obj.is_empty() {
+            let mut next = new_source_node(
+                &m.class,
+                serde_json::json!({"parameter_one":null,"parameter_two":filter_source_values(std::mem::take(obj))}),
+            );
+            if matches!(kind, "Frac" | "Over") {
+                next["fields"]["hide_function_name"] = Value::Bool(true);
+            }
+            *obj = vec![next];
+        }
+        return Ok(());
+    }
+    if matches!(kind, "Limits" | "Underover" | "PowerBase") {
+        source_break_child(&mut node["fields"]["parameter_one"], obj, true)?;
+        if !obj.is_empty() {
+            *obj = vec![new_source_node(
+                &m.class,
+                serde_json::json!({"parameter_one":filter_source_values(std::mem::take(obj)),"parameter_two":node["fields"]["parameter_two"],"parameter_three":node["fields"]["parameter_three"]}),
+            )];
+            node["fields"]["parameter_two"] = Value::Null;
+            node["fields"]["parameter_three"] = Value::Null;
+            return Ok(());
+        }
+        source_break_child(&mut node["fields"]["parameter_two"], obj, kind == "Limits")?;
+        if !obj.is_empty() {
+            *obj = vec![new_source_node(
+                &m.class,
+                serde_json::json!({"parameter_one":null,"parameter_two":filter_source_values(std::mem::take(obj)),"parameter_three":node["fields"]["parameter_three"]}),
+            )];
+            if kind == "Underover" {
+                node["fields"]["parameter_two"] = Value::Null;
+            }
+            node["fields"]["parameter_three"] = Value::Null;
+        }
+        return Ok(());
+    }
+    // Core#line_breaking deliberately keeps iterating array children after a
+    // break. Their methods see the same continuation Formula and can replace it.
+    for key in core_variable_keys(&m) {
+        let field = node["fields"][&key].clone();
+        if field.is_object() && field.get("class").is_some() {
+            source_line_breaking(&mut node["fields"][&key], obj)?;
+            if !obj.is_empty() {
+                core_updated_values(node, &key, obj, false)?;
+            }
+        } else if let Some(array) = field.as_array() {
+            if linebreak_index(array).is_some() {
+                let mut formula = source_formula(array.clone());
+                source_line_breaking(&mut formula, obj)?;
+                core_updated_values(node, &key, obj, true)?;
+            } else {
+                for index in 0..array.len() {
+                    source_break_child(&mut node["fields"][&key][index], obj, false)?;
+                }
+            }
+        }
+    }
+    Ok(())
+}
+fn split_node_once(node: &mut Value) -> Result<Vec<Value>, String> {
+    let mut obj = vec![];
+    source_line_breaking(node, &mut obj)?;
+    Ok(obj)
+}
+
+fn split_formulas(m: &Model) -> Result<Vec<Model>, String> {
+    let mut current = m.value();
+    let mut lines = vec![];
+    loop {
+        let tail = split_node_once(&mut current)?;
+        lines.push(Model::from_value(&current)?);
+        if tail.is_empty() {
+            break;
+        }
+        current = source_formula(tail);
+    }
+    Ok(lines)
+}
+fn source_formula_array(value: &Value) -> bool {
+    matches!(
+        value["class"].as_str(),
+        Some("Math::Formula" | "Math::Formula::Mrow" | "Math::Formula::Mstyle")
+    ) && !present(&value["fields"]["left_right_wrapper"])
+}
+fn root_xml(m: &Model, format: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
+    if !matches!(
+        m.class.as_str(),
+        "Math::Formula" | "Math::Formula::Mrow" | "Math::Formula::Mstyle"
+    ) {
+        return render_xml(m, format, ctx);
+    }
+    let mut content = vec![];
+    for value in children(m)? {
+        if format == "mathml" && ctx.intent && source_formula_array(&value) {
+            return Err(intent_error());
+        }
+        content.extend(render_xml(&Model::from_value(&value)?, format, ctx)?);
+    }
+    if format == "mathml" && ctx.intent {
+        formula_postprocess(&mut content)?;
+    }
+    Ok(content)
+}
+fn mathml_document(content: Vec<Xml>, display_style: bool) -> String {
+    format!(
+        "{}\n",
+        dump(
+            &attrs(
+                "math",
+                vec![
+                    ("xmlns".into(), "http://www.w3.org/1998/Math/MathML".into()),
+                    ("display".into(), "block".into()),
+                ],
+                vec![attrs(
+                    "mstyle",
+                    vec![("displaystyle".into(), display_style.to_string())],
+                    content
+                )]
+            ),
+            0
+        )
+    )
+}
+
 pub fn write(model: &Value, format: &str, options: &Value) -> Result<String, String> {
     let m = Model::from_value(model)?;
     let opts = options.as_object().ok_or("options must be an object")?;
-    for (k, v) in opts {
+    if format == "omml" && opts.contains_key("intent") {
+        return Err("source_argument_error: unknown keyword: intent".into());
+    }
+    for k in opts.keys() {
         if ![
             "displayStyle",
             "intent",
@@ -1112,15 +2860,8 @@ pub fn write(model: &Value, format: &str, options: &Value) -> Result<String, Str
         {
             return Err(format!("unported promised writer option {k}"));
         }
-        if !v.is_null() && k != "displayStyle" {
-            if ((k == "intent" || k == "splitOnLinebreak") && v == false)
-                || (k == "unaryFunctionSpacing" && v.is_boolean())
-            {
-            } else {
-                return Err(format!("unported promised writer option {k}={v}"));
-            }
-        }
     }
+
     if ![
         "asciimath",
         "latex",
@@ -1139,58 +2880,49 @@ pub fn write(model: &Value, format: &str, options: &Value) -> Result<String, Str
         }
         return render_text(&m, format);
     }
-    let spacing = opts
-        .get("unaryFunctionSpacing")
-        .map(present)
-        .unwrap_or(true);
     let ds = opts
         .get("displayStyle")
         .unwrap_or_else(|| m.field("displaystyle"));
-    let allow_templates =
-        opts.is_empty() && spacing && (format == "mathml" || ds == true || ds == "true");
-    let c = if m.kind() == "Formula" {
-        let mut c = vec![];
-        for v in children(&m)? {
-            c.extend(render_xml(
-                &Model::from_value(&v)?,
-                format,
-                spacing,
-                allow_templates,
-            )?)
-        }
-        c
+    let context = WriterContext {
+        display_style: ds == true || ds == "true",
+        unary_function_spacing: opts
+            .get("unaryFunctionSpacing")
+            .map(present)
+            .unwrap_or(true),
+        intent: opts.get("intent").map(present).unwrap_or(false),
+    };
+    let ctx = &context;
+    let formulas = if opts.get("splitOnLinebreak").map(present).unwrap_or(false) {
+        split_formulas(&m).map_err(|error| {
+            if format == "mathml" {
+                if let Some(message) = error.strip_prefix("source_render_error: ") {
+                    return format!("source_no_method_error: {message}");
+                }
+            }
+            error
+        })?
     } else {
-        render_xml(&m, format, spacing, allow_templates)?
+        vec![m]
     };
     if format == "mathml" {
-        let ds = opts
-            .get("displayStyle")
-            .unwrap_or_else(|| m.field("displaystyle"));
-        let ds = if ds == true || ds == "true" {
-            "true"
-        } else {
-            "false"
-        };
-        Ok(format!(
-            "{}\n",
-            dump(
-                &attrs(
-                    "math",
-                    vec![
-                        ("xmlns".into(), "http://www.w3.org/1998/Math/MathML".into()),
-                        ("display".into(), "block".into())
-                    ],
-                    vec![attrs("mstyle", vec![("displaystyle".into(), ds.into())], c)]
-                ),
-                0
-            )
-        ))
+        let mut output = String::new();
+        for formula in formulas {
+            output.push_str(&mathml_document(
+                root_xml(&formula, format, ctx)?,
+                ctx.display_style,
+            ));
+        }
+        Ok(output)
     } else {
         let ns: Vec<(String, String)> =
             serde_json::from_str(include_str!("omml-namespaces.json")).unwrap();
-        Ok(format!(
-            "{}\n",
-            dump(&attrs("m:oMathPara", ns, vec![el("m:oMath", c)]), 0)
-        ))
+        let mut nodes = vec![];
+        for (index, formula) in formulas.iter().enumerate() {
+            if index > 0 {
+                nodes.push(el("m:r", vec![el("br", vec![])]));
+            }
+            nodes.push(el("m:oMath", root_xml(formula, format, ctx)?));
+        }
+        Ok(format!("{}\n", dump(&attrs("m:oMathPara", ns, nodes), 0)))
     }
 }

@@ -1,4 +1,5 @@
 //! Source color writers; unsupported style options never silently disappear.
+use super::WriterContext;
 use super::{attrs, child, present, strict_slot_xml, Xml};
 use crate::model::Model;
 fn background(m: &Model) -> Result<bool, String> {
@@ -15,6 +16,9 @@ fn background(m: &Model) -> Result<bool, String> {
     Ok(map.get("backgroundcolor").is_some_and(present))
 }
 fn color(m: &Model) -> Result<String, String> {
+    if !m.field("parameter_one").is_object() {
+        return Err("source_render_error: color value cannot receive to_asciimath".into());
+    }
     Ok(child(m.field("parameter_one"), "asciimath")?
         .chars()
         .filter(|c| !c.is_ascii_whitespace())
@@ -72,7 +76,7 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
         _ => return Err("unknown source color text format".into()),
     })
 }
-pub(super) fn xml(m: &Model, f: &str, spacing: bool, templates: bool) -> Result<Vec<Xml>, String> {
+pub(super) fn xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     let bg = background(m)?;
     let a = m.field("parameter_one");
     let b = m.field("parameter_two");
@@ -80,7 +84,7 @@ pub(super) fn xml(m: &Model, f: &str, spacing: bool, templates: bool) -> Result<
         if b.is_null() {
             return Err("source_render_error: color expression cannot receive insert_t_tag".into());
         }
-        return strict_slot_xml(b, f, spacing, templates, false);
+        return strict_slot_xml(b, f, ctx, false);
     }
     let attributes = if present(a) {
         vec![(
@@ -93,6 +97,6 @@ pub(super) fn xml(m: &Model, f: &str, spacing: bool, templates: bool) -> Result<
     Ok(vec![attrs(
         "mstyle",
         attributes,
-        strict_slot_xml(b, f, spacing, templates, false)?,
+        strict_slot_xml(b, f, ctx, false)?,
     )])
 }

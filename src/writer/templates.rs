@@ -1,6 +1,7 @@
 //! Source-produced parameterized writer skeletons. No complete-input answer table.
 //! Admission is class/field/shape/default-context guarded; recursive slot output
 //! comes from the native source writers. Unmatched profiles remain incomplete.
+use super::WriterContext;
 use super::{attrs, el, render_text, render_xml, symbol, text, Model, Xml};
 use serde_json::Value;
 use std::sync::OnceLock;
@@ -149,15 +150,14 @@ fn slot_xml(
     p: &Value,
     name: &str,
     f: &str,
-    spacing: bool,
-    allow: bool,
+    ctx: &WriterContext,
 ) -> Result<Vec<Xml>, String> {
     let s = slot(p, name)?;
     let v = value(m, s)?;
     let child = Model::from_value(v)?;
     let method = s["call"]["method"].as_str().unwrap_or("");
     match (f, method) {
-        ("mathml", "to_mathml_without_math_tag") => render_xml(&child, f, spacing, allow),
+        ("mathml", "to_mathml_without_math_tag") => render_xml(&child, f, ctx),
         ("omml", "to_omml_without_math_tag") => {
             if child.kind() == "Number" {
                 let val = render_text(&child, "asciimath")?;
@@ -167,7 +167,7 @@ fn slot_xml(
                 let val = symbol(&child, "omml")?;
                 return Ok(vec![text(&val)]);
             }
-            render_xml(&child, f, spacing, allow)
+            render_xml(&child, f, ctx)
         }
         _ => Err(format!("unported source template XML slot call {method}")),
     }
@@ -177,8 +177,7 @@ fn nodes(
     p: &Value,
     ns: &Value,
     f: &str,
-    spacing: bool,
-    allow: bool,
+    ctx: &WriterContext,
 ) -> Result<Vec<Xml>, String> {
     let mut out = vec![];
     for n in ns.as_array().ok_or("source template nodes not an array")? {
@@ -188,8 +187,7 @@ fn nodes(
                 p,
                 n["slot"].as_str().ok_or("source slot name missing")?,
                 f,
-                spacing,
-                allow,
+                ctx,
             )?),
             Some("text") => out.push(text(&parts(m, p, &n["parts"], f)?)),
             Some("element") => {
@@ -207,11 +205,7 @@ fn nodes(
                         parts(m, p, &attr[1], f)?,
                     ))
                 }
-                out.push(attrs(
-                    name,
-                    a,
-                    nodes(m, p, &n["children"], f, spacing, allow)?,
-                ))
+                out.push(attrs(name, a, nodes(m, p, &n["children"], f, ctx)?))
             }
             _ => return Err("unrecognized source template XML node".into()),
         }
@@ -221,12 +215,8 @@ fn nodes(
 pub(super) fn xml_template(
     m: &Model,
     f: &str,
-    spacing: bool,
-    allow: bool,
+    ctx: &WriterContext,
 ) -> Option<Result<Vec<Xml>, String>> {
-    if !allow {
-        return None;
-    }
     let p = find(m, f, "xml")?;
-    Some(nodes(m, p, &p["template"]["nodes"], f, spacing, allow))
+    Some(nodes(m, p, &p["template"]["nodes"], f, ctx))
 }

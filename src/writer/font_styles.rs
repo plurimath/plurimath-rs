@@ -1,4 +1,5 @@
 //! Source-backed FontStyle procedures. Normal remains owned by the existing unit-aware route.
+use super::WriterContext;
 use super::{attrs, child, el, strict_slot_xml, text as xml_text, value_text, Model, Xml};
 use serde_json::Value;
 use std::sync::OnceLock;
@@ -128,7 +129,7 @@ fn inject_descendants(m: &Model, node: &mut Xml) {
         }
     }
 }
-fn font_children(v: &Value, spacing: bool, allow_templates: bool) -> Result<Vec<Xml>, String> {
+fn font_children(v: &Value, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     if v.is_null() {
         return Ok(vec![]);
     }
@@ -156,17 +157,12 @@ fn font_children(v: &Value, spacing: bool, allow_templates: bool) -> Result<Vec<
     if ["Text", "Mbox"].contains(&m.kind()) {
         return super::text_content::direct_omml(&m);
     }
-    strict_slot_xml(v, "omml", spacing, allow_templates, false)
+    strict_slot_xml(v, "omml", ctx, false)
 }
-pub(super) fn xml(
-    m: &Model,
-    f: &str,
-    spacing: bool,
-    allow_templates: bool,
-) -> Result<Vec<Xml>, String> {
+pub(super) fn xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     let p = argument(m)?;
     if f == "mathml" {
-        let children = strict_slot_xml(p, f, spacing, allow_templates, false)?;
+        let children = strict_slot_xml(p, f, ctx, false)?;
         return Ok(vec![attrs(
             "mstyle",
             vec![("mathvariant".into(), family(m)?.0)],
@@ -176,7 +172,7 @@ pub(super) fn xml(
     if f != "omml" {
         return Err("unported FontStyle XML format".into());
     }
-    let mut children = font_children(p, spacing, allow_templates)?;
+    let mut children = font_children(p, ctx)?;
     if children.is_empty() {
         return Ok(vec![styled_run(m, vec![])]);
     }

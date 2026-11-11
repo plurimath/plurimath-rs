@@ -101,7 +101,11 @@ pub fn request(v: &Value) -> Value {
             x
         }
         Err(message) => {
-            if let Some(message) = message.strip_prefix("source_render_error: ") {
+            if let Some(message) = message.strip_prefix("source_argument_error: ") {
+                json!({"abi_version":1,"ok":false,"error":{"code":"render_error","message":message,"source_class":"ArgumentError"}})
+            } else if let Some(message) = message.strip_prefix("source_no_method_error: ") {
+                json!({"abi_version":1,"ok":false,"error":{"code":"render_error","message":message,"source_class":"NoMethodError"}})
+            } else if let Some(message) = message.strip_prefix("source_render_error: ") {
                 json!({"abi_version":1,"ok":false,"error":{"code":"render_error","message":message,"source_class":if v["model"]["class"]=="Math::Formula"{"Plurimath::Math::ParseError"}else{"NoMethodError"}}})
             } else {
                 json!({"abi_version":1,"ok":false,"error":{"code":"unported_capability","message":message}})

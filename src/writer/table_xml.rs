@@ -1,4 +1,5 @@
 //! Source Table/Tr/Td XML methods, preserving row and cell insertion boundaries.
+use super::WriterContext;
 use super::{attrs, control_properties, el, render_xml, text, Model, Value, Xml};
 
 fn values<'a>(value: &'a Value, role: &str) -> Result<&'a [Value], String> {
@@ -92,10 +93,16 @@ fn parenthesis(value: &Value, format: &str) -> Result<String, String> {
             .class
             .strip_prefix("Math::Symbols::")
             .ok_or("unported promised table delimiter model")?;
-        return crate::symbols::tables()["mathml"][id]["text"]
+        let glyph = crate::symbols::tables()["mathml"][id]["text"]
             .as_str()
-            .map(str::to_owned)
-            .ok_or_else(|| "missing source MathML table delimiter descriptor".into());
+            .ok_or("missing source MathML table delimiter descriptor")?;
+        return Ok(
+            if ["&#x3016;", "&#x3017;", "&#x2524;", "&#x251c;"].contains(&glyph) {
+                String::new()
+            } else {
+                glyph.to_owned()
+            },
+        );
     }
     let glyph = super::symbol(&delimiter, format)?;
     // Source OMML sets an attribute through its XML adapter, which decodes
@@ -103,12 +110,7 @@ fn parenthesis(value: &Value, format: &str) -> Result<String, String> {
     crate::xml_parse::source_entity_decode(&glyph)
         .map_err(|_| "unported source table delimiter entity".into())
 }
-fn cell_nodes(
-    cell: &Model,
-    format: &str,
-    spacing: bool,
-    templates: bool,
-) -> Result<Vec<Xml>, String> {
+fn cell_nodes(cell: &Model, format: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     let mut content = Vec::new();
     for value in values(cell.field("parameter_one"), "table cell")? {
         if value.is_null() {
@@ -116,12 +118,12 @@ fn cell_nodes(
                 return Err("source_render_error: undefined method 'insert_t_tag' for nil".into());
             }
         } else {
-            content.extend(render_xml(&model(value)?, format, spacing, templates)?);
+            content.extend(render_xml(&model(value)?, format, ctx)?);
         }
     }
     Ok(content)
 }
-fn cell(cell: &Model, format: &str, spacing: bool, templates: bool) -> Result<Vec<Xml>, String> {
+fn cell(cell: &Model, format: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     let items = values(cell.field("parameter_one"), "table cell")?;
     if format == "mathml" {
         if items.first().is_some_and(vertical_bar) {
@@ -131,16 +133,13 @@ fn cell(cell: &Model, format: &str, spacing: bool, templates: bool) -> Result<Ve
         Ok(vec![attrs(
             "mtd",
             attribute_values(cell.field("parameter_two"))?,
-            cell_nodes(cell, format, spacing, templates)?,
+            cell_nodes(cell, format, ctx)?,
         )])
     } else {
-        Ok(vec![el(
-            "m:e",
-            cell_nodes(cell, format, spacing, templates)?,
-        )])
+        Ok(vec![el("m:e", cell_nodes(cell, format, ctx)?)])
     }
 }
-fn row(row: &Model, format: &str, spacing: bool, templates: bool) -> Result<Vec<Xml>, String> {
+fn row(row: &Model, format: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     let cells = values(row.field("parameter_one"), "table row")?;
     // Tr#remove_hline dereferences first.parameter_one before insertion.
     if format == "mathml" && cells.is_empty() {
@@ -160,7 +159,7 @@ fn row(row: &Model, format: &str, spacing: bool, templates: bool) -> Result<Vec<
                     .insert("parameter_one".into(), Value::Array(items[1..].to_vec()));
             }
         }
-        content.extend(render(&value, format, spacing, templates)?);
+        content.extend(render(&value, format, ctx)?);
     }
     if format == "mathml" {
         Ok(vec![el("mtr", content)])
@@ -170,12 +169,7 @@ fn row(row: &Model, format: &str, spacing: bool, templates: bool) -> Result<Vec<
         Ok(vec![el("m:mr", content)])
     }
 }
-fn omml_table(
-    table: &Model,
-    rows: &[Value],
-    spacing: bool,
-    templates: bool,
-) -> Result<Vec<Xml>, String> {
+fn omml_table(table: &Model, rows: &[Value], ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     let mut single = true;
     for value in rows {
         single &= values(model(value)?.field("parameter_one"), "table row")?.len() == 1;
@@ -220,7 +214,7 @@ fn omml_table(
         ));
     }
     for value in rows {
-        content.extend(render(&model(value)?, "omml", spacing, templates)?);
+        content.extend(render(&model(value)?, "omml", ctx)?);
     }
     let table_node = el(name, content);
     if table.field("open_paren").is_null() && table.field("close_paren").is_null() {
@@ -250,15 +244,15 @@ fn omml_table(
         ],
     )])
 }
-fn table(table: &Model, format: &str, spacing: bool, templates: bool) -> Result<Vec<Xml>, String> {
+fn table(table: &Model, format: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     let rows = values(table.field("value"), "table")?;
     if format == "omml" {
-        return omml_table(table, rows, spacing, templates);
+        return omml_table(table, rows, ctx);
     }
     let attributes = table_attributes(table, rows)?;
     let mut content = Vec::new();
     for value in rows {
-        content.extend(render(&model(value)?, format, spacing, templates)?);
+        content.extend(render(&model(value)?, format, ctx)?);
     }
     let table_node = attrs("mtable", attributes, content);
     if table.class == "Math::Function::Table::Array" {
@@ -327,12 +321,7 @@ fn reject_null_formula(value: &Value) -> Result<(), String> {
     Ok(())
 }
 
-pub(super) fn render(
-    model: &Model,
-    format: &str,
-    spacing: bool,
-    templates: bool,
-) -> Result<Vec<Xml>, String> {
+pub(super) fn render(model: &Model, format: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     reject_null_formula(&model.value())?;
     match model.class.as_str() {
         "Math::Function::Table"
@@ -340,9 +329,9 @@ pub(super) fn render(
         | "Math::Function::Table::Pmatrix"
         | "Math::Function::Table::Bmatrix"
         | "Math::Function::Table::Vmatrix"
-        | "Math::Function::Table::Array" => table(model, format, spacing, templates),
-        "Math::Function::Tr" => row(model, format, spacing, templates),
-        "Math::Function::Td" => cell(model, format, spacing, templates),
+        | "Math::Function::Table::Array" => table(model, format, ctx),
+        "Math::Function::Tr" => row(model, format, ctx),
+        "Math::Function::Td" => cell(model, format, ctx),
         _ => Err(format!("unported source table XML class {}", model.class)),
     }
 }

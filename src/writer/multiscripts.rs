@@ -1,5 +1,5 @@
 //! Source Multiscript procedures, including inherited HTML and prescript quirks.
-use super::{attrs, el, render_text, render_xml, run, Model, Value, Xml};
+use super::{WriterContext, attrs, el, render_text, render_xml, run, Model, Value, Xml};
 
 fn truthy(value: &Value) -> bool {
     !value.is_null() && value != false
@@ -37,8 +37,7 @@ fn child(value: &Value, format: &str) -> Result<String, String> {
 fn xml_child(
     value: &Value,
     format: &str,
-    spacing: bool,
-    templates: bool,
+    ctx: &WriterContext,
 ) -> Result<Vec<Xml>, String> {
     let m = node(value)?;
     if m.class == "Math::Function::None" {
@@ -49,9 +48,9 @@ fn xml_child(
         }]);
     }
     if m.class == "Math::Function::Linebreak" {
-        return linebreak_xml(&m, format, spacing, templates);
+        return linebreak_xml(&m, format, ctx);
     }
-    render_xml(&m, format, spacing, templates)
+    render_xml(&m, format, ctx)
 }
 fn source_error(message: &str) -> String {
     format!("source_render_error: Multiscript {message}")
@@ -209,8 +208,7 @@ pub(super) fn text(m: &Model, format: &str) -> Result<String, String> {
 fn xml_slot(
     value: &Value,
     format: &str,
-    spacing: bool,
-    templates: bool,
+    ctx: &WriterContext,
 ) -> Result<Vec<Xml>, String> {
     if format == "omml" && !truthy(value) {
         return Ok(vec![run("&#8203;")]);
@@ -225,7 +223,7 @@ fn xml_slot(
     };
     let mut output = vec![];
     for value in values {
-        output.extend(xml_child(value, format, spacing, templates)?);
+        output.extend(xml_child(value, format, ctx)?);
     }
     Ok(output)
 }
@@ -277,11 +275,10 @@ fn prescripts(b: &Value, c: &Value) -> Result<Vec<Value>, String> {
 pub(super) fn xml(
     m: &Model,
     format: &str,
-    spacing: bool,
-    templates: bool,
+    ctx: &WriterContext,
 ) -> Result<Vec<Xml>, String> {
     if m.class == "Math::Function::Linebreak" {
-        return linebreak_xml(m, format, spacing, templates);
+        return linebreak_xml(m, format, ctx);
     }
     let a = m.field("parameter_one");
     let b = m.field("parameter_two");
@@ -290,9 +287,9 @@ pub(super) fn xml(
         return Ok(vec![el(
             "m:sPre",
             vec![
-                el("m:e", xml_slot(a, format, spacing, templates)?),
-                el("m:sub", xml_slot(b, format, spacing, templates)?),
-                el("m:sup", xml_slot(c, format, spacing, templates)?),
+                el("m:e", xml_slot(a, format, ctx)?),
+                el("m:sub", xml_slot(b, format, ctx)?),
+                el("m:sup", xml_slot(c, format, ctx)?),
             ],
         )]);
     }
@@ -306,7 +303,7 @@ pub(super) fn xml(
             return Err(source_error("base has no source mmultiscript method"));
         }
         for field in ["parameter_one", "parameter_two", "parameter_three"] {
-            children.extend(xml_slot(base.field(field), format, spacing, templates)?);
+            children.extend(xml_slot(base.field(field), format, ctx)?);
         }
     }
     if truthy(b) || truthy(c) {
@@ -315,7 +312,7 @@ pub(super) fn xml(
     for value in prescripts(b, c)? {
         // validate_mathml_fields maps each final Array entry directly;
         // nil and nested Arrays here must refuse rather than disappear.
-        children.extend(xml_child(&value, format, spacing, templates)?);
+        children.extend(xml_child(&value, format, ctx)?);
     }
     Ok(vec![el("mmultiscripts", children)])
 }
@@ -371,15 +368,14 @@ fn linebreak_text(m: &Model, format: &str) -> Result<String, String> {
 fn linebreak_xml(
     m: &Model,
     format: &str,
-    spacing: bool,
-    templates: bool,
+    ctx: &WriterContext,
 ) -> Result<Vec<Xml>, String> {
     let value = m.field("parameter_one");
     if format == "omml" {
         return if value.is_null() {
             Ok(vec![])
         } else {
-            xml_child(value, format, spacing, templates)
+            xml_child(value, format, ctx)
         };
     }
     if format != "mathml" {
@@ -392,7 +388,7 @@ fn linebreak_xml(
             vec![],
         )]);
     }
-    let mut nodes = xml_child(value, format, spacing, templates)?;
+    let mut nodes = xml_child(value, format, ctx)?;
     if nodes.len() != 1 {
         return Err("source_render_error: Linebreak payload has no single XML name".into());
     }

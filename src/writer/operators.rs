@@ -1,5 +1,5 @@
 //! Source PowerBase procedures and the Mod/Sqrt OMML insertion boundaries.
-use super::{attrs, control_properties, el, render_text, render_xml, run, text, Model, Value, Xml};
+use super::{WriterContext, attrs, control_properties, el, render_text, render_xml, run, text, Model, Value, Xml};
 use std::sync::OnceLock;
 fn truthy(value: &Value) -> bool {
     !value.is_null() && value != false
@@ -189,7 +189,7 @@ pub(super) fn text_writer(node: &Model, format: &str) -> Result<String, String> 
         _ => Err(format!("unported operator text format {format}")),
     }
 }
-fn slot(value: &Value, format: &str, spacing: bool, templates: bool) -> Result<Vec<Xml>, String> {
+fn slot(value: &Value, format: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     if format == "omml" && !truthy(value) {
         return Ok(vec![run("&#8203;")]);
     }
@@ -203,12 +203,12 @@ fn slot(value: &Value, format: &str, spacing: bool, templates: bool) -> Result<V
     };
     let mut output = Vec::new();
     for value in values {
-        output.extend(render_xml(&model(value)?, format, spacing, templates)?)
+        output.extend(render_xml(&model(value)?, format, ctx)?)
     }
     Ok(output)
 }
-fn omml_slot(name: &str, value: &Value, spacing: bool, templates: bool) -> Result<Xml, String> {
-    Ok(el(name, slot(value, "omml", spacing, templates)?))
+fn omml_slot(name: &str, value: &Value, ctx: &WriterContext) -> Result<Xml, String> {
+    Ok(el(name, slot(value, "omml", ctx)?))
 }
 fn script(name: &str, base: Vec<Xml>, argument: Vec<Xml>) -> Xml {
     let (property, argument_name) = match name {
@@ -231,8 +231,7 @@ fn script(name: &str, base: Vec<Xml>, argument: Vec<Xml>) -> Xml {
 pub(super) fn xml_with_style(
     node: &Model,
     format: &str,
-    spacing: bool,
-    templates: bool,
+    ctx: &WriterContext,
     display_style: Option<bool>,
 ) -> Result<Vec<Xml>, String> {
     let a = node.field("parameter_one");
@@ -242,9 +241,9 @@ pub(super) fn xml_with_style(
         "Math::Function::PowerBase" => {
             let tag = property(a, format == "omml")?;
             if format == "mathml" {
-                let mut children = slot(a, format, spacing, templates)?;
-                children.extend(slot(b, format, spacing, templates)?);
-                children.extend(slot(c, format, spacing, templates)?);
+                let mut children = slot(a, format, ctx)?;
+                children.extend(slot(b, format, ctx)?);
+                children.extend(slot(c, format, ctx)?);
                 return Ok(vec![el(&format!("m{tag}"), children)]);
             }
             if tag == "undOvr" {
@@ -252,14 +251,14 @@ pub(super) fn xml_with_style(
                     .ok_or("unported explicit display-style context for under/over PowerBase")?;
                 let upper = script(
                     if style { "m:limUpp" } else { "m:sSup" },
-                    slot(a, format, spacing, templates)?,
-                    slot(c, format, spacing, templates)?,
+                    slot(a, format, ctx)?,
+                    slot(c, format, ctx)?,
                 );
                 return Ok(vec![if truthy(b) {
                     script(
                         if style { "m:limLow" } else { "m:sSub" },
                         vec![upper],
-                        slot(b, format, spacing, templates)?,
+                        slot(b, format, ctx)?,
                     )
                 } else {
                     upper
@@ -269,9 +268,9 @@ pub(super) fn xml_with_style(
                 "m:sSubSup",
                 vec![
                     el("m:sSubSupPr", vec![control_properties()]),
-                    omml_slot("m:e", a, spacing, templates)?,
-                    omml_slot("m:sub", b, spacing, templates)?,
-                    omml_slot("m:sup", c, spacing, templates)?,
+                    omml_slot("m:e", a, ctx)?,
+                    omml_slot("m:sub", b, ctx)?,
+                    omml_slot("m:sup", c, ctx)?,
                 ],
             )])
         }
@@ -286,13 +285,13 @@ pub(super) fn xml_with_style(
                     ],
                 ),
                 el("m:deg", vec![]),
-                omml_slot("m:e", a, spacing, templates)?,
+                omml_slot("m:e", a, ctx)?,
             ],
         )]),
         "Math::Function::Mod" if format == "omml" => {
             let mut output = vec![];
             if truthy(a) {
-                output.extend(render_xml(&model(a)?, format, spacing, templates)?)
+                output.extend(render_xml(&model(a)?, format, ctx)?)
             }
             if !truthy(node.field("hide_function_name")) {
                 output.push(el(
@@ -307,7 +306,7 @@ pub(super) fn xml_with_style(
                 ))
             }
             if truthy(b) {
-                output.extend(render_xml(&model(b)?, format, spacing, templates)?)
+                output.extend(render_xml(&model(b)?, format, ctx)?)
             }
             Ok(output)
         }
@@ -317,14 +316,12 @@ pub(super) fn xml_with_style(
 pub(super) fn xml_writer(
     node: &Model,
     format: &str,
-    spacing: bool,
-    templates: bool,
+    ctx: &WriterContext,
 ) -> Result<Vec<Xml>, String> {
     xml_with_style(
         node,
         format,
-        spacing,
-        templates,
-        if templates { Some(true) } else { None },
+        ctx,
+        Some(ctx.display_style),
     )
 }

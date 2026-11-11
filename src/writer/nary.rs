@@ -1,6 +1,6 @@
 //! Source procedures for Sum, Prod, Int and Oint (Ruby 0a1df68a).
 //! Catalog constants are measured by tests/support/export-nary.rb; no fixture lookup.
-use super::{attrs, child, el, strict_slot_xml, text as xml_text, Xml};
+use super::{WriterContext, attrs, child, el, strict_slot_xml, text as xml_text, Xml};
 use crate::model::Model;
 use serde_json::Value;
 use std::sync::OnceLock;
@@ -337,10 +337,10 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
         _ => Err(format!("unknown n-ary text format {f}")),
     }
 }
-fn math_child(v: &Value, spacing: bool, templates: bool) -> Result<Vec<Xml>, String> {
-    strict_slot_xml(&ordinary_numbers(v), "mathml", spacing, templates, false)
+fn math_child(v: &Value, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
+    strict_slot_xml(&ordinary_numbers(v), "mathml", ctx, false)
 }
-fn omml_child(v: &Value, spacing: bool, templates: bool) -> Result<Vec<Xml>, String> {
+fn omml_child(v: &Value, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     if let Some(a) = v.as_array() {
         let mut out = vec![];
         for item in a {
@@ -350,19 +350,18 @@ fn omml_child(v: &Value, spacing: bool, templates: bool) -> Result<Vec<Xml>, Str
             out.extend(strict_slot_xml(
                 &ordinary_numbers(item),
                 "omml",
-                spacing,
-                templates,
+                ctx,
                 false,
             )?);
         }
         Ok(out)
     } else {
-        strict_slot_xml(&ordinary_numbers(v), "omml", spacing, templates, false)
+        strict_slot_xml(&ordinary_numbers(v), "omml", ctx, false)
     }
 }
-fn omml_parameter(v: &Value, name: &str, spacing: bool, templates: bool) -> Result<Xml, String> {
+fn omml_parameter(v: &Value, name: &str, ctx: &WriterContext) -> Result<Xml, String> {
     let children = if truthy(v) {
-        omml_child(v, spacing, templates)?
+        omml_child(v, ctx)?
     } else {
         vec![el("m:r", vec![el("m:t", vec![xml_text("&#8203;")])])]
     };
@@ -371,7 +370,7 @@ fn omml_parameter(v: &Value, name: &str, spacing: bool, templates: bool) -> Resu
 fn val(name: &str, value: &str) -> Xml {
     attrs(name, vec![("m:val".into(), value.into())], vec![])
 }
-fn omml(m: &Model, spacing: bool, templates: bool) -> Result<Vec<Xml>, String> {
+fn omml(m: &Model, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     let a = m.field("parameter_one");
     let b = m.field("parameter_two");
     let c = m.field("parameter_three");
@@ -399,9 +398,9 @@ fn omml(m: &Model, spacing: bool, templates: bool) -> Result<Vec<Xml>, String> {
         "m:nary",
         vec![
             properties,
-            omml_parameter(a, "m:sub", spacing, templates)?,
-            omml_parameter(b, "m:sup", spacing, templates)?,
-            omml_parameter(c, "m:e", spacing, templates)?,
+            omml_parameter(a, "m:sub", ctx)?,
+            omml_parameter(b, "m:sup", ctx)?,
+            omml_parameter(c, "m:e", ctx)?,
         ],
     )])
 }
@@ -546,7 +545,7 @@ fn mask_mathml(node: Xml, mask: &Value, m: &Model) -> Result<Xml, String> {
     }
     Ok(Xml::El(name, attrs, children))
 }
-fn mathml(m: &Model, spacing: bool, templates: bool) -> Result<Vec<Xml>, String> {
+fn mathml(m: &Model, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     let a = m.field("parameter_one");
     let b = m.field("parameter_two");
     let c = m.field("parameter_three");
@@ -586,7 +585,7 @@ fn mathml(m: &Model, spacing: bool, templates: bool) -> Result<Vec<Xml>, String>
         if m.kind() == "Int" && !truthy(v) {
             args.push(el("mrow", vec![]));
         } else {
-            args.extend(math_child(v, spacing, templates)?);
+            args.extend(math_child(v, ctx)?);
         }
     }
     let mut bounds = el(&tag, args);
@@ -604,18 +603,17 @@ fn mathml(m: &Model, spacing: bool, templates: bool) -> Result<Vec<Xml>, String>
         return Ok(vec![bounds]);
     }
     let mut row = vec![bounds];
-    row.extend(math_child(c, spacing, templates)?);
+    row.extend(math_child(c, ctx)?);
     Ok(vec![el("mrow", row)])
 }
 pub(super) fn xml(
     m: &Model,
     f: &str,
-    spacing: bool,
-    allow_templates: bool,
+    ctx: &WriterContext,
 ) -> Result<Vec<Xml>, String> {
     match f {
-        "mathml" => mathml(m, spacing, allow_templates),
-        "omml" => omml(m, spacing, allow_templates),
+        "mathml" => mathml(m, ctx),
+        "omml" => omml(m, ctx),
         _ => Err(format!("unknown n-ary XML format {f}")),
     }
 }

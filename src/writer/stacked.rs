@@ -1,5 +1,5 @@
 //! Source Substack/Msline/Mglyph and row/cell text procedures (Ruby 0a1df68a).
-use super::{attrs, child, el, render_xml, text as xml_text, Model, Value, Xml};
+use super::{WriterContext, attrs, child, el, render_xml, text as xml_text, Model, Value, Xml};
 fn source_error(reason: &str) -> String {
     format!("source_render_error: {reason}")
 }
@@ -179,7 +179,7 @@ fn decimal_hex(mut digits: String) -> String {
     }
     out.into_iter().rev().collect()
 }
-pub(super) fn xml(m: &Model, f: &str, spacing: bool, templates: bool) -> Result<Vec<Xml>, String> {
+pub(super) fn xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     match m.kind() {
         "Msline" => Ok(if f == "mathml" {
             vec![el("msline", vec![])]
@@ -224,7 +224,7 @@ pub(super) fn xml(m: &Model, f: &str, spacing: bool, templates: bool) -> Result<
                 let table = Model::from_value(
                     &serde_json::json!({"class":"Math::Function::Table","fields":{"value":rows,"options":{},"open_paren":null,"close_paren":null}}),
                 )?;
-                return super::table_xml::render(&table, f, spacing, templates);
+                return super::table_xml::render(&table, f, ctx);
             }
             let mut content = Vec::new();
             if let Some(values) = p.as_array() {
@@ -232,13 +232,13 @@ pub(super) fn xml(m: &Model, f: &str, spacing: bool, templates: bool) -> Result<
                     if !v.is_null() {
                         let child = Model::from_value(v)
                             .map_err(|_| source_error("stacked child has no source XML writer"))?;
-                        content.extend(render_xml(&child, f, spacing, templates)?);
+                        content.extend(render_xml(&child, f, ctx)?);
                     }
                 }
             } else if !p.is_null() {
                 let child = Model::from_value(p)
                     .map_err(|_| source_error("stacked child has no source XML writer"))?;
-                content.extend(render_xml(&child, f, spacing, templates)?);
+                content.extend(render_xml(&child, f, ctx)?);
             }
             Ok(vec![el("mtable", content)])
         }

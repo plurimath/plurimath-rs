@@ -1,4 +1,5 @@
 //! Procedural ports of the source accent classes, including their distinct nil behavior.
+use super::WriterContext;
 use super::{
     attrs, child, control_properties, el, present, run, strict_slot_xml, text as xml_text,
     unary_slot_text, unary_text, Xml,
@@ -29,6 +30,9 @@ fn array_nodes(v: &Value) -> Result<(), String> {
 
 pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
     let v = m.field("parameter_one");
+    if present(v) && !v.is_object() && !v.is_array() {
+        return Err("source_render_error: accent argument must receive node methods".into());
+    }
     if f == "latex" && v == false && !["Bar", "Hat", "Ubrace"].contains(&m.kind()) {
         return Err("source_render_error: false cannot receive to_latex".into());
     }
@@ -156,7 +160,7 @@ fn attribute_pairs(m: &Model, all: bool) -> Result<Vec<(String, String)>, String
     Ok(pairs)
 }
 
-pub(super) fn xml(m: &Model, f: &str, spacing: bool, templates: bool) -> Result<Vec<Xml>, String> {
+pub(super) fn xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     let v = m.field("parameter_one");
     let k = m.kind();
     if f == "mathml" {
@@ -185,7 +189,7 @@ pub(super) fn xml(m: &Model, f: &str, spacing: bool, templates: bool) -> Result<
         let mut body = if k == "Tilde" && !present(v) {
             vec![]
         } else {
-            strict_slot_xml(v, f, spacing, templates, k == "Ddot")?
+            strict_slot_xml(v, f, ctx, k == "Ddot")?
         };
         body.push(mark);
         return Ok(vec![attrs(
@@ -207,7 +211,15 @@ pub(super) fn xml(m: &Model, f: &str, spacing: bool, templates: bool) -> Result<
             _ => unreachable!(),
         })]);
     }
-    let body = strict_slot_xml(v, f, spacing, templates, true)?;
+    let attributes = m.field("attributes");
+    let accent = present(&attributes["accent"]);
+    let forced = ["Vec", "Dot", "Tilde"].contains(&k) && !accent || ["Ddot", "Ubrace"].contains(&k);
+    let child_context = if forced {
+        ctx.with_display_style(true)
+    } else {
+        *ctx
+    };
+    let body = strict_slot_xml(v, f, &child_context, true)?;
     if k == "Hat" && present(m.field("hide_function_name")) {
         return Ok(body);
     }
@@ -251,10 +263,6 @@ pub(super) fn xml(m: &Model, f: &str, spacing: bool, templates: bool) -> Result<
             ],
         )]);
     }
-    // Hat alone forwards display_style; the other source classes force true.
-    if k == "Hat" && !templates {
-        return Err("unported inline hat overset context".into());
-    }
     let glyph = match k {
         "Hat" => "&#x302;",
         "Vec" => "→",
@@ -264,6 +272,16 @@ pub(super) fn xml(m: &Model, f: &str, spacing: bool, templates: bool) -> Result<
         "Ubrace" => "⏟",
         _ => unreachable!(),
     };
+    if k == "Hat" && !ctx.display_style {
+        return Ok(vec![el(
+            "m:sSup",
+            vec![
+                el("m:sSupPr", vec![control_properties()]),
+                el("m:e", body),
+                el("m:sup", vec![run(glyph)]),
+            ],
+        )]);
+    }
     let tag = if k == "Ubrace" {
         "m:limLow"
     } else {

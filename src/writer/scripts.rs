@@ -1,4 +1,5 @@
 //! Source Base subscript writers. Options outside the implemented profile fail explicitly.
+use super::WriterContext;
 use super::{child, control_properties, el, present, run, strict_slot_xml, Xml};
 use crate::model::Model;
 fn options(m: &Model) -> Result<(), String> {
@@ -72,8 +73,15 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
         _ => return Err("unknown subscript text format".into()),
     })
 }
-pub(super) fn xml(m: &Model, f: &str, spacing: bool, templates: bool) -> Result<Vec<Xml>, String> {
+pub(super) fn xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     options(m)?;
+    if f == "mathml"
+        && [m.field("parameter_one"), m.field("parameter_two")]
+            .iter()
+            .any(|value| value.is_array())
+    {
+        return Err("source_render_error: array cannot receive to_mathml_without_math_tag".into());
+    }
     let slot = |name: &str| -> Result<Vec<Xml>, String> {
         let value = m.field(name);
         if value
@@ -85,7 +93,7 @@ pub(super) fn xml(m: &Model, f: &str, spacing: bool, templates: bool) -> Result<
         if f == "omml" && !present(value) {
             Ok(vec![run("&#8203;")])
         } else {
-            strict_slot_xml(value, f, spacing, templates, true)
+            strict_slot_xml(value, f, ctx, true)
         }
     };
     let a = slot("parameter_one")?;
