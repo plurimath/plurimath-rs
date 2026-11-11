@@ -1,0 +1,46 @@
+{
+  "profile": "source-binary-line-break-overrides/1",
+  "source": {
+    "repository": "https://github.com/plurimath/plurimath",
+    "commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+    "files": {
+      "lib/plurimath/math/function/frac.rb": "87edbae6bcec05f6a419159c6148e56c2d6beb4e8d0291e949ef99c45878afbd",
+      "lib/plurimath/math/function/overset.rb": "eaa8b057b71b27bfef7d5a8a77bbadbfc3a5412bb3953ad72c0a980be3eaa16d",
+      "lib/plurimath/math/function/mod.rb": "a89ab7e73014bbdaadac5f575e2de5a23fd922891b974e2fa69dd317eeabe432",
+      "lib/plurimath/math/formula.rb": "11561b5d7c6f897f6f8c90acb746275b341921bba12af724238cf631ed96b28f",
+      "lib/plurimath/math/core.rb": "e541684dbc5c53fbf8b3c30e0ab2e28c6036cbaa9429ba1caedcf1de9192691d"
+    }
+  },
+  "runtime": {
+    "ruby": "4.0.1",
+    "xml_engine": "Ox"
+  },
+  "producer_sha256": "2536da02d07331ee08dee8f98a9d8a43348f707f8b8074082862f837bfabb4c9",
+  "payloads": {
+    "original-reference.json": "571e5ca34e32752de60821bd733900ad01b6179dc0b46e7527c89a2c02637ae4",
+    "independent-reference.json": "e979cec5aa707858220bdb76daf2665a2a96dc52f7288ec41c94b897e577b642"
+  },
+  "source_families": {
+    "independent_writer_observations": 972,
+    "independent_state_observations": 486,
+    "original_writer_observations": 14
+  },
+  "source_dependency": {
+    "module": "nary.rs",
+    "qualified_candidate": "e233ba6b19cfde192beff6d9275eb847474a3415",
+    "fragment_sha256": "2e5019bf9b6d978a679b3f9382e8d1fd02d6a7738ef65f7d24f6280e6a34c1c5",
+    "reason": "Original four Frac outputs require the source Prod continuation override; Frac is not reimplemented."
+  },
+  "procedures": [
+    "Overset traverses only the base, preserving an annotation linebreak as source content.",
+    "Mod first-operand continuation hides the original glyph, retains it in the continuation, and clears the original second operand.",
+    "Mod second-operand continuation starts without a first operand and hides its glyph.",
+    "Mod MathML always includes the operator mi; hiding leaves that element empty.",
+    "OMML retains the existing operator renderer, with source receiver admission for invalid operand arrays."
+  ],
+  "scope": [
+    "Default and split line-breaking paths; existing writer context is propagated unchanged.",
+    "No independent parser/arithmetic, source bridge or whole-input lookup.",
+    "Source exception classes are qualified, not their message bytes."
+  ]
+}
