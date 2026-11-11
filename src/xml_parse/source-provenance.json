@@ -1,0 +1,21 @@
+{
+  "format": "plurimath-native-xml-translator-source/1",
+  "source_repository": "plurimath/plurimath-ts",
+  "source_head": "a5348ddcc74370382624b00b88af71eda50fe77a",
+  "source_files_sha256": {
+    "src/formats/mathml/translator.ts": "2889a68af059bd7895887ee32cc3633758c64ce6abaff8adc59819508cbb52e4",
+    "src/formats/mathml/generated/transform-tables.ts": "309cc0a6f2589e049657024eae0678a61f735977bd1a67cd6e811ebbff340eaf",
+    "src/formats/omml/translator.ts": "7af5faefb8a26494c63d294c5c9b683cd9bb3ff517051dbb361b7c6b271590ca",
+    "src/formats/omml/draft.ts": "dc52e3785bfde5bf612219d2d8df842b0f53262f45d4fcd4a96b2686594574ce",
+    "src/formats/omml/generated/input-tables.ts": "c77d067ed121bca9af90192f770cb27dbe5eb58a057748f645f67ca989073b91",
+    "src/xml/reader.ts": "40e7b705c17e5fa76e96bec5ec996fc18b829acbcbebf13aaa89c06e64e4792f",
+    "src/core/nodes.ts": "861f15b45ee25973677f2f0c05c9c51d9b029e2ddc1991e7ab77e8c18eee72bd",
+    "src/core/generated/html-entities.ts": "55a26022f83c2cb48aab92509595f2930f11d0ecc61244ade82151fdb4c6ffb8"
+  },
+  "moxml_revision": "c55a7ecf60764d75a7a0ef54f0e483ec40df4b73",
+  "table_artifact_sha256": "2c1e16a735cc208e7fb898349c05adbf0cd003fb0d46353271546da625c52f19",
+  "oracle_sha256": "7a5acf99bef9e8a2c803440e3c408446d0d205437863344f853c3e68235f0744",
+  "scope": "Source-grounded subset; unsupported conversion paths return INCOMPLETE_XML_TRANSLATION until exact source-model and writer replay qualifies them.",
+  "testsuite_head": "4d3f6328540578c58212e675553d68441c13e716",
+  "entity_wrapper": "Moxml source nonstandard named-entity marker and declared-encoding rewrite, then ordinary attribute/text restoration around the unchanged accepted document parser."
+}

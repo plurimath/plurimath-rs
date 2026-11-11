@@ -172,6 +172,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "latexmath"
+version = "0.1.0"
+dependencies = [
+ "parsanol",
+ "serde_json",
+]
+
+[[package]]
 name = "libc"
 version = "0.2.191"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -182,6 +190,15 @@ name = "memchr"
 version = "2.8.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98"
+
+[[package]]
+name = "moxml"
+version = "0.1.0"
+source = "git+https://github.com/lutaml/moxml-rs?rev=c55a7ecf60764d75a7a0ef54f0e483ec40df4b73#c55a7ecf60764d75a7a0ef54f0e483ec40df4b73"
+dependencies = [
+ "regex",
+ "wasm-bindgen",
+]
 
 [[package]]
 name = "once_cell"
@@ -229,7 +246,18 @@ dependencies = [
 name = "plurimath-facade"
 version = "0.1.0"
 dependencies = [
+ "latexmath",
+ "moxml",
  "plurimath-amath",
+ "plurimath-umath",
+ "serde_json",
+]
+
+[[package]]
+name = "plurimath-umath"
+version = "0.1.0"
+dependencies = [
+ "parsanol",
  "serde_json",
 ]
 

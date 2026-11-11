@@ -39,6 +39,22 @@
     {
       "path": "workspace/core/ts-ci-fix/src/generated/mathml/render-tables.ts",
       "sha256": "7d6f3250af40ad3d4ad73784ef192e58cb12cea5f93f84a13d93cbd6c840f8d8"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/core/generated/html-entities.ts",
+      "sha256": "55a26022f83c2cb48aab92509595f2930f11d0ecc61244ade82151fdb4c6ffb8"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/generated/latex/render-tables.ts",
+      "sha256": "d36cda8f319c79e88cda7c6353f76626754a1592073005ba17a059338a6e19d3"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/formats/latex/generated/transform-tables.ts",
+      "sha256": "d033629913c34b7c0aee018e5f7a637d94d2564b759ac0d5b78cdb1fa54de508"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/formats/unicodemath/generated/transform-tables.ts",
+      "sha256": "71d29ee0f45cf33232cd6be56d75a160d6a9a0a9aa2012f75215a73ee891fc50"
     }
   ],
   "counts": {
@@ -51,12 +67,44 @@
     "input": 3276,
     "canonical": 1459,
     "unary_keywords": 33,
-    "unary_mi": 33
+    "class_map": 63,
+    "unary_mi": 33,
+    "text_unicode_invert": 144,
+    "text_symbols_invert": 17,
+    "html_entities": 253,
+    "latex_left_right": 23,
+    "latex_input": 3279,
+    "unicode_input": 3282
   },
   "policy": "Static source-data extraction only. No Node/Ruby product runtime bridge.",
-  "upstream_ruby": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
-  "upstream_ts": "a5348ddcc74370382624b00b88af71eda50fe77a",
-  "amath_native": "d176af8c6d2df7fcdab7f2e83ab6d24ef92dd3c8",
-  "source_scope": "Common IR and procedural source port; numeric evaluator8f is separate and unchanged.",
-  "source_oracle_sha256": "8847b4472448d6af0bf308cadf21b71ad6344e5d1a78fcabec207b97d01abc87"
+  "facade_scope": "Source-backed six baseline input routes, mixed common-model transport and six writer dispatches; coverage remains partial. PMA/UnitsML input routes and unported baseline cases remain incomplete.",
+  "parameterized_writer_artifact": {
+    "path": "handoffs/main-facade-python/parameterized-writers-v3.json",
+    "sha256": "2a54a7dc1d10014eebea13bc8c44ac2f4ec5b4b45efd949ec8ba2eec30b17cc3",
+    "profiles": 1419,
+    "checks": 5676,
+    "policy": "Strict parent-fields/default-context and child-shape guards. No whole-input answers. Known literal-sensitive families use explicit native source handlers."
+  },
+  "input_sources": {
+    "ruby": {
+      "head": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+      "path": "workspace/core/plurimath-ruby"
+    },
+    "ts": {
+      "head": "a5348ddcc74370382624b00b88af71eda50fe77a",
+      "path": "workspace/core/ts-ci-fix"
+    },
+    "amath": {
+      "head": "d176af8c6d2df7fcdab7f2e83ab6d24ef92dd3c8",
+      "path": "workspace/compatibility/amath-rs"
+    },
+    "latexmath": {
+      "head": "4da0ddaf00d0f58ecce4f1e81cd9cdcc1b9b6c39",
+      "path": "workspace/compatibility/latexmath-rs"
+    },
+    "umath": {
+      "head": "504c74f6a3b8e4bc62cb650029f4d00cbf2438f3",
+      "path": "workspace/compatibility/umath-rs"
+    }
+  }
 }

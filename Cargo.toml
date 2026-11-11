@@ -10,6 +10,10 @@ crate-type = ["rlib", "cdylib"]
 [dependencies]
 amath = { package = "plurimath-amath", path = "../../compatibility/amath-rs" }
 serde_json = { version = "=1.0.140", features = ["arbitrary_precision", "preserve_order"] }
+latexmath = { path = "../../compatibility/latexmath-rs" }
+umath = { package = "plurimath-umath", path = "../../compatibility/umath-rs" }
+moxml = { git = "https://github.com/lutaml/moxml-rs", rev = "c55a7ecf60764d75a7a0ef54f0e483ec40df4b73" }
+
 [profile.dev]
 debug = 0
 incremental = false

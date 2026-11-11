@@ -32,6 +32,7 @@ fn source_mixed_field_shape_is_preserved() {
 fn unported_promises_fail_explicitly() {
     assert!(parser::parse("x", "pma", &json!({}))
         .unwrap_err()
+        .to_string()
         .contains("unported promised"));
     assert!(writer::write(
         &json!({"class":"Math::Function::Nary","fields":{}}),

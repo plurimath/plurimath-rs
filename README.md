@@ -4,7 +4,7 @@ Native source port progressing toward the full eight-input/six-writer contract. 
 
 The accepted AsciiMath PARG stage supplies syntax; this package converts its captures into the existing source `{class, fields}` common wire. Arbitrary field values, nulls, lists and plain hashes survive model storage. Common-wire storage is not class-semantic validation.
 
-The initial vertical slice covers numbers, ordinary symbols, arithmetic rows, fractions and round grouping, with six source writers. Static generated symbol data covers1459symbols; context/option behavior still needs qualification. Unported promised formats/classes/options return `unported_capability` and remain incomplete. This refusal is not acceptance of reduced programme scope.
+The initial exact10-model/60-writer slice covers numbers, ordinary symbols, arithmetic rows, fractions and round grouping. The current candidate additionally has source-backed AsciiMath, LaTeX, UnicodeMath, MathML, OMML and XML-valid HTML/MathML input routes, and source-produced guarded writer skeletons. These routes are partial; PMA and UnitsML input routes and remaining baseline cases are incomplete. Static generated symbol data covers1459symbols; context/option behavior still needs qualification. Unported promised formats/classes/options return `unported_capability` and remain incomplete. This refusal is not acceptance of reduced programme scope.
 
 ## C ABI
 
@@ -18,8 +18,10 @@ The initial vertical slice covers numbers, ordinary symbols, arithmetic rows, fr
 {"op":"write","format":"latex","model":{"class":"Math::Number","fields":{"value":"2"}},"options":{}}
 ```
 
-Success includes `abi_version:1,ok:true` and `model` or `output`. Errors include `abi_version:1,ok:false,error:{code,message}`. Diagnostic/source-offset fidelity remains in progress; do not treat an unported capability as a source syntax refusal.
+Success includes `abi_version:1,ok:true` and `model` or `output`. Errors include `abi_version:1,ok:false,error:{code,message}`. Syntax errors retain declared native offset policies. Diagnostic parity remains profile-specific; do not treat an unported capability as a source syntax refusal.
 
 The `model` operation preserves a source common-wire envelope without rendering. Supported writer format keys are asciimath,latex,unicodemath,html,mathml,omml. Unported input families include the remainder of Ruby's eight input types; no independent grammar or evaluator is substituted.
 
 Focused check: `cargo test --locked --offline --test facade`. Frozen ten-input source oracle provides exact common models and60writer bytes. Full original format acceptance is not claimed.
+
+Source profiles and test evidence are distinct: static symbol maps and guarded templates are not proof of universal writer parity. Templates substitute recursively rendered native children into source-produced text/XML trees, not complete-input answers. The source exporter validated1419profiles against5676unseenchild checks, but native acceptance comes from actual frozen/current source differential replays. Named entities, literal-sensitive Text/Mbox/LeftRight and ordinary symbol escapes have dedicated source handlers.

@@ -1,7 +1,9 @@
 pub mod model;
 pub mod parser;
 pub mod symbols;
+pub mod text_parse;
 pub mod writer;
+pub mod xml_parse;
 use serde_json::{json, Value};
 pub fn stage_tree(input: &str) -> Result<Value, String> {
     amath::Parser::new()
@@ -11,6 +13,37 @@ pub fn stage_tree(input: &str) -> Result<Value, String> {
         .map_err(|e| e.to_string())
 }
 pub fn request(v: &Value) -> Value {
+    if v["op"] == "parse" && ["latex", "unicode"].iter().any(|f| v["format"] == *f) {
+        let Some(input) = v["input"].as_str() else {
+            return json!({"abi_version":1,"ok":false,"error":{"code":"invalid_request","message":"input must be a string"}});
+        };
+        return match text_parse::parse(
+            input,
+            v["format"].as_str().unwrap(),
+            v.get("options").unwrap_or(&json!({})),
+        ) {
+            Ok(model) => json!({"abi_version":1,"ok":true,"model":model}),
+            Err(error) => json!({"abi_version":1,"ok":false,"error":error}),
+        };
+    }
+
+    if v["op"] == "parse" && ["mathml", "omml", "html"].iter().any(|f| v["format"] == *f) {
+        let Some(input) = v["input"].as_str() else {
+            return json!({"abi_version":1,"ok":false,"error":{"code":"invalid_request","message":"input must be a string"}});
+        };
+        return match xml_parse::parse(
+            input,
+            v["format"].as_str().unwrap(),
+            v.get("options").unwrap_or(&json!({})),
+        ) {
+            Ok(model) => json!({"abi_version":1,"ok":true,"model":model}),
+            Err(error) => json!({"abi_version":1,"ok":false,"error":error}),
+        };
+    }
+
+    if v["op"] == "parse" {
+        return parser::response(v);
+    }
     let result: Result<Value, String> = (|| {
         let op = v["op"].as_str().ok_or("missing op")?;
         match op {
@@ -31,7 +64,11 @@ pub fn request(v: &Value) -> Value {
             x
         }
         Err(message) => {
-            json!({"abi_version":1,"ok":false,"error":{"code":"unported_capability","message":message}})
+            if let Some(message) = message.strip_prefix("source_render_error: ") {
+                json!({"abi_version":1,"ok":false,"error":{"code":"render_error","message":message,"source_class":if v["model"]["class"]=="Math::Formula"{"Plurimath::Math::ParseError"}else{"NoMethodError"}}})
+            } else {
+                json!({"abi_version":1,"ok":false,"error":{"code":"unported_capability","message":message}})
+            }
         }
     }
 }
