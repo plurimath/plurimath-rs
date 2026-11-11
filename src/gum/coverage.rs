@@ -74,10 +74,14 @@ fn numerical(message: &'static str) -> Error {
     }
 }
 
+pub(super) fn normal_cdf(value: f64) -> f64 {
+    0.5 * libm::erfc(-value / std::f64::consts::SQRT_2)
+}
+
 fn quantile(probability: f64, nu: Option<f64>) -> Result<f64> {
     let cdf = |x| match nu {
         Some(nu) => student_cdf(x, nu),
-        None => Ok(0.5 * libm::erfc(-x / std::f64::consts::SQRT_2)),
+        None => Ok(normal_cdf(x)),
     };
     let mut lower = 0.0;
     let mut upper = 1.0;

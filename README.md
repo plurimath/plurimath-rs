@@ -182,3 +182,18 @@ request shape. Engine identity reports the Rust implementation. These checks
 cover selected GUM methods and published input profiles. The full F40 corpus,
 complete Annex H acceptance, and named quantity-kind classification remain
 outside this scope.
+
+### Conformance decisions
+
+The GUM method `conformity` accepts exact estimates, standard uncertainty,
+lower and upper tolerance limits, and an explicit rule. The existing Ruby
+rules are `simple`, `guarded_acceptance`, `guarded_rejection`,
+`iso14253_style`, and `three_zone`. An open limit is `null`. The result
+reports both signed residuals, a signed guard band, expanded uncertainty,
+and the decision. Probabilities use the declared decimal-place precision.
+This profile requires measurement-only normal knowledge and specific risk.
+
+The source rule includes the inward acceptance edge. The `three_zone` rule
+keeps the outward guard edge conditional and rejects points beyond it.
+`boundary` records exact equality to an applicable edge independently of
+the decision. Frozen F40 case `producer-20` covers outward equality.

@@ -25,10 +25,19 @@ fn project_engine(value: &mut Value) {
 
 #[test]
 fn frozen_f40_gum_and_series_cases() {
-    let fixture: Value = serde_json::from_str(include_str!("../fixtures/gum-f40.json")).unwrap();
+    assert_frozen(include_str!("../fixtures/gum-f40.json"), 39);
+}
+
+#[test]
+fn frozen_conformity_and_ruby_edge_cases() {
+    assert_frozen(include_str!("../fixtures/gum-conformity.json"), 25);
+}
+
+fn assert_frozen(source: &str, count: usize) {
+    let fixture: Value = serde_json::from_str(source).unwrap();
     let mut failures = Vec::new();
     let cases = fixture["cases"].as_array().unwrap();
-    assert_eq!(cases.len(), 39);
+    assert_eq!(cases.len(), count);
     for case in cases {
         let actual = run(&case["request"]);
         let expected = &case["expected"];

@@ -2,6 +2,7 @@ use super::{decimal, guard_sqrt, qparse, roundq, BigInt, J, N, Q};
 use num_traits::{Signed, Zero};
 use serde_json::json;
 
+mod conformity;
 mod coverage;
 mod monte_carlo;
 mod propagation;
@@ -211,6 +212,7 @@ fn dispatch(request: &J) -> Result<J> {
         "grouped_type_a" => statistics::grouped(params),
         "component" => propagation::component(params),
         "coverage" => coverage::evaluate(params),
+        "conformity" => conformity::evaluate(params),
         "monte_carlo" => monte_carlo::evaluate(params),
         "propagate" => propagation::independent(params),
         "analyze" => taylor::analyze(params),
