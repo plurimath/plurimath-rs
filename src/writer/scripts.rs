@@ -9,12 +9,12 @@ fn options(m: &Model) -> Result<(), String> {
     }
     Ok(())
 }
-pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
+pub(super) fn text(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     options(m)?;
     let a = m.field("parameter_one");
     let b = m.field("parameter_two");
     let first = if present(a) {
-        child(a, f)?
+        child(a, f, ctx)?
     } else {
         String::new()
     };
@@ -22,7 +22,7 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
         "asciimath" => format!(
             "{first}{}",
             if present(b) {
-                format!("_({})", child(b, f)?)
+                format!("_({})", child(b, f, ctx)?)
             } else {
                 String::new()
             }
@@ -38,7 +38,7 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
                 first
             },
             if present(b) {
-                child(b, f)?
+                child(b, f, ctx)?
             } else {
                 String::new()
             }
@@ -51,7 +51,7 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
                 String::new()
             },
             if present(b) {
-                format!("<sub>{}</sub>", child(b, f)?)
+                format!("<sub>{}</sub>", child(b, f, ctx)?)
             } else {
                 String::new()
             }
@@ -64,9 +64,9 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
                 "()".into()
             } else if b["class"] == "Math::Function::Base" || b["class"] == "Math::Function::Fenced"
             {
-                format!("_{}", child(b, f)?)
+                format!("_{}", child(b, f, ctx)?)
             } else {
-                format!("_({})", child(b, f)?)
+                format!("_({})", child(b, f, ctx)?)
             };
             format!("{first}{suffix}")
         }

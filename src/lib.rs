@@ -102,7 +102,10 @@ pub fn request(v: &Value) -> Value {
             x
         }
         Err(message) => {
-            if let Some(message) = message.strip_prefix("source_argument_error: ") {
+            if let Some(value) = message.strip_prefix("formatter_error_json:").or_else(||message.strip_prefix("formatter_constructor_error_json:")) {
+                let error: Value=serde_json::from_str(value).unwrap_or_else(|_|json!({"code":"invalid_request","message":"invalid formatter error envelope"}));
+                json!({"abi_version":1,"ok":false,"error":error})
+            } else if let Some(message) = message.strip_prefix("source_argument_error: ") {
                 json!({"abi_version":1,"ok":false,"error":{"code":"render_error","message":message,"source_class":"ArgumentError"}})
             } else if let Some(message) = message.strip_prefix("source_no_method_error: ") {
                 json!({"abi_version":1,"ok":false,"error":{"code":"render_error","message":message,"source_class":"NoMethodError"}})

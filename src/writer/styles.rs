@@ -15,34 +15,34 @@ fn background(m: &Model) -> Result<bool, String> {
     }
     Ok(map.get("backgroundcolor").is_some_and(present))
 }
-fn color(m: &Model) -> Result<String, String> {
+fn color(m: &Model, ctx: &super::WriterContext) -> Result<String, String> {
     if !m.field("parameter_one").is_object() {
         return Err("source_render_error: color value cannot receive to_asciimath".into());
     }
-    Ok(child(m.field("parameter_one"), "asciimath")?
+    Ok(child(m.field("parameter_one"), "asciimath", ctx)?
         .chars()
         .filter(|c| !c.is_ascii_whitespace())
         .collect())
 }
-pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
+pub(super) fn text(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     let bg = background(m)?;
     let a = m.field("parameter_one");
     let b = m.field("parameter_two");
     Ok(match f {
         "asciimath" => format!(
             "color({})({})",
-            if present(a) { color(m)? } else { String::new() },
+            if present(a) { color(m, ctx)? } else { String::new() },
             if present(b) {
-                child(b, f)?
+                child(b, f, ctx)?
             } else {
                 String::new()
             }
         ),
         "latex" => format!(
             "{{\\color{{{}}} {}}}",
-            if present(a) { color(m)? } else { String::new() },
+            if present(a) { color(m, ctx)? } else { String::new() },
             if present(b) {
-                child(b, f)?
+                child(b, f, ctx)?
             } else {
                 String::new()
             }
@@ -50,12 +50,12 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
         "html" => format!(
             "{}{}",
             if present(a) {
-                format!("<i>{}</i>", child(a, f)?)
+                format!("<i>{}</i>", child(a, f, ctx)?)
             } else {
                 String::new()
             },
             if present(b) {
-                format!("<i>{}</i>", child(b, f)?)
+                format!("<i>{}</i>", child(b, f, ctx)?)
             } else {
                 String::new()
             }
@@ -69,8 +69,8 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
             format!(
                 "{}({}&{})",
                 if bg { "☁" } else { "✎" },
-                child(a, f)?,
-                child(b, f)?
+                child(a, f, ctx)?,
+                child(b, f, ctx)?
             )
         }
         _ => return Err("unknown source color text format".into()),
@@ -89,7 +89,7 @@ pub(super) fn xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, S
     let attributes = if present(a) {
         vec![(
             if bg { "mathbackground" } else { "mathcolor" }.into(),
-            color(m)?.replace('"', ""),
+            color(m, ctx)?.replace('"', ""),
         )]
     } else {
         vec![]

@@ -54,7 +54,7 @@ fn family(m: &Model) -> Result<(String, String), String> {
     }
     Ok((token.into(), String::new()))
 }
-pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
+pub(super) fn text(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     let p = argument(m)?;
     if m.class == "Math::Function::FontStyle" {
         let prefix = if f == "unicodemath" {
@@ -62,7 +62,7 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
         } else {
             String::new()
         };
-        return Ok(format!("{prefix}{}", child(p, f)?));
+        return Ok(format!("{prefix}{}", child(p, f, ctx)?));
     }
     let info = entry(m).ok_or("unported source FontStyle class")?;
     let parts = &info["text"][f];
@@ -80,11 +80,11 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
             return Ok(format!(
                 "{}{}",
                 prefix.strip_suffix('(').unwrap_or(prefix),
-                child(p, f)?
+                child(p, f, ctx)?
             ));
         }
     }
-    Ok(format!("{prefix}{}{suffix}", child(p, f)?))
+    Ok(format!("{prefix}{}{suffix}", child(p, f, ctx)?))
 }
 fn properties(m: &Model) -> Vec<Xml> {
     if m.class == "Math::Function::FontStyle" {
@@ -137,7 +137,7 @@ fn font_children(v: &Value, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     if m.kind() == "Number" {
         return Ok(vec![el(
             "m:t",
-            vec![xml_text(&value_text(m.field("value"))?)],
+            vec![xml_text(&if let Some(formatter)=ctx.formatter {formatter.text(&m,"plain").map_err(|error|super::formatter_context::scope_error(ctx,error))?} else {value_text(m.field("value"))?})],
         )]);
     }
     if m.class.starts_with("Math::Symbols::") {

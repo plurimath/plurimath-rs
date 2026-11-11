@@ -80,13 +80,13 @@ fn reject_null_formula_values(value: &Value) -> Result<(), String> {
     }
     Ok(())
 }
-fn cell(c: &Model, f: &str) -> Result<String, String> {
+fn cell(c: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     reject_null_formula_values(c.field("parameter_one"))?;
     c.field("parameter_one")
         .as_array()
         .unwrap()
         .iter()
-        .map(|v| child(v, f))
+        .map(|v| child(v, f, ctx))
         .collect::<Result<Vec<_>, _>>()
         .map(|v| {
             v.join(if f == "asciimath" || f == "latex" || f == "unicodemath" {
@@ -96,14 +96,14 @@ fn cell(c: &Model, f: &str) -> Result<String, String> {
             })
         })
 }
-pub(super) fn render(m: &Model, f: &str) -> Result<String, String> {
+pub(super) fn render(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     if !["Matrix", "Pmatrix", "Bmatrix", "Vmatrix", "Array"].contains(&m.kind()) {
         return Err("unported promised table subclass".into());
     }
     let rs = rows(m)?;
     let cells = rs
         .iter()
-        .map(|r| r.iter().map(|c| cell(c, f)).collect::<Result<Vec<_>, _>>())
+        .map(|r| r.iter().map(|c| cell(c, f, ctx)).collect::<Result<Vec<_>, _>>())
         .collect::<Result<Vec<_>, _>>()?;
     let open = m.field("open_paren");
     let close = m.field("close_paren");
@@ -132,7 +132,7 @@ pub(super) fn render(m: &Model, f: &str) -> Result<String, String> {
             if open.is_null() || close.is_null() {
                 return Err("unported missing table delimiters".into());
             }
-            Ok(format!("{}{body}{}", child(open, f)?, child(close, f)?))
+            Ok(format!("{}{body}{}", child(open, f, ctx)?, child(close, f, ctx)?))
         }
         "latex" => {
             let env = if m.kind() == "Array" {
@@ -179,7 +179,7 @@ pub(super) fn render(m: &Model, f: &str) -> Result<String, String> {
             let matrix = if open.is_null() && ["Matrix", "Array"].contains(&m.kind()) {
                 String::from("matrix")
             } else {
-                let paren = child(open, "unicodemath")?;
+                let paren = child(open, "unicodemath", ctx)?;
                 crate::symbols::tables()["unicode_matrix_parens"]
                     .as_object()
                     .unwrap()

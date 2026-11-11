@@ -55,7 +55,7 @@ fn ordinary_numbers(v: &Value) -> Value {
     visit(&mut value);
     value
 }
-fn node_text(v: &Value, f: &str) -> Result<String, String> {
+fn node_text(v: &Value, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     if v.is_null() {
         return Ok(String::new());
     }
@@ -63,9 +63,9 @@ fn node_text(v: &Value, f: &str) -> Result<String, String> {
         return Err(source_error("n-ary text argument has no source writer"));
     }
     if f == "unicodemath" {
-        child(v, f)
+        child(v, f, ctx)
     } else {
-        child(&ordinary_numbers(v), f)
+        child(&ordinary_numbers(v), f, ctx)
     }
 }
 fn mini_sized(v: &Value) -> bool {
@@ -101,7 +101,7 @@ fn contains_mini(v: &Value) -> bool {
         .map(|o| o.values().any(contains_mini))
         .unwrap_or(false)
 }
-fn unicode_child(v: &Value) -> Result<String, String> {
+fn unicode_child(v: &Value, ctx: &super::WriterContext) -> Result<String, String> {
     if !v.is_object() {
         return Err(source_error("n-ary Unicode argument has no source writer"));
     }
@@ -142,20 +142,20 @@ fn unicode_child(v: &Value) -> Result<String, String> {
         let separator = if mini_sized(v) || negated { "" } else { " " };
         let pieces = values
             .iter()
-            .map(unicode_child)
+            .map(|value| unicode_child(value, ctx))
             .collect::<Result<Vec<_>, _>>()?;
         return super::text_content::decode(&pieces.join(separator));
     }
     if contains_mini(v) && !handles(&m) {
         return Err("unported promised nested mini-number Unicode child writer".into());
     }
-    node_text(v, "unicodemath")
+    node_text(v, "unicodemath", ctx)
 }
-fn parens(v: &Value, f: &str) -> Result<String, String> {
+fn parens(v: &Value, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     let value = if f == "unicodemath" {
-        unicode_child(v)?
+        unicode_child(v, ctx)?
     } else {
-        node_text(v, f)?
+        node_text(v, f, ctx)?
     };
     let fenced = v.get("class").and_then(Value::as_str) == Some("Math::Function::Fenced");
     if f == "unicodemath" && fenced {
@@ -190,7 +190,7 @@ fn prime(v: &Value) -> Result<bool, String> {
         .iter()
         .any(|p| input.contains(p.as_str().unwrap())))
 }
-fn unicode_bound(m: &Model, upper: bool) -> Result<String, String> {
+fn unicode_bound(m: &Model, upper: bool, ctx: &super::WriterContext) -> Result<String, String> {
     let v = m.field(if upper {
         "parameter_two"
     } else {
@@ -202,7 +202,7 @@ fn unicode_bound(m: &Model, upper: bool) -> Result<String, String> {
     let sign = if upper { "^" } else { "_" };
     if matches!(m.kind(), "Prod" | "Int") {
         if mini_sized(v) || (upper && prime(v)?) {
-            return unicode_child(v);
+            return unicode_child(v, ctx);
         }
         let special = if upper {
             "Math::Function::Power"
@@ -210,10 +210,10 @@ fn unicode_bound(m: &Model, upper: bool) -> Result<String, String> {
             "Math::Function::Base"
         };
         if v.get("class").and_then(Value::as_str) == Some(special) {
-            return Ok(format!("{sign}{}", unicode_child(v)?));
+            return Ok(format!("{sign}{}", unicode_child(v, ctx)?));
         }
     }
-    Ok(format!("{sign}{}", parens(v, "unicodemath")?))
+    Ok(format!("{sign}{}", parens(v, "unicodemath", ctx)?))
 }
 fn node_mask(m: &Model) -> Result<Option<&Value>, String> {
     let options = m.field("options");
@@ -234,8 +234,8 @@ fn ruby_mask_text(v: &Value) -> Result<String, String> {
         _ => Err("unported promised n-ary non-integer mask string spelling".into()),
     }
 }
-fn latex_wrapped(v: &Value) -> Result<String, String> {
-    let value = node_text(v, "latex")?;
+fn latex_wrapped(v: &Value, ctx: &super::WriterContext) -> Result<String, String> {
+    let value = node_text(v, "latex", ctx)?;
     let m = Model::from_value(v)?;
     let function_formula = if m.kind() == "Formula" {
         let values = m
@@ -265,7 +265,7 @@ fn latex_wrapped(v: &Value) -> Result<String, String> {
         Ok(format!("{{{value}}}"))
     }
 }
-pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
+pub(super) fn text(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     let a = m.field("parameter_one");
     let b = m.field("parameter_two");
     let c = m.field("parameter_three");
@@ -276,17 +276,17 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
                 if truthy(v) {
                     result.push_str(mark);
                     if f == "asciimath" {
-                        result.push_str(&parens(v, f)?);
+                        result.push_str(&parens(v, f, ctx)?);
                     } else if m.kind() == "Oint" {
-                        result.push_str(&latex_wrapped(v)?);
+                        result.push_str(&latex_wrapped(v, ctx)?);
                     } else {
-                        result.push_str(&format!("{{{}}}", node_text(v, f)?));
+                        result.push_str(&format!("{{{}}}", node_text(v, f, ctx)?));
                     }
                 }
             }
             result.push(' ');
             if !c.is_null() {
-                result.push_str(&node_text(c, f)?);
+                result.push_str(&node_text(c, f, ctx)?);
             }
             Ok(result
                 .trim_matches(|c: char| c == '\0' || c.is_ascii_whitespace())
@@ -301,10 +301,10 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
                     result.push_str(&ruby_mask_text(mask)?);
                 }
             }
-            result.push_str(&unicode_bound(m, false)?);
-            result.push_str(&unicode_bound(m, true)?);
+            result.push_str(&unicode_bound(m, false, ctx)?);
+            result.push_str(&unicode_bound(m, true, ctx)?);
             if truthy(c) {
-                let body = unicode_child(c)?;
+                let body = unicode_child(c, ctx)?;
                 result.push('▒');
                 if c.get("class").and_then(Value::as_str) == Some("Math::Function::Fenced") {
                     result.push_str(&body);
@@ -320,15 +320,15 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
             let mut result = constant(m, "html_operator").to_owned();
             if matches!(m.kind(), "Sum" | "Prod") {
                 if truthy(a) {
-                    result.push_str(&format!("<sub>{}</sub>", node_text(a, f)?));
+                    result.push_str(&format!("<sub>{}</sub>", node_text(a, f, ctx)?));
                 }
                 if truthy(b) {
-                    result.push_str(&format!("<sup>{}</sup>", node_text(b, f)?));
+                    result.push_str(&format!("<sup>{}</sup>", node_text(b, f, ctx)?));
                 }
             } else {
                 for v in [a, b, c] {
                     if truthy(v) {
-                        result.push_str(&format!("<i>{}</i>", node_text(v, f)?));
+                        result.push_str(&format!("<i>{}</i>", node_text(v, f, ctx)?));
                     }
                 }
             }

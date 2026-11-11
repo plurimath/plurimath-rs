@@ -28,7 +28,7 @@ fn array_nodes(v: &Value) -> Result<(), String> {
     Ok(())
 }
 
-pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
+pub(super) fn text(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     let v = m.field("parameter_one");
     if present(v) && !v.is_object() && !v.is_array() {
         return Err("source_render_error: accent argument must receive node methods".into());
@@ -45,7 +45,7 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
             );
         }
         let body = if present(v) {
-            let s = child(v, f)?;
+            let s = child(v, f, ctx)?;
             if k != "Ubrace" && v["class"] == "Math::Function::Fenced" {
                 s
             } else {
@@ -91,7 +91,7 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
             )
         };
         return Ok(if present(v) {
-            format!("{name}{left}{}{right}", child(v, f)?)
+            format!("{name}{left}{}{right}", child(v, f, ctx)?)
         } else {
             name
         });
@@ -101,7 +101,7 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
         return Ok(format!(
             "{}<i>..</i>",
             if present(v) {
-                format!("<i>{}</i>", child(v, f)?)
+                format!("<i>{}</i>", child(v, f, ctx)?)
             } else {
                 String::new()
             }
@@ -119,7 +119,7 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
             "Ubrace" => "&#x23df;",
             _ => unreachable!(),
         };
-        let body = unary_slot_text(v, f)?;
+        let body = unary_slot_text(v, f, ctx)?;
         return Ok(format!(
             "<i>{name}</i>{}",
             if present(v) {
@@ -131,8 +131,8 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
     }
     // Source UnaryFunction maps array children and joins LaTeX with spaces.
     // Validate the slot before calling the shared inherited implementation.
-    let _ = unary_slot_text(v, f)?;
-    unary_text(m, f)
+    let _ = unary_slot_text(v, f, ctx)?;
+    unary_text(m, f, ctx)
 }
 
 fn attribute_pairs(m: &Model, all: bool) -> Result<Vec<(String, String)>, String> {

@@ -1,0 +1,2606 @@
+{
+ "profile": "actual-Ruby0a1d-Standard-66/1",
+ "ruby_head": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+ "ruby": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+ "xml_engine": "Plurimath::XmlEngine::OxEngine",
+ "source_sha256": "6c94b4dee742759d3c8faed6e85262077688efc53987a48df4b31dbeb8afca10",
+ "normalization": "none",
+ "cases": [
+  {
+   "id": "number-formatter-base-2-grouped",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "1910",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "1910"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "base": 2,
+     "group": " ",
+     "group_digits": 8
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "111 01110110_(2)",
+    "latex": "\\mathrm{111 01110110}_{2}",
+    "unicodemath": "111 01110110_(2)",
+    "html": "111 01110110<sub>2</sub>",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msub>\n      <mn>111 01110110</mn>\n      <mn>2</mn>\n    </msub>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>0b111 01110110</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-base-2-fraction",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "10.75",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "10.75"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "base": 2,
+     "group": ",",
+     "group_digits": 2
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "10,10.11_(2)",
+    "latex": "\\mathrm{10,10.11}_{2}",
+    "unicodemath": "10,10.11_(2)",
+    "html": "10,10.11<sub>2</sub>",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msub>\n      <mn>10,10.11</mn>\n      <mn>2</mn>\n    </msub>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>0b10,10.11</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-base-2-precision",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "10.75",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "10.75"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "base": 2,
+     "group": ",",
+     "group_digits": 2
+    },
+    "precision": 1,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "10,10.1_(2)",
+    "latex": "\\mathrm{10,10.1}_{2}",
+    "unicodemath": "10,10.1_(2)",
+    "html": "10,10.1<sub>2</sub>",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msub>\n      <mn>10,10.1</mn>\n      <mn>2</mn>\n    </msub>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>0b10,10.1</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-base-8",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "255",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "255"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "base": 8
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "377_(8)",
+    "latex": "\\mathrm{377}_{8}",
+    "unicodemath": "377_(8)",
+    "html": "377<sub>8</sub>",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msub>\n      <mn>377</mn>\n      <mn>8</mn>\n    </msub>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>0o377</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-base-16-default-prefix",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "255",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "255"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "base": 16
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "ff_(16)",
+    "latex": "\\mathrm{ff}_{16}",
+    "unicodemath": "ff_(16)",
+    "html": "ff<sub>16</sub>",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msub>\n      <mn>ff</mn>\n      <mn>16</mn>\n    </msub>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>0xff</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-base-16-zero",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "0",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "0"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "base": 16
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "0_(16)",
+    "latex": "\\mathrm{0}_{16}",
+    "unicodemath": "0_(16)",
+    "html": "0<sub>16</sub>",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msub>\n      <mn>0</mn>\n      <mn>16</mn>\n    </msub>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>0x0</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-base-16-hex-capital",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "48879",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "48879"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "base": 16,
+     "group_digits": 2,
+     "hex_capital": true
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "BE,EF_(16)",
+    "latex": "\\mathrm{BE,EF}_{16}",
+    "unicodemath": "BE,EF_(16)",
+    "html": "BE,EF<sub>16</sub>",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msub>\n      <mn>BE,EF</mn>\n      <mn>16</mn>\n    </msub>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>0xBE,EF</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-base-16-hex-capital-numbers-only",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "48879",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "48879"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "base": 16,
+     "group": "e",
+     "group_digits": 2,
+     "hex_capital": "numbers_only"
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "BEeEF_(16)",
+    "latex": "\\mathrm{BEeEF}_{16}",
+    "unicodemath": "BEeEF_(16)",
+    "html": "BEeEF<sub>16</sub>",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msub>\n      <mn>BEeEF</mn>\n      <mn>16</mn>\n    </msub>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>0xBEeEF</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-base-16-negative",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "-255",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Symbols::Minus",
+       "fields": {
+        "value": null
+       }
+      },
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "255"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "base": 16
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "- ff_(16)",
+    "latex": "- \\mathrm{ff}_{16}",
+    "unicodemath": "− ff_(16)",
+    "html": "&#x2212; ff<sub>16</sub>",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mo>&#x2212;</mo>\n    <msub>\n      <mn>ff</mn>\n      <mn>16</mn>\n    </msub>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>&#x2212;</m:t>\n    </m:r>\n    <m:r>\n      <m:t>0xff</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-base-16-significant-fraction",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "123.25",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "123.25"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "base": 16,
+     "decimal": ".",
+     "group_digits": 10,
+     "significant": 5
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "7b.400_(16)",
+    "latex": "\\mathrm{7b.400}_{16}",
+    "unicodemath": "7b.400_(16)",
+    "html": "7b.400<sub>16</sub>",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msub>\n      <mn>7b.400</mn>\n      <mn>16</mn>\n    </msub>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>0x7b.400</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-base-16-digit-count",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "0.1",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "0.1"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "base": 16,
+     "digit_count": 4
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "0.100_(16)",
+    "latex": "\\mathrm{0.100}_{16}",
+    "unicodemath": "0.100_(16)",
+    "html": "0.100<sub>16</sub>",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msub>\n      <mn>0.100</mn>\n      <mn>16</mn>\n    </msub>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>0x0.100</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-base-16-padding-digits",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "255",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "255"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "base": 16,
+     "group_digits": 10,
+     "padding_digits": 4
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "00ff_(16)",
+    "latex": "\\mathrm{00ff}_{16}",
+    "unicodemath": "00ff_(16)",
+    "html": "00ff<sub>16</sub>",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msub>\n      <mn>00ff</mn>\n      <mn>16</mn>\n    </msub>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>0x00ff</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-base-prefix-override",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "255",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "255"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "base": 16,
+     "base_prefix": "16#"
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "16#ff",
+    "latex": "16#ff",
+    "unicodemath": "16#ff",
+    "html": "16#ff",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>16#ff</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>16#ff</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-base-prefix-empty",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "255",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "255"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "base": 16,
+     "base_prefix": ""
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "ff",
+    "latex": "ff",
+    "unicodemath": "ff",
+    "html": "ff",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>ff</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>ff</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-base-prefix-space-negative",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "-10.75",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Symbols::Minus",
+       "fields": {
+        "value": null
+       }
+      },
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "10.75"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "base": 2,
+     "base_prefix": " 0B",
+     "group": ",",
+     "group_digits": 2
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "-  0B10,10.11",
+    "latex": "-  0B10,10.11",
+    "unicodemath": "−  0B10,10.11",
+    "html": "&#x2212;  0B10,10.11",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mo>&#x2212;</mo>\n    <mn> 0B10,10.11</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>&#x2212;</m:t>\n    </m:r>\n    <m:r>\n      <m:t> 0B10,10.11</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-base-postfix-alone",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "255",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "255"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "base": 16,
+     "base_postfix": "_16"
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "ff_16",
+    "latex": "ff_16",
+    "unicodemath": "ff_16",
+    "html": "ff_16",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>ff_16</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>ff_16</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-base-postfix-hex-capital",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "48879",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "48879"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "base": 16,
+     "base_postfix": "_h",
+     "group_digits": 2,
+     "hex_capital": true
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "BE,EF_h",
+    "latex": "BE,EF_h",
+    "unicodemath": "BE,EF_h",
+    "html": "BE,EF_h",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>BE,EF_h</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>BE,EF_h</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-base-prefix-and-postfix",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "255",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "255"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "base": 16,
+     "base_postfix": "h",
+     "base_prefix": "0x"
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "0xffh",
+    "latex": "0xffh",
+    "unicodemath": "0xffh",
+    "html": "0xffh",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>0xffh</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>0xffh</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-base-10-ignores-prefix-and-postfix",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "255",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "255"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "base": 10,
+     "base_postfix": "_x",
+     "base_prefix": "y^"
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "255",
+    "latex": "255",
+    "unicodemath": "255",
+    "html": "255",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>255</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>255</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-locale-de-standard-defaults",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "1234567.891",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "1234567.891"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "de",
+    "options": {},
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "1,234,567.891",
+    "latex": "1,234,567.891",
+    "unicodemath": "1,234,567.891",
+    "html": "1,234,567.891",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>1,234,567.891</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1,234,567.891</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-locale-fr-standard-defaults",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "1234567.891",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "1234567.891"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "fr",
+    "options": {},
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "1,234,567.891",
+    "latex": "1,234,567.891",
+    "unicodemath": "1,234,567.891",
+    "html": "1,234,567.891",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>1,234,567.891</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1,234,567.891</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-locale-unsupported-falls-back",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "1234567.891",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "1234567.891"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "xx",
+    "options": {},
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "1,234,567.891",
+    "latex": "1,234,567.891",
+    "unicodemath": "1,234,567.891",
+    "html": "1,234,567.891",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>1,234,567.891</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1,234,567.891</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-locale-de-explicit-separators",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "1234567.891",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "1234567.891"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "de",
+    "options": {
+     "decimal": ",",
+     "group": "."
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "1.234.567,891",
+    "latex": "1.234.567,891",
+    "unicodemath": "1.234.567,891",
+    "html": "1.234.567,891",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>1.234.567,891</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1.234.567,891</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-string-format-alone",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "14236.39239",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "14236.39239"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {},
+    "precision": null,
+    "stringFormat": "#,##0.### #"
+   },
+   "expected": {
+    "asciimath": "14,236.392 39",
+    "latex": "14,236.392 39",
+    "unicodemath": "14,236.392 39",
+    "html": "14,236.392 39",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>14,236.392 39</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>14,236.392 39</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-string-format-with-options",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "14236.39239",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "14236.39239"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "decimal": "*",
+     "group": "'",
+     "group_digits": 2
+    },
+    "precision": null,
+    "stringFormat": "#,##0.### #"
+   },
+   "expected": {
+    "asciimath": "14,236.392 39",
+    "latex": "14,236.392 39",
+    "unicodemath": "14,236.392 39",
+    "html": "14,236.392 39",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>14,236.392 39</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>14,236.392 39</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-group-digits-and-decimal",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "12345.6789",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "12345.6789"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "decimal": "*",
+     "group": "'",
+     "group_digits": 2
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "1'23'45*678'9",
+    "latex": "1'23'45*678'9",
+    "unicodemath": "1'23'45*678'9",
+    "html": "1'23'45*678'9",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>1'23'45*678'9</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1'23'45*678'9</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-group-empty-disables-grouping",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "12345.6789",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "12345.6789"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "group": ""
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "12345.678'9",
+    "latex": "12345.678'9",
+    "unicodemath": "12345.678'9",
+    "html": "12345.678'9",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>12345.678'9</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>12345.678'9</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-notation-e-custom-symbol-precision",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "14000",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "14000"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "decimal": "@",
+     "e": "E",
+     "notation": "e"
+    },
+    "precision": 1,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "1@4E4",
+    "latex": "1@4E4",
+    "unicodemath": "1@4E4",
+    "html": "1@4E4",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>1@4E4</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1@4E4</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-notation-scientific-exponent-plus",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "14000",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "14000"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "exponent_sign": "plus",
+     "fraction_group": " ",
+     "fraction_group_digits": 3,
+     "notation": "scientific"
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "1.400 0 x 10^+4",
+    "latex": "1.400 0 x 10^+4",
+    "unicodemath": "1.400 0 x 10^+4",
+    "html": "1.400 0 x 10^+4",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mn>1.400 0</mn>\n      <mo>x</mo>\n      <msup>\n        <mn>10</mn>\n        <mn>+4</mn>\n      </msup>\n    </mrow>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1.400 0 x 10^+4</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-notation-scientific-custom-times",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "0.00012",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "0.00012"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "exponent_sign": "plus",
+     "notation": "scientific",
+     "times": "*"
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "1.2 * 10^-4",
+    "latex": "1.2 * 10^-4",
+    "unicodemath": "1.2 * 10^-4",
+    "html": "1.2 * 10^-4",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mn>1.2</mn>\n      <mo>*</mo>\n      <msup>\n        <mn>10</mn>\n        <mn>-4</mn>\n      </msup>\n    </mrow>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1.2 * 10^-4</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-notation-engineering-precision",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "14000",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "14000"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "decimal": ",",
+     "notation": "engineering",
+     "times": "x"
+    },
+    "precision": 2,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "14,00 x 10^3",
+    "latex": "14,00 x 10^3",
+    "unicodemath": "14,00 x 10^3",
+    "html": "14,00 x 10^3",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mn>14,00</mn>\n      <mo>x</mo>\n      <msup>\n        <mn>10</mn>\n        <mn>3</mn>\n      </msup>\n    </mrow>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>14,00 x 10^3</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-notation-engineering-default",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "14236.39239",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "14236.39239"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "notation": "engineering"
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "14.236'392'39 x 10^3",
+    "latex": "14.236'392'39 x 10^3",
+    "unicodemath": "14.236'392'39 x 10^3",
+    "html": "14.236'392'39 x 10^3",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mn>14.236'392'39</mn>\n      <mo>x</mo>\n      <msup>\n        <mn>10</mn>\n        <mn>3</mn>\n      </msup>\n    </mrow>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>14.236'392'39 x 10^3</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-notation-e-zero",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "0",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "0"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "notation": "e"
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "0e0",
+    "latex": "0e0",
+    "unicodemath": "0e0",
+    "html": "0e0",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>0e0</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>0e0</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-notation-scientific-zero",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "0",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "0"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "notation": "scientific"
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "0 x 10^0",
+    "latex": "0 x 10^0",
+    "unicodemath": "0 x 10^0",
+    "html": "0 x 10^0",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mn>0</mn>\n      <mo>x</mo>\n      <msup>\n        <mn>10</mn>\n        <mn>0</mn>\n      </msup>\n    </mrow>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>0 x 10^0</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-notation-engineering-zero",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "0",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "0"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "notation": "engineering"
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "0 x 10^0",
+    "latex": "0 x 10^0",
+    "unicodemath": "0 x 10^0",
+    "html": "0 x 10^0",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mn>0</mn>\n      <mo>x</mo>\n      <msup>\n        <mn>10</mn>\n        <mn>0</mn>\n      </msup>\n    </mrow>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>0 x 10^0</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-notation-e-digit-count-small",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "0.000568096",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "0.000568096"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "decimal": ",",
+     "digit_count": 6,
+     "e": " ",
+     "fraction_group": " ",
+     "fraction_group_digits": 3,
+     "notation": "e"
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "5,680 96 -4",
+    "latex": "5,680 96 -4",
+    "unicodemath": "5,680 96 -4",
+    "html": "5,680 96 -4",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>5,680 96 -4</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>5,680 96 -4</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-notation-e-significant-large",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "1000000000000000000000.0",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "1000000000000000000000.0"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "notation": "e",
+     "significant": 1
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "1e21",
+    "latex": "1e21",
+    "unicodemath": "1e21",
+    "html": "1e21",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>1e21</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1e21</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-notation-e-significant-small",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "0.001",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "0.001"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "notation": "e",
+     "significant": 3
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "1.00e-3",
+    "latex": "1.00e-3",
+    "unicodemath": "1.00e-3",
+    "html": "1.00e-3",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>1.00e-3</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1.00e-3</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-notation-scientific-significant-small",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "0.001",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "0.001"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "notation": "scientific",
+     "significant": 3
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "1.00 x 10^-3",
+    "latex": "1.00 x 10^-3",
+    "unicodemath": "1.00 x 10^-3",
+    "html": "1.00 x 10^-3",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mn>1.00</mn>\n      <mo>x</mo>\n      <msup>\n        <mn>10</mn>\n        <mn>-3</mn>\n      </msup>\n    </mrow>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1.00 x 10^-3</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-notation-engineering-significant",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "112436",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "112436"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "notation": "engineering",
+     "significant": 5
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "112.44 x 10^3",
+    "latex": "112.44 x 10^3",
+    "unicodemath": "112.44 x 10^3",
+    "html": "112.44 x 10^3",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mn>112.44</mn>\n      <mo>x</mo>\n      <msup>\n        <mn>10</mn>\n        <mn>3</mn>\n      </msup>\n    </mrow>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>112.44 x 10^3</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-notation-scientific-precision-groups",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "642121496772645156.4515",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "642121496772645156.4515"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "decimal": ",",
+     "digit_count": 7,
+     "fraction_group": "y",
+     "fraction_group_digits": 4,
+     "group": "x",
+     "group_digits": 3,
+     "notation": "scientific"
+    },
+    "precision": 7,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "6,4212y15 x 10^17",
+    "latex": "6,4212y15 x 10^17",
+    "unicodemath": "6,4212y15 x 10^17",
+    "html": "6,4212y15 x 10^17",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mn>6,4212y15</mn>\n      <mo>x</mo>\n      <msup>\n        <mn>10</mn>\n        <mn>17</mn>\n      </msup>\n    </mrow>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>6,4212y15 x 10^17</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-notation-scientific-digit-count",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "327428.000878432992",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "327428.000878432992"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "digit_count": 18,
+     "notation": "scientific"
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "3.274'280'008'784'329'92 x 10^5",
+    "latex": "3.274'280'008'784'329'92 x 10^5",
+    "unicodemath": "3.274'280'008'784'329'92 x 10^5",
+    "html": "3.274'280'008'784'329'92 x 10^5",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mn>3.274'280'008'784'329'92</mn>\n      <mo>x</mo>\n      <msup>\n        <mn>10</mn>\n        <mn>5</mn>\n      </msup>\n    </mrow>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>3.274'280'008'784'329'92 x 10^5</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-precision-truncates-fraction",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "14236.39239",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "14236.39239"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {},
+    "precision": 2,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "14,236.39",
+    "latex": "14,236.39",
+    "unicodemath": "14,236.39",
+    "html": "14,236.39",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>14,236.39</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>14,236.39</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-precision-pads-zeros",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "3.5",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "3.5"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {},
+    "precision": 4,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "3.500'0",
+    "latex": "3.500'0",
+    "unicodemath": "3.500'0",
+    "html": "3.500'0",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>3.500'0</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>3.500'0</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-precision-zero",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "2.5",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "2.5"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {},
+    "precision": 0,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "2",
+    "latex": "2",
+    "unicodemath": "2",
+    "html": "2",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>2</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>2</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-precision-with-separators",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "1234.5678",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "1234.5678"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "decimal": ",",
+     "group": " "
+    },
+    "precision": 1,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "1 234,5",
+    "latex": "1 234,5",
+    "unicodemath": "1 234,5",
+    "html": "1 234,5",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>1 234,5</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1 234,5</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-precision-wide-fraction-groups",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "14236.39239",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "14236.39239"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "fraction_group": " ",
+     "fraction_group_digits": 3,
+     "group_digits": 3
+    },
+    "precision": 20,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "14,236.392 390 000 000 000 000 00",
+    "latex": "14,236.392 390 000 000 000 000 00",
+    "unicodemath": "14,236.392 390 000 000 000 000 00",
+    "html": "14,236.392 390 000 000 000 000 00",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>14,236.392 390 000 000 000 000 00</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>14,236.392 390 000 000 000 000 00</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-digit-count-pads-trailing-zeros",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "283.180000000000",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "283.180000000000"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "digit_count": 6
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "283.180",
+    "latex": "283.180",
+    "unicodemath": "283.180",
+    "html": "283.180",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>283.180</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>283.180</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-digit-count-carries-into-new-digit",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "999.9",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "999.9"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "decimal": ".",
+     "digit_count": 3,
+     "group": ",",
+     "group_digits": 3
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "1,000",
+    "latex": "1,000",
+    "unicodemath": "1,000",
+    "html": "1,000",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>1,000</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1,000</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-digit-count-with-fraction-groups",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "14236.39239",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "14236.39239"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "digit_count": 16,
+     "fraction_group": " ",
+     "fraction_group_digits": 3,
+     "group_digits": 3
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "14,236.392 390 000 00",
+    "latex": "14,236.392 390 000 00",
+    "unicodemath": "14,236.392 390 000 00",
+    "html": "14,236.392 390 000 00",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>14,236.392 390 000 00</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>14,236.392 390 000 00</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-sign-plus-basic",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "14236.39239",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "14236.39239"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "number_sign": "plus"
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "+14,236.392'39",
+    "latex": "+14,236.392'39",
+    "unicodemath": "+14,236.392'39",
+    "html": "+14,236.392'39",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>+14,236.392'39</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>+14,236.392'39</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-sign-plus-with-minus-operator",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "-14236.39239",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Symbols::Minus",
+       "fields": {
+        "value": null
+       }
+      },
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "14236.39239"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "number_sign": "plus"
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "- +14,236.392'39",
+    "latex": "- +14,236.392'39",
+    "unicodemath": "− +14,236.392'39",
+    "html": "&#x2212; +14,236.392'39",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mo>&#x2212;</mo>\n    <mn>+14,236.392'39</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>&#x2212;</m:t>\n    </m:r>\n    <m:r>\n      <m:t>+14,236.392'39</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-sign-plus-e",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "14236.39239",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "14236.39239"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "notation": "e",
+     "number_sign": "plus"
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "+1.423'639'239e4",
+    "latex": "+1.423'639'239e4",
+    "unicodemath": "+1.423'639'239e4",
+    "html": "+1.423'639'239e4",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>+1.423'639'239e4</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>+1.423'639'239e4</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-sign-plus-scientific",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "14236.39239",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "14236.39239"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "notation": "scientific",
+     "number_sign": "plus"
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "+1.423'639'239 x 10^4",
+    "latex": "+1.423'639'239 x 10^4",
+    "unicodemath": "+1.423'639'239 x 10^4",
+    "html": "+1.423'639'239 x 10^4",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mn>+1.423'639'239</mn>\n      <mo>x</mo>\n      <msup>\n        <mn>10</mn>\n        <mn>4</mn>\n      </msup>\n    </mrow>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>+1.423'639'239 x 10^4</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-sign-plus-engineering",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "14236.39239",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "14236.39239"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "notation": "engineering",
+     "number_sign": "plus"
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "+14.236'392'39 x 10^3",
+    "latex": "+14.236'392'39 x 10^3",
+    "unicodemath": "+14.236'392'39 x 10^3",
+    "html": "+14.236'392'39 x 10^3",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mn>+14.236'392'39</mn>\n      <mo>x</mo>\n      <msup>\n        <mn>10</mn>\n        <mn>3</mn>\n      </msup>\n    </mrow>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>+14.236'392'39 x 10^3</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-padding-digits-grouped",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "32",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "32"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "group": " ",
+     "group_digits": 3,
+     "padding_digits": 6
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "000 032",
+    "latex": "000 032",
+    "unicodemath": "000 032",
+    "html": "000 032",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>000 032</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>000 032</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-padding-custom-character",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "32",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "32"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "group_digits": 10,
+     "padding": " ",
+     "padding_digits": 6
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "    32",
+    "latex": "    32",
+    "unicodemath": "    32",
+    "html": "    32",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>    32</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>    32</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-padding-group-digits",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "32123",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "32123"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "group_digits": 10,
+     "padding_group_digits": 4
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "00032123",
+    "latex": "00032123",
+    "unicodemath": "00032123",
+    "html": "00032123",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>00032123</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>00032123</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-significant-rounds-integer",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "112",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "112"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "significant": 2
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "110",
+    "latex": "110",
+    "unicodemath": "110",
+    "html": "110",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>110</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>110</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-significant-carry",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "1999",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "1999"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "significant": 2
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "2,000",
+    "latex": "2,000",
+    "unicodemath": "2,000",
+    "html": "2,000",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>2,000</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>2,000</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-significant-below-one",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "0.1999",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "0.1999"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "significant": 3
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "0.200",
+    "latex": "0.200",
+    "unicodemath": "0.200",
+    "html": "0.200",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>0.200</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>0.200</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-significant-groups-rounded-integer",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "1234567",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "1234567"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "group_digits": 3,
+     "significant": 5
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "1,234,600",
+    "latex": "1,234,600",
+    "unicodemath": "1,234,600",
+    "html": "1,234,600",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>1,234,600</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1,234,600</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-significant-fraction-groups",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "327428.7432878432992",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "327428.7432878432992"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "fraction_group": "'",
+     "fraction_group_digits": 2,
+     "group_digits": 3,
+     "significant": 9
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "327,428.74'3",
+    "latex": "327,428.74'3",
+    "unicodemath": "327,428.74'3",
+    "html": "327,428.74'3",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>327,428.74'3</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>327,428.74'3</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-significant-pads-small-value",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "0.001",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "0.001"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "significant": 3
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "0.001",
+    "latex": "0.001",
+    "unicodemath": "0.001",
+    "html": "0.001",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>0.001</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>0.001</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-de-style-grouping",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "123456.789",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "123456.789"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "decimal": ",",
+     "group": ".",
+     "group_digits": 3
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "123.456,789",
+    "latex": "123.456,789",
+    "unicodemath": "123.456,789",
+    "html": "123.456,789",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>123.456,789</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>123.456,789</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  },
+  {
+   "id": "number-formatter-fraction-side-grouping",
+   "model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "1.123456789",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Number",
+       "fields": {
+        "base": null,
+        "mini_sub_sized": false,
+        "mini_sup_sized": false,
+        "value": "1.123456789"
+       }
+      }
+     ]
+    }
+   },
+   "formatterOptions": {
+    "locale": "en",
+    "options": {
+     "fraction_group": "_",
+     "fraction_group_digits": 3
+    },
+    "precision": null,
+    "stringFormat": null
+   },
+   "expected": {
+    "asciimath": "1.123_456_789",
+    "latex": "1.123_456_789",
+    "unicodemath": "1.123_456_789",
+    "html": "1.123_456_789",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>1.123_456_789</mn>\n  </mstyle>\n</math>\n",
+    "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1.123_456_789</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+   }
+  }
+ ]
+}

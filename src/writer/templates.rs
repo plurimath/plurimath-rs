@@ -113,7 +113,7 @@ fn value<'a>(m: &'a Model, s: &Value) -> Result<&'a Value, String> {
     }
     Ok(v)
 }
-fn slot_text(m: &Model, p: &Value, name: &str, f: &str) -> Result<String, String> {
+fn slot_text(m: &Model, p: &Value, name: &str, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     let s = slot(p, name)?;
     let v = value(m, s)?;
     if s.get("call").is_none() {
@@ -126,24 +126,24 @@ fn slot_text(m: &Model, p: &Value, name: &str, f: &str) -> Result<String, String
     if method != format!("to_{f}") {
         return Err(format!("unported source template text call {method}"));
     }
-    render_text(&Model::from_value(v)?, f)
+    render_text(&Model::from_value(v)?, f, ctx)
 }
-fn parts(m: &Model, p: &Value, ps: &Value, f: &str) -> Result<String, String> {
+fn parts(m: &Model, p: &Value, ps: &Value, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     let mut out = String::new();
     for part in ps.as_array().ok_or("source template parts not an array")? {
         if let Some(l) = part["literal"].as_str() {
             out.push_str(l)
         } else if let Some(name) = part["slot"].as_str() {
-            out.push_str(&slot_text(m, p, name, f)?)
+            out.push_str(&slot_text(m, p, name, f, ctx)?)
         } else {
             return Err("unrecognized source template text part".into());
         }
     }
     Ok(out)
 }
-pub(super) fn text_template(m: &Model, f: &str) -> Option<Result<String, String>> {
+pub(super) fn text_template(m: &Model, f: &str, ctx: &super::WriterContext) -> Option<Result<String, String>> {
     let p = find(m, f, "text")?;
-    Some(parts(m, p, &p["template"]["parts"], f))
+    Some(parts(m, p, &p["template"]["parts"], f, ctx))
 }
 fn slot_xml(
     m: &Model,
@@ -160,7 +160,7 @@ fn slot_xml(
         ("mathml", "to_mathml_without_math_tag") => render_xml(&child, f, ctx),
         ("omml", "to_omml_without_math_tag") => {
             if child.kind() == "Number" {
-                let val = render_text(&child, "asciimath")?;
+                let val = render_text(&child, "asciimath", ctx)?;
                 return Ok(vec![el("m:t", vec![text(&val)])]);
             }
             if child.class.starts_with("Math::Symbols::") {
@@ -189,7 +189,7 @@ fn nodes(
                 f,
                 ctx,
             )?),
-            Some("text") => out.push(text(&parts(m, p, &n["parts"], f)?)),
+            Some("text") => out.push(text(&parts(m, p, &n["parts"], f, ctx)?)),
             Some("element") => {
                 let name = n["name"].as_str().ok_or("source element name missing")?;
                 let mut a = vec![];
@@ -202,7 +202,7 @@ fn nodes(
                             .as_str()
                             .ok_or("source attribute name missing")?
                             .to_owned(),
-                        parts(m, p, &attr[1], f)?,
+                        parts(m, p, &attr[1], f, ctx)?,
                     ))
                 }
                 out.push(attrs(name, a, nodes(m, p, &n["children"], f, ctx)?))

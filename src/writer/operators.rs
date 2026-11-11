@@ -7,8 +7,8 @@ fn truthy(value: &Value) -> bool {
 fn model(value: &Value) -> Result<Model, String> {
     Model::from_value(value)
 }
-fn child(value: &Value, format: &str) -> Result<String, String> {
-    render_text(&model(value)?, format)
+fn child(value: &Value, format: &str, ctx: &super::WriterContext) -> Result<String, String> {
+    render_text(&model(value)?, format, ctx)
 }
 fn tags() -> &'static Value {
     static TABLE: OnceLock<Value> = OnceLock::new();
@@ -57,7 +57,7 @@ fn mini(value: &Value) -> bool {
         && (truthy(&value["fields"]["mini_sub_sized"])
             || truthy(&value["fields"]["mini_sup_sized"]))
 }
-fn prime(value: &Value) -> Result<bool, String> {
+fn prime(value: &Value, ctx: &super::WriterContext) -> Result<bool, String> {
     if !value["class"]
         .as_str()
         .unwrap_or("")
@@ -71,11 +71,11 @@ fn prime(value: &Value) -> Result<bool, String> {
     {
         return Ok(true);
     }
-    let glyph = child(value, "unicodemath")?;
+    let glyph = child(value, "unicodemath", ctx)?;
     Ok(["′", "″", "‴", "⁗"].iter().any(|p| glyph.contains(p)))
 }
-fn unicode_parens(value: &Value) -> Result<String, String> {
-    let content = child(value, "unicodemath")?;
+fn unicode_parens(value: &Value, ctx: &super::WriterContext) -> Result<String, String> {
+    let content = child(value, "unicodemath", ctx)?;
     Ok(
         if value["class"]
             .as_str()
@@ -87,7 +87,7 @@ fn unicode_parens(value: &Value) -> Result<String, String> {
         },
     )
 }
-pub(super) fn text_writer(node: &Model, format: &str) -> Result<String, String> {
+pub(super) fn text_writer(node: &Model, format: &str, ctx: &super::WriterContext) -> Result<String, String> {
     if node.class != "Math::Function::PowerBase" {
         return Err("unported operator text class".into());
     }
@@ -98,7 +98,7 @@ pub(super) fn text_writer(node: &Model, format: &str) -> Result<String, String> 
         "asciimath" => {
             let mut out = String::new();
             if truthy(a) {
-                let base = child(a, format)?;
+                let base = child(a, format, ctx)?;
                 // Source `when Formula || ...` is a Ruby constant expression:
                 // it matches Formula only, rather than every Function class.
                 if a["class"].as_str().is_some_and(|class| {
@@ -110,27 +110,27 @@ pub(super) fn text_writer(node: &Model, format: &str) -> Result<String, String> 
                 }
             }
             if truthy(b) {
-                out.push_str(&format!("_({})", child(b, format)?))
+                out.push_str(&format!("_({})", child(b, format, ctx)?))
             }
             if truthy(c) {
-                out.push_str(&format!("^({})", child(c, format)?))
+                out.push_str(&format!("^({})", child(c, format, ctx)?))
             }
             Ok(out)
         }
         "latex" => Ok(format!(
             "{}_{{{}}}^{{{}}}",
             if truthy(a) {
-                child(a, format)?
+                child(a, format, ctx)?
             } else {
                 String::new()
             },
             if truthy(b) {
-                child(b, format)?
+                child(b, format, ctx)?
             } else {
                 String::new()
             },
             if truthy(c) {
-                child(c, format)?
+                child(c, format, ctx)?
             } else {
                 String::new()
             }
@@ -138,7 +138,7 @@ pub(super) fn text_writer(node: &Model, format: &str) -> Result<String, String> 
         "html" => {
             let mut out = String::new();
             if truthy(a) {
-                let base = child(a, format)?;
+                let base = child(a, format, ctx)?;
                 if a["class"] == "Math::Function::FontStyle::Normal" {
                     out.push_str(&base)
                 } else {
@@ -146,10 +146,10 @@ pub(super) fn text_writer(node: &Model, format: &str) -> Result<String, String> 
                 }
             }
             if truthy(b) {
-                out.push_str(&format!("<sub>{}</sub>", child(b, format)?))
+                out.push_str(&format!("<sub>{}</sub>", child(b, format, ctx)?))
             }
             if truthy(c) {
-                out.push_str(&format!("<sup>{}</sup>", child(c, format)?))
+                out.push_str(&format!("<sup>{}</sup>", child(c, format, ctx)?))
             }
             Ok(out)
         }
@@ -157,28 +157,28 @@ pub(super) fn text_writer(node: &Model, format: &str) -> Result<String, String> 
             let base = if a.is_null() {
                 String::new()
             } else {
-                child(a, format)?
+                child(a, format, ctx)?
             };
             let sub = if !truthy(b) {
                 String::new()
             } else if mini(b) {
-                child(b, format)?
+                child(b, format, ctx)?
             } else if b["class"] == "Math::Function::Base" {
-                format!("_{}", child(b, format)?)
+                format!("_{}", child(b, format, ctx)?)
             } else {
-                format!("_{}", unicode_parens(b)?)
+                format!("_{}", unicode_parens(b, ctx)?)
             };
-            let is_prime = prime(c)?;
+            let is_prime = prime(c, ctx)?;
             let sup = if !truthy(c) {
                 String::new()
             } else if mini(c) || is_prime {
-                child(c, format)?
+                child(c, format, ctx)?
             } else if c["class"] == "Math::Function::Power"
-                || (a["class"] == "Math::Function::Power" && prime(&a["fields"]["parameter_two"])?)
+                || (a["class"] == "Math::Function::Power" && prime(&a["fields"]["parameter_two"], ctx)?)
             {
-                format!("^{}", child(c, format)?)
+                format!("^{}", child(c, format, ctx)?)
             } else {
-                format!("^{}", unicode_parens(c)?)
+                format!("^{}", unicode_parens(c, ctx)?)
             };
             Ok(if is_prime {
                 format!("{base}{sup}{sub}")

@@ -76,14 +76,14 @@ fn scalar(v: &Value) -> Result<String, String> {
         _ => Err("unported promised Ruby fence scalar spelling".into()),
     }
 }
-fn delimiter(v: &Value, f: &str) -> Result<Option<String>, String> {
+fn delimiter(v: &Value, f: &str, ctx: &super::WriterContext) -> Result<Option<String>, String> {
     if v.is_null() {
         return Ok(None);
     }
     let m =
         Model::from_value(v).map_err(|_| source_error("Fenced delimiter has no value method"))?;
     if m.class.starts_with("Math::Symbols::Paren::") {
-        return super::fence_delimiter(v, f).map(Some);
+        return super::fence_delimiter(v, f, ctx).map(Some);
     }
     if m.field("value").is_null() {
         Ok(None)
@@ -109,7 +109,7 @@ fn child_model(v: &Value) -> Result<Value, String> {
     }
     Ok(v)
 }
-fn ordinary_child(v: &Value, f: &str) -> Result<String, String> {
+fn ordinary_child(v: &Value, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     if f == "unicodemath" && v["class"] == "Math::Symbols::Symbol" {
         let fields = &v["fields"];
         let value = fields["value"].as_str();
@@ -151,13 +151,13 @@ fn ordinary_child(v: &Value, f: &str) -> Result<String, String> {
     if f == "unicodemath" && choose(v) && v["fields"]["options"].as_object().unwrap().len() == 1 {
         return Ok(String::new()); // Frac#to_unicodemath falls through to nil.
     }
-    child(&child_model(v)?, f)
+    child(&child_model(v)?, f, ctx)
 }
-fn fraction_part(v: &Value) -> Result<String, String> {
+fn fraction_part(v: &Value, ctx: &super::WriterContext) -> Result<String, String> {
     if !present(v) {
         return Ok(String::new());
     }
-    let s = ordinary_child(v, "unicodemath")?;
+    let s = ordinary_child(v, "unicodemath", ctx)?;
     Ok(if v["class"] == "Math::Function::Fenced" {
         s
     } else {
@@ -228,7 +228,7 @@ fn size(v: &Value) -> Result<String, String> {
         format!("{n:.0}")
     })
 }
-fn unicode_paren(m: &Model, opening: bool) -> Result<String, String> {
+fn unicode_paren(m: &Model, opening: bool, ctx: &super::WriterContext) -> Result<String, String> {
     let field = m.field(if opening {
         "parameter_one"
     } else {
@@ -237,7 +237,7 @@ fn unicode_paren(m: &Model, opening: bool) -> Result<String, String> {
     let paren = if field.is_null() {
         String::new()
     } else {
-        ordinary_child(field, "unicodemath")?
+        ordinary_child(field, "unicodemath", ctx)?
     };
     let options = m.field("options");
     if !options.is_null() && !options.is_object() {
@@ -283,7 +283,7 @@ fn unicode_paren(m: &Model, opening: bool) -> Result<String, String> {
         Ok(paren)
     }
 }
-pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
+pub(super) fn text(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     let body = if f == "html" && !present(m.field("parameter_two")) {
         &[]
     } else {
@@ -302,14 +302,14 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
             }
             let b = body
                 .iter()
-                .map(|v| ordinary_child(v, f))
+                .map(|v| ordinary_child(v, f, ctx))
                 .collect::<Result<Vec<_>, _>>()?
                 .join("");
             return Ok(format!(
                 "{}{}{}",
-                ordinary_child(left, f)?,
+                ordinary_child(left, f, ctx)?,
                 b,
-                ordinary_child(right, f)?
+                ordinary_child(right, f, ctx)?
             ));
         }
         let b = body
@@ -318,11 +318,11 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
                 if choose(v) {
                     Ok(format!(
                         "{}⒞{}",
-                        fraction_part(&v["fields"]["parameter_one"])?,
-                        fraction_part(&v["fields"]["parameter_two"])?
+                        fraction_part(&v["fields"]["parameter_one"], ctx)?,
+                        fraction_part(&v["fields"]["parameter_two"], ctx)?
                     ))
                 } else {
-                    ordinary_child(v, f)
+                    ordinary_child(v, f, ctx)
                 }
             })
             .collect::<Result<Vec<_>, String>>()?
@@ -342,27 +342,27 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
             || (l.kind() == "Symbol" && l.field("value").as_str().is_some_and(|v| v.contains('|')));
         return Ok(format!(
             "{}{}{}",
-            unicode_paren(m, true)?,
+            unicode_paren(m, true, ctx)?,
             if vertical { format!("({b})") } else { b },
-            unicode_paren(m, false)?
+            unicode_paren(m, false, ctx)?
         ));
     }
     let b = body
         .iter()
-        .map(|v| ordinary_child(v, f))
+        .map(|v| ordinary_child(v, f, ctx))
         .collect::<Result<Vec<_>, _>>()?
         .join(if f == "html" { "" } else { " " });
     match f {
         "asciimath" => Ok(format!(
             "{}{}{}",
             if present(left) {
-                ordinary_child(left, f)?
+                ordinary_child(left, f, ctx)?
             } else {
                 "(".into()
             },
             b,
             if present(right) {
-                ordinary_child(right, f)?
+                ordinary_child(right, f, ctx)?
             } else {
                 ")".into()
             }
@@ -370,20 +370,20 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
         "html" => Ok(format!(
             "{}{}{}",
             if present(left) {
-                format!("<i>{}</i>", delimiter(left, f)?.unwrap_or_default())
+                format!("<i>{}</i>", delimiter(left, f, ctx)?.unwrap_or_default())
             } else {
                 String::new()
             },
             b,
             if present(right) {
-                format!("<i>{}</i>", delimiter(right, f)?.unwrap_or_default())
+                format!("<i>{}</i>", delimiter(right, f, ctx)?.unwrap_or_default())
             } else {
                 String::new()
             }
         )),
         "latex" => {
             let clean = |v: &Value| -> Result<String, String> {
-                let s = delimiter(v, f)?.unwrap_or_default();
+                let s = delimiter(v, f, ctx)?.unwrap_or_default();
                 Ok(if ["{:", ":}"].contains(&s.as_str()) {
                     s.replace(':', "")
                 } else {
@@ -455,8 +455,8 @@ pub(super) fn xml_with_options(
     if f == "mathml" && ctx.intent {
         super::update_partial_arguments(&mut body);
     }
-    let left = delimiter(m.field("parameter_one"), f)?;
-    let right = delimiter(m.field("parameter_three"), f)?;
+    let left = delimiter(m.field("parameter_one"), f, ctx)?;
+    let right = delimiter(m.field("parameter_three"), f, ctx)?;
     if f == "mathml" {
         if !m.field("options").is_null() && !m.field("options").is_object() {
             return Err(source_error("Fence options have no dig method"));
@@ -574,7 +574,7 @@ mod tests {
         let reference: Value =
             serde_json::from_str(include_str!("../../fixtures/fences/caller-reference.json"))
                 .unwrap();
-        let ctx = WriterContext {
+        let ctx = WriterContext { formula_input:None,source_format:"asciimath", formatter: None,
             display_style: true,
             unary_function_spacing: true,
             intent: false,

@@ -3,6 +3,8 @@ mod layout_nodes;
 mod generic_nary;
 mod operators;
 mod numbers;
+mod number_formatter;
+mod formatter_context;
 mod multiscripts;
 mod stacked;
 mod accents;
@@ -27,18 +29,27 @@ enum Xml {
 /// Per-call source writer state, copied only when a source method overrides it.
 /// Template admission is separate from display style and child options.
 #[derive(Clone, Copy)]
-struct WriterContext {
+struct WriterContext<'a> {
+    formatter: Option<&'a formatter_context::FormatterRequest>,
+    formula_input: Option<&'a Value>,
+    source_format: &'a str,
     display_style: bool,
     unary_function_spacing: bool,
     intent: bool,
 }
-impl WriterContext {
+impl<'a> WriterContext<'a> {
+    fn with_formula<'b>(&'b self, model:&'b Model)->WriterContext<'b> {
+        WriterContext {formatter:self.formatter,formula_input:Some(model.field("input_string")),source_format:self.source_format,display_style:self.display_style,unary_function_spacing:self.unary_function_spacing,intent:self.intent}
+    }
     fn with_display_style(self, display_style: bool) -> Self {
         Self {
             display_style,
             ..self
         }
     }
+}
+impl Default for WriterContext<'_> {
+ fn default()->Self {Self {display_style:true,unary_function_spacing:true,intent:false,formatter:None,formula_input:None,source_format:"asciimath"}}
 }
 fn el(n: &str, c: Vec<Xml>) -> Xml {
     Xml::El(n.into(), vec![], c)
@@ -140,16 +151,16 @@ fn children(m: &Model) -> Result<Vec<Value>, String> {
         "formula.value must be a node array; source mixed non-node children cannot render".into()
     })
 }
-fn child(v: &Value, f: &str) -> Result<String, String> {
+fn child(v: &Value, f: &str, ctx: &WriterContext) -> Result<String, String> {
     if v.is_null() {
         Ok(String::new())
     } else {
-        render_text(&Model::from_value(v)?, f)
+        render_text(&Model::from_value(v)?, f, ctx)
     }
 }
 // Fenced#symbol_or_paren uses MathML content for HTML, and decoded
 // OMML delimiter values. An ASCII spelling is not the XML delimiter.
-fn fence_delimiter(value: &Value, format: &str) -> Result<String, String> {
+fn fence_delimiter(value: &Value, format: &str, ctx: &WriterContext) -> Result<String, String> {
     let model = Model::from_value(value)?;
     if model.class.starts_with("Math::Symbols::Paren::") {
         let id = model.class.strip_prefix("Math::Symbols::").unwrap();
@@ -159,12 +170,12 @@ fn fence_delimiter(value: &Value, format: &str) -> Result<String, String> {
                 .map(str::to_owned)
                 .ok_or_else(|| "unported source fence MathML content".into()),
             "omml" => text_content::decode(&symbol(&model, "omml")?),
-            _ => child(value, format),
+            _ => child(value, format, ctx),
         };
     }
     value_text(model.field("value"))
 }
-fn fence_text(m: &Model, f: &str) -> Result<String, String> {
+fn fence_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, String> {
     if !m.field("parameter_one").is_object() || !m.field("parameter_three").is_object() {
         return Err("unported promised nullable/raw fence delimiter profile".into());
     }
@@ -173,21 +184,21 @@ fn fence_text(m: &Model, f: &str) -> Result<String, String> {
         return Err("unported promised fence options".into());
     }
     let a = if f == "html" || f == "latex" {
-        fence_delimiter(m.field("parameter_one"), f)?
+        fence_delimiter(m.field("parameter_one"), f, ctx)?
     } else {
-        child(m.field("parameter_one"), f)?
+        child(m.field("parameter_one"), f, ctx)?
     };
     let b = if f == "html" || f == "latex" {
-        fence_delimiter(m.field("parameter_three"), f)?
+        fence_delimiter(m.field("parameter_three"), f, ctx)?
     } else {
-        child(m.field("parameter_three"), f)?
+        child(m.field("parameter_three"), f, ctx)?
     };
     let body = m
         .field("parameter_two")
         .as_array()
         .ok_or("fence.parameter_two must be node array")?
         .iter()
-        .map(|v| child(v, f))
+        .map(|v| child(v, f, ctx))
         .collect::<Result<Vec<_>, _>>()?
         .join(if f == "html" { "" } else { " " });
     Ok(match f {
@@ -214,7 +225,7 @@ pub(crate) fn unary_class(m: &Model) -> bool {
 fn present(v: &Value) -> bool {
     !v.is_null() && v != false
 }
-fn unary_slot_text(v: &Value, f: &str) -> Result<String, String> {
+fn unary_slot_text(v: &Value, f: &str, ctx: &WriterContext) -> Result<String, String> {
     if !present(v) {
         return Ok(String::new());
     }
@@ -223,19 +234,19 @@ fn unary_slot_text(v: &Value, f: &str) -> Result<String, String> {
         return a
             .iter()
             .filter(|v| !v.is_null())
-            .map(|v| child(v, f))
+            .map(|v| child(v, f, ctx))
             .collect::<Result<Vec<_>, _>>()
             .map(|v| v.join(sep));
     }
-    child(v, f)
+    child(v, f, ctx)
 }
-fn unary_text(m: &Model, f: &str) -> Result<String, String> {
+fn unary_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, String> {
     let name = m.kind().to_lowercase();
     let v = m.field("parameter_one");
     if f == "unicodemath" && !v.is_null() && !v.is_object() {
         return Err("source_render_error: Unicode unary argument must be a node; source calls to_unicodemath directly".into());
     }
-    let body = unary_slot_text(v, f)?;
+    let body = unary_slot_text(v, f, ctx)?;
     match f {
         "asciimath" => {
             if m.kind() == "Lcm" {
@@ -385,25 +396,25 @@ fn unary_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String
         ],
     )])
 }
-fn parens(v: &Value, f: &str) -> Result<String, String> {
+fn parens(v: &Value, f: &str, ctx: &WriterContext) -> Result<String, String> {
     if v.is_null() || !v.is_object() {
         return Err("source_render_error: argument must receive its source node writer".into());
     }
-    let out = child(v, f)?;
+    let out = child(v, f, ctx)?;
     Ok(if v["class"] == "Math::Function::Fenced" {
         out
     } else {
         format!("({out})")
     })
 }
-fn special_text(m: &Model, f: &str) -> Result<String, String> {
+fn special_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, String> {
     let v = m.field("parameter_one");
     match(m.kind(),f){
- ("Phantom","asciimath")=>Ok("\\ ".repeat(unary_slot_text(v,f)?.chars().count())),
+ ("Phantom","asciimath")=>Ok("\\ ".repeat(unary_slot_text(v,f, ctx)?.chars().count())),
  ("Phantom","html")=>Err("source_render_error: Phantom#to_html accepts no options keyword at the formula writer boundary".into()),
- ("Phantom","unicodemath")=>{if v["class"]=="Math::Function::Mpadded"{return Err("unported promised conditional phantom/mpadded profile".into())}Ok(format!("⟡{}",parens(v,f)?))},
- ("Cancel","unicodemath")=>Ok(format!("╱{}",if present(v){parens(v,f)?}else{String::new()})),
- _=>unary_text(m,f)}
+ ("Phantom","unicodemath")=>{if v["class"]=="Math::Function::Mpadded"{return Err("unported promised conditional phantom/mpadded profile".into())}Ok(format!("⟡{}",parens(v,f, ctx)?))},
+ ("Cancel","unicodemath")=>Ok(format!("╱{}",if present(v){parens(v,f, ctx)?}else{String::new()})),
+ _=>unary_text(m,f, ctx)}
 }
 fn strict_slot_xml(
     v: &Value,
@@ -477,33 +488,33 @@ fn special_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, Stri
         vec![el("m:borderBoxPr", props), el("m:e", body)],
     )])
 }
-fn prime_symbol(v: &Value) -> Result<bool, String> {
+fn prime_symbol(v: &Value, ctx: &WriterContext) -> Result<bool, String> {
     let Ok(m) = Model::from_value(v) else {
         return Ok(false);
     };
     if !m.class.starts_with("Math::Symbols::") {
         return Ok(false);
     }
-    let txt = render_text(&m, "unicodemath")?;
+    let txt = render_text(&m, "unicodemath", ctx)?;
     Ok([
         "′", "″", "‴", "⁗", "&#x27;", "&#x2032;", "&#x2033;", "&#x2034;", "&#x2057;",
     ]
     .iter()
     .any(|p| txt.contains(p)))
 }
-fn power_accent(v: &Value) -> Result<bool, String> {
+fn power_accent(v: &Value, ctx: &WriterContext) -> Result<bool, String> {
     let Ok(m) = Model::from_value(v) else {
         return Ok(false);
     };
     if m.kind() == "Formula" {
-        return prime_symbol(&m.field("value")[0]);
+        return prime_symbol(&m.field("value")[0], ctx);
     }
     if m.kind() == "Power" {
-        return prime_symbol(m.field("parameter_one"));
+        return prime_symbol(m.field("parameter_one"), ctx);
     }
-    prime_symbol(v)
+    prime_symbol(v, ctx)
 }
-fn power_text(m: &Model, f: &str) -> Result<String, String> {
+fn power_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, String> {
     let a = m.field("parameter_one");
     let b = m.field("parameter_two");
     match f {
@@ -511,9 +522,9 @@ fn power_text(m: &Model, f: &str) -> Result<String, String> {
             if a.is_null() {
                 return Err("source_render_error: power base cannot receive to_asciimath".into());
             }
-            let base = child(a, f)?;
+            let base = child(a, f, ctx)?;
             Ok(if present(b) {
-                format!("{base}^({})", child(b, f)?)
+                format!("{base}^({})", child(b, f, ctx)?)
             } else {
                 base
             })
@@ -524,9 +535,9 @@ fn power_text(m: &Model, f: &str) -> Result<String, String> {
             }
             Ok(format!(
                 "{}^{{{}}}",
-                child(a, f)?,
+                child(a, f, ctx)?,
                 if present(b) {
-                    child(b, f)?
+                    child(b, f, ctx)?
                 } else {
                     String::new()
                 }
@@ -535,7 +546,7 @@ fn power_text(m: &Model, f: &str) -> Result<String, String> {
         "html" => Ok(format!(
             "{}{}",
             if present(a) {
-                let value = child(a, f)?;
+                let value = child(a, f, ctx)?;
                 if a["class"] == "Math::Function::FontStyle::Normal" {
                     value
                 } else {
@@ -545,7 +556,7 @@ fn power_text(m: &Model, f: &str) -> Result<String, String> {
                 String::new()
             },
             if present(b) {
-                format!("<sup>{}</sup>", child(b, f)?)
+                format!("<sup>{}</sup>", child(b, f, ctx)?)
             } else {
                 String::new()
             }
@@ -559,11 +570,11 @@ fn power_text(m: &Model, f: &str) -> Result<String, String> {
             if b["fields"]["mini_sub_sized"] == true || b["fields"]["mini_sup_sized"] == true {
                 return Err("unported promised mini-sized power exponent".into());
             }
-            let base = child(a, f)?;
-            if power_accent(b)? {
+            let base = child(a, f, ctx)?;
+            if power_accent(b, ctx)? {
                 return Ok(format!(
                     "{base}{}",
-                    child(b, f)?
+                    child(b, f, ctx)?
                         .chars()
                         .filter(|c| !c.is_ascii_whitespace())
                         .collect::<String>()
@@ -572,9 +583,9 @@ fn power_text(m: &Model, f: &str) -> Result<String, String> {
             Ok(format!(
                 "{base}^{}",
                 if b["class"] == "Math::Function::Power" {
-                    child(b, f)?
+                    child(b, f, ctx)?
                 } else {
-                    parens(b, f)?
+                    parens(b, f, ctx)?
                 }
             ))
         }
@@ -661,14 +672,14 @@ fn unit_unicode_context(v: &mut Value) {
         }
     }
 }
-fn normal_text(m: &Model, f: &str) -> Result<String, String> {
+fn normal_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, String> {
     let p = m.field("parameter_one");
     if !p.is_null() && !p.is_object() {
         return Err(
             "source_render_error: Normal argument cannot receive its source node writer".into(),
         );
     }
-    let s = child(p, f)?;
+    let s = child(p, f, ctx)?;
     Ok(match f {
         "asciimath" => format!("rm({s})"),
         "latex" => format!("\\mathrm{{{s}}}"),
@@ -757,61 +768,63 @@ fn normal_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, Strin
     }
     Ok(c)
 }
-fn render_text(m: &Model, f: &str) -> Result<String, String> {
-    if layout_nodes::handles(m) { return layout_nodes::text_writer(m, f); }
-    if fences::handles(m) { return fences::text(m, f); }
-    if m.class == "Math::Function::Nary" { return generic_nary::text_writer(m, f); }
-    if numbers::handles(m) { return numbers::text(m, f); }
-    if ["Math::Function::Multiscript", "Math::Function::Linebreak"].contains(&m.class.as_str()) { return multiscripts::text(m, f); }
-    if stacked::handles_text(m) { return stacked::text(m, f); }
-    if m.class == "Math::Function::PowerBase" { return operators::text_writer(m,f); }
+fn render_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, String> {
+    let scoped;
+    let ctx=if m.class=="Math::Formula"||m.class.starts_with("Math::Formula::") {scoped=ctx.with_formula(m);&scoped}else{ctx};
+    if layout_nodes::handles(m) { return layout_nodes::text_writer(m, f, ctx); }
+    if fences::handles(m) { return fences::text(m, f, ctx); }
+    if m.class == "Math::Function::Nary" { return generic_nary::text_writer(m, f, ctx); }
+    if numbers::handles(m) { return numbers::text(m, f, ctx); }
+    if ["Math::Function::Multiscript", "Math::Function::Linebreak"].contains(&m.class.as_str()) { return multiscripts::text(m, f, ctx); }
+    if stacked::handles_text(m) { return stacked::text(m, f, ctx); }
+    if m.class == "Math::Function::PowerBase" { return operators::text_writer(m,f, ctx); }
     if accents::handles(m) {
-        return accents::text(m, f);
+        return accents::text(m, f, ctx);
     }
     if m.kind() == "Color" {
-        return styles::text(m, f);
+        return styles::text(m, f, ctx);
     }
     if m.kind() == "Base" {
-        return scripts::text(m, f);
+        return scripts::text(m, f, ctx);
     }
     if m.class.starts_with("Math::Function::Table::") {
-        return tables::render(m, f);
+        return tables::render(m, f, ctx);
     }
     if m.kind() == "Unitsml" {
         let model = derived_units(m)?;
         if f == "unicodemath" {
             let mut v = model.value();
             unit_unicode_context(&mut v);
-            return render_text(&Model::from_value(&v)?, f);
+            return render_text(&Model::from_value(&v)?, f, ctx);
         }
-        return render_text(&model, f);
+        return render_text(&model, f, ctx);
     }
     if m.class == "Math::Function::FontStyle::Normal" {
-        return normal_text(m, f);
+        return normal_text(m, f, ctx);
     }
-    if font_styles::handles(m) { return font_styles::text(m, f); }
-    if nary::handles(m) { return nary::text(m, f); }
+    if font_styles::handles(m) { return font_styles::text(m, f, ctx); }
+    if nary::handles(m) { return nary::text(m, f, ctx); }
     if ["Text", "Mbox", "Left", "Right"].contains(&m.kind()) {
         return text_content::text_writer(m, f);
     }
     if m.kind() == "Power" {
-        return power_text(m, f);
+        return power_text(m, f, ctx);
     }
     if ["Phantom", "Cancel"].contains(&m.kind()) {
-        return special_text(m, f);
+        return special_text(m, f, ctx);
     }
     if unary_class(m) {
-        return unary_text(m, f);
+        return unary_text(m, f, ctx);
     }
     if m.class.starts_with("Math::Symbols::") {
         return symbol(m, f);
     }
     match m.kind() {
-        "Fenced" => fence_text(m, f),
+        "Fenced" => fence_text(m, f, ctx),
         "Formula" | "Mrow" | "Mstyle" => {
             let c = children(m)?
                 .iter()
-                .map(|v| child(v, f))
+                .map(|v| child(v, f, ctx))
                 .collect::<Result<Vec<_>, _>>()?;
             let joined = c.join(if f == "unicodemath" && m.kind() == "Formula" { if fences::formula_starts_mini_fence(m) { "" } else { numbers::unicode_separator(m) } } else { " " });
             if f == "unicodemath" {
@@ -836,8 +849,8 @@ fn render_text(m: &Model, f: &str) -> Result<String, String> {
             if !m.field("options").is_null() {
                 return Err("fraction option profile not yet ported".into());
             }
-            let a = child(m.field("parameter_one"), f)?;
-            let b = child(m.field("parameter_two"), f)?;
+            let a = child(m.field("parameter_one"), f, ctx)?;
+            let b = child(m.field("parameter_two"), f, ctx)?;
             Ok(match f {
                 "asciimath" => format!("frac{}{}",
                     if present(m.field("parameter_one")) {format!("({a})")} else {String::new()},
@@ -876,7 +889,7 @@ fn render_text(m: &Model, f: &str) -> Result<String, String> {
                 _ => unreachable!(),
             })
         }
-        _ => templates::text_template(m, f)
+        _ => templates::text_template(m, f, ctx)
             .unwrap_or_else(|| Err(format!("unported promised writer node {}", m.class))),
     }
 }
@@ -1174,7 +1187,7 @@ fn render_xml_inner(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>,
         return Err("source_render_error: empty Formula has no first parameter for intent".into());
     }
     if m.class == "Math::Function::Nary" { return generic_nary::xml(m, f, ctx); }
-    if numbers::handles(m) { return numbers::xml(m, f); }
+    if numbers::handles(m) { return numbers::xml(m, f, ctx); }
     if ["Math::Function::Multiscript", "Math::Function::Linebreak"].contains(&m.class.as_str()) { return multiscripts::xml(m, f, ctx); }
     if ["Substack", "Msline", "Mglyph"].contains(&m.kind()) { return stacked::xml(m, f, ctx); }
     if nary::handles(m) { return nary::xml(m, f, ctx); }
@@ -1345,7 +1358,7 @@ fn render_xml_inner(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>,
                         "source_render_error: raw fence delimiter cannot receive its writer".into(),
                     );
                 }
-                fence_delimiter(value, f)
+                fence_delimiter(value, f, ctx)
             };
             let a = delimiter("parameter_one")?;
             let b = delimiter("parameter_three")?;
@@ -1426,7 +1439,7 @@ fn render_xml_inner(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>,
             }
         }
         "Number" => {
-            let s = render_text(m, "asciimath")?;
+            let s = render_text(m, "asciimath", ctx)?;
             Ok(vec![if f == "mathml" {
                 el("mn", vec![text(&s)])
             } else {
@@ -2858,6 +2871,8 @@ pub fn write(model: &Value, format: &str, options: &Value) -> Result<String, Str
             "intent",
             "splitOnLinebreak",
             "unaryFunctionSpacing",
+            "formatterOptions",
+            "format",
         ]
         .contains(&k.as_str())
         {
@@ -2877,16 +2892,16 @@ pub fn write(model: &Value, format: &str, options: &Value) -> Result<String, Str
     {
         return Err(format!("unknown writer format {format}"));
     }
-    if !["mathml", "omml"].contains(&format) {
-        if !opts.is_empty() {
-            return Err("writer options not yet ported for text formats".into());
-        }
-        return render_text(&m, format);
-    }
+    if ["mathml","omml"].contains(&format) && opts.contains_key("format") { return Err("source_argument_error: unknown keyword: :options".into()); }
+    let formatter_request = formatter_context::decode(opts.get("formatterOptions"), opts.get("format"))?;
     let ds = opts
         .get("displayStyle")
         .unwrap_or_else(|| m.field("displaystyle"));
+    let formula_input=m.field("input_string").clone();
     let context = WriterContext {
+        formatter: formatter_request.as_ref(),
+        formula_input: if m.class=="Math::Formula"||m.class.starts_with("Math::Formula::") {Some(&formula_input)}else{None},
+        source_format: format,
         display_style: ds == true || ds == "true",
         unary_function_spacing: opts
             .get("unaryFunctionSpacing")
@@ -2895,6 +2910,12 @@ pub fn write(model: &Value, format: &str, options: &Value) -> Result<String, Str
         intent: opts.get("intent").map(present).unwrap_or(false),
     };
     let ctx = &context;
+    if !["mathml", "omml"].contains(&format) {
+        if opts.keys().any(|k| !["formatterOptions","format"].contains(&k.as_str())) {
+            return Err("writer options not yet ported for text formats".into());
+        }
+        return render_text(&m, format, ctx);
+    }
     let formulas = if opts.get("splitOnLinebreak").map(present).unwrap_or(false) {
         split_formulas(&m).map_err(|error| {
             if format == "mathml" {

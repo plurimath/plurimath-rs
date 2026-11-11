@@ -57,7 +57,7 @@ pub(super) fn unicode_separator(m: &Model) -> &'static str {
         " "
     }
 }
-fn ordinary_string(v: &Value) -> Result<String, String> {
+pub(super) fn ordinary_string(v: &Value) -> Result<String, String> {
     match v {
         Value::Null => Ok(String::new()),
         Value::String(s) => Ok(s.clone()),
@@ -73,7 +73,7 @@ fn ordinary_string(v: &Value) -> Result<String, String> {
         Value::Array(_) | Value::Object(_) => Err("unported promised Number Array/Hash inspection: source symbol/string element or key kinds are not retained by the common wire".into()),
     }
 }
-pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
+pub(super) fn text(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     if f == "unicodemath" {
         let map = if truthy(m.field("mini_sub_sized")) {
             Some("mini_sub")
@@ -91,9 +91,14 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
             return Ok(data()[map][value].as_str().unwrap_or("").to_owned());
         }
     }
+    if let Some(formatter)=ctx.formatter { return formatter.text(m,f).map_err(|error|super::formatter_context::scope_error(ctx,error)); }
     ordinary_string(m.field("value"))
 }
-pub(super) fn xml(m: &Model, f: &str) -> Result<Vec<Xml>, String> {
+pub(super) fn xml(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<Vec<Xml>, String> {
+    if let Some(formatter)=ctx.formatter {
+        if f=="mathml" {return formatter.mathml(m).map_err(|error|super::formatter_context::scope_error(ctx,error))}
+        if f=="omml" {return Ok(vec![el("m:r",vec![el("m:t",vec![xml_text(&formatter.text(m,"plain").map_err(|error|super::formatter_context::scope_error(ctx,error))?)])])])}
+    }
     let value = ordinary_string(m.field("value"))?;
     Ok(vec![if f == "mathml" {
         el("mn", vec![xml_text(&value)])

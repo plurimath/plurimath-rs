@@ -7,7 +7,7 @@ fn truthy(value: &Value) -> bool {
 fn node(value: &Value) -> Result<Model, String> {
     Model::from_value(value).map_err(|error| source_error(&error))
 }
-pub(super) fn child(value: &Value, format: &str) -> Result<String, String> {
+pub(super) fn child(value: &Value, format: &str, ctx: &super::WriterContext) -> Result<String, String> {
     let m = node(value)?;
     // None is the explicit source Multiscript placeholder. Its four
     // textual methods return nil, which the source joins as empty text.
@@ -20,19 +20,19 @@ pub(super) fn child(value: &Value, format: &str) -> Result<String, String> {
         if let Some(values) = field.as_array() {
             let body = values
                 .iter()
-                .map(|v| child(v, format))
+                .map(|v| child(v, format, ctx))
                 .collect::<Result<Vec<_>, _>>()?
                 .join("");
             output.push_str(&format!("<i>{body}</i>"));
         } else if truthy(field) {
-            output.push_str(&format!("<i>{}</i>", child(field, format)?));
+            output.push_str(&format!("<i>{}</i>", child(field, format, ctx)?));
         }
         return Ok(output);
     }
     if m.class == "Math::Function::Linebreak" {
-        return linebreak_text(&m, format);
+        return linebreak_text(&m, format, ctx);
     }
-    render_text(&m, format)
+    render_text(&m, format, ctx)
 }
 pub(super) fn xml_child(
     value: &Value,
@@ -62,7 +62,7 @@ fn empty(value: &Value) -> Result<bool, String> {
         _ => Err(source_error("field has no source empty? method")),
     }
 }
-fn mapped(value: &Value, format: &str, nil_allowed: bool) -> Result<String, String> {
+fn mapped(value: &Value, format: &str, nil_allowed: bool, ctx: &super::WriterContext) -> Result<String, String> {
     if nil_allowed && value.is_null() {
         return Ok(String::new());
     }
@@ -71,7 +71,7 @@ fn mapped(value: &Value, format: &str, nil_allowed: bool) -> Result<String, Stri
         .ok_or_else(|| source_error("script field has no source map method"))?;
     values
         .iter()
-        .map(|v| child(v, format))
+        .map(|v| child(v, format, ctx))
         .collect::<Result<Vec<_>, _>>()
         .map(|v| v.join(""))
 }
@@ -91,7 +91,7 @@ fn mini(value: &Value) -> Result<bool, String> {
                 || truthy(&value["fields"]["mini_sup_sized"])),
     )
 }
-fn prime(value: &Value) -> Result<bool, String> {
+fn prime(value: &Value, ctx: &super::WriterContext) -> Result<bool, String> {
     if !value["class"]
         .as_str()
         .is_some_and(|v| v.starts_with("Math::Symbols::"))
@@ -104,7 +104,7 @@ fn prime(value: &Value) -> Result<bool, String> {
     {
         return Ok(true);
     }
-    let rendered = child(value, "unicodemath")?;
+    let rendered = child(value, "unicodemath", ctx)?;
     Ok(["′", "″", "‴", "⁗"].iter().any(|v| rendered.contains(v)))
 }
 fn flatten_compact<'a>(value: &'a Value, output: &mut Vec<&'a Value>) {
@@ -129,9 +129,9 @@ fn filtered(values: &Value) -> Value {
     }
 }
 
-pub(super) fn text(m: &Model, format: &str) -> Result<String, String> {
+pub(super) fn text(m: &Model, format: &str, ctx: &super::WriterContext) -> Result<String, String> {
     if m.class == "Math::Function::Linebreak" {
-        return linebreak_text(m, format);
+        return linebreak_text(m, format, ctx);
     }
     let a = m.field("parameter_one");
     let b = m.field("parameter_two");
@@ -144,12 +144,12 @@ pub(super) fn text(m: &Model, format: &str) -> Result<String, String> {
             if b == false || c == false {
                 return Err(source_error("false script has no source empty? method"));
             }
-            let sub = mapped(b, format, true)?;
-            let sup = mapped(c, format, true)?;
+            let sub = mapped(b, format, true, ctx)?;
+            let sup = mapped(c, format, true, ctx)?;
             let base = if a.is_null() {
                 String::new()
             } else {
-                child(a, format)?
+                child(a, format, ctx)?
             };
             Ok(if format == "asciimath" {
                 format!("\\ _({sub})^({sup}){base}")
@@ -163,7 +163,7 @@ pub(super) fn text(m: &Model, format: &str) -> Result<String, String> {
             // field, so Array scripts refuse instead of being joined.
             for field in [a, b, c] {
                 if truthy(field) {
-                    output.push_str(&format!("<i>{}</i>", child(field, format)?));
+                    output.push_str(&format!("<i>{}</i>", child(field, format, ctx)?));
                 }
             }
             Ok(output)
@@ -175,7 +175,7 @@ pub(super) fn text(m: &Model, format: &str) -> Result<String, String> {
             let mut sup = String::new();
             if has_sub {
                 let field = filtered(b);
-                let text = mapped(b, format, true)?;
+                let text = mapped(b, format, true, ctx)?;
                 sub = if mini(&field)? {
                     text
                 } else {
@@ -186,8 +186,8 @@ pub(super) fn text(m: &Model, format: &str) -> Result<String, String> {
                 // This source helper deliberately classifies parameter_two,
                 // although it renders parameter_three. Do not swap fields.
                 let field = filtered(b);
-                let text = mapped(c, format, false)?;
-                sup = if mini(&field)? || prime(&field)? {
+                let text = mapped(c, format, false, ctx)?;
+                sup = if mini(&field)? || prime(&field, ctx)? {
                     text
                 } else if field["class"] == "Math::Function::Power" {
                     format!("^{text}")
@@ -198,7 +198,7 @@ pub(super) fn text(m: &Model, format: &str) -> Result<String, String> {
             let base = if a.is_null() {
                 String::new()
             } else {
-                child(a, format)?
+                child(a, format, ctx)?
             };
             Ok(format!("{sub}{sup} {base}"))
         }
@@ -320,13 +320,13 @@ pub(super) fn xml(
 /// Plain Linebreak rendering is separate from Formula line splitting. These
 /// procedures preserve the leaf's payload/style behavior without rewriting
 /// the caller's tree or depending on process-global render context.
-fn linebreak_text(m: &Model, format: &str) -> Result<String, String> {
+fn linebreak_text(m: &Model, format: &str, ctx: &super::WriterContext) -> Result<String, String> {
     let value = m.field("parameter_one");
     if format == "unicodemath" {
         return Ok(format!(
             "&#xa;{}",
             if truthy(value) {
-                child(value, format)?
+                child(value, format, ctx)?
             } else {
                 String::new()
             }
@@ -352,12 +352,12 @@ fn linebreak_text(m: &Model, format: &str) -> Result<String, String> {
         let mut pieces = vec![];
         for v in value.as_array().unwrap() {
             if !v.is_null() {
-                pieces.push(child(v, format)?);
+                pieces.push(child(v, format, ctx)?);
             }
         }
         pieces.join(if format == "latex" { " " } else { "" })
     } else {
-        child(value, format)?
+        child(value, format, ctx)?
     };
     Ok(if after {
         format!("{body}{token}")

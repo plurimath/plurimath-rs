@@ -8,20 +8,20 @@ fn row_values<'a>(v: &'a Value) -> Result<&'a [Value], String> {
         .map(Vec::as_slice)
         .ok_or_else(|| source_error("stacked row/cell collection has no source array methods"))
 }
-fn node_text(v: &Value, f: &str, nullable: bool) -> Result<String, String> {
+fn node_text(v: &Value, f: &str, nullable: bool, ctx: &super::WriterContext) -> Result<String, String> {
     if v.is_null() && nullable {
         return Ok(String::new());
     }
     if !v.is_object() || v.get("class").is_none() {
         return Err(source_error("stacked child has no source writer"));
     }
-    child(v, f)
+    child(v, f, ctx)
 }
 fn vertical(v: &Value) -> bool {
     v["class"] == "Math::Symbols::Paren::Vert"
         || (v["class"] == "Math::Symbols::Symbol" && v["fields"]["value"] == "|")
 }
-fn row_cell_text(m: &Model, f: &str) -> Result<String, String> {
+fn row_cell_text(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     let values = row_values(m.field("parameter_one"))?;
     let row = m.kind() == "Tr";
     let mut parts = Vec::new();
@@ -32,7 +32,7 @@ fn row_cell_text(m: &Model, f: &str) -> Result<String, String> {
         if !row && f == "latex" && vertical(&values.first().cloned().unwrap_or(Value::Null)) {
             return Ok(String::new());
         }
-        parts.push(node_text(v, f, !row && f != "html")?);
+        parts.push(node_text(v, f, !row && f != "html", ctx)?);
     }
     let sep = if row {
         match f {
@@ -55,7 +55,7 @@ fn row_cell_text(m: &Model, f: &str) -> Result<String, String> {
         _ => body,
     })
 }
-fn unary_html(m: &Model) -> Result<String, String> {
+fn unary_html(m: &Model, ctx: &super::WriterContext) -> Result<String, String> {
     let p = m.field("parameter_one");
     if p.is_null() || p == false {
         return Ok(format!("<i>{}</i>", m.kind().to_lowercase()));
@@ -63,11 +63,11 @@ fn unary_html(m: &Model) -> Result<String, String> {
     let body = if let Some(values) = p.as_array() {
         values
             .iter()
-            .map(|v| node_text(v, "html", false))
+            .map(|v| node_text(v, "html", false, ctx))
             .collect::<Result<Vec<_>, _>>()?
             .join("")
     } else {
-        node_text(p, "html", false)?
+        node_text(p, "html", false, ctx)?
     };
     Ok(format!("<i>{}</i><i>{body}</i>", m.kind().to_lowercase()))
 }
@@ -83,12 +83,12 @@ fn string(v: &Value) -> Result<String, String> {
 pub(super) fn handles_text(m: &Model) -> bool {
     matches!(m.kind(), "Substack" | "Msline" | "Mglyph" | "Tr" | "Td")
 }
-pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
+pub(super) fn text(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     if ["Tr", "Td"].contains(&m.kind()) {
-        return row_cell_text(m, f);
+        return row_cell_text(m, f, ctx);
     }
     if f == "html" {
-        return unary_html(m);
+        return unary_html(m, ctx);
     }
     if m.kind() == "Msline" {
         return Ok(String::new());
@@ -108,7 +108,7 @@ pub(super) fn text(m: &Model, f: &str) -> Result<String, String> {
     if !p.is_null() {
         for v in row_values(p)? {
             if !v.is_null() {
-                parts.push(node_text(v, f, false)?);
+                parts.push(node_text(v, f, false, ctx)?);
             }
         }
     }

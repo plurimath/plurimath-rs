@@ -19,12 +19,12 @@ fn truthy(v: &Value) -> bool {
 fn model(v: &Value) -> Result<Model, String> {
     Model::from_value(v)
 }
-fn child(v: &Value, f: &str) -> Result<String, String> {
+fn child(v: &Value, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     let m = model(v)?;
     if m.class == "Math::Function::None" {
         return Ok(String::new());
     }
-    render_text(&m, f)
+    render_text(&m, f, ctx)
 }
 pub(super) fn slot(v: &Value, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     if f == "omml" && !truthy(v) {
@@ -60,7 +60,7 @@ fn mini(v: &Value) -> Result<bool, String> {
             && (truthy(m.field("mini_sub_sized")) || truthy(m.field("mini_sup_sized"))),
     )
 }
-fn prime(v: &Value) -> Result<bool, String> {
+fn prime(v: &Value, ctx: &super::WriterContext) -> Result<bool, String> {
     if !v["class"]
         .as_str()
         .is_some_and(|c| c.starts_with("Math::Symbols::"))
@@ -73,11 +73,11 @@ fn prime(v: &Value) -> Result<bool, String> {
     {
         return Ok(true);
     }
-    let s = child(v, "unicodemath")?;
+    let s = child(v, "unicodemath", ctx)?;
     Ok(["′", "″", "‴", "⁗"].iter().any(|p| s.contains(p)))
 }
-fn parens(v: &Value) -> Result<String, String> {
-    let s = child(v, "unicodemath")?;
+fn parens(v: &Value, ctx: &super::WriterContext) -> Result<String, String> {
+    let s = child(v, "unicodemath", ctx)?;
     Ok(
         if v["class"]
             .as_str()
@@ -89,7 +89,7 @@ fn parens(v: &Value) -> Result<String, String> {
         },
     )
 }
-pub(super) fn text_writer(m: &Model, f: &str) -> Result<String, String> {
+pub(super) fn text_writer(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     let a = m.field("parameter_one");
     let b = m.field("parameter_two");
     let c = m.field("parameter_three");
@@ -105,28 +105,28 @@ pub(super) fn text_writer(m: &Model, f: &str) -> Result<String, String> {
                     "int".into()
                 }
             } else {
-                child(a, f)?
+                child(a, f, ctx)?
             };
             let sub = if truthy(b) {
                 if f == "latex" {
-                    format!("_{{{}}}", child(b, f)?)
+                    format!("_{{{}}}", child(b, f, ctx)?)
                 } else {
-                    format!("_({})", child(b, f)?)
+                    format!("_({})", child(b, f, ctx)?)
                 }
             } else {
                 String::new()
             };
             let sup = if truthy(c) {
                 if f == "latex" {
-                    format!("^{{{}}}", child(c, f)?)
+                    format!("^{{{}}}", child(c, f, ctx)?)
                 } else {
-                    format!("^({})", child(c, f)?)
+                    format!("^({})", child(c, f, ctx)?)
                 }
             } else {
                 String::new()
             };
             let operand = if truthy(d) {
-                format!(" {}", child(d, f)?)
+                format!(" {}", child(d, f, ctx)?)
             } else {
                 String::new()
             };
@@ -137,28 +137,28 @@ pub(super) fn text_writer(m: &Model, f: &str) -> Result<String, String> {
             let base = if a.is_null() {
                 String::new()
             } else {
-                child(a, f)?
+                child(a, f, ctx)?
             };
             let sub = if !truthy(b) {
                 String::new()
             } else if mini(b)? {
-                child(b, f)?
+                child(b, f, ctx)?
             } else if b["class"] == "Math::Function::Base" {
-                format!("_{}", child(b, f)?)
+                format!("_{}", child(b, f, ctx)?)
             } else {
-                format!("_{}", parens(b)?)
+                format!("_{}", parens(b, ctx)?)
             };
-            let is_prime = prime(c)?;
+            let is_prime = prime(c, ctx)?;
             let sup = if !truthy(c) {
                 String::new()
             } else if mini(c)? || is_prime {
-                child(c, f)?
+                child(c, f, ctx)?
             } else if c["class"] == "Math::Function::Power"
-                || (a["class"] == "Math::Function::Power" && prime(&a["fields"]["parameter_two"])?)
+                || (a["class"] == "Math::Function::Power" && prime(&a["fields"]["parameter_two"], ctx)?)
             {
-                format!("^{}", child(c, f)?)
+                format!("^{}", child(c, f, ctx)?)
             } else {
-                format!("^{}", parens(c)?)
+                format!("^{}", parens(c, ctx)?)
             };
             let operand = if !truthy(d) {
                 String::new()
@@ -166,9 +166,9 @@ pub(super) fn text_writer(m: &Model, f: &str) -> Result<String, String> {
                 .as_str()
                 .is_some_and(|s| s.starts_with("Math::Function::Fenced"))
             {
-                format!("▒{}", child(d, f)?)
+                format!("▒{}", child(d, f, ctx)?)
             } else {
-                format!("▒〖{}〗", child(d, f)?)
+                format!("▒〖{}〗", child(d, f, ctx)?)
             };
             Ok(if is_prime {
                 format!("{base}{sup}{sub}{operand}")
@@ -198,7 +198,7 @@ fn type_string(v: &Value) -> Result<String, String> {
         _ => Err("unported compound generic Nary type.to_s value".into()),
     }
 }
-fn operator_char(v: &Value) -> Result<String, String> {
+fn operator_char(v: &Value, ctx: &super::WriterContext) -> Result<String, String> {
     if v.is_null() {
         return Ok(String::new());
     }
@@ -208,7 +208,7 @@ fn operator_char(v: &Value) -> Result<String, String> {
             m.field("value").as_array().and_then(|v| v.first()).ok_or(
                 "source_render_error: empty Formula has no first nary_attr_value receiver",
             )?;
-        return operator_char(first);
+        return operator_char(first, ctx);
     }
     if m.class == "Math::Number" {
         return match m.field("value") {
@@ -236,7 +236,7 @@ fn operator_char(v: &Value) -> Result<String, String> {
             {
                 Ok(glyph.into())
             } else {
-                child(v, "unicodemath")
+                child(v, "unicodemath", ctx)
             }
         }
         _ => Err("source_render_error: nary_attr_value has no include? method".into()),
@@ -322,7 +322,7 @@ pub(super) fn xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, S
     let d = m.field("parameter_four");
     let options = local_options(m)?;
     if f == "omml" {
-        let glyph = operator_char(a)?;
+        let glyph = operator_char(a, ctx)?;
         let mut properties = vec![];
         if glyph != "∫" {
             properties.push(value_attr("m:chr", glyph));
