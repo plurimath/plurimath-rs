@@ -174,8 +174,12 @@ Errors carry a typed code and message.
   significant and guard digits, and a sample budget. It uses centered exact
   polynomials with binary64 samples, enhanced Wichmann–Hill draws, and adaptive
   JCGM 101 stopping. Polynomial terms and degree are bounded at 128 and 32.
-  The sample budget is bounded at 8,000,000. Joint sampling and nonconstant
-  denominators return typed refusals.
+  The sample budget is bounded at 8,000,000. Joint normal sampling requires
+  an explicit multivariate normal law, matching normal marginal variances,
+  and an exact positive-semidefinite covariance matrix. Exact LDL factors
+  retain singular covariance. Rational models require a rectangular-support
+  denominator certificate excluding zero. Both model kinds retain the
+  centered exact expansion before binary64 sampling.
 
 The fixtures project sealed Ruby F40 and Annex reference records onto this
 request shape. Engine identity reports the Rust implementation. These checks

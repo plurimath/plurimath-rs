@@ -6,6 +6,7 @@ mod conformity;
 mod coverage;
 mod monte_carlo;
 mod propagation;
+mod sampling_model;
 mod statistics;
 mod taylor;
 

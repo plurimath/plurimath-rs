@@ -315,14 +315,27 @@ pub(super) fn evaluate(params: &J) -> Result<J> {
             "joint_distribution",
         ],
     )?;
-    if params["independent"] != true {
-        return Err(unsupported("joint sampling is outside this profile"));
-    }
-    if !params["joint_covariance"].is_null() || !params["joint_distribution"].is_null() {
-        return Err(invalid(
-            "independent sampling cannot also declare a joint covariance or law",
-        ));
-    }
+    let independent = match params["independent"].as_bool() {
+        Some(true) => {
+            if !params["joint_covariance"].is_null() || !params["joint_distribution"].is_null() {
+                return Err(invalid(
+                    "independent sampling cannot also declare a joint covariance or law",
+                ));
+            }
+            true
+        }
+        Some(false)
+            if symbol_name(&params["joint_distribution"]) == Some("multivariate_normal")
+                && !params["joint_covariance"].is_null() =>
+        {
+            false
+        }
+        _ => {
+            return Err(unsupported(
+                "joint sampling requires explicit multivariate_normal knowledge and covariance",
+            ))
+        }
+    };
     let inputs = params["inputs"]
         .as_array()
         .filter(|v| !v.is_empty() && v.len() <= 16)
@@ -330,6 +343,7 @@ pub(super) fn evaluate(params: &J) -> Result<J> {
     let mut seen = BTreeSet::new();
     let mut variables = Vec::new();
     let mut centers = Vec::new();
+    let mut definitions = Vec::new();
     let mut distributions = Vec::new();
     for input in inputs {
         fields(input, &["name", "pdf"])?;
@@ -344,6 +358,7 @@ pub(super) fn evaluate(params: &J) -> Result<J> {
         variables.push(name);
         centers.push(center);
         distributions.push(distribution);
+        definitions.push(&input["pdf"]);
     }
     let probability = exact(&params["probability"])?;
     if !probability.is_positive() || probability >= Q::one() {
@@ -385,8 +400,14 @@ pub(super) fn evaluate(params: &J) -> Result<J> {
         .filter(|n| n / batch >= 2)
         .ok_or_else(budget)?;
     let mut generator = Generator::new(&params["seeds"])?;
-    let model = super::taylor::sampling_polynomial(&params["ast"], &variables, centers)?;
-    for (pdf, degree) in distributions.iter().zip(&model.degrees) {
+    let model =
+        super::sampling_model::Model::build(&params["ast"], &variables, centers, &definitions)?;
+    let joint = if independent {
+        None
+    } else {
+        Some(JointNormal::new(&definitions, &params["joint_covariance"])?)
+    };
+    for (pdf, degree) in distributions.iter().zip(model.degrees()) {
         if matches!(pdf, Pdf::Student(_, nu) if *nu <= 2.0 * *degree as f64) {
             return Err(unsupported("finite polynomial output variance requires Student-t nu greater than twice its variable degree"));
         }
@@ -399,10 +420,14 @@ pub(super) fn evaluate(params: &J) -> Result<J> {
     for _ in 0..max_samples / batch {
         values.clear();
         for _ in 0..batch {
-            for (value, pdf) in deviations.iter_mut().zip(&distributions) {
-                *value = pdf.draw(&mut generator)?;
+            if let Some(joint) = &joint {
+                joint.draw(&mut generator, &mut deviations)?;
+            } else {
+                for (value, pdf) in deviations.iter_mut().zip(&distributions) {
+                    *value = pdf.draw(&mut generator)?;
+                }
             }
-            let value = model.centered_value(&deviations);
+            let value = model.evaluate(&deviations)?;
             if !value.is_finite() {
                 return Err(numerical("non-finite sampled model value"));
             }
@@ -451,8 +476,8 @@ pub(super) fn evaluate(params: &J) -> Result<J> {
                 intervals.insert(
                     kind.to_owned(),
                     json!([
-                        decimal(*low, guard_digits, Some(&model.offset))?,
-                        decimal(*high, guard_digits, Some(&model.offset))?,
+                        decimal(*low, guard_digits, Some(model.offset()))?,
+                        decimal(*high, guard_digits, Some(model.offset()))?,
                     ]),
                 );
             }
@@ -472,22 +497,172 @@ pub(super) fn evaluate(params: &J) -> Result<J> {
         } else {
             format!("{delta}.0")
         };
+        let mut stamp = json!({
+            "name":"plurimath-rust","version":env!("CARGO_PKG_VERSION"),
+            "method":"JCGM101-2008-7.9.4-v1",
+            "generator":"enhanced-Wichmann-Hill-C.3.3.3","initial_seeds":generator.initial,
+            "final_state":generator.state,"uniform_draws":generator.draws,
+        });
+        stamp.as_object_mut().expect("engine object").extend(
+            model
+                .engine_fields()
+                .as_object()
+                .expect("model engine object")
+                .clone(),
+        );
+        if let Some(joint) = &joint {
+            stamp.as_object_mut().expect("engine object").extend(
+                joint
+                    .engine_fields()
+                    .as_object()
+                    .expect("joint engine object")
+                    .clone(),
+            );
+        }
         return Ok(json!({
-            "estimate":decimal(statistics["estimate"],guard_digits,Some(&model.offset))?,
+            "estimate":decimal(statistics["estimate"],guard_digits,Some(model.offset()))?,
             "standard_uncertainty":decimal(statistics["standard_uncertainty"],guard_digits,None)?,
             "intervals":intervals,"probability":format!("{}/{}",probability.numer(),probability.denom()),
             "numerical_tolerance":delta,"twice_standard_errors":errors,
             "samples":all.len(),"requested_max_samples":max_samples,"batches":n,"batch_size":batch,
             "significant_digits":significant,"guard_digits":guard_digits,"precision_convention":symbol("significant_digits"),
             "stabilized":true,"method":symbol("adaptive_mcm"),"variables":variables,
-            "engine":{"name":"plurimath-rust","version":env!("CARGO_PKG_VERSION"),
-              "method":"JCGM101-2008-7.9.4-v1","numeric_backend":"binary64-centered-exact-polynomial",
-              "generator":"enhanced-Wichmann-Hill-C.3.3.3","initial_seeds":generator.initial,
-              "final_state":generator.state,"uniform_draws":generator.draws},
+            "engine":stamp,
         }));
     }
     Err(Error {
         code: "ConvergenceError",
         message: "adaptive MCM did not stabilize within the declared sample budget",
     })
+}
+
+struct JointNormal {
+    covariance: Vec<Vec<Q>>,
+    factor: Vec<Vec<f64>>,
+}
+
+impl JointNormal {
+    fn new(definitions: &[&J], covariance: &J) -> Result<Self> {
+        let size = definitions.len();
+        let covariance = matrix(covariance, "joint covariance shape mismatch", 1)?;
+        if covariance.len() != size || covariance[0].len() != size {
+            return Err(invalid("joint covariance shape mismatch"));
+        }
+        if (0..size).any(|i| (0..size).any(|j| covariance[i][j] != covariance[j][i])) {
+            return Err(invalid("joint covariance must be symmetric"));
+        }
+        for (i, definition) in definitions.iter().enumerate() {
+            if symbol_name(&definition["distribution"]) != Some("normal") {
+                return Err(unsupported(
+                    "joint normal sampling requires normal marginal declarations",
+                ));
+            }
+            let sd = exact(&definition["sd"])?;
+            if !sd.is_positive() || sd.pow(2) != covariance[i][i] {
+                return Err(invalid(
+                    "normal marginal variance and joint covariance diagonal disagree",
+                ));
+            }
+        }
+        let mut lower = vec![vec![Q::zero(); size]; size];
+        let mut diagonal = vec![Q::zero(); size];
+        let not_psd = || invalid("joint covariance is not positive semidefinite");
+        for j in 0..size {
+            lower[j][j] = Q::one();
+            diagonal[j] =
+                &covariance[j][j] - (0..j).map(|k| lower[j][k].pow(2) * &diagonal[k]).sum::<Q>();
+            if diagonal[j].is_negative() {
+                return Err(not_psd());
+            }
+            for i in j + 1..size {
+                let numerator = &covariance[i][j]
+                    - (0..j)
+                        .map(|k| &lower[i][k] * &lower[j][k] * &diagonal[k])
+                        .sum::<Q>();
+                if diagonal[j].is_zero() {
+                    if !numerator.is_zero() {
+                        return Err(not_psd());
+                    }
+                } else {
+                    lower[i][j] = numerator / &diagonal[j];
+                }
+            }
+        }
+        let mut factor = vec![vec![0.0; size]; size];
+        let range = || invalid("joint factor exceeds binary64 range");
+        for i in 0..size {
+            for j in 0..size {
+                if diagonal[j].is_zero() || lower[i][j].is_zero() {
+                    continue;
+                }
+                let variance = diagonal[j]
+                    .to_f64()
+                    .filter(|x| x.is_finite() && *x > 0.0)
+                    .ok_or_else(range)?;
+                let coefficient = lower[i][j]
+                    .to_f64()
+                    .filter(|x| x.is_finite())
+                    .ok_or_else(range)?;
+                let value = coefficient * variance.sqrt();
+                if !value.is_finite() || value == 0.0 {
+                    return Err(range());
+                }
+                factor[i][j] = value;
+            }
+        }
+        Ok(Self { covariance, factor })
+    }
+
+    fn draw(&self, generator: &mut Generator, out: &mut [f64]) -> Result<()> {
+        let independent = (0..out.len())
+            .map(|_| generator.normal().map(|value| 0.0 + 1.0 * value))
+            .collect::<Result<Vec<_>>>()?;
+        for (row, value) in self.factor.iter().zip(out) {
+            *value = compensated_sum(row.iter().zip(&independent).map(|(a, b)| a * b));
+        }
+        Ok(())
+    }
+
+    fn engine_fields(&self) -> J {
+        json!({
+            "joint_distribution":symbol("multivariate_normal"),
+            "covariance":self.covariance.iter().map(|row|row.iter().map(|value|format!("{}/{}",value.numer(),value.denom())).collect::<Vec<_>>()).collect::<Vec<_>>(),
+            "joint_sampler":"exact-LDL-binary64-normal-v1",
+        })
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn exact_singular_joint_factors_and_invalid_covariances() {
+        let pdf = json!({"distribution":"normal","location":0,"sd":"0.005"});
+        for sign in [1, -1] {
+            let off = Q::new((sign * 1_i64).into(), number(40000));
+            let covariance = json!([["1/40000", tagged(&off)], [tagged(&off), "1/40000"],]);
+            let sampler =
+                JointNormal::new(&[&pdf, &pdf], &covariance).unwrap_or_else(|e| panic!("{e:?}"));
+            let mut generator = Generator::new(&json!([12345, 23456, 34567, 45678]))
+                .unwrap_or_else(|e| panic!("{e:?}"));
+            let mut values = [0.0; 2];
+            for _ in 0..100 {
+                sampler
+                    .draw(&mut generator, &mut values)
+                    .unwrap_or_else(|e| panic!("{e:?}"));
+                assert_eq!(values[1], sign as f64 * values[0]);
+            }
+            assert_eq!(generator.draws, 200);
+        }
+        for covariance in [
+            json!([["1/40000", "1/20000"], ["1/20000", "1/40000"]]),
+            json!([["1/40000", 0], [0, "1/20000"]]),
+            json!([["1/40000", 1], [0, "1/40000"]]),
+        ] {
+            assert!(
+                matches!(JointNormal::new(&[&pdf,&pdf],&covariance),Err(error) if error.code=="InvalidInput")
+            );
+        }
+    }
 }

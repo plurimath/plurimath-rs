@@ -5,16 +5,16 @@ use std::collections::BTreeMap;
 /// Degree-three expansion about the supplied estimates. Monomials are sorted
 /// variable indices, so each mixed partial has one exact coefficient.
 #[derive(Clone, Default)]
-struct Taylor(BTreeMap<Vec<usize>, Q>);
+pub(super) struct Taylor(pub(super) BTreeMap<Vec<usize>, Q>);
 
 impl Taylor {
-    fn constant(value: Q) -> Self {
+    pub(super) fn constant(value: Q) -> Self {
         let mut terms = Self::default();
         terms.insert(Vec::new(), value);
         terms
     }
 
-    fn variable(value: Q, index: usize) -> Self {
+    pub(super) fn variable(value: Q, index: usize) -> Self {
         let mut terms = Self::constant(value);
         terms.insert(vec![index], Q::one());
         terms
@@ -31,7 +31,7 @@ impl Taylor {
         }
     }
 
-    fn derivative(&self, indices: &[usize]) -> Q {
+    pub(super) fn derivative(&self, indices: &[usize]) -> Q {
         let mut sorted = indices.to_vec();
         sorted.sort_unstable();
         let factor = match sorted.as_slice() {
@@ -45,14 +45,14 @@ impl Taylor {
             .map_or_else(Q::zero, |value| value * number(factor))
     }
 
-    fn add(mut self, rhs: Self) -> Self {
+    pub(super) fn add(mut self, rhs: Self) -> Self {
         for (key, value) in rhs.0 {
             self.insert(key, value);
         }
         self
     }
 
-    fn scale(mut self, value: &Q) -> Self {
+    pub(super) fn scale(mut self, value: &Q) -> Self {
         if value.is_zero() {
             return Self::default();
         }
@@ -62,7 +62,7 @@ impl Taylor {
         self
     }
 
-    fn multiply<const TRUNCATE: bool>(&self, rhs: &Self) -> Result<Self> {
+    pub(super) fn multiply<const TRUNCATE: bool>(&self, rhs: &Self) -> Result<Self> {
         let mut out = Self::default();
         for (a, x) in &self.0 {
             for (b, y) in &rhs.0 {
@@ -117,7 +117,7 @@ impl Taylor {
         Ok(sum.scale(&reciprocal))
     }
 
-    fn power<const TRUNCATE: bool>(mut self, exponent: Self) -> Result<Self> {
+    pub(super) fn power<const TRUNCATE: bool>(mut self, exponent: Self) -> Result<Self> {
         if exponent.0.keys().any(|powers| !powers.is_empty()) {
             return Err(unsupported("variable exponents are unsupported"));
         }
@@ -228,8 +228,18 @@ pub(super) fn sampling_polynomial(
         .map(|(i, (name, estimate))| (name, Taylor::variable(estimate, i)))
         .collect();
     let jet = walk::<false>(ast, &bindings)?;
+    let model = compile_polynomial(jet, variables.len())?;
+    if model.degrees.iter().all(|degree| *degree == 0) {
+        return Err(unsupported(
+            "constant models need exact analysis rather than adaptive uncertainty tolerance",
+        ));
+    }
+    Ok(model)
+}
+
+pub(super) fn compile_polynomial(jet: Taylor, size: usize) -> Result<Polynomial> {
     let offset = jet.derivative(&[]);
-    let mut degrees = vec![0; variables.len()];
+    let mut degrees = vec![0; size];
     let mut terms = BTreeMap::new();
     for (indices, value) in jet.0 {
         if indices.is_empty() {
@@ -239,17 +249,12 @@ pub(super) fn sampling_polynomial(
             .to_f64()
             .filter(|v| v.is_finite() && *v != 0.0)
             .ok_or_else(|| unsupported("centered model coefficient outside binary64 range"))?;
-        let mut powers = vec![0; variables.len()];
+        let mut powers = vec![0; size];
         for &index in &indices {
             powers[index] += 1;
             degrees[index] = degrees[index].max(powers[index]);
         }
         terms.insert(powers, (coefficient, indices));
-    }
-    if terms.is_empty() {
-        return Err(unsupported(
-            "constant models need exact analysis rather than adaptive uncertainty tolerance",
-        ));
     }
     Ok(Polynomial {
         offset,

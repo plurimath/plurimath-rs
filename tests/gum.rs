@@ -231,3 +231,38 @@ fn monte_carlo_refuses_undeclared_joint_laws_and_nonpolynomial_models() {
     });
     assert_eq!(run(&rational)["error"]["code"], "UnsupportedModel");
 }
+
+#[test]
+fn published_joint_and_rational_monte_carlo_profiles() {
+    let fixture: Value =
+        serde_json::from_str(include_str!("../fixtures/gum-mcm-joint-rational.json")).unwrap();
+    assert_eq!(fixture["cases"].as_array().unwrap().len(), 7);
+    let mut failures = Vec::new();
+    for case in fixture["cases"].as_array().unwrap() {
+        let actual = run(&case["request"]);
+        if actual["ok"] != true {
+            failures.push(format!("{} {}", case["id"], actual["error"]));
+            continue;
+        }
+        let mut actual = actual["result"].clone();
+        let mut expected = case["expected"].clone();
+        for key in ["method", "precision_convention"] {
+            expected[key] = json!({"symbol":expected[key]});
+        }
+        if let Some(law) = expected["engine"].get("joint_distribution").cloned() {
+            expected["engine"]["joint_distribution"] = json!({"symbol":law});
+        }
+        project_engine(&mut actual);
+        project_engine(&mut expected);
+        for (key, want) in expected.as_object().unwrap() {
+            if &actual[key] != want {
+                failures.push(format!(
+                    "{} {key}: {} expected {want}",
+                    case["id"], actual[key]
+                ));
+            }
+        }
+        eprintln!("completed source profile {}", case["id"]);
+    }
+    assert!(failures.is_empty(), "{}", failures.join("\n"));
+}
