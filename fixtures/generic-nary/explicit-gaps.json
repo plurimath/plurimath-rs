@@ -3,86 +3,44 @@
     {
       "fixture": "generic-nary",
       "id": "slot1-fenced",
-      "format": "asciimath",
-      "reason": "unported promised nullable/raw fence delimiter profile"
-    },
-    {
-      "fixture": "generic-nary",
-      "id": "slot1-fenced",
       "format": "latex",
-      "reason": "unported promised nullable/raw fence delimiter profile"
-    },
-    {
-      "fixture": "generic-nary",
-      "id": "slot2-fenced",
-      "format": "asciimath",
-      "reason": "unported promised nullable/raw fence delimiter profile"
+      "reason": "unported promised Ruby fence scalar spelling"
     },
     {
       "fixture": "generic-nary",
       "id": "slot2-fenced",
       "format": "latex",
-      "reason": "unported promised nullable/raw fence delimiter profile"
+      "reason": "unported promised Ruby fence scalar spelling"
     },
     {
       "fixture": "generic-nary",
       "id": "slot2-fenced",
       "format": "omml",
-      "reason": "unported scalar coercion; source can distinguish string/hash/array"
-    },
-    {
-      "fixture": "generic-nary",
-      "id": "slot3-fenced",
-      "format": "asciimath",
-      "reason": "unported promised nullable/raw fence delimiter profile"
+      "reason": "unported promised Ruby fence scalar spelling"
     },
     {
       "fixture": "generic-nary",
       "id": "slot3-fenced",
       "format": "latex",
-      "reason": "unported promised nullable/raw fence delimiter profile"
+      "reason": "unported promised Ruby fence scalar spelling"
     },
     {
       "fixture": "generic-nary",
       "id": "slot3-fenced",
       "format": "omml",
-      "reason": "unported scalar coercion; source can distinguish string/hash/array"
-    },
-    {
-      "fixture": "generic-nary",
-      "id": "slot4-fenced",
-      "format": "asciimath",
-      "reason": "unported promised nullable/raw fence delimiter profile"
+      "reason": "unported promised Ruby fence scalar spelling"
     },
     {
       "fixture": "generic-nary",
       "id": "slot4-fenced",
       "format": "latex",
-      "reason": "unported promised nullable/raw fence delimiter profile"
+      "reason": "unported promised Ruby fence scalar spelling"
     },
     {
       "fixture": "generic-nary",
       "id": "slot4-fenced",
       "format": "omml",
-      "reason": "unported scalar coercion; source can distinguish string/hash/array"
-    },
-    {
-      "fixture": "generic-nary",
-      "id": "combination-4",
-      "format": "asciimath",
-      "reason": "unported promised nullable/raw fence delimiter profile"
-    },
-    {
-      "fixture": "generic-nary",
-      "id": "combination-4",
-      "format": "latex",
-      "reason": "unported promised nullable/raw fence delimiter profile"
-    },
-    {
-      "fixture": "reference",
-      "id": "tfn-spec-ex_049:omml",
-      "format": "omml",
-      "reason": "unported promised fence options"
+      "reason": "unported promised Ruby fence scalar spelling"
     }
   ]
 }

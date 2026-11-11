@@ -415,6 +415,11 @@ fn integer_mask_mod(text: &str) -> u8 {
     if matches!(bytes.get(i), Some(b'+') | Some(b'-')) {
         i += 1;
     }
+    // Ruby String#to_i(base10) recognizes only the explicit decimal
+    // prefix here; 0x/0b/0o still stop at the initial zero.
+    if bytes.get(i)==Some(&b'0') && matches!(bytes.get(i+1),Some(b'd')|Some(b'D')) {
+        i+=2;
+    }
     let mut n = 0u8;
     let mut digit = false;
     while i < bytes.len() {
@@ -440,7 +445,7 @@ fn integer_mask_mod(text: &str) -> u8 {
         n
     }
 }
-fn mask_mod(v: &Value) -> Result<u8, String> {
+pub(super) fn mask_mod(v: &Value) -> Result<u8, String> {
     match v {
         Value::Null => Ok(0),
         Value::String(s) => Ok(integer_mask_mod(s)),

@@ -59,7 +59,7 @@ fn source_generic_nary_options_masks_intents_and_split_states() {
     assert_source(
         "generic-nary",
         include_str!("../fixtures/generic-nary/generic-nary-source.json"),
-        (3360, 2228, 1119),
+        (3360, 2234, 1119),
     );
 }
 #[test]
@@ -67,6 +67,6 @@ fn existing_generic_nary_source_reference() {
     assert_source(
         "reference",
         include_str!("../fixtures/generic-nary/reference-source.json"),
-        (206, 178, 27),
+        (206, 179, 27),
     );
 }

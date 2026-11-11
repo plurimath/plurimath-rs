@@ -29,18 +29,14 @@ fn source_mixed_field_shape_is_preserved() {
     assert!(writer::write(&v, "asciimath", &json!({})).is_err());
 }
 #[test]
-fn unported_promises_fail_explicitly() {
+fn remaining_promises_refuse_and_completed_nary_matches_source() {
     assert!(parser::parse("x", "pma", &json!({}))
         .unwrap_err()
         .to_string()
         .contains("unported promised"));
-    assert!(writer::write(
-        &json!({"class":"Math::Function::Nary","fields":{}}),
-        "latex",
-        &json!({})
-    )
-    .unwrap_err()
-    .contains("unported promised"));
+    let source: Value = serde_json::from_str(include_str!("../fixtures/generic-nary/generic-nary-source.json")).unwrap();
+    let row = source["rows"].as_array().unwrap().iter().find(|row| row["id"] == "slot1-nil").unwrap();
+    assert_eq!(writer::write(&row["model"], "latex", &json!({})).unwrap(), row["writers"]["latex"]["value"].as_str().unwrap());
 }
 #[test]
 fn abi_ownership_and_invalid_input() {

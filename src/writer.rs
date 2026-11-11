@@ -1,4 +1,5 @@
 //! Procedural source-writer port; unported nodes/options fail, never return approximations.
+mod generic_nary;
 mod operators;
 mod numbers;
 mod multiscripts;
@@ -7,6 +8,7 @@ mod accents;
 mod scripts;
 mod styles;
 mod font_styles;
+mod fences;
 mod nary;
 mod symbol_content;
 mod table_xml;
@@ -754,6 +756,8 @@ fn normal_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, Strin
     Ok(c)
 }
 fn render_text(m: &Model, f: &str) -> Result<String, String> {
+    if fences::handles(m) { return fences::text(m, f); }
+    if m.class == "Math::Function::Nary" { return generic_nary::text_writer(m, f); }
     if numbers::handles(m) { return numbers::text(m, f); }
     if ["Math::Function::Multiscript", "Math::Function::Linebreak"].contains(&m.class.as_str()) { return multiscripts::text(m, f); }
     if stacked::handles_text(m) { return stacked::text(m, f); }
@@ -806,7 +810,7 @@ fn render_text(m: &Model, f: &str) -> Result<String, String> {
                 .iter()
                 .map(|v| child(v, f))
                 .collect::<Result<Vec<_>, _>>()?;
-            let joined = c.join(if f == "unicodemath" && m.kind() == "Formula" { numbers::unicode_separator(m) } else { " " });
+            let joined = c.join(if f == "unicodemath" && m.kind() == "Formula" { if fences::formula_starts_mini_fence(m) { "" } else { numbers::unicode_separator(m) } } else { " " });
             if f == "unicodemath" {
                 static SLASH_SPACING: std::sync::OnceLock<regex::Regex> = std::sync::OnceLock::new();
                 let spacing = SLASH_SPACING.get_or_init(|| regex::Regex::new(r"(?-u:\s)/(?-u:\s)").unwrap());
@@ -1157,6 +1161,14 @@ fn render_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, Strin
     Ok(nodes)
 }
 fn render_xml_inner(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
+    if fences::handles(m) { return fences::xml(m, f, ctx); }
+    if m.class == "Math::Formula" && f == "mathml" && ctx.intent
+        && present(m.field("left_right_wrapper"))
+        && m.field("value").as_array().is_some_and(Vec::is_empty)
+    {
+        return Err("source_render_error: empty Formula has no first parameter for intent".into());
+    }
+    if m.class == "Math::Function::Nary" { return generic_nary::xml(m, f, ctx); }
     if numbers::handles(m) { return numbers::xml(m, f); }
     if ["Math::Function::Multiscript", "Math::Function::Linebreak"].contains(&m.class.as_str()) { return multiscripts::xml(m, f, ctx); }
     if ["Substack", "Msline", "Mglyph"].contains(&m.kind()) { return stacked::xml(m, f, ctx); }
@@ -1776,7 +1788,7 @@ fn apply_writer_intent(m: &Model, nodes: &mut [Xml]) -> Result<(), String> {
             xml_attribute(node, "intent", ":function".into())
         }
         "Frac" => fraction_derivative_intent(m, node)?,
-        "Fenced" => fenced_intent(m, node)?,
+        "Fenced" => fences::intent(m, node)?,
         "Table" | "Matrix" | "Pmatrix" | "Bmatrix" | "Vmatrix" | "Array"
             if m.class.starts_with("Math::Function::Table") =>
         {
@@ -2573,9 +2585,11 @@ fn core_updated_values(
     Ok(())
 }
 fn source_line_breaking(node: &mut Value, obj: &mut Vec<Value>) -> Result<(), String> {
+    if node["class"] == "Math::Function::Fenced" { return fences::line_breaking(node, obj); }
     let m = Model::from_value(node)
         .map_err(|_| "source_render_error: non-node cannot receive line_breaking")?;
     let kind = m.kind();
+    if m.class == "Math::Function::Nary" { return generic_nary::line_breaking(node, obj); }
     if kind == "Multiscript" {
         source_break_child(&mut node["fields"]["parameter_one"], obj, true)?;
         if !obj.is_empty() {
