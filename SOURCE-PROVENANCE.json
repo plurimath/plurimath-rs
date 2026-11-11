@@ -55,6 +55,10 @@
     {
       "path": "workspace/core/ts-ci-fix/src/formats/unicodemath/generated/transform-tables.ts",
       "sha256": "71d29ee0f45cf33232cd6be56d75a160d6a9a0a9aa2012f75215a73ee891fc50"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/generated/unicodemath/render-tables.ts",
+      "sha256": "5f02822dc427aba0ea3a19bd07c9625d4f1418c115f5aaf0e6941aaec740910a"
     }
   ],
   "counts": {
@@ -68,22 +72,28 @@
     "canonical": 1459,
     "unary_keywords": 33,
     "class_map": 63,
+    "font_map": 50,
     "unary_mi": 33,
     "text_unicode_invert": 144,
     "text_symbols_invert": 17,
     "html_entities": 253,
     "latex_left_right": 23,
     "latex_input": 3279,
-    "unicode_input": 3282
+    "unicode_input": 3282,
+    "latex_matrix_environments": 5,
+    "unicode_matrix_marks": 8,
+    "unicode_matrix_parens": 5
   },
   "policy": "Static source-data extraction only. No Node/Ruby product runtime bridge.",
-  "facade_scope": "Source-backed six baseline input routes, mixed common-model transport and six writer dispatches; coverage remains partial. PMA/UnitsML input routes and unported baseline cases remain incomplete.",
+  "facade_scope": "Partial source-backed8inputdispatch;6baselineformatfamilies plusdefaultUnitsML/unit-onlyPMA, withHTMLgrammar/measuredPMA/formatter/unportedwriterfamiliesexplicitlyincomplete.",
   "parameterized_writer_artifact": {
     "path": "handoffs/main-facade-python/parameterized-writers-v3.json",
     "sha256": "2a54a7dc1d10014eebea13bc8c44ac2f4ec5b4b45efd949ec8ba2eec30b17cc3",
     "profiles": 1419,
     "checks": 5676,
-    "policy": "Strict parent-fields/default-context and child-shape guards. No whole-input answers. Known literal-sensitive families use explicit native source handlers."
+    "policy": "Strict parent-fields/default-context and child-shape guards. No whole-input answers. Known literal-sensitive families use explicit native source handlers.",
+    "validation_invocations": 5676,
+    "distinct_profile_inputs": 4145
   },
   "input_sources": {
     "ruby": {
@@ -106,5 +116,12 @@
       "head": "504c74f6a3b8e4bc62cb650029f4d00cbf2438f3",
       "path": "workspace/compatibility/umath-rs"
     }
+  },
+  "mixed_parameterized_profiles": {
+    "source": "handoffs/main-facade-python/parameterized-writers-mixed.json",
+    "sha256": "d100be7941dfec2aeaab9fb98516e4bb2f0603dca159f0b04a972b83ce9a6e44",
+    "additional_profiles": 53,
+    "policy": "Per-field type guards and parameterized source fragments only, no observed input-value lookup.",
+    "validation_invocations": 212
   }
 }

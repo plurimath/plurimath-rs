@@ -229,3 +229,10 @@ pub(super) fn xml_writer(m: &Model, f: &str) -> Result<Vec<Xml>, String> {
     c.push(t);
     Ok(vec![el("m:r", c)])
 }
+
+pub(super) fn direct_omml(m: &Model) -> Result<Vec<Xml>, String> {
+    Ok(vec![el(
+        "m:t",
+        vec![text(&omml_value(m.field("parameter_one"))?)],
+    )])
+}

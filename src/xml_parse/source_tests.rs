@@ -30,11 +30,10 @@ fn xml_errors_and_unimplemented_nodes_are_explicit() {
 }
 
 #[test]
-fn xml_valid_html_extracts_its_mathml_subtree() {
+fn html_requires_its_source_markup_grammar() {
     let input = "<html><body><math><mi>x</mi></math></body></html>";
-    let model = parse(input, "html", &json!({})).unwrap();
-    assert_eq!(model["fields"]["input_string"], input);
-    assert_eq!(model["fields"]["value"][0]["fields"]["value"], "x");
+    let error = parse(input, "html", &json!({})).unwrap_err();
+    assert_eq!(error["code"], "INCOMPLETE_HTML_GRAMMAR");
 }
 
 #[test]

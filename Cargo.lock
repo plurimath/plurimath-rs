@@ -31,6 +31,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "683d7910e743518b0e34f1186f92494becacb047c7b6bf616c96772180fef923"
 
 [[package]]
+name = "asciiunits"
+version = "0.1.0"
+dependencies = [
+ "parsanol",
+ "serde",
+ "serde_json",
+ "sha2",
+]
+
+[[package]]
 name = "block-buffer"
 version = "0.12.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -246,11 +256,14 @@ dependencies = [
 name = "plurimath-facade"
 version = "0.1.0"
 dependencies = [
+ "asciiunits",
  "latexmath",
  "moxml",
+ "parsanol",
  "plurimath-amath",
  "plurimath-umath",
  "serde_json",
+ "unitsdb-rs",
 ]
 
 [[package]]
@@ -419,6 +432,13 @@ name = "unicode-ident"
 version = "1.0.27"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a2c754d6c33795a1c324727428e5a7dedb5b06195f9890bdbcba760d3e246563"
+
+[[package]]
+name = "unitsdb-rs"
+version = "0.1.0"
+dependencies = [
+ "serde_json",
+]
 
 [[package]]
 name = "version_check"

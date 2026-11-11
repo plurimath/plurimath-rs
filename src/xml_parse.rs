@@ -1441,8 +1441,7 @@ impl Xml {
     }
 }
 
-/// Parse source XML through Moxml and construct the façade's common model wire.
-pub fn parse(input: &str, format: &str, _options: &Value) -> Result<Value, Value> {
+pub(crate) fn source_document_rows(input: &str) -> Result<Vec<ElementRow>, Value> {
     let prepared = entity_wrapper::prepare(input);
     let doc =
         Document::parse_with(prepared.as_bytes(), &ParserPolicy::default()).map_err(|error| {
@@ -1455,7 +1454,23 @@ pub fn parse(input: &str, format: &str, _options: &Value) -> Result<Value, Value
         })?;
     let mut rows = doc.element_rows();
     entity_wrapper::restore_rows(&mut rows);
-    let xml = Xml { rows };
+    Ok(rows)
+}
+pub(crate) fn source_entity_decode(input: &str) -> Result<String, Value> {
+    entity_wrapper::decode_html(input).map_err(|message|json!({"code":"PARSE_ERROR","message":message,"byte_offset":0,"offset_policy":"source-xml-parser-zero"}))
+}
+
+/// Parse source XML through Moxml and construct the façade's common model wire.
+pub fn parse(input: &str, format: &str, _options: &Value) -> Result<Value, Value> {
+    if format == "html" {
+        return Err(
+            json!({"code":"INCOMPLETE_HTML_GRAMMAR","message":"Source HTML input requires its math-markup grammar and captured case-insensitive closing tags; XML MathML extraction follows different source semantics"}),
+        );
+    }
+
+    let xml = Xml {
+        rows: source_document_rows(input)?,
+    };
     if xml.rows.is_empty() {
         return Err(error("XML document has no element"));
     }
@@ -1473,24 +1488,6 @@ pub fn parse(input: &str, format: &str, _options: &Value) -> Result<Value, Value
                 ));
             }
             xml.omml(0)?
-        }
-        "html" => {
-            let roots = xml
-                .rows
-                .iter()
-                .filter(|row| {
-                    row.name.local == "math"
-                        && (row.name.namespace.as_deref().unwrap_or("").is_empty()
-                            || row.name.namespace.as_deref() == Some(MATHML))
-                })
-                .map(|r| r.ordinal)
-                .collect::<Vec<_>>();
-            if roots.len() != 1 {
-                return Err(error(
-                    "HTML extraction currently requires one XML-valid MathML math root",
-                ));
-            }
-            xml.math(roots[0])?
         }
         _ => return Err(error(format!("XML input format {format} is incomplete"))),
     };

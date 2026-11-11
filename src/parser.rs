@@ -30,7 +30,9 @@ fn untag(v: &Value) -> Result<Value, String> {
     Ok(v.clone())
 }
 fn single(mut a: Vec<Value>) -> Value {
-    if a.len() == 1 {
+    if a.is_empty() {
+        Value::Null
+    } else if a.len() == 1 {
         a.pop().unwrap()
     } else {
         formula(a)
@@ -51,6 +53,104 @@ fn tx(v: &Value, depth: usize) -> Result<Vec<Value>, String> {
     let m = v
         .as_object()
         .ok_or_else(|| format!("unported stage capture value {v}"))?;
+    if let Some(font) = m.get("fonts_class").and_then(Value::as_str) {
+        if !m.contains_key("fonts_value") {
+            return Err("unported source font constructor without operand".into());
+        }
+        let class = crate::symbols::tables()["font_map"][font]
+            .as_str()
+            .ok_or_else(|| format!("unported source font {font}"))?;
+        let arg = unfence(single(tx(&m["fonts_value"], depth + 1)?));
+        let mut out = vec![node(
+            class,
+            json!({"parameter_one":arg,"parameter_two":font}),
+        )];
+        if let Some(rest) = m.get("expr") {
+            out.extend(tx(rest, depth + 1)?)
+        }
+        return Ok(out);
+    }
+    if m.contains_key("color") && m.contains_key("color_value") {
+        let a = unfence(single(tx(&m["color"], depth + 1)?));
+        let b = unfence(single(tx(&m["color_value"], depth + 1)?));
+        let mut out = vec![node(
+            "Math::Function::Color",
+            json!({"parameter_one":a,"parameter_two":b}),
+        )];
+        if let Some(rest) = m.get("expr") {
+            out.extend(tx(rest, depth + 1)?)
+        }
+        return Ok(out);
+    }
+    if let Some(t) = m.get("text") {
+        let value = if let Some(s) = t.as_str() {
+            s.to_owned()
+        } else if let Some(a) = t.as_array() {
+            let mut text = String::new();
+            for s in a {
+                text.push_str(s.as_str().ok_or("unported non-text literal capture")?)
+            }
+            text
+        } else {
+            return Err("unported source text capture".into());
+        };
+        let mut out = vec![node(
+            "Math::Function::Text",
+            json!({"parameter_one":value,"lang":null}),
+        )];
+        if let Some(rest) = m.get("expr") {
+            out.extend(tx(rest, depth + 1)?)
+        }
+        return Ok(out);
+    }
+    if let Some(c) = m.get("comma") {
+        let mut out = vec![crate::symbols::symbol(
+            c.as_str().ok_or("unported comma capture")?,
+        )];
+        if let Some(rest) = m.get("expr") {
+            out.extend(tx(rest, depth + 1)?)
+        }
+        return Ok(out);
+    }
+    if m.contains_key("power_base") && m.contains_key("base") {
+        if m.keys()
+            .any(|k| !["power_base", "base", "expr"].contains(&k.as_str()))
+        {
+            return Err("unported combined source Base captures".into());
+        }
+        let a = single(tx(&m["power_base"], depth + 1)?);
+        let b = unfence(single(tx(&m["base"], depth + 1)?));
+        let mut out = vec![node(
+            "Math::Function::Base",
+            json!({"parameter_one":a,"parameter_two":b}),
+        )];
+        if let Some(rest) = m.get("expr") {
+            out.extend(tx(rest, depth + 1)?)
+        }
+        return Ok(out);
+    }
+    if let Some(name) = m.get("binary_class").and_then(Value::as_str) {
+        if ["root", "log", "lim"].contains(&name) {
+            let class = crate::symbols::tables()["class_map"][name]
+                .as_str()
+                .ok_or("source binary class unavailable")?;
+            let a = if let Some(v) = m.get("base_value").or_else(|| m.get("base")) {
+                unfence(single(tx(v, depth + 1)?))
+            } else {
+                Value::Null
+            };
+            let b = if let Some(v) = m.get("power_value") {
+                unfence(single(tx(v, depth + 1)?))
+            } else {
+                Value::Null
+            };
+            let mut out = vec![node(class, json!({"parameter_one":a,"parameter_two":b}))];
+            if let Some(rest) = m.get("expr") {
+                out.extend(tx(rest, depth + 1)?)
+            }
+            return Ok(out);
+        }
+    }
     if m.contains_key("power_base") && m.contains_key("base_value") && m.contains_key("power_value")
     {
         if m.len() != 3 {
@@ -149,8 +249,20 @@ fn tx(v: &Value, depth: usize) -> Result<Vec<Value>, String> {
     }
     if m.contains_key("lparen") && m.contains_key("rparen") {
         let a = crate::symbols::symbol(m["lparen"].as_str().ok_or("fence open must be text")?);
-        let b = crate::symbols::symbol(m["rparen"].as_str().ok_or("fence close must be text")?);
-        let body = tx(&m["expr"], depth + 1)?;
+        let b = if m["rparen"].is_null() {
+            Value::Null
+        } else {
+            crate::symbols::symbol(m["rparen"].as_str().ok_or("fence close must be text")?)
+        };
+        let inner = m
+            .get("expr")
+            .or_else(|| m.get("rgb_color"))
+            .ok_or("source fence has no body capture")?;
+        let body = if inner == "" {
+            vec![]
+        } else {
+            tx(inner, depth + 1)?
+        };
         return Ok(vec![node(
             "Math::Function::Fenced",
             json!({"options":{},"parameter_one":a,"parameter_two":body,"parameter_three":b}),
@@ -235,7 +347,22 @@ pub fn response(v: &Value) -> Value {
                     json!({"code":"parser_initialization_error","message":e.to_string()})
                 }
                 ParseError::Stage(stage) => {
-                    json!({"code":if stage.byte_offset().is_some(){"syntax_error"}else{"parser_error"},"message":e.to_string(),"stage":"amath","byte_offset":stage.byte_offset(),"offset_policy":"preprocessed_utf8_bytes","native_detail":format!("{stage:?}")})
+                    let resource = match stage {
+                        amath::Error::Runtime(parsanol::PargError::RecursionLimitExceeded {
+                            depth,
+                            max_depth,
+                        }) => Some(
+                            json!({"kind":"recursion_limit","depth":depth,"max_depth":max_depth}),
+                        ),
+                        amath::Error::Runtime(parsanol::PargError::CallDepthLimitExceeded {
+                            depth,
+                            max_depth,
+                        }) => Some(
+                            json!({"kind":"call_depth_limit","depth":depth,"max_depth":max_depth}),
+                        ),
+                        _ => None,
+                    };
+                    json!({"code":if resource.is_some(){"resource_limit"}else if stage.byte_offset().is_some(){"syntax_error"}else{"parser_error"},"message":e.to_string(),"stage":"amath","byte_offset":stage.byte_offset(),"offset_policy":"preprocessed_utf8_bytes","native_detail":format!("{stage:?}"),"resource":resource})
                 }
             };
             json!({"abi_version":1,"ok":false,"error":error})

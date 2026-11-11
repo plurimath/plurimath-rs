@@ -14,6 +14,11 @@ latexmath = { path = "../../compatibility/latexmath-rs" }
 umath = { package = "plurimath-umath", path = "../../compatibility/umath-rs" }
 moxml = { git = "https://github.com/lutaml/moxml-rs", rev = "c55a7ecf60764d75a7a0ef54f0e483ec40df4b73" }
 
+asciiunits = { path = "../../units-native/asciiunits-rs" }
+unitsdb-rs = { path = "../../units-native/unitsdb-rs" }
+
+parsanol = { git = "https://github.com/parsanol/parsanol-rs", rev = "20d5e6cebcade3cf2111a00a7ef3f5b69d673481" }
+
 [profile.dev]
 debug = 0
 incremental = false

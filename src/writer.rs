@@ -1,5 +1,6 @@
 //! Procedural source-writer port; unported nodes/options fail, never return approximations.
 mod symbol_content;
+mod tables;
 mod templates;
 mod text_content;
 use crate::model::Model;
@@ -505,7 +506,9 @@ fn power_text(m: &Model, f: &str) -> Result<String, String> {
         )),
         "unicodemath" => {
             if b.is_null() || !b.is_object() {
-                return Err("source_render_error: power exponent cannot receive mini_sized?".into());
+                return Err(
+                    "source_render_error: power exponent cannot receive mini_sized?".into(),
+                );
             }
             if b["fields"]["mini_sub_sized"] == true || b["fields"]["mini_sup_sized"] == true {
                 return Err("unported promised mini-sized power exponent".into());
@@ -565,7 +568,163 @@ fn power_xml(m: &Model, f: &str, spacing: bool, allow_templates: bool) -> Result
         ],
     )])
 }
+fn derived_units(m: &Model) -> Result<Model, String> {
+    let value = m
+        .field("text")
+        .as_str()
+        .ok_or("Unitsml.text must be a string")?;
+    let formula = crate::units_parse::formula(value, &serde_json::json!({}))
+        .map_err(|e| format!("unported UnitsML derived-formula profile: {e}"))?;
+    Model::from_value(&formula)
+}
+fn unit_unicode_context(v: &mut Value) {
+    if !v.is_object() {
+        return;
+    }
+    if v["class"] == "Math::Function::FontStyle::Normal"
+        && v["fields"]["parameter_one"]["class"] == "Math::Symbols::Symbol"
+    {
+        if let Some(value) = v["fields"]["parameter_one"]["fields"]["value"].as_str() {
+            if !value.starts_with('\\')
+                && text_content::decode(value).map_or(false, |s| s.chars().count() > 1)
+            {
+                let text = value.to_owned();
+                v["fields"]["parameter_one"] = crate::model::node(
+                    "Math::Function::Text",
+                    serde_json::json!({"parameter_one":text,"lang":null}),
+                );
+            }
+        }
+    }
+    if let Some(fields) = v.get_mut("fields").and_then(Value::as_object_mut) {
+        for x in fields.values_mut() {
+            if x.is_object() {
+                unit_unicode_context(x)
+            } else if let Some(a) = x.as_array_mut() {
+                for x in a {
+                    unit_unicode_context(x)
+                }
+            }
+        }
+    }
+}
+fn normal_text(m: &Model, f: &str) -> Result<String, String> {
+    let p = m.field("parameter_one");
+    if !p.is_null() && !p.is_object() {
+        return Err(
+            "source_render_error: Normal argument cannot receive its source node writer".into(),
+        );
+    }
+    let s = child(p, f)?;
+    Ok(match f {
+        "asciimath" => format!("rm({s})"),
+        "latex" => format!("\\mathrm{{{s}}}"),
+        "html" => s,
+        "unicodemath" => {
+            let token = m.field("parameter_two").as_str().unwrap_or("rm");
+            if crate::symbols::tables()["font_map"][token] != "Math::Function::FontStyle::Normal" {
+                return Err("unported source Normal font-family token".into());
+            }
+            format!("\\mup{s}")
+        }
+        _ => unreachable!(),
+    })
+}
+fn upright_properties() -> Xml {
+    el(
+        "m:rPr",
+        vec![attrs("m:sty", vec![("m:val".into(), "p".into())], vec![])],
+    )
+}
+fn upright(node: &mut Xml) {
+    if let Xml::El(name, _, children) = node {
+        if name == "m:r" {
+            if !children
+                .iter()
+                .any(|c| matches!(c,Xml::El(n,_,_)if n=="m:rPr"))
+            {
+                children.insert(0, upright_properties())
+            }
+        } else {
+            for c in children {
+                upright(c)
+            }
+        }
+    }
+}
+fn normal_xml(
+    m: &Model,
+    f: &str,
+    spacing: bool,
+    allow_templates: bool,
+) -> Result<Vec<Xml>, String> {
+    let p = m.field("parameter_one");
+    if p.is_null() {
+        return Ok(vec![if f == "mathml" {
+            attrs(
+                "mstyle",
+                vec![("mathvariant".into(), "normal".into())],
+                vec![],
+            )
+        } else {
+            el("m:r", vec![upright_properties()])
+        }]);
+    }
+    if !p.is_object() {
+        return Err(
+            "source_render_error: Normal argument cannot receive its source XML writer".into(),
+        );
+    }
+    let child = Model::from_value(p)?;
+    let mut c = if f == "omml" && child.kind() == "Text" {
+        text_content::direct_omml(&child)?
+    } else {
+        render_xml(&child, f, spacing, allow_templates)?
+    };
+    if f == "mathml" {
+        return Ok(vec![attrs(
+            "mstyle",
+            vec![("mathvariant".into(), "normal".into())],
+            c,
+        )]);
+    }
+    if child.kind() == "Number" || child.class.starts_with("Math::Symbols::") {
+        c = c
+            .into_iter()
+            .flat_map(|x| match x {
+                Xml::El(n, _, children) if n == "m:r" => children,
+                _ => vec![x],
+            })
+            .collect()
+    }
+    if c.iter()
+        .all(|x| matches!(x, Xml::Text(_)) || matches!(x,Xml::El(n,_,_)if n=="m:t"))
+    {
+        let mut children = vec![upright_properties()];
+        children.extend(c);
+        return Ok(vec![el("m:r", children)]);
+    }
+    for x in &mut c {
+        upright(x)
+    }
+    Ok(c)
+}
 fn render_text(m: &Model, f: &str) -> Result<String, String> {
+    if m.class.starts_with("Math::Function::Table::") {
+        return tables::render(m, f);
+    }
+    if m.kind() == "Unitsml" {
+        let model = derived_units(m)?;
+        if f == "unicodemath" {
+            let mut v = model.value();
+            unit_unicode_context(&mut v);
+            return render_text(&Model::from_value(&v)?, f);
+        }
+        return render_text(&model, f);
+    }
+    if m.class == "Math::Function::FontStyle::Normal" {
+        return normal_text(m, f);
+    }
     if ["Text", "Mbox", "Left", "Right"].contains(&m.kind()) {
         return text_content::text_writer(m, f);
     }
@@ -657,6 +816,13 @@ fn render_xml(
     spacing: bool,
     allow_templates: bool,
 ) -> Result<Vec<Xml>, String> {
+    if m.kind() == "Unitsml" {
+        return render_xml(&derived_units(m)?, f, spacing, allow_templates);
+    }
+    if m.class == "Math::Function::FontStyle::Normal" {
+        return normal_xml(m, f, spacing, allow_templates);
+    }
+
     if ["Text", "Mbox", "Left", "Right"].contains(&m.kind()) {
         return text_content::xml_writer(m, f);
     }

@@ -1,5 +1,6 @@
 //! Accepted LaTeX/Unicode stage captures -> existing source common-node wire.
 //! Parsing is delegated to the pinned stage crates; this module only transforms captures.
+mod table;
 use crate::model::{formula, node, number};
 use serde_json::{json, Map, Value};
 use std::cell::RefCell;
@@ -73,7 +74,11 @@ fn unary(name: &str, arg: Value) -> Result<Value, Value> {
         "sqrt" => "Math::Function::Sqrt",
         "hat" => "Math::Function::Hat",
         "vec" => "Math::Function::Vec",
-        "bar" => "Math::Function::Bar",
+        "bar" | "overline" => "Math::Function::Bar",
+        "underbrace" => "Math::Function::Ubrace",
+        "det" => "Math::Function::Det",
+        "max" => "Math::Function::Max",
+        "gcd" => "Math::Function::Gcd",
         "dot" => "Math::Function::Dot",
         "ddot" => "Math::Function::Ddot",
         "tilde" => "Math::Function::Tilde",
@@ -89,7 +94,18 @@ fn unary(name: &str, arg: Value) -> Result<Value, Value> {
         }
     };
     let mut fields = json!({"parameter_one":arg});
-    if ["hat", "vec", "bar", "dot", "ddot", "tilde"].contains(&name) {
+    if [
+        "hat",
+        "vec",
+        "bar",
+        "overline",
+        "underbrace",
+        "dot",
+        "ddot",
+        "tilde",
+    ]
+    .contains(&name)
+    {
         fields["attributes"] = json!({})
     }
     Ok(node(class, fields))
@@ -111,6 +127,60 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
     let m = v
         .as_object()
         .ok_or_else(|| incomplete("capture scalar outside a source leaf rule"))?;
+    if m.contains_key("whole") && m.contains_key("decimal") {
+        if m.keys()
+            .any(|key| !["whole", "decimal", "fractional"].contains(&key.as_str()))
+        {
+            return Err(incomplete("unported decimal capture fields"));
+        }
+        let numeric = |value: &Value| -> Result<String, Value> {
+            let result = one(tx(format, value, depth + 1)?);
+            if result["class"] != "Math::Number" {
+                return Err(incomplete("decimal component is not a source number"));
+            }
+            result["fields"]["value"]
+                .as_str()
+                .map(str::to_string)
+                .ok_or_else(|| incomplete("non-string decimal component"))
+        };
+        let whole = numeric(&m["whole"])?;
+        let decimal = m["decimal"]
+            .as_str()
+            .ok_or_else(|| incomplete("non-string decimal delimiter"))?;
+        let value = if let Some(fractional) = m.get("fractional") {
+            format!("{whole}{decimal}{}", numeric(fractional)?)
+        } else {
+            format!("{decimal}{whole}")
+        };
+        return Ok(vec![number(&value)]);
+    }
+    if format == "latex" && m.contains_key("lparen") && m.contains_key("rparen") {
+        if m.len() == 2 {
+            return Ok(Vec::new());
+        }
+        if m.len() == 3 && m.contains_key("expression") {
+            return Ok(vec![formula(tx(format, &m["expression"], depth + 1)?)]);
+        }
+        return Err(incomplete("unported grouped expression capture fields"));
+    }
+    if m.len() == 3
+        && m.contains_key("root")
+        && m.contains_key("first_value")
+        && m.contains_key("second_value")
+    {
+        let first = one(tx(format, &m["first_value"], depth + 1)?);
+        let second = one(tx(format, &m["second_value"], depth + 1)?);
+        return Ok(vec![node(
+            "Math::Function::Root",
+            json!({"parameter_one":first,"parameter_two":second}),
+        )]);
+    }
+    if m.len() == 1 && m.get("environment").is_some_and(Value::is_object) {
+        return tx(format, &m["environment"], depth + 1);
+    }
+    if format == "latex" && m.get("environment").is_some_and(Value::is_string) {
+        return table::parse(m, depth + 1);
+    }
     // Parent script productions retain operand order explicitly, never hash sort order.
     if m.contains_key("base") && (m.contains_key("sub") || m.contains_key("sup")) {
         if m.keys()
@@ -135,6 +205,55 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
                 json!({"parameter_one":base,"parameter_two":unfence(one(tx(format, &m[key],depth+1)?))}),
             )])
         };
+    }
+    if let Some(selector) = m.get("ternary_functions").and_then(Value::as_str) {
+        if m.keys().any(|key| {
+            !["ternary_functions", "subscript", "supscript", "third_value"].contains(&key.as_str())
+        }) {
+            return Err(incomplete("unported n-ary capture fields"));
+        }
+        let class = match selector {
+            "sum" => "Sum",
+            "int" => "Int",
+            "prod" => "Prod",
+            "oint" => "Oint",
+            _ => {
+                return Err(incomplete(format!(
+                    "unported source n-ary constructor {selector}"
+                )))
+            }
+        };
+        let argument = |key: &str| -> Result<Value, Value> {
+            match m.get(key) {
+                Some(value) => Ok(one(tx(format, value, depth + 1)?)),
+                None => Ok(Value::Null),
+            }
+        };
+        return Ok(vec![node(
+            &format!("Math::Function::{class}"),
+            json!({"parameter_one":argument("subscript")?,"parameter_two":argument("supscript")?,"parameter_three":argument("third_value")?}),
+        )]);
+    }
+    if let Some(name @ ("lim" | "log")) = m.get("binary").and_then(Value::as_str) {
+        if m.keys()
+            .any(|key| !["binary", "subscript", "supscript"].contains(&key.as_str()))
+        {
+            return Err(incomplete("unported logarithm/limit capture fields"));
+        }
+        let operand = |key: &str| -> Result<Value, Value> {
+            match m.get(key) {
+                Some(value) => Ok(one(tx(format, value, depth + 1)?)),
+                None => Ok(Value::Null),
+            }
+        };
+        return Ok(vec![node(
+            if name == "lim" {
+                "Math::Function::Lim"
+            } else {
+                "Math::Function::Log"
+            },
+            json!({"parameter_one":operand("subscript")?,"parameter_two":operand("supscript")?}),
+        )]);
     }
     if m.contains_key("supscript") || m.contains_key("subscript") {
         let mut rest = m.clone();
@@ -198,15 +317,24 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         {
             return Err(incomplete("unported additional source capture fields"));
         }
-        if name != "frac" {
-            return Err(incomplete(format!(
-                "unported source binary constructor {name}"
-            )));
+        let class = match name {
+            "frac" => "Frac",
+            "color" => "Color",
+            "mod" | "bmod" | "pmod" => "Mod",
+            "overset" => "Overset",
+            "underset" => "Underset",
+            "stackrel" => "Stackrel",
+            _ => {
+                return Err(incomplete(format!(
+                    "unported source binary constructor {name}"
+                )))
+            }
+        };
+        let mut fields = json!({"parameter_one":one(tx(format,m.get("first_value").ok_or_else(||incomplete("missing first binary operand"))?,depth+1)?),"parameter_two":one(tx(format,m.get("second_value").ok_or_else(||incomplete("missing second binary operand"))?,depth+1)?)});
+        if name == "underset" {
+            fields["options"] = json!({});
         }
-        return Ok(vec![node(
-            "Math::Function::Frac",
-            json!({"parameter_one":one(tx(format, m.get("first_value").ok_or_else(||incomplete("missing fraction numerator"))?,depth+1)?),"parameter_two":one(tx(format, m.get("second_value").ok_or_else(||incomplete("missing fraction denominator"))?,depth+1)?)}),
-        )]);
+        return Ok(vec![node(&format!("Math::Function::{class}"), fields)]);
     }
     if m.contains_key("sqrt") {
         if m.keys()
@@ -243,7 +371,8 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
             )?),
         )?]);
     }
-    if m.get("unary").is_some_and(Value::is_string)
+    if m.get("underover").is_some_and(Value::is_string)
+        || m.get("unary").is_some_and(Value::is_string)
         || m.get("unary_functions").is_some_and(Value::is_string)
     {
         if m.len() != 2 || !m.contains_key("first_value") {
@@ -252,6 +381,7 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         let name = m
             .get("unary")
             .or_else(|| m.get("unary_functions"))
+            .or_else(|| m.get("underover"))
             .and_then(Value::as_str)
             .ok_or_else(|| incomplete("non-text unary selector"))?;
         return Ok(vec![unary(
@@ -371,14 +501,34 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         ] {
             rest.remove(key);
         }
-        return Ok(vec![fenced(
-            left,
-            tx(format, &Value::Object(rest), depth + 1)?,
-            right,
-        )]);
+        let body = if rest.len() == 1 && rest.contains_key("expression") {
+            tx(format, &rest["expression"], depth + 1)?
+        } else {
+            tx(format, &Value::Object(rest), depth + 1)?
+        };
+        return Ok(vec![fenced(left, body, right)]);
     }
     if m.len() == 1 {
         let (key, x) = m.iter().next().unwrap();
+        if key == "ternary" {
+            let class = match x.as_str() {
+                Some("sum") => "Sum",
+                Some("int") => "Int",
+                Some("prod") => "Prod",
+                Some("oint") => "Oint",
+                _ => return Err(incomplete("unported source bare n-ary constructor")),
+            };
+            return Ok(vec![node(
+                &format!("Math::Function::{class}"),
+                json!({"parameter_one":null,"parameter_two":null,"parameter_three":null}),
+            )]);
+        }
+        if key == "three_per_em_space" {
+            return Ok(vec![node(
+                "Math::Symbols::ThreePerEmSpace",
+                json!({"value":null}),
+            )]);
+        }
         if key == "number" {
             return x
                 .as_str()
@@ -399,6 +549,7 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
             "unicode_symbols",
             "binary_symbols",
             "relational_symbols",
+            "combined_symbols",
         ]
         .contains(&key.as_str())
         {
@@ -434,6 +585,14 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
             value["fields"]["base"] = json!(base);
             return Ok(vec![value]);
         }
+        if key == "expression" {
+            let values = tx(format, x, depth + 1)?;
+            return if values.len() > 1 {
+                Ok(vec![formula(values)])
+            } else {
+                Ok(values)
+            };
+        }
         if [
             "expression",
             "expr",
@@ -451,6 +610,7 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
             "sup_exp",
             "sub_exp",
             "subsup_exp",
+            "decimal_number",
             "power_base",
             "base",
             "left_right",
@@ -472,6 +632,20 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
     if m.contains_key("sequence") && m.contains_key("expression") && m.len() == 2 {
         let mut out = tx(format, &m["sequence"], depth + 1)?;
         out.extend(tx(format, &m["expression"], depth + 1)?);
+        return Ok(out);
+    }
+    if m.contains_key("factor") && m.contains_key("operand") && m.len() == 2 {
+        let mut out = tx(format, &m["factor"], depth + 1)?;
+        out.extend(tx(format, &m["operand"], depth + 1)?);
+        return Ok(out);
+    }
+    if m.contains_key("binary_symbols") && m.contains_key("expr") && m.len() == 2 {
+        let mut out = tx(
+            format,
+            &json!({"binary_symbols":m["binary_symbols"]}),
+            depth + 1,
+        )?;
+        out.extend(tx(format, &m["expr"], depth + 1)?);
         return Ok(out);
     }
     if m.contains_key("factor") && m.contains_key("expr") && m.len() == 2 {
