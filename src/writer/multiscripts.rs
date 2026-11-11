@@ -5,7 +5,7 @@ fn truthy(value: &Value) -> bool {
     !value.is_null() && value != false
 }
 fn node(value: &Value) -> Result<Model, String> {
-    Model::from_value(value)
+    Model::from_value(value).map_err(|error| source_error(&error))
 }
 fn child(value: &Value, format: &str) -> Result<String, String> {
     let m = node(value)?;

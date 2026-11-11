@@ -1158,7 +1158,7 @@ fn render_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, Strin
 }
 fn render_xml_inner(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     if numbers::handles(m) { return numbers::xml(m, f); }
-    if m.class == "Math::Function::Multiscript" { return multiscripts::xml(m, f, ctx); }
+    if ["Math::Function::Multiscript", "Math::Function::Linebreak"].contains(&m.class.as_str()) { return multiscripts::xml(m, f, ctx); }
     if ["Substack", "Msline", "Mglyph"].contains(&m.kind()) { return stacked::xml(m, f, ctx); }
     if nary::handles(m) { return nary::xml(m, f, ctx); }
     if m.class == "Math::Function::PowerBase" || (f == "omml" && ["Math::Function::Mod", "Math::Function::Sqrt"].contains(&m.class.as_str())) { return operators::xml_with_style(m, f, ctx, Some(ctx.display_style)); }
@@ -2332,6 +2332,7 @@ fn formula_line_breaking(values: &mut Vec<Value>, obj: &mut Vec<Value>) -> Resul
 // 0a1df68. The exporter and full observations accompany the task evidence.
 fn source_class_properties(m: &Model) -> (&'static [&'static str], bool, bool) {
     match m.class.as_str() {
+        "Math::Function::Multiscript" => (&["parameter_one", "parameter_two", "parameter_three"], true, false),
         "Math::Formula" => (
             &["value", "left_right_wrapper", "displaystyle"],
             false,
@@ -2575,6 +2576,39 @@ fn source_line_breaking(node: &mut Value, obj: &mut Vec<Value>) -> Result<(), St
     let m = Model::from_value(node)
         .map_err(|_| "source_render_error: non-node cannot receive line_breaking")?;
     let kind = m.kind();
+    if kind == "Multiscript" {
+        source_break_child(&mut node["fields"]["parameter_one"], obj, true)?;
+        if !obj.is_empty() {
+            *obj = vec![new_source_node(&m.class, serde_json::json!({
+                "parameter_one": filter_source_values(std::mem::take(obj)),
+                "parameter_two": node["fields"]["parameter_two"],
+                "parameter_three": node["fields"]["parameter_three"]
+            }))];
+            node["fields"]["parameter_two"] = Value::Null;
+            node["fields"]["parameter_three"] = Value::Null;
+            return Ok(());
+        }
+        let field = node["fields"]["parameter_two"].clone();
+        let values = field.as_array().ok_or("source_render_error: multiscript subscript field has no array line-breaking methods")?;
+        if linebreak_index(values).is_some() {
+            let mut values = values.clone();
+            formula_line_breaking(&mut values, obj)?;
+            core_updated_values(node, "parameter_two", obj, true)?;
+        } else {
+            for child in node["fields"]["parameter_two"].as_array_mut().unwrap() {
+                source_break_child(child, obj, false)?;
+            }
+        }
+        if !obj.is_empty() {
+            *obj = vec![new_source_node(&m.class, serde_json::json!({
+                "parameter_one": null,
+                "parameter_two": std::mem::take(obj),
+                "parameter_three": node["fields"]["parameter_three"]
+            }))];
+            node["fields"]["parameter_three"] = Value::Null;
+        }
+        return Ok(());
+    }
     if matches!(kind, "Formula" | "Mrow" | "Mstyle") {
         let values = node["fields"]["value"]
             .as_array_mut()
@@ -2830,7 +2864,7 @@ pub fn write(model: &Value, format: &str, options: &Value) -> Result<String, Str
     let m = Model::from_value(model)?;
     let opts = options.as_object().ok_or("options must be an object")?;
     if format == "omml" && opts.contains_key("intent") {
-        return Err("source_argument_error: unknown keyword: intent".into());
+        return Err("source_argument_error: unknown keyword: :intent".into());
     }
     for k in opts.keys() {
         if ![

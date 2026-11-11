@@ -58,3 +58,15 @@ fn nullable_fences_multi_node_continuations_and_color_match_source() {
         136,
     );
 }
+
+#[test]
+fn omml_preserves_source_unknown_intent_keyword_error() {
+    // Ruby0a1 Formula#to_omml rejects this keyword by presence, including false.
+    let model=serde_json::json!({"class":"Math::Formula","fields":{"value":[],"displaystyle":true}});
+    for value in [serde_json::json!(false),serde_json::json!(true),serde_json::Value::Null] {
+        let actual=plurimath_facade::request(&serde_json::json!({"op":"write","format":"omml","model":model,"options":{"intent":value}}));
+        assert_eq!(actual["ok"],false);
+        assert_eq!(actual["error"]["source_class"],"ArgumentError");
+        assert_eq!(actual["error"]["message"],"unknown keyword: :intent");
+    }
+}
