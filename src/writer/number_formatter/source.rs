@@ -177,11 +177,12 @@ impl Source {
                     })
                 }
             };
-            if !(2..=36).contains(&radix) {
+            // String#to_i: radix 0 auto-detects; 1, negatives and > 36 raise.
+            if radix != 0 && !(2..=36).contains(&radix) {
                 return Err(FormatterError::RubyArgumentError { message: format!("invalid radix {radix}") });
             }
-            let (_neg, values) = string_to_i_digits(strip_sign(&raw), radix as u32);
-            (base_values_to_decimal(&values, radix as u32), String::new(), 0)
+            let (_neg, values, effective) = string_to_i_digits(strip_sign(&raw), radix as u32);
+            (base_values_to_decimal(&values, effective), String::new(), 0)
         };
         if exponent.unsigned_abs() as usize > MAX_EXPANSION {
             return Err(FormatterError::ResourceLimit { what: "exponent" });

@@ -188,3 +188,55 @@ fn numeric_string_options_are_coerced() {
     assert_eq!(s("1234567", &[("group_digits", st("4")), ("group", st("_"))]), "123_4567");
     assert_eq!(s("255", &[("base", st("16"))]), "0xff");
 }
+
+fn with_base(n: &str, base: i64, w: TargetWriter) -> String {
+    match format_number_for_writer(n, Some(base), w, &base_profile(Nil), &HashArg::Nil) {
+        Ok(WriterOutput::Text(t)) => t,
+        Ok(WriterOutput::Xml(x)) => x.to_compact(),
+        Err(e) => format!("ERR {}", e.ruby_class()),
+    }
+}
+
+#[test]
+fn non_decimal_source_uses_string_to_i_prefix_scan() {
+    // Source#parse_decimal: "1g".to_i(16) == 1; "0x1f".to_i(16) == 31.
+    assert_eq!(with_base("1g", 16, TargetWriter::AsciiMath), "1_(16)");
+    assert_eq!(with_base("-0x1f", 16, TargetWriter::AsciiMath), "-1f_(16)");
+    // Digits-only text stays a decimal magnitude even under base 2 (and the
+    // default group_digits 3 still applies).
+    assert_eq!(with_base("10", 2, TargetWriter::PlainText), "0b1,010");
+    // Radix outside String#to_i range fails in Source before BaseNotation.
+    assert_eq!(with_base("zz", 37, TargetWriter::PlainText), "ERR ArgumentError");
+    // String#to_i(0) auto-detects and never raises, so base 0 reaches
+    // BaseNotation.validate! (UnsupportedBase), unlike radix 1 (ArgumentError).
+    assert_eq!(s("ff", &[("base", Int(0))]), "ERR Plurimath::Errors::UnsupportedBase");
+    assert_eq!(s("ff", &[("base", Int(1))]), "ERR ArgumentError");
+    // A String base is non-decimal for Source; "ff".to_i("16") is a TypeError.
+    assert_eq!(s("ff", &[("base", st("16"))]), "ERR TypeError");
+    // decimal_input? accepts "1.2.3" but BigDecimal() rejects it.
+    assert_eq!(s("1.2.3", &[("base", Int(16))]), "ERR ArgumentError");
+}
+
+#[test]
+fn explicit_zero_precision_and_notation() {
+    let p = base_profile(Int(0));
+    // engineering_precision: explicit 0 falls through to inference (6 - 3).
+    assert_eq!(out(&p, "123456", TargetWriter::PlainText, &[("notation", st("engineering"))]), "123.456 \u{d7} 10^3");
+    // e notation honours the resolved precision 0 for the coefficient.
+    assert_eq!(out(&p, "123456", TargetWriter::PlainText, &[("notation", st("e"))]), "1e5");
+    // MathML for scientific: mrow(mn coefficient, mo times, msup(10, exp)).
+    assert_eq!(
+        out(&p, "-4200", TargetWriter::MathMl, &[("notation", st("scientific"))]),
+        "<mrow><mn>-4</mn><mo>\u{d7}</mo><msup><mn>10</mn><mn>3</mn></msup></mrow>"
+    );
+}
+
+#[test]
+fn omml_semantic_base_structure() {
+    assert_eq!(
+        with_base("-5", 2, TargetWriter::Omml),
+        "<m:sSub><m:sSubPr><m:ctrlPr><w:rPr><w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/><w:i/></w:rPr></m:ctrlPr></m:sSubPr><m:e><m:r><m:t>-101</m:t></m:r></m:e><m:sub><m:r><m:t>2</m:t></m:r></m:sub></m:sSub>"
+    );
+    // The t_tag path is the flat to_s.
+    assert_eq!(with_base("-5", 2, TargetWriter::PlainText), "-0b101");
+}

@@ -204,7 +204,7 @@ pub(crate) fn kernel_integer_base10(text: &str) -> Result<Option<i64>, ()> {
 
 /// Ruby `String#to_i` (lenient, base 10) — used for `exponent_text.to_i`.
 pub(crate) fn string_to_i_lenient(text: &str) -> Option<i64> {
-    let (neg, digits) = string_to_i_digits(text, 10);
+    let (neg, digits, _) = string_to_i_digits(text, 10);
     let dec = super::digits::base_values_to_decimal(&digits, 10);
     let trimmed = dec.trim_start_matches('0');
     if trimmed.len() > 18 {
@@ -217,8 +217,10 @@ pub(crate) fn string_to_i_lenient(text: &str) -> Option<i64> {
 /// Ruby `String#to_i(base)` prefix scan: leading whitespace, one sign, an
 /// optional radix prefix matching `base`, then digits with single
 /// underscores between them; stops at the first invalid character.
-/// Returns `(negative, digit values)`.
-pub(crate) fn string_to_i_digits(text: &str, base: u32) -> (bool, Vec<u32>) {
+/// `base == 0` auto-detects the radix from the prefix (`0x`, `0b`, `0o`,
+/// `0d`, leading `0` = octal, else decimal), as Ruby does.
+/// Returns `(negative, digit values, effective radix)`.
+pub(crate) fn string_to_i_digits(text: &str, base: u32) -> (bool, Vec<u32>, u32) {
     let chars: Vec<char> = text.chars().collect();
     let mut i = 0;
     while i < chars.len() && matches!(chars[i], ' ' | '\t' | '\n' | '\u{0b}' | '\u{0c}' | '\r') {
@@ -228,6 +230,20 @@ pub(crate) fn string_to_i_digits(text: &str, base: u32) -> (bool, Vec<u32>) {
     if i < chars.len() && (chars[i] == '+' || chars[i] == '-') {
         neg = chars[i] == '-';
         i += 1;
+    }
+    let mut base = base;
+    if base == 0 {
+        base = match (chars.get(i), chars.get(i + 1).map(|c| c.to_ascii_lowercase())) {
+            (Some('0'), Some('x')) => 16,
+            (Some('0'), Some('b')) => 2,
+            (Some('0'), Some('o')) => 8,
+            (Some('0'), Some('d')) => 10,
+            (Some('0'), Some(_)) => {
+                i += 1;
+                8
+            }
+            _ => 10,
+        };
     }
     if i + 1 < chars.len() && chars[i] == '0' {
         let p = chars[i + 1].to_ascii_lowercase();
@@ -252,5 +268,5 @@ pub(crate) fn string_to_i_digits(text: &str, base: u32) -> (bool, Vec<u32>) {
             break;
         }
     }
-    (neg, out)
+    (neg, out, base)
 }
