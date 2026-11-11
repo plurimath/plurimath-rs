@@ -45,6 +45,16 @@ fn transport_node_budget_and_reserved_literal_keys_are_explicit() {
   assert_eq!(response["error"]["resource"]["kind"],"json_nodes");assert_eq!(response["error"]["resource"]["max_nodes"],1_000_000);
  }
  let literal=json!({"op":"model","model":{"class":"Math::Number","fields":{"value":{"$serde_json::private::RawValue":"not JSON"}}}});
- assert_eq!(call(&literal)["model"],literal["model"]);
+ // The raw_value Cargo feature reserves a marker in Serde Value's own
+ // response deserializer. Compare actual C reply bytes and the public Rust
+ // value API; neither may infer a literal Hash as raw JSON.
+ let input=serde_json::to_vec(&literal).unwrap();
+ assert_eq!(plurimath_facade::request_json(&input)["model"],literal["model"]);
+ unsafe {
+  let pointer=plurimath_facade::plurimath_facade_json(input.as_ptr(),input.len());assert!(!pointer.is_null());
+  let output=std::ffi::CStr::from_ptr(pointer).to_bytes().to_vec();plurimath_facade::plurimath_facade_free(pointer);
+  let expected=serde_json::to_vec(&json!({"model":literal["model"],"abi_version":1,"ok":true})).unwrap();
+  assert_eq!(output,expected);
+ }
  assert_eq!(call(&json!({"op":"parse","format":"asciimath","input":"1"}))["ok"],true);
 }
