@@ -275,5 +275,8 @@ fn source_profile_unitsdb_bc089c0_definitions() {
             change["id"]
         );
     }
-    assert_eq!(profile["unit_resolution_changes"].as_array().unwrap().len(), 11);
+    assert_eq!(
+        profile["unit_resolution_changes"].as_array().unwrap().len(),
+        11
+    );
 }
