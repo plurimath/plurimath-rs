@@ -1,5 +1,6 @@
 //! Procedural source-writer port; unported nodes/options fail, never return approximations.
 mod scripts;
+mod styles;
 mod symbol_content;
 mod table_xml;
 mod tables;
@@ -737,6 +738,9 @@ fn normal_xml(
     Ok(c)
 }
 fn render_text(m: &Model, f: &str) -> Result<String, String> {
+    if m.kind() == "Color" {
+        return styles::text(m, f);
+    }
     if m.kind() == "Base" {
         return scripts::text(m, f);
     }
@@ -846,6 +850,9 @@ fn render_xml(
     spacing: bool,
     allow_templates: bool,
 ) -> Result<Vec<Xml>, String> {
+    if m.kind() == "Color" {
+        return styles::xml(m, f, spacing, allow_templates);
+    }
     if m.kind() == "Base" {
         return scripts::xml(m, f, spacing, allow_templates);
     }
