@@ -1,4 +1,5 @@
 //! Procedural source-writer port; unported nodes/options fail, never return approximations.
+mod layout_nodes;
 mod generic_nary;
 mod operators;
 mod numbers;
@@ -757,6 +758,7 @@ fn normal_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, Strin
     Ok(c)
 }
 fn render_text(m: &Model, f: &str) -> Result<String, String> {
+    if layout_nodes::handles(m) { return layout_nodes::text_writer(m, f); }
     if fences::handles(m) { return fences::text(m, f); }
     if m.class == "Math::Function::Nary" { return generic_nary::text_writer(m, f); }
     if numbers::handles(m) { return numbers::text(m, f); }
@@ -1162,6 +1164,7 @@ fn render_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, Strin
     Ok(nodes)
 }
 fn render_xml_inner(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
+    if layout_nodes::handles(m) { return layout_nodes::xml(m, f, ctx); }
     if m.class == "Math::Function::Mod" { return line_break_overrides::mod_xml(m, f, ctx); }
     if fences::handles(m) { return fences::xml(m, f, ctx); }
     if m.class == "Math::Formula" && f == "mathml" && ctx.intent
@@ -2647,43 +2650,8 @@ fn source_line_breaking(node: &mut Value, obj: &mut Vec<Value>) -> Result<(), St
         }
         return Ok(());
     }
-    if kind == "Phantom" {
-        let values = node["fields"]["parameter_one"]
-            .as_array_mut()
-            .ok_or("source_render_error: phantom line breaking requires an array")?;
-        if let Some(index) = linebreak_index(values) {
-            let tail = take_direct_line(values, index);
-            *obj = vec![new_source_node(
-                &m.class,
-                serde_json::json!({"parameter_one":tail}),
-            )];
-            let mut nested = vec![];
-            // UnaryFunction#reprocess_parameter_one calls the same custom
-            // algorithm on the first line before prepending a pending line.
-            source_line_breaking(node, &mut nested)?;
-            if !nested.is_empty() {
-                obj.insert(
-                    0,
-                    new_source_node(
-                        "Math::Function::Linebreak",
-                        serde_json::json!({"parameter_one":null,"attributes":{}}),
-                    ),
-                );
-                obj.insert(
-                    0,
-                    new_source_node(&m.class, serde_json::json!({"parameter_one":nested})),
-                );
-            }
-        } else {
-            for index in 0..values.len() {
-                source_break_child(&mut values[index], obj, false)?;
-                if !obj.is_empty() {
-                    obj.extend(values.split_off(index + 1));
-                    break;
-                }
-            }
-        }
-        return Ok(());
+    if matches!(m.class.as_str(),"Math::Function::Phantom"|"Math::Function::Msgroup"|"Math::Function::Longdiv") {
+        return custom_array_line_breaking(node,obj);
     }
     let drop = matches!(
         kind,
@@ -2960,4 +2928,45 @@ pub fn write(model: &Value, format: &str, options: &Value) -> Result<String, Str
         }
         Ok(format!("{}\n", dump(&attrs("m:oMathPara", ns, nodes), 0)))
     }
+}
+
+// Shared UnaryFunction#custom_array_line_breaking source procedure.
+fn custom_array_line_breaking(node:&mut Value,obj:&mut Vec<Value>)->Result<(),String>{
+    let m=Model::from_value(node)?;
+    let values = node["fields"]["parameter_one"]
+        .as_array_mut()
+        .ok_or("source_render_error: phantom line breaking requires an array")?;
+    if let Some(index) = linebreak_index(values) {
+        let tail = take_direct_line(values, index);
+        *obj = vec![new_source_node(
+            &m.class,
+            serde_json::json!({"parameter_one":tail}),
+        )];
+        let mut nested = vec![];
+        // UnaryFunction#reprocess_parameter_one calls the same custom
+        // algorithm on the first line before prepending a pending line.
+        source_line_breaking(node, &mut nested)?;
+        if !nested.is_empty() {
+            obj.insert(
+                0,
+                new_source_node(
+                    "Math::Function::Linebreak",
+                    serde_json::json!({"parameter_one":null,"attributes":{}}),
+                ),
+            );
+            obj.insert(
+                0,
+                new_source_node(&m.class, serde_json::json!({"parameter_one":nested})),
+            );
+        }
+    } else {
+        for index in 0..values.len() {
+            source_break_child(&mut values[index], obj, false)?;
+            if !obj.is_empty() {
+                obj.extend(values.split_off(index + 1));
+                break;
+            }
+        }
+    }
+    return Ok(());
 }

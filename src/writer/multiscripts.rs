@@ -7,7 +7,7 @@ fn truthy(value: &Value) -> bool {
 fn node(value: &Value) -> Result<Model, String> {
     Model::from_value(value).map_err(|error| source_error(&error))
 }
-fn child(value: &Value, format: &str) -> Result<String, String> {
+pub(super) fn child(value: &Value, format: &str) -> Result<String, String> {
     let m = node(value)?;
     // None is the explicit source Multiscript placeholder. Its four
     // textual methods return nil, which the source joins as empty text.
@@ -34,7 +34,7 @@ fn child(value: &Value, format: &str) -> Result<String, String> {
     }
     render_text(&m, format)
 }
-fn xml_child(
+pub(super) fn xml_child(
     value: &Value,
     format: &str,
     ctx: &WriterContext,
