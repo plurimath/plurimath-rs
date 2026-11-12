@@ -591,12 +591,19 @@ fn run(req: &J) -> Result<J, E> {
     }
 }
 pub fn evaluate_json(input: &str) -> String {
-    let parsed = serde_json::from_str::<J>(input)
-        .map(|mut request| {
-            request.sort_all_objects();
-            request
-        })
-        .map_err(|_| "InvalidRequest");
+    // Serde RawValue remains syntax authority; preserve the original numeric
+    //127-container/finite-number policy despite workspace feature unification.
+    let parsed = plurimath_json::decode_with_limits(
+        input.as_bytes(),
+        127,
+        usize::MAX,
+        plurimath_json::NumberMode::Finite,
+    )
+    .map(|mut request| {
+        request.sort_all_objects();
+        request
+    })
+    .map_err(|_| "InvalidRequest");
     if let Ok(request) = &parsed {
         if request["schema"] == gum::SCHEMA {
             return serialize(gum::run(request));
@@ -624,6 +631,7 @@ fn serialize(mut output: J) -> String {
     // AsciiUnits enables serde_json's preserve_order feature. Keep both
     // profiles byte-stable regardless of Cargo feature unification.
     output.sort_all_objects();
+    plurimath_json::canonicalize_finite_numbers(&mut output);
     serde_json::to_string(&output).expect("JSON value serialization")
 }
 
