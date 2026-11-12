@@ -1,0 +1,830 @@
+{
+  "profile": "asciimath-binary-and-power-source-v1",
+  "ruby_source": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "ruby": "4.0.1",
+  "source_files": {
+    "handoffs/main-native-pma-integrated/extra-input-models338.json": "a8b94f2d2e66f64b9c2adb2062a9b37098ae8b7b2077fe92a58743891fa5c560",
+    "handoffs/main-native-ascii-extra858/independent-ruby-qualified.json": "a9ebf804f342ac2801b2a78fb5e2eb5497286d03ba3c172067a254364e1ea3b4",
+    "handoffs/main-native-ascii-extra858/independent-combined-ruby.json": "bae9b6d6556ddb51f65a2a98cb9443b2300dcc5cd76c3e515d1d520db22b3b72"
+  },
+  "cases": [
+    {
+      "input": "log_(d)^(d)log_(100)^(dd)log^(dd)",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "log_(d)^(d)log_(100)^(dd)log^(dd)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Log",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "d"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "d"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Function::Log",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "100"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Function::Log",
+              "fields": {
+                "parameter_one": null,
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "underset(a)(b)",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "underset(a)(b)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Underset",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "b"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "overset(a)(b)",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "overset(a)(b)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Overset",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "b"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "overset",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "overset",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Overset",
+              "fields": {
+                "parameter_one": null,
+                "parameter_two": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "underset",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "underset",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Underset",
+              "fields": {
+                "options": {},
+                "parameter_one": null,
+                "parameter_two": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "overset(a)",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "overset(a)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Overset",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_two": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "underset(a)",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "underset(a)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Underset",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_two": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "overset(a+b)(x^2)",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "overset(a+b)(x^2)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Overset",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "a"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Plus",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "b"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Number",
+                      "fields": {
+                        "base": null,
+                        "mini_sub_sized": false,
+                        "mini_sup_sized": false,
+                        "value": "2"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "underset(1/2)(sqrt(x))",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "underset(1/2)(sqrt(x))",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Underset",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Function::Frac",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Number",
+                      "fields": {
+                        "base": null,
+                        "mini_sub_sized": false,
+                        "mini_sup_sized": false,
+                        "value": "1"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Number",
+                      "fields": {
+                        "base": null,
+                        "mini_sub_sized": false,
+                        "mini_sup_sized": false,
+                        "value": "2"
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Sqrt",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "overset()(b)",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "overset()(b)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Overset",
+              "fields": {
+                "parameter_one": null,
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "b"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "underset(a)()",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "underset(a)()",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Underset",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_two": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "log^2",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "log^2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Log",
+              "fields": {
+                "parameter_one": null,
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "log_3",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "log_3",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Log",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "3"
+                  }
+                },
+                "parameter_two": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "log_(a+b)^(x^2)",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "log_(a+b)^(x^2)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Log",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "a"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Plus",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "b"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Number",
+                      "fields": {
+                        "base": null,
+                        "mini_sub_sized": false,
+                        "mini_sup_sized": false,
+                        "value": "2"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "log^2 x",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "log^2 x",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Log",
+              "fields": {
+                "parameter_one": null,
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "x"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "log_(a+b)^2",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "log_(a+b)^2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Log",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "a"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Plus",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "b"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "root(3)(x^2)",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "root(3)(x^2)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Root",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "3"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Number",
+                      "fields": {
+                        "base": null,
+                        "mini_sub_sized": false,
+                        "mini_sup_sized": false,
+                        "value": "2"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "stackrel(a)(b)",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "stackrel(a)(b)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Stackrel",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "b"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "sin overset",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "sin overset",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sin",
+              "fields": {
+                "parameter_one": null
+              }
+            },
+            {
+              "class": "Math::Function::Overset",
+              "fields": {
+                "parameter_one": null,
+                "parameter_two": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "sqrt underset",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "sqrt underset",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sqrt",
+              "fields": {
+                "parameter_one": null
+              }
+            },
+            {
+              "class": "Math::Function::Underset",
+              "fields": {
+                "options": {},
+                "parameter_one": null,
+                "parameter_two": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "sin frac",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "sin frac",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sin",
+              "fields": {
+                "parameter_one": null
+              }
+            },
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": null,
+                "parameter_two": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "overset(a)^2",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "overset(a)^2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Overset",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Hat",
+                  "fields": {
+                    "value": null
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
