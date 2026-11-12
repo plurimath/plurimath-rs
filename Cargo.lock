@@ -358,6 +358,7 @@ dependencies = [
  "asciiunits",
  "latexmath",
  "moxml",
+ "parsanol 0.20.12",
  "parsanol 0.20.14",
  "plurimath-amath",
  "plurimath-json",

@@ -23,3 +23,5 @@ asciiunits = { git = "https://github.com/unitsml/asciiunits-rs", rev = "498cec2c
 unitsdb-rs = { git = "https://github.com/unitsml/unitsdb-rs", rev = "969a131b8992930a6ff6f869291f1f0d7cb68d33" }
 
 parsanol = { git = "https://github.com/parsanol/parsanol-rs", rev = "5206a33b5417b4ecd3a601930461ed2967c871e7" }
+# Stage errors belong to the stage SDK; HTML uses the newer captured-state SDK.
+parsanol_stage = { package = "parsanol", git = "https://github.com/parsanol/parsanol-rs", rev = "20d5e6cebcade3cf2111a00a7ef3f5b69d673481" }

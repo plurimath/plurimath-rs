@@ -750,7 +750,11 @@ impl std::fmt::Display for ParseError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             Self::Unported(s) | Self::InvalidOptions(s) | Self::Initialization(s) => f.write_str(s),
-            Self::SourceOptions(error) => f.write_str(error["message"].as_str().unwrap_or("invalid source parse options")),
+            Self::SourceOptions(error) => f.write_str(
+                error["message"]
+                    .as_str()
+                    .unwrap_or("invalid source parse options"),
+            ),
             Self::Stage(e) => e.fmt(f),
             Self::ConverterResource { depth, max_depth } => {
                 write!(f, "common converter depth {depth} exceeds {max_depth}")
@@ -774,7 +778,9 @@ pub fn parse(input: &str, format: &str, options: &Value) -> Result<Value, ParseE
         .map_err(ParseError::SourceOptions)?;
     let decimal = crate::parse_options::decimal(&normalized);
     let stage = CACHED_PARSER.with(|p| match p {
-        Ok(parser) => parser.parse_legacy_with_decimal(input, decimal).map_err(ParseError::Stage),
+        Ok(parser) => parser
+            .parse_legacy_with_decimal(input, decimal)
+            .map_err(ParseError::Stage),
         Err(message) => Err(ParseError::Initialization(message.clone())),
     })?;
     let tree =
@@ -819,16 +825,14 @@ pub fn response(v: &Value) -> Value {
                 }
                 ParseError::Stage(stage) => {
                     let resource = match stage {
-                        amath::Error::Runtime(parsanol::PargError::RecursionLimitExceeded {
-                            depth,
-                            max_depth,
-                        }) => Some(
+                        amath::Error::Runtime(
+                            parsanol_stage::PargError::RecursionLimitExceeded { depth, max_depth },
+                        ) => Some(
                             json!({"kind":"recursion_limit","depth":depth,"max_depth":max_depth}),
                         ),
-                        amath::Error::Runtime(parsanol::PargError::CallDepthLimitExceeded {
-                            depth,
-                            max_depth,
-                        }) => Some(
+                        amath::Error::Runtime(
+                            parsanol_stage::PargError::CallDepthLimitExceeded { depth, max_depth },
+                        ) => Some(
                             json!({"kind":"call_depth_limit","depth":depth,"max_depth":max_depth}),
                         ),
                         _ => None,
