@@ -1,10 +1,10 @@
-mod json_request;
-mod parse_options;
-pub mod source_values;
 pub mod html_parse;
+mod json_request;
 pub mod model;
+mod parse_options;
 pub mod parser;
 pub mod pma_parse;
+pub mod source_values;
 pub mod symbols;
 pub mod text_parse;
 pub mod units_parse;
@@ -19,10 +19,46 @@ pub fn stage_tree(input: &str) -> Result<Value, String> {
         .map_err(|e| e.to_string())
 }
 pub fn request(v: &Value) -> Value {
-    let parse_format = match v["format"].as_str().unwrap_or("") { "unicodemath"=>"unicode", format=>format };
-    let normalized_parse_options = if v["op"]=="parse" && ["asciimath","html","latex","unicode","mathml","omml","unitsml","pma"].contains(&parse_format) {
-        match parse_options::normalize(parse_format,v.get("options")) { Ok(options)=>options,Err(error)=>return json!({"abi_version":1,"ok":false,"error":error}) }
-    } else { json!({}) };
+    let mut response = request_inner(v);
+    // Math.parse wraps grammar syntax failures in its public ParseError.
+    // Preserve typed native resource errors and their distinct envelopes.
+    if v["op"] == "parse"
+        && response["ok"] == false
+        && response["error"]["source_class"].is_null()
+        && matches!(
+            response["error"]["code"].as_str(),
+            Some("syntax_error" | "PARSE_ERROR")
+        )
+    {
+        response["error"]["source_class"] = json!("Plurimath::Math::ParseError");
+    }
+    response
+}
+fn request_inner(v: &Value) -> Value {
+    let parse_format = match v["format"].as_str().unwrap_or("") {
+        "unicodemath" => "unicode",
+        format => format,
+    };
+    let normalized_parse_options = if v["op"] == "parse"
+        && [
+            "asciimath",
+            "html",
+            "latex",
+            "unicode",
+            "mathml",
+            "omml",
+            "unitsml",
+            "pma",
+        ]
+        .contains(&parse_format)
+    {
+        match parse_options::normalize(parse_format, v.get("options")) {
+            Ok(options) => options,
+            Err(error) => return json!({"abi_version":1,"ok":false,"error":error}),
+        }
+    } else {
+        json!({})
+    };
     if v["op"] == "parse" && parse_format == "html" {
         let Some(input) = v["input"].as_str() else {
             return json!({"abi_version":1,"ok":false,"error":{"code":"invalid_request","message":"input must be a string"}});
@@ -61,11 +97,7 @@ pub fn request(v: &Value) -> Value {
         let Some(input) = v["input"].as_str() else {
             return json!({"abi_version":1,"ok":false,"error":{"code":"invalid_request","message":"input must be a string"}});
         };
-        return match text_parse::parse(
-            input,
-            parse_format,
-            &normalized_parse_options,
-        ) {
+        return match text_parse::parse(input, parse_format, &normalized_parse_options) {
             Ok(model) => json!({"abi_version":1,"ok":true,"model":model}),
             Err(error) => json!({"abi_version":1,"ok":false,"error":error}),
         };
@@ -75,18 +107,16 @@ pub fn request(v: &Value) -> Value {
         let Some(input) = v["input"].as_str() else {
             return json!({"abi_version":1,"ok":false,"error":{"code":"invalid_request","message":"input must be a string"}});
         };
-        return match xml_parse::parse(
-            input,
-            parse_format,
-            &normalized_parse_options,
-        ) {
+        return match xml_parse::parse(input, parse_format, &normalized_parse_options) {
             Ok(model) => json!({"abi_version":1,"ok":true,"model":model}),
             Err(error) => json!({"abi_version":1,"ok":false,"error":error}),
         };
     }
 
     if v["op"] == "parse" {
-        return parser::response(&json!({"input":v["input"],"format":if v["format"].is_string(){json!(parse_format)}else{v["format"].clone()},"options":normalized_parse_options}));
+        return parser::response(
+            &json!({"input":v["input"],"format":if v["format"].is_string(){json!(parse_format)}else{v["format"].clone()},"options":normalized_parse_options}),
+        );
     }
     let result: Result<Value, String> = (|| {
         let op = v["op"].as_str().ok_or("missing op")?;
@@ -99,7 +129,10 @@ pub fn request(v: &Value) -> Value {
             ),
             "model" => Ok(json!({"model":model::Model::from_value(&v["model"])?.value()})),
             "source_value" => source_values::value_request(v),
-            "source_model" => {source_values::document_model(&v["model"])?;Ok(json!({"model":v["model"]}))},
+            "source_model" => {
+                source_values::document_model(&v["model"])?;
+                Ok(json!({"model":v["model"]}))
+            }
             _ => Err(format!("unported promised facade operation {op}")),
         }
     })();
@@ -110,7 +143,10 @@ pub fn request(v: &Value) -> Value {
             x
         }
         Err(message) => {
-            if let Some(value) = message.strip_prefix("formatter_error_json:").or_else(||message.strip_prefix("formatter_constructor_error_json:")) {
+            if let Some(value) = message
+                .strip_prefix("formatter_error_json:")
+                .or_else(|| message.strip_prefix("formatter_constructor_error_json:"))
+            {
                 let error: Value=serde_json::from_str(value).unwrap_or_else(|_|json!({"code":"invalid_request","message":"invalid formatter error envelope"}));
                 json!({"abi_version":1,"ok":false,"error":error})
             } else if let Some(message) = message.strip_prefix("source_argument_error: ") {
@@ -134,7 +170,10 @@ pub fn request_json(bytes: &[u8]) -> Value {
     if bytes.len() > 16 * 1024 * 1024 {
         return json!({"abi_version":1,"ok":false,"error":{"code":"invalid_input","message":"oversized request"}});
     }
-    match json_request::decode(bytes) { Ok(value) => request(&value), Err(error) => error }
+    match json_request::decode(bytes) {
+        Ok(value) => request(&value),
+        Err(error) => error,
+    }
 }
 
 #[no_mangle]
