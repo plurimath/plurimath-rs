@@ -119,8 +119,18 @@ and illegal scale operations produce typed refusals. A zero divisor returns
 
 `fixtures/quantity-f40.json` projects the frozen Ruby F40 voltage-current
 conversion case onto the ordinary AST. The result verifies conversion to kW
-and the power dimension vector. Named quantity-kind classification is outside
-this profile.
+and the power dimension vector.
+
+A unit binding may also name a quantity `kind`: a UnitsDB quantity identifier
+or name, or `"primary"` for the flagged primary quantity of a single unit at
+power 1 (a sole unflagged reference is its unit's primary; one marked
+`primary: false` never is). The kind's dimension must match the unit's.
+Sums and differences refuse kinds that are neither the same quantity nor in a
+shared UnitsDB equivalence class (`QuantityKindMismatchError`) and keep the
+left kind, else the right; negation and conversion keep it; products,
+quotients and powers drop it. Only kinded results carry a `kind` field.
+`fixtures/f40-ruby-unitsml-features-v1.json` holds the Ruby reference rows the
+tests replay.
 
 Quantity requests may also include a `register` array. Each record supplies
 `unit` (a known UnitsDB identifier or alias), exact-string `dimensions` and
