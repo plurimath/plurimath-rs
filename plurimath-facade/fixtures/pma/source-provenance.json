@@ -22,7 +22,7 @@
     "0002-pma_parse-typed-measured-terms.patch": "e5a3141cf81edb032d7b412731aa94f4623347c31f42cb0d95ed1cbb86c6765e"
   },
   "supplemental_units_fences": {
-    "reference": "/home/apple/projects/plurimath-org/handoffs/main-native-pma-integrated/source-unit-fences-focused.json",
+    "reference": "fixtures/pma/source-unit-fences-focused.json",
     "sha256": "561e51ccca55bef534d6429e6ee82d236b05131eaefbe1d020862b9d4f8f44bb",
     "depths": [
       0,

@@ -1,0 +1,100 @@
+{
+  "loaded_unitsml": [
+    "/home/apple/projects/plurimath-org/workspace/units/unitsml-ruby/lib/unitsml.rb"
+  ],
+  "loaded_plurimath": [
+    "/home/apple/projects/plurimath-org/workspace/core/plurimath-ruby/lib/plurimath.rb"
+  ],
+  "rows": [
+    {
+      "depth": 0,
+      "input": "m",
+      "model": {
+        "class": "Unitsml::Formula",
+        "value": [
+          {
+            "class": "Unitsml::Unit"
+          }
+        ]
+      },
+      "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mi mathvariant=\"normal\">m</mi>\n</math>"
+    },
+    {
+      "depth": 1,
+      "input": "(m)",
+      "model": {
+        "class": "Unitsml::Formula",
+        "value": [
+          {
+            "class": "Unitsml::Unit"
+          }
+        ]
+      },
+      "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mi mathvariant=\"normal\">m</mi>\n</math>"
+    },
+    {
+      "depth": 2,
+      "input": "((m))",
+      "model": {
+        "class": "Unitsml::Formula",
+        "value": [
+          {
+            "class": "Unitsml::Fenced",
+            "value": {
+              "class": "Unitsml::Unit"
+            },
+            "open_paren": "(",
+            "close_paren": ")"
+          }
+        ]
+      },
+      "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mrow>\n    <mo>(</mo>\n    <mi mathvariant=\"normal\">m</mi>\n    <mo>)</mo>\n  </mrow>\n</math>"
+    },
+    {
+      "depth": 3,
+      "input": "(((m)))",
+      "model": {
+        "class": "Unitsml::Formula",
+        "value": [
+          {
+            "class": "Unitsml::Fenced",
+            "value": {
+              "class": "Unitsml::Unit"
+            },
+            "open_paren": "(",
+            "close_paren": ")"
+          }
+        ]
+      },
+      "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mrow>\n    <mo>(</mo>\n    <mi mathvariant=\"normal\">m</mi>\n    <mo>)</mo>\n  </mrow>\n</math>"
+    },
+    {
+      "depth": 7,
+      "input": "(((((((m)))))))",
+      "model": {
+        "class": "Unitsml::Formula",
+        "value": [
+          {
+            "class": "Unitsml::Fenced",
+            "value": {
+              "class": "Unitsml::Fenced",
+              "value": {
+                "class": "Unitsml::Fenced",
+                "value": {
+                  "class": "Unitsml::Unit"
+                },
+                "open_paren": "(",
+                "close_paren": ")"
+              },
+              "open_paren": "(",
+              "close_paren": ")"
+            },
+            "open_paren": "(",
+            "close_paren": ")"
+          }
+        ]
+      },
+      "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mrow>\n    <mo>(</mo>\n    <mrow>\n      <mo>(</mo>\n      <mrow>\n        <mo>(</mo>\n        <mi mathvariant=\"normal\">m</mi>\n        <mo>)</mo>\n      </mrow>\n      <mo>)</mo>\n    </mrow>\n    <mo>)</mo>\n  </mrow>\n</math>"
+    }
+  ]
+}
