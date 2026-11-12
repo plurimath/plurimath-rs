@@ -33,10 +33,10 @@ fn producer_error(error: PmaError) -> Value {
             "offset_policy":"caller_utf8_bytes"
         }),
         PmaError::Resource(e) => match e {
-            parsanol_stage::PargError::CallDepthLimitExceeded { depth, max_depth } => {
+            parsanol::PargError::CallDepthLimitExceeded { depth, max_depth } => {
                 json!({"code":"RESOURCE_LIMIT","category":"call_depth_limit","depth":depth,"max_depth":max_depth})
             }
-            parsanol_stage::PargError::RecursionLimitExceeded { depth, max_depth } => {
+            parsanol::PargError::RecursionLimitExceeded { depth, max_depth } => {
                 json!({"code":"RESOURCE_LIMIT","category":"recursion_limit","depth":depth,"max_depth":max_depth})
             }
             other => json!({"code":"RESOURCE_LIMIT","message":other.to_string()}),

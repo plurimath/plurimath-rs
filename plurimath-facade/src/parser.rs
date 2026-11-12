@@ -825,12 +825,12 @@ pub fn response(v: &Value) -> Value {
                 ParseError::Stage(stage) => {
                     let resource = match stage {
                         amath::Error::Runtime(
-                            parsanol_stage::PargError::RecursionLimitExceeded { depth, max_depth },
+                            parsanol::PargError::RecursionLimitExceeded { depth, max_depth },
                         ) => Some(
                             json!({"kind":"recursion_limit","depth":depth,"max_depth":max_depth}),
                         ),
                         amath::Error::Runtime(
-                            parsanol_stage::PargError::CallDepthLimitExceeded { depth, max_depth },
+                            parsanol::PargError::CallDepthLimitExceeded { depth, max_depth },
                         ) => Some(
                             json!({"kind":"call_depth_limit","depth":depth,"max_depth":max_depth}),
                         ),

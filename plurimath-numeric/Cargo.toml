@@ -23,5 +23,5 @@ num-rational = "=0.4.2"
 num-traits = "=0.2.19"
 num-integer = "=0.1.47"
 
-asciiunits = { git = "https://github.com/unitsml/asciiunits-rs", rev = "498cec2ce946c7bcb3b1b26313667b188ddf76aa", optional = true }
+asciiunits = { git = "https://github.com/unitsml/asciiunits-rs", rev = "1f771caef878b9d383a5f29b02f434b8b614b780", optional = true }
 unitsml-rs = { git = "https://github.com/unitsml/unitsml-rs", rev = "4aa5f3fec308338e232dadd546050c84049062d2", optional = true }

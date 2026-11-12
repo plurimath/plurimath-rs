@@ -13,15 +13,13 @@ plurimath-json = { path = "transport" }
 serde = "=1.0.219"
 regex = "1"
 # PMA (dialect P) typed model: public amath-rs 16195ed (fast-forward of d176af8; dialect L runtime unchanged).
-amath = { package = "plurimath-amath", git = "https://github.com/plurimath/amath-rs", rev = "16195ed52496d5ddca84552eb3f20ed69a87104a", features = ["models"] }
+amath = { package = "plurimath-amath", git = "https://github.com/plurimath/amath-rs", rev = "7a26965528cda91030d164ec27f10b6c89e14f6b", features = ["models"] }
 serde_json = { version = "=1.0.140", features = ["arbitrary_precision", "preserve_order", "unbounded_depth", "raw_value"] }
-latexmath = { git = "https://github.com/plurimath/latexmath-rs", rev = "4da0ddaf00d0f58ecce4f1e81cd9cdcc1b9b6c39" }
-umath = { package = "plurimath-umath", git = "https://github.com/plurimath/umath-rs", rev = "504c74f6a3b8e4bc62cb650029f4d00cbf2438f3" }
+latexmath = { git = "https://github.com/plurimath/latexmath-rs", rev = "0f6ad8c243f3fc5a0ce1addf3116e6b8d544dd1e" }
+umath = { package = "plurimath-umath", git = "https://github.com/plurimath/umath-rs", rev = "b071b67d8d2202909e97c1b860de5359dab0f09d" }
 moxml = { git = "https://github.com/lutaml/moxml-rs", rev = "e49cdfc97df78bc681c804947e122399f09c50ae" }
 
-asciiunits = { git = "https://github.com/unitsml/asciiunits-rs", rev = "498cec2ce946c7bcb3b1b26313667b188ddf76aa" }
+asciiunits = { git = "https://github.com/unitsml/asciiunits-rs", rev = "1f771caef878b9d383a5f29b02f434b8b614b780" }
 unitsdb-rs = { git = "https://github.com/unitsml/unitsdb-rs", rev = "969a131b8992930a6ff6f869291f1f0d7cb68d33" }
 
 parsanol = { git = "https://github.com/parsanol/parsanol-rs", rev = "5206a33b5417b4ecd3a601930461ed2967c871e7" }
-# Stage errors belong to the stage SDK; HTML uses the newer captured-state SDK.
-parsanol_stage = { package = "parsanol", git = "https://github.com/parsanol/parsanol-rs", rev = "20d5e6cebcade3cf2111a00a7ef3f5b69d673481" }
