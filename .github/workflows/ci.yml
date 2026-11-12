@@ -26,6 +26,8 @@ jobs:
       - uses: dtolnay/rust-toolchain@1.95.0
         with:
           components: rustfmt, clippy
+      - name: Verify a single Parsanol SDK before building
+        run: python scripts/check_sdk_graph.py
       - name: Check formatting
         if: runner.os == 'Linux'
         run: cargo fmt --all -- --check
