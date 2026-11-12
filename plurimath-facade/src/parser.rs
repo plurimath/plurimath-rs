@@ -741,6 +741,7 @@ thread_local! {static CACHED_PARSER:Result<amath::Parser,String>=amath::Parser::
 pub enum ParseError {
     Unported(String),
     InvalidOptions(String),
+    SourceOptions(Value),
     Stage(amath::Error),
     Initialization(String),
     ConverterResource { depth: usize, max_depth: usize },
@@ -749,6 +750,7 @@ impl std::fmt::Display for ParseError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             Self::Unported(s) | Self::InvalidOptions(s) | Self::Initialization(s) => f.write_str(s),
+            Self::SourceOptions(error) => f.write_str(error["message"].as_str().unwrap_or("invalid source parse options")),
             Self::Stage(e) => e.fmt(f),
             Self::ConverterResource { depth, max_depth } => {
                 write!(f, "common converter depth {depth} exceeds {max_depth}")
@@ -768,16 +770,11 @@ pub fn parse(input: &str, format: &str, options: &Value) -> Result<Value, ParseE
             "unported promised input format {format}"
         )));
     }
-    let opts = options
-        .as_object()
-        .ok_or_else(|| ParseError::InvalidOptions("options must be an object".into()))?;
-    if !opts.is_empty() {
-        return Err(ParseError::Unported(
-            "AsciiMath parse options not yet ported".into(),
-        ));
-    }
+    let normalized = crate::parse_options::normalize("asciimath", Some(options))
+        .map_err(ParseError::SourceOptions)?;
+    let decimal = crate::parse_options::decimal(&normalized);
     let stage = CACHED_PARSER.with(|p| match p {
-        Ok(parser) => parser.parse_legacy(input).map_err(ParseError::Stage),
+        Ok(parser) => parser.parse_legacy_with_decimal(input, decimal).map_err(ParseError::Stage),
         Err(message) => Err(ParseError::Initialization(message.clone())),
     })?;
     let tree =
@@ -807,6 +804,7 @@ pub fn response(v: &Value) -> Value {
         Ok(model) => json!({"abi_version":1,"ok":true,"model":model}),
         Err(e) => {
             let error = match &e {
+                ParseError::SourceOptions(error) => error.clone(),
                 ParseError::Unported(_) => {
                     json!({"code":"unported_capability","message":e.to_string()})
                 }
