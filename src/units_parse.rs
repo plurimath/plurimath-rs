@@ -178,7 +178,20 @@ fn render(value: &Value, inverse: bool, square_root: bool) -> Result<String, Val
         ));
     }
     if value.get("open").is_some() {
-        return render(&value["value"], inverse, square_root);
+        // Unitsml::Fenced#to_mathml retains actual parser-model fences when
+        // Formula's default explicit_parenthesis option is true.
+        let open = value["open"]
+            .as_str()
+            .ok_or_else(|| incomplete("UnitsML fence opener must be a string"))?;
+        let close = value["close"]
+            .as_str()
+            .ok_or_else(|| incomplete("UnitsML fence closer must be a string"))?;
+        return Ok(format!(
+            "<mrow><mo>{}</mo>{}<mo>{}</mo></mrow>",
+            escape(open),
+            render(&value["value"], inverse, square_root)?,
+            escape(close)
+        ));
     }
     if let Some(values) = value["value"].as_array() {
         let mut output = String::new();

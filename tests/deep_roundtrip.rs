@@ -58,3 +58,14 @@ fn transport_node_budget_and_reserved_literal_keys_are_explicit() {
  }
  assert_eq!(call(&json!({"op":"parse","format":"asciimath","input":"1"}))["ok"],true);
 }
+
+#[test]
+fn split_clone_validation_preserves_default_stack_deep_groups() {
+ let input=format!("{}x{}","(".repeat(128),")".repeat(128));
+ let parsed=call(&json!({"op":"parse","format":"asciimath","input":input}));assert_eq!(parsed["ok"],true);
+ for format in ["mathml","omml"] {
+  let output=call(&json!({"op":"write","format":format,"model":parsed["model"],"options":{"splitOnLinebreak":true}}));
+  assert_eq!(output["ok"],true,"{format}: {output}");
+ }
+ assert_eq!(call(&json!({"op":"parse","format":"asciimath","input":"1"}))["ok"],true);
+}

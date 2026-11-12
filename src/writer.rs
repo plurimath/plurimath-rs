@@ -1,4 +1,5 @@
 //! Procedural source-writer port; unported nodes/options fail, never return approximations.
+mod uncertainty_writers;
 mod layout_nodes;
 mod generic_nary;
 mod final_options;
@@ -769,6 +770,7 @@ fn normal_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, Strin
     Ok(c)
 }
 fn render_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, String> {
+ if m.class=="Math::Function::Uncertainty" {return uncertainty_writers::text_writer(m,f,ctx);}
     crate::source_values::writer_admission(m)?;
     let scoped;
     let ctx=if m.class=="Math::Formula"||m.class.starts_with("Math::Formula::") {scoped=ctx.with_formula(m);&scoped}else{ctx};
@@ -1187,6 +1189,7 @@ fn render_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, Strin
     Ok(nodes)
 }
 fn render_xml_inner(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
+ if m.class=="Math::Function::Uncertainty" {return uncertainty_writers::xml(m,f,ctx);}
     crate::source_values::writer_admission(m)?;
     if ["Math::Function::Intent","Math::Function::Arg"].contains(&m.class.as_str()) { return intent_nodes::xml(m,f,ctx); }
     if leaf_nodes::handles(m) {return leaf_nodes::xml(m,f,ctx);}
@@ -2624,6 +2627,7 @@ fn core_updated_values(
     Ok(())
 }
 fn source_line_breaking(node: &mut Value, obj: &mut Vec<Value>) -> Result<(), String> {
+    if node["class"] == "Math::Function::Uncertainty" {return Ok(());}
     if node["class"]=="Math::Function::Td" {return table_xml::td_line_breaking(node);}
     if node["class"]=="Math::Function::Stackrel" {
         source_line_breaking(&mut node["fields"]["parameter_one"],obj)?;
@@ -2948,6 +2952,7 @@ pub fn write(model: &Value, format: &str, options: &Value) -> Result<String, Str
         return render_text(&m, format, ctx);
     }
     let formulas = if opts.get("splitOnLinebreak").map(present).unwrap_or(false) {
+        uncertainty_writers::before_split(&m, format, ctx)?;
         split_formulas(&m).map_err(|error| {
             if format == "mathml" {
                 if let Some(message) = error.strip_prefix("source_render_error: ") {

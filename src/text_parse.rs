@@ -72,6 +72,9 @@ fn fenced(left: Value, body: Vec<Value>, right: Value) -> Value {
 fn unary(name: &str, arg: Value) -> Result<Value, Value> {
     let class = match name {
         "sqrt" => "Math::Function::Sqrt",
+        "cancel" => "Math::Function::Cancel",
+        "phantom" => "Math::Function::Phantom",
+        "hom" => "Math::Function::Hom",
         "hat" => "Math::Function::Hat",
         "vec" => "Math::Function::Vec",
         "bar" | "overline" => "Math::Function::Bar",
@@ -423,12 +426,8 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
             ))),
         };
     }
-    if m.contains_key("left") && m.contains_key("right") {
-        if m.len() != 5
-            || !m.contains_key("left_paren")
-            || !m.contains_key("right_paren")
-            || !m.contains_key("expression")
-        {
+    if m.contains_key("left") {
+        if !m.keys().all(|k|["left","right","left_paren","right_paren","expression","dividend","divisor"].contains(&k.as_str())) {
             return Err(incomplete("unported left/right capture fields"));
         }
         let delimiter = |value: &Value| -> Result<Value, Value> {
@@ -456,20 +455,18 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
             };
             Ok(mapped.map_or(Value::Null, |x| json!(x)))
         };
-        let body = one(tx(format, &m["expression"], depth + 1)?);
-        let mut result = formula(vec![
-            node(
-                "Math::Function::Left",
-                json!({"parameter_one":delimiter(&m["left_paren"])?}),
-            ),
-            body,
-            node(
-                "Math::Function::Right",
-                json!({"parameter_one":delimiter(&m["right_paren"])?}),
-            ),
-        ]);
-        result["fields"]["left_right_wrapper"] = json!(false);
-        return Ok(vec![result]);
+        let left = node("Math::Function::Left",json!({"parameter_one":if m.contains_key("left_paren"){delimiter(&m["left_paren"])?}else{Value::Null}}));
+        if m.len()==2 && m.contains_key("left_paren") {return Ok(vec![left]);}
+        if !m.contains_key("right") {return Err(incomplete("unported incomplete left/right shape"));}
+        let right=node("Math::Function::Right",json!({"parameter_one":if m.contains_key("right_paren"){delimiter(&m["right_paren"])?}else{Value::Null}}));
+        let mut items=vec![left];
+        if m.contains_key("dividend") && m.contains_key("divisor") {
+            items.push(node("Math::Function::Over",json!({"parameter_one":formula(tx(format,&m["dividend"],depth+1)?),"parameter_two":formula(tx(format,&m["divisor"],depth+1)?)})));
+        } else if m.contains_key("expression") {
+            items.push(one(tx(format,&m["expression"],depth+1)?));
+        }
+        items.push(right);
+        return Ok(vec![formula(items)]);
     }
     let open = m
         .get("left_paren")
@@ -612,6 +609,10 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
             "subsup_exp",
             "decimal_number",
             "power_base",
+            "over",
+            "limits",
+            "table_data",
+            "intermediate_exp",
             "base",
             "left_right",
             "under_over",

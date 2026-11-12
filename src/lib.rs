@@ -1,4 +1,5 @@
 mod json_request;
+mod parse_options;
 pub mod source_values;
 pub mod html_parse;
 pub mod model;
@@ -18,11 +19,15 @@ pub fn stage_tree(input: &str) -> Result<Value, String> {
         .map_err(|e| e.to_string())
 }
 pub fn request(v: &Value) -> Value {
-    if v["op"] == "parse" && v["format"] == "html" {
+    let parse_format = match v["format"].as_str().unwrap_or("") { "unicodemath"=>"unicode", format=>format };
+    let normalized_parse_options = if v["op"]=="parse" && ["asciimath","html","latex","unicode","mathml","omml","unitsml","pma"].contains(&parse_format) {
+        match parse_options::normalize(parse_format,v.get("options")) { Ok(options)=>options,Err(error)=>return json!({"abi_version":1,"ok":false,"error":error}) }
+    } else { json!({}) };
+    if v["op"] == "parse" && parse_format == "html" {
         let Some(input) = v["input"].as_str() else {
             return json!({"abi_version":1,"ok":false,"error":{"code":"invalid_request","message":"input must be a string"}});
         };
-        return match html_parse::parse(input, v.get("options").unwrap_or(&json!({}))) {
+        return match html_parse::parse(input, &normalized_parse_options) {
             Ok(model) => {
                 let mut response = json!({"abi_version":1,"ok":true});
                 response["model"] = model;
@@ -32,48 +37,48 @@ pub fn request(v: &Value) -> Value {
         };
     }
 
-    if v["op"] == "parse" && v["format"] == "pma" {
+    if v["op"] == "parse" && parse_format == "pma" {
         let Some(input) = v["input"].as_str() else {
             return json!({"abi_version":1,"ok":false,"error":{"code":"invalid_request","message":"input must be a string"}});
         };
-        return match pma_parse::parse(input, v.get("options").unwrap_or(&json!({}))) {
+        return match pma_parse::parse(input, &normalized_parse_options) {
             Ok(model) => json!({"abi_version":1,"ok":true,"model":model}),
             Err(error) => json!({"abi_version":1,"ok":false,"error":error}),
         };
     }
 
-    if v["op"] == "parse" && v["format"] == "unitsml" {
+    if v["op"] == "parse" && parse_format == "unitsml" {
         let Some(input) = v["input"].as_str() else {
             return json!({"abi_version":1,"ok":false,"error":{"code":"invalid_request","message":"input must be a string"}});
         };
-        return match units_parse::parse(input, v.get("options").unwrap_or(&json!({}))) {
+        return match units_parse::parse(input, &normalized_parse_options) {
             Ok(model) => json!({"abi_version":1,"ok":true,"model":model}),
             Err(error) => json!({"abi_version":1,"ok":false,"error":error}),
         };
     }
 
-    if v["op"] == "parse" && ["latex", "unicode"].iter().any(|f| v["format"] == *f) {
+    if v["op"] == "parse" && ["latex", "unicode"].contains(&parse_format) {
         let Some(input) = v["input"].as_str() else {
             return json!({"abi_version":1,"ok":false,"error":{"code":"invalid_request","message":"input must be a string"}});
         };
         return match text_parse::parse(
             input,
-            v["format"].as_str().unwrap(),
-            v.get("options").unwrap_or(&json!({})),
+            parse_format,
+            &normalized_parse_options,
         ) {
             Ok(model) => json!({"abi_version":1,"ok":true,"model":model}),
             Err(error) => json!({"abi_version":1,"ok":false,"error":error}),
         };
     }
 
-    if v["op"] == "parse" && ["mathml", "omml"].iter().any(|f| v["format"] == *f) {
+    if v["op"] == "parse" && ["mathml", "omml"].contains(&parse_format) {
         let Some(input) = v["input"].as_str() else {
             return json!({"abi_version":1,"ok":false,"error":{"code":"invalid_request","message":"input must be a string"}});
         };
         return match xml_parse::parse(
             input,
-            v["format"].as_str().unwrap(),
-            v.get("options").unwrap_or(&json!({})),
+            parse_format,
+            &normalized_parse_options,
         ) {
             Ok(model) => json!({"abi_version":1,"ok":true,"model":model}),
             Err(error) => json!({"abi_version":1,"ok":false,"error":error}),
@@ -81,7 +86,7 @@ pub fn request(v: &Value) -> Value {
     }
 
     if v["op"] == "parse" {
-        return parser::response(v);
+        return parser::response(&json!({"input":v["input"],"format":if v["format"].is_string(){json!(parse_format)}else{v["format"].clone()},"options":normalized_parse_options}));
     }
     let result: Result<Value, String> = (|| {
         let op = v["op"].as_str().ok_or("missing op")?;
