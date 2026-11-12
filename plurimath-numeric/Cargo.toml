@@ -15,7 +15,7 @@ crate-type = ["rlib", "cdylib"]
 quantity = ["dep:asciiunits", "dep:unitsml-rs"]
 
 [dependencies]
-plurimath-json = { path = "../../../workspace/core-native/plurimath-rs-pma-integrated/transport" }
+plurimath-json = { path = "../plurimath-facade/transport" }
 libm = { version = "=0.2.16", default-features = false }
 serde_json = { version = "=1.0.140", features = ["arbitrary_precision", "preserve_order", "unbounded_depth", "raw_value"] }
 num-bigint = "=0.4.6"
@@ -23,9 +23,5 @@ num-rational = "=0.4.2"
 num-traits = "=0.2.19"
 num-integer = "=0.1.47"
 
-asciiunits = { version = "=0.1.0", path = "../../../workspace/units-native/asciiunits-rs", optional = true }
-unitsml-rs = { version = "=0.1.0", path = "../../../workspace/core-native/pma-dependencies/unitsml-rs", optional = true }
-
-[profile.dev]
-debug = 0
-incremental = false
+asciiunits = { git = "https://github.com/unitsml/asciiunits-rs", rev = "498cec2ce946c7bcb3b1b26313667b188ddf76aa", optional = true }
+unitsml-rs = { git = "https://github.com/unitsml/unitsml-rs", rev = "4aa5f3fec308338e232dadd546050c84049062d2", optional = true }

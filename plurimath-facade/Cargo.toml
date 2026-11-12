@@ -15,22 +15,11 @@ regex = "1"
 # PMA (dialect P) typed model: public amath-rs 16195ed (fast-forward of d176af8; dialect L runtime unchanged).
 amath = { package = "plurimath-amath", git = "https://github.com/plurimath/amath-rs", rev = "16195ed52496d5ddca84552eb3f20ed69a87104a", features = ["models"] }
 serde_json = { version = "=1.0.140", features = ["arbitrary_precision", "preserve_order", "unbounded_depth", "raw_value"] }
-latexmath = { path = "../../compatibility/latexmath-rs" }
-umath = { package = "plurimath-umath", path = "../../compatibility/umath-rs" }
-moxml = { git = "https://github.com/lutaml/moxml-rs", rev = "c55a7ecf60764d75a7a0ef54f0e483ec40df4b73" }
+latexmath = { git = "https://github.com/plurimath/latexmath-rs", rev = "4da0ddaf00d0f58ecce4f1e81cd9cdcc1b9b6c39" }
+umath = { package = "plurimath-umath", git = "https://github.com/plurimath/umath-rs", rev = "504c74f6a3b8e4bc62cb650029f4d00cbf2438f3" }
+moxml = { git = "https://github.com/lutaml/moxml-rs", rev = "e49cdfc97df78bc681c804947e122399f09c50ae" }
 
-asciiunits = { path = "../../units-native/asciiunits-rs" }
-unitsdb-rs = { path = "../pma-dependencies/unitsdb-rs" }
+asciiunits = { git = "https://github.com/unitsml/asciiunits-rs", rev = "498cec2ce946c7bcb3b1b26313667b188ddf76aa" }
+unitsdb-rs = { git = "https://github.com/unitsml/unitsdb-rs", rev = "969a131b8992930a6ff6f869291f1f0d7cb68d33" }
 
-parsanol = { git = "https://github.com/parsanol/parsanol-rs", rev = "20d5e6cebcade3cf2111a00a7ef3f5b69d673481" }
-
-[profile.dev]
-debug = 0
-incremental = false
-
-[patch."https://github.com/parsanol/parsanol-rs"]
-parsanol = { path = "../../compatibility/parsanol-rs-html/parsanol" }
-
-# Local, qualified source candidate; no published resolver claim.
-[patch."https://github.com/lutaml/moxml-rs"]
-moxml = { path = "../../xml-recovery/moxml-rs" }
+parsanol = { git = "https://github.com/parsanol/parsanol-rs", rev = "5206a33b5417b4ecd3a601930461ed2967c871e7" }
