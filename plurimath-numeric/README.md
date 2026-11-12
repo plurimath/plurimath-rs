@@ -2,8 +2,8 @@
 
 Local numeric JSON kernel with a Rust API, ABI-v1 C library, standalone WASM,
 and thin Python/TypeScript transports. The optional quantity profile
-uses the same ordinary AST. The format facade, GUM and full F40 qualification
-are outside this package's scope.
+uses the same ordinary AST. The format facade is provided by the sibling `plurimath-facade` crate.
+Quantity and GUM request profiles are documented below.
 
 ```rust
 let wire = plurimath_numeric::evaluate_json(r#"{"schema":"plurimath.evaluate.numeric/1","ast":{"type":"number","text":"2.10"}}"#);
@@ -116,6 +116,16 @@ as Ruby's quantity evaluator does: Float is `limited_float`; otherwise the
 least BigDecimal precision wins (`limited_N`); exact values remain `exact`.
 Unit conversion can rationalize a magnitude without erasing its source
 accuracy. The wire's magnitude fields remain exact rational strings.
+For requests containing explicit numeric tags (including unused bindings),
+each quantity snapshot additionally carries `numeric_value`, describing that
+snapshot's magnitude in its resolved unit, rather than its canonical magnitude.
+It uses the existing numeric wire encoding: Rational has `kind`, `numerator`
+and `denominator`; BigDecimal has `kind: "decimal"`, scientific `value` and
+`precision`; Float has `kind: "float"` and exact hexadecimal `bits`. The
+expression's actual rounded numeric class is retained even when its accuracy
+is `limited_float` and its value is BigDecimal. A converted snapshot carries a
+Rational `numeric_value`, matching exact UnitsML conversion. Legacy String
+requests do not gain this field.
 
 Evaluation supports numbers, variables, unary signs, explicit
 grouping, + − × ÷, and dimensionless integer exponents of magnitude at most

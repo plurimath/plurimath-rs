@@ -532,7 +532,7 @@ dependencies = [
 [[package]]
 name = "unitsml-rs"
 version = "0.1.0"
-source = "git+https://github.com/unitsml/unitsml-rs?rev=4aa5f3fec308338e232dadd546050c84049062d2#4aa5f3fec308338e232dadd546050c84049062d2"
+source = "git+https://github.com/unitsml/unitsml-rs?rev=cdfbcc3087f271d8723b3c3d1e4764860601e570#cdfbcc3087f271d8723b3c3d1e4764860601e570"
 dependencies = [
  "num-bigint",
  "num-rational",

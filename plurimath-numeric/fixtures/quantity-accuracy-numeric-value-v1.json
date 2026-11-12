@@ -1,0 +1,289 @@
+{
+  "schema": "quantity-numeric-value-source/1",
+  "source_vectors_sha256": "f578a7e9cfa7cb906643c76835ae2d79c2a089ff731005953fb5ea7c89e5bbe8",
+  "ruby": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+  "source_encoder_sha256": "b76f5e9792e21a708a47d9d5da0478a22ef05274bdfae260d835730ebfe3b82e",
+  "cases": [
+    {
+      "id": "exact-rational",
+      "numeric_value": {
+        "kind": "rational",
+        "numerator": "15",
+        "denominator": "2"
+      }
+    },
+    {
+      "id": "limited-float",
+      "numeric_value": {
+        "kind": "float",
+        "bits": "401e000000000000"
+      }
+    },
+    {
+      "id": "limited-decimal",
+      "numeric_value": {
+        "kind": "decimal",
+        "value": "0.75e1",
+        "precision": 2
+      }
+    },
+    {
+      "id": "least-precise-wins-decimal",
+      "numeric_value": {
+        "kind": "decimal",
+        "value": "0.775e1",
+        "precision": 3
+      }
+    },
+    {
+      "id": "least-precise-wins-float",
+      "numeric_value": {
+        "kind": "decimal",
+        "value": "0.75e1",
+        "precision": 2
+      }
+    },
+    {
+      "id": "limited-sum-same-unit",
+      "numeric_value": {
+        "kind": "decimal",
+        "value": "0.35e1",
+        "precision": 2
+      }
+    },
+    {
+      "id": "string-exact-product",
+      "numeric_value": {
+        "kind": "rational",
+        "numerator": "15",
+        "denominator": "2"
+      }
+    },
+    {
+      "id": "string-exact-least-precise",
+      "numeric_value": {
+        "kind": "rational",
+        "numerator": "31",
+        "denominator": "4"
+      }
+    },
+    {
+      "id": "string-exact-sum-same-unit",
+      "numeric_value": {
+        "kind": "rational",
+        "numerator": "7",
+        "denominator": "2"
+      }
+    },
+    {
+      "id": "string-exact-float-digits",
+      "numeric_value": {
+        "kind": "rational",
+        "numerator": "15",
+        "denominator": "2"
+      }
+    },
+    {
+      "id": "string-exact-third",
+      "numeric_value": {
+        "kind": "rational",
+        "numerator": "1",
+        "denominator": "3"
+      }
+    },
+    {
+      "id": "unused-decimal-binding",
+      "numeric_value": {
+        "kind": "rational",
+        "numerator": "15",
+        "denominator": "2"
+      }
+    },
+    {
+      "id": "unused-float-binding",
+      "numeric_value": {
+        "kind": "rational",
+        "numerator": "15",
+        "denominator": "2"
+      }
+    },
+    {
+      "id": "unused-string-binding",
+      "numeric_value": {
+        "kind": "decimal",
+        "value": "0.75e1",
+        "precision": 2
+      }
+    },
+    {
+      "id": "precision-trailing-zeros",
+      "numeric_value": {
+        "kind": "decimal",
+        "value": "0.75e1",
+        "precision": 2
+      }
+    },
+    {
+      "id": "precision-six-digits",
+      "numeric_value": {
+        "kind": "decimal",
+        "value": "0.762963e1",
+        "precision": 6
+      }
+    },
+    {
+      "id": "precision-least-of-two",
+      "numeric_value": {
+        "kind": "decimal",
+        "value": "0.246912e1",
+        "precision": 6
+      }
+    },
+    {
+      "id": "precision-integer-decimal",
+      "numeric_value": {
+        "kind": "decimal",
+        "value": "0.12e4",
+        "precision": 4
+      }
+    },
+    {
+      "id": "precision-small-magnitude",
+      "numeric_value": {
+        "kind": "decimal",
+        "value": "0.5e-3",
+        "precision": 4
+      }
+    },
+    {
+      "id": "precision-quotient",
+      "numeric_value": {
+        "kind": "decimal",
+        "value": "0.33333333333333333333333333333333e0",
+        "precision": 32
+      }
+    },
+    {
+      "id": "precision-decimal-times-rational",
+      "numeric_value": {
+        "kind": "decimal",
+        "value": "0.833333333333333333333333333333325e0",
+        "precision": 33
+      }
+    },
+    {
+      "id": "precision-sum-unit-conversion",
+      "numeric_value": {
+        "kind": "decimal",
+        "value": "0.175e1",
+        "precision": 3
+      }
+    },
+    {
+      "id": "precision-difference",
+      "numeric_value": {
+        "kind": "decimal",
+        "value": "0.975e1",
+        "precision": 3
+      }
+    },
+    {
+      "id": "float-sum-tenths",
+      "numeric_value": {
+        "kind": "float",
+        "bits": "3fd3333333333334"
+      }
+    },
+    {
+      "id": "float-product-tenth",
+      "numeric_value": {
+        "kind": "float",
+        "bits": "3fd3333333333334"
+      }
+    },
+    {
+      "id": "float-quotient",
+      "numeric_value": {
+        "kind": "float",
+        "bits": "3fd5555555555555"
+      }
+    },
+    {
+      "id": "float-times-decimal",
+      "numeric_value": {
+        "kind": "decimal",
+        "value": "0.33e0",
+        "precision": 2
+      }
+    },
+    {
+      "id": "float-times-rational",
+      "numeric_value": {
+        "kind": "float",
+        "bits": "3fa1111111111111"
+      }
+    },
+    {
+      "id": "float-sum-unit-conversion",
+      "numeric_value": {
+        "kind": "float",
+        "bits": "3fb9db22d0e56042"
+      }
+    },
+    {
+      "id": "unused-decimal-binding-single-variable",
+      "numeric_value": {
+        "kind": "rational",
+        "numerator": "2",
+        "denominator": "1"
+      }
+    },
+    {
+      "id": "unused-float-binding-single-variable",
+      "numeric_value": {
+        "kind": "rational",
+        "numerator": "2",
+        "denominator": "1"
+      }
+    },
+    {
+      "id": "decimal-zero-precision",
+      "numeric_value": {
+        "kind": "decimal",
+        "value": "0.0",
+        "precision": 0
+      }
+    },
+    {
+      "id": "decimal-leading-zero-precision",
+      "numeric_value": {
+        "kind": "decimal",
+        "value": "0.1e1",
+        "precision": 1
+      }
+    },
+    {
+      "id": "decimal-conversion-neighbor",
+      "numeric_value": {
+        "kind": "decimal",
+        "value": "0.102e0",
+        "precision": 3
+      }
+    },
+    {
+      "id": "float-rounding-neighbor",
+      "numeric_value": {
+        "kind": "float",
+        "bits": "3f947ae147ae147c"
+      }
+    },
+    {
+      "id": "float-decimal-neighbor",
+      "numeric_value": {
+        "kind": "decimal",
+        "value": "0.2e-1",
+        "precision": 2
+      }
+    }
+  ]
+}

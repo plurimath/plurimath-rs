@@ -307,7 +307,7 @@ fn walk(
     }
 }
 
-fn snapshot((quantity, kind): (&Quantity, Option<&QuantityKind>)) -> J {
+fn snapshot((quantity, kind): (&Quantity, Option<&QuantityKind>), number: Option<&N>) -> J {
     let unit = quantity.unit();
     let dimensions: BTreeMap<_, _> = unit
         .dimensions()
@@ -336,6 +336,9 @@ fn snapshot((quantity, kind): (&Quantity, Option<&QuantityKind>)) -> J {
     if let Some(kind) = kind {
         wire["kind"] = json!(kind.id());
     }
+    if let Some(number) = number {
+        wire["numeric_value"] = magnitude::wire(number);
+    }
     wire
 }
 
@@ -362,6 +365,7 @@ fn evaluate(request: &J) -> Result<J, Error> {
     })?;
     let mut bindings = BTreeMap::new();
     let mut magnitudes = Vec::new();
+    let mut tagged = false;
     if let Some(raw) = request.get("bindings") {
         let raw = raw.as_object().ok_or("InvalidRequest")?;
         if raw.len() > MAX_BINDINGS {
@@ -372,9 +376,11 @@ fn evaluate(request: &J) -> Result<J, Error> {
                 return Err("InvalidRequest".into());
             }
             bindings.insert(key.clone(), binding(&register, value, &mut magnitudes)?);
+            tagged |= magnitude::tagged_binding(value);
         }
     }
     let result = walk(&request["ast"], &bindings, &mut magnitudes)?;
+    let number = result.number;
     let value = result.quantity;
     let kind = result.kind;
     let converted = request
@@ -385,8 +391,11 @@ fn evaluate(request: &J) -> Result<J, Error> {
         })
         .transpose()?;
     Ok(json!({
-        "value": snapshot((&value, kind.as_ref())),
-        "converted": converted.as_ref().map(|c| snapshot((c, kind.as_ref()))),
+        "value": snapshot((&value, kind.as_ref()), tagged.then_some(&number)),
+        "converted": converted.as_ref().map(|c| {
+            let number = N::Exact(c.magnitude().clone(), false);
+            snapshot((c, kind.as_ref()), tagged.then_some(&number))
+        }),
         "accuracy": {"symbol":accuracy(&magnitudes)},
     }))
 }

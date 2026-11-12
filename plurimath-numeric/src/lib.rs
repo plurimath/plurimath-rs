@@ -1,4 +1,4 @@
-//! Canonical numeric JSON and optional exact quantity evaluation.
+//! Canonical numeric JSON and optional unit-aware quantity evaluation.
 mod decimal_math;
 mod gum;
 #[cfg(feature = "quantity")]

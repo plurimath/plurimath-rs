@@ -4,6 +4,21 @@ use num_bigint::BigInt;
 use num_traits::{One, ToPrimitive, Zero};
 use std::collections::BTreeMap;
 
+pub(super) fn tagged_binding(value: &J) -> bool {
+    let magnitude = value.get("value").unwrap_or(value);
+    ["decimal", "rational", "binary64"]
+        .iter()
+        .any(|key| magnitude.get(*key).is_some())
+}
+
+pub(super) fn wire(value: &N) -> J {
+    match value {
+        // QuantityEvaluator#quantity rationalizes Integer values.
+        N::Exact(q, _) => N::Exact(q.clone(), false).wire(),
+        _ => value.wire(),
+    }
+}
+
 pub(super) fn rational(value: &N) -> Result<Q, &'static str> {
     value
         .q()
