@@ -235,7 +235,7 @@ fn source_profile_unitsdb_b210137_definitions() {
     ))
     .unwrap();
     let probes = profile["definition_probes"].as_array().unwrap();
-    assert_eq!(probes.len(), 16);
+    assert_eq!(probes.len(), 17);
     for probe in probes {
         assert_eq!(
             plurimath_numeric::evaluate_json(probe["request_json"].as_str().unwrap()),
@@ -244,19 +244,26 @@ fn source_profile_unitsdb_b210137_definitions() {
             probe["id"]
         );
     }
-    // 1 cwt (US) = 100 lb, and with a caller lb register exactly 45.359237 kg.
+    // A pound registration applies to the pound itself but does not define
+    // cwt (US) through its root_units chain (unitsml-ruby behaviour).
     let by_id = |id: &str| probes.iter().find(|p| p["id"] == id).unwrap();
     let wire = |id: &str| -> Value {
         serde_json::from_str(by_id(id)["expected_wire"].as_str().unwrap()).unwrap()
     };
     assert_eq!(
-        wire("def-cwt-us-to-lb-lb-register")["result"]["converted"]["magnitude"],
-        "100"
+        wire("def-lb-to-kg-lb-register")["result"]["converted"]["magnitude"],
+        "45359237/100000000"
     );
-    assert_eq!(
-        wire("def-cwt-us-to-kg-lb-register")["result"]["converted"]["magnitude"],
-        "45359237/1000000"
-    );
+    for id in [
+        "def-cwt-us-to-lb-lb-register",
+        "def-cwt-us-to-kg-lb-register",
+    ] {
+        assert_eq!(
+            wire(id)["error"]["code"],
+            "MissingUnitConversionError",
+            "{id}"
+        );
+    }
     // A cwt (UK) registration no longer leaks into cwt (US).
     assert_eq!(wire("def-cwt-us-uk-register-no-leak")["ok"], false);
     // Gram-force from data alone: 1 gf = 0.00980665 N, 1 kp = 1 kgf = 1000 gf = 9.80665 N.

@@ -33,6 +33,7 @@ checksum = "683d7910e743518b0e34f1186f92494becacb047c7b6bf616c96772180fef923"
 [[package]]
 name = "asciiunits"
 version = "0.1.0"
+source = "git+https://github.com/unitsml/asciiunits-rs?rev=1f771caef878b9d383a5f29b02f434b8b614b780#1f771caef878b9d383a5f29b02f434b8b614b780"
 dependencies = [
  "parsanol",
  "serde",
@@ -252,8 +253,8 @@ checksum = "9f7c3e4beb33f85d45ae3e3a1792185706c8e16d043238c593331cc7cd313b50"
 
 [[package]]
 name = "parsanol"
-version = "0.20.12"
-source = "git+https://github.com/parsanol/parsanol-rs?rev=20d5e6cebcade3cf2111a00a7ef3f5b69d673481#20d5e6cebcade3cf2111a00a7ef3f5b69d673481"
+version = "0.20.14"
+source = "git+https://github.com/parsanol/parsanol-rs?rev=5206a33b5417b4ecd3a601930461ed2967c871e7#5206a33b5417b4ecd3a601930461ed2967c871e7"
 dependencies = [
  "ahash",
  "getrandom 0.3.4",
@@ -270,8 +271,8 @@ dependencies = [
 
 [[package]]
 name = "parsanol-derive"
-version = "0.20.12"
-source = "git+https://github.com/parsanol/parsanol-rs?rev=20d5e6cebcade3cf2111a00a7ef3f5b69d673481#20d5e6cebcade3cf2111a00a7ef3f5b69d673481"
+version = "0.20.14"
+source = "git+https://github.com/parsanol/parsanol-rs?rev=5206a33b5417b4ecd3a601930461ed2967c871e7#5206a33b5417b4ecd3a601930461ed2967c871e7"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -453,6 +454,7 @@ checksum = "a2c754d6c33795a1c324727428e5a7dedb5b06195f9890bdbcba760d3e246563"
 [[package]]
 name = "unitsdb-rs"
 version = "0.1.0"
+source = "git+https://github.com/unitsml/unitsdb-rs?rev=969a131b8992930a6ff6f869291f1f0d7cb68d33#969a131b8992930a6ff6f869291f1f0d7cb68d33"
 dependencies = [
  "serde_json",
 ]
@@ -460,6 +462,7 @@ dependencies = [
 [[package]]
 name = "unitsml-rs"
 version = "0.1.0"
+source = "git+https://github.com/unitsml/unitsml-rs?rev=4aa5f3fec308338e232dadd546050c84049062d2#4aa5f3fec308338e232dadd546050c84049062d2"
 dependencies = [
  "num-bigint",
  "num-rational",
