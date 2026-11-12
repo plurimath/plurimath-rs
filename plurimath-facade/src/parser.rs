@@ -383,23 +383,56 @@ fn tx_rule_14(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>
     }
     Ok(None)
 }
+// Ruby 0a1df68 AsciiMath mapper rules 59, 676-705 and 724-730 call
+// the declared binary constructor; Underset alone declares an empty options map.
+fn source_binary_node(name: &str, first: Value, second: Value) -> Result<Value, ConversionError> {
+    let class = crate::symbols::tables()["class_map"][name]
+        .as_str()
+        .ok_or("source binary class unavailable")?;
+    let fields = if class == "Math::Function::Underset" {
+        json!({"options":{},"parameter_one":first,"parameter_two":second})
+    } else {
+        json!({"parameter_one":first,"parameter_two":second})
+    };
+    Ok(node(class, fields))
+}
+
 fn tx_rule_15(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if let Some(name) = m.get("binary_class").and_then(Value::as_str) {
-        if ["root", "log", "lim"].contains(&name) {
-            let class = crate::symbols::tables()["class_map"][name]
-                .as_str()
-                .ok_or("source binary class unavailable")?;
+        // Source rule 854 emits two bare constructors, not a nested unary call.
+        if m.len() == 2 && m.contains_key("unary_class") {
+            let mut unary = Map::new();
+            unary.insert("unary_class".into(), m["unary_class"].clone());
+            let mut values =
+                tx_rule_18(&unary, depth)?.ok_or("source unary constructor unavailable")?;
+            values.push(source_binary_node(name, Value::Null, Value::Null)?);
+            return Ok(Some(values));
+        }
+        if ["root", "log", "lim", "overset", "underset", "stackrel"].contains(&name) {
+            if m.keys().any(|key| {
+                ![
+                    "binary_class",
+                    "base_value",
+                    "base",
+                    "power_value",
+                    "power",
+                    "expr",
+                ]
+                .contains(&key.as_str())
+            }) {
+                return Err("unported combined source binary captures".into());
+            }
             let a = if let Some(v) = m.get("base_value").or_else(|| m.get("base")) {
                 unfence(single(tx(v, depth + 1)?))
             } else {
                 Value::Null
             };
-            let b = if let Some(v) = m.get("power_value") {
+            let b = if let Some(v) = m.get("power_value").or_else(|| m.get("power")) {
                 unfence(single(tx(v, depth + 1)?))
             } else {
                 Value::Null
             };
-            let mut out = vec![node(class, json!({"parameter_one":a,"parameter_two":b}))];
+            let mut out = vec![source_binary_node(name, a, b)?];
             if let Some(rest) = m.get("expr") {
                 out.extend(tx(rest, depth + 1)?)
             }

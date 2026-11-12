@@ -1,0 +1,21 @@
+{
+  "source": "actual Ruby Plurimath mapper rules + public Math.parse outputs",
+  "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "producer": "handoffs/main-native-pma-integrated/export-extra-input-models.rb",
+  "producer_sha256": "8f4a053d6d3b4e2005225a1242fdebaa1eb6578a07a210517ad73d88cf01bbce",
+  "ruby_invocation": "bash handoffs/R31/ruby-run PRODUCER INPUT OUTPUT",
+  "source_rows_preserved": true,
+  "cases": 22,
+  "original_cases": 3,
+  "independent_cases": 19,
+  "reference_sha256": "4ff6c604d1f8271e68dc3c2714556ca5c6ac052e512c25ed5620a7188b9756a0",
+  "invalid_plain_mise_probe": "preserved in handoff; excluded because pinned Gemfile was absent",
+  "mapper_rules": [
+    59,
+    676,
+    693,
+    700,
+    724,
+    854
+  ]
+}
