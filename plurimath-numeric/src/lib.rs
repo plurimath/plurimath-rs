@@ -3,6 +3,8 @@ mod decimal_math;
 mod gum;
 #[cfg(feature = "quantity")]
 mod quantity;
+#[cfg(feature = "quantity")]
+mod quantity_magnitude;
 use num_bigint::BigInt;
 use num_integer::Integer;
 use num_rational::BigRational as Q;

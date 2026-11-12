@@ -1,4 +1,4 @@
-use super::{ast, binding_decimal, keys, name, text, E, J, Q};
+use super::{accuracy, ast, keys, name, quantity_magnitude as magnitude, text, E, J, N, Q};
 use asciiunits::{Error as ParserError, Parser};
 use num_traits::{One, ToPrimitive};
 use serde_json::json;
@@ -9,7 +9,22 @@ use unitsml_rs::{
 };
 
 /// A walked value and its optional data-declared quantity kind (F40).
-type Kinded = (Quantity, Option<QuantityKind>);
+#[derive(Clone)]
+struct Kinded {
+    quantity: Quantity,
+    kind: Option<QuantityKind>,
+    number: N,
+}
+
+impl Kinded {
+    fn new(quantity: Quantity, kind: Option<QuantityKind>, number: N) -> Self {
+        Self {
+            quantity,
+            kind,
+            number,
+        }
+    }
+}
 
 const MAX_UNIT_BYTES: usize = 4096;
 const MAX_BINDINGS: usize = 256;
@@ -103,16 +118,29 @@ fn parse_unit(register: &Register, expression: &str) -> Result<Unit, Error> {
     Ok(register.resolve(&terms_from_asciiunits(&model)?)?)
 }
 
-fn binding(register: &Register, value: &J) -> Result<Kinded, Error> {
-    if let Some(scalar) = value.as_str() {
-        return Ok((Quantity::scalar(binding_magnitude(scalar)?), None));
+fn binding(register: &Register, value: &J, magnitudes: &mut Vec<N>) -> Result<Kinded, Error> {
+    if value.as_str().is_some()
+        || value.is_number()
+        || ["decimal", "rational", "binary64"]
+            .iter()
+            .any(|key| value.get(*key).is_some())
+    {
+        let number = magnitude::binding(value)?;
+        magnitudes.push(number.clone());
+        return Ok(Kinded::new(
+            Quantity::scalar(magnitude::rational(&number)?),
+            None,
+            number,
+        ));
     }
     keys(
         value,
         &["value", "unit", "difference", "kind"],
         &["value", "unit"],
     )?;
-    let magnitude = binding_magnitude(text(value, "value")?)?;
+    let number = magnitude::binding(&value["value"])?;
+    let magnitude = magnitude::rational(&number)?;
+    magnitudes.push(number.clone());
     let unit = parse_unit(register, text(value, "unit")?)?;
     let difference = value
         .get("difference")
@@ -127,7 +155,7 @@ fn binding(register: &Register, value: &J) -> Result<Kinded, Error> {
     } else {
         Quantity::new(magnitude, unit)
     };
-    Ok((quantity, kind))
+    Ok(Kinded::new(quantity, kind, number))
 }
 
 /// `kind` is a UnitsDB quantity identifier or name, or the reserved token
@@ -149,13 +177,6 @@ fn binding_kind(unit: &Unit, kind: &str) -> Result<QuantityKind, Error> {
     };
     resolved.check_dimension(unit.dimension_id())?;
     Ok(resolved)
-}
-
-fn binding_magnitude(value: &str) -> Result<Q, Error> {
-    if !binding_decimal(value) {
-        return Err("InvalidBindingError".into());
-    }
-    Ok(rational(value)?)
 }
 
 fn power(base: Quantity, exponent: &Quantity) -> Result<Quantity, Error> {
@@ -204,38 +225,82 @@ fn power(base: Quantity, exponent: &Quantity) -> Result<Quantity, Error> {
 
 /// Kinds follow unitsml-ruby: `+`/`-` refuse incompatible kinds and keep
 /// `left || right`; negation keeps the kind; `*`, `/` and `^` drop it.
-fn walk(node: &J, bindings: &BTreeMap<String, Kinded>) -> Result<Kinded, Error> {
+fn walk(
+    node: &J,
+    bindings: &BTreeMap<String, Kinded>,
+    magnitudes: &mut Vec<N>,
+) -> Result<Kinded, Error> {
     match text(node, "type")? {
-        "number" => Ok((Quantity::scalar(rational(text(node, "text")?)?), None)),
+        "number" => {
+            let value = rational(text(node, "text")?)?;
+            let number = N::Exact(value.clone(), false);
+            magnitudes.push(number.clone());
+            Ok(Kinded::new(Quantity::scalar(value), None, number))
+        }
         "variable" => bindings
             .get(text(node, "name")?)
             .cloned()
             .ok_or("MissingVariableError".into()),
         "unary" => {
-            let (operand, kind) = walk(&node["operand"], bindings)?;
+            let operand = walk(&node["operand"], bindings, magnitudes)?;
             if node["operator"] == "-" {
-                Ok((operand.scale_by(&-Q::one())?, kind))
+                Ok(Kinded::new(
+                    operand.quantity.scale_by(&-Q::one())?,
+                    operand.kind,
+                    operand.number.neg(),
+                ))
             } else {
-                Ok((operand, kind))
+                Ok(operand)
             }
         }
         "binary" => {
-            let (left, left_kind) = walk(&node["left"], bindings)?;
-            let (right, right_kind) = walk(&node["right"], bindings)?;
-            match text(node, "operator")? {
+            let left = walk(&node["left"], bindings, magnitudes)?;
+            let right = walk(&node["right"], bindings, magnitudes)?;
+            let operator = text(node, "operator")?;
+            let (mut quantity, kind) = match operator {
                 "+" => {
-                    let kind = combine_kinds(left_kind.as_ref(), right_kind.as_ref())?;
-                    Ok((left.add(&right)?, kind))
+                    let kind = combine_kinds(left.kind.as_ref(), right.kind.as_ref())?;
+                    (left.quantity.add(&right.quantity)?, kind)
                 }
                 "-" => {
-                    let kind = combine_kinds(left_kind.as_ref(), right_kind.as_ref())?;
-                    Ok((left.subtract(&right)?, kind))
+                    let kind = combine_kinds(left.kind.as_ref(), right.kind.as_ref())?;
+                    (left.quantity.subtract(&right.quantity)?, kind)
                 }
-                "*" => Ok((left.multiply(&right)?, None)),
-                "/" => Ok((left.divide(&right)?, None)),
-                "^" => Ok((power(left, &right)?, None)),
-                _ => Err("InvalidRequest".into()),
+                "*" => (left.quantity.multiply(&right.quantity)?, None),
+                "/" => (left.quantity.divide(&right.quantity)?, None),
+                "^" => (power(left.quantity.clone(), &right.quantity)?, None),
+                _ => return Err("InvalidRequest".into()),
+            };
+            let number = if operator == "^" {
+                magnitude::power(left.number, &right.quantity.canonical_magnitude())?
+            } else {
+                let right_number = if matches!(operator, "+" | "-")
+                    && left.quantity.unit().terms() != right.quantity.unit().terms()
+                {
+                    N::Exact(
+                        right
+                            .quantity
+                            .convert(left.quantity.unit())?
+                            .magnitude()
+                            .clone(),
+                        false,
+                    )
+                } else {
+                    right.number
+                };
+                magnitude::binary(operator, left.number, right_number)?
+            };
+            // Ruby real_result re-enters quantity() at each explicit Formula boundary.
+            magnitudes.push(number.clone());
+            let numeric = magnitude::rational(&number)?;
+            if &numeric != quantity.magnitude() {
+                quantity = if quantity.scale() == Scale::Difference {
+                    Quantity::difference(numeric, quantity.unit().clone())
+                } else {
+                    Quantity::new(numeric, quantity.unit().clone())
+                };
             }
+            Ok(Kinded::new(quantity, kind, number))
         }
         "call" => Err("UnsupportedExpressionError".into()),
         _ => Err("InvalidRequest".into()),
@@ -296,6 +361,7 @@ fn evaluate(request: &J) -> Result<J, Error> {
         WireError::Invalid(_) => Error::Request("InvalidRequest"),
     })?;
     let mut bindings = BTreeMap::new();
+    let mut magnitudes = Vec::new();
     if let Some(raw) = request.get("bindings") {
         let raw = raw.as_object().ok_or("InvalidRequest")?;
         if raw.len() > MAX_BINDINGS {
@@ -305,10 +371,12 @@ fn evaluate(request: &J) -> Result<J, Error> {
             if !name(key) {
                 return Err("InvalidRequest".into());
             }
-            bindings.insert(key.clone(), binding(&register, value)?);
+            bindings.insert(key.clone(), binding(&register, value, &mut magnitudes)?);
         }
     }
-    let (value, kind) = walk(&request["ast"], &bindings)?;
+    let result = walk(&request["ast"], &bindings, &mut magnitudes)?;
+    let value = result.quantity;
+    let kind = result.kind;
     let converted = request
         .get("convert_to")
         .map(|target| {
@@ -319,7 +387,7 @@ fn evaluate(request: &J) -> Result<J, Error> {
     Ok(json!({
         "value": snapshot((&value, kind.as_ref())),
         "converted": converted.as_ref().map(|c| snapshot((c, kind.as_ref()))),
-        "accuracy": {"symbol":"exact"},
+        "accuracy": {"symbol":accuracy(&magnitudes)},
     }))
 }
 

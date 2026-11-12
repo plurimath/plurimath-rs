@@ -99,20 +99,31 @@ to a default build returns `UnavailableProfileError`.
 
 Pass this request to the same `evaluate_json` Rust function or
 `plurimath_numeric_evaluate` C function. The result contains the expression
-quantity, a converted quantity when requested, and exact accuracy. Each
+quantity, a converted quantity when requested, and source accuracy. Each
 quantity reports a rational magnitude string, canonical magnitude, exact
 dimension exponents, registered dimension ID when available, scale, and
 resolved unit and prefix terms. This example returns a magnitude of 6 in kW,
 with canonical magnitude 6000 and dimension ID NISTd16.
 
-Scalar bindings use the numeric profile's strict decimal strings. A unit
-binding supplies a decimal `value`, an AsciiUnits `unit`, and optional boolean
-`difference`. Evaluation supports numbers, variables, unary signs, explicit
+Plain decimal-string bindings retain strict Rational/exact semantics. A unit
+binding supplies a `value`, an AsciiUnits `unit`, and optional boolean
+`difference`. Explicit source numeric classes use `{"decimal":"2.5"}` for
+BigDecimal, `{"rational":["5","2"]}` for Rational, and
+`{"binary64":"4004000000000000"}` for finite Float. These tags work as scalar
+bindings or as a unit binding's `value`. Integer JSON values are exact.
+Accuracy combines every supplied magnitude, including unused bindings, just
+as Ruby's quantity evaluator does: Float is `limited_float`; otherwise the
+least BigDecimal precision wins (`limited_N`); exact values remain `exact`.
+Unit conversion can rationalize a magnitude without erasing its source
+accuracy. The wire's magnitude fields remain exact rational strings.
+
+Evaluation supports numbers, variables, unary signs, explicit
 grouping, + − × ÷, and dimensionless integer exponents of magnitude at most
 4096. Power also checks a 1,000,000-bit bound on its unreduced magnitude and
 factor. Every intermediate uses the UnitsML quantity type, including bare
-numbers. Approximate and guarded evaluation, calls, and custom conversion
-registers are outside this profile. AsciiUnits syntax refusals preserve the
+numbers. Approximate and guarded request modes and calls are unavailable;
+the strict mode can retain explicitly supplied limited numeric classes.
+AsciiUnits syntax refusals preserve the
 parser location. Inconsistent register dimensions, missing conversion paths
 and illegal scale operations produce typed refusals. A zero divisor returns
 `DivisionByZeroError` with class `indeterminate`.
