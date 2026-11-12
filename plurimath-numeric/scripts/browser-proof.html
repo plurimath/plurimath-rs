@@ -1,0 +1,15 @@
+<!doctype html><meta charset="utf-8"><body>pending<script type="module">
+import {numericKernel} from "../bindings/js/kernel.js";
+try {
+ const bytes = await (await fetch("../target/wasm32-unknown-unknown/debug/plurimath_numeric.wasm")).arrayBuffer();
+ const kernel = await numericKernel(bytes);
+ const file = new URL(location.href).searchParams.get("fixture") ?? "numeric-v1.json";
+ const fixture = await (await fetch("../fixtures/"+file)).json();
+ const failures = [];
+ for (const row of fixture.cases) {
+  const actual = kernel.evaluateJson(row.request_json ?? JSON.stringify(row.request));
+  if (actual !== row.expected_wire) failures.push({id: row.id, actual, expected: row.expected_wire});
+ }
+ document.body.textContent=JSON.stringify({runtime:"browser-WASM",executed:fixture.cases.length,passed:fixture.cases.length-failures.length,failures});
+} catch(error) {document.body.textContent=JSON.stringify({error:String(error)});}
+</script></body>

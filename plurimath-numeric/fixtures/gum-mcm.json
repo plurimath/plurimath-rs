@@ -1,0 +1,1092 @@
+{
+  "source": {
+    "manifest_sha256": "fc6402d921eb410a273c655e27d23e81fc422fb672aa5a5f99420611b2b82543",
+    "producer": {
+      "repository": "plurimath/plurimath",
+      "commit": "8916961a69dc1f586e915790c4fb052b910efa86",
+      "pr": 580,
+      "gha_run": 42904830789,
+      "engine_versions": [
+        "0.11.17"
+      ],
+      "engine_methods": [
+        "JCGM101-2008-7.9.4-v1"
+      ]
+    },
+    "declared_input_sha256": {
+      "gum_h1_mcm.json": "bbc87f945a42110d252cb69244700c4de19a45487fe235e46013d1cc3ff5d2d3",
+      "gum_mcm_profiles.json": "59afc728a4c857f92e90e60a4ac4d9a1e4449fd3c60ce6fb1d0a1233bf13d46f"
+    }
+  },
+  "cases": [
+    {
+      "id": "jcgm101_table10_pdf",
+      "source": {
+        "archive": "corpora/features/archive/gha-42904830789/gum-h1-mathematical-reference/gum-reference.json",
+        "archive_sha256": "fb1e21a687b2843ed4fbb978fc2b06e6868e36f9a5e159ef9a8230bdb61c55d0",
+        "source_pdf_sha256": "6d8548af875df112dfc5cf14eb974f5544341f4a31cbbdfc19fc5ed155d8fa20"
+      },
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "monte_carlo",
+        "parameters": {
+          "ast": {
+            "type": "binary",
+            "operator": "-",
+            "left": {
+              "type": "binary",
+              "operator": "-",
+              "left": {
+                "type": "binary",
+                "operator": "+",
+                "left": {
+                  "type": "binary",
+                  "operator": "+",
+                  "left": {
+                    "type": "binary",
+                    "operator": "+",
+                    "left": {
+                      "type": "variable",
+                      "name": "s"
+                    },
+                    "right": {
+                      "type": "variable",
+                      "name": "d"
+                    }
+                  },
+                  "right": {
+                    "type": "variable",
+                    "name": "e"
+                  }
+                },
+                "right": {
+                  "type": "variable",
+                  "name": "f"
+                }
+              },
+              "right": {
+                "type": "binary",
+                "operator": "*",
+                "left": {
+                  "type": "variable",
+                  "name": "s"
+                },
+                "right": {
+                  "type": "binary",
+                  "operator": "+",
+                  "left": {
+                    "type": "binary",
+                    "operator": "*",
+                    "left": {
+                      "type": "variable",
+                      "name": "b"
+                    },
+                    "right": {
+                      "type": "binary",
+                      "operator": "+",
+                      "left": {
+                        "type": "variable",
+                        "name": "t"
+                      },
+                      "right": {
+                        "type": "variable",
+                        "name": "v"
+                      }
+                    }
+                  },
+                  "right": {
+                    "type": "binary",
+                    "operator": "*",
+                    "left": {
+                      "type": "variable",
+                      "name": "a"
+                    },
+                    "right": {
+                      "type": "variable",
+                      "name": "c"
+                    }
+                  }
+                }
+              }
+            },
+            "right": {
+              "type": "number",
+              "text": "50000000"
+            }
+          },
+          "inputs": [
+            {
+              "name": "s",
+              "pdf": {
+                "distribution": "student_t",
+                "location": "50000623",
+                "scale": "25",
+                "degrees_of_freedom": 18
+              }
+            },
+            {
+              "name": "d",
+              "pdf": {
+                "distribution": "student_t",
+                "location": "215",
+                "scale": "6",
+                "degrees_of_freedom": 24
+              }
+            },
+            {
+              "name": "e",
+              "pdf": {
+                "distribution": "student_t",
+                "location": "0",
+                "scale": "4",
+                "degrees_of_freedom": 5
+              }
+            },
+            {
+              "name": "f",
+              "pdf": {
+                "distribution": "student_t",
+                "location": "0",
+                "scale": "7",
+                "degrees_of_freedom": 8
+              }
+            },
+            {
+              "name": "a",
+              "pdf": {
+                "distribution": "rectangular",
+                "lower": "0.0000095",
+                "upper": "0.0000135"
+              }
+            },
+            {
+              "name": "t",
+              "pdf": {
+                "distribution": "normal",
+                "location": "-0.1",
+                "sd": "0.2"
+              }
+            },
+            {
+              "name": "v",
+              "pdf": {
+                "distribution": "arcsine",
+                "lower": "-0.5",
+                "upper": "0.5"
+              }
+            },
+            {
+              "name": "b",
+              "pdf": {
+                "distribution": "curvilinear_trapezoid",
+                "lower": "-0.000001",
+                "upper": "0.000001",
+                "boundary_half_width": "0.0000001"
+              }
+            },
+            {
+              "name": "c",
+              "pdf": {
+                "distribution": "curvilinear_trapezoid",
+                "lower": "-0.05",
+                "upper": "0.05",
+                "boundary_half_width": "0.025"
+              }
+            }
+          ],
+          "independent": true,
+          "seeds": [
+            12345,
+            23456,
+            34567,
+            45678
+          ],
+          "probability": "19/20",
+          "interval": "both",
+          "guard_digits": 12,
+          "significant_digits": 2,
+          "max_samples": 2000000
+        }
+      },
+      "expected": {
+        "estimate": "837.994776983",
+        "standard_uncertainty": "35.8351261896",
+        "intervals": {
+          "symmetric": [
+            "767.512305695",
+            "908.390009745"
+          ],
+          "shortest": [
+            "767.804172914",
+            "908.645370954"
+          ]
+        },
+        "probability": "19/20",
+        "numerical_tolerance": "0.5",
+        "twice_standard_errors": {
+          "estimate": "0.0765510256139",
+          "standard_uncertainty": "0.0567628384747",
+          "symmetric_lower": "0.225259101019",
+          "symmetric_upper": "0.227662666651",
+          "shortest_lower": "0.453754709304",
+          "shortest_upper": "0.497462079441"
+        },
+        "samples": 820000,
+        "requested_max_samples": 2000000,
+        "batches": 82,
+        "batch_size": 10000,
+        "significant_digits": 2,
+        "guard_digits": 12,
+        "precision_convention": "significant_digits",
+        "stabilized": true,
+        "method": "adaptive_mcm",
+        "variables": [
+          "s",
+          "d",
+          "e",
+          "f",
+          "a",
+          "t",
+          "v",
+          "b",
+          "c"
+        ],
+        "engine": {
+          "name": "plurimath",
+          "version": "0.11.17",
+          "method": "JCGM101-2008-7.9.4-v1",
+          "numeric_backend": "binary64-centered-exact-polynomial",
+          "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+          "initial_seeds": [
+            12345,
+            23456,
+            34567,
+            45678
+          ],
+          "final_state": [
+            986866755,
+            1568950505,
+            1386371363,
+            1475481268
+          ],
+          "uniform_draws": 15938582
+        }
+      }
+    },
+    {
+      "id": "gum5_table8_1_pdf",
+      "source": {
+        "archive": "corpora/features/archive/gha-42904830789/gum-h1-mathematical-reference/gum-reference.json",
+        "archive_sha256": "fb1e21a687b2843ed4fbb978fc2b06e6868e36f9a5e159ef9a8230bdb61c55d0",
+        "source_pdf_sha256": "da5fa8a2406cc2013eeff86d8b5e63a3647cd56410f1e58a42941c098db1a3a5"
+      },
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "monte_carlo",
+        "parameters": {
+          "ast": {
+            "type": "binary",
+            "operator": "-",
+            "left": {
+              "type": "binary",
+              "operator": "-",
+              "left": {
+                "type": "binary",
+                "operator": "+",
+                "left": {
+                  "type": "binary",
+                  "operator": "+",
+                  "left": {
+                    "type": "binary",
+                    "operator": "+",
+                    "left": {
+                      "type": "variable",
+                      "name": "s"
+                    },
+                    "right": {
+                      "type": "variable",
+                      "name": "d"
+                    }
+                  },
+                  "right": {
+                    "type": "variable",
+                    "name": "e"
+                  }
+                },
+                "right": {
+                  "type": "variable",
+                  "name": "f"
+                }
+              },
+              "right": {
+                "type": "binary",
+                "operator": "*",
+                "left": {
+                  "type": "variable",
+                  "name": "s"
+                },
+                "right": {
+                  "type": "binary",
+                  "operator": "+",
+                  "left": {
+                    "type": "binary",
+                    "operator": "*",
+                    "left": {
+                      "type": "variable",
+                      "name": "b"
+                    },
+                    "right": {
+                      "type": "binary",
+                      "operator": "+",
+                      "left": {
+                        "type": "variable",
+                        "name": "t"
+                      },
+                      "right": {
+                        "type": "variable",
+                        "name": "v"
+                      }
+                    }
+                  },
+                  "right": {
+                    "type": "binary",
+                    "operator": "*",
+                    "left": {
+                      "type": "variable",
+                      "name": "a"
+                    },
+                    "right": {
+                      "type": "variable",
+                      "name": "c"
+                    }
+                  }
+                }
+              }
+            },
+            "right": {
+              "type": "number",
+              "text": "50000000"
+            }
+          },
+          "inputs": [
+            {
+              "name": "s",
+              "pdf": {
+                "distribution": "student_t",
+                "location": "50000623",
+                "scale": "25",
+                "degrees_of_freedom": 18
+              }
+            },
+            {
+              "name": "d",
+              "pdf": {
+                "distribution": "student_t",
+                "location": "215",
+                "scale": "5.8",
+                "degrees_of_freedom": 24
+              }
+            },
+            {
+              "name": "e",
+              "pdf": {
+                "distribution": "student_t",
+                "location": "0",
+                "scale": "3.9",
+                "degrees_of_freedom": 5
+              }
+            },
+            {
+              "name": "f",
+              "pdf": {
+                "distribution": "student_t",
+                "location": "0",
+                "scale": "6.7",
+                "degrees_of_freedom": 8
+              }
+            },
+            {
+              "name": "a",
+              "pdf": {
+                "distribution": "rectangular",
+                "lower": "0.0000095",
+                "upper": "0.0000135"
+              }
+            },
+            {
+              "name": "t",
+              "pdf": {
+                "distribution": "normal",
+                "location": "-0.1",
+                "sd": "0.2"
+              }
+            },
+            {
+              "name": "v",
+              "pdf": {
+                "distribution": "arcsine",
+                "lower": "-0.5",
+                "upper": "0.5"
+              }
+            },
+            {
+              "name": "b",
+              "pdf": {
+                "distribution": "curvilinear_trapezoid",
+                "lower": "-0.000001",
+                "upper": "0.000001",
+                "boundary_half_width": "0.0000001"
+              }
+            },
+            {
+              "name": "c",
+              "pdf": {
+                "distribution": "curvilinear_trapezoid",
+                "lower": "-0.05",
+                "upper": "0.05",
+                "boundary_half_width": "0.025"
+              }
+            }
+          ],
+          "independent": true,
+          "seeds": [
+            56789,
+            67890,
+            78901,
+            89012
+          ],
+          "probability": "19/20",
+          "interval": "both",
+          "guard_digits": 12,
+          "significant_digits": 2,
+          "max_samples": 2000000
+        }
+      },
+      "expected": {
+        "estimate": "837.930434282",
+        "standard_uncertainty": "35.7220553132",
+        "intervals": {
+          "symmetric": [
+            "767.615470203",
+            "908.114919897"
+          ],
+          "shortest": [
+            "767.617725526",
+            "908.117019003"
+          ]
+        },
+        "probability": "19/20",
+        "numerical_tolerance": "0.5",
+        "twice_standard_errors": {
+          "estimate": "0.0933378769822",
+          "standard_uncertainty": "0.0675597545153",
+          "symmetric_lower": "0.218663411725",
+          "symmetric_upper": "0.239237596752",
+          "shortest_lower": "0.425576003019",
+          "shortest_upper": "0.496837216927"
+        },
+        "samples": 670000,
+        "requested_max_samples": 2000000,
+        "batches": 67,
+        "batch_size": 10000,
+        "significant_digits": 2,
+        "guard_digits": 12,
+        "precision_convention": "significant_digits",
+        "stabilized": true,
+        "method": "adaptive_mcm",
+        "variables": [
+          "s",
+          "d",
+          "e",
+          "f",
+          "a",
+          "t",
+          "v",
+          "b",
+          "c"
+        ],
+        "engine": {
+          "name": "plurimath",
+          "version": "0.11.17",
+          "method": "JCGM101-2008-7.9.4-v1",
+          "numeric_backend": "binary64-centered-exact-polynomial",
+          "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+          "initial_seeds": [
+            56789,
+            67890,
+            78901,
+            89012
+          ],
+          "final_state": [
+            138098836,
+            328137386,
+            1006053249,
+            1258637579
+          ],
+          "uniform_draws": 13023566
+        }
+      }
+    },
+    {
+      "id": "gum5_linear_1",
+      "source": {
+        "archive": "corpora/features/archive/gha-42904830789/gum-extended-mathematical-references/gum-profiles-reference.json",
+        "archive_sha256": "9136864751bfb4e08ed1ee74b3ab8479edac045e2cff01a108d04914ac7ebfec",
+        "source_pdf_sha256": "da5fa8a2406cc2013eeff86d8b5e63a3647cd56410f1e58a42941c098db1a3a5"
+      },
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "monte_carlo",
+        "parameters": {
+          "ast": {
+            "type": "binary",
+            "operator": "+",
+            "left": {
+              "type": "binary",
+              "operator": "+",
+              "left": {
+                "type": "binary",
+                "operator": "+",
+                "left": {
+                  "type": "variable",
+                  "name": "a"
+                },
+                "right": {
+                  "type": "variable",
+                  "name": "b"
+                }
+              },
+              "right": {
+                "type": "variable",
+                "name": "c"
+              }
+            },
+            "right": {
+              "type": "variable",
+              "name": "d"
+            }
+          },
+          "inputs": [
+            {
+              "name": "a",
+              "pdf": {
+                "distribution": "normal",
+                "location": "0",
+                "sd": "1"
+              }
+            },
+            {
+              "name": "b",
+              "pdf": {
+                "distribution": "normal",
+                "location": "0",
+                "sd": "1"
+              }
+            },
+            {
+              "name": "c",
+              "pdf": {
+                "distribution": "normal",
+                "location": "0",
+                "sd": "1"
+              }
+            },
+            {
+              "name": "d",
+              "pdf": {
+                "distribution": "normal",
+                "location": "0",
+                "sd": "1"
+              }
+            }
+          ],
+          "independent": true,
+          "seeds": [
+            12345,
+            23456,
+            34567,
+            45678
+          ],
+          "probability": "19/20",
+          "interval": "both",
+          "guard_digits": 12,
+          "significant_digits": 2,
+          "max_samples": 8000000
+        }
+      },
+      "expected": {
+        "estimate": "-0.00161596372426",
+        "standard_uncertainty": "2.003736025",
+        "intervals": {
+          "symmetric": [
+            "-3.92727036918",
+            "3.91147603894"
+          ],
+          "shortest": [
+            "-3.97438112045",
+            "3.85306789345"
+          ]
+        },
+        "probability": "19/20",
+        "numerical_tolerance": "0.05",
+        "twice_standard_errors": {
+          "estimate": "0.0126755700869",
+          "standard_uncertainty": "0.0044500368259",
+          "symmetric_lower": "0.0236323487542",
+          "symmetric_upper": "0.0353011518589",
+          "shortest_lower": "0.0442116037166",
+          "shortest_upper": "0.0465807826525"
+        },
+        "samples": 100000,
+        "requested_max_samples": 8000000,
+        "batches": 10,
+        "batch_size": 10000,
+        "significant_digits": 2,
+        "guard_digits": 12,
+        "precision_convention": "significant_digits",
+        "stabilized": true,
+        "method": "adaptive_mcm",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "engine": {
+          "name": "plurimath",
+          "version": "0.11.17",
+          "method": "JCGM101-2008-7.9.4-v1",
+          "numeric_backend": "binary64-centered-exact-polynomial",
+          "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+          "initial_seeds": [
+            12345,
+            23456,
+            34567,
+            45678
+          ],
+          "final_state": [
+            175447320,
+            257105625,
+            730763489,
+            466308042
+          ],
+          "uniform_draws": 400000
+        }
+      }
+    },
+    {
+      "id": "gum5_linear_2",
+      "source": {
+        "archive": "corpora/features/archive/gha-42904830789/gum-extended-mathematical-references/gum-profiles-reference.json",
+        "archive_sha256": "9136864751bfb4e08ed1ee74b3ab8479edac045e2cff01a108d04914ac7ebfec",
+        "source_pdf_sha256": "da5fa8a2406cc2013eeff86d8b5e63a3647cd56410f1e58a42941c098db1a3a5"
+      },
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "monte_carlo",
+        "parameters": {
+          "ast": {
+            "type": "binary",
+            "operator": "+",
+            "left": {
+              "type": "binary",
+              "operator": "+",
+              "left": {
+                "type": "binary",
+                "operator": "+",
+                "left": {
+                  "type": "variable",
+                  "name": "a"
+                },
+                "right": {
+                  "type": "variable",
+                  "name": "b"
+                }
+              },
+              "right": {
+                "type": "variable",
+                "name": "c"
+              }
+            },
+            "right": {
+              "type": "variable",
+              "name": "d"
+            }
+          },
+          "inputs": [
+            {
+              "name": "a",
+              "pdf": {
+                "distribution": "rectangular",
+                "lower": "-1.73205080756887729352744634150587236694280525381038062805580697945193301691",
+                "upper": "1.73205080756887729352744634150587236694280525381038062805580697945193301691"
+              }
+            },
+            {
+              "name": "b",
+              "pdf": {
+                "distribution": "rectangular",
+                "lower": "-1.73205080756887729352744634150587236694280525381038062805580697945193301691",
+                "upper": "1.73205080756887729352744634150587236694280525381038062805580697945193301691"
+              }
+            },
+            {
+              "name": "c",
+              "pdf": {
+                "distribution": "rectangular",
+                "lower": "-1.73205080756887729352744634150587236694280525381038062805580697945193301691",
+                "upper": "1.73205080756887729352744634150587236694280525381038062805580697945193301691"
+              }
+            },
+            {
+              "name": "d",
+              "pdf": {
+                "distribution": "rectangular",
+                "lower": "-1.73205080756887729352744634150587236694280525381038062805580697945193301691",
+                "upper": "1.73205080756887729352744634150587236694280525381038062805580697945193301691"
+              }
+            }
+          ],
+          "independent": true,
+          "seeds": [
+            12345,
+            23456,
+            34567,
+            45678
+          ],
+          "probability": "19/20",
+          "interval": "both",
+          "guard_digits": 12,
+          "significant_digits": 2,
+          "max_samples": 8000000
+        }
+      },
+      "expected": {
+        "estimate": "0.000763506945702",
+        "standard_uncertainty": "2.00201434547",
+        "intervals": {
+          "symmetric": [
+            "-3.882534987",
+            "3.87755987109"
+          ],
+          "shortest": [
+            "-3.90672738596",
+            "3.85080916857"
+          ]
+        },
+        "probability": "19/20",
+        "numerical_tolerance": "0.05",
+        "twice_standard_errors": {
+          "estimate": "0.00761785124096",
+          "standard_uncertainty": "0.00589361663008",
+          "symmetric_lower": "0.014184898618",
+          "symmetric_upper": "0.0236494545664",
+          "shortest_lower": "0.0441329149383",
+          "shortest_upper": "0.0472922877892"
+        },
+        "samples": 180000,
+        "requested_max_samples": 8000000,
+        "batches": 18,
+        "batch_size": 10000,
+        "significant_digits": 2,
+        "guard_digits": 12,
+        "precision_convention": "significant_digits",
+        "stabilized": true,
+        "method": "adaptive_mcm",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "engine": {
+          "name": "plurimath",
+          "version": "0.11.17",
+          "method": "JCGM101-2008-7.9.4-v1",
+          "numeric_backend": "binary64-centered-exact-polynomial",
+          "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+          "initial_seeds": [
+            12345,
+            23456,
+            34567,
+            45678
+          ],
+          "final_state": [
+            1471658015,
+            1700587702,
+            1803854958,
+            1797420216
+          ],
+          "uniform_draws": 720000
+        }
+      }
+    },
+    {
+      "id": "gum5_linear_3",
+      "source": {
+        "archive": "corpora/features/archive/gha-42904830789/gum-extended-mathematical-references/gum-profiles-reference.json",
+        "archive_sha256": "9136864751bfb4e08ed1ee74b3ab8479edac045e2cff01a108d04914ac7ebfec",
+        "source_pdf_sha256": "da5fa8a2406cc2013eeff86d8b5e63a3647cd56410f1e58a42941c098db1a3a5"
+      },
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "monte_carlo",
+        "parameters": {
+          "ast": {
+            "type": "binary",
+            "operator": "+",
+            "left": {
+              "type": "binary",
+              "operator": "+",
+              "left": {
+                "type": "binary",
+                "operator": "+",
+                "left": {
+                  "type": "variable",
+                  "name": "a"
+                },
+                "right": {
+                  "type": "variable",
+                  "name": "b"
+                }
+              },
+              "right": {
+                "type": "variable",
+                "name": "c"
+              }
+            },
+            "right": {
+              "type": "variable",
+              "name": "d"
+            }
+          },
+          "inputs": [
+            {
+              "name": "a",
+              "pdf": {
+                "distribution": "rectangular",
+                "lower": "-1.73205080756887729352744634150587236694280525381038062805580697945193301691",
+                "upper": "1.73205080756887729352744634150587236694280525381038062805580697945193301691"
+              }
+            },
+            {
+              "name": "b",
+              "pdf": {
+                "distribution": "rectangular",
+                "lower": "-1.73205080756887729352744634150587236694280525381038062805580697945193301691",
+                "upper": "1.73205080756887729352744634150587236694280525381038062805580697945193301691"
+              }
+            },
+            {
+              "name": "c",
+              "pdf": {
+                "distribution": "rectangular",
+                "lower": "-1.73205080756887729352744634150587236694280525381038062805580697945193301691",
+                "upper": "1.73205080756887729352744634150587236694280525381038062805580697945193301691"
+              }
+            },
+            {
+              "name": "d",
+              "pdf": {
+                "distribution": "rectangular",
+                "lower": "-17.3205080756887729352744634150587236694280525381038062805580697945193301691",
+                "upper": "17.3205080756887729352744634150587236694280525381038062805580697945193301691"
+              }
+            }
+          ],
+          "independent": true,
+          "seeds": [
+            12345,
+            23456,
+            34567,
+            45678
+          ],
+          "probability": "19/20",
+          "interval": "both",
+          "guard_digits": 12,
+          "significant_digits": 2,
+          "max_samples": 8000000
+        }
+      },
+      "expected": {
+        "estimate": "-0.0645238571882",
+        "standard_uncertainty": "10.1280771686",
+        "intervals": {
+          "symmetric": [
+            "-16.99903311",
+            "16.9447814315"
+          ],
+          "shortest": [
+            "-16.947046439",
+            "16.98830639"
+          ]
+        },
+        "probability": "19/20",
+        "numerical_tolerance": "0.5",
+        "twice_standard_errors": {
+          "estimate": "0.0645353091574",
+          "standard_uncertainty": "0.0765653221743",
+          "symmetric_lower": "0.120014320635",
+          "symmetric_upper": "0.079559872859",
+          "shortest_lower": "0.228588855057",
+          "shortest_upper": "0.425034378616"
+        },
+        "samples": 20000,
+        "requested_max_samples": 8000000,
+        "batches": 2,
+        "batch_size": 10000,
+        "significant_digits": 2,
+        "guard_digits": 12,
+        "precision_convention": "significant_digits",
+        "stabilized": true,
+        "method": "adaptive_mcm",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "engine": {
+          "name": "plurimath",
+          "version": "0.11.17",
+          "method": "JCGM101-2008-7.9.4-v1",
+          "numeric_backend": "binary64-centered-exact-polynomial",
+          "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+          "initial_seeds": [
+            12345,
+            23456,
+            34567,
+            45678
+          ],
+          "final_state": [
+            1317483289,
+            2124196823,
+            1591935952,
+            1467258895
+          ],
+          "uniform_draws": 80000
+        }
+      }
+    },
+    {
+      "id": "gum6_bromine",
+      "source": {
+        "archive": "corpora/features/archive/gha-42904830789/gum-extended-mathematical-references/gum-profiles-reference.json",
+        "archive_sha256": "9136864751bfb4e08ed1ee74b3ab8479edac045e2cff01a108d04914ac7ebfec",
+        "source_pdf_sha256": "5abfd9c6791c41857c46d84807ec51b189e4b4068f4688936cd6f495c27f8e93"
+      },
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "monte_carlo",
+        "parameters": {
+          "ast": {
+            "type": "binary",
+            "operator": "*",
+            "left": {
+              "type": "binary",
+              "operator": "*",
+              "left": {
+                "type": "number",
+                "text": "2"
+              },
+              "right": {
+                "type": "variable",
+                "name": "x"
+              }
+            },
+            "right": {
+              "type": "binary",
+              "operator": "-",
+              "left": {
+                "type": "number",
+                "text": "1"
+              },
+              "right": {
+                "type": "variable",
+                "name": "x"
+              }
+            }
+          },
+          "inputs": [
+            {
+              "name": "x",
+              "pdf": {
+                "distribution": "normal",
+                "location": "0.500",
+                "sd": "0.005"
+              }
+            }
+          ],
+          "independent": true,
+          "seeds": [
+            12345,
+            23456,
+            34567,
+            45678
+          ],
+          "probability": "19/20",
+          "interval": "both",
+          "guard_digits": 12,
+          "significant_digits": 2,
+          "max_samples": 8000000
+        }
+      },
+      "expected": {
+        "estimate": "0.499949975464",
+        "standard_uncertainty": "0.0000708227235028",
+        "intervals": {
+          "symmetric": [
+            "0.499748622396",
+            "0.499999950901"
+          ],
+          "shortest": [
+            "0.499807679921",
+            "0.5"
+          ]
+        },
+        "probability": "19/20",
+        "numerical_tolerance": "0.0000005",
+        "twice_standard_errors": {
+          "estimate": "0.000000068725440588",
+          "standard_uncertainty": "0.000000125595816295",
+          "symmetric_lower": "0.00000049924761705",
+          "symmetric_upper": "0.000000000579908040939",
+          "shortest_lower": "0.000000329874072557",
+          "shortest_upper": "0.000000000000265585501553"
+        },
+        "samples": 4500000,
+        "requested_max_samples": 8000000,
+        "batches": 450,
+        "batch_size": 10000,
+        "significant_digits": 2,
+        "guard_digits": 12,
+        "precision_convention": "significant_digits",
+        "stabilized": true,
+        "method": "adaptive_mcm",
+        "variables": [
+          "x"
+        ],
+        "engine": {
+          "name": "plurimath",
+          "version": "0.11.17",
+          "method": "JCGM101-2008-7.9.4-v1",
+          "numeric_backend": "binary64-centered-exact-polynomial",
+          "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+          "initial_seeds": [
+            12345,
+            23456,
+            34567,
+            45678
+          ],
+          "final_state": [
+            578315836,
+            171083092,
+            819106514,
+            461959279
+          ],
+          "uniform_draws": 4500000
+        }
+      }
+    }
+  ]
+}

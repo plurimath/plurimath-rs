@@ -1,0 +1,74 @@
+{
+  "source": {
+    "suite_commit": "877530fd9a04ed8c9026dafc2ee5127215e2bd00",
+    "corpus_sha256": "c2719fc8f5ba2393292eeef59885f0e046a347f35e8c68e2ec9d09fcb80bb8c3",
+    "producer_revision": "9c90094a9077c686e0e03d7838eef8531bea8c3c",
+    "producer_file_sha256": "a4ac0755f96ef7f94b759916881af048c0391cb3e63bafefe2cd94d973834905",
+    "case_id": "refusals-14",
+    "row": {
+      "payload": "handoffs/F40/extended-ruby-refusals.jsonl",
+      "line": 15,
+      "row_sha256": "297bf7ac63c96b67cd03e69949c05d0a6660d79171610e73e28c969d9e7cdbde",
+      "script": "handoffs/F40/capture-ruby-quantity.rb",
+      "example": "voltage-times-current"
+    },
+    "claims": {
+      "named_power_class": "not asserted",
+      "basis": "only the kV*A -> kW conversion succeeded and the dimension vector is recorded"
+    }
+  },
+  "request": {
+    "schema": "plurimath.evaluate.quantity/1",
+    "ast": {
+      "type": "binary",
+      "operator": "*",
+      "left": {
+        "type": "variable",
+        "name": "v"
+      },
+      "right": {
+        "type": "variable",
+        "name": "i"
+      }
+    },
+    "bindings": {
+      "v": {
+        "value": "2",
+        "unit": "kV"
+      },
+      "i": {
+        "value": "3",
+        "unit": "A"
+      }
+    },
+    "convert_to": "kW"
+  },
+  "expected": {
+    "outcome": {
+      "magnitude": {
+        "rational": [
+          "6",
+          "1"
+        ]
+      },
+      "unit": "kV*A",
+      "dimensions": {
+        "Length": 2,
+        "Mass": 1,
+        "Time": -3
+      },
+      "accuracy": {
+        "symbol": "exact"
+      }
+    },
+    "converted": {
+      "magnitude": {
+        "rational": [
+          "6",
+          "1"
+        ]
+      },
+      "unit": "kW"
+    }
+  }
+}

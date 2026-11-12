@@ -1,0 +1,294 @@
+{
+ "schema": "unitsml-testsuite-ruby-feature-additions/1",
+ "count": 13,
+ "cases": [
+  {
+   "id": "exact-rational",
+   "family": "accuracy_classes",
+   "input": {
+    "formula": "x*y",
+    "inputs": {
+     "x": {
+      "value": {
+       "rational": [
+        "5",
+        "2"
+       ]
+      },
+      "unit": "m"
+     },
+     "y": {
+      "value": 3,
+      "unit": "s"
+     }
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "rational": [
+      "15",
+      "2"
+     ]
+    },
+    "unit": "m*s",
+    "accuracy": {
+     "symbol": "exact"
+    }
+   },
+   "comparison": "exact equality of the wire-encoded values (rational/decimal/binary64/symbol)"
+  },
+  {
+   "id": "limited-float",
+   "family": "accuracy_classes",
+   "input": {
+    "formula": "x*y",
+    "inputs": {
+     "x": {
+      "value": {
+       "binary64": "4004000000000000"
+      },
+      "unit": "m"
+     },
+     "y": {
+      "value": 3,
+      "unit": "s"
+     }
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "binary64": "401e000000000000"
+    },
+    "unit": "m*s",
+    "accuracy": {
+     "symbol": "limited_float"
+    }
+   },
+   "comparison": "exact equality of the wire-encoded values (rational/decimal/binary64/symbol)"
+  },
+  {
+   "id": "limited-decimal",
+   "family": "accuracy_classes",
+   "input": {
+    "formula": "x*y",
+    "inputs": {
+     "x": {
+      "value": {
+       "decimal": "2.5"
+      },
+      "unit": "m"
+     },
+     "y": {
+      "value": 3,
+      "unit": "s"
+     }
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "decimal": "7.5"
+    },
+    "unit": "m*s",
+    "accuracy": {
+     "symbol": "limited_2"
+    }
+   },
+   "comparison": "exact equality of the wire-encoded values (rational/decimal/binary64/symbol)"
+  },
+  {
+   "id": "least-precise-wins-decimal",
+   "family": "accuracy_classes",
+   "input": {
+    "formula": "x*y",
+    "inputs": {
+     "x": {
+      "value": {
+       "decimal": "2.5"
+      },
+      "unit": "m"
+     },
+     "y": {
+      "value": {
+       "decimal": "3.1"
+      },
+      "unit": "s"
+     }
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "decimal": "7.75"
+    },
+    "unit": "m*s",
+    "accuracy": {
+     "symbol": "limited_2"
+    }
+   },
+   "comparison": "exact equality of the wire-encoded values (rational/decimal/binary64/symbol)"
+  },
+  {
+   "id": "least-precise-wins-float",
+   "family": "accuracy_classes",
+   "input": {
+    "formula": "x*y",
+    "inputs": {
+     "x": {
+      "value": {
+       "decimal": "2.5"
+      },
+      "unit": "m"
+     },
+     "y": {
+      "value": {
+       "binary64": "4008000000000000"
+      },
+      "unit": "s"
+     }
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "decimal": "7.5"
+    },
+    "unit": "m*s",
+    "accuracy": {
+     "symbol": "limited_float"
+    }
+   },
+   "comparison": "exact equality of the wire-encoded values (rational/decimal/binary64/symbol)"
+  },
+  {
+   "id": "limited-sum-same-unit",
+   "family": "accuracy_classes",
+   "input": {
+    "formula": "x+y",
+    "inputs": {
+     "x": {
+      "value": {
+       "decimal": "1.5"
+      },
+      "unit": "m"
+     },
+     "y": {
+      "value": 2,
+      "unit": "m"
+     }
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "decimal": "3.5"
+    },
+    "unit": "m",
+    "accuracy": {
+     "symbol": "limited_2"
+    }
+   },
+   "comparison": "exact equality of the wire-encoded values (rational/decimal/binary64/symbol)"
+  },
+  {
+   "id": "roundtrip-W/m",
+   "family": "unit_text_roundtrip",
+   "input": {
+    "input": "W/m"
+   },
+   "expected": {
+    "outcome": "ok",
+    "norm_text": "W/m",
+    "reparsed_norm_text": "W/m",
+    "idempotent": true
+   },
+   "comparison": "exact equality of the wire-encoded values (rational/decimal/binary64/symbol)"
+  },
+  {
+   "id": "roundtrip-m/s",
+   "family": "unit_text_roundtrip",
+   "input": {
+    "input": "m/s"
+   },
+   "expected": {
+    "outcome": "ok",
+    "norm_text": "m/s",
+    "reparsed_norm_text": "m/s",
+    "idempotent": true
+   },
+   "comparison": "exact equality of the wire-encoded values (rational/decimal/binary64/symbol)"
+  },
+  {
+   "id": "roundtrip-km/s",
+   "family": "unit_text_roundtrip",
+   "input": {
+    "input": "km/s"
+   },
+   "expected": {
+    "outcome": "ok",
+    "norm_text": "km/s",
+    "reparsed_norm_text": "km/s",
+    "idempotent": true
+   },
+   "comparison": "exact equality of the wire-encoded values (rational/decimal/binary64/symbol)"
+  },
+  {
+   "id": "roundtrip-W*m^(-1)*sr^(-1)",
+   "family": "unit_text_roundtrip",
+   "input": {
+    "input": "W*m^(-1)*sr^(-1)"
+   },
+   "expected": {
+    "outcome": "ok",
+    "norm_text": "W*m^(-1)*sr^(-1)",
+    "reparsed_norm_text": "W*m^(-1)*sr^(-1)",
+    "idempotent": true
+   },
+   "comparison": "exact equality of the wire-encoded values (rational/decimal/binary64/symbol)"
+  },
+  {
+   "id": "roundtrip-J*s^(-1)*m^(-1)*s",
+   "family": "unit_text_roundtrip",
+   "input": {
+    "input": "J*s^(-1)*m^(-1)*s"
+   },
+   "expected": {
+    "outcome": "ok",
+    "norm_text": "J*s^(-1)*m^(-1)*s",
+    "reparsed_norm_text": "J*s^(-1)*m^(-1)*s",
+    "idempotent": true
+   },
+   "comparison": "exact equality of the wire-encoded values (rational/decimal/binary64/symbol)"
+  },
+  {
+   "id": "roundtrip-W*m^(-1)*s",
+   "family": "unit_text_roundtrip",
+   "input": {
+    "input": "W*m^(-1)*s"
+   },
+   "expected": {
+    "outcome": "ok",
+    "norm_text": "W*m^(-1)*s",
+    "reparsed_norm_text": "W*m^(-1)*s",
+    "idempotent": true
+   },
+   "comparison": "exact equality of the wire-encoded values (rational/decimal/binary64/symbol)"
+  },
+  {
+   "id": "roundtrip-W*m^(-1)",
+   "family": "unit_text_roundtrip",
+   "input": {
+    "input": "W*m^(-1)"
+   },
+   "expected": {
+    "outcome": "ok",
+    "norm_text": "W*m^(-1)",
+    "reparsed_norm_text": "W*m^(-1)",
+    "idempotent": true
+   },
+   "comparison": "exact equality of the wire-encoded values (rational/decimal/binary64/symbol)"
+  }
+ ]
+}

@@ -1,0 +1,8522 @@
+{
+ "schema": "unitsml-testsuite-ruby-unitsml-features/1",
+ "count": 251,
+ "cases": [
+  {
+   "id": "kind-NISTq152+NISTq152",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq152",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq152",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq152"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq152+NISTq153",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq152",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq153",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq152+NISTq17",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq152",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq17",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq152+NISTq18",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq152",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq18",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq152+NISTq182",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq152",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq182",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq152+NISTq183",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq152",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq183",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq152+NISTq184",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq152",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq184",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq152+NISTq185",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq152",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq185",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq152+NISTq19",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq152",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq19",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq152+NISTq60",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq152",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq60",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq152+NISTq77",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq152",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq77",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq153+NISTq152",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq153",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq152",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq153+NISTq153",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq153",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq153",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq153"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq153+NISTq17",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq153",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq17",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq153+NISTq18",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq153",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq18",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq153+NISTq182",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq153",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq182",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq153+NISTq183",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq153",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq183",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq153+NISTq184",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq153",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq184",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq153+NISTq185",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq153",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq185",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq153+NISTq19",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq153",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq19",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq153+NISTq60",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq153",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq60",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq153+NISTq77",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq153",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq77",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq17+NISTq152",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq17",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq152",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq17+NISTq153",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq17",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq153",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq17+NISTq17",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq17",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq17",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq17"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq17+NISTq18",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq17",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq18",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq17"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq17+NISTq182",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq17",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq182",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq17"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq17+NISTq183",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq17",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq183",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq17"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq17+NISTq184",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq17",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq184",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq17+NISTq185",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq17",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq185",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq17+NISTq19",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq17",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq19",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq17"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq17+NISTq60",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq17",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq60",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq17+NISTq77",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq17",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq77",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq17"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq18+NISTq152",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq18",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq152",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq18+NISTq153",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq18",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq153",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq18+NISTq17",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq18",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq17",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq18"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq18+NISTq18",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq18",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq18",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq18"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq18+NISTq182",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq18",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq182",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq18"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq18+NISTq183",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq18",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq183",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq18"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq18+NISTq184",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq18",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq184",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq18+NISTq185",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq18",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq185",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq18+NISTq19",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq18",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq19",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq18"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq18+NISTq60",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq18",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq60",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq18+NISTq77",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq18",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq77",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq18"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq182+NISTq152",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq182",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq152",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq182+NISTq153",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq182",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq153",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq182+NISTq17",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq182",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq17",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq182"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq182+NISTq18",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq182",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq18",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq182"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq182+NISTq182",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq182",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq182",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq182"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq182+NISTq183",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq182",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq183",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq182"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq182+NISTq184",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq182",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq184",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq182+NISTq185",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq182",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq185",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq182+NISTq19",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq182",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq19",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq182"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq182+NISTq60",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq182",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq60",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq182+NISTq77",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq182",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq77",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq182"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq183+NISTq152",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq183",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq152",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq183+NISTq153",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq183",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq153",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq183+NISTq17",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq183",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq17",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq183"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq183+NISTq18",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq183",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq18",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq183"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq183+NISTq182",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq183",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq182",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq183"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq183+NISTq183",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq183",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq183",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq183"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq183+NISTq184",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq183",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq184",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq183+NISTq185",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq183",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq185",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq183+NISTq19",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq183",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq19",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq183"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq183+NISTq60",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq183",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq60",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq183+NISTq77",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq183",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq77",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq183"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq184+NISTq152",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq184",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq152",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq184+NISTq153",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq184",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq153",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq184+NISTq17",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq184",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq17",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq184+NISTq18",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq184",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq18",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq184+NISTq182",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq184",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq182",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq184+NISTq183",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq184",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq183",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq184+NISTq184",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq184",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq184",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq184"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq184+NISTq185",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq184",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq185",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq184+NISTq19",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq184",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq19",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq184+NISTq60",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq184",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq60",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq184+NISTq77",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq184",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq77",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq185+NISTq152",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq185",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq152",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq185+NISTq153",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq185",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq153",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq185+NISTq17",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq185",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq17",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq185+NISTq18",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq185",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq18",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq185+NISTq182",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq185",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq182",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq185+NISTq183",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq185",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq183",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq185+NISTq184",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq185",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq184",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq185+NISTq185",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq185",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq185",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq185"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq185+NISTq19",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq185",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq19",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq185+NISTq60",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq185",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq60",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq185+NISTq77",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq185",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq77",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq19+NISTq152",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq19",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq152",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq19+NISTq153",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq19",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq153",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq19+NISTq17",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq19",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq17",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq19"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq19+NISTq18",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq19",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq18",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq19"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq19+NISTq182",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq19",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq182",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq19"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq19+NISTq183",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq19",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq183",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq19"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq19+NISTq184",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq19",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq184",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq19+NISTq185",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq19",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq185",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq19+NISTq19",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq19",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq19",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq19"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq19+NISTq60",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq19",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq60",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq19+NISTq77",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq19",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq77",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq19"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq60+NISTq152",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq60",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq152",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq60+NISTq153",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq60",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq153",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq60+NISTq17",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq60",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq17",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq60+NISTq18",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq60",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq18",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq60+NISTq182",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq60",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq182",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq60+NISTq183",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq60",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq183",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq60+NISTq184",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq60",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq184",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq60+NISTq185",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq60",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq185",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq60+NISTq19",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq60",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq19",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq60+NISTq60",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq60",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq60",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq60"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq60+NISTq77",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq60",
+     "equivalence_class": null,
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq77",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq77+NISTq152",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq77",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq152",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq77+NISTq153",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq77",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq153",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq77+NISTq17",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq77",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq17",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq77"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq77+NISTq18",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq77",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq18",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq77"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq77+NISTq182",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq77",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq182",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq77"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq77+NISTq183",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq77",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq183",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq77"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq77+NISTq184",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq77",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq184",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq77+NISTq185",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq77",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq185",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq77+NISTq19",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq77",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq19",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq77"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq77+NISTq60",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq77",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq60",
+     "equivalence_class": null,
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::QuantityKindMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-NISTq77+NISTq77",
+   "family": "quantity_kinds",
+   "input": {
+    "dimension": "NISTd15",
+    "left": {
+     "kind": "NISTq77",
+     "equivalence_class": "energy",
+     "value": 2,
+     "unit": "J"
+    },
+    "right": {
+     "kind": "NISTq77",
+     "equivalence_class": "energy",
+     "value": 3,
+     "unit": "J"
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": 5,
+    "unit": "J",
+    "kind": "NISTq77"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-dimension-mismatch",
+   "family": "quantity_kinds",
+   "input": {},
+   "expected": {
+    "outcome": "error",
+    "unit": "Pa",
+    "kind": "NISTq18",
+    "error_class": "Unitsml::Errors::DimensionMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-unknown",
+   "family": "quantity_kinds",
+   "input": {},
+   "expected": {
+    "outcome": "error",
+    "unit": "J",
+    "kind": "no-such-kind",
+    "error_class": "Unitsml::Errors::UnknownQuantityKindError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "kind-untyped-operand",
+   "family": "quantity_kinds",
+   "input": {
+    "left": {
+     "kind": "NISTq184",
+     "unit": "N*m",
+     "value": 1
+    },
+    "right": {
+     "kind": null,
+     "unit": "J",
+     "value": 1
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "rational": [
+      "2",
+      "1"
+     ]
+    },
+    "unit": "N*m",
+    "kind": "NISTq184"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu1",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq1",
+     "NISTq100",
+     "NISTq101",
+     "NISTq102",
+     "NISTq103",
+     "NISTq104",
+     "NISTq105",
+     "NISTq114",
+     "NISTq48",
+     "NISTq95",
+     "NISTq96",
+     "NISTq97",
+     "NISTq98",
+     "NISTq99"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu1",
+    "primary": "NISTq1",
+    "by_order": {
+     "data": "NISTq1",
+     "reversed": "NISTq1",
+     "rotated": "NISTq1"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu1.u3e-1/1",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq107",
+     "NISTq116",
+     "NISTq117",
+     "NISTq12"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu1.u3e-1/1",
+    "primary": "NISTq107",
+    "by_order": {
+     "data": "NISTq107",
+     "reversed": "NISTq107",
+     "rotated": "NISTq107"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu1.u3e-2/1",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq108",
+     "NISTq49"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu1.u3e-2/1",
+    "primary": "NISTq108",
+    "by_order": {
+     "data": "NISTq108",
+     "reversed": "NISTq108",
+     "rotated": "NISTq108"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu11.u1",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq184",
+     "NISTq185",
+     "NISTq60"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu11.u1",
+    "primary": "NISTq184",
+    "by_order": {
+     "data": "NISTq184",
+     "reversed": "NISTq184",
+     "rotated": "NISTq184"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu117",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq17",
+     "NISTq18",
+     "NISTq182",
+     "NISTq183",
+     "NISTq19",
+     "NISTq77"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu117",
+    "primary": "NISTq17",
+    "by_order": {
+     "data": "NISTq17",
+     "reversed": "NISTq17",
+     "rotated": "NISTq17"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu12",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq134",
+     "NISTq135",
+     "NISTq141",
+     "NISTq142",
+     "NISTq143",
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu12",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": false
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu122",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq1",
+     "NISTq48"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu122",
+    "primary": "NISTq1",
+    "by_order": {
+     "data": "NISTq1",
+     "reversed": "NISTq1",
+     "rotated": "NISTq1"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu123",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq1",
+     "NISTq48"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu123",
+    "primary": "NISTq1",
+    "by_order": {
+     "data": "NISTq1",
+     "reversed": "NISTq1",
+     "rotated": "NISTq1"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu126",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq17",
+     "NISTq18",
+     "NISTq184",
+     "NISTq185",
+     "NISTq60"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu126",
+    "primary": "NISTq17",
+    "by_order": {
+     "data": "NISTq17",
+     "reversed": "NISTq17",
+     "rotated": "NISTq17"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu127",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq20",
+     "NISTq21"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu127",
+    "primary": "NISTq20",
+    "by_order": {
+     "data": "NISTq20",
+     "reversed": "NISTq20",
+     "rotated": "NISTq20"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu12e-1/1",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq139",
+     "NISTq160"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu12e-1/1",
+    "primary": "NISTq139",
+    "by_order": {
+     "data": "NISTq139",
+     "reversed": "NISTq139",
+     "rotated": "NISTq139"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu13",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq152",
+     "NISTq153",
+     "NISTq17",
+     "NISTq18",
+     "NISTq182",
+     "NISTq183",
+     "NISTq19",
+     "NISTq77"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu13",
+    "primary": "NISTq17",
+    "by_order": {
+     "data": "NISTq17",
+     "reversed": "NISTq17",
+     "rotated": "NISTq17"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": false
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu13.u27p10'3e-1/1.u5e-1/1",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq64",
+     "NISTq80"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu13.u27p10'3e-1/1.u5e-1/1",
+    "primary": "NISTq64",
+    "by_order": {
+     "data": "NISTq64",
+     "reversed": "NISTq64",
+     "rotated": "NISTq64"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu13.u5e-1/1",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq63",
+     "NISTq79"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu13.u5e-1/1",
+    "primary": "NISTq63",
+    "by_order": {
+     "data": "NISTq63",
+     "reversed": "NISTq63",
+     "rotated": "NISTq63"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu13.u6e-1/1.u5e-1/1",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq74",
+     "NISTq83"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu13.u6e-1/1.u5e-1/1",
+    "primary": "NISTq74",
+    "by_order": {
+     "data": "NISTq74",
+     "reversed": "NISTq74",
+     "rotated": "NISTq74"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu131",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq1",
+     "NISTq48"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu131",
+    "primary": "NISTq1",
+    "by_order": {
+     "data": "NISTq1",
+     "reversed": "NISTq1",
+     "rotated": "NISTq1"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu134",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu134",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu135",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu135",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu14",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq20",
+     "NISTq21"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu14",
+    "primary": "NISTq20",
+    "by_order": {
+     "data": "NISTq20",
+     "reversed": "NISTq20",
+     "rotated": "NISTq20"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu14.u1e-2/1",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq62",
+     "NISTq78"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu14.u1e-2/1",
+    "primary": "NISTq62",
+    "by_order": {
+     "data": "NISTq62",
+     "reversed": "NISTq62",
+     "rotated": "NISTq62"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu14.u3",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq17",
+     "NISTq18",
+     "NISTq182",
+     "NISTq183",
+     "NISTq19",
+     "NISTq77"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu14.u3",
+    "primary": "NISTq17",
+    "by_order": {
+     "data": "NISTq17",
+     "reversed": "NISTq17",
+     "rotated": "NISTq17"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu15",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq22",
+     "NISTq23"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu15",
+    "primary": "NISTq22",
+    "by_order": {
+     "data": "NISTq22",
+     "reversed": "NISTq22",
+     "rotated": "NISTq22"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu15.u1e-2/1",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq81",
+     "NISTq82"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu15.u1e-2/1",
+    "primary": "NISTq81",
+    "by_order": {
+     "data": "NISTq81",
+     "reversed": "NISTq81",
+     "rotated": "NISTq81"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu15.u27p10'3e-1/1",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq197",
+     "NISTq75"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu15.u27p10'3e-1/1",
+    "primary": "NISTq197",
+    "by_order": {
+     "data": "NISTq197",
+     "reversed": "NISTq197",
+     "rotated": "NISTq197"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu153",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq118",
+     "NISTq119",
+     "NISTq121",
+     "NISTq90"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu153",
+    "primary": "NISTq118",
+    "by_order": {
+     "data": "NISTq118",
+     "reversed": "NISTq118",
+     "rotated": "NISTq118"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu154",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq118",
+     "NISTq119",
+     "NISTq90"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu154",
+    "primary": "NISTq118",
+    "by_order": {
+     "data": "NISTq118",
+     "reversed": "NISTq118",
+     "rotated": "NISTq118"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu156",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu156",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu157",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq72",
+     "NISTq92"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu157",
+    "primary": "NISTq72",
+    "by_order": {
+     "data": "NISTq72",
+     "reversed": "NISTq72",
+     "rotated": "NISTq72"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu16",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq24",
+     "NISTq25",
+     "NISTq26"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu16",
+    "primary": "NISTq24",
+    "by_order": {
+     "data": "NISTq24",
+     "reversed": "NISTq24",
+     "rotated": "NISTq24"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu160",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq107",
+     "NISTq12"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu160",
+    "primary": "NISTq107",
+    "by_order": {
+     "data": "NISTq107",
+     "reversed": "NISTq107",
+     "rotated": "NISTq107"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu185",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq144",
+     "NISTq145"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu185",
+    "primary": "NISTq144",
+    "by_order": {
+     "data": "NISTq144",
+     "reversed": "NISTq144",
+     "rotated": "NISTq144"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu1e-1/1",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq106",
+     "NISTq115",
+     "NISTq122",
+     "NISTq123",
+     "NISTq124",
+     "NISTq50"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu1e-1/1",
+    "primary": "NISTq106",
+    "by_order": {
+     "data": "NISTq106",
+     "reversed": "NISTq106",
+     "rotated": "NISTq106"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu1e3/1",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq10",
+     "NISTq146"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu1e3/1",
+    "primary": "NISTq10",
+    "by_order": {
+     "data": "NISTq10",
+     "reversed": "NISTq10",
+     "rotated": "NISTq10"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu205",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq128",
+     "NISTq13"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu205",
+    "primary": "NISTq128",
+    "by_order": {
+     "data": "NISTq128",
+     "reversed": "NISTq128",
+     "rotated": "NISTq128"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu206",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq17",
+     "NISTq18",
+     "NISTq182",
+     "NISTq183",
+     "NISTq184",
+     "NISTq185",
+     "NISTq60",
+     "NISTq77"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu206",
+    "primary": "NISTq17",
+    "by_order": {
+     "data": "NISTq17",
+     "reversed": "NISTq17",
+     "rotated": "NISTq17"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu221",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq180",
+     "NISTq181"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu221",
+    "primary": "NISTq180",
+    "by_order": {
+     "data": "NISTq180",
+     "reversed": "NISTq180",
+     "rotated": "NISTq180"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu227",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq17",
+     "NISTq18",
+     "NISTq182",
+     "NISTq183",
+     "NISTq19",
+     "NISTq77"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu227",
+    "primary": "NISTq17",
+    "by_order": {
+     "data": "NISTq17",
+     "reversed": "NISTq17",
+     "rotated": "NISTq17"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu23",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq192",
+     "NISTq34"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu23",
+    "primary": "NISTq192",
+    "by_order": {
+     "data": "NISTq192",
+     "reversed": "NISTq192",
+     "rotated": "NISTq192"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu236",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq128",
+     "NISTq13"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu236",
+    "primary": "NISTq128",
+    "by_order": {
+     "data": "NISTq128",
+     "reversed": "NISTq128",
+     "rotated": "NISTq128"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu238",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq128",
+     "NISTq13"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu238",
+    "primary": "NISTq128",
+    "by_order": {
+     "data": "NISTq128",
+     "reversed": "NISTq128",
+     "rotated": "NISTq128"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu26",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq1",
+     "NISTq48"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu26",
+    "primary": "NISTq1",
+    "by_order": {
+     "data": "NISTq1",
+     "reversed": "NISTq1",
+     "rotated": "NISTq1"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu261",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq166",
+     "NISTq24",
+     "NISTq26"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu261",
+    "primary": "NISTq166",
+    "by_order": {
+     "data": "NISTq166",
+     "reversed": "NISTq166",
+     "rotated": "NISTq166"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu262",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq128",
+     "NISTq13"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu262",
+    "primary": "NISTq128",
+    "by_order": {
+     "data": "NISTq128",
+     "reversed": "NISTq128",
+     "rotated": "NISTq128"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu268",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq166",
+     "NISTq24",
+     "NISTq26"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu268",
+    "primary": "NISTq166",
+    "by_order": {
+     "data": "NISTq166",
+     "reversed": "NISTq166",
+     "rotated": "NISTq166"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu271",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq22",
+     "NISTq23"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu271",
+    "primary": "NISTq22",
+    "by_order": {
+     "data": "NISTq22",
+     "reversed": "NISTq22",
+     "rotated": "NISTq22"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu278",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq1",
+     "NISTq48"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu278",
+    "primary": "NISTq1",
+    "by_order": {
+     "data": "NISTq1",
+     "reversed": "NISTq1",
+     "rotated": "NISTq1"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu27p10'3.u1e-3/1",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq33",
+     "NISTq51"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu27p10'3.u1e-3/1",
+    "primary": "NISTq33",
+    "by_order": {
+     "data": "NISTq33",
+     "reversed": "NISTq33",
+     "rotated": "NISTq33"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu28",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq36",
+     "NISTq37",
+     "NISTq38"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu28",
+    "primary": "NISTq36",
+    "by_order": {
+     "data": "NISTq36",
+     "reversed": "NISTq36",
+     "rotated": "NISTq36"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu28.u3e-1/1",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq194",
+     "NISTq76"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu28.u3e-1/1",
+    "primary": "NISTq194",
+    "by_order": {
+     "data": "NISTq194",
+     "reversed": "NISTq194",
+     "rotated": "NISTq194"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu280",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq1",
+     "NISTq48"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu280",
+    "primary": "NISTq1",
+    "by_order": {
+     "data": "NISTq1",
+     "reversed": "NISTq1",
+     "rotated": "NISTq1"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu3",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq109",
+     "NISTq110",
+     "NISTq3"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu3",
+    "primary": "NISTq109",
+    "by_order": {
+     "data": "NISTq109",
+     "reversed": "NISTq109",
+     "rotated": "NISTq109"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu318",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu318",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu319",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu319",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu320",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu320",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu321",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu321",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu322",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu322",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu323",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu323",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu324",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu324",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu325",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu325",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu326",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu326",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu327",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu327",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu328",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu328",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu329",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu329",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu330",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu330",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu331",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq17",
+     "NISTq18",
+     "NISTq182",
+     "NISTq183",
+     "NISTq19",
+     "NISTq77"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu331",
+    "primary": "NISTq17",
+    "by_order": {
+     "data": "NISTq17",
+     "reversed": "NISTq17",
+     "rotated": "NISTq17"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu362",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu362",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu39",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq1",
+     "NISTq48"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu39",
+    "primary": "NISTq1",
+    "by_order": {
+     "data": "NISTq1",
+     "reversed": "NISTq1",
+     "rotated": "NISTq1"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu3e-1/1",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq112",
+     "NISTq113",
+     "NISTq120",
+     "NISTq189"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu3e-1/1",
+    "primary": "NISTq112",
+    "by_order": {
+     "data": "NISTq112",
+     "reversed": "NISTq112",
+     "rotated": "NISTq112"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu48",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq22",
+     "NISTq23"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu48",
+    "primary": "NISTq22",
+    "by_order": {
+     "data": "NISTq22",
+     "reversed": "NISTq22",
+     "rotated": "NISTq22"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu5",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq193",
+     "NISTq196",
+     "NISTq5"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu5",
+    "primary": "NISTq193",
+    "by_order": {
+     "data": "NISTq193",
+     "reversed": "NISTq193",
+     "rotated": "NISTq193"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu53",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq24",
+     "NISTq25",
+     "NISTq26"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu53",
+    "primary": "NISTq24",
+    "by_order": {
+     "data": "NISTq24",
+     "reversed": "NISTq24",
+     "rotated": "NISTq24"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu54",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq22",
+     "NISTq23"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu54",
+    "primary": "NISTq22",
+    "by_order": {
+     "data": "NISTq22",
+     "reversed": "NISTq22",
+     "rotated": "NISTq22"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu5e-1/1",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq156",
+     "NISTq157",
+     "NISTq158"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu5e-1/1",
+    "primary": "NISTq156",
+    "by_order": {
+     "data": "NISTq156",
+     "reversed": "NISTq156",
+     "rotated": "NISTq156"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu60",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq17",
+     "NISTq18",
+     "NISTq182",
+     "NISTq183",
+     "NISTq19",
+     "NISTq77"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu60",
+    "primary": "NISTq17",
+    "by_order": {
+     "data": "NISTq17",
+     "reversed": "NISTq17",
+     "rotated": "NISTq17"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu61",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq111",
+     "NISTq121",
+     "NISTq125",
+     "NISTq136",
+     "NISTq137",
+     "NISTq138",
+     "NISTq140",
+     "NISTq147",
+     "NISTq188",
+     "NISTq93",
+     "NISTq94"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu61",
+    "primary": "NISTq111",
+    "by_order": {
+     "data": "NISTq111",
+     "reversed": "NISTq111",
+     "rotated": "NISTq111"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu62",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq17",
+     "NISTq18",
+     "NISTq182",
+     "NISTq183",
+     "NISTq19",
+     "NISTq77"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu62",
+    "primary": "NISTq17",
+    "by_order": {
+     "data": "NISTq17",
+     "reversed": "NISTq17",
+     "rotated": "NISTq17"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu63",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq17",
+     "NISTq18",
+     "NISTq182",
+     "NISTq183",
+     "NISTq19",
+     "NISTq77"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu63",
+    "primary": "NISTq17",
+    "by_order": {
+     "data": "NISTq17",
+     "reversed": "NISTq17",
+     "rotated": "NISTq17"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu64",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq17",
+     "NISTq18",
+     "NISTq182",
+     "NISTq183",
+     "NISTq19",
+     "NISTq77"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu64",
+    "primary": "NISTq17",
+    "by_order": {
+     "data": "NISTq17",
+     "reversed": "NISTq17",
+     "rotated": "NISTq17"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu65",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq17",
+     "NISTq18",
+     "NISTq182",
+     "NISTq183",
+     "NISTq19",
+     "NISTq77"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu65",
+    "primary": "NISTq17",
+    "by_order": {
+     "data": "NISTq17",
+     "reversed": "NISTq17",
+     "rotated": "NISTq17"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu69",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq17",
+     "NISTq18",
+     "NISTq182",
+     "NISTq183",
+     "NISTq19",
+     "NISTq77"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu69",
+    "primary": "NISTq17",
+    "by_order": {
+     "data": "NISTq17",
+     "reversed": "NISTq17",
+     "rotated": "NISTq17"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu74",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq20",
+     "NISTq21"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu74",
+    "primary": "NISTq20",
+    "by_order": {
+     "data": "NISTq20",
+     "reversed": "NISTq20",
+     "rotated": "NISTq20"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu75",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq20",
+     "NISTq21"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu75",
+    "primary": "NISTq20",
+    "by_order": {
+     "data": "NISTq20",
+     "reversed": "NISTq20",
+     "rotated": "NISTq20"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu78",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq1",
+     "NISTq48"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu78",
+    "primary": "NISTq1",
+    "by_order": {
+     "data": "NISTq1",
+     "reversed": "NISTq1",
+     "rotated": "NISTq1"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu8",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq1",
+     "NISTq48"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu8",
+    "primary": "NISTq1",
+    "by_order": {
+     "data": "NISTq1",
+     "reversed": "NISTq1",
+     "rotated": "NISTq1"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu83",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq1",
+     "NISTq48"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu83",
+    "primary": "NISTq1",
+    "by_order": {
+     "data": "NISTq1",
+     "reversed": "NISTq1",
+     "rotated": "NISTq1"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu84",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq1",
+     "NISTq48"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu84",
+    "primary": "NISTq1",
+    "by_order": {
+     "data": "NISTq1",
+     "reversed": "NISTq1",
+     "rotated": "NISTq1"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu89",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq20",
+     "NISTq21"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu89",
+    "primary": "NISTq20",
+    "by_order": {
+     "data": "NISTq20",
+     "reversed": "NISTq20",
+     "rotated": "NISTq20"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu9",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq195",
+     "NISTq9"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu9",
+    "primary": "NISTq9",
+    "by_order": {
+     "data": "NISTq9",
+     "reversed": "NISTq9",
+     "rotated": "NISTq9"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": false
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu9.u3e-1/1",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq113",
+     "NISTq57"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu9.u3e-1/1",
+    "primary": "NISTq113",
+    "by_order": {
+     "data": "NISTq113",
+     "reversed": "NISTq113",
+     "rotated": "NISTq113"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu91",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu91",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu92",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu92",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu93",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu93",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu94",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu94",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu95",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu95",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "primary-NISTu96",
+   "family": "primary_quantity",
+   "input": {
+    "references": [
+     "NISTq15",
+     "NISTq16"
+    ]
+   },
+   "expected": {
+    "outcome": "ok",
+    "unit": "NISTu96",
+    "primary": "NISTq15",
+    "by_order": {
+     "data": "NISTq15",
+     "reversed": "NISTq15",
+     "rotated": "NISTq15"
+    },
+    "order_independent": true,
+    "first_reference_is_primary": true
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-caller-add",
+   "family": "caller_register",
+   "input": {
+    "source_id": "caller-add",
+    "request": {
+     "ast": {
+      "left": {
+       "name": "x",
+       "type": "variable"
+      },
+      "operator": "+",
+      "right": {
+       "name": "y",
+       "type": "variable"
+      },
+      "type": "binary"
+     },
+     "bindings": {
+      "x": {
+       "unit": "cwt (US)",
+       "value": "2"
+      },
+      "y": {
+       "unit": "kg",
+       "value": "3"
+      }
+     },
+     "convert_to": "kg",
+     "register": [
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "rational": [
+      "103",
+      "50"
+     ]
+    },
+    "unit": "cwt (US)",
+    "scale": {
+     "symbol": "ratio"
+    },
+    "converted_value": {
+     "rational": [
+      "103",
+      "1"
+     ]
+    },
+    "converted_unit": "kg"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-caller-compound",
+   "family": "caller_register",
+   "input": {
+    "source_id": "caller-compound",
+    "request": {
+     "ast": {
+      "left": {
+       "name": "x",
+       "type": "variable"
+      },
+      "operator": "*",
+      "right": {
+       "name": "y",
+       "type": "variable"
+      },
+      "type": "binary"
+     },
+     "bindings": {
+      "x": {
+       "unit": "cwt (US)",
+       "value": "2"
+      },
+      "y": {
+       "unit": "m",
+       "value": "3"
+      }
+     },
+     "register": [
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "rational": [
+      "6",
+      "1"
+     ]
+    },
+    "unit": "cwt (US)*m",
+    "scale": {
+     "symbol": "ratio"
+    }
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-caller-compound-target",
+   "family": "caller_register",
+   "input": {
+    "source_id": "caller-compound-target",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "unit": "kg*m",
+       "value": "100"
+      }
+     },
+     "convert_to": "cwt (US)*m",
+     "register": [
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "rational": [
+      "100",
+      "1"
+     ]
+    },
+    "unit": "kg*m",
+    "scale": {
+     "symbol": "ratio"
+    },
+    "converted_value": {
+     "rational": [
+      "2",
+      "1"
+     ]
+    },
+    "converted_unit": "cwt (US)*m"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-caller-factor",
+   "family": "caller_register",
+   "input": {
+    "source_id": "caller-factor",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "unit": "cwt (US)",
+       "value": "2"
+      }
+     },
+     "convert_to": "kg",
+     "register": [
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "rational": [
+      "2",
+      "1"
+     ]
+    },
+    "unit": "cwt (US)",
+    "scale": {
+     "symbol": "ratio"
+    },
+    "converted_value": {
+     "rational": [
+      "100",
+      "1"
+     ]
+    },
+    "converted_unit": "kg"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-caller-last-wins",
+   "family": "caller_register",
+   "input": {
+    "source_id": "caller-last-wins",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "unit": "cwt (US)",
+       "value": "2"
+      }
+     },
+     "convert_to": "kg",
+     "register": [
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "25",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "rational": [
+      "2",
+      "1"
+     ]
+    },
+    "unit": "cwt (US)",
+    "scale": {
+     "symbol": "ratio"
+    },
+    "converted_value": {
+     "rational": [
+      "100",
+      "1"
+     ]
+    },
+    "converted_unit": "kg"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-caller-ratio",
+   "family": "caller_register",
+   "input": {
+    "source_id": "caller-ratio",
+    "request": {
+     "ast": {
+      "left": {
+       "name": "x",
+       "type": "variable"
+      },
+      "operator": "/",
+      "right": {
+       "name": "y",
+       "type": "variable"
+      },
+      "type": "binary"
+     },
+     "bindings": {
+      "x": {
+       "unit": "cwt (US)",
+       "value": "2"
+      },
+      "y": {
+       "unit": "kg",
+       "value": "4"
+      }
+     },
+     "register": [
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "rational": [
+      "1",
+      "2"
+     ]
+    },
+    "unit": "cwt (US)/kg",
+    "scale": {
+     "symbol": "ratio"
+    }
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-caller-rational-factor",
+   "family": "caller_register",
+   "input": {
+    "source_id": "caller-rational-factor",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "unit": "cwt (US)",
+       "value": "2"
+      }
+     },
+     "convert_to": "kg",
+     "register": [
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "1/3",
+       "unit": "NISTu230"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "rational": [
+      "2",
+      "1"
+     ]
+    },
+    "unit": "cwt (US)",
+    "scale": {
+     "symbol": "ratio"
+    },
+    "converted_value": {
+     "rational": [
+      "2",
+      "3"
+     ]
+    },
+    "converted_unit": "kg"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-caller-referenced-id",
+   "family": "caller_register",
+   "input": {
+    "source_id": "caller-referenced-id",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "unit": "cwt (US)",
+       "value": "2"
+      }
+     },
+     "convert_to": "kg",
+     "register": [
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu203"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::ConversionError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-caller-subtract",
+   "family": "caller_register",
+   "input": {
+    "source_id": "caller-subtract",
+    "request": {
+     "ast": {
+      "left": {
+       "name": "x",
+       "type": "variable"
+      },
+      "operator": "-",
+      "right": {
+       "name": "y",
+       "type": "variable"
+      },
+      "type": "binary"
+     },
+     "bindings": {
+      "x": {
+       "unit": "cwt (US)",
+       "value": "2"
+      },
+      "y": {
+       "unit": "kg",
+       "value": "3"
+      }
+     },
+     "convert_to": "kg",
+     "register": [
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "rational": [
+      "97",
+      "50"
+     ]
+    },
+    "unit": "cwt (US)",
+    "scale": {
+     "symbol": "difference"
+    },
+    "converted_value": {
+     "rational": [
+      "97",
+      "1"
+     ]
+    },
+    "converted_unit": "kg"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-caller-symbol-alias",
+   "family": "caller_register",
+   "input": {
+    "source_id": "caller-symbol-alias",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "unit": "cwt (US)",
+       "value": "2"
+      }
+     },
+     "convert_to": "kg",
+     "register": [
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "cwt (US)"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "rational": [
+      "2",
+      "1"
+     ]
+    },
+    "unit": "cwt (US)",
+    "scale": {
+     "symbol": "ratio"
+    },
+    "converted_value": {
+     "rational": [
+      "100",
+      "1"
+     ]
+    },
+    "converted_unit": "kg"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-caller-target-only",
+   "family": "caller_register",
+   "input": {
+    "source_id": "caller-target-only",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "unit": "kg",
+       "value": "100"
+      }
+     },
+     "convert_to": "cwt (US)",
+     "register": [
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "rational": [
+      "100",
+      "1"
+     ]
+    },
+    "unit": "kg",
+    "scale": {
+     "symbol": "ratio"
+    },
+    "converted_value": {
+     "rational": [
+      "2",
+      "1"
+     ]
+    },
+    "converted_unit": "cwt (US)"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-canonical-tolerance-exact",
+   "family": "caller_register",
+   "input": {
+    "source_id": "canonical-tolerance-exact",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "unit": "W",
+       "value": "2"
+      }
+     },
+     "register": [
+      {
+       "dimensions": {
+        "Length": "2",
+        "Mass": "1",
+        "Time": "-3"
+       },
+       "factor": "1.00000000005",
+       "unit": "W"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "rational": [
+      "2",
+      "1"
+     ]
+    },
+    "unit": "W",
+    "scale": {
+     "symbol": "ratio"
+    }
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-register-does-not-persist",
+   "family": "caller_register",
+   "input": {
+    "source_id": "register-does-not-persist",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "unit": "cwt (US)",
+       "value": "2"
+      }
+     }
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "rational": [
+      "2",
+      "1"
+     ]
+    },
+    "unit": "cwt (US)",
+    "scale": {
+     "symbol": "ratio"
+    }
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-register-empty",
+   "family": "caller_register",
+   "input": {
+    "source_id": "register-empty",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "unit": "kg",
+       "value": "2"
+      }
+     },
+     "register": []
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "rational": [
+      "2",
+      "1"
+     ]
+    },
+    "unit": "kg",
+    "scale": {
+     "symbol": "ratio"
+    }
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-register-refusal-canonical-conflict",
+   "family": "caller_register",
+   "input": {
+    "source_id": "register-refusal-canonical-conflict",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "unit": "kg",
+       "value": "2"
+      }
+     },
+     "register": [
+      {
+       "dimensions": {
+        "Length": "2",
+        "Mass": "1",
+        "Time": "-3"
+       },
+       "factor": "2",
+       "unit": "W"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::InvalidUnitRegisterError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-register-refusal-extra-field",
+   "family": "caller_register",
+   "input": {
+    "source_id": "register-refusal-extra-field",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "unit": "kg",
+       "value": "2"
+      }
+     },
+     "register": [
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "extra": 1,
+       "factor": "50",
+       "unit": "NISTu230"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::InvalidUnitRegisterError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-register-refusal-invalid-dimension",
+   "family": "caller_register",
+   "input": {
+    "source_id": "register-refusal-invalid-dimension",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "unit": "kg",
+       "value": "2"
+      }
+     },
+     "register": [
+      {
+       "dimensions": {
+        "Length": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::InvalidUnitRegisterError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-register-refusal-invalid-factor",
+   "family": "caller_register",
+   "input": {
+    "source_id": "register-refusal-invalid-factor",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "unit": "kg",
+       "value": "2"
+      }
+     },
+     "register": [
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "NaN",
+       "unit": "NISTu230"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::InvalidUnitRegisterError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-register-refusal-negative-factor",
+   "family": "caller_register",
+   "input": {
+    "source_id": "register-refusal-negative-factor",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "unit": "kg",
+       "value": "2"
+      }
+     },
+     "register": [
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "-1",
+       "unit": "NISTu230"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::InvalidUnitRegisterError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-register-refusal-null",
+   "family": "caller_register",
+   "input": {
+    "source_id": "register-refusal-null",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "unit": "kg",
+       "value": "2"
+      }
+     },
+     "register": null
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::InvalidUnitRegisterError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-register-refusal-numeric-factor",
+   "family": "caller_register",
+   "input": {
+    "source_id": "register-refusal-numeric-factor",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "unit": "kg",
+       "value": "2"
+      }
+     },
+     "register": [
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": 50,
+       "unit": "NISTu230"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::InvalidUnitRegisterError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-register-refusal-object",
+   "family": "caller_register",
+   "input": {
+    "source_id": "register-refusal-object",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "unit": "kg",
+       "value": "2"
+      }
+     },
+     "register": {}
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::InvalidUnitRegisterError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-register-refusal-too-many",
+   "family": "caller_register",
+   "input": {
+    "source_id": "register-refusal-too-many",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "unit": "kg",
+       "value": "2"
+      }
+     },
+     "register": [
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      },
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "rational": [
+      "2",
+      "1"
+     ]
+    },
+    "unit": "kg",
+    "scale": {
+     "symbol": "ratio"
+    }
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-register-refusal-unknown-unit",
+   "family": "caller_register",
+   "input": {
+    "source_id": "register-refusal-unknown-unit",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "unit": "kg",
+       "value": "2"
+      }
+     },
+     "register": [
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "unregistered-unit"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::UnknownUnitError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-register-refusal-zero-factor",
+   "family": "caller_register",
+   "input": {
+    "source_id": "register-refusal-zero-factor",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "unit": "kg",
+       "value": "2"
+      }
+     },
+     "register": [
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "0",
+       "unit": "NISTu230"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::InvalidUnitRegisterError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-registered-affine-add-source-convention",
+   "family": "caller_register",
+   "input": {
+    "source_id": "registered-affine-add-source-convention",
+    "request": {
+     "ast": {
+      "left": {
+       "name": "x",
+       "type": "variable"
+      },
+      "operator": "+",
+      "right": {
+       "name": "y",
+       "type": "variable"
+      },
+      "type": "binary"
+     },
+     "bindings": {
+      "x": {
+       "unit": "degC",
+       "value": "20"
+      },
+      "y": {
+       "unit": "degC",
+       "value": "15"
+      }
+     },
+     "register": [
+      {
+       "dimensions": {
+        "ThermodynamicTemperature": "1"
+       },
+       "factor": "1",
+       "offset": "273.15",
+       "unit": "degC"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "rational": [
+      "35",
+      "1"
+     ]
+    },
+    "unit": "degC",
+    "scale": {
+     "symbol": "interval"
+    }
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-registered-affine-compound-refusal",
+   "family": "caller_register",
+   "input": {
+    "source_id": "registered-affine-compound-refusal",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "unit": "degC*m",
+       "value": "20"
+      }
+     },
+     "register": [
+      {
+       "dimensions": {
+        "ThermodynamicTemperature": "1"
+       },
+       "factor": "1",
+       "offset": "273.15",
+       "unit": "degC"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "rational": [
+      "20",
+      "1"
+     ]
+    },
+    "unit": "degC*m",
+    "scale": {
+     "symbol": "interval"
+    }
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-registered-affine-difference",
+   "family": "caller_register",
+   "input": {
+    "source_id": "registered-affine-difference",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "difference": true,
+       "unit": "degC",
+       "value": "20"
+      }
+     },
+     "convert_to": "K",
+     "register": [
+      {
+       "dimensions": {
+        "ThermodynamicTemperature": "1"
+       },
+       "factor": "1",
+       "offset": "273.15",
+       "unit": "degC"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "rational": [
+      "20",
+      "1"
+     ]
+    },
+    "unit": "degC",
+    "scale": {
+     "symbol": "difference"
+    },
+    "converted_value": {
+     "rational": [
+      "20",
+      "1"
+     ]
+    },
+    "converted_unit": "K"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-registered-affine-point",
+   "family": "caller_register",
+   "input": {
+    "source_id": "registered-affine-point",
+    "request": {
+     "ast": {
+      "name": "x",
+      "type": "variable"
+     },
+     "bindings": {
+      "x": {
+       "unit": "degC",
+       "value": "20"
+      }
+     },
+     "convert_to": "K",
+     "register": [
+      {
+       "dimensions": {
+        "ThermodynamicTemperature": "1"
+       },
+       "factor": "1",
+       "offset": "273.15",
+       "unit": "degC"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "rational": [
+      "20",
+      "1"
+     ]
+    },
+    "unit": "degC",
+    "scale": {
+     "symbol": "interval"
+    },
+    "converted_value": {
+     "rational": [
+      "5863",
+      "20"
+     ]
+    },
+    "converted_unit": "K"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-registered-affine-subtraction",
+   "family": "caller_register",
+   "input": {
+    "source_id": "registered-affine-subtraction",
+    "request": {
+     "ast": {
+      "left": {
+       "name": "x",
+       "type": "variable"
+      },
+      "operator": "-",
+      "right": {
+       "name": "y",
+       "type": "variable"
+      },
+      "type": "binary"
+     },
+     "bindings": {
+      "x": {
+       "unit": "degC",
+       "value": "20"
+      },
+      "y": {
+       "unit": "degC",
+       "value": "15"
+      }
+     },
+     "register": [
+      {
+       "dimensions": {
+        "ThermodynamicTemperature": "1"
+       },
+       "factor": "1",
+       "offset": "273.15",
+       "unit": "degC"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "rational": [
+      "5",
+      "1"
+     ]
+    },
+    "unit": "degC",
+    "scale": {
+     "symbol": "difference"
+    }
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-registered-difference-minus-point-refusal",
+   "family": "caller_register",
+   "input": {
+    "source_id": "registered-difference-minus-point-refusal",
+    "request": {
+     "ast": {
+      "left": {
+       "name": "x",
+       "type": "variable"
+      },
+      "operator": "-",
+      "right": {
+       "name": "y",
+       "type": "variable"
+      },
+      "type": "binary"
+     },
+     "bindings": {
+      "x": {
+       "difference": true,
+       "unit": "degC",
+       "value": "20"
+      },
+      "y": {
+       "unit": "degC",
+       "value": "15"
+      }
+     },
+     "register": [
+      {
+       "dimensions": {
+        "ThermodynamicTemperature": "1"
+       },
+       "factor": "1",
+       "offset": "273.15",
+       "unit": "degC"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "ok",
+    "value": {
+     "rational": [
+      "5",
+      "1"
+     ]
+    },
+    "unit": "degC",
+    "scale": {
+     "symbol": "difference"
+    }
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  },
+  {
+   "id": "register-registered-dimension-mismatch-refusal",
+   "family": "caller_register",
+   "input": {
+    "source_id": "registered-dimension-mismatch-refusal",
+    "request": {
+     "ast": {
+      "left": {
+       "name": "x",
+       "type": "variable"
+      },
+      "operator": "+",
+      "right": {
+       "name": "y",
+       "type": "variable"
+      },
+      "type": "binary"
+     },
+     "bindings": {
+      "x": {
+       "unit": "cwt (US)",
+       "value": "2"
+      },
+      "y": {
+       "unit": "m",
+       "value": "3"
+      }
+     },
+     "register": [
+      {
+       "dimensions": {
+        "Mass": "1"
+       },
+       "factor": "50",
+       "unit": "NISTu230"
+      }
+     ]
+    }
+   },
+   "expected": {
+    "outcome": "error",
+    "error_class": "Unitsml::Errors::DimensionMismatchError"
+   },
+   "comparison": "exact equality of the wire-encoded values; error rows compare error_class"
+  }
+ ]
+}

@@ -1,0 +1,237 @@
+{
+ "schema": "plurimath-numeric.source-data-profile/1",
+ "profile": "unitsdb-bc089c0",
+ "data": {
+  "repository": "https://github.com/unitsml/unitsdb",
+  "commit": "bc089c0",
+  "base": "fcc9e41e0555b003cb17b20958dbbf966ac825e6",
+  "pull_request": "unitsml/unitsdb#142 (review required: ronaldtse; do not merge without approval)",
+  "tag": null,
+  "projection": {
+   "unitsdb_ts": "b0786ff",
+   "unitsdb_rs": "9f1e87e",
+   "unitsdb.json_sha256": "3e02e237cdc5e18c7c82b00e5f2040f823cff1dc755298612b3040e506bc035a"
+  },
+  "commits": [
+   "060b566 (cwt US hecto-pound, kp kilo-gram-force)",
+   "bc089c0 (gram-force canonical_conversion to newton, self-reference removed)"
+  ],
+  "note": "local candidate on the #142 branch; bc089c0 not pushed (Suleman approves public PR updates)"
+ },
+ "supersedes": {
+  "profile": "unitsdb-2.2.0 (c2c7d181f07f414520d91fafa831922e56db6469), frozen; legacy fixtures unchanged"
+ },
+ "source_rationale": "NISTu230 cwt (US) root_units NISTu203 (cwt UK, power 1) -> hecto NISTu201 (lb): 1 cwt (US) = 100 lb per its UnitsDB name. NISTu73 kp root_units NISTu196 (gf) gains kilo prefix: 1 kp = 1000 gf = 1 kgf, mirroring NISTu72. NISTu196 gf: self-referential root_units (1 gf = 1000 gf) removed; canonical_conversion to NISTu11 newton, factor 0.00980665 (1 gf = 9.80665 mN; NPL; NIST SP 811 B.9), as bar -> pascal.",
+ "superseded_legacy_rows": [
+  {
+   "id": "caller-referenced-id",
+   "legacy_fixture": "quantity-register.json",
+   "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"cwt (US)\",\"value\":\"2\"}},\"convert_to\":\"kg\",\"register\":[{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu203\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "legacy_expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"100\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"100\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu27\"}]},\"value\":{\"canonical_magnitude\":\"100\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"2\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu230\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"MissingUnitConversionError\",\"detail\":\"MissingConversion(\\\"NISTu201\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "rationale": "The caller registers NISTu203 cwt (UK). Under 2.2.0 data NISTu230 cwt (US) rooted on NISTu203, so the UK registration leaked into the US unit (2 cwt (US) = 100 kg). Under the candidate NISTu230 roots on hecto-NISTu201 (lb); lb has no conversion in UnitsDB and no registration here, so the request is refused. Now agrees with unitsml-ruby (refusal)."
+  },
+  {
+   "id": "register-does-not-persist",
+   "legacy_fixture": "quantity-register.json",
+   "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"cwt (US)\",\"value\":\"2\"}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "legacy_expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"MissingUnitConversionError\",\"detail\":\"MissingConversion(\\\"NISTu203\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"MissingUnitConversionError\",\"detail\":\"MissingConversion(\\\"NISTu201\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "rationale": "Same refusal code; the detail now names the actual missing step, NISTu201 (lb), instead of NISTu203 (cwt UK)."
+  }
+ ],
+ "definition_probes": [
+  {
+   "id": "def-cwt-us-to-kg-lb-register",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"cwt (US)\"}},\"convert_to\":\"kg\",\"register\":[{\"unit\":\"NISTu201\",\"factor\":\"0.45359237\",\"dimensions\":{\"Mass\":\"1\"}}]}",
+   "previous_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"MissingUnitConversionError\",\"detail\":\"MissingConversion(\\\"NISTu203\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"45359237/1000000\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"45359237/1000000\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu27\"}]},\"value\":{\"canonical_magnitude\":\"45359237/1000000\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu230\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "note": "expect 45359237/1000000 kg (= 100 lb x 0.45359237)"
+  },
+  {
+   "id": "def-cwt-us-to-lb-lb-register",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"cwt (US)\"}},\"convert_to\":\"lb\",\"register\":[{\"unit\":\"NISTu201\",\"factor\":\"0.45359237\",\"dimensions\":{\"Mass\":\"1\"}}]}",
+   "previous_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"MissingUnitConversionError\",\"detail\":\"MissingConversion(\\\"NISTu203\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"45359237/1000000\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"100\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu201\"}]},\"value\":{\"canonical_magnitude\":\"45359237/1000000\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu230\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "note": "expect 100 lb"
+  },
+  {
+   "id": "def-cwt-uk-to-kg-lb-register",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"cwt (UK)\"}},\"convert_to\":\"kg\",\"register\":[{\"unit\":\"NISTu201\",\"factor\":\"0.45359237\",\"dimensions\":{\"Mass\":\"1\"}}]}",
+   "previous_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"MissingUnitConversionError\",\"detail\":\"MissingConversion(\\\"NISTu203\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"MissingUnitConversionError\",\"detail\":\"MissingConversion(\\\"NISTu203\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "note": "cwt (UK) has no definition in UnitsDB: expect refusal before and after"
+  },
+  {
+   "id": "def-cwt-us-uk-register-no-leak",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"cwt (US)\"}},\"convert_to\":\"kg\",\"register\":[{\"unit\":\"NISTu203\",\"factor\":\"50\",\"dimensions\":{\"Mass\":\"1\"}}]}",
+   "previous_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"50\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"50\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu27\"}]},\"value\":{\"canonical_magnitude\":\"50\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu230\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"MissingUnitConversionError\",\"detail\":\"MissingConversion(\\\"NISTu201\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "note": "old data: 100 kg via the false US->UK link; candidate: refusal (lb has no conversion)"
+  },
+  {
+   "id": "def-cwt-us-no-register",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"cwt (US)\"}},\"convert_to\":\"kg\"}",
+   "previous_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"MissingUnitConversionError\",\"detail\":\"MissingConversion(\\\"NISTu203\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"MissingUnitConversionError\",\"detail\":\"MissingConversion(\\\"NISTu201\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "note": "refusal before and after (no SI path for lb in pinned UnitsDB)"
+  },
+  {
+   "id": "def-kp-to-N-gf-register",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"kp\"}},\"convert_to\":\"N\",\"register\":[{\"unit\":\"NISTu196\",\"factor\":\"0.00980665\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"}}]}",
+   "previous_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu196\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd12\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"196133/20000\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu11\"}]},\"value\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd12\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu73\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "note": "expect 9.80665 N (= 1000 gf x 0.00980665); old data 0.00980665"
+  },
+  {
+   "id": "def-kp-to-gf-gf-register",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"kp\"}},\"convert_to\":\"gf\",\"register\":[{\"unit\":\"NISTu196\",\"factor\":\"0.00980665\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"}}]}",
+   "previous_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu196\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd12\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"1000\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu196\"}]},\"value\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd12\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu73\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "note": "expect 1000 gf; old data 1"
+  },
+  {
+   "id": "def-kgf-to-N-gf-register",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"kgf\"}},\"convert_to\":\"N\",\"register\":[{\"unit\":\"NISTu196\",\"factor\":\"0.00980665\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"}}]}",
+   "previous_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu196\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd12\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"196133/20000\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu11\"}]},\"value\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd12\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu196\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "note": "kgf unchanged: 9.80665 N before and after"
+  },
+  {
+   "id": "def-kp-equals-kgf-gf-register",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"kp\"}},\"convert_to\":\"kgf\",\"register\":[{\"unit\":\"NISTu196\",\"factor\":\"0.00980665\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"}}]}",
+   "previous_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu196\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd12\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu196\"}]},\"value\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd12\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu73\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "note": "expect 1 kgf; old data 1/1000"
+  },
+  {
+   "id": "def-gf-N-no-register",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"gf\"}},\"convert_to\":\"N\"}",
+   "previous_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu196\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"196133/20000000\",\"dimension_id\":\"NISTd12\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"196133/20000000\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu11\"}]},\"value\":{\"canonical_magnitude\":\"196133/20000000\",\"dimension_id\":\"NISTd12\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu196\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "note": "gram-force fix"
+  },
+  {
+   "id": "def-kgf-N-no-register",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"kgf\"}},\"convert_to\":\"N\"}",
+   "previous_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu196\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd12\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"196133/20000\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu11\"}]},\"value\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd12\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu196\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "note": "gram-force fix"
+  },
+  {
+   "id": "def-kp-N-no-register",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"kp\"}},\"convert_to\":\"N\"}",
+   "previous_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu196\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd12\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"196133/20000\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu11\"}]},\"value\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd12\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu73\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "note": "gram-force fix"
+  },
+  {
+   "id": "def-kp-kgf-no-register",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"kp\"}},\"convert_to\":\"kgf\"}",
+   "previous_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu196\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd12\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu196\"}]},\"value\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd12\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu73\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "note": "gram-force fix"
+  },
+  {
+   "id": "def-kp-gf-no-register",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"kp\"}},\"convert_to\":\"gf\"}",
+   "previous_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu196\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd12\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"1000\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu196\"}]},\"value\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd12\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu73\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "note": "gram-force fix"
+  },
+  {
+   "id": "def-gf-mN-no-register",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"gf\"}},\"convert_to\":\"mN\"}",
+   "previous_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu196\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"196133/20000000\",\"dimension_id\":\"NISTd12\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"196133/20000\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":\"NISTp10_-3\",\"unit\":\"NISTu11\"}]},\"value\":{\"canonical_magnitude\":\"196133/20000000\",\"dimension_id\":\"NISTd12\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu196\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "note": "gram-force fix"
+  },
+  {
+   "id": "def-kgf-m-N-m-no-register",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"kgf*m\"}},\"convert_to\":\"N*m\"}",
+   "previous_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu196\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd15\",\"dimensions\":{\"Length\":\"2\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"196133/20000\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu1\"},{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu11\"}]},\"value\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd15\",\"dimensions\":{\"Length\":\"2\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu1\"},{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu196\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "note": "gram-force fix"
+  }
+ ],
+ "unit_resolution_changes": [
+  {
+   "id": "unit:NISTu125",
+   "symbol": "kgf*s^2/m",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"kgf*s^2/m\"}}}",
+   "legacy_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu196\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"-1\",\"prefix\":null,\"unit\":\"NISTu1\"},{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu196\"},{\"power\":\"2\",\"prefix\":null,\"unit\":\"NISTu3\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+  },
+  {
+   "id": "unit:NISTu126",
+   "symbol": "kgf*m",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"kgf*m\"}}}",
+   "legacy_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu196\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd15\",\"dimensions\":{\"Length\":\"2\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu1\"},{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu196\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+  },
+  {
+   "id": "unit:NISTu196",
+   "symbol": "gf",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"gf\"}}}",
+   "legacy_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu196\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"196133/20000000\",\"dimension_id\":\"NISTd12\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu196\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+  },
+  {
+   "id": "unit:NISTu217",
+   "symbol": "kgf*m*s^-1",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"kgf*m*s^-1\"}}}",
+   "legacy_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu196\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd16\",\"dimensions\":{\"Length\":\"2\",\"Mass\":\"1\",\"Time\":\"-3\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu1\"},{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu196\"},{\"power\":\"-1\",\"prefix\":null,\"unit\":\"NISTu3\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+  },
+  {
+   "id": "unit:NISTu230",
+   "symbol": "cwt (US)",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"cwt (US)\"}}}",
+   "legacy_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"MissingUnitConversionError\",\"detail\":\"MissingConversion(\\\"NISTu203\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"MissingUnitConversionError\",\"detail\":\"MissingConversion(\\\"NISTu201\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}"
+  },
+  {
+   "id": "unit:NISTu72",
+   "symbol": "kgf",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"kgf\"}}}",
+   "legacy_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu196\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd12\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu196\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+  },
+  {
+   "id": "unit:NISTu73",
+   "symbol": "kp",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"kp\"}}}",
+   "legacy_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu196\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd12\",\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu73\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+  },
+  {
+   "id": "unit:NISTu93",
+   "symbol": "gf*cm^-2",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"gf*cm^-2\"}}}",
+   "legacy_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu196\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"196133/2000\",\"dimension_id\":\"NISTd14\",\"dimensions\":{\"Length\":\"-1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"-2\",\"prefix\":\"NISTp10_-2\",\"unit\":\"NISTu1\"},{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu196\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+  },
+  {
+   "id": "unit:NISTu94",
+   "symbol": "kgf*cm^-2",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"kgf*cm^-2\"}}}",
+   "legacy_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu196\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"196133/2\",\"dimension_id\":\"NISTd14\",\"dimensions\":{\"Length\":\"-1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"-2\",\"prefix\":\"NISTp10_-2\",\"unit\":\"NISTu1\"},{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu196\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+  },
+  {
+   "id": "unit:NISTu95",
+   "symbol": "kgf*m^-2",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"kgf*m^-2\"}}}",
+   "legacy_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu196\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"196133/20000\",\"dimension_id\":\"NISTd14\",\"dimensions\":{\"Length\":\"-1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"-2\",\"prefix\":null,\"unit\":\"NISTu1\"},{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu196\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+  },
+  {
+   "id": "unit:NISTu96",
+   "symbol": "kgf*mm^-2",
+   "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"variable\",\"name\":\"x\"},\"bindings\":{\"x\":{\"value\":\"1\",\"unit\":\"kgf*mm^-2\"}}}",
+   "legacy_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu196\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+   "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"9806650\",\"dimension_id\":\"NISTd14\",\"dimensions\":{\"Length\":\"-1\",\"Mass\":\"1\",\"Time\":\"-2\"},\"magnitude\":\"1\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"-2\",\"prefix\":\"NISTp10_-3\",\"unit\":\"NISTu1\"},{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu196\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+  }
+ ],
+ "unit_resolution_unchanged": 369
+}

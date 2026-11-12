@@ -1,0 +1,2082 @@
+{
+  "source": {
+    "suite_commit": "877530fd9a04ed8c9026dafc2ee5127215e2bd00",
+    "corpus_sha256": "c2719fc8f5ba2393292eeef59885f0e046a347f35e8c68e2ec9d09fcb80bb8c3",
+    "ruby_commit": "ede5978ce18bc7af3e06305ddb394387fb75a19d",
+    "frozen_ruby_commit": "9c90094a9077c686e0e03d7838eef8531bea8c3c",
+    "ruby_version": "4.0.1",
+    "edge_producer_sha256": "45d35feb2bfc57b0ca17383098755afcd171206fe4c1bba4bc7cc37686ea4925",
+    "ruby_conformity_sha256": "962fd55862f8835e75d1bb3f7ef75e1fd4cfec4d1cfeff8a28a75b8329883dbd"
+  },
+  "sealed_count": 17,
+  "ruby_edge_count": 8,
+  "cases": [
+    {
+      "id": "producer-09",
+      "source": {
+        "payload": "handoffs/F40/extended-ruby-producer.jsonl",
+        "line": 10,
+        "row_sha256": "3e81dad35644526ae37739ca4841981fad1cb5c162552cd48dc22ea82056f720",
+        "spec": "./spec/plurimath/math/evaluation_conformity_spec.rb",
+        "spec_line": 13,
+        "spec_sha256_reported": "437393a20374d228a273d866b03d8520e688cc3ece0ad583d1ab9a0055f89101",
+        "example": "Plurimath::Math::Evaluation::Conformity matches the exact probabilities at the rounded z values in JCGM106 Table1",
+        "standard": "JCGM 106:2012"
+      },
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": "0.84",
+          "standard_uncertainty": 1,
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            0,
+            null
+          ],
+          "rule": {
+            "symbol": "simple"
+          },
+          "coverage_factor": 2,
+          "guard_ratio": 0,
+          "guard_digits": 12
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "decision": {
+            "symbol": "accept"
+          },
+          "boundary": false,
+          "estimate": "21/25",
+          "standard_uncertainty": "1/1",
+          "coverage_factor": "2/1",
+          "guard_ratio": "0/1",
+          "required_consumer_risk_ceiling": null,
+          "conformance_probability": "0.799545806740",
+          "nonconformance_probability": "0.200454193260",
+          "specific_consumer_risk": "0.200454193260",
+          "specific_producer_risk": null,
+          "maximum_specific_consumer_risk_if_accepted": "0.500000000000",
+          "iso_2p3_percent_ceiling_holds": null,
+          "acceptance_possible": true,
+          "tolerance": [
+            "0/1",
+            null
+          ],
+          "acceptance_interval": [
+            "0/1",
+            null
+          ],
+          "signed_guard_band": "0/1",
+          "expanded_uncertainty": "2/1",
+          "lower_residual": "21/25",
+          "upper_residual": null,
+          "measurement_capability_index": null,
+          "rule": {
+            "symbol": "simple"
+          },
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "risk_scope": {
+            "symbol": "specific"
+          },
+          "guard_digits": 12,
+          "precision_convention": {
+            "symbol": "decimal_places"
+          },
+          "probability_resolution": "1/1000000000000",
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM106-2012-normal-v1",
+            "numeric_backend": "binary64"
+          }
+        }
+      }
+    },
+    {
+      "id": "producer-10",
+      "source": {
+        "payload": "handoffs/F40/extended-ruby-producer.jsonl",
+        "line": 11,
+        "row_sha256": "be43453e1c59b2921f1f1cf23937fe987303458fba1791777f5b9c53eb98eefc",
+        "spec": "./spec/plurimath/math/evaluation_conformity_spec.rb",
+        "spec_line": 13,
+        "spec_sha256_reported": "437393a20374d228a273d866b03d8520e688cc3ece0ad583d1ab9a0055f89101",
+        "example": "Plurimath::Math::Evaluation::Conformity matches the exact probabilities at the rounded z values in JCGM106 Table1",
+        "standard": "JCGM 106:2012"
+      },
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": "1.28",
+          "standard_uncertainty": 1,
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            0,
+            null
+          ],
+          "rule": {
+            "symbol": "simple"
+          },
+          "coverage_factor": 2,
+          "guard_ratio": 0,
+          "guard_digits": 12
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "decision": {
+            "symbol": "accept"
+          },
+          "boundary": false,
+          "estimate": "32/25",
+          "standard_uncertainty": "1/1",
+          "coverage_factor": "2/1",
+          "guard_ratio": "0/1",
+          "required_consumer_risk_ceiling": null,
+          "conformance_probability": "0.899727432046",
+          "nonconformance_probability": "0.100272567954",
+          "specific_consumer_risk": "0.100272567954",
+          "specific_producer_risk": null,
+          "maximum_specific_consumer_risk_if_accepted": "0.500000000000",
+          "iso_2p3_percent_ceiling_holds": null,
+          "acceptance_possible": true,
+          "tolerance": [
+            "0/1",
+            null
+          ],
+          "acceptance_interval": [
+            "0/1",
+            null
+          ],
+          "signed_guard_band": "0/1",
+          "expanded_uncertainty": "2/1",
+          "lower_residual": "32/25",
+          "upper_residual": null,
+          "measurement_capability_index": null,
+          "rule": {
+            "symbol": "simple"
+          },
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "risk_scope": {
+            "symbol": "specific"
+          },
+          "guard_digits": 12,
+          "precision_convention": {
+            "symbol": "decimal_places"
+          },
+          "probability_resolution": "1/1000000000000",
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM106-2012-normal-v1",
+            "numeric_backend": "binary64"
+          }
+        }
+      }
+    },
+    {
+      "id": "producer-11",
+      "source": {
+        "payload": "handoffs/F40/extended-ruby-producer.jsonl",
+        "line": 12,
+        "row_sha256": "a5b7560e402dd0de395862ff1d59c9e4dbdcedd644e0a15773087c7e215eacdb",
+        "spec": "./spec/plurimath/math/evaluation_conformity_spec.rb",
+        "spec_line": 13,
+        "spec_sha256_reported": "437393a20374d228a273d866b03d8520e688cc3ece0ad583d1ab9a0055f89101",
+        "example": "Plurimath::Math::Evaluation::Conformity matches the exact probabilities at the rounded z values in JCGM106 Table1",
+        "standard": "JCGM 106:2012"
+      },
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": "1.64",
+          "standard_uncertainty": 1,
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            0,
+            null
+          ],
+          "rule": {
+            "symbol": "simple"
+          },
+          "coverage_factor": 2,
+          "guard_ratio": 0,
+          "guard_digits": 12
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "decision": {
+            "symbol": "accept"
+          },
+          "boundary": false,
+          "estimate": "41/25",
+          "standard_uncertainty": "1/1",
+          "coverage_factor": "2/1",
+          "guard_ratio": "0/1",
+          "required_consumer_risk_ceiling": null,
+          "conformance_probability": "0.949497416526",
+          "nonconformance_probability": "0.050502583474",
+          "specific_consumer_risk": "0.050502583474",
+          "specific_producer_risk": null,
+          "maximum_specific_consumer_risk_if_accepted": "0.500000000000",
+          "iso_2p3_percent_ceiling_holds": null,
+          "acceptance_possible": true,
+          "tolerance": [
+            "0/1",
+            null
+          ],
+          "acceptance_interval": [
+            "0/1",
+            null
+          ],
+          "signed_guard_band": "0/1",
+          "expanded_uncertainty": "2/1",
+          "lower_residual": "41/25",
+          "upper_residual": null,
+          "measurement_capability_index": null,
+          "rule": {
+            "symbol": "simple"
+          },
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "risk_scope": {
+            "symbol": "specific"
+          },
+          "guard_digits": 12,
+          "precision_convention": {
+            "symbol": "decimal_places"
+          },
+          "probability_resolution": "1/1000000000000",
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM106-2012-normal-v1",
+            "numeric_backend": "binary64"
+          }
+        }
+      }
+    },
+    {
+      "id": "producer-12",
+      "source": {
+        "payload": "handoffs/F40/extended-ruby-producer.jsonl",
+        "line": 13,
+        "row_sha256": "e643db8ff1111dc8d33fcc65e08b30ddde5d12f585c238501f549a00283dc267",
+        "spec": "./spec/plurimath/math/evaluation_conformity_spec.rb",
+        "spec_line": 13,
+        "spec_sha256_reported": "437393a20374d228a273d866b03d8520e688cc3ece0ad583d1ab9a0055f89101",
+        "example": "Plurimath::Math::Evaluation::Conformity matches the exact probabilities at the rounded z values in JCGM106 Table1",
+        "standard": "JCGM 106:2012"
+      },
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": "2.33",
+          "standard_uncertainty": 1,
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            0,
+            null
+          ],
+          "rule": {
+            "symbol": "simple"
+          },
+          "coverage_factor": 2,
+          "guard_ratio": 0,
+          "guard_digits": 12
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "decision": {
+            "symbol": "accept"
+          },
+          "boundary": false,
+          "estimate": "233/100",
+          "standard_uncertainty": "1/1",
+          "coverage_factor": "2/1",
+          "guard_ratio": "0/1",
+          "required_consumer_risk_ceiling": null,
+          "conformance_probability": "0.990096924441",
+          "nonconformance_probability": "0.009903075559",
+          "specific_consumer_risk": "0.009903075559",
+          "specific_producer_risk": null,
+          "maximum_specific_consumer_risk_if_accepted": "0.500000000000",
+          "iso_2p3_percent_ceiling_holds": null,
+          "acceptance_possible": true,
+          "tolerance": [
+            "0/1",
+            null
+          ],
+          "acceptance_interval": [
+            "0/1",
+            null
+          ],
+          "signed_guard_band": "0/1",
+          "expanded_uncertainty": "2/1",
+          "lower_residual": "233/100",
+          "upper_residual": null,
+          "measurement_capability_index": null,
+          "rule": {
+            "symbol": "simple"
+          },
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "risk_scope": {
+            "symbol": "specific"
+          },
+          "guard_digits": 12,
+          "precision_convention": {
+            "symbol": "decimal_places"
+          },
+          "probability_resolution": "1/1000000000000",
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM106-2012-normal-v1",
+            "numeric_backend": "binary64"
+          }
+        }
+      }
+    },
+    {
+      "id": "producer-13",
+      "source": {
+        "payload": "handoffs/F40/extended-ruby-producer.jsonl",
+        "line": 14,
+        "row_sha256": "4b9c7fb0b3f51cd4ca3fe40d1a399a0666d46bfdd87cc08c9246f64c4fb738c1",
+        "spec": "./spec/plurimath/math/evaluation_conformity_spec.rb",
+        "spec_line": 13,
+        "spec_sha256_reported": "437393a20374d228a273d866b03d8520e688cc3ece0ad583d1ab9a0055f89101",
+        "example": "Plurimath::Math::Evaluation::Conformity matches the exact probabilities at the rounded z values in JCGM106 Table1",
+        "standard": "JCGM 106:2012"
+      },
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": "3.09",
+          "standard_uncertainty": 1,
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            0,
+            null
+          ],
+          "rule": {
+            "symbol": "simple"
+          },
+          "coverage_factor": 2,
+          "guard_ratio": 0,
+          "guard_digits": 12
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "decision": {
+            "symbol": "accept"
+          },
+          "boundary": false,
+          "estimate": "309/100",
+          "standard_uncertainty": "1/1",
+          "coverage_factor": "2/1",
+          "guard_ratio": "0/1",
+          "required_consumer_risk_ceiling": null,
+          "conformance_probability": "0.998999217523",
+          "nonconformance_probability": "0.001000782477",
+          "specific_consumer_risk": "0.001000782477",
+          "specific_producer_risk": null,
+          "maximum_specific_consumer_risk_if_accepted": "0.500000000000",
+          "iso_2p3_percent_ceiling_holds": null,
+          "acceptance_possible": true,
+          "tolerance": [
+            "0/1",
+            null
+          ],
+          "acceptance_interval": [
+            "0/1",
+            null
+          ],
+          "signed_guard_band": "0/1",
+          "expanded_uncertainty": "2/1",
+          "lower_residual": "309/100",
+          "upper_residual": null,
+          "measurement_capability_index": null,
+          "rule": {
+            "symbol": "simple"
+          },
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "risk_scope": {
+            "symbol": "specific"
+          },
+          "guard_digits": 12,
+          "precision_convention": {
+            "symbol": "decimal_places"
+          },
+          "probability_resolution": "1/1000000000000",
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM106-2012-normal-v1",
+            "numeric_backend": "binary64"
+          }
+        }
+      }
+    },
+    {
+      "id": "producer-14",
+      "source": {
+        "payload": "handoffs/F40/extended-ruby-producer.jsonl",
+        "line": 15,
+        "row_sha256": "86593424f79fd618463495987531981ab6db678eaa6622dfdef9cba4b9289c2a",
+        "spec": "./spec/plurimath/math/evaluation_conformity_spec.rb",
+        "spec_line": 20,
+        "spec_sha256_reported": "437393a20374d228a273d866b03d8520e688cc3ece0ad583d1ab9a0055f89101",
+        "example": "Plurimath::Math::Evaluation::Conformity reproduces both one-sided examples with their unrounded inputs",
+        "standard": "JCGM 106:2012"
+      },
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": "-5.47",
+          "standard_uncertainty": "0.05",
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            null,
+            "-5.40"
+          ],
+          "rule": {
+            "symbol": "simple"
+          },
+          "coverage_factor": 2,
+          "guard_ratio": 0,
+          "guard_digits": 12
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "decision": {
+            "symbol": "accept"
+          },
+          "boundary": false,
+          "estimate": "-547/100",
+          "standard_uncertainty": "1/20",
+          "coverage_factor": "2/1",
+          "guard_ratio": "0/1",
+          "required_consumer_risk_ceiling": null,
+          "conformance_probability": "0.919243340766",
+          "nonconformance_probability": "0.080756659234",
+          "specific_consumer_risk": "0.080756659234",
+          "specific_producer_risk": null,
+          "maximum_specific_consumer_risk_if_accepted": "0.500000000000",
+          "iso_2p3_percent_ceiling_holds": null,
+          "acceptance_possible": true,
+          "tolerance": [
+            null,
+            "-27/5"
+          ],
+          "acceptance_interval": [
+            null,
+            "-27/5"
+          ],
+          "signed_guard_band": "0/1",
+          "expanded_uncertainty": "1/10",
+          "lower_residual": null,
+          "upper_residual": "7/100",
+          "measurement_capability_index": null,
+          "rule": {
+            "symbol": "simple"
+          },
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "risk_scope": {
+            "symbol": "specific"
+          },
+          "guard_digits": 12,
+          "precision_convention": {
+            "symbol": "decimal_places"
+          },
+          "probability_resolution": "1/1000000000000",
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM106-2012-normal-v1",
+            "numeric_backend": "binary64"
+          }
+        }
+      }
+    },
+    {
+      "id": "producer-15",
+      "source": {
+        "payload": "handoffs/F40/extended-ruby-producer.jsonl",
+        "line": 16,
+        "row_sha256": "58753983fa66344a4646eff9c4b18f8a6bbf59945cf2f2caf0ed0de83a4b3667",
+        "spec": "./spec/plurimath/math/evaluation_conformity_spec.rb",
+        "spec_line": 20,
+        "spec_sha256_reported": "437393a20374d228a273d866b03d8520e688cc3ece0ad583d1ab9a0055f89101",
+        "example": "Plurimath::Math::Evaluation::Conformity reproduces both one-sided examples with their unrounded inputs",
+        "standard": "JCGM 106:2012"
+      },
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": "509.7",
+          "standard_uncertainty": "8.6",
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            "490",
+            null
+          ],
+          "rule": {
+            "symbol": "simple"
+          },
+          "coverage_factor": 2,
+          "guard_ratio": 0,
+          "guard_digits": 12
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "decision": {
+            "symbol": "accept"
+          },
+          "boundary": false,
+          "estimate": "5097/10",
+          "standard_uncertainty": "43/5",
+          "coverage_factor": "2/1",
+          "guard_ratio": "0/1",
+          "required_consumer_risk_ceiling": null,
+          "conformance_probability": "0.989009547385",
+          "nonconformance_probability": "0.010990452615",
+          "specific_consumer_risk": "0.010990452615",
+          "specific_producer_risk": null,
+          "maximum_specific_consumer_risk_if_accepted": "0.500000000000",
+          "iso_2p3_percent_ceiling_holds": null,
+          "acceptance_possible": true,
+          "tolerance": [
+            "490/1",
+            null
+          ],
+          "acceptance_interval": [
+            "490/1",
+            null
+          ],
+          "signed_guard_band": "0/1",
+          "expanded_uncertainty": "86/5",
+          "lower_residual": "197/10",
+          "upper_residual": null,
+          "measurement_capability_index": null,
+          "rule": {
+            "symbol": "simple"
+          },
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "risk_scope": {
+            "symbol": "specific"
+          },
+          "guard_digits": 12,
+          "precision_convention": {
+            "symbol": "decimal_places"
+          },
+          "probability_resolution": "1/1000000000000",
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM106-2012-normal-v1",
+            "numeric_backend": "binary64"
+          }
+        }
+      }
+    },
+    {
+      "id": "producer-16",
+      "source": {
+        "payload": "handoffs/F40/extended-ruby-producer.jsonl",
+        "line": 17,
+        "row_sha256": "e8770e83ab4821b8d342adf4e4ff01aa006104593b76b9119b31637561c42a46",
+        "spec": "./spec/plurimath/math/evaluation_conformity_spec.rb",
+        "spec_line": 29,
+        "spec_sha256_reported": "437393a20374d228a273d866b03d8520e688cc3ece0ad583d1ab9a0055f89101",
+        "example": "Plurimath::Math::Evaluation::Conformity computes exact two-tail risk instead of assuming an unconditional2.3percent ceiling",
+        "standard": "JCGM 106:2012"
+      },
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": 0,
+          "standard_uncertainty": 1,
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            -2,
+            2
+          ],
+          "rule": {
+            "symbol": "iso14253_style"
+          },
+          "coverage_factor": 2,
+          "guard_ratio": 1,
+          "guard_digits": 12
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "decision": {
+            "symbol": "accept"
+          },
+          "boundary": true,
+          "estimate": "0/1",
+          "standard_uncertainty": "1/1",
+          "coverage_factor": "2/1",
+          "guard_ratio": "1/1",
+          "required_consumer_risk_ceiling": null,
+          "conformance_probability": "0.954499736104",
+          "nonconformance_probability": "0.045500263896",
+          "specific_consumer_risk": "0.045500263896",
+          "specific_producer_risk": null,
+          "maximum_specific_consumer_risk_if_accepted": "0.045500263896",
+          "iso_2p3_percent_ceiling_holds": false,
+          "acceptance_possible": true,
+          "tolerance": [
+            "-2/1",
+            "2/1"
+          ],
+          "acceptance_interval": [
+            "0/1",
+            "0/1"
+          ],
+          "signed_guard_band": "2/1",
+          "expanded_uncertainty": "2/1",
+          "lower_residual": "2/1",
+          "upper_residual": "2/1",
+          "measurement_capability_index": "1/1",
+          "rule": {
+            "symbol": "iso14253_style"
+          },
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "risk_scope": {
+            "symbol": "specific"
+          },
+          "guard_digits": 12,
+          "precision_convention": {
+            "symbol": "decimal_places"
+          },
+          "probability_resolution": "1/1000000000000",
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM106-2012-normal-v1",
+            "numeric_backend": "binary64"
+          }
+        }
+      }
+    },
+    {
+      "id": "producer-17",
+      "source": {
+        "payload": "handoffs/F40/extended-ruby-producer.jsonl",
+        "line": 18,
+        "row_sha256": "fe3af94d9897b3d2dae3d4baaa1e9c4f24fb916d3f32ca34a7fc3c06c7d68b4b",
+        "spec": "./spec/plurimath/math/evaluation_conformity_spec.rb",
+        "spec_line": 29,
+        "spec_sha256_reported": "437393a20374d228a273d866b03d8520e688cc3ece0ad583d1ab9a0055f89101",
+        "example": "Plurimath::Math::Evaluation::Conformity computes exact two-tail risk instead of assuming an unconditional2.3percent ceiling",
+        "standard": "JCGM 106:2012"
+      },
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": 0,
+          "standard_uncertainty": 1,
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            -2,
+            2
+          ],
+          "rule": {
+            "symbol": "iso14253_style"
+          },
+          "coverage_factor": 2,
+          "guard_ratio": 1,
+          "guard_digits": 12,
+          "consumer_risk_ceiling": "0.023"
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::UnsupportedModel",
+        "message": "declared guard geometry does not establish the requested consumer risk ceiling"
+      }
+    },
+    {
+      "id": "producer-18",
+      "source": {
+        "payload": "handoffs/F40/extended-ruby-producer.jsonl",
+        "line": 19,
+        "row_sha256": "cc15670efb6bd8fcd8a8e6355498026ff81402f40c0f8a1c6e9ab387c5767a37",
+        "spec": "./spec/plurimath/math/evaluation_conformity_spec.rb",
+        "spec_line": 29,
+        "spec_sha256_reported": "437393a20374d228a273d866b03d8520e688cc3ece0ad583d1ab9a0055f89101",
+        "example": "Plurimath::Math::Evaluation::Conformity computes exact two-tail risk instead of assuming an unconditional2.3percent ceiling",
+        "standard": "JCGM 106:2012"
+      },
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": 2,
+          "standard_uncertainty": 1,
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            -4,
+            4
+          ],
+          "rule": {
+            "symbol": "iso14253_style"
+          },
+          "coverage_factor": 2,
+          "guard_ratio": 1,
+          "guard_digits": 12,
+          "consumer_risk_ceiling": "0.023"
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "decision": {
+            "symbol": "accept"
+          },
+          "boundary": true,
+          "estimate": "2/1",
+          "standard_uncertainty": "1/1",
+          "coverage_factor": "2/1",
+          "guard_ratio": "1/1",
+          "required_consumer_risk_ceiling": "23/1000",
+          "conformance_probability": "0.977249867065",
+          "nonconformance_probability": "0.022750132935",
+          "specific_consumer_risk": "0.022750132935",
+          "specific_producer_risk": null,
+          "maximum_specific_consumer_risk_if_accepted": "0.022750132935",
+          "iso_2p3_percent_ceiling_holds": true,
+          "acceptance_possible": true,
+          "tolerance": [
+            "-4/1",
+            "4/1"
+          ],
+          "acceptance_interval": [
+            "-2/1",
+            "2/1"
+          ],
+          "signed_guard_band": "2/1",
+          "expanded_uncertainty": "2/1",
+          "lower_residual": "6/1",
+          "upper_residual": "2/1",
+          "measurement_capability_index": "2/1",
+          "rule": {
+            "symbol": "iso14253_style"
+          },
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "risk_scope": {
+            "symbol": "specific"
+          },
+          "guard_digits": 12,
+          "precision_convention": {
+            "symbol": "decimal_places"
+          },
+          "probability_resolution": "1/1000000000000",
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM106-2012-normal-v1",
+            "numeric_backend": "binary64"
+          }
+        }
+      }
+    },
+    {
+      "id": "producer-19",
+      "source": {
+        "payload": "handoffs/F40/extended-ruby-producer.jsonl",
+        "line": 20,
+        "row_sha256": "ff28ef6b3812485df00aaa5b3eef478edbba6f20f1a5b038b97b57aae4710e60",
+        "spec": "./spec/plurimath/math/evaluation_conformity_spec.rb",
+        "spec_line": 43,
+        "spec_sha256_reported": "437393a20374d228a273d866b03d8520e688cc3ece0ad583d1ab9a0055f89101",
+        "example": "Plurimath::Math::Evaluation::Conformity assigns specific producer risk only for a rejection",
+        "standard": "JCGM 106:2012"
+      },
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": 3,
+          "standard_uncertainty": 1,
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            null,
+            0
+          ],
+          "rule": {
+            "symbol": "guarded_rejection"
+          },
+          "coverage_factor": 2,
+          "guard_ratio": 1,
+          "guard_digits": 12
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "decision": {
+            "symbol": "reject"
+          },
+          "boundary": false,
+          "estimate": "3/1",
+          "standard_uncertainty": "1/1",
+          "coverage_factor": "2/1",
+          "guard_ratio": "1/1",
+          "required_consumer_risk_ceiling": null,
+          "conformance_probability": "0.001349898032",
+          "nonconformance_probability": "0.998650101968",
+          "specific_consumer_risk": null,
+          "specific_producer_risk": "0.001349898032",
+          "maximum_specific_consumer_risk_if_accepted": "0.977249868052",
+          "iso_2p3_percent_ceiling_holds": null,
+          "acceptance_possible": true,
+          "tolerance": [
+            null,
+            "0/1"
+          ],
+          "acceptance_interval": [
+            null,
+            "2/1"
+          ],
+          "signed_guard_band": "-2/1",
+          "expanded_uncertainty": "2/1",
+          "lower_residual": null,
+          "upper_residual": "-3/1",
+          "measurement_capability_index": null,
+          "rule": {
+            "symbol": "guarded_rejection"
+          },
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "risk_scope": {
+            "symbol": "specific"
+          },
+          "guard_digits": 12,
+          "precision_convention": {
+            "symbol": "decimal_places"
+          },
+          "probability_resolution": "1/1000000000000",
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM106-2012-normal-v1",
+            "numeric_backend": "binary64"
+          }
+        }
+      }
+    },
+    {
+      "id": "producer-20",
+      "source": {
+        "payload": "handoffs/F40/extended-ruby-producer.jsonl",
+        "line": 21,
+        "row_sha256": "0873f10bfe0d2ca96d3cf6be947e4b2361dc0b54cc8adcf613ca7175010ee42d",
+        "spec": "./spec/plurimath/math/evaluation_conformity_spec.rb",
+        "spec_line": 52,
+        "spec_sha256_reported": "437393a20374d228a273d866b03d8520e688cc3ece0ad583d1ab9a0055f89101",
+        "example": "Plurimath::Math::Evaluation::Conformity represents a boundary-conditional three-zone outcome and signed residuals",
+        "standard": "JCGM 106:2012"
+      },
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": 3,
+          "standard_uncertainty": 1,
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            -2,
+            2
+          ],
+          "rule": {
+            "symbol": "three_zone"
+          },
+          "coverage_factor": 1,
+          "guard_ratio": 1,
+          "guard_digits": 12
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "decision": {
+            "symbol": "conditional"
+          },
+          "boundary": true,
+          "estimate": "3/1",
+          "standard_uncertainty": "1/1",
+          "coverage_factor": "1/1",
+          "guard_ratio": "1/1",
+          "required_consumer_risk_ceiling": null,
+          "conformance_probability": "0.158654967280",
+          "nonconformance_probability": "0.841345032720",
+          "specific_consumer_risk": null,
+          "specific_producer_risk": null,
+          "maximum_specific_consumer_risk_if_accepted": "0.160005151963",
+          "iso_2p3_percent_ceiling_holds": null,
+          "acceptance_possible": true,
+          "tolerance": [
+            "-2/1",
+            "2/1"
+          ],
+          "acceptance_interval": [
+            "-1/1",
+            "1/1"
+          ],
+          "signed_guard_band": "1/1",
+          "expanded_uncertainty": "1/1",
+          "lower_residual": "5/1",
+          "upper_residual": "-1/1",
+          "measurement_capability_index": "1/1",
+          "rule": {
+            "symbol": "three_zone"
+          },
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "risk_scope": {
+            "symbol": "specific"
+          },
+          "guard_digits": 12,
+          "precision_convention": {
+            "symbol": "decimal_places"
+          },
+          "probability_resolution": "1/1000000000000",
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM106-2012-normal-v1",
+            "numeric_backend": "binary64"
+          }
+        }
+      }
+    },
+    {
+      "id": "producer-21",
+      "source": {
+        "payload": "handoffs/F40/extended-ruby-producer.jsonl",
+        "line": 22,
+        "row_sha256": "dd683ff007a5b68ae934ac98f89ff964d0cfc32d3e9ca5b92a49f1ed1666b1ee",
+        "spec": "./spec/plurimath/math/evaluation_conformity_spec.rb",
+        "spec_line": 52,
+        "spec_sha256_reported": "437393a20374d228a273d866b03d8520e688cc3ece0ad583d1ab9a0055f89101",
+        "example": "Plurimath::Math::Evaluation::Conformity represents a boundary-conditional three-zone outcome and signed residuals",
+        "standard": "JCGM 106:2012"
+      },
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": "3.1",
+          "standard_uncertainty": 1,
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            -2,
+            2
+          ],
+          "rule": {
+            "symbol": "three_zone"
+          },
+          "coverage_factor": 1,
+          "guard_ratio": 1,
+          "guard_digits": 12
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "decision": {
+            "symbol": "reject"
+          },
+          "boundary": false,
+          "estimate": "31/10",
+          "standard_uncertainty": "1/1",
+          "coverage_factor": "1/1",
+          "guard_ratio": "1/1",
+          "required_consumer_risk_ceiling": null,
+          "conformance_probability": "0.135665891120",
+          "nonconformance_probability": "0.864334108880",
+          "specific_consumer_risk": null,
+          "specific_producer_risk": "0.135665891120",
+          "maximum_specific_consumer_risk_if_accepted": "0.160005151963",
+          "iso_2p3_percent_ceiling_holds": null,
+          "acceptance_possible": true,
+          "tolerance": [
+            "-2/1",
+            "2/1"
+          ],
+          "acceptance_interval": [
+            "-1/1",
+            "1/1"
+          ],
+          "signed_guard_band": "1/1",
+          "expanded_uncertainty": "1/1",
+          "lower_residual": "51/10",
+          "upper_residual": "-11/10",
+          "measurement_capability_index": "1/1",
+          "rule": {
+            "symbol": "three_zone"
+          },
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "risk_scope": {
+            "symbol": "specific"
+          },
+          "guard_digits": 12,
+          "precision_convention": {
+            "symbol": "decimal_places"
+          },
+          "probability_resolution": "1/1000000000000",
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM106-2012-normal-v1",
+            "numeric_backend": "binary64"
+          }
+        }
+      }
+    },
+    {
+      "id": "producer-22",
+      "source": {
+        "payload": "handoffs/F40/extended-ruby-producer.jsonl",
+        "line": 23,
+        "row_sha256": "f0215ef8aa6441e1154ae48daeb0f681600d9213c9f571ca7f463b30abae70a2",
+        "spec": "./spec/plurimath/math/evaluation_conformity_spec.rb",
+        "spec_line": 62,
+        "spec_sha256_reported": "437393a20374d228a273d866b03d8520e688cc3ece0ad583d1ab9a0055f89101",
+        "example": "Plurimath::Math::Evaluation::Conformity refuses global risks and unprovided prior/non-normal models",
+        "standard": "JCGM 106:2012"
+      },
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": 0,
+          "standard_uncertainty": 1,
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            -2,
+            2
+          ],
+          "rule": {
+            "symbol": "simple"
+          },
+          "coverage_factor": 2,
+          "guard_ratio": 0,
+          "guard_digits": 12,
+          "risk_scope": {
+            "symbol": "global"
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::UnsupportedModel",
+        "message": "global risks require a process/measurement joint PDF"
+      }
+    },
+    {
+      "id": "producer-23",
+      "source": {
+        "payload": "handoffs/F40/extended-ruby-producer.jsonl",
+        "line": 24,
+        "row_sha256": "d5104bb095940ec3321a986ad2f5bf07dc491a0994331077ab79ed696b00e9bc",
+        "spec": "./spec/plurimath/math/evaluation_conformity_spec.rb",
+        "spec_line": 62,
+        "spec_sha256_reported": "437393a20374d228a273d866b03d8520e688cc3ece0ad583d1ab9a0055f89101",
+        "example": "Plurimath::Math::Evaluation::Conformity refuses global risks and unprovided prior/non-normal models",
+        "standard": "JCGM 106:2012"
+      },
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": 0,
+          "standard_uncertainty": 1,
+          "distribution": {
+            "symbol": "student_t"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            -2,
+            2
+          ],
+          "rule": {
+            "symbol": "simple"
+          },
+          "coverage_factor": 2,
+          "guard_ratio": 0,
+          "guard_digits": 12
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::UnsupportedModel",
+        "message": "decision capability requires explicit measurement-only normal knowledge"
+      }
+    },
+    {
+      "id": "producer-24",
+      "source": {
+        "payload": "handoffs/F40/extended-ruby-producer.jsonl",
+        "line": 25,
+        "row_sha256": "0d5e98b1a955e338146c76b664f64f86c606c61880c6f893ca704ee93f2ebe17",
+        "spec": "./spec/plurimath/math/evaluation_conformity_spec.rb",
+        "spec_line": 62,
+        "spec_sha256_reported": "437393a20374d228a273d866b03d8520e688cc3ece0ad583d1ab9a0055f89101",
+        "example": "Plurimath::Math::Evaluation::Conformity refuses global risks and unprovided prior/non-normal models",
+        "standard": "JCGM 106:2012"
+      },
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": 0,
+          "standard_uncertainty": 1,
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "informative_prior"
+          },
+          "tolerance": [
+            -2,
+            2
+          ],
+          "rule": {
+            "symbol": "simple"
+          },
+          "coverage_factor": 2,
+          "guard_ratio": 0,
+          "guard_digits": 12
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::UnsupportedModel",
+        "message": "decision capability requires explicit measurement-only normal knowledge"
+      }
+    },
+    {
+      "id": "producer-25",
+      "source": {
+        "payload": "handoffs/F40/extended-ruby-producer.jsonl",
+        "line": 26,
+        "row_sha256": "e08c9004a3534029731b64b01c98125a88b857474cba68543be6ee19960176ca",
+        "spec": "./spec/plurimath/math/evaluation_conformity_spec.rb",
+        "spec_line": 62,
+        "spec_sha256_reported": "437393a20374d228a273d866b03d8520e688cc3ece0ad583d1ab9a0055f89101",
+        "example": "Plurimath::Math::Evaluation::Conformity refuses global risks and unprovided prior/non-normal models",
+        "standard": "JCGM 106:2012"
+      },
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": 0,
+          "standard_uncertainty": 1,
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            -1,
+            1
+          ],
+          "rule": {
+            "symbol": "iso14253_style"
+          },
+          "coverage_factor": 2,
+          "guard_ratio": 1,
+          "guard_digits": 12
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "decision": {
+            "symbol": "reject"
+          },
+          "boundary": false,
+          "estimate": "0/1",
+          "standard_uncertainty": "1/1",
+          "coverage_factor": "2/1",
+          "guard_ratio": "1/1",
+          "required_consumer_risk_ceiling": null,
+          "conformance_probability": "0.682689492137",
+          "nonconformance_probability": "0.317310507863",
+          "specific_consumer_risk": null,
+          "specific_producer_risk": "0.682689492137",
+          "maximum_specific_consumer_risk_if_accepted": null,
+          "iso_2p3_percent_ceiling_holds": null,
+          "acceptance_possible": false,
+          "tolerance": [
+            "-1/1",
+            "1/1"
+          ],
+          "acceptance_interval": [
+            "1/1",
+            "-1/1"
+          ],
+          "signed_guard_band": "2/1",
+          "expanded_uncertainty": "2/1",
+          "lower_residual": "1/1",
+          "upper_residual": "1/1",
+          "measurement_capability_index": "1/2",
+          "rule": {
+            "symbol": "iso14253_style"
+          },
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "risk_scope": {
+            "symbol": "specific"
+          },
+          "guard_digits": 12,
+          "precision_convention": {
+            "symbol": "decimal_places"
+          },
+          "probability_resolution": "1/1000000000000",
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM106-2012-normal-v1",
+            "numeric_backend": "binary64"
+          }
+        }
+      }
+    },
+    {
+      "id": "simple-upper-limit",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": 2,
+          "standard_uncertainty": 1,
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            -2,
+            2
+          ],
+          "rule": {
+            "symbol": "simple"
+          },
+          "coverage_factor": 1,
+          "guard_ratio": 0,
+          "guard_digits": 12
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "decision": {
+            "symbol": "accept"
+          },
+          "boundary": true,
+          "estimate": "2/1",
+          "standard_uncertainty": "1/1",
+          "coverage_factor": "1/1",
+          "guard_ratio": "0/1",
+          "required_consumer_risk_ceiling": null,
+          "conformance_probability": "0.499968328758",
+          "nonconformance_probability": "0.500031671242",
+          "specific_consumer_risk": "0.500031671242",
+          "specific_producer_risk": null,
+          "maximum_specific_consumer_risk_if_accepted": "0.500031671242",
+          "iso_2p3_percent_ceiling_holds": null,
+          "acceptance_possible": true,
+          "tolerance": [
+            "-2/1",
+            "2/1"
+          ],
+          "acceptance_interval": [
+            "-2/1",
+            "2/1"
+          ],
+          "signed_guard_band": "0/1",
+          "expanded_uncertainty": "1/1",
+          "lower_residual": "4/1",
+          "upper_residual": "0/1",
+          "measurement_capability_index": "1/1",
+          "rule": {
+            "symbol": "simple"
+          },
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "risk_scope": {
+            "symbol": "specific"
+          },
+          "guard_digits": 12,
+          "precision_convention": {
+            "symbol": "decimal_places"
+          },
+          "probability_resolution": "1/1000000000000",
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM106-2012-normal-v1",
+            "numeric_backend": "binary64"
+          }
+        }
+      }
+    },
+    {
+      "id": "guarded-acceptance-inner-upper",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": 1,
+          "standard_uncertainty": 1,
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            -2,
+            2
+          ],
+          "rule": {
+            "symbol": "guarded_acceptance"
+          },
+          "coverage_factor": 1,
+          "guard_ratio": 1,
+          "guard_digits": 12
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "decision": {
+            "symbol": "accept"
+          },
+          "boundary": true,
+          "estimate": "1/1",
+          "standard_uncertainty": "1/1",
+          "coverage_factor": "1/1",
+          "guard_ratio": "1/1",
+          "required_consumer_risk_ceiling": null,
+          "conformance_probability": "0.839994848037",
+          "nonconformance_probability": "0.160005151963",
+          "specific_consumer_risk": "0.160005151963",
+          "specific_producer_risk": null,
+          "maximum_specific_consumer_risk_if_accepted": "0.160005151963",
+          "iso_2p3_percent_ceiling_holds": null,
+          "acceptance_possible": true,
+          "tolerance": [
+            "-2/1",
+            "2/1"
+          ],
+          "acceptance_interval": [
+            "-1/1",
+            "1/1"
+          ],
+          "signed_guard_band": "1/1",
+          "expanded_uncertainty": "1/1",
+          "lower_residual": "3/1",
+          "upper_residual": "1/1",
+          "measurement_capability_index": "1/1",
+          "rule": {
+            "symbol": "guarded_acceptance"
+          },
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "risk_scope": {
+            "symbol": "specific"
+          },
+          "guard_digits": 12,
+          "precision_convention": {
+            "symbol": "decimal_places"
+          },
+          "probability_resolution": "1/1000000000000",
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM106-2012-normal-v1",
+            "numeric_backend": "binary64"
+          }
+        }
+      }
+    },
+    {
+      "id": "guarded-acceptance-outside-inner",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": "1.000000000001",
+          "standard_uncertainty": 1,
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            -2,
+            2
+          ],
+          "rule": {
+            "symbol": "guarded_acceptance"
+          },
+          "coverage_factor": 1,
+          "guard_ratio": 1,
+          "guard_digits": 12
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "decision": {
+            "symbol": "reject"
+          },
+          "boundary": false,
+          "estimate": "1000000000001/1000000000000",
+          "standard_uncertainty": "1/1",
+          "coverage_factor": "1/1",
+          "guard_ratio": "1/1",
+          "required_consumer_risk_ceiling": null,
+          "conformance_probability": "0.839994848037",
+          "nonconformance_probability": "0.160005151963",
+          "specific_consumer_risk": null,
+          "specific_producer_risk": "0.839994848037",
+          "maximum_specific_consumer_risk_if_accepted": "0.160005151963",
+          "iso_2p3_percent_ceiling_holds": null,
+          "acceptance_possible": true,
+          "tolerance": [
+            "-2/1",
+            "2/1"
+          ],
+          "acceptance_interval": [
+            "-1/1",
+            "1/1"
+          ],
+          "signed_guard_band": "1/1",
+          "expanded_uncertainty": "1/1",
+          "lower_residual": "3000000000001/1000000000000",
+          "upper_residual": "999999999999/1000000000000",
+          "measurement_capability_index": "1/1",
+          "rule": {
+            "symbol": "guarded_acceptance"
+          },
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "risk_scope": {
+            "symbol": "specific"
+          },
+          "guard_digits": 12,
+          "precision_convention": {
+            "symbol": "decimal_places"
+          },
+          "probability_resolution": "1/1000000000000",
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM106-2012-normal-v1",
+            "numeric_backend": "binary64"
+          }
+        }
+      }
+    },
+    {
+      "id": "three-zone-inner-upper",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": 1,
+          "standard_uncertainty": 1,
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            -2,
+            2
+          ],
+          "rule": {
+            "symbol": "three_zone"
+          },
+          "coverage_factor": 1,
+          "guard_ratio": 1,
+          "guard_digits": 12
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "decision": {
+            "symbol": "accept"
+          },
+          "boundary": true,
+          "estimate": "1/1",
+          "standard_uncertainty": "1/1",
+          "coverage_factor": "1/1",
+          "guard_ratio": "1/1",
+          "required_consumer_risk_ceiling": null,
+          "conformance_probability": "0.839994848037",
+          "nonconformance_probability": "0.160005151963",
+          "specific_consumer_risk": "0.160005151963",
+          "specific_producer_risk": null,
+          "maximum_specific_consumer_risk_if_accepted": "0.160005151963",
+          "iso_2p3_percent_ceiling_holds": null,
+          "acceptance_possible": true,
+          "tolerance": [
+            "-2/1",
+            "2/1"
+          ],
+          "acceptance_interval": [
+            "-1/1",
+            "1/1"
+          ],
+          "signed_guard_band": "1/1",
+          "expanded_uncertainty": "1/1",
+          "lower_residual": "3/1",
+          "upper_residual": "1/1",
+          "measurement_capability_index": "1/1",
+          "rule": {
+            "symbol": "three_zone"
+          },
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "risk_scope": {
+            "symbol": "specific"
+          },
+          "guard_digits": 12,
+          "precision_convention": {
+            "symbol": "decimal_places"
+          },
+          "probability_resolution": "1/1000000000000",
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM106-2012-normal-v1",
+            "numeric_backend": "binary64"
+          }
+        }
+      }
+    },
+    {
+      "id": "three-zone-past-inner-upper",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": "1.000000000001",
+          "standard_uncertainty": 1,
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            -2,
+            2
+          ],
+          "rule": {
+            "symbol": "three_zone"
+          },
+          "coverage_factor": 1,
+          "guard_ratio": 1,
+          "guard_digits": 12
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "decision": {
+            "symbol": "conditional"
+          },
+          "boundary": false,
+          "estimate": "1000000000001/1000000000000",
+          "standard_uncertainty": "1/1",
+          "coverage_factor": "1/1",
+          "guard_ratio": "1/1",
+          "required_consumer_risk_ceiling": null,
+          "conformance_probability": "0.839994848037",
+          "nonconformance_probability": "0.160005151963",
+          "specific_consumer_risk": null,
+          "specific_producer_risk": null,
+          "maximum_specific_consumer_risk_if_accepted": "0.160005151963",
+          "iso_2p3_percent_ceiling_holds": null,
+          "acceptance_possible": true,
+          "tolerance": [
+            "-2/1",
+            "2/1"
+          ],
+          "acceptance_interval": [
+            "-1/1",
+            "1/1"
+          ],
+          "signed_guard_band": "1/1",
+          "expanded_uncertainty": "1/1",
+          "lower_residual": "3000000000001/1000000000000",
+          "upper_residual": "999999999999/1000000000000",
+          "measurement_capability_index": "1/1",
+          "rule": {
+            "symbol": "three_zone"
+          },
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "risk_scope": {
+            "symbol": "specific"
+          },
+          "guard_digits": 12,
+          "precision_convention": {
+            "symbol": "decimal_places"
+          },
+          "probability_resolution": "1/1000000000000",
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM106-2012-normal-v1",
+            "numeric_backend": "binary64"
+          }
+        }
+      }
+    },
+    {
+      "id": "three-zone-outer-lower",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": -3,
+          "standard_uncertainty": 1,
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            -2,
+            2
+          ],
+          "rule": {
+            "symbol": "three_zone"
+          },
+          "coverage_factor": 1,
+          "guard_ratio": 1,
+          "guard_digits": 12
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "decision": {
+            "symbol": "conditional"
+          },
+          "boundary": true,
+          "estimate": "-3/1",
+          "standard_uncertainty": "1/1",
+          "coverage_factor": "1/1",
+          "guard_ratio": "1/1",
+          "required_consumer_risk_ceiling": null,
+          "conformance_probability": "0.158654967280",
+          "nonconformance_probability": "0.841345032720",
+          "specific_consumer_risk": null,
+          "specific_producer_risk": null,
+          "maximum_specific_consumer_risk_if_accepted": "0.160005151963",
+          "iso_2p3_percent_ceiling_holds": null,
+          "acceptance_possible": true,
+          "tolerance": [
+            "-2/1",
+            "2/1"
+          ],
+          "acceptance_interval": [
+            "-1/1",
+            "1/1"
+          ],
+          "signed_guard_band": "1/1",
+          "expanded_uncertainty": "1/1",
+          "lower_residual": "-1/1",
+          "upper_residual": "5/1",
+          "measurement_capability_index": "1/1",
+          "rule": {
+            "symbol": "three_zone"
+          },
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "risk_scope": {
+            "symbol": "specific"
+          },
+          "guard_digits": 12,
+          "precision_convention": {
+            "symbol": "decimal_places"
+          },
+          "probability_resolution": "1/1000000000000",
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM106-2012-normal-v1",
+            "numeric_backend": "binary64"
+          }
+        }
+      }
+    },
+    {
+      "id": "three-zone-past-outer-lower",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": "-3.000000000001",
+          "standard_uncertainty": 1,
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            -2,
+            2
+          ],
+          "rule": {
+            "symbol": "three_zone"
+          },
+          "coverage_factor": 1,
+          "guard_ratio": 1,
+          "guard_digits": 12
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "decision": {
+            "symbol": "reject"
+          },
+          "boundary": false,
+          "estimate": "-3000000000001/1000000000000",
+          "standard_uncertainty": "1/1",
+          "coverage_factor": "1/1",
+          "guard_ratio": "1/1",
+          "required_consumer_risk_ceiling": null,
+          "conformance_probability": "0.158654967280",
+          "nonconformance_probability": "0.841345032720",
+          "specific_consumer_risk": null,
+          "specific_producer_risk": "0.158654967280",
+          "maximum_specific_consumer_risk_if_accepted": "0.160005151963",
+          "iso_2p3_percent_ceiling_holds": null,
+          "acceptance_possible": true,
+          "tolerance": [
+            "-2/1",
+            "2/1"
+          ],
+          "acceptance_interval": [
+            "-1/1",
+            "1/1"
+          ],
+          "signed_guard_band": "1/1",
+          "expanded_uncertainty": "1/1",
+          "lower_residual": "-1000000000001/1000000000000",
+          "upper_residual": "5000000000001/1000000000000",
+          "measurement_capability_index": "1/1",
+          "rule": {
+            "symbol": "three_zone"
+          },
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "risk_scope": {
+            "symbol": "specific"
+          },
+          "guard_digits": 12,
+          "precision_convention": {
+            "symbol": "decimal_places"
+          },
+          "probability_resolution": "1/1000000000000",
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM106-2012-normal-v1",
+            "numeric_backend": "binary64"
+          }
+        }
+      }
+    },
+    {
+      "id": "three-zone-one-sided-open-lower",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "conformity",
+        "parameters": {
+          "estimate": 3,
+          "standard_uncertainty": 1,
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "tolerance": [
+            null,
+            2
+          ],
+          "rule": {
+            "symbol": "three_zone"
+          },
+          "coverage_factor": 1,
+          "guard_ratio": 1,
+          "guard_digits": 12
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "decision": {
+            "symbol": "conditional"
+          },
+          "boundary": true,
+          "estimate": "3/1",
+          "standard_uncertainty": "1/1",
+          "coverage_factor": "1/1",
+          "guard_ratio": "1/1",
+          "required_consumer_risk_ceiling": null,
+          "conformance_probability": "0.158655253931",
+          "nonconformance_probability": "0.841344746069",
+          "specific_consumer_risk": null,
+          "specific_producer_risk": null,
+          "maximum_specific_consumer_risk_if_accepted": "0.158655253931",
+          "iso_2p3_percent_ceiling_holds": null,
+          "acceptance_possible": true,
+          "tolerance": [
+            null,
+            "2/1"
+          ],
+          "acceptance_interval": [
+            null,
+            "1/1"
+          ],
+          "signed_guard_band": "1/1",
+          "expanded_uncertainty": "1/1",
+          "lower_residual": null,
+          "upper_residual": "-1/1",
+          "measurement_capability_index": null,
+          "rule": {
+            "symbol": "three_zone"
+          },
+          "distribution": {
+            "symbol": "normal"
+          },
+          "knowledge": {
+            "symbol": "measurement_only"
+          },
+          "risk_scope": {
+            "symbol": "specific"
+          },
+          "guard_digits": 12,
+          "precision_convention": {
+            "symbol": "decimal_places"
+          },
+          "probability_resolution": "1/1000000000000",
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM106-2012-normal-v1",
+            "numeric_backend": "binary64"
+          }
+        }
+      }
+    }
+  ]
+}
