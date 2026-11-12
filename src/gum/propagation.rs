@@ -150,8 +150,8 @@ fn tensors(params: &J, size: usize, incomplete: &'static str) -> Result<(Hessian
             if h[i][j] != h[j][i] {
                 return Err(invalid("Hessian must be symmetric"));
             }
-            for k in 0..size {
-                if t[i][j][k] != t[j][i][k] || t[i][j][k] != t[i][k][j] {
+            for (k, t_ik) in t[i].iter().enumerate() {
+                if t[i][j][k] != t[j][i][k] || t[i][j][k] != t_ik[j] {
                     return Err(invalid("third derivative tensor must be symmetric"));
                 }
             }
@@ -298,8 +298,8 @@ fn checked(value: &J) -> Result<Vec<Vec<Q>>> {
     if matrix[0].len() != n {
         return Err(invalid(invalid_shape));
     }
-    for i in 0..n {
-        if (0..i).any(|j| matrix[i][j] != matrix[j][i]) {
+    for (i, row) in matrix.iter().enumerate() {
+        if (0..i).any(|j| row[j] != matrix[j][i]) {
             return Err(invalid("covariance must be symmetric"));
         }
     }

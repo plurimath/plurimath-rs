@@ -10,7 +10,7 @@ pub(super) enum Model {
         numerator: Polynomial,
         denominator: Polynomial,
         center: f64,
-        certificate: [Q; 2],
+        certificate: Box<[Q; 2]>,
     },
 }
 
@@ -78,7 +78,7 @@ impl Model {
                     numerator,
                     denominator,
                     center,
-                    certificate,
+                    certificate: Box::new(certificate),
                 })
             }
             Err(error) => Err(error),
