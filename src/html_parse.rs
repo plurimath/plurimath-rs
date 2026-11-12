@@ -188,7 +188,9 @@ fn captures(root: &Value, input: &str) -> Result<Value, Value> {
                             let mut fields = Map::new();
                             for v in values {
                                 if matches!(v.origin, Origin::Map) {
-                                    if let Value::Object(owned)=v.value {fields.extend(owned);}
+                                    if let Value::Object(owned) = v.value {
+                                        fields.extend(owned);
+                                    }
                                 }
                             }
                             Lowered {
@@ -258,21 +260,29 @@ fn parse_error(e: parsanol::PargError) -> Value {
     json!({"code":if resource.is_some(){"resource_limit"}else if offset.is_some(){"PARSE_ERROR"}else{"parser_error"},"message":e.to_string(),"stage":"html","byte_offset":offset,"offset_policy":"normalized_html_utf8_bytes","resource":resource})
 }
 pub fn parse(input: &str, options: &Value) -> Result<Value, Value> {
-    if !options.as_object().is_some_and(|v| v.is_empty()) {
-        return Err(error(
-            "INCOMPLETE_HTML_OPTIONS",
-            "HTML source graph currently declares default options and decimal period",
-        ));
-    }
-    static ARTIFACT: OnceLock<Result<parsanol::PargArtifact, String>> = OnceLock::new();
-    let artifact = match ARTIFACT.get_or_init(|| {
-        parsanol::PargArtifact::from_json(include_str!(
-            "../fixtures/html-parse/source-artifact.json"
-        ))
-        .map_err(|e| e.to_string())
-    }) {
-        Ok(a) => a,
-        Err(e) => return Err(error("parser_initialization_error", e.clone())),
+    let options = crate::parse_options::normalize("html", Some(options))?;
+    static DOT: OnceLock<Result<parsanol::PargArtifact, String>> = OnceLock::new();
+    static COMMA: OnceLock<Result<parsanol::PargArtifact, String>> = OnceLock::new();
+    static ARABIC: OnceLock<Result<parsanol::PargArtifact, String>> = OnceLock::new();
+    let (cache, source) = match crate::parse_options::decimal(&options) {
+        "," => (
+            &COMMA,
+            include_str!("../fixtures/html-parse/source-artifact-comma.json"),
+        ),
+        "٫" => (
+            &ARABIC,
+            include_str!("../fixtures/html-parse/source-artifact-arabic.json"),
+        ),
+        _ => (
+            &DOT,
+            include_str!("../fixtures/html-parse/source-artifact.json"),
+        ),
+    };
+    let artifact = match cache
+        .get_or_init(|| parsanol::PargArtifact::from_json(source).map_err(|e| e.to_string()))
+    {
+        Ok(artifact) => artifact,
+        Err(message) => return Err(error("parser_initialization_error", message.clone())),
     };
     let normalized = normalize(input)?;
     let shape = artifact
