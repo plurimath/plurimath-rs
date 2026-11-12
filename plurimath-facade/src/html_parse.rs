@@ -284,7 +284,12 @@ pub fn parse(input: &str, options: &Value) -> Result<Value, Value> {
         Ok(artifact) => artifact,
         Err(message) => return Err(error("parser_initialization_error", message.clone())),
     };
-    let normalized = normalize(input)?;
+    let normalized = normalize(input).map_err(|mut error| {
+        // Math.parse wraps HTML normalization failures in its public ParseError.
+        // Keep the stage code/message and private normalizer behavior intact.
+        error["source_class"] = json!("Plurimath::Math::ParseError");
+        error
+    })?;
     let shape = artifact
         .parse_shape_with_compatibility(
             "document",
