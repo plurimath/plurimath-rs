@@ -1,0 +1,112 @@
+{
+  "ruby_source": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "writer_reference_sha256": "9cc87736b3dcb32c852717fc976edda1ae599c9370379fe87916604079a0a6f3",
+  "rows": [
+    {
+      "id": "intent-frac-03",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "frac(d)(dx)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "d"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "x"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "format": "mathml",
+      "options": {
+        "intent": true
+      },
+      "expected": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mfrac intent=\":derivative(1,$f,x)\">\n      <mi>d</mi>\n      <mrow>\n        <mi>d</mi>\n        <mi>x</mi>\n      </mrow>\n    </mfrac>\n  </mstyle>\n</math>\n"
+    },
+    {
+      "id": "intent-frac-14",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\\frac{d}{dx} f",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "d"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "x"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "f"
+              }
+            }
+          ]
+        }
+      },
+      "format": "mathml",
+      "options": {
+        "intent": true
+      },
+      "expected": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mfrac intent=\":derivative(1,$f,x)\">\n      <mi>d</mi>\n      <mrow>\n        <mi>d</mi>\n        <mi>x</mi>\n      </mrow>\n    </mfrac>\n    <mi>f</mi>\n  </mstyle>\n</math>\n"
+    }
+  ]
+}

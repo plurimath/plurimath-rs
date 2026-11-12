@@ -1798,7 +1798,8 @@ fn fraction_derivative_intent(m: &Model, node: &mut Xml) -> Result<(), String> {
     }
     let numerator = xml_nodes_mut(&mut nodes[0])?;
     let value = if numerator.len() <= 1 {
-        return Err(intent_error());
+        // IntentEncoding.num_arg uses a placeholder for a bare differential.
+        "$f".into()
     } else if matches!(xml_name(&numerator[1]), "mi" | "mo" | "mn") {
         text_content::decode(xml_first_text(&numerator[1]))?
     } else {
