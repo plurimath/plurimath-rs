@@ -1,0 +1,45 @@
+{
+  "route": "amath::pma::parse_model -> amath::pma::to_portable_json -> source Plurimath common-IR mapping",
+  "mapper_commit": "40e5442e6584331f13d7309555c9869a230c2c82",
+  "producer": {
+    "amath": "16195ed52496d5ddca84552eb3f20ed69a87104a",
+    "lutaml": "945e6ada11f52f77b959a5df1f05fdbd23092939"
+  },
+  "ruby_reference": {
+    "head": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+    "path": "fixtures/pma/ruby-reference.json",
+    "sha256": "5120d01940f8643e521a34f93d82213e5bf6161483cf229b659ab805166c1f54",
+    "rows": 98,
+    "models": 34,
+    "parse_refusals": 64,
+    "writer_outputs": 204
+  },
+  "grammar": "Existing authoritative producer PMA grammar; no independent grammar",
+  "options": "PMA requires no parse options; decimal separator explicitly full stop",
+  "inactive_old_assets": "src/pma_parse/*.json are historical unit-only producer evidence; new module does not include or load them",
+  "source_patches": {
+    "0001-cargo-amath-pma-hook.patch": "477e4fc84b93c4fb1fb3a39e21d8c5c8bde85335e4b23442d2881604a543a27b",
+    "0002-pma_parse-typed-measured-terms.patch": "e5a3141cf81edb032d7b412731aa94f4623347c31f42cb0d95ed1cbb86c6765e"
+  },
+  "supplemental_units_fences": {
+    "reference": "/home/apple/projects/plurimath-org/handoffs/main-native-pma-integrated/source-unit-fences-focused.json",
+    "sha256": "561e51ccca55bef534d6429e6ee82d236b05131eaefbe1d020862b9d4f8f44bb",
+    "depths": [
+      0,
+      1,
+      2,
+      3,
+      7
+    ],
+    "source_files": {
+      "lib/unitsml/fenced.rb": "81ff9f194df4d8eb399a1da39cc6d0eb4a3a3e8f9453e66b8e808e52caeae228",
+      "lib/unitsml/formula.rb": "dda0648bcfbedb87933aac24491a225a450e6d49be348e2063197af959085a49",
+      "lib/unitsml/parg/tree_mapper.rb": "fba5c589b1636c5bf36a1c3af6106141e157f7ef0f48ed780f5d26abd939eb15"
+    },
+    "live_source_heads": {
+      "workspace/core/plurimath-ruby": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+      "workspace/units/unitsml-ruby": "de4f5b9de08760ed124e10eb3cf1f5ee0f3450cd"
+    },
+    "scope": "independent fence model/MathML procedure only; six writer byte contract remains original frozen Ruby0a1 PMA fixture"
+  }
+}

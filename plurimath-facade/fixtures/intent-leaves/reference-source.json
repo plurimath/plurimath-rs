@@ -1,0 +1,3593 @@
+{
+  "source": "unchanged writer-reference-2928 actual model cases",
+  "rows": [
+    {
+      "id": "unary-function-model-alias-sup-symbol:asciimath",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "supx"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-alias-sup-formula:asciimath",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Sum",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Ampersand",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_three": null,
+                          "parameter_two": {
+                            "class": "Math::Function::Text",
+                            "fields": {
+                              "lang": null,
+                              "parameter_one": "so"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "supsum_(&)^(\"so\")"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-alias-sup-nil:asciimath",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": null
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "sup"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-alias-sup-hidden:asciimath",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "hide_function_name": true,
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "supx"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-ms-so:asciimath",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Ms",
+              "fields": {
+                "parameter_one": "so"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "\"\u201cso\u201d\""
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-ms-empty:asciimath",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Ms",
+              "fields": {
+                "parameter_one": ""
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "\"\u201c\u201d\""
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-ms-nil:asciimath",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Ms",
+              "fields": {
+                "parameter_one": null
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "asciimath": {
+          "value": "\"\u201c\u201d\""
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-alias-sup-symbol:latex",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "latex": {
+          "value": "\\sup{x}"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-alias-sup-formula:latex",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Sum",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Ampersand",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_three": null,
+                          "parameter_two": {
+                            "class": "Math::Function::Text",
+                            "fields": {
+                              "lang": null,
+                              "parameter_one": "so"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "latex": {
+          "value": "\\sup{\\sum_{\\&}^{\\text{so}}}"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-alias-sup-nil:latex",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": null
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "latex": {
+          "value": "\\sup{}"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-alias-sup-hidden:latex",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "hide_function_name": true,
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "latex": {
+          "value": "\\sup{x}"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-ms-so:latex",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Ms",
+              "fields": {
+                "parameter_one": "so"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "latex": {
+          "value": "\\text{\u201cso\u201d}"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-ms-empty:latex",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Ms",
+              "fields": {
+                "parameter_one": ""
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "latex": {
+          "value": "\\text{\u201c\u201d}"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-ms-nil:latex",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Ms",
+              "fields": {
+                "parameter_one": null
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "latex": {
+          "value": "\\text{\u201c\u201d}"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-alias-sup-symbol:unicodemath",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "unicodemath": {
+          "value": "sup\u2061x"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-alias-sup-formula:unicodemath",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Sum",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Ampersand",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_three": null,
+                          "parameter_two": {
+                            "class": "Math::Function::Text",
+                            "fields": {
+                              "lang": null,
+                              "parameter_one": "so"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "unicodemath": {
+          "value": "sup\u2061\u2211_(&)^(\"so\")"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-alias-sup-nil:unicodemath",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": null
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "unicodemath": {
+          "value": "sup\u2061"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-alias-sup-hidden:unicodemath",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "hide_function_name": true,
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "unicodemath": {
+          "value": "sup\u2061x"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-ms-so:unicodemath",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Ms",
+              "fields": {
+                "parameter_one": "so"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "unicodemath": {
+          "value": "\"so\""
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-ms-empty:unicodemath",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Ms",
+              "fields": {
+                "parameter_one": ""
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "unicodemath": {
+          "value": "\"\""
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-ms-nil:unicodemath",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Ms",
+              "fields": {
+                "parameter_one": null
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "unicodemath": {
+          "value": ""
+        }
+      }
+    },
+    {
+      "id": "line-break-008:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "e"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "unaryFunctionSpacing": false
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mo>sup</mo>\n      <mrow>\n        <mi>d</mi>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mi>e</mi>\n    </mrow>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-008-display-false:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "e"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "unaryFunctionSpacing": false,
+        "displayStyle": false
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mrow>\n      <mo>sup</mo>\n      <mrow>\n        <mi>d</mi>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mrow>\n      <mi>e</mi>\n    </mrow>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-014:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b8;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b3;"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "unaryFunctionSpacing": false
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mo>sup</mo>\n      <mrow>\n        <mi>&#x3b8;</mi>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mi>&#x3b3;</mi>\n    </mrow>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-014-display-false:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b8;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b3;"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "unaryFunctionSpacing": false,
+        "displayStyle": false
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mrow>\n      <mo>sup</mo>\n      <mrow>\n        <mi>&#x3b8;</mi>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mrow>\n      <mi>&#x3b3;</mi>\n    </mrow>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-528:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\"$op($a)\"\u24d0(a \ud835\udc34)^\u24d0op\u24d8(\"transpose\"\ud835\udc47))=0",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Function::Arg",
+                      "fields": {
+                        "parameter_one": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "&#x1d434;"
+                          }
+                        },
+                        "parameter_two": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "a"
+                          }
+                        }
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Function::Arg",
+                      "fields": {
+                        "parameter_one": {
+                          "class": "Math::Function::Intent",
+                          "fields": {
+                            "parameter_one": {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "&#x1d447;"
+                              }
+                            },
+                            "parameter_two": {
+                              "class": "Math::Function::Text",
+                              "fields": {
+                                "lang": null,
+                                "parameter_one": "transpose"
+                              }
+                            }
+                          }
+                        },
+                        "parameter_two": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "op"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "$op($a)"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Equal",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0"
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "intent": true
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msup intent=\"$op($a)\">\n      <mi arg=\"a\">&#x1d434;</mi>\n      <mi intent=\"transpose\" arg=\"op\">&#x1d447;</mi>\n    </msup>\n    <mo>=</mo>\n    <mn>0</mn>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-528-off:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\"$op($a)\"\u24d0(a \ud835\udc34)^\u24d0op\u24d8(\"transpose\"\ud835\udc47))=0",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Function::Arg",
+                      "fields": {
+                        "parameter_one": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "&#x1d434;"
+                          }
+                        },
+                        "parameter_two": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "a"
+                          }
+                        }
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Function::Arg",
+                      "fields": {
+                        "parameter_one": {
+                          "class": "Math::Function::Intent",
+                          "fields": {
+                            "parameter_one": {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "&#x1d447;"
+                              }
+                            },
+                            "parameter_two": {
+                              "class": "Math::Function::Text",
+                              "fields": {
+                                "lang": null,
+                                "parameter_one": "transpose"
+                              }
+                            }
+                          }
+                        },
+                        "parameter_two": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "op"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "$op($a)"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Equal",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msup intent=\"$op($a)\">\n      <mi arg=\"a\">&#x1d434;</mi>\n      <mi intent=\"transpose\" arg=\"op\">&#x1d447;</mi>\n    </msup>\n    <mo>=</mo>\n    <mn>0</mn>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-529:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\"Ackermann\"\ud835\udf19(\ud835\udc5a,\ud835\udc5b,\ud835\udc5d))",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x1d719;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Fenced",
+                        "fields": {
+                          "options": {},
+                          "parameter_one": {
+                            "class": "Math::Symbols::Paren::Lround",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_three": {
+                            "class": "Math::Symbols::Paren::Rround",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_two": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "&#x1d45a;"
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Comma",
+                              "fields": {
+                                "value": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "&#x1d45b;"
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Comma",
+                              "fields": {
+                                "value": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "&#x1d45d;"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "Ackermann"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "intent": true
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"Ackermann\">\n      <mi>&#x1d719;</mi>\n      <mrow intent=\":fenced\">\n        <mo>(</mo>\n        <mi>&#x1d45a;</mi>\n        <mo>,</mo>\n        <mi>&#x1d45b;</mi>\n        <mo>,</mo>\n        <mi>&#x1d45d;</mi>\n        <mo>)</mo>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-529-off:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\"Ackermann\"\ud835\udf19(\ud835\udc5a,\ud835\udc5b,\ud835\udc5d))",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x1d719;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Fenced",
+                        "fields": {
+                          "options": {},
+                          "parameter_one": {
+                            "class": "Math::Symbols::Paren::Lround",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_three": {
+                            "class": "Math::Symbols::Paren::Rround",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_two": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "&#x1d45a;"
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Comma",
+                              "fields": {
+                                "value": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "&#x1d45b;"
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Comma",
+                              "fields": {
+                                "value": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "&#x1d45d;"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "Ackermann"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"Ackermann\">\n      <mi>&#x1d719;</mi>\n      <mrow>\n        <mo>(</mo>\n        <mi>&#x1d45a;</mi>\n        <mo>,</mo>\n        <mi>&#x1d45b;</mi>\n        <mo>,</mo>\n        <mi>&#x1d45d;</mi>\n        <mo>)</mo>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-530:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\"Differential d\"\u2146)+\u2146+\u24d8(\"Euler's number\" \u2147)+\u2147",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Dd",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "Differential d"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Dd",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "&#x2147;"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "Euler&#x27;s number"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x2147;"
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "intent": true
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi intent=\"Differential d\">&#x2146;</mi>\n    <mo>+</mo>\n    <mi intent=\"\u2146\">&#x2146;</mi>\n    <mo>+</mo>\n    <mi intent=\"Euler's number\">&#x2147;</mi>\n    <mo>+</mo>\n    <mi intent=\"\u2147\">&#x2147;</mi>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-530-off:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\"Differential d\"\u2146)+\u2146+\u24d8(\"Euler's number\" \u2147)+\u2147",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Dd",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "Differential d"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Dd",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "&#x2147;"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "Euler&#x27;s number"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x2147;"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi intent=\"Differential d\">&#x2146;</mi>\n    <mo>+</mo>\n    <mi>&#x2146;</mi>\n    <mo>+</mo>\n    <mi intent=\"Euler's number\">&#x2147;</mi>\n    <mo>+</mo>\n    <mi intent=\"\u2147\">&#x2147;</mi>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-531:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\"binom\"\ud835\udc5b\u249e\ud835\udc58)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Fenced",
+                  "fields": {
+                    "options": {},
+                    "parameter_one": {
+                      "class": "Math::Symbols::Paren::Lround",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_three": {
+                      "class": "Math::Symbols::Paren::Rround",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_two": [
+                      {
+                        "class": "Math::Function::Frac",
+                        "fields": {
+                          "options": {
+                            "linethickness": "0",
+                            "choose": true
+                          },
+                          "parameter_one": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "&#x1d45b;"
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "&#x1d458;"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "binom"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "intent": true
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"binom\">\n      <mo>(</mo>\n      <mfrac linethickness=\"0\">\n        <mi>&#x1d45b;</mi>\n        <mi>&#x1d458;</mi>\n      </mfrac>\n      <mo>)</mo>\n    </mrow>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-531-off:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\"binom\"\ud835\udc5b\u249e\ud835\udc58)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Fenced",
+                  "fields": {
+                    "options": {},
+                    "parameter_one": {
+                      "class": "Math::Symbols::Paren::Lround",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_three": {
+                      "class": "Math::Symbols::Paren::Rround",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_two": [
+                      {
+                        "class": "Math::Function::Frac",
+                        "fields": {
+                          "options": {
+                            "linethickness": "0",
+                            "choose": true
+                          },
+                          "parameter_one": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "&#x1d45b;"
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "&#x1d458;"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "binom"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"binom\">\n      <mo>(</mo>\n      <mfrac linethickness=\"0\">\n        <mi>&#x1d45b;</mi>\n        <mi>&#x1d458;</mi>\n      </mfrac>\n      <mo>)</mo>\n    </mrow>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-532:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\"binom\"\ud835\udc5b\u00a6\ud835\udc58)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Frac",
+                  "fields": {
+                    "options": {
+                      "linethickness": "0"
+                    },
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "&#x1d45b;"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "&#x1d458;"
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "binom"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "intent": true
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mfrac linethickness=\"0\" intent=\"binom\">\n      <mi>&#x1d45b;</mi>\n      <mi>&#x1d458;</mi>\n    </mfrac>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-532-off:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\"binom\"\ud835\udc5b\u00a6\ud835\udc58)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Frac",
+                  "fields": {
+                    "options": {
+                      "linethickness": "0"
+                    },
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "&#x1d45b;"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "&#x1d458;"
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "binom"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mfrac linethickness=\"0\" intent=\"binom\">\n      <mi>&#x1d45b;</mi>\n      <mi>&#x1d458;</mi>\n    </mfrac>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-533:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\"cardinality\"|\ud835\udc65|)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Fenced",
+                  "fields": {
+                    "options": {},
+                    "parameter_one": {
+                      "class": "Math::Symbols::Paren::Vert",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_three": {
+                      "class": "Math::Symbols::Paren::Vert",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_two": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x1d465;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "cardinality"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "intent": true
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"cardinality\">\n      <mo>|</mo>\n      <mi>&#x1d465;</mi>\n      <mo>|</mo>\n    </mrow>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-533-off:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\"cardinality\"|\ud835\udc65|)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Fenced",
+                  "fields": {
+                    "options": {},
+                    "parameter_one": {
+                      "class": "Math::Symbols::Paren::Vert",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_three": {
+                      "class": "Math::Symbols::Paren::Vert",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_two": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x1d465;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "cardinality"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"cardinality\">\n      <mo>|</mo>\n      <mi>&#x1d465;</mi>\n      <mo>|</mo>\n    </mrow>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-534:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\":derivative\"\ud835\udc53\u2032(\ud835\udc65))",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Power",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "&#x1d453;"
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Symbols::Prime",
+                            "fields": {
+                              "value": null
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Fenced",
+                        "fields": {
+                          "options": {},
+                          "parameter_one": {
+                            "class": "Math::Symbols::Paren::Lround",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_three": {
+                            "class": "Math::Symbols::Paren::Rround",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_two": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "&#x1d465;"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": ":derivative"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "intent": true
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\":derivative(1,\ud835\udc53(\ud835\udc65),\ud835\udc65)\">\n      <msup>\n        <mi>&#x1d453;</mi>\n        <mo>&#x2032;</mo>\n      </msup>\n      <mrow intent=\":fenced\">\n        <mo>(</mo>\n        <mi>&#x1d465;</mi>\n        <mo>)</mo>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-534-off:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\":derivative\"\ud835\udc53\u2032(\ud835\udc65))",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Power",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "&#x1d453;"
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Symbols::Prime",
+                            "fields": {
+                              "value": null
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Fenced",
+                        "fields": {
+                          "options": {},
+                          "parameter_one": {
+                            "class": "Math::Symbols::Paren::Lround",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_three": {
+                            "class": "Math::Symbols::Paren::Rround",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_two": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "&#x1d465;"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": ":derivative"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "mathml": {
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-535:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\"index\"a^2)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "a"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Number",
+                      "fields": {
+                        "base": null,
+                        "mini_sub_sized": false,
+                        "mini_sup_sized": false,
+                        "value": "2"
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "index"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "intent": true
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msup intent=\"index\">\n      <mi>a</mi>\n      <mn>2</mn>\n    </msup>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-535-off:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\"index\"a^2)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "a"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Number",
+                      "fields": {
+                        "base": null,
+                        "mini_sub_sized": false,
+                        "mini_sup_sized": false,
+                        "value": "2"
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "index"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msup intent=\"index\">\n      <mi>a</mi>\n      <mn>2</mn>\n    </msup>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-536:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\"power($base,$exp)\"\u24d0(base \ud835\udc65)^(\u24d0exp\ud835\udc5b))=0",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Function::Arg",
+                      "fields": {
+                        "parameter_one": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "&#x1d465;"
+                          }
+                        },
+                        "parameter_two": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "base"
+                          }
+                        }
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Function::Arg",
+                      "fields": {
+                        "parameter_one": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "&#x1d45b;"
+                          }
+                        },
+                        "parameter_two": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "exp"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "power($base,$exp)"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Equal",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0"
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "intent": true
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msup intent=\"power($base,$exp)\">\n      <mi arg=\"base\">&#x1d465;</mi>\n      <mi arg=\"exp\">&#x1d45b;</mi>\n    </msup>\n    <mo>=</mo>\n    <mn>0</mn>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-536-off:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\"power($base,$exp)\"\u24d0(base \ud835\udc65)^(\u24d0exp\ud835\udc5b))=0",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Function::Arg",
+                      "fields": {
+                        "parameter_one": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "&#x1d465;"
+                          }
+                        },
+                        "parameter_two": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "base"
+                          }
+                        }
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Function::Arg",
+                      "fields": {
+                        "parameter_one": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "&#x1d45b;"
+                          }
+                        },
+                        "parameter_two": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "exp"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "power($base,$exp)"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Equal",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msup intent=\"power($base,$exp)\">\n      <mi arg=\"base\">&#x1d465;</mi>\n      <mi arg=\"exp\">&#x1d45b;</mi>\n    </msup>\n    <mo>=</mo>\n    <mn>0</mn>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-537:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\"quadratic equation\"\ud835\udc65=(\u2212\ud835\udc4f\u00b1\u221a(\ud835\udc4f\u00b2\u22124\ud835\udc4e\ud835\udc50))/2\ud835\udc4e)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x1d465;"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Equal",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Frac",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Formula",
+                            "fields": {
+                              "displaystyle": true,
+                              "left_right_wrapper": true,
+                              "value": [
+                                {
+                                  "class": "Math::Symbols::Minus",
+                                  "fields": {
+                                    "value": null
+                                  }
+                                },
+                                {
+                                  "class": "Math::Symbols::Symbol",
+                                  "fields": {
+                                    "value": "&#x1d44f;"
+                                  }
+                                },
+                                {
+                                  "class": "Math::Symbols::Pm",
+                                  "fields": {
+                                    "value": null
+                                  }
+                                },
+                                {
+                                  "class": "Math::Function::Sqrt",
+                                  "fields": {
+                                    "parameter_one": {
+                                      "class": "Math::Formula",
+                                      "fields": {
+                                        "displaystyle": true,
+                                        "left_right_wrapper": true,
+                                        "value": [
+                                          {
+                                            "class": "Math::Function::Power",
+                                            "fields": {
+                                              "parameter_one": {
+                                                "class": "Math::Symbols::Symbol",
+                                                "fields": {
+                                                  "value": "&#x1d44f;"
+                                                }
+                                              },
+                                              "parameter_two": {
+                                                "class": "Math::Number",
+                                                "fields": {
+                                                  "base": null,
+                                                  "mini_sub_sized": false,
+                                                  "mini_sup_sized": true,
+                                                  "value": "2"
+                                                }
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "class": "Math::Symbols::Minus",
+                                            "fields": {
+                                              "value": null
+                                            }
+                                          },
+                                          {
+                                            "class": "Math::Number",
+                                            "fields": {
+                                              "base": null,
+                                              "mini_sub_sized": false,
+                                              "mini_sup_sized": false,
+                                              "value": "4"
+                                            }
+                                          },
+                                          {
+                                            "class": "Math::Symbols::Symbol",
+                                            "fields": {
+                                              "value": "&#x1d44e;"
+                                            }
+                                          },
+                                          {
+                                            "class": "Math::Symbols::Symbol",
+                                            "fields": {
+                                              "value": "&#x1d450;"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Formula",
+                            "fields": {
+                              "displaystyle": true,
+                              "left_right_wrapper": true,
+                              "value": [
+                                {
+                                  "class": "Math::Number",
+                                  "fields": {
+                                    "base": null,
+                                    "mini_sub_sized": false,
+                                    "mini_sup_sized": false,
+                                    "value": "2"
+                                  }
+                                },
+                                {
+                                  "class": "Math::Symbols::Symbol",
+                                  "fields": {
+                                    "value": "&#x1d44e;"
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "quadratic equation"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "intent": true
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"quadratic equation\">\n      <mi>&#x1d465;</mi>\n      <mo>=</mo>\n      <mfrac>\n        <mrow>\n          <mo>&#x2212;</mo>\n          <mi>&#x1d44f;</mi>\n          <mo>&#xb1;</mo>\n          <msqrt>\n            <mrow>\n              <msup>\n                <mi>&#x1d44f;</mi>\n                <mn>2</mn>\n              </msup>\n              <mo>&#x2212;</mo>\n              <mn>4</mn>\n              <mi>&#x1d44e;</mi>\n              <mi>&#x1d450;</mi>\n            </mrow>\n          </msqrt>\n        </mrow>\n        <mrow>\n          <mn>2</mn>\n          <mi>&#x1d44e;</mi>\n        </mrow>\n      </mfrac>\n    </mrow>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-537-off:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\"quadratic equation\"\ud835\udc65=(\u2212\ud835\udc4f\u00b1\u221a(\ud835\udc4f\u00b2\u22124\ud835\udc4e\ud835\udc50))/2\ud835\udc4e)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x1d465;"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Equal",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Frac",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Formula",
+                            "fields": {
+                              "displaystyle": true,
+                              "left_right_wrapper": true,
+                              "value": [
+                                {
+                                  "class": "Math::Symbols::Minus",
+                                  "fields": {
+                                    "value": null
+                                  }
+                                },
+                                {
+                                  "class": "Math::Symbols::Symbol",
+                                  "fields": {
+                                    "value": "&#x1d44f;"
+                                  }
+                                },
+                                {
+                                  "class": "Math::Symbols::Pm",
+                                  "fields": {
+                                    "value": null
+                                  }
+                                },
+                                {
+                                  "class": "Math::Function::Sqrt",
+                                  "fields": {
+                                    "parameter_one": {
+                                      "class": "Math::Formula",
+                                      "fields": {
+                                        "displaystyle": true,
+                                        "left_right_wrapper": true,
+                                        "value": [
+                                          {
+                                            "class": "Math::Function::Power",
+                                            "fields": {
+                                              "parameter_one": {
+                                                "class": "Math::Symbols::Symbol",
+                                                "fields": {
+                                                  "value": "&#x1d44f;"
+                                                }
+                                              },
+                                              "parameter_two": {
+                                                "class": "Math::Number",
+                                                "fields": {
+                                                  "base": null,
+                                                  "mini_sub_sized": false,
+                                                  "mini_sup_sized": true,
+                                                  "value": "2"
+                                                }
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "class": "Math::Symbols::Minus",
+                                            "fields": {
+                                              "value": null
+                                            }
+                                          },
+                                          {
+                                            "class": "Math::Number",
+                                            "fields": {
+                                              "base": null,
+                                              "mini_sub_sized": false,
+                                              "mini_sup_sized": false,
+                                              "value": "4"
+                                            }
+                                          },
+                                          {
+                                            "class": "Math::Symbols::Symbol",
+                                            "fields": {
+                                              "value": "&#x1d44e;"
+                                            }
+                                          },
+                                          {
+                                            "class": "Math::Symbols::Symbol",
+                                            "fields": {
+                                              "value": "&#x1d450;"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Formula",
+                            "fields": {
+                              "displaystyle": true,
+                              "left_right_wrapper": true,
+                              "value": [
+                                {
+                                  "class": "Math::Number",
+                                  "fields": {
+                                    "base": null,
+                                    "mini_sub_sized": false,
+                                    "mini_sup_sized": false,
+                                    "value": "2"
+                                  }
+                                },
+                                {
+                                  "class": "Math::Symbols::Symbol",
+                                  "fields": {
+                                    "value": "&#x1d44e;"
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "quadratic equation"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"quadratic equation\">\n      <mi>&#x1d465;</mi>\n      <mo>=</mo>\n      <mfrac>\n        <mrow>\n          <mo>&#x2212;</mo>\n          <mi>&#x1d44f;</mi>\n          <mo>&#xb1;</mo>\n          <msqrt>\n            <mrow>\n              <msup>\n                <mi>&#x1d44f;</mi>\n                <mn>2</mn>\n              </msup>\n              <mo>&#x2212;</mo>\n              <mn>4</mn>\n              <mi>&#x1d44e;</mi>\n              <mi>&#x1d450;</mi>\n            </mrow>\n          </msqrt>\n        </mrow>\n        <mrow>\n          <mn>2</mn>\n          <mi>&#x1d44e;</mi>\n        </mrow>\n      </mfrac>\n    </mrow>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-538:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\":sup\"\ud835\udc4e\u00b2)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "&#x1d44e;"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Number",
+                      "fields": {
+                        "base": null,
+                        "mini_sub_sized": false,
+                        "mini_sup_sized": true,
+                        "value": "2"
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": ":sup"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "intent": true
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msup intent=\":sup\">\n      <mi>&#x1d44e;</mi>\n      <mn>2</mn>\n    </msup>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-538-off:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\":sup\"\ud835\udc4e\u00b2)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "&#x1d44e;"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Number",
+                      "fields": {
+                        "base": null,
+                        "mini_sub_sized": false,
+                        "mini_sup_sized": true,
+                        "value": "2"
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": ":sup"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msup intent=\":sup\">\n      <mi>&#x1d44e;</mi>\n      <mn>2</mn>\n    </msup>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-539:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\"time derivative\"\ud835\udf0c\u0307)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Overset",
+                  "fields": {
+                    "options": {
+                      "accent": true
+                    },
+                    "parameter_one": {
+                      "class": "Math::Symbols::Dot",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "&#x1d70c;"
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "time derivative"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "intent": true
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mover accent=\"true\" intent=\"time derivative\">\n      <mi>&#x1d70c;</mi>\n      <mi>&#x307;</mi>\n    </mover>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "intent-unicodemath-539-off:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\u24d8(\"time derivative\"\ud835\udf0c\u0307)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Overset",
+                  "fields": {
+                    "options": {
+                      "accent": true
+                    },
+                    "parameter_one": {
+                      "class": "Math::Symbols::Dot",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "&#x1d70c;"
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "time derivative"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mover accent=\"true\" intent=\"time derivative\">\n      <mi>&#x1d70c;</mi>\n      <mi>&#x307;</mi>\n    </mover>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-alias-sup-symbol:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mo>sup</mo>\n      <mi>x</mi>\n    </mrow>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-alias-sup-formula:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Sum",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Ampersand",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_three": null,
+                          "parameter_two": {
+                            "class": "Math::Function::Text",
+                            "fields": {
+                              "lang": null,
+                              "parameter_one": "so"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mo>sup</mo>\n      <mrow>\n        <munderover>\n          <mo>&#x2211;</mo>\n          <mo>&</mo>\n          <mtext>so</mtext>\n        </munderover>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-alias-sup-nil:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": null
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mo>sup</mo>\n    </mrow>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-alias-sup-hidden:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "hide_function_name": true,
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mi>x</mi>\n    </mrow>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-ms-so:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Ms",
+              "fields": {
+                "parameter_one": "so"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <ms>so</ms>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-ms-empty:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Ms",
+              "fields": {
+                "parameter_one": ""
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <ms></ms>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-ms-nil:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Ms",
+              "fields": {
+                "parameter_one": null
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "mathml": {
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "line-break-008:omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "e"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true
+      },
+      "writers": {
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>sup</m:t>\n    </m:r>\n    <m:r>\n      <m:t>d</m:t>\n    </m:r>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:r>\n      <m:t>e</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-008-display-false:omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "e"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "displayStyle": false
+      },
+      "writers": {
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>sup</m:t>\n    </m:r>\n    <m:r>\n      <m:t>d</m:t>\n    </m:r>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:r>\n      <m:t>e</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-014:omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b8;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b3;"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true
+      },
+      "writers": {
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>sup</m:t>\n    </m:r>\n    <m:r>\n      <m:t>&#x3b8;</m:t>\n    </m:r>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:r>\n      <m:t>&#x3b3;</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-014-display-false:omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b8;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b3;"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "displayStyle": false
+      },
+      "writers": {
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>sup</m:t>\n    </m:r>\n    <m:r>\n      <m:t>&#x3b8;</m:t>\n    </m:r>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:r>\n      <m:t>&#x3b3;</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-alias-sup-symbol:omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>sup</m:t>\n    </m:r>\n    <m:r>\n      <m:t>x</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-alias-sup-formula:omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Sum",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Ampersand",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_three": null,
+                          "parameter_two": {
+                            "class": "Math::Function::Text",
+                            "fields": {
+                              "lang": null,
+                              "parameter_one": "so"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>sup</m:t>\n    </m:r>\n    <m:nary>\n      <m:naryPr>\n        <m:chr m:val=\"\u2211\"/>\n        <m:limLoc m:val=\"undOvr\"/>\n        <m:subHide m:val=\"0\"/>\n        <m:supHide m:val=\"0\"/>\n      </m:naryPr>\n      <m:sub>\n        <m:r>\n          <m:t>&</m:t>\n        </m:r>\n      </m:sub>\n      <m:sup>\n        <m:r>\n          <m:rPr>\n            <m:sty m:val=\"p\"/>\n          </m:rPr>\n          <m:t>so</m:t>\n        </m:r>\n      </m:sup>\n      <m:e>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:e>\n    </m:nary>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-alias-sup-nil:omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": null
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>sup</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-alias-sup-hidden:omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "hide_function_name": true,
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>x</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-ms-so:omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Ms",
+              "fields": {
+                "parameter_one": "so"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:t>\u201cso\u201d</m:t>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-ms-empty:omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Ms",
+              "fields": {
+                "parameter_one": ""
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:t>\u201c\u201d</m:t>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-ms-nil:omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Ms",
+              "fields": {
+                "parameter_one": null
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:t>\u201c\u201d</m:t>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-alias-sup-symbol:html",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "html": {
+          "value": "<i>&#x2283;</i><i>x</i>"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-alias-sup-formula:html",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Sum",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Ampersand",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_three": null,
+                          "parameter_two": {
+                            "class": "Math::Function::Text",
+                            "fields": {
+                              "lang": null,
+                              "parameter_one": "so"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "html": {
+          "value": "<i>&#x2283;</i><i><i>&sum;</i><sub>&</sub><sup>so</sup></i>"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-alias-sup-nil:html",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "parameter_one": null
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "html": {
+          "value": "<i>&#x2283;</i>"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-alias-sup-hidden:html",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sup",
+              "fields": {
+                "hide_function_name": true,
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "html": {
+          "value": "<i>&#x2283;</i><i>x</i>"
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-ms-so:html",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Ms",
+              "fields": {
+                "parameter_one": "so"
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "html": {
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-ms-empty:html",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Ms",
+              "fields": {
+                "parameter_one": ""
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "html": {
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "unary-function-model-ms-nil:html",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Ms",
+              "fields": {
+                "parameter_one": null
+              }
+            }
+          ]
+        }
+      },
+      "options": {},
+      "writers": {
+        "html": {
+          "value": "<i>ms</i>"
+        }
+      }
+    }
+  ]
+}

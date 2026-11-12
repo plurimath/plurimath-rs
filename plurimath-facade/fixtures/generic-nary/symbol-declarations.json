@@ -1,0 +1,58 @@
+{
+  "profile": "source-nary-symbol-declarations-v1",
+  "source_head": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "classes": {
+    "Math::Symbols::Bigwedge": {
+      "intent_name": ":n-ary",
+      "nary_attribute": "⋀"
+    },
+    "Math::Symbols::Clockoint": {
+      "intent_name": ":n-ary",
+      "nary_attribute": "∲"
+    },
+    "Math::Symbols::Cntclockoint": {
+      "intent_name": ":anticlockwise contour integral",
+      "nary_attribute": "∳"
+    },
+    "Math::Symbols::Coprod": {
+      "intent_name": ":coproduct",
+      "nary_attribute": "∐"
+    },
+    "Math::Symbols::Dint": {
+      "intent_name": ":n-ary",
+      "nary_attribute": "⋂"
+    },
+    "Math::Symbols::Duni": {
+      "intent_name": ":n-ary",
+      "nary_attribute": "⋃"
+    },
+    "Math::Symbols::Iiiint": {
+      "intent_name": ":quadruple integral",
+      "nary_attribute": "⨌"
+    },
+    "Math::Symbols::Iiint": {
+      "intent_name": ":triple integral",
+      "nary_attribute": "∭"
+    },
+    "Math::Symbols::Iint": {
+      "intent_name": ":double integral",
+      "nary_attribute": "∬"
+    },
+    "Math::Symbols::Intclockwise": {
+      "intent_name": ":clockwise contour integral",
+      "nary_attribute": "∱"
+    },
+    "Math::Symbols::Oiiint": {
+      "intent_name": ":volume integral",
+      "nary_attribute": "∰"
+    },
+    "Math::Symbols::Oiint": {
+      "intent_name": ":surface integral",
+      "nary_attribute": "∯"
+    },
+    "Math::Symbols::Oint": {
+      "intent_name": ":contour integral",
+      "nary_attribute": "∮"
+    }
+  }
+}

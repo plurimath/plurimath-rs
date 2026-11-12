@@ -1,0 +1,12 @@
+{
+  "format": "plurimath-native-pma-source/1",
+  "amath_source": "a4ed231057aeb98022f5c825807e888946a9e71c",
+  "files_sha256": {
+    "pma.json": "88cb9a1866b80c446e28313fab887a4689000dba52988568f566bcb6fc65498f",
+    "pma.bindings.rs.json": "23fbb41ca7dc9ff3d8dbac39ad0cd0d1a0a1e91a782af2e628d272389c4c7d65",
+    "pma.checksums.txt": "23afabb06c179eda6f9ddd3513a352aaba256e32fd268942aa83017c3e3a9047"
+  },
+  "entry": "document",
+  "unit_artifact_checksum": "sha256:aa22618c80dc02f3fe1edf2c798dbe34aceae5f4d84524ff98f76a2b91af151d",
+  "semantic_scope": "Pma unit terms use source UnitsML construction. Measured terms remain explicit incomplete; diff(q) retains the source fa\u00e7ade refusal."
+}

@@ -1,0 +1,40 @@
+{
+  "source_head": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "ruby": "4.0.1",
+  "xml_engine": "Ox",
+  "source_classes": 14,
+  "model_cases": 230,
+  "source_outputs": 1127,
+  "source_exception_classes": 253,
+  "source_model_mutations": 0,
+  "runtime_map_contract": "Per source class textprefix/suffix, Unicodefamily/glyph, MathMLvariant, ordered OMMLproperties and aliases; no wholeinput matching",
+  "source_constructor_scope": "Generic FontStyle plus13remaining subclasses; directNormal route staysparent-owned, including unitUnicodecontext",
+  "full_facade_complete": false,
+  "remaining_limits": [
+    "SourceFontStyle supports nodes; primitive/array arguments retain actualsourceexceptionclasses.",
+    "Child node and caller option support remains bounded by the existing canonical parentwriters; no placeholder output for unported children.",
+    "Sourceexceptionmessages retained but onlytheirclasses qualified."
+  ],
+  "files": {
+    "tests/support/export-font-styles.rb": "845e22c8717026c656d8de06f17269fc828cc3a1f2d9c4cfe37d8254520ab834",
+    "src/writer/font_styles-data.json": "0fb4b2980cf5986ced0e5a96a3c40156c14acbe687eeed1da5bd3b4f0a1805a7",
+    "fixtures/font-styles/source-reference.json": "5bddc1f529c06934f20c8b019cc3f2a11c718ff2fa43394262905b761d244c23"
+  },
+  "reference_generator_sha256": "82630cc145295b12b23443c853b5d2841cd7e293c607092409a050e67fc27868",
+  "reproduction": "Set PLURIMATH_CORPUS_GENERATOR to pinnedgenerate-corpus.rb, invoke tests/support/export-font-styles.rb underactualRuby0a1d/Ox with outputdirectory; runtimeprojection deterministic and sourcevalues unchanged.",
+  "source_license_metadata": {
+    "standalone_text_found": false,
+    "gemspec_sha256": "4adc5a280361946681ea60d91c05d07acc222454aed725bd1586df6a8af88dda",
+    "declarations": [
+      "spec.license       = \"BSD-2-Clause\""
+    ]
+  },
+  "validation": {
+    "test": "actual_source_font_family_writers_and_typed_refusals",
+    "comparisons": 1380,
+    "exact_outputs": 1127,
+    "source_exception_classes": 253,
+    "Normal_controls_included": true,
+    "source_model_mutations": 0
+  }
+}

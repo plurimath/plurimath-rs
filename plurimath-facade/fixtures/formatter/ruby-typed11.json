@@ -1,0 +1,1277 @@
+{
+  "rows": [
+    {
+      "id": "typed-formatter-0",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "c5d979444fc03bdb11ad15f614ac4176d4d74bd3c13d350f7bfb14b5d7ab963a",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Number",
+                    [
+                      [
+                        "value",
+                        [
+                          "string",
+                          "1234.56"
+                        ]
+                      ],
+                      [
+                        "mini_sub_sized",
+                        [
+                          "bool",
+                          false
+                        ]
+                      ],
+                      [
+                        "mini_sup_sized",
+                        [
+                          "bool",
+                          false
+                        ]
+                      ],
+                      [
+                        "base",
+                        [
+                          "nil"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "formatter_options": {
+        "locale": "en",
+        "options": {},
+        "precision": null,
+        "stringFormat": null
+      },
+      "writers": {
+        "asciimath": {
+          "output": "1,234.56"
+        },
+        "latex": {
+          "output": "1,234.56"
+        },
+        "html": {
+          "output": "1,234.56"
+        },
+        "unicodemath": {
+          "output": "1,234.56"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>1,234.56</mn>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1,234.56</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "typed-formatter-1",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "c5d979444fc03bdb11ad15f614ac4176d4d74bd3c13d350f7bfb14b5d7ab963a",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Number",
+                    [
+                      [
+                        "value",
+                        [
+                          "integer",
+                          "1234"
+                        ]
+                      ],
+                      [
+                        "mini_sub_sized",
+                        [
+                          "bool",
+                          false
+                        ]
+                      ],
+                      [
+                        "mini_sup_sized",
+                        [
+                          "bool",
+                          false
+                        ]
+                      ],
+                      [
+                        "base",
+                        [
+                          "nil"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "formatter_options": {
+        "locale": "en",
+        "options": {},
+        "precision": null,
+        "stringFormat": null
+      },
+      "writers": {
+        "asciimath": {
+          "output": "1,234"
+        },
+        "latex": {
+          "output": "1,234"
+        },
+        "html": {
+          "output": "1,234"
+        },
+        "unicodemath": {
+          "output": "1,234"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>1,234</mn>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1,234</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "typed-formatter-2",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "c5d979444fc03bdb11ad15f614ac4176d4d74bd3c13d350f7bfb14b5d7ab963a",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Number",
+                    [
+                      [
+                        "value",
+                        [
+                          "symbol",
+                          "number"
+                        ]
+                      ],
+                      [
+                        "mini_sub_sized",
+                        [
+                          "bool",
+                          false
+                        ]
+                      ],
+                      [
+                        "mini_sup_sized",
+                        [
+                          "bool",
+                          false
+                        ]
+                      ],
+                      [
+                        "base",
+                        [
+                          "nil"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "formatter_options": {
+        "locale": "en",
+        "options": {},
+        "precision": null,
+        "stringFormat": null
+      },
+      "writers": {
+        "asciimath": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `asciimath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "latex": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `latex`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "html": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `html`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "unicodemath": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `unicodemath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `mathml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        }
+      }
+    },
+    {
+      "id": "typed-formatter-3",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "c5d979444fc03bdb11ad15f614ac4176d4d74bd3c13d350f7bfb14b5d7ab963a",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Number",
+                    [
+                      [
+                        "value",
+                        [
+                          "symbol",
+                          "1234"
+                        ]
+                      ],
+                      [
+                        "mini_sub_sized",
+                        [
+                          "bool",
+                          false
+                        ]
+                      ],
+                      [
+                        "mini_sup_sized",
+                        [
+                          "bool",
+                          false
+                        ]
+                      ],
+                      [
+                        "base",
+                        [
+                          "nil"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "formatter_options": {
+        "locale": "en",
+        "options": {},
+        "precision": null,
+        "stringFormat": null
+      },
+      "writers": {
+        "asciimath": {
+          "output": "1,234"
+        },
+        "latex": {
+          "output": "1,234"
+        },
+        "html": {
+          "output": "1,234"
+        },
+        "unicodemath": {
+          "output": "1,234"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>1,234</mn>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1,234</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "typed-formatter-4",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "c5d979444fc03bdb11ad15f614ac4176d4d74bd3c13d350f7bfb14b5d7ab963a",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Number",
+                    [
+                      [
+                        "value",
+                        [
+                          "nil"
+                        ]
+                      ],
+                      [
+                        "mini_sub_sized",
+                        [
+                          "bool",
+                          false
+                        ]
+                      ],
+                      [
+                        "mini_sup_sized",
+                        [
+                          "bool",
+                          false
+                        ]
+                      ],
+                      [
+                        "base",
+                        [
+                          "nil"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "formatter_options": {
+        "locale": "en",
+        "options": {},
+        "precision": null,
+        "stringFormat": null
+      },
+      "writers": {
+        "asciimath": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `asciimath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "latex": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `latex`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "html": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `html`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "unicodemath": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `unicodemath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `mathml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        }
+      }
+    },
+    {
+      "id": "typed-formatter-5",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "c5d979444fc03bdb11ad15f614ac4176d4d74bd3c13d350f7bfb14b5d7ab963a",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Number",
+                    [
+                      [
+                        "value",
+                        [
+                          "bool",
+                          false
+                        ]
+                      ],
+                      [
+                        "mini_sub_sized",
+                        [
+                          "bool",
+                          false
+                        ]
+                      ],
+                      [
+                        "mini_sup_sized",
+                        [
+                          "bool",
+                          false
+                        ]
+                      ],
+                      [
+                        "base",
+                        [
+                          "nil"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "formatter_options": {
+        "locale": "en",
+        "options": {},
+        "precision": null,
+        "stringFormat": null
+      },
+      "writers": {
+        "asciimath": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `asciimath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "latex": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `latex`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "html": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `html`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "unicodemath": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `unicodemath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `mathml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        }
+      }
+    },
+    {
+      "id": "typed-formatter-6",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "c5d979444fc03bdb11ad15f614ac4176d4d74bd3c13d350f7bfb14b5d7ab963a",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Number",
+                    [
+                      [
+                        "value",
+                        [
+                          "array",
+                          [
+                            [
+                              "string",
+                              "1234"
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "mini_sub_sized",
+                        [
+                          "bool",
+                          false
+                        ]
+                      ],
+                      [
+                        "mini_sup_sized",
+                        [
+                          "bool",
+                          false
+                        ]
+                      ],
+                      [
+                        "base",
+                        [
+                          "nil"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "formatter_options": {
+        "locale": "en",
+        "options": {},
+        "precision": null,
+        "stringFormat": null
+      },
+      "writers": {
+        "asciimath": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `asciimath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "latex": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `latex`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "html": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `html`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "unicodemath": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `unicodemath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `mathml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        }
+      }
+    },
+    {
+      "id": "typed-formatter-7",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "c5d979444fc03bdb11ad15f614ac4176d4d74bd3c13d350f7bfb14b5d7ab963a",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Number",
+                    [
+                      [
+                        "value",
+                        [
+                          "hash",
+                          [
+                            [
+                              [
+                                "symbol",
+                                "x"
+                              ],
+                              [
+                                "integer",
+                                "1234"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "mini_sub_sized",
+                        [
+                          "bool",
+                          false
+                        ]
+                      ],
+                      [
+                        "mini_sup_sized",
+                        [
+                          "bool",
+                          false
+                        ]
+                      ],
+                      [
+                        "base",
+                        [
+                          "nil"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "formatter_options": {
+        "locale": "en",
+        "options": {},
+        "precision": null,
+        "stringFormat": null
+      },
+      "writers": {
+        "asciimath": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `asciimath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "latex": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `latex`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "html": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `html`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "unicodemath": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `unicodemath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `mathml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        }
+      }
+    },
+    {
+      "id": "typed-formatter-8",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "c5d979444fc03bdb11ad15f614ac4176d4d74bd3c13d350f7bfb14b5d7ab963a",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Number",
+                    [
+                      [
+                        "value",
+                        [
+                          "hash",
+                          [
+                            [
+                              [
+                                "string",
+                                "x"
+                              ],
+                              [
+                                "integer",
+                                "1234"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "mini_sub_sized",
+                        [
+                          "bool",
+                          false
+                        ]
+                      ],
+                      [
+                        "mini_sup_sized",
+                        [
+                          "bool",
+                          false
+                        ]
+                      ],
+                      [
+                        "base",
+                        [
+                          "nil"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "formatter_options": {
+        "locale": "en",
+        "options": {},
+        "precision": null,
+        "stringFormat": null
+      },
+      "writers": {
+        "asciimath": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `asciimath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "latex": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `latex`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "html": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `html`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "unicodemath": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `unicodemath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `mathml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n",
+            "cause_class": "Plurimath::Errors::InvalidNumber"
+          }
+        }
+      }
+    },
+    {
+      "id": "typed-formatter-9",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "c5d979444fc03bdb11ad15f614ac4176d4d74bd3c13d350f7bfb14b5d7ab963a",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Number",
+                    [
+                      [
+                        "value",
+                        [
+                          "integer",
+                          "-1234"
+                        ]
+                      ],
+                      [
+                        "mini_sub_sized",
+                        [
+                          "bool",
+                          false
+                        ]
+                      ],
+                      [
+                        "mini_sup_sized",
+                        [
+                          "bool",
+                          false
+                        ]
+                      ],
+                      [
+                        "base",
+                        [
+                          "nil"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "formatter_options": {
+        "locale": "en",
+        "options": {},
+        "precision": null,
+        "stringFormat": null
+      },
+      "writers": {
+        "asciimath": {
+          "output": "-1,234"
+        },
+        "latex": {
+          "output": "-1,234"
+        },
+        "html": {
+          "output": "-1,234"
+        },
+        "unicodemath": {
+          "output": "-1,234"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>-1,234</mn>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>-1,234</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "typed-formatter-10",
+      "document": {
+        "schema": "plurimath.ruby-values/1",
+        "producer": {
+          "implementation": "plurimath-ruby",
+          "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+          "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+          "codec_sha256": "c5d979444fc03bdb11ad15f614ac4176d4d74bd3c13d350f7bfb14b5d7ab963a",
+          "identity": "typed-value-tree; object identity is not represented"
+        },
+        "root": [
+          "node",
+          "Math::Formula",
+          [
+            [
+              "value",
+              [
+                "array",
+                [
+                  [
+                    "node",
+                    "Math::Number",
+                    [
+                      [
+                        "value",
+                        [
+                          "integer",
+                          "9007199254740993"
+                        ]
+                      ],
+                      [
+                        "mini_sub_sized",
+                        [
+                          "bool",
+                          false
+                        ]
+                      ],
+                      [
+                        "mini_sup_sized",
+                        [
+                          "bool",
+                          false
+                        ]
+                      ],
+                      [
+                        "base",
+                        [
+                          "nil"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "left_right_wrapper",
+              [
+                "bool",
+                true
+              ]
+            ],
+            [
+              "displaystyle",
+              [
+                "bool",
+                true
+              ]
+            ]
+          ]
+        ]
+      },
+      "formatter_options": {
+        "locale": "en",
+        "options": {},
+        "precision": null,
+        "stringFormat": null
+      },
+      "writers": {
+        "asciimath": {
+          "output": "9,007,199,254,740,993"
+        },
+        "latex": {
+          "output": "9,007,199,254,740,993"
+        },
+        "html": {
+          "output": "9,007,199,254,740,993"
+        },
+        "unicodemath": {
+          "output": "9,007,199,254,740,993"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>9,007,199,254,740,993</mn>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>9,007,199,254,740,993</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    }
+  ],
+  "source_head": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "runtime": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+  "mutations": 0
+}

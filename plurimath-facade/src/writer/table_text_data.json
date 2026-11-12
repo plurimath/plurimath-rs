@@ -1,0 +1,47 @@
+{
+  "asciimath_table_parenthesis": {
+    "ᑕ": "ᑐ",
+    "ℒ": "ℛ",
+    "[": "]",
+    "(": ")"
+  },
+  "utility_parenthesis_keys": [
+    "&#x2329;",
+    "&#x230a;",
+    "&#x2308;",
+    "&#x2016;",
+    "&#x7b;",
+    "&#x5b;",
+    "&#x7c;",
+    "(",
+    "{",
+    "["
+  ],
+  "source": "Ruby0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "unicode_field_hex": {
+    "Math::Symbols::Paren::CloseParen": "&#x3017;",
+    "Math::Symbols::Paren::Langle": "&#x2329;",
+    "Math::Symbols::Paren::Lbbrack": "&#x27e6;",
+    "Math::Symbols::Paren::Lbrace": "&#x7b;",
+    "Math::Symbols::Paren::Lbrack": "&#x5b;",
+    "Math::Symbols::Paren::Lceil": "&#x2308;",
+    "Math::Symbols::Paren::Lcurly": null,
+    "Math::Symbols::Paren::Lfloor": "&#x230a;",
+    "Math::Symbols::Paren::Lround": null,
+    "Math::Symbols::Paren::Lsquare": null,
+    "Math::Symbols::Paren::Norm": "&#x2016;",
+    "Math::Symbols::Paren::OpenParen": "&#x3016;",
+    "Math::Symbols::Paren::Rangle": "&#x232a;",
+    "Math::Symbols::Paren::Rbbrack": "&#x27e7;",
+    "Math::Symbols::Paren::Rbrace": "&#x7d;",
+    "Math::Symbols::Paren::Rbrack": "&#x5d;",
+    "Math::Symbols::Paren::Rceil": "&#x2309;",
+    "Math::Symbols::Paren::Rcurly": null,
+    "Math::Symbols::Paren::Rfloor": "&#x230b;",
+    "Math::Symbols::Paren::Rround": null,
+    "Math::Symbols::Paren::Rsquare": null,
+    "Math::Symbols::Paren::UpcaseLangle": "&#x27ea;",
+    "Math::Symbols::Paren::UpcaseRangle": "&#x27eb;",
+    "Math::Symbols::Paren::Vert": "&#x7c;"
+  }
+}

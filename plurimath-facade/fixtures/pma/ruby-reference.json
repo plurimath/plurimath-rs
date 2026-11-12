@@ -1,0 +1,2990 @@
+{
+  "plurimath": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "ruby": "4.0.1",
+  "rows": [
+    {
+      "id": "ctor.ustd",
+      "input": "ustd(1.230, 0.004)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "ustd(1.230, 0.004)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.004"
+                  }
+                },
+                "notation": "absolute",
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1.230"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ustd(1.230, 0.004)"
+        },
+        "latex": {
+          "output": "1.230(0.004)"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"standard-uncertainty(1.230,0.004)\"1.230(0.004))"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"standard-uncertainty(1.230,0.004)\">\n      <mn>1.230</mn>\n      <mrow>\n        <mo>(</mo>\n        <mn>0.004</mn>\n        <mo>)</mo>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>standard-uncertainty(1.230,0.004)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>1.230</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>0.004</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "1.230(0.004)"
+        }
+      }
+    },
+    {
+      "id": "ctor.ustd.negative",
+      "input": "ustd(-1.230, 0.004)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "ustd(-1.230, 0.004)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.004"
+                  }
+                },
+                "notation": "absolute",
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "-1.230"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ustd(-1.230, 0.004)"
+        },
+        "latex": {
+          "output": "-1.230(0.004)"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"standard-uncertainty(-1.230,0.004)\"〖-1.230〗(0.004))"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"standard-uncertainty(-1.230,0.004)\">\n      <mn>-1.230</mn>\n      <mrow>\n        <mo>(</mo>\n        <mn>0.004</mn>\n        <mo>)</mo>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>standard-uncertainty(-1.230,0.004)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>-1.230</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>0.004</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "-1.230(0.004)"
+        }
+      }
+    },
+    {
+      "id": "ctor.uexp",
+      "input": "uexp(10.0, 0.3, 2)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "uexp(10.0, 0.3, 2)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "expanded",
+                "coverage_factor": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                },
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.3"
+                  }
+                },
+                "notation": null,
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.0"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "uexp(10.0, 0.3, 2)"
+        },
+        "latex": {
+          "output": "(10.0 \\pm 0.3),\\ k = 2"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"expanded-uncertainty(10.0,0.3,2)\"(10.0±0.3), k=2)"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"expanded-uncertainty(10.0,0.3,2)\">\n      <mrow>\n        <mo>(</mo>\n        <mn>10.0</mn>\n        <mo>&#xb1;</mo>\n        <mn>0.3</mn>\n        <mo>)</mo>\n      </mrow>\n      <mo>,</mo>\n      <mi>k</mi>\n      <mo>=</mo>\n      <mn>2</mn>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>expanded-uncertainty(10.0,0.3,2)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>10.0</m:t>\n            </m:r>\n            <m:r>\n              <m:t>&#xb1;</m:t>\n            </m:r>\n            <m:r>\n              <m:t>0.3</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n        <m:r>\n          <m:t>,</m:t>\n        </m:r>\n        <m:r>\n          <m:t>k</m:t>\n        </m:r>\n        <m:r>\n          <m:t>=</m:t>\n        </m:r>\n        <m:r>\n          <m:t>2</m:t>\n        </m:r>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "(10.0 &#xb1; 0.3), k = 2"
+        }
+      }
+    },
+    {
+      "id": "ctor.uexp.probability",
+      "input": "uexp(10.0, 0.3, 2, 0.95)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "uexp(10.0, 0.3, 2, 0.95)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "expanded",
+                "coverage_factor": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                },
+                "coverage_probability": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.95"
+                  }
+                },
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.3"
+                  }
+                },
+                "notation": null,
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.0"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "uexp(10.0, 0.3, 2, 0.95)"
+        },
+        "latex": {
+          "output": "(10.0 \\pm 0.3),\\ k = 2,\\ p = 0.95"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"expanded-uncertainty(10.0,0.3,2,0.95)\"(10.0±0.3), k=2, p=0.95)"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"expanded-uncertainty(10.0,0.3,2,0.95)\">\n      <mrow>\n        <mo>(</mo>\n        <mn>10.0</mn>\n        <mo>&#xb1;</mo>\n        <mn>0.3</mn>\n        <mo>)</mo>\n      </mrow>\n      <mo>,</mo>\n      <mi>k</mi>\n      <mo>=</mo>\n      <mn>2</mn>\n      <mo>,</mo>\n      <mi>p</mi>\n      <mo>=</mo>\n      <mn>0.95</mn>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>expanded-uncertainty(10.0,0.3,2,0.95)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>10.0</m:t>\n            </m:r>\n            <m:r>\n              <m:t>&#xb1;</m:t>\n            </m:r>\n            <m:r>\n              <m:t>0.3</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n        <m:r>\n          <m:t>,</m:t>\n        </m:r>\n        <m:r>\n          <m:t>k</m:t>\n        </m:r>\n        <m:r>\n          <m:t>=</m:t>\n        </m:r>\n        <m:r>\n          <m:t>2</m:t>\n        </m:r>\n        <m:r>\n          <m:t>,</m:t>\n        </m:r>\n        <m:r>\n          <m:t>p</m:t>\n        </m:r>\n        <m:r>\n          <m:t>=</m:t>\n        </m:r>\n        <m:r>\n          <m:t>0.95</m:t>\n        </m:r>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "(10.0 &#xb1; 0.3), k = 2, p = 0.95"
+        }
+      }
+    },
+    {
+      "id": "ctor.uexp.zero_k",
+      "input": "uexp(1.0, 0.3, 0, 0.95)",
+      "expect": "accepted",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nuexp(1.",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "ctor.ucov",
+      "input": "ucov(1.024, 0.983, 1.088, 0.95)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "ucov(1.024, 0.983, 1.088, 0.95)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "coverage_interval",
+                "coverage_factor": null,
+                "coverage_probability": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.95"
+                  }
+                },
+                "distribution": null,
+                "interval_kind": null,
+                "lower": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.983"
+                  }
+                },
+                "magnitude": null,
+                "notation": null,
+                "unit": null,
+                "upper": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1.088"
+                  }
+                },
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1.024"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ucov(1.024, 0.983, 1.088, 0.95)"
+        },
+        "latex": {
+          "output": "1.024,\\ [0.983, 1.088],\\ p = 0.95"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"coverage-interval(1.024,0.983,1.088,0.95)\"1.024, [0.983, 1.088], p=0.95)"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"coverage-interval(1.024,0.983,1.088,0.95)\">\n      <mn>1.024</mn>\n      <mo>,</mo>\n      <mrow>\n        <mo>[</mo>\n        <mn>0.983</mn>\n        <mo>,</mo>\n        <mn>1.088</mn>\n        <mo>]</mo>\n      </mrow>\n      <mo>,</mo>\n      <mi>p</mi>\n      <mo>=</mo>\n      <mn>0.95</mn>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>coverage-interval(1.024,0.983,1.088,0.95)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>1.024</m:t>\n        </m:r>\n        <m:r>\n          <m:t>,</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"[\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\"]\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>0.983</m:t>\n            </m:r>\n            <m:r>\n              <m:t>,</m:t>\n            </m:r>\n            <m:r>\n              <m:t>1.088</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n        <m:r>\n          <m:t>,</m:t>\n        </m:r>\n        <m:r>\n          <m:t>p</m:t>\n        </m:r>\n        <m:r>\n          <m:t>=</m:t>\n        </m:r>\n        <m:r>\n          <m:t>0.95</m:t>\n        </m:r>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "1.024, [0.983, 1.088], p = 0.95"
+        }
+      }
+    },
+    {
+      "id": "ctor.ucov.shortest",
+      "input": "ucov(1.024, 0.983, 1.088, 0.95, shortest)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "ucov(1.024, 0.983, 1.088, 0.95, shortest)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "coverage_interval",
+                "coverage_factor": null,
+                "coverage_probability": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.95"
+                  }
+                },
+                "distribution": null,
+                "interval_kind": "shortest",
+                "lower": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.983"
+                  }
+                },
+                "magnitude": null,
+                "notation": null,
+                "unit": null,
+                "upper": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1.088"
+                  }
+                },
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1.024"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ucov(1.024, 0.983, 1.088, 0.95, shortest)"
+        },
+        "latex": {
+          "output": "1.024,\\ [0.983, 1.088],\\ p = 0.95"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"coverage-interval:shortest(1.024,0.983,1.088,0.95)\"1.024, [0.983, 1.088], p=0.95)"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"coverage-interval:shortest(1.024,0.983,1.088,0.95)\">\n      <mn>1.024</mn>\n      <mo>,</mo>\n      <mrow>\n        <mo>[</mo>\n        <mn>0.983</mn>\n        <mo>,</mo>\n        <mn>1.088</mn>\n        <mo>]</mo>\n      </mrow>\n      <mo>,</mo>\n      <mi>p</mi>\n      <mo>=</mo>\n      <mn>0.95</mn>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>coverage-interval:shortest(1.024,0.983,1.088,0.95)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>1.024</m:t>\n        </m:r>\n        <m:r>\n          <m:t>,</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"[\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\"]\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>0.983</m:t>\n            </m:r>\n            <m:r>\n              <m:t>,</m:t>\n            </m:r>\n            <m:r>\n              <m:t>1.088</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n        <m:r>\n          <m:t>,</m:t>\n        </m:r>\n        <m:r>\n          <m:t>p</m:t>\n        </m:r>\n        <m:r>\n          <m:t>=</m:t>\n        </m:r>\n        <m:r>\n          <m:t>0.95</m:t>\n        </m:r>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "1.024, [0.983, 1.088], p = 0.95"
+        }
+      }
+    },
+    {
+      "id": "ctor.ucov.symmetric",
+      "input": "ucov(1.024, 0.983, 1.088, 0.95, symmetric)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "ucov(1.024, 0.983, 1.088, 0.95, symmetric)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "coverage_interval",
+                "coverage_factor": null,
+                "coverage_probability": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.95"
+                  }
+                },
+                "distribution": null,
+                "interval_kind": "probabilistically_symmetric",
+                "lower": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.983"
+                  }
+                },
+                "magnitude": null,
+                "notation": null,
+                "unit": null,
+                "upper": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1.088"
+                  }
+                },
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1.024"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ucov(1.024, 0.983, 1.088, 0.95, symmetric)"
+        },
+        "latex": {
+          "output": "1.024,\\ [0.983, 1.088],\\ p = 0.95"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"coverage-interval:probabilistically-symmetric(1.024,0.983,1.088,0.95)\"1.024, [0.983, 1.088], p=0.95)"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"coverage-interval:probabilistically-symmetric(1.024,0.983,1.088,0.95)\">\n      <mn>1.024</mn>\n      <mo>,</mo>\n      <mrow>\n        <mo>[</mo>\n        <mn>0.983</mn>\n        <mo>,</mo>\n        <mn>1.088</mn>\n        <mo>]</mo>\n      </mrow>\n      <mo>,</mo>\n      <mi>p</mi>\n      <mo>=</mo>\n      <mn>0.95</mn>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>coverage-interval:probabilistically-symmetric(1.024,0.983,1.088,0.95)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>1.024</m:t>\n        </m:r>\n        <m:r>\n          <m:t>,</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"[\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\"]\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>0.983</m:t>\n            </m:r>\n            <m:r>\n              <m:t>,</m:t>\n            </m:r>\n            <m:r>\n              <m:t>1.088</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n        <m:r>\n          <m:t>,</m:t>\n        </m:r>\n        <m:r>\n          <m:t>p</m:t>\n        </m:r>\n        <m:r>\n          <m:t>=</m:t>\n        </m:r>\n        <m:r>\n          <m:t>0.95</m:t>\n        </m:r>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "1.024, [0.983, 1.088], p = 0.95"
+        }
+      }
+    },
+    {
+      "id": "unit.quotient",
+      "input": "unit(m/s^2)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "unit(m/s^2)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Unitsml",
+              "fields": {
+                "text": "m/s^2"
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "rm(m) * rm(s)^(- 2)"
+        },
+        "latex": {
+          "output": "\\mathrm{m} \\cdot \\mathrm{s}^{- 2}"
+        },
+        "unicodemath": {
+          "output": "\\mupm ⋅ \\mups^(− 2)"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mstyle mathvariant=\"normal\">\n        <mi>m</mi>\n      </mstyle>\n      <mo>&#x22c5;</mo>\n      <msup>\n        <mstyle mathvariant=\"normal\">\n          <mi>s</mi>\n        </mstyle>\n        <mrow>\n          <mo>&#x2212;</mo>\n          <mn>2</mn>\n        </mrow>\n      </msup>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:rPr>\n        <m:sty m:val=\"p\"/>\n      </m:rPr>\n      <m:t>m</m:t>\n    </m:r>\n    <m:r>\n      <m:t>&#x22c5;</m:t>\n    </m:r>\n    <m:sSup>\n      <m:sSupPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:sSupPr>\n      <m:e>\n        <m:r>\n          <m:rPr>\n            <m:sty m:val=\"p\"/>\n          </m:rPr>\n          <m:t>s</m:t>\n        </m:r>\n      </m:e>\n      <m:sup>\n        <m:r>\n          <m:t>&#x2212;</m:t>\n        </m:r>\n        <m:r>\n          <m:t>2</m:t>\n        </m:r>\n      </m:sup>\n    </m:sSup>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "m &#x22c5; s<sup>&#x2212; 2</sup>"
+        }
+      }
+    },
+    {
+      "id": "unit.product",
+      "input": "unit(kg*m^2)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "unit(kg*m^2)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Unitsml",
+              "fields": {
+                "text": "kg*m^2"
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "rm(kg) * rm(m)^(2)"
+        },
+        "latex": {
+          "output": "\\mathrm{kg} \\cdot \\mathrm{m}^{2}"
+        },
+        "unicodemath": {
+          "output": "\\mup\"kg\" ⋅ \\mupm^(2)"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mstyle mathvariant=\"normal\">\n        <mi>kg</mi>\n      </mstyle>\n      <mo>&#x22c5;</mo>\n      <msup>\n        <mstyle mathvariant=\"normal\">\n          <mi>m</mi>\n        </mstyle>\n        <mn>2</mn>\n      </msup>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:rPr>\n        <m:sty m:val=\"p\"/>\n      </m:rPr>\n      <m:t>kg</m:t>\n    </m:r>\n    <m:r>\n      <m:t>&#x22c5;</m:t>\n    </m:r>\n    <m:sSup>\n      <m:sSupPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:sSupPr>\n      <m:e>\n        <m:r>\n          <m:rPr>\n            <m:sty m:val=\"p\"/>\n          </m:rPr>\n          <m:t>m</m:t>\n        </m:r>\n      </m:e>\n      <m:sup>\n        <m:r>\n          <m:t>2</m:t>\n        </m:r>\n      </m:sup>\n    </m:sSup>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "kg &#x22c5; m<sup>2</sup>"
+        }
+      }
+    },
+    {
+      "id": "unit.nested_depth_8",
+      "input": "unit((((((((m))))))))",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "unit((((((((m))))))))",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Unitsml",
+              "fields": {
+                "text": "(((((((m)))))))"
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "(((rm(m))))"
+        },
+        "latex": {
+          "output": "( ( ( \\mathrm{m} ) ) )"
+        },
+        "unicodemath": {
+          "output": "(((\\mupm)))"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mrow>\n        <mo>(</mo>\n        <mrow>\n          <mo>(</mo>\n          <mrow>\n            <mo>(</mo>\n            <mstyle mathvariant=\"normal\">\n              <mi>m</mi>\n            </mstyle>\n            <mo>)</mo>\n          </mrow>\n          <mo>)</mo>\n        </mrow>\n        <mo>)</mo>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:d>\n      <m:dPr>\n        <m:begChr m:val=\"(\"/>\n        <m:sepChr m:val=\"\"/>\n        <m:endChr m:val=\")\"/>\n      </m:dPr>\n      <m:e>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:d>\n              <m:dPr>\n                <m:begChr m:val=\"(\"/>\n                <m:sepChr m:val=\"\"/>\n                <m:endChr m:val=\")\"/>\n              </m:dPr>\n              <m:e>\n                <m:r>\n                  <m:rPr>\n                    <m:sty m:val=\"p\"/>\n                  </m:rPr>\n                  <m:t>m</m:t>\n                </m:r>\n              </m:e>\n            </m:d>\n          </m:e>\n        </m:d>\n      </m:e>\n    </m:d>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "<i>(</i><i>(</i><i>(</i>m<i>)</i><i>)</i><i>)</i>"
+        }
+      }
+    },
+    {
+      "id": "quantity.assertion",
+      "input": "unit(J::energy)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "unit(J::energy)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Unitsml",
+              "fields": {
+                "text": "J"
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "rm(J)"
+        },
+        "latex": {
+          "output": "\\mathrm{J}"
+        },
+        "unicodemath": {
+          "output": "\\mupJ"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mstyle mathvariant=\"normal\">\n        <mi>J</mi>\n      </mstyle>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:rPr>\n        <m:sty m:val=\"p\"/>\n      </m:rPr>\n      <m:t>J</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "J"
+        }
+      }
+    },
+    {
+      "id": "quantity.whole",
+      "input": "unit(N*m::torque)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "unit(N*m::torque)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Unitsml",
+              "fields": {
+                "text": "N*m"
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "rm(N) * rm(m)"
+        },
+        "latex": {
+          "output": "\\mathrm{N} \\cdot \\mathrm{m}"
+        },
+        "unicodemath": {
+          "output": "\\mupN ⋅ \\mupm"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mstyle mathvariant=\"normal\">\n        <mi>N</mi>\n      </mstyle>\n      <mo>&#x22c5;</mo>\n      <mstyle mathvariant=\"normal\">\n        <mi>m</mi>\n      </mstyle>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:rPr>\n        <m:sty m:val=\"p\"/>\n      </m:rPr>\n      <m:t>N</m:t>\n    </m:r>\n    <m:r>\n      <m:t>&#x22c5;</m:t>\n    </m:r>\n    <m:r>\n      <m:rPr>\n        <m:sty m:val=\"p\"/>\n      </m:rPr>\n      <m:t>m</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "N &#x22c5; m"
+        }
+      }
+    },
+    {
+      "id": "quantity.spaced",
+      "input": "unit( J :: energy )",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "unit( J :: energy )",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Unitsml",
+              "fields": {
+                "text": "J"
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "rm(J)"
+        },
+        "latex": {
+          "output": "\\mathrm{J}"
+        },
+        "unicodemath": {
+          "output": "\\mupJ"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mstyle mathvariant=\"normal\">\n        <mi>J</mi>\n      </mstyle>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:rPr>\n        <m:sty m:val=\"p\"/>\n      </m:rPr>\n      <m:t>J</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "J"
+        }
+      }
+    },
+    {
+      "id": "quantity.name_with_brackets",
+      "input": "unit(J::ratio logarithm (Np))",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "unit(J::ratio logarithm (Np))",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Unitsml",
+              "fields": {
+                "text": "J"
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "rm(J)"
+        },
+        "latex": {
+          "output": "\\mathrm{J}"
+        },
+        "unicodemath": {
+          "output": "\\mupJ"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mstyle mathvariant=\"normal\">\n        <mi>J</mi>\n      </mstyle>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:rPr>\n        <m:sty m:val=\"p\"/>\n      </m:rPr>\n      <m:t>J</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "J"
+        }
+      }
+    },
+    {
+      "id": "quantity.attached",
+      "input": "(10.3 +/- 0.2) unit(J::energy)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(10.3 +/- 0.2) unit(J::energy)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.2"
+                  }
+                },
+                "notation": "absolute",
+                "unit": {
+                  "class": "Math::Function::Unitsml",
+                  "fields": {
+                    "text": "J"
+                  }
+                },
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.3"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ustd(10.3, 0.2, \"unitsml(J)\")"
+        },
+        "latex": {
+          "output": "10.3(0.2) \\mathrm{J}"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"standard-uncertainty(10.3,0.2,$unit)\"10.3(0.2)ⓐ(unit \\mupJ))"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"standard-uncertainty(10.3,0.2,$unit)\">\n      <mn>10.3</mn>\n      <mrow>\n        <mo>(</mo>\n        <mn>0.2</mn>\n        <mo>)</mo>\n      </mrow>\n      <mo rspace=\"thickmathspace\">&#x2062;</mo>\n      <mrow arg=\"unit\">\n        <mstyle mathvariant=\"normal\">\n          <mi>J</mi>\n        </mstyle>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>standard-uncertainty(10.3,0.2,$unit)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>10.3</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>0.2</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n        <m:box>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>J</m:t>\n            </m:r>\n          </m:e>\n        </m:box>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "10.3(0.2) J"
+        }
+      }
+    },
+    {
+      "id": "quantity.diff",
+      "input": "diff((5.0 +/- 0.1) unit(K::thermodynamic temperature))",
+      "expect": "accepted",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\ndiff((5",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "diff.kelvin",
+      "input": "diff((5.0 +/- 0.1) unit(K))",
+      "expect": "accepted",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\ndiff((5",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "diff.celsius",
+      "input": "diff((20.0 +/- 0.2) unit(degC))",
+      "expect": "accepted",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\ndiff((2",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "measured.standard",
+      "input": "(10.3 +/- 0.2)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(10.3 +/- 0.2)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.2"
+                  }
+                },
+                "notation": "absolute",
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.3"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ustd(10.3, 0.2)"
+        },
+        "latex": {
+          "output": "10.3(0.2)"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"standard-uncertainty(10.3,0.2)\"10.3(0.2))"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"standard-uncertainty(10.3,0.2)\">\n      <mn>10.3</mn>\n      <mrow>\n        <mo>(</mo>\n        <mn>0.2</mn>\n        <mo>)</mo>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>standard-uncertainty(10.3,0.2)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>10.3</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>0.2</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "10.3(0.2)"
+        }
+      }
+    },
+    {
+      "id": "measured.negative",
+      "input": "(-1.230 +/- 0.004)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(-1.230 +/- 0.004)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.004"
+                  }
+                },
+                "notation": "absolute",
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "-1.230"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ustd(-1.230, 0.004)"
+        },
+        "latex": {
+          "output": "-1.230(0.004)"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"standard-uncertainty(-1.230,0.004)\"〖-1.230〗(0.004))"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"standard-uncertainty(-1.230,0.004)\">\n      <mn>-1.230</mn>\n      <mrow>\n        <mo>(</mo>\n        <mn>0.004</mn>\n        <mo>)</mo>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>standard-uncertainty(-1.230,0.004)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>-1.230</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>0.004</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "-1.230(0.004)"
+        }
+      }
+    },
+    {
+      "id": "measured.spaced",
+      "input": "( 10.3 +/- 0.2 )",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "( 10.3 +/- 0.2 )",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.2"
+                  }
+                },
+                "notation": "absolute",
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.3"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ustd(10.3, 0.2)"
+        },
+        "latex": {
+          "output": "10.3(0.2)"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"standard-uncertainty(10.3,0.2)\"10.3(0.2))"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"standard-uncertainty(10.3,0.2)\">\n      <mn>10.3</mn>\n      <mrow>\n        <mo>(</mo>\n        <mn>0.2</mn>\n        <mo>)</mo>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>standard-uncertainty(10.3,0.2)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>10.3</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>0.2</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "10.3(0.2)"
+        }
+      }
+    },
+    {
+      "id": "exponent.plain",
+      "input": "(3.85 +/- 0.23)e4",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(3.85 +/- 0.23)e4",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2300"
+                  }
+                },
+                "notation": "absolute",
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "38500"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ustd(38500, 2300)"
+        },
+        "latex": {
+          "output": "38500(2300)"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"standard-uncertainty(38500,2300)\"38500(2300))"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"standard-uncertainty(38500,2300)\">\n      <mn>38500</mn>\n      <mrow>\n        <mo>(</mo>\n        <mn>2300</mn>\n        <mo>)</mo>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>standard-uncertainty(38500,2300)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>38500</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>2300</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "38500(2300)"
+        }
+      }
+    },
+    {
+      "id": "exponent.plus",
+      "input": "(3.85 +/- 0.23)e+4",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(3.85 +/- 0.23)e+4",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2300"
+                  }
+                },
+                "notation": "absolute",
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "38500"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ustd(38500, 2300)"
+        },
+        "latex": {
+          "output": "38500(2300)"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"standard-uncertainty(38500,2300)\"38500(2300))"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"standard-uncertainty(38500,2300)\">\n      <mn>38500</mn>\n      <mrow>\n        <mo>(</mo>\n        <mn>2300</mn>\n        <mo>)</mo>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>standard-uncertainty(38500,2300)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>38500</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>2300</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "38500(2300)"
+        }
+      }
+    },
+    {
+      "id": "exponent.minus",
+      "input": "(1.024 +/- 0.003)e-3",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(1.024 +/- 0.003)e-3",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.000003"
+                  }
+                },
+                "notation": "absolute",
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.001024"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ustd(0.001024, 0.000003)"
+        },
+        "latex": {
+          "output": "0.001024(0.000003)"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"standard-uncertainty(0.001024,0.000003)\"0.001024(0.000003))"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"standard-uncertainty(0.001024,0.000003)\">\n      <mn>0.001024</mn>\n      <mrow>\n        <mo>(</mo>\n        <mn>0.000003</mn>\n        <mo>)</mo>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>standard-uncertainty(0.001024,0.000003)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>0.001024</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>0.000003</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "0.001024(0.000003)"
+        }
+      }
+    },
+    {
+      "id": "relative.integer",
+      "input": "(10.3 +/- 2%)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(10.3 +/- 2%)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.206"
+                  }
+                },
+                "notation": "absolute",
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.3"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ustd(10.3, 0.206)"
+        },
+        "latex": {
+          "output": "10.3(0.206)"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"standard-uncertainty(10.3,0.206)\"10.3(0.206))"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"standard-uncertainty(10.3,0.206)\">\n      <mn>10.3</mn>\n      <mrow>\n        <mo>(</mo>\n        <mn>0.206</mn>\n        <mo>)</mo>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>standard-uncertainty(10.3,0.206)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>10.3</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>0.206</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "10.3(0.206)"
+        }
+      }
+    },
+    {
+      "id": "relative.decimal",
+      "input": "(10.3 +/- 0.5%)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(10.3 +/- 0.5%)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.0515"
+                  }
+                },
+                "notation": "absolute",
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.3"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ustd(10.3, 0.0515)"
+        },
+        "latex": {
+          "output": "10.3(0.0515)"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"standard-uncertainty(10.3,0.0515)\"10.3(0.0515))"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"standard-uncertainty(10.3,0.0515)\">\n      <mn>10.3</mn>\n      <mrow>\n        <mo>(</mo>\n        <mn>0.0515</mn>\n        <mo>)</mo>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>standard-uncertainty(10.3,0.0515)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>10.3</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>0.0515</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "10.3(0.0515)"
+        }
+      }
+    },
+    {
+      "id": "tag.rect",
+      "input": "(10.3 +/- 0.2 ~rect)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(10.3 +/- 0.2 ~rect)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": "rect",
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.2"
+                  }
+                },
+                "notation": "absolute",
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.3"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ustd(10.3, 0.2)"
+        },
+        "latex": {
+          "output": "10.3(0.2)"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"standard-uncertainty(10.3,0.2)\"10.3(0.2))"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"standard-uncertainty(10.3,0.2)\">\n      <mn>10.3</mn>\n      <mrow>\n        <mo>(</mo>\n        <mn>0.2</mn>\n        <mo>)</mo>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>standard-uncertainty(10.3,0.2)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>10.3</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>0.2</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "10.3(0.2)"
+        }
+      }
+    },
+    {
+      "id": "tag.triang.unit",
+      "input": "(10.3 +/- 0.2 ~triang) unit(cm)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(10.3 +/- 0.2 ~triang) unit(cm)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": "triang",
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.2"
+                  }
+                },
+                "notation": "absolute",
+                "unit": {
+                  "class": "Math::Function::Unitsml",
+                  "fields": {
+                    "text": "cm"
+                  }
+                },
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.3"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ustd(10.3, 0.2, \"unitsml(cm)\")"
+        },
+        "latex": {
+          "output": "10.3(0.2) \\mathrm{cm}"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"standard-uncertainty(10.3,0.2,$unit)\"10.3(0.2)ⓐ(unit \\mup\"cm\"))"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"standard-uncertainty(10.3,0.2,$unit)\">\n      <mn>10.3</mn>\n      <mrow>\n        <mo>(</mo>\n        <mn>0.2</mn>\n        <mo>)</mo>\n      </mrow>\n      <mo rspace=\"thickmathspace\">&#x2062;</mo>\n      <mrow arg=\"unit\">\n        <mstyle mathvariant=\"normal\">\n          <mi>cm</mi>\n        </mstyle>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>standard-uncertainty(10.3,0.2,$unit)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>10.3</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>0.2</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n        <m:box>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>cm</m:t>\n            </m:r>\n          </m:e>\n        </m:box>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "10.3(0.2) cm"
+        }
+      }
+    },
+    {
+      "id": "tag.arcsine.exponent",
+      "input": "(3.85 +/- 0.23 ~arcsine)e4",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(3.85 +/- 0.23 ~arcsine)e4",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": "arcsine",
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2300"
+                  }
+                },
+                "notation": "absolute",
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "38500"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ustd(38500, 2300)"
+        },
+        "latex": {
+          "output": "38500(2300)"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"standard-uncertainty(38500,2300)\"38500(2300))"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"standard-uncertainty(38500,2300)\">\n      <mn>38500</mn>\n      <mrow>\n        <mo>(</mo>\n        <mn>2300</mn>\n        <mo>)</mo>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>standard-uncertainty(38500,2300)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>38500</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>2300</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "38500(2300)"
+        }
+      }
+    },
+    {
+      "id": "tag.relative",
+      "input": "(10.3 +/- 2% ~rect)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(10.3 +/- 2% ~rect)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": "rect",
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.206"
+                  }
+                },
+                "notation": "absolute",
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.3"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ustd(10.3, 0.206)"
+        },
+        "latex": {
+          "output": "10.3(0.206)"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"standard-uncertainty(10.3,0.206)\"10.3(0.206))"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"standard-uncertainty(10.3,0.206)\">\n      <mn>10.3</mn>\n      <mrow>\n        <mo>(</mo>\n        <mn>0.206</mn>\n        <mo>)</mo>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>standard-uncertainty(10.3,0.206)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>10.3</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>0.206</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "10.3(0.206)"
+        }
+      }
+    },
+    {
+      "id": "tag.unspaced",
+      "input": "(10.3 +/- 0.2~rect)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(10.3 +/- 0.2~rect)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": "rect",
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.2"
+                  }
+                },
+                "notation": "absolute",
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.3"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ustd(10.3, 0.2)"
+        },
+        "latex": {
+          "output": "10.3(0.2)"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"standard-uncertainty(10.3,0.2)\"10.3(0.2))"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"standard-uncertainty(10.3,0.2)\">\n      <mn>10.3</mn>\n      <mrow>\n        <mo>(</mo>\n        <mn>0.2</mn>\n        <mo>)</mo>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>standard-uncertainty(10.3,0.2)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>10.3</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>0.2</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "10.3(0.2)"
+        }
+      }
+    },
+    {
+      "id": "attach.measured",
+      "input": "(10.3 +/- 0.2) unit(cm)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(10.3 +/- 0.2) unit(cm)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.2"
+                  }
+                },
+                "notation": "absolute",
+                "unit": {
+                  "class": "Math::Function::Unitsml",
+                  "fields": {
+                    "text": "cm"
+                  }
+                },
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.3"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ustd(10.3, 0.2, \"unitsml(cm)\")"
+        },
+        "latex": {
+          "output": "10.3(0.2) \\mathrm{cm}"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"standard-uncertainty(10.3,0.2,$unit)\"10.3(0.2)ⓐ(unit \\mup\"cm\"))"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"standard-uncertainty(10.3,0.2,$unit)\">\n      <mn>10.3</mn>\n      <mrow>\n        <mo>(</mo>\n        <mn>0.2</mn>\n        <mo>)</mo>\n      </mrow>\n      <mo rspace=\"thickmathspace\">&#x2062;</mo>\n      <mrow arg=\"unit\">\n        <mstyle mathvariant=\"normal\">\n          <mi>cm</mi>\n        </mstyle>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>standard-uncertainty(10.3,0.2,$unit)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>10.3</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>0.2</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n        <m:box>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>cm</m:t>\n            </m:r>\n          </m:e>\n        </m:box>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "10.3(0.2) cm"
+        }
+      }
+    },
+    {
+      "id": "attach.unspaced",
+      "input": "(10.3+/-0.2)unit(cm)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(10.3+/-0.2)unit(cm)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.2"
+                  }
+                },
+                "notation": "absolute",
+                "unit": {
+                  "class": "Math::Function::Unitsml",
+                  "fields": {
+                    "text": "cm"
+                  }
+                },
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.3"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ustd(10.3, 0.2, \"unitsml(cm)\")"
+        },
+        "latex": {
+          "output": "10.3(0.2) \\mathrm{cm}"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"standard-uncertainty(10.3,0.2,$unit)\"10.3(0.2)ⓐ(unit \\mup\"cm\"))"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"standard-uncertainty(10.3,0.2,$unit)\">\n      <mn>10.3</mn>\n      <mrow>\n        <mo>(</mo>\n        <mn>0.2</mn>\n        <mo>)</mo>\n      </mrow>\n      <mo rspace=\"thickmathspace\">&#x2062;</mo>\n      <mrow arg=\"unit\">\n        <mstyle mathvariant=\"normal\">\n          <mi>cm</mi>\n        </mstyle>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>standard-uncertainty(10.3,0.2,$unit)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>10.3</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>0.2</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n        <m:box>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>cm</m:t>\n            </m:r>\n          </m:e>\n        </m:box>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "10.3(0.2) cm"
+        }
+      }
+    },
+    {
+      "id": "attach.exponent",
+      "input": "(3.85 +/- 0.23)e4 unit(m)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(3.85 +/- 0.23)e4 unit(m)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2300"
+                  }
+                },
+                "notation": "absolute",
+                "unit": {
+                  "class": "Math::Function::Unitsml",
+                  "fields": {
+                    "text": "m"
+                  }
+                },
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "38500"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ustd(38500, 2300, \"unitsml(m)\")"
+        },
+        "latex": {
+          "output": "38500(2300) \\mathrm{m}"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"standard-uncertainty(38500,2300,$unit)\"38500(2300)ⓐ(unit \\mupm))"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"standard-uncertainty(38500,2300,$unit)\">\n      <mn>38500</mn>\n      <mrow>\n        <mo>(</mo>\n        <mn>2300</mn>\n        <mo>)</mo>\n      </mrow>\n      <mo rspace=\"thickmathspace\">&#x2062;</mo>\n      <mrow arg=\"unit\">\n        <mstyle mathvariant=\"normal\">\n          <mi>m</mi>\n        </mstyle>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>standard-uncertainty(38500,2300,$unit)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>38500</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>2300</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n        <m:box>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>m</m:t>\n            </m:r>\n          </m:e>\n        </m:box>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "38500(2300) m"
+        }
+      }
+    },
+    {
+      "id": "attach.relative",
+      "input": "(10.3 +/- 2%) unit(cm)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(10.3 +/- 2%) unit(cm)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.206"
+                  }
+                },
+                "notation": "absolute",
+                "unit": {
+                  "class": "Math::Function::Unitsml",
+                  "fields": {
+                    "text": "cm"
+                  }
+                },
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.3"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ustd(10.3, 0.206, \"unitsml(cm)\")"
+        },
+        "latex": {
+          "output": "10.3(0.206) \\mathrm{cm}"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"standard-uncertainty(10.3,0.206,$unit)\"10.3(0.206)ⓐ(unit \\mup\"cm\"))"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"standard-uncertainty(10.3,0.206,$unit)\">\n      <mn>10.3</mn>\n      <mrow>\n        <mo>(</mo>\n        <mn>0.206</mn>\n        <mo>)</mo>\n      </mrow>\n      <mo rspace=\"thickmathspace\">&#x2062;</mo>\n      <mrow arg=\"unit\">\n        <mstyle mathvariant=\"normal\">\n          <mi>cm</mi>\n        </mstyle>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>standard-uncertainty(10.3,0.206,$unit)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>10.3</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>0.206</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n        <m:box>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>cm</m:t>\n            </m:r>\n          </m:e>\n        </m:box>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "10.3(0.206) cm"
+        }
+      }
+    },
+    {
+      "id": "attach.ustd",
+      "input": "ustd(1.230, 0.004) unit(g)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "ustd(1.230, 0.004) unit(g)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.004"
+                  }
+                },
+                "notation": "absolute",
+                "unit": {
+                  "class": "Math::Function::Unitsml",
+                  "fields": {
+                    "text": "g"
+                  }
+                },
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1.230"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "ustd(1.230, 0.004, \"unitsml(g)\")"
+        },
+        "latex": {
+          "output": "1.230(0.004) \\mathrm{g}"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"standard-uncertainty(1.230,0.004,$unit)\"1.230(0.004)ⓐ(unit \\mupg))"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"standard-uncertainty(1.230,0.004,$unit)\">\n      <mn>1.230</mn>\n      <mrow>\n        <mo>(</mo>\n        <mn>0.004</mn>\n        <mo>)</mo>\n      </mrow>\n      <mo rspace=\"thickmathspace\">&#x2062;</mo>\n      <mrow arg=\"unit\">\n        <mstyle mathvariant=\"normal\">\n          <mi>g</mi>\n        </mstyle>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>standard-uncertainty(1.230,0.004,$unit)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>1.230</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>0.004</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n        <m:box>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>g</m:t>\n            </m:r>\n          </m:e>\n        </m:box>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "1.230(0.004) g"
+        }
+      }
+    },
+    {
+      "id": "attach.uexp",
+      "input": "uexp(100.02147, 0.00079, 2) unit(g)",
+      "expect": "accepted",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "uexp(100.02147, 0.00079, 2) unit(g)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "expanded",
+                "coverage_factor": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                },
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.00079"
+                  }
+                },
+                "notation": null,
+                "unit": {
+                  "class": "Math::Function::Unitsml",
+                  "fields": {
+                    "text": "g"
+                  }
+                },
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "100.02147"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "output": "uexp(100.02147, 0.00079, 2, \"unitsml(g)\")"
+        },
+        "latex": {
+          "output": "(100.02147 \\pm 0.00079) \\mathrm{g},\\ k = 2"
+        },
+        "unicodemath": {
+          "output": "ⓘ(\"expanded-uncertainty(100.02147,0.00079,2,$unit)\"(100.02147±0.00079)ⓐ(unit \\mupg), k=2)"
+        },
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"expanded-uncertainty(100.02147,0.00079,2,$unit)\">\n      <mrow>\n        <mo>(</mo>\n        <mn>100.02147</mn>\n        <mo>&#xb1;</mo>\n        <mn>0.00079</mn>\n        <mo>)</mo>\n      </mrow>\n      <mo rspace=\"thickmathspace\">&#x2062;</mo>\n      <mrow arg=\"unit\">\n        <mstyle mathvariant=\"normal\">\n          <mi>g</mi>\n        </mstyle>\n      </mrow>\n      <mo>,</mo>\n      <mi>k</mi>\n      <mo>=</mo>\n      <mn>2</mn>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>expanded-uncertainty(100.02147,0.00079,2,$unit)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>100.02147</m:t>\n            </m:r>\n            <m:r>\n              <m:t>&#xb1;</m:t>\n            </m:r>\n            <m:r>\n              <m:t>0.00079</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n        <m:box>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>g</m:t>\n            </m:r>\n          </m:e>\n        </m:box>\n        <m:r>\n          <m:t>,</m:t>\n        </m:r>\n        <m:r>\n          <m:t>k</m:t>\n        </m:r>\n        <m:r>\n          <m:t>=</m:t>\n        </m:r>\n        <m:r>\n          <m:t>2</m:t>\n        </m:r>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "html": {
+          "output": "(100.02147 &#xb1; 0.00079) g, k = 2"
+        }
+      }
+    },
+    {
+      "id": "ctor.arity.uexp",
+      "input": "uexp(10.0, 0.3)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nuexp(10",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "ctor.arity.quoted_unit",
+      "input": "ustd(1.230, 0.004, \"unitsml(g)\")",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nustd(1.",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "ctor.argument.signed_magnitude",
+      "input": "ustd(1.2, -0.1)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nustd(1.",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "ctor.argument.exponent",
+      "input": "ustd(1.2e3, 0.1)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nustd(1.",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "ctor.argument.interval_kind",
+      "input": "ucov(1.024, 0.983, 1.088, 0.95, probabilistically-symmetric)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nucov(1.",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "adjacency.reserved_word",
+      "input": "ustd (1.2, 0.1)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nustd (1",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "adjacency.exponent",
+      "input": "(3.85 +/- 0.23) e4",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(3.85 +",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "adjacency.plus_minus",
+      "input": "(10.3 + / - 0.2)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(10.3 +",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "adjacency.diff",
+      "input": "diff ((5.0 +/- 0.1) unit(K))",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\ndiff ((",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "reserved.ustd",
+      "input": "ustd",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nustd\n--",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "reserved.unit",
+      "input": "unit",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nunit\n--",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "reserved.quantity_call",
+      "input": "quantity(x)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nquantit",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "reserved.quantity",
+      "input": "quantity",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nquantit",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "unit.quoted",
+      "input": "unit(\"m\")",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nunit(\"m",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "unit.unknown",
+      "input": "unit(furlongs)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nunit(fu",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "unit.empty",
+      "input": "unit()",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nunit()\n",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "unit.depth_9",
+      "input": "unit(((((((((m))))))))))",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nunit(((",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "unit.attached_unknown",
+      "input": "(10.3 +/- 0.2) unit(furlongs)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(10.3 +",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "unit.non_ascii",
+      "input": "unit(Ωfurlong)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nunit(Ωf",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "attach.second_unit_non_ascii",
+      "input": "(10.3 +/- 0.2) unit(µm) unit(m)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(10.3 +",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "pm.plus_minus",
+      "input": "(10.3 +- 0.2)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(10.3 +",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "pm.word",
+      "input": "(10.3 pm 0.2)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(10.3 p",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "pm.sign",
+      "input": "(10.3 ± 0.2)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(10.3 ±",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "measured.signed_magnitude",
+      "input": "(10.3 +/- -0.2)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(10.3 +",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "measured.letter",
+      "input": "(x +/- 0.2)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(x +/- ",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "measured.unbracketed",
+      "input": "10.3 +/- 0.2",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n10.3 +/",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "exponent.incomplete",
+      "input": "(3.85 +/- 0.23)e",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(3.85 +",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "exponent.decimal",
+      "input": "(3.85 +/- 0.23)e4.5",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(3.85 +",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "exponent.relative",
+      "input": "(3.85 +/- 2%)e4",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(3.85 +",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "exponent.constructor",
+      "input": "ustd((3.85, 0.23)e4)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nustd((3",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "exponent.plain_number",
+      "input": "1.2e3",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n1.2e3\n-",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "relative.spaced",
+      "input": "(10.3 +/- 2 %)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(10.3 +",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "relative.signed",
+      "input": "(10.3 +/- -2%)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(10.3 +",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "relative.on_value",
+      "input": "(10.3% +/- 2)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(10.3% ",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "tag.renamed_u",
+      "input": "(10.3 +/- 0.2 ~U)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(10.3 +",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "tag.type_b",
+      "input": "(10.3 +/- 0.2 ~typeB)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(10.3 +",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "tag.spaced",
+      "input": "(10.3 +/- 0.2 ~ rect)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(10.3 +",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "tag.unknown",
+      "input": "(10.3 +/- 0.2 ~gauss)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(10.3 +",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "tag.outside",
+      "input": "(10.3 +/- 0.2) ~rect",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(10.3 +",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "tag.before_plus_minus",
+      "input": "(10.3 ~rect +/- 0.2)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(10.3 ~",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "tag.constructor",
+      "input": "ustd(1.2, 0.1 ~rect)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nustd(1.",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "attach.second_unit",
+      "input": "(10.3 +/- 0.2) unit(cm) unit(m)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(10.3 +",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "attach.inside_constructor",
+      "input": "ustd(1.230, 0.004, unit(g))",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nustd(1.",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "attach.plain_number",
+      "input": "9.81 unit(m/s^2)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n9.81 un",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "attach.diff_plain_number",
+      "input": "diff(5 unit(K))",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\ndiff(5 ",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "quantity.no_quantity",
+      "input": "unit(J::)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nunit(J:",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "quantity.no_unit",
+      "input": "unit(::energy)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nunit(::",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "quantity.twice",
+      "input": "unit(J::energy::work)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nunit(J:",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "quantity.nested",
+      "input": "unit((N::force)*m)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nunit((N",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "quantity.unknown",
+      "input": "unit(J::nonsense)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nunit(J:",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "quantity.outside_unit",
+      "input": "::energy",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n::energ",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "quantity.trailing_text",
+      "input": "unit(J::energy x)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nunit(J:",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "concise.plain",
+      "input": "10.3(2)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n10.3(2)",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "concise.bracketed",
+      "input": "(10.3(2))",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(10.3(2",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "concise.exponent",
+      "input": "(680(41))e-3",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n(680(41",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "concise.constructor",
+      "input": "ustd(1.230(4))",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nustd(1.",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "none.empty",
+      "input": "",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- F",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "none.expression",
+      "input": "x + y",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nx + y\n-",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "none.diff_without_unit",
+      "input": "diff(ustd(1.0, 0.1))",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\ndiff(us",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    },
+    {
+      "id": "none.two_terms",
+      "input": "unit(m) unit(s)",
+      "expect": "refused",
+      "refusal": {
+        "error": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `pma`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\nunit(m)",
+        "cause": null,
+        "category": null,
+        "byte_offset": null
+      }
+    }
+  ]
+}

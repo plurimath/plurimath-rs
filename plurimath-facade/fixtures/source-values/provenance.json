@@ -1,0 +1,35 @@
+{
+  "profile": "ruby4-source-values/1",
+  "runtime": "ruby4.0.1 e04267a14b",
+  "source_module_sha256": "77897204ec93e5ea4aed6cd65ab0a82e906b30d4a60e92aebb6274a8f9411b3b",
+  "producer_sha256": "7c816131b6fca5f971d4e8184d536f10e26789565b712e1beffe27dd2e31bc74",
+  "payload_sha256": "04f4cea38edfe2c40dc7f20c371a826f956598f5e443a5adc9339bcc1e79ac74",
+  "qualified": {
+    "source_inspection_rows": 53,
+    "exact_inspection_and_to_s": 51,
+    "explicit_non_ascii_symbol_inspection_gates": 2
+  },
+  "policies": [
+    "Canonical NamedOptions/Attributes domain binds current Hash keys to source Symbols; values remain literalJSON types.",
+    "Nested hashes defaultLiteral and require explicit schema domain rebinding.",
+    "Typed profile never rebinds key kinds; Floatbits preserved but display remains gated.",
+    "Ruby4Hash inspection uses symbol labels and preserves String-key arrows; Hash equality ignores entry order."
+  ],
+  "exact_commit_check": "canonical-corrected-final: six focused tests, unchanged53source rows, explicit SymbolUnicode and HashSymbolUnicode inspect error assertions",
+  "canonical_snapshot": {
+    "commit": "09d47bd7c057bcae1085e0634d4e638903aa275f",
+    "sha256": "9e93761b8ecb070aaee34b6ddd867d73f40c7bc6de8778e4afcd6ce2fa51242f"
+  },
+  "typed_profile": {
+    "schema": "plurimath.ruby-values/1",
+    "producer_sha256": "78cd9dbc78638fee592739c74ca8e4f092829d1c39aa397f3f139820c6607b76",
+    "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+    "payload_sha256": "739025586d04c6d43ef3d2d1b6d9ae3c3411a906067eb1cfb683a2f27790ee78",
+    "variants": 18,
+    "writer_observations": 66,
+    "scalar_roundtrips": 12,
+    "cycles_refused": true,
+    "binary_strings_refused": true,
+    "scope": "UTF8 typed value tree; no object identity or arbitrary-object inspection"
+  }
+}

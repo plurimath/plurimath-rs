@@ -1,0 +1,425 @@
+{
+  "profile": "canonical source state with explicit Ruby object/dependency limits",
+  "gaps": [
+    {
+      "fixture": "intent",
+      "id": "intent-field-symbol-meta-formula",
+      "format": "mathml",
+      "reason": "unported promised Ruby non-string intent metadata inspection"
+    },
+    {
+      "fixture": "intent",
+      "id": "intent-field-number-meta-formula",
+      "format": "mathml",
+      "reason": "unported promised Ruby non-string intent metadata inspection"
+    },
+    {
+      "fixture": "intent",
+      "id": "intent-field-text-meta-formula",
+      "format": "mathml",
+      "reason": "unported promised Ruby non-string intent metadata inspection"
+    },
+    {
+      "fixture": "intent",
+      "id": "intent-field-none-meta-formula",
+      "format": "mathml",
+      "reason": "unported promised Ruby non-string intent metadata inspection"
+    },
+    {
+      "fixture": "intent",
+      "id": "intent-field-empty_formula-meta-formula",
+      "format": "mathml",
+      "reason": "unported promised Ruby non-string intent metadata inspection"
+    },
+    {
+      "fixture": "intent",
+      "id": "intent-field-formula-meta-formula",
+      "format": "mathml",
+      "reason": "unported promised Ruby non-string intent metadata inspection"
+    },
+    {
+      "fixture": "intent",
+      "id": "intent-field-fenced-meta-formula",
+      "format": "mathml",
+      "reason": "unported promised Ruby non-string intent metadata inspection"
+    },
+    {
+      "fixture": "intent-extra",
+      "id": "intent-split-1-false-0",
+      "format": "mathml",
+      "reason": "unported promised Ruby non-string intent metadata inspection"
+    },
+    {
+      "fixture": "intent-extra",
+      "id": "intent-split-1-false-1",
+      "format": "mathml",
+      "reason": "unported promised Ruby non-string intent metadata inspection"
+    },
+    {
+      "fixture": "intent-extra",
+      "id": "intent-split-1-true-0",
+      "format": "mathml",
+      "reason": "unported promised Ruby non-string intent metadata inspection"
+    },
+    {
+      "fixture": "intent-extra",
+      "id": "intent-split-1-true-1",
+      "format": "mathml",
+      "reason": "unported promised Ruby non-string intent metadata inspection"
+    },
+    {
+      "fixture": "arg",
+      "id": "intent-field-symbol-meta-formula",
+      "format": "mathml",
+      "reason": "unported promised Ruby non-string intent metadata inspection"
+    },
+    {
+      "fixture": "arg",
+      "id": "intent-field-number-meta-formula",
+      "format": "mathml",
+      "reason": "unported promised Ruby non-string intent metadata inspection"
+    },
+    {
+      "fixture": "arg",
+      "id": "intent-field-text-meta-formula",
+      "format": "mathml",
+      "reason": "unported promised Ruby non-string intent metadata inspection"
+    },
+    {
+      "fixture": "arg",
+      "id": "intent-field-none-meta-formula",
+      "format": "mathml",
+      "reason": "unported promised Ruby non-string intent metadata inspection"
+    },
+    {
+      "fixture": "arg",
+      "id": "intent-field-empty_formula-meta-formula",
+      "format": "mathml",
+      "reason": "unported promised Ruby non-string intent metadata inspection"
+    },
+    {
+      "fixture": "arg",
+      "id": "intent-field-formula-meta-formula",
+      "format": "mathml",
+      "reason": "unported promised Ruby non-string intent metadata inspection"
+    },
+    {
+      "fixture": "arg",
+      "id": "intent-field-fenced-meta-formula",
+      "format": "mathml",
+      "reason": "unported promised Ruby non-string intent metadata inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-symbol",
+      "format": "asciimath",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-symbol",
+      "format": "latex",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-symbol",
+      "format": "omml",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-value-setter-symbol",
+      "format": "asciimath",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-value-setter-symbol",
+      "format": "latex",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-value-setter-symbol",
+      "format": "omml",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-number",
+      "format": "asciimath",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-number",
+      "format": "latex",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-number",
+      "format": "omml",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-value-setter-number",
+      "format": "asciimath",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-value-setter-number",
+      "format": "latex",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-value-setter-number",
+      "format": "omml",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-text",
+      "format": "asciimath",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-text",
+      "format": "latex",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-text",
+      "format": "omml",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-value-setter-text",
+      "format": "asciimath",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-value-setter-text",
+      "format": "latex",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-value-setter-text",
+      "format": "omml",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-none",
+      "format": "asciimath",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-none",
+      "format": "latex",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-none",
+      "format": "omml",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-value-setter-none",
+      "format": "asciimath",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-value-setter-none",
+      "format": "latex",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-value-setter-none",
+      "format": "omml",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-empty_formula",
+      "format": "asciimath",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-empty_formula",
+      "format": "latex",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-empty_formula",
+      "format": "omml",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-value-setter-empty_formula",
+      "format": "asciimath",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-value-setter-empty_formula",
+      "format": "latex",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-value-setter-empty_formula",
+      "format": "omml",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-formula",
+      "format": "asciimath",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-formula",
+      "format": "latex",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-formula",
+      "format": "omml",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-value-setter-formula",
+      "format": "asciimath",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-value-setter-formula",
+      "format": "latex",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-value-setter-formula",
+      "format": "omml",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-fenced",
+      "format": "asciimath",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-fenced",
+      "format": "latex",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-fenced",
+      "format": "omml",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-value-setter-fenced",
+      "format": "asciimath",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-value-setter-fenced",
+      "format": "latex",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-value-setter-fenced",
+      "format": "omml",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-array",
+      "format": "asciimath",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-array",
+      "format": "latex",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-array",
+      "format": "omml",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-nested_array",
+      "format": "asciimath",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-nested_array",
+      "format": "latex",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "ms-constructor-nested_array",
+      "format": "omml",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "leaf-split-3-false-0",
+      "format": "omml",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "leaf-split-3-false-1",
+      "format": "omml",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "leaf-split-3-true-0",
+      "format": "omml",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    },
+    {
+      "fixture": "leaves",
+      "id": "leaf-split-3-true-1",
+      "format": "omml",
+      "reason": "unported promised Ruby source object interpolation/inspection"
+    }
+  ]
+}

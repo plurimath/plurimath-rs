@@ -1,0 +1,61 @@
+{
+  "profile": "source-layout-declarations-v1",
+  "source_head": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "zero_tags": {
+    "height": "zeroAsc",
+    "depth": "zeroDesc",
+    "width": "zeroWid"
+  },
+  "phantom_options": {
+    "hphantom": {
+      "mpadded": {
+        "depth": "0",
+        "height": "0"
+      },
+      "phantom": true
+    },
+    "vphantom": {
+      "mpadded": {
+        "width": "0"
+      },
+      "phantom": true
+    },
+    "phantom": {
+      "phantom": true
+    },
+    "hsmash": {
+      "mpadded": {
+        "width": "0"
+      },
+      "phantom": false
+    },
+    "asmash": {
+      "mpadded": {
+        "height": "0"
+      },
+      "phantom": false
+    },
+    "dsmash": {
+      "mpadded": {
+        "depth": "0"
+      },
+      "phantom": false
+    },
+    "smash": {
+      "mpadded": {
+        "height": "0",
+        "depth": "0"
+      },
+      "phantom": false
+    }
+  },
+  "unary_symbols": {
+    "hphantom": "&#x2b04;",
+    "vphantom": "&#x21f3;",
+    "phantom": "&#x27e1;",
+    "asmash": "&#x2b06;",
+    "dsmash": "&#x2b07;",
+    "hsmash": "&#x2b0c;",
+    "smash": "&#x2b0d;"
+  }
+}

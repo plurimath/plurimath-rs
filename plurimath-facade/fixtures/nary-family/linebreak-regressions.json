@@ -1,0 +1,2522 @@
+{
+  "profile": "unmodified-source-linebreak-regressions-v1",
+  "source_sha256": "9cc87736b3dcb32c852717fc976edda1ae599c9370379fe87916604079a0a6f3",
+  "rows": [
+    {
+      "id": "line-break-002:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Sum",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "d"
+                            }
+                          },
+                          "parameter_three": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": false,
+                              "value": "3"
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": false,
+                              "value": "3"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Prod",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": false,
+                              "value": "3"
+                            }
+                          },
+                          "parameter_three": {
+                            "class": "Math::Formula",
+                            "fields": {
+                              "displaystyle": true,
+                              "left_right_wrapper": true,
+                              "value": [
+                                {
+                                  "class": "Math::Symbols::Symbol",
+                                  "fields": {
+                                    "value": "e"
+                                  }
+                                },
+                                {
+                                  "class": "Math::Function::Linebreak",
+                                  "fields": {
+                                    "attributes": {},
+                                    "parameter_one": null
+                                  }
+                                },
+                                {
+                                  "class": "Math::Symbols::Symbol",
+                                  "fields": {
+                                    "value": "w"
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "d"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Sin",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Function::Fenced",
+                      "fields": {
+                        "options": {},
+                        "parameter_one": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "("
+                          }
+                        },
+                        "parameter_three": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": ")"
+                          }
+                        },
+                        "parameter_two": [
+                          {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "d"
+                            }
+                          },
+                          {
+                            "class": "Math::Function::Linebreak",
+                            "fields": {
+                              "attributes": {},
+                              "parameter_one": null
+                            }
+                          },
+                          {
+                            "class": "Math::Function::Msline",
+                            "fields": {
+                              "parameter_one": null
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "unaryFunctionSpacing": false
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mfrac>\n      <mrow>\n        <mrow>\n          <munderover>\n            <mo>&#x2211;</mo>\n            <mi>d</mi>\n            <mn>3</mn>\n          </munderover>\n          <mn>3</mn>\n        </mrow>\n      </mrow>\n    </mfrac>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mrow>\n        <munderover>\n          <mo>&#x220f;</mo>\n          <mn>3</mn>\n          <mi>d</mi>\n        </munderover>\n        <mrow>\n          <mi>e</mi>\n        </mrow>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mi>w</mi>\n      <mrow>\n        <mi>sin</mi>\n        <mrow>\n          <mo>(</mo>\n          <mi>d</mi>\n          <mo></mo>\n        </mrow>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mrow>\n        <mrow>\n          <mo></mo>\n          <msline/>\n          <mo>)</mo>\n        </mrow>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-002-display-false:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Sum",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "d"
+                            }
+                          },
+                          "parameter_three": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": false,
+                              "value": "3"
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": false,
+                              "value": "3"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Prod",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": false,
+                              "value": "3"
+                            }
+                          },
+                          "parameter_three": {
+                            "class": "Math::Formula",
+                            "fields": {
+                              "displaystyle": true,
+                              "left_right_wrapper": true,
+                              "value": [
+                                {
+                                  "class": "Math::Symbols::Symbol",
+                                  "fields": {
+                                    "value": "e"
+                                  }
+                                },
+                                {
+                                  "class": "Math::Function::Linebreak",
+                                  "fields": {
+                                    "attributes": {},
+                                    "parameter_one": null
+                                  }
+                                },
+                                {
+                                  "class": "Math::Symbols::Symbol",
+                                  "fields": {
+                                    "value": "w"
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "d"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Sin",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Function::Fenced",
+                      "fields": {
+                        "options": {},
+                        "parameter_one": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "("
+                          }
+                        },
+                        "parameter_three": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": ")"
+                          }
+                        },
+                        "parameter_two": [
+                          {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "d"
+                            }
+                          },
+                          {
+                            "class": "Math::Function::Linebreak",
+                            "fields": {
+                              "attributes": {},
+                              "parameter_one": null
+                            }
+                          },
+                          {
+                            "class": "Math::Function::Msline",
+                            "fields": {
+                              "parameter_one": null
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "unaryFunctionSpacing": false,
+        "displayStyle": false
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mfrac>\n      <mrow>\n        <mrow>\n          <munderover>\n            <mo>&#x2211;</mo>\n            <mi>d</mi>\n            <mn>3</mn>\n          </munderover>\n          <mn>3</mn>\n        </mrow>\n      </mrow>\n    </mfrac>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mrow>\n      <mrow>\n        <munderover>\n          <mo>&#x220f;</mo>\n          <mn>3</mn>\n          <mi>d</mi>\n        </munderover>\n        <mrow>\n          <mi>e</mi>\n        </mrow>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mrow>\n      <mi>w</mi>\n      <mrow>\n        <mi>sin</mi>\n        <mrow>\n          <mo>(</mo>\n          <mi>d</mi>\n          <mo></mo>\n        </mrow>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mrow>\n      <mrow>\n        <mrow>\n          <mo></mo>\n          <msline/>\n          <mo>)</mo>\n        </mrow>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-025:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Int",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "a"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "s"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "f"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_three": null,
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "e"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "c"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "unaryFunctionSpacing": false
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msubsup>\n      <mo>&#x222b;</mo>\n      <mrow>\n        <mi>a</mi>\n        <mi>s</mi>\n      </mrow>\n      <mrow/>\n    </msubsup>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msubsup>\n      <mo>&#x222b;</mo>\n      <mrow>\n        <mi>d</mi>\n        <mi>f</mi>\n      </mrow>\n      <mrow>\n        <mi>e</mi>\n        <mo linebreak=\"newline\"/>\n        <mi>c</mi>\n      </mrow>\n    </msubsup>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-025-display-false:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Int",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "a"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "s"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "f"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_three": null,
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "e"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "c"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "unaryFunctionSpacing": false,
+        "displayStyle": false
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <msubsup>\n      <mo>&#x222b;</mo>\n      <mrow>\n        <mi>a</mi>\n        <mi>s</mi>\n      </mrow>\n      <mrow/>\n    </msubsup>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <msubsup>\n      <mo>&#x222b;</mo>\n      <mrow>\n        <mi>d</mi>\n        <mi>f</mi>\n      </mrow>\n      <mrow>\n        <mi>e</mi>\n        <mo linebreak=\"newline\"/>\n        <mi>c</mi>\n      </mrow>\n    </msubsup>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-062:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sum",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b8;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b3;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x2122;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xed3;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x2222;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xd3;"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "unaryFunctionSpacing": false
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <munder>\n      <mo>&#x2211;</mo>\n      <mrow>\n        <mi>&#x3b8;</mi>\n      </mrow>\n    </munder>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <munderover>\n        <mo/>\n        <mi>&#x3b3;</mi>\n        <mrow>\n          <mi>&#x2222;</mi>\n          <mo linebreak=\"newline\"/>\n          <mi>&#xd3;</mi>\n        </mrow>\n      </munderover>\n      <mrow>\n        <mi>&#x2122;</mi>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>&#xed3;</mi>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-062-display-false:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sum",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b8;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b3;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x2122;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xed3;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x2222;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xd3;"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "unaryFunctionSpacing": false,
+        "displayStyle": false
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <munder>\n      <mo>&#x2211;</mo>\n      <mrow>\n        <mi>&#x3b8;</mi>\n      </mrow>\n    </munder>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mrow>\n      <munderover>\n        <mo/>\n        <mi>&#x3b3;</mi>\n        <mrow>\n          <mi>&#x2222;</mi>\n          <mo linebreak=\"newline\"/>\n          <mi>&#xd3;</mi>\n        </mrow>\n      </munderover>\n      <mrow>\n        <mi>&#x2122;</mi>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mi>&#xed3;</mi>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-063:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Prod",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b8;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b3;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_three": null,
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x2222;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xd3;"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "unaryFunctionSpacing": false
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <munderover>\n      <mo>&#x220f;</mo>\n      <mrow>\n        <mi>&#x3b8;</mi>\n      </mrow>\n      <mrow>\n        <mi>&#x2222;</mi>\n        <mo linebreak=\"newline\"/>\n        <mi>&#xd3;</mi>\n      </mrow>\n    </munderover>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <munderover>\n      <mo/>\n      <mi>&#x3b3;</mi>\n      <mrow>\n        <mi>&#x2222;</mi>\n        <mo linebreak=\"newline\"/>\n        <mi>&#xd3;</mi>\n      </mrow>\n    </munderover>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-063-display-false:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Prod",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b8;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b3;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_three": null,
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x2222;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xd3;"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "unaryFunctionSpacing": false,
+        "displayStyle": false
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <munderover>\n      <mo>&#x220f;</mo>\n      <mrow>\n        <mi>&#x3b8;</mi>\n      </mrow>\n      <mrow>\n        <mi>&#x2222;</mi>\n        <mo linebreak=\"newline\"/>\n        <mi>&#xd3;</mi>\n      </mrow>\n    </munderover>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <munderover>\n      <mo/>\n      <mi>&#x3b3;</mi>\n      <mrow>\n        <mi>&#x2222;</mi>\n        <mo linebreak=\"newline\"/>\n        <mi>&#xd3;</mi>\n      </mrow>\n    </munderover>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-064:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Prod",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Mbox",
+                  "fields": {
+                    "parameter_one": "symmetric"
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Text",
+                        "fields": {
+                          "lang": null,
+                          "parameter_one": "symmetric"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xaab;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "node2"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "unaryFunctionSpacing": false
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <munderover>\n        <mo>&#x220f;</mo>\n        <mtext>symmetric</mtext>\n        <mtext>node2</mtext>\n      </munderover>\n      <mrow>\n        <mtext>symmetric</mtext>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>&#xaab;</mi>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-064-display-false:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Prod",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Mbox",
+                  "fields": {
+                    "parameter_one": "symmetric"
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Text",
+                        "fields": {
+                          "lang": null,
+                          "parameter_one": "symmetric"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xaab;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "node2"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "unaryFunctionSpacing": false,
+        "displayStyle": false
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mrow>\n      <munderover>\n        <mo>&#x220f;</mo>\n        <mtext>symmetric</mtext>\n        <mtext>node2</mtext>\n      </munderover>\n      <mrow>\n        <mtext>symmetric</mtext>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mi>&#xaab;</mi>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-069:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Oint",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b8;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b3;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x2122;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xed3;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x2222;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xd3;"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "unaryFunctionSpacing": false
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msub>\n      <mo>&#x222e;</mo>\n      <mrow>\n        <mi>&#x3b8;</mi>\n      </mrow>\n    </msub>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <msubsup>\n        <mo/>\n        <mi>&#x3b3;</mi>\n        <mrow>\n          <mi>&#x2222;</mi>\n          <mo linebreak=\"newline\"/>\n          <mi>&#xd3;</mi>\n        </mrow>\n      </msubsup>\n      <mrow>\n        <mi>&#x2122;</mi>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>&#xed3;</mi>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-069-display-false:mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Oint",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b8;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b3;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x2122;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xed3;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x2222;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xd3;"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "unaryFunctionSpacing": false,
+        "displayStyle": false
+      },
+      "writers": {
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <msub>\n      <mo>&#x222e;</mo>\n      <mrow>\n        <mi>&#x3b8;</mi>\n      </mrow>\n    </msub>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mrow>\n      <msubsup>\n        <mo/>\n        <mi>&#x3b3;</mi>\n        <mrow>\n          <mi>&#x2222;</mi>\n          <mo linebreak=\"newline\"/>\n          <mi>&#xd3;</mi>\n        </mrow>\n      </msubsup>\n      <mrow>\n        <mi>&#x2122;</mi>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mi>&#xed3;</mi>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-002:omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Sum",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "d"
+                            }
+                          },
+                          "parameter_three": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": false,
+                              "value": "3"
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": false,
+                              "value": "3"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Prod",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": false,
+                              "value": "3"
+                            }
+                          },
+                          "parameter_three": {
+                            "class": "Math::Formula",
+                            "fields": {
+                              "displaystyle": true,
+                              "left_right_wrapper": true,
+                              "value": [
+                                {
+                                  "class": "Math::Symbols::Symbol",
+                                  "fields": {
+                                    "value": "e"
+                                  }
+                                },
+                                {
+                                  "class": "Math::Function::Linebreak",
+                                  "fields": {
+                                    "attributes": {},
+                                    "parameter_one": null
+                                  }
+                                },
+                                {
+                                  "class": "Math::Symbols::Symbol",
+                                  "fields": {
+                                    "value": "w"
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "d"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Sin",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Function::Fenced",
+                      "fields": {
+                        "options": {},
+                        "parameter_one": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "("
+                          }
+                        },
+                        "parameter_three": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": ")"
+                          }
+                        },
+                        "parameter_two": [
+                          {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "d"
+                            }
+                          },
+                          {
+                            "class": "Math::Function::Linebreak",
+                            "fields": {
+                              "attributes": {},
+                              "parameter_one": null
+                            }
+                          },
+                          {
+                            "class": "Math::Function::Msline",
+                            "fields": {
+                              "parameter_one": null
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true
+      },
+      "writers": {
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:f>\n      <m:fPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:fPr>\n      <m:num>\n        <m:nary>\n          <m:naryPr>\n            <m:chr m:val=\"∑\"/>\n            <m:limLoc m:val=\"undOvr\"/>\n            <m:subHide m:val=\"0\"/>\n            <m:supHide m:val=\"0\"/>\n          </m:naryPr>\n          <m:sub>\n            <m:r>\n              <m:t>d</m:t>\n            </m:r>\n          </m:sub>\n          <m:sup>\n            <m:r>\n              <m:t>3</m:t>\n            </m:r>\n          </m:sup>\n          <m:e>\n            <m:r>\n              <m:t>3</m:t>\n            </m:r>\n          </m:e>\n        </m:nary>\n      </m:num>\n      <m:den>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:den>\n    </m:f>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:f>\n      <m:fPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:fPr>\n      <m:num>\n        <m:nary>\n          <m:naryPr>\n            <m:chr m:val=\"∏\"/>\n            <m:limLoc m:val=\"undOvr\"/>\n            <m:subHide m:val=\"0\"/>\n            <m:supHide m:val=\"0\"/>\n          </m:naryPr>\n          <m:sub>\n            <m:r>\n              <m:t>3</m:t>\n            </m:r>\n          </m:sub>\n          <m:sup>\n            <m:r>\n              <m:t>d</m:t>\n            </m:r>\n          </m:sup>\n          <m:e>\n            <m:r>\n              <m:t>e</m:t>\n            </m:r>\n          </m:e>\n        </m:nary>\n      </m:num>\n      <m:den>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:den>\n    </m:f>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:f>\n      <m:fPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:fPr>\n      <m:num>\n        <m:r>\n          <m:t>w</m:t>\n        </m:r>\n      </m:num>\n      <m:den>\n        <m:func>\n          <m:funcPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:funcPr>\n          <m:fName>\n            <m:r>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n              </w:rPr>\n              <m:t>sin</m:t>\n            </m:r>\n          </m:fName>\n          <m:e>\n            <m:d>\n              <m:dPr>\n                <m:begChr m:val=\"(\"/>\n                <m:sepChr m:val=\"\"/>\n              </m:dPr>\n              <m:e>\n                <m:r>\n                  <m:t>d</m:t>\n                </m:r>\n              </m:e>\n            </m:d>\n          </m:e>\n        </m:func>\n      </m:den>\n    </m:f>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:f>\n      <m:fPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:fPr>\n      <m:num>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:num>\n      <m:den>\n        <m:d>\n          <m:dPr>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e/>\n        </m:d>\n      </m:den>\n    </m:f>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-002-display-false:omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Sum",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "d"
+                            }
+                          },
+                          "parameter_three": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": false,
+                              "value": "3"
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": false,
+                              "value": "3"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Prod",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": false,
+                              "value": "3"
+                            }
+                          },
+                          "parameter_three": {
+                            "class": "Math::Formula",
+                            "fields": {
+                              "displaystyle": true,
+                              "left_right_wrapper": true,
+                              "value": [
+                                {
+                                  "class": "Math::Symbols::Symbol",
+                                  "fields": {
+                                    "value": "e"
+                                  }
+                                },
+                                {
+                                  "class": "Math::Function::Linebreak",
+                                  "fields": {
+                                    "attributes": {},
+                                    "parameter_one": null
+                                  }
+                                },
+                                {
+                                  "class": "Math::Symbols::Symbol",
+                                  "fields": {
+                                    "value": "w"
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "d"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Sin",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Function::Fenced",
+                      "fields": {
+                        "options": {},
+                        "parameter_one": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "("
+                          }
+                        },
+                        "parameter_three": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": ")"
+                          }
+                        },
+                        "parameter_two": [
+                          {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "d"
+                            }
+                          },
+                          {
+                            "class": "Math::Function::Linebreak",
+                            "fields": {
+                              "attributes": {},
+                              "parameter_one": null
+                            }
+                          },
+                          {
+                            "class": "Math::Function::Msline",
+                            "fields": {
+                              "parameter_one": null
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "displayStyle": false
+      },
+      "writers": {
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:f>\n      <m:fPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:fPr>\n      <m:num>\n        <m:nary>\n          <m:naryPr>\n            <m:chr m:val=\"∑\"/>\n            <m:limLoc m:val=\"undOvr\"/>\n            <m:subHide m:val=\"0\"/>\n            <m:supHide m:val=\"0\"/>\n          </m:naryPr>\n          <m:sub>\n            <m:r>\n              <m:t>d</m:t>\n            </m:r>\n          </m:sub>\n          <m:sup>\n            <m:r>\n              <m:t>3</m:t>\n            </m:r>\n          </m:sup>\n          <m:e>\n            <m:r>\n              <m:t>3</m:t>\n            </m:r>\n          </m:e>\n        </m:nary>\n      </m:num>\n      <m:den>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:den>\n    </m:f>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:f>\n      <m:fPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:fPr>\n      <m:num>\n        <m:nary>\n          <m:naryPr>\n            <m:chr m:val=\"∏\"/>\n            <m:limLoc m:val=\"undOvr\"/>\n            <m:subHide m:val=\"0\"/>\n            <m:supHide m:val=\"0\"/>\n          </m:naryPr>\n          <m:sub>\n            <m:r>\n              <m:t>3</m:t>\n            </m:r>\n          </m:sub>\n          <m:sup>\n            <m:r>\n              <m:t>d</m:t>\n            </m:r>\n          </m:sup>\n          <m:e>\n            <m:r>\n              <m:t>e</m:t>\n            </m:r>\n          </m:e>\n        </m:nary>\n      </m:num>\n      <m:den>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:den>\n    </m:f>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:f>\n      <m:fPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:fPr>\n      <m:num>\n        <m:r>\n          <m:t>w</m:t>\n        </m:r>\n      </m:num>\n      <m:den>\n        <m:func>\n          <m:funcPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:funcPr>\n          <m:fName>\n            <m:r>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n              </w:rPr>\n              <m:t>sin</m:t>\n            </m:r>\n          </m:fName>\n          <m:e>\n            <m:d>\n              <m:dPr>\n                <m:begChr m:val=\"(\"/>\n                <m:sepChr m:val=\"\"/>\n              </m:dPr>\n              <m:e>\n                <m:r>\n                  <m:t>d</m:t>\n                </m:r>\n              </m:e>\n            </m:d>\n          </m:e>\n        </m:func>\n      </m:den>\n    </m:f>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:f>\n      <m:fPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:fPr>\n      <m:num>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:num>\n      <m:den>\n        <m:d>\n          <m:dPr>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e/>\n        </m:d>\n      </m:den>\n    </m:f>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-025:omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Int",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "a"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "s"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "f"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_three": null,
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "e"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "c"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true
+      },
+      "writers": {
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:nary>\n      <m:naryPr>\n        <m:chr m:val=\"∫\"/>\n        <m:limLoc m:val=\"subSup\"/>\n        <m:subHide m:val=\"0\"/>\n        <m:supHide m:val=\"1\"/>\n      </m:naryPr>\n      <m:sub>\n        <m:r>\n          <m:t>a</m:t>\n        </m:r>\n        <m:r>\n          <m:t>s</m:t>\n        </m:r>\n      </m:sub>\n      <m:sup>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:sup>\n      <m:e>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:e>\n    </m:nary>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:nary>\n      <m:naryPr>\n        <m:chr m:val=\"\"/>\n        <m:limLoc m:val=\"subSup\"/>\n        <m:subHide m:val=\"0\"/>\n        <m:supHide m:val=\"0\"/>\n      </m:naryPr>\n      <m:sub>\n        <m:r>\n          <m:t>d</m:t>\n        </m:r>\n        <m:r>\n          <m:t>f</m:t>\n        </m:r>\n      </m:sub>\n      <m:sup>\n        <m:r>\n          <m:t>e</m:t>\n        </m:r>\n        <m:r>\n          <m:t>c</m:t>\n        </m:r>\n      </m:sup>\n      <m:e>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:e>\n    </m:nary>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-025-display-false:omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Int",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "a"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "s"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "f"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_three": null,
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "e"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "c"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "displayStyle": false
+      },
+      "writers": {
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:nary>\n      <m:naryPr>\n        <m:chr m:val=\"∫\"/>\n        <m:limLoc m:val=\"subSup\"/>\n        <m:subHide m:val=\"0\"/>\n        <m:supHide m:val=\"1\"/>\n      </m:naryPr>\n      <m:sub>\n        <m:r>\n          <m:t>a</m:t>\n        </m:r>\n        <m:r>\n          <m:t>s</m:t>\n        </m:r>\n      </m:sub>\n      <m:sup>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:sup>\n      <m:e>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:e>\n    </m:nary>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:nary>\n      <m:naryPr>\n        <m:chr m:val=\"\"/>\n        <m:limLoc m:val=\"subSup\"/>\n        <m:subHide m:val=\"0\"/>\n        <m:supHide m:val=\"0\"/>\n      </m:naryPr>\n      <m:sub>\n        <m:r>\n          <m:t>d</m:t>\n        </m:r>\n        <m:r>\n          <m:t>f</m:t>\n        </m:r>\n      </m:sub>\n      <m:sup>\n        <m:r>\n          <m:t>e</m:t>\n        </m:r>\n        <m:r>\n          <m:t>c</m:t>\n        </m:r>\n      </m:sup>\n      <m:e>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:e>\n    </m:nary>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-062:omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sum",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b8;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b3;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x2122;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xed3;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x2222;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xd3;"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true
+      },
+      "writers": {
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:nary>\n      <m:naryPr>\n        <m:chr m:val=\"∑\"/>\n        <m:limLoc m:val=\"undOvr\"/>\n        <m:subHide m:val=\"0\"/>\n        <m:supHide m:val=\"1\"/>\n      </m:naryPr>\n      <m:sub>\n        <m:r>\n          <m:t>&#x3b8;</m:t>\n        </m:r>\n      </m:sub>\n      <m:sup>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:sup>\n      <m:e>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:e>\n    </m:nary>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:nary>\n      <m:naryPr>\n        <m:chr m:val=\"\"/>\n        <m:limLoc m:val=\"undOvr\"/>\n        <m:subHide m:val=\"0\"/>\n        <m:supHide m:val=\"0\"/>\n      </m:naryPr>\n      <m:sub>\n        <m:r>\n          <m:t>&#x3b3;</m:t>\n        </m:r>\n      </m:sub>\n      <m:sup>\n        <m:r>\n          <m:t>&#x2222;</m:t>\n        </m:r>\n        <m:r>\n          <m:t>&#xd3;</m:t>\n        </m:r>\n      </m:sup>\n      <m:e>\n        <m:r>\n          <m:t>&#x2122;</m:t>\n        </m:r>\n      </m:e>\n    </m:nary>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:r>\n      <m:t>&#xed3;</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-062-display-false:omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sum",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b8;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b3;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x2122;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xed3;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x2222;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xd3;"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "displayStyle": false
+      },
+      "writers": {
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:nary>\n      <m:naryPr>\n        <m:chr m:val=\"∑\"/>\n        <m:limLoc m:val=\"undOvr\"/>\n        <m:subHide m:val=\"0\"/>\n        <m:supHide m:val=\"1\"/>\n      </m:naryPr>\n      <m:sub>\n        <m:r>\n          <m:t>&#x3b8;</m:t>\n        </m:r>\n      </m:sub>\n      <m:sup>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:sup>\n      <m:e>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:e>\n    </m:nary>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:nary>\n      <m:naryPr>\n        <m:chr m:val=\"\"/>\n        <m:limLoc m:val=\"undOvr\"/>\n        <m:subHide m:val=\"0\"/>\n        <m:supHide m:val=\"0\"/>\n      </m:naryPr>\n      <m:sub>\n        <m:r>\n          <m:t>&#x3b3;</m:t>\n        </m:r>\n      </m:sub>\n      <m:sup>\n        <m:r>\n          <m:t>&#x2222;</m:t>\n        </m:r>\n        <m:r>\n          <m:t>&#xd3;</m:t>\n        </m:r>\n      </m:sup>\n      <m:e>\n        <m:r>\n          <m:t>&#x2122;</m:t>\n        </m:r>\n      </m:e>\n    </m:nary>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:r>\n      <m:t>&#xed3;</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-063:omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Prod",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b8;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b3;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_three": null,
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x2222;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xd3;"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true
+      },
+      "writers": {
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:nary>\n      <m:naryPr>\n        <m:chr m:val=\"∏\"/>\n        <m:limLoc m:val=\"undOvr\"/>\n        <m:subHide m:val=\"0\"/>\n        <m:supHide m:val=\"0\"/>\n      </m:naryPr>\n      <m:sub>\n        <m:r>\n          <m:t>&#x3b8;</m:t>\n        </m:r>\n      </m:sub>\n      <m:sup>\n        <m:r>\n          <m:t>&#x2222;</m:t>\n        </m:r>\n        <m:r>\n          <m:t>&#xd3;</m:t>\n        </m:r>\n      </m:sup>\n      <m:e>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:e>\n    </m:nary>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:nary>\n      <m:naryPr>\n        <m:chr m:val=\"\"/>\n        <m:limLoc m:val=\"undOvr\"/>\n        <m:subHide m:val=\"0\"/>\n        <m:supHide m:val=\"0\"/>\n      </m:naryPr>\n      <m:sub>\n        <m:r>\n          <m:t>&#x3b3;</m:t>\n        </m:r>\n      </m:sub>\n      <m:sup>\n        <m:r>\n          <m:t>&#x2222;</m:t>\n        </m:r>\n        <m:r>\n          <m:t>&#xd3;</m:t>\n        </m:r>\n      </m:sup>\n      <m:e>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:e>\n    </m:nary>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-063-display-false:omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Prod",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b8;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b3;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_three": null,
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x2222;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xd3;"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "displayStyle": false
+      },
+      "writers": {
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:nary>\n      <m:naryPr>\n        <m:chr m:val=\"∏\"/>\n        <m:limLoc m:val=\"undOvr\"/>\n        <m:subHide m:val=\"0\"/>\n        <m:supHide m:val=\"0\"/>\n      </m:naryPr>\n      <m:sub>\n        <m:r>\n          <m:t>&#x3b8;</m:t>\n        </m:r>\n      </m:sub>\n      <m:sup>\n        <m:r>\n          <m:t>&#x2222;</m:t>\n        </m:r>\n        <m:r>\n          <m:t>&#xd3;</m:t>\n        </m:r>\n      </m:sup>\n      <m:e>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:e>\n    </m:nary>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:nary>\n      <m:naryPr>\n        <m:chr m:val=\"\"/>\n        <m:limLoc m:val=\"undOvr\"/>\n        <m:subHide m:val=\"0\"/>\n        <m:supHide m:val=\"0\"/>\n      </m:naryPr>\n      <m:sub>\n        <m:r>\n          <m:t>&#x3b3;</m:t>\n        </m:r>\n      </m:sub>\n      <m:sup>\n        <m:r>\n          <m:t>&#x2222;</m:t>\n        </m:r>\n        <m:r>\n          <m:t>&#xd3;</m:t>\n        </m:r>\n      </m:sup>\n      <m:e>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:e>\n    </m:nary>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-064:omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Prod",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Mbox",
+                  "fields": {
+                    "parameter_one": "symmetric"
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Text",
+                        "fields": {
+                          "lang": null,
+                          "parameter_one": "symmetric"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xaab;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "node2"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true
+      },
+      "writers": {
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:nary>\n      <m:naryPr>\n        <m:chr m:val=\"∏\"/>\n        <m:limLoc m:val=\"undOvr\"/>\n        <m:subHide m:val=\"0\"/>\n        <m:supHide m:val=\"0\"/>\n      </m:naryPr>\n      <m:sub>\n        <m:t>symmetric</m:t>\n      </m:sub>\n      <m:sup>\n        <m:r>\n          <m:rPr>\n            <m:sty m:val=\"p\"/>\n          </m:rPr>\n          <m:t>node2</m:t>\n        </m:r>\n      </m:sup>\n      <m:e>\n        <m:r>\n          <m:rPr>\n            <m:sty m:val=\"p\"/>\n          </m:rPr>\n          <m:t>symmetric</m:t>\n        </m:r>\n      </m:e>\n    </m:nary>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:r>\n      <m:t>&#xaab;</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-064-display-false:omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Prod",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Mbox",
+                  "fields": {
+                    "parameter_one": "symmetric"
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Text",
+                        "fields": {
+                          "lang": null,
+                          "parameter_one": "symmetric"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xaab;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "node2"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "displayStyle": false
+      },
+      "writers": {
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:nary>\n      <m:naryPr>\n        <m:chr m:val=\"∏\"/>\n        <m:limLoc m:val=\"undOvr\"/>\n        <m:subHide m:val=\"0\"/>\n        <m:supHide m:val=\"0\"/>\n      </m:naryPr>\n      <m:sub>\n        <m:t>symmetric</m:t>\n      </m:sub>\n      <m:sup>\n        <m:r>\n          <m:rPr>\n            <m:sty m:val=\"p\"/>\n          </m:rPr>\n          <m:t>node2</m:t>\n        </m:r>\n      </m:sup>\n      <m:e>\n        <m:r>\n          <m:rPr>\n            <m:sty m:val=\"p\"/>\n          </m:rPr>\n          <m:t>symmetric</m:t>\n        </m:r>\n      </m:e>\n    </m:nary>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:r>\n      <m:t>&#xaab;</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-069:omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Oint",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b8;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b3;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x2122;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xed3;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x2222;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xd3;"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true
+      },
+      "writers": {
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:nary>\n      <m:naryPr>\n        <m:chr m:val=\"∮\"/>\n        <m:limLoc m:val=\"subSup\"/>\n        <m:subHide m:val=\"0\"/>\n        <m:supHide m:val=\"1\"/>\n      </m:naryPr>\n      <m:sub>\n        <m:r>\n          <m:t>&#x3b8;</m:t>\n        </m:r>\n      </m:sub>\n      <m:sup>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:sup>\n      <m:e>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:e>\n    </m:nary>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:nary>\n      <m:naryPr>\n        <m:chr m:val=\"\"/>\n        <m:limLoc m:val=\"subSup\"/>\n        <m:subHide m:val=\"0\"/>\n        <m:supHide m:val=\"0\"/>\n      </m:naryPr>\n      <m:sub>\n        <m:r>\n          <m:t>&#x3b3;</m:t>\n        </m:r>\n      </m:sub>\n      <m:sup>\n        <m:r>\n          <m:t>&#x2222;</m:t>\n        </m:r>\n        <m:r>\n          <m:t>&#xd3;</m:t>\n        </m:r>\n      </m:sup>\n      <m:e>\n        <m:r>\n          <m:t>&#x2122;</m:t>\n        </m:r>\n      </m:e>\n    </m:nary>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:r>\n      <m:t>&#xed3;</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "line-break-069-display-false:omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Oint",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b8;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x3b3;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x2122;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xed3;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x2222;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#xd3;"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "splitOnLinebreak": true,
+        "displayStyle": false
+      },
+      "writers": {
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:nary>\n      <m:naryPr>\n        <m:chr m:val=\"∮\"/>\n        <m:limLoc m:val=\"subSup\"/>\n        <m:subHide m:val=\"0\"/>\n        <m:supHide m:val=\"1\"/>\n      </m:naryPr>\n      <m:sub>\n        <m:r>\n          <m:t>&#x3b8;</m:t>\n        </m:r>\n      </m:sub>\n      <m:sup>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:sup>\n      <m:e>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:e>\n    </m:nary>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:nary>\n      <m:naryPr>\n        <m:chr m:val=\"\"/>\n        <m:limLoc m:val=\"subSup\"/>\n        <m:subHide m:val=\"0\"/>\n        <m:supHide m:val=\"0\"/>\n      </m:naryPr>\n      <m:sub>\n        <m:r>\n          <m:t>&#x3b3;</m:t>\n        </m:r>\n      </m:sub>\n      <m:sup>\n        <m:r>\n          <m:t>&#x2222;</m:t>\n        </m:r>\n        <m:r>\n          <m:t>&#xd3;</m:t>\n        </m:r>\n      </m:sup>\n      <m:e>\n        <m:r>\n          <m:t>&#x2122;</m:t>\n        </m:r>\n      </m:e>\n    </m:nary>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:r>\n      <m:t>&#xed3;</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    }
+  ]
+}

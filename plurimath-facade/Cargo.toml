@@ -1,0 +1,36 @@
+[package]
+name = "plurimath-facade"
+version = "0.1.0"
+edition = "2021"
+license = "BSD-2-Clause"
+publish = false
+[lib]
+name = "plurimath_facade"
+crate-type = ["rlib", "cdylib"]
+[dependencies]
+plurimath-json = { path = "transport" }
+# DECISION for root: amath `models` and lutaml-rs 945e6ad pin serde =1.0.219 exactly.
+serde = "=1.0.219"
+regex = "1"
+# PMA (dialect P) typed model: public amath-rs 16195ed (fast-forward of d176af8; dialect L runtime unchanged).
+amath = { package = "plurimath-amath", git = "https://github.com/plurimath/amath-rs", rev = "16195ed52496d5ddca84552eb3f20ed69a87104a", features = ["models"] }
+serde_json = { version = "=1.0.140", features = ["arbitrary_precision", "preserve_order", "unbounded_depth", "raw_value"] }
+latexmath = { path = "../../compatibility/latexmath-rs" }
+umath = { package = "plurimath-umath", path = "../../compatibility/umath-rs" }
+moxml = { git = "https://github.com/lutaml/moxml-rs", rev = "c55a7ecf60764d75a7a0ef54f0e483ec40df4b73" }
+
+asciiunits = { path = "../../units-native/asciiunits-rs" }
+unitsdb-rs = { path = "../pma-dependencies/unitsdb-rs" }
+
+parsanol = { git = "https://github.com/parsanol/parsanol-rs", rev = "20d5e6cebcade3cf2111a00a7ef3f5b69d673481" }
+
+[profile.dev]
+debug = 0
+incremental = false
+
+[patch."https://github.com/parsanol/parsanol-rs"]
+parsanol = { path = "../../compatibility/parsanol-rs-html/parsanol" }
+
+# Local, qualified source candidate; no published resolver claim.
+[patch."https://github.com/lutaml/moxml-rs"]
+moxml = { path = "../../xml-recovery/moxml-rs" }

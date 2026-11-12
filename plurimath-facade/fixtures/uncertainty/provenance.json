@@ -1,0 +1,38 @@
+{
+  "profile": "uncertainty-source-writers-v1",
+  "source_repository": "https://github.com/plurimath/plurimath",
+  "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "source_files": {
+    "lib/plurimath/math/function/uncertainty.rb": "c558519097f56a6e67cb7873cd9e33b12317b628db4fb20bd2cb2fed42416199",
+    "lib/plurimath/math/formula.rb": "11561b5d7c6f897f6f8c90acb746275b341921bba12af724238cf631ed96b28f",
+    "lib/plurimath/math/number.rb": "016df0edb4c52f6eb59fcea3b407c91a3f619ab895e0fa61e6664cd6f7db2b15"
+  },
+  "ruby": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+  "corpora": {
+    "pma27.json": {
+      "rows": 27,
+      "outcomes": 162,
+      "origin": "unchanged PMA source oracle"
+    },
+    "independent.json": {
+      "rows": 86,
+      "outcomes": 516,
+      "outputs": 417,
+      "source_exceptions": 99
+    },
+    "cloning.json": {
+      "rows": 19,
+      "outcomes": 38
+    }
+  },
+  "oracle_serializer": "CorpusGenerator.serialize_node",
+  "native_options_mapping": {
+    "text": "source options Hash maps to request.options.format",
+    "xml": "public Ruby keyword display_style maps to displayStyle; split_on_linebreak maps to splitOnLinebreak; intent remains intent"
+  },
+  "limits": [
+    "Canonical common-IR profiles only; existing sensitive RubyValuesV1 admission gates remain unchanged.",
+    "Uncertainty constructor validation is reused procedurally only at the source cloned_objects split boundary.",
+    "Unsupported invalid-object inspection remains an explicit refusal; no Ruby object addresses are synthesized."
+  ]
+}

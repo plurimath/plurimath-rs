@@ -1,0 +1,83 @@
+{
+  "profile": "source-fenced-procedures/1",
+  "source": {
+    "repository": "https://github.com/plurimath/plurimath",
+    "commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+    "files": {
+      "lib/plurimath/math/function/fenced.rb": "1ab4947a3a16db7cf88ccbe4323bc36ab50e30dd30f68ae7f2b0d2e67bebda59",
+      "lib/plurimath/math/function/frac.rb": "87edbae6bcec05f6a419159c6148e56c2d6beb4e8d0291e949ef99c45878afbd",
+      "lib/plurimath/math/function/linebreak.rb": "1c78a91263bc7c65ee4c345320fc79b4962233d3b360a0705570f0d48f571f9a",
+      "lib/plurimath/math/function/unary_function.rb": "fba8f6c799419098f4b7b63b3ff1914022f767d9321e85df16e967ccfd9e8ca6",
+      "lib/plurimath/math/core.rb": "e541684dbc5c53fbf8b3c30e0ab2e28c6036cbaa9429ba1caedcf1de9192691d",
+      "lib/plurimath/math/formula.rb": "11561b5d7c6f897f6f8c90acb746275b341921bba12af724238cf631ed96b28f",
+      "lib/plurimath/math/symbols/symbol.rb": "52f7b190ecc6f6ce7ede96c9a76ef3c610f301865593677fe510421109ef7cfe",
+      "lib/plurimath/utility/intent_encoding.rb": "4e7fe9e3126d6d95f106efdfc4fb651c875965180b591c1ca7e1aa62d21c4d48",
+      "lib/plurimath/unicode_math/constants.rb": "a6a28c113299e9fc6d3cd66aeb70c01ad5d455f7e9c1b3bf2b211b9a8a1d043b"
+    }
+  },
+  "runtime": {
+    "ruby": "4.0.1",
+    "xml_engine": "Ox",
+    "number_formatter": null
+  },
+  "producers": {
+    "export-fences-context.rb": "d2c5389d221fb062f738dd0909dceb31229f31bc43361e391cf0dd7c600fafad",
+    "export-fences-callers.rb": "500e9ef5ccc294f23da05fab3979cd06b80b3d08ce3ed7cb924db7d159eb532a",
+    "export-fences-lines.rb": "a947fda5506fcc0d8497687230ac1a78dc6aebb888dacbea80ec5abcd59b151b",
+    "export-fences.rb": "58b0ddb5d527f807ad5c7804737562e717db526928c999a28edc7050db9a20e9"
+  },
+  "serializer": {
+    "path": "scripts/generate-corpus.rb",
+    "sha256": "82630cc145295b12b23443c853b5d2841cd7e293c607092409a050e67fc27868"
+  },
+  "payloads": {
+    "caller-reference.json": "0d944b752152e0a0493e0960b43243c7cacc7d01ba57a481f48ccbca580ca82f",
+    "independent-reference.json": "4f6acaa139bf543acb76972f4f2bf12535d5f03719bb7b9e83718f502e89843b",
+    "context-reference.json": "4416e6ae1848dae0a6f127cc578c5208ebaaa7ba7e07bf12bd85486fe3635bfe",
+    "source-reference.json": "d017af1801738a9becb5f94dfdfdeb7ee77248182bdb56ff3f1646eea3904fc3",
+    "linebreak-reference.json": "31857e4d6c60173caa80791b752d29eebc2c675bf5e218215c869716f7dd01d1"
+  },
+  "glyph_metadata_sha256": "1390d89f2246e7984eaae8686a7aa33e0da4748e94517cec66b277eec70def96",
+  "profiles": {
+    "default": {
+      "models": 562,
+      "observations": 3372
+    },
+    "independent": {
+      "models": 139,
+      "observations": 834
+    },
+    "contexts": {
+      "models": 176,
+      "observations": 176
+    },
+    "caller_fragments": {
+      "models": 6,
+      "observations": 6
+    },
+    "linebreaking": {
+      "writer_observations": 156,
+      "state_observations": 156
+    }
+  },
+  "procedures": [
+    "Different nullable delimiter defaults in ASCII, HTML, LaTeX, Unicode and XML.",
+    "Mini Unicode source paths, full-value source symbol maps and leading-mini Fenced Formula delegation.",
+    "Vert body wrapping; prefix key presence and source minsize String#to_f/log/round conversion.",
+    "Node delimiter attribute order and nil attribute spelling; caller OMML separator precedence.",
+    "Choose key presence in Unicode versus flag truthiness in MathML binomial intent.",
+    "Direct-only linebreaking, original closing/continuation opening delimiter clearing, tail flattening and pending-object replacement."
+  ],
+  "scope": [
+    "The common source writer context is propagated unchanged to every XML child.",
+    "Source refusal classes are matched; exception message bytes are not qualified.",
+    "Default/no-formatter profile only; unsupported child renderer/formatter capabilities remain explicit native refusals.",
+    "Glyph tables are source constants, never a whole-input/output lookup."
+  ],
+  "determinism": {
+    "default_oracle_TZ_locale_cwd_perturbation": "byte-identical reference-initial.json and reference-default-sealed.json",
+    "guarded_clean_source_rerun": "byte-identical default oracle; linebreak expected rows/states unchanged"
+  },
+  "integration_base": "2666e31268eeb0b6fa1cb2ff331d01e113aa5a5c",
+  "guard": "Generators refuse a dirty/wrong-head Ruby source and Fenced methods loaded outside it."
+}

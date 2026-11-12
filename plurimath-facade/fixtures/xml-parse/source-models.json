@@ -1,0 +1,536 @@
+{
+  "schema": "plurimath-native-xml-source-models/1",
+  "testsuite_head": "4d3f6328540578c58212e675553d68441c13e716",
+  "selection": "Shortest source cases exercising each principal XML conversion constructor, selected from independently matched common-model oracle records.",
+  "cases": [
+    {
+      "id": "mathml-fractions-012",
+      "input": "<math>\n  <merror>\n    <mtext>DivisionByZero:&#160;</mtext>\n    <mfrac>\n      <mi>x</mi>\n      <mn>0</mn>\n    </mfrac>\n  </merror>\n</math>\n",
+      "input_format": "mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "<math>\n  <merror>\n    <mtext>DivisionByZero:&#160;</mtext>\n    <mfrac>\n      <mi>x</mi>\n      <mn>0</mn>\n    </mfrac>\n  </merror>\n</math>\n",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Merror",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Text",
+                        "fields": {
+                          "lang": null,
+                          "parameter_one": "DivisionByZero:&#xa0;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Frac",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "x"
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": false,
+                              "value": "0"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "source_path": "stages/mathml/generations/000002/payloads/fractions.yaml",
+      "source_sha256": "46bc29a78abc749d68a1454f91661c9e37901d2b36dbfbf4b9ec0c4a3f803140"
+    },
+    {
+      "id": "mathml-fences-005",
+      "input": "<math>\n  <mfenced>\n    <mi>x</mi>\n    <mn>1</mn>\n  </mfenced>\n</math>\n",
+      "input_format": "mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "<math>\n  <mfenced>\n    <mi>x</mi>\n    <mn>1</mn>\n  </mfenced>\n</math>\n",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": [
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "x"
+                    }
+                  },
+                  {
+                    "class": "Math::Number",
+                    "fields": {
+                      "base": null,
+                      "mini_sub_sized": false,
+                      "mini_sup_sized": false,
+                      "value": "1"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "source_path": "stages/mathml/generations/000002/payloads/fences.yaml",
+      "source_sha256": "6db69077adff35aa2f4e69fc5beeea2898fa10c8e1a351c29614af641efc969b"
+    },
+    {
+      "id": "mathml-tables-001",
+      "input": "<math xmlns='http://www.w3.org/1998/Math/MathML'>\n  <msubsup>\n    <mo>a</mo>\n    <mtable>\n      <mtr>\n        <mtd>\n          <mn>1</mn>\n        </mtd>\n      </mtr>\n    </mtable>\n    <mtext>4 terms</mtext>\n  </msubsup>\n</math>\n",
+      "input_format": "mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "<math xmlns='http://www.w3.org/1998/Math/MathML'>\n  <msubsup>\n    <mo>a</mo>\n    <mtable>\n      <mtr>\n        <mtd>\n          <mn>1</mn>\n        </mtd>\n      </mtr>\n    </mtable>\n    <mtext>4 terms</mtext>\n  </msubsup>\n</math>\n",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::PowerBase",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "4 terms"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Table",
+                  "fields": {
+                    "close_paren": null,
+                    "open_paren": null,
+                    "options": {},
+                    "value": [
+                      {
+                        "class": "Math::Function::Tr",
+                        "fields": {
+                          "parameter_one": [
+                            {
+                              "class": "Math::Function::Td",
+                              "fields": {
+                                "parameter_one": [
+                                  {
+                                    "class": "Math::Number",
+                                    "fields": {
+                                      "base": null,
+                                      "mini_sub_sized": false,
+                                      "mini_sup_sized": false,
+                                      "value": "1"
+                                    }
+                                  }
+                                ],
+                                "parameter_two": null
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "source_path": "stages/mathml/generations/000002/payloads/tables.yaml",
+      "source_sha256": "688839a7ff62d6266668726f025956db5b72d659f75bfb5b70d40bc87f341681"
+    },
+    {
+      "id": "mathml-partial-001",
+      "input": "<math xmlns='http://www.w3.org/1998/Math/MathML'>\n  <msqrt/>\n</math>\n",
+      "input_format": "mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "<math xmlns='http://www.w3.org/1998/Math/MathML'>\n  <msqrt/>\n</math>\n",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sqrt",
+              "fields": {
+                "parameter_one": null
+              }
+            }
+          ]
+        }
+      },
+      "source_path": "stages/mathml/generations/000002/payloads/partial-render.yaml",
+      "source_sha256": "a71e2d8c46a7c61608671f17a07c9ab57f749251f748d04fb046de2fe17f6e57"
+    },
+    {
+      "id": "mathml-over-under-018",
+      "input": "<math>\n  <msub>\n    <mrow>\n      <mover accent=\"true\">\n        <mrow>\n          <mi>e</mi>\n        </mrow>\n        <mo>^</mo>\n      </mover>\n    </mrow>\n    <mrow>\n      <mi>r</mi>\n    </mrow>\n  </msub>\n</math>\n",
+      "input_format": "mathml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "<math>\n  <msub>\n    <mrow>\n      <mover accent=\"true\">\n        <mrow>\n          <mi>e</mi>\n        </mrow>\n        <mo>^</mo>\n      </mover>\n    </mrow>\n    <mrow>\n      <mi>r</mi>\n    </mrow>\n  </msub>\n</math>\n",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Base",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Hat",
+                  "fields": {
+                    "attributes": {
+                      "accent": true
+                    },
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "e"
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "r"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "source_path": "stages/mathml/generations/000002/payloads/over-under.yaml",
+      "source_sha256": "527aa46321fe8e3113002ccd3cfbbad5d27e464ac6dd298f9731cc1830798cde"
+    },
+    {
+      "id": "omml-fractions-007",
+      "input": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\">\n  <m:oMathParaPr/>\n  <m:oMath>\n    <m:f>\n      <m:fPr/>\n      <m:num>\n        <m:argPr/>\n        <m:r><m:lastRenderedPageBreak/><m:t>x</m:t></m:r>\n        <m:ctrlPr/>\n      </m:num>\n      <m:den>\n        <m:r><m:t>y</m:t></m:r>\n      </m:den>\n    </m:f>\n    <m:box>\n      <m:boxPr/>\n      <m:e>\n        <m:r><m:t>2</m:t></m:r>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n",
+      "input_format": "omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\">\n  <m:oMathParaPr/>\n  <m:oMath>\n    <m:f>\n      <m:fPr/>\n      <m:num>\n        <m:argPr/>\n        <m:r><m:lastRenderedPageBreak/><m:t>x</m:t></m:r>\n        <m:ctrlPr/>\n      </m:num>\n      <m:den>\n        <m:r><m:t>y</m:t></m:r>\n      </m:den>\n    </m:f>\n    <m:box>\n      <m:boxPr/>\n      <m:e>\n        <m:r><m:t>2</m:t></m:r>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": "omml",
+                    "parameter_one": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": "omml",
+                    "parameter_one": "y"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      },
+      "source_path": "stages/omml/generations/000002/payloads/fractions.yaml",
+      "source_sha256": "c2ec27f1c106fc15533b6d303aa3bb93da0230b6324832f423e855d41887f699"
+    },
+    {
+      "id": "omml-partial-003",
+      "input": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:nary>\n      <m:naryPr>\n        <m:limLoc m:val=\"subSup\"/>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:naryPr>\n      <m:sub>\n        <m:r>\n          <m:t>2</m:t>\n        </m:r>\n      </m:sub>\n      <m:sup>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:sup>\n      <m:e>\n        <m:r>\n          <m:t>3</m:t>\n        </m:r>\n      </m:e>\n    </m:nary>\n  </m:oMath>\n</m:oMathPara>\n",
+      "input_format": "omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:nary>\n      <m:naryPr>\n        <m:limLoc m:val=\"subSup\"/>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:naryPr>\n      <m:sub>\n        <m:r>\n          <m:t>2</m:t>\n        </m:r>\n      </m:sub>\n      <m:sup>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:sup>\n      <m:e>\n        <m:r>\n          <m:t>3</m:t>\n        </m:r>\n      </m:e>\n    </m:nary>\n  </m:oMath>\n</m:oMathPara>\n",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Nary",
+              "fields": {
+                "options": {
+                  "type": "subSup"
+                },
+                "parameter_four": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "3"
+                  }
+                },
+                "parameter_one": {
+                  "class": "Math::Symbols::Int",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "source_path": "stages/omml/generations/000002/payloads/partial-render.yaml",
+      "source_sha256": "1720fec4131c0dba1785b440fced3b0d1904800ae56f9132c9037377f1e14361"
+    },
+    {
+      "id": "omml-delimiters-001",
+      "input": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:d>\n      <m:dPr>\n        <m:sepChr m:val=\"\"/>\n      </m:dPr>\n      <m:e>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:e>\n    </m:d>\n  </m:oMath>\n</m:oMathPara>\n",
+      "input_format": "omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:d>\n      <m:dPr>\n        <m:sepChr m:val=\"\"/>\n      </m:dPr>\n      <m:e>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:e>\n    </m:d>\n  </m:oMath>\n</m:oMathPara>\n",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {
+                  "sepChr": ""
+                },
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": [
+                  {
+                    "class": "Math::Number",
+                    "fields": {
+                      "base": null,
+                      "mini_sub_sized": false,
+                      "mini_sup_sized": false,
+                      "value": "1"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "source_path": "stages/omml/generations/000002/payloads/delimiters.yaml",
+      "source_sha256": "3ba61e47f1a035d30618b83ad9363bd232708c85ef0af479ada2c2e4e4b05a05"
+    },
+    {
+      "id": "omml-equation-arrays-005",
+      "input": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:eqArr>\n      <m:eqArrPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:eqArrPr>\n      <m:e>\n        <m:r>\n          <m:t>a</m:t>\n        </m:r>\n      </m:e>\n      <m:e>\n        <m:r>\n          <m:t>b</m:t>\n        </m:r>\n      </m:e>\n    </m:eqArr>\n  </m:oMath>\n</m:oMathPara>\n",
+      "input_format": "omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:eqArr>\n      <m:eqArrPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:eqArrPr>\n      <m:e>\n        <m:r>\n          <m:t>a</m:t>\n        </m:r>\n      </m:e>\n      <m:e>\n        <m:r>\n          <m:t>b</m:t>\n        </m:r>\n      </m:e>\n    </m:eqArr>\n  </m:oMath>\n</m:oMathPara>\n",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Table",
+              "fields": {
+                "close_paren": null,
+                "open_paren": null,
+                "options": {},
+                "value": [
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Function::Text",
+                                "fields": {
+                                  "lang": "omml",
+                                  "parameter_one": "a"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Function::Text",
+                                "fields": {
+                                  "lang": "omml",
+                                  "parameter_one": "b"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "source_path": "stages/omml/generations/000002/payloads/equation-arrays.yaml",
+      "source_sha256": "87148248bbeb057ac6a0d834165f6186a1dca7e688e2df1dedab8c05406b2eb8"
+    },
+    {
+      "id": "omml-roots-001",
+      "input": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:rad>\n      <m:radPr>\n        <m:degHide m:val=\"on\"/>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:radPr>\n      <m:deg/>\n      <m:e>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:e>\n    </m:rad>\n  </m:oMath>\n</m:oMathPara>\n",
+      "input_format": "omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:rad>\n      <m:radPr>\n        <m:degHide m:val=\"on\"/>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:radPr>\n      <m:deg/>\n      <m:e>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:e>\n    </m:rad>\n  </m:oMath>\n</m:oMathPara>\n",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sqrt",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "source_path": "stages/omml/generations/000002/payloads/roots.yaml",
+      "source_sha256": "500b4a3dbd6cbcf1500bbdf16e56c62b96792c50316e1a2d0aa9aab00ed0fb37"
+    },
+    {
+      "id": "omml-accents-001",
+      "input": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:acc>\n      <m:accPr>\n        <m:chr m:val=\"̂\"/>\n      </m:accPr>\n      <m:e>\n        <m:r>\n          <m:t>a</m:t>\n        </m:r>\n      </m:e>\n    </m:acc>\n  </m:oMath>\n</m:oMathPara>\n",
+      "input_format": "omml",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:acc>\n      <m:accPr>\n        <m:chr m:val=\"̂\"/>\n      </m:accPr>\n      <m:e>\n        <m:r>\n          <m:t>a</m:t>\n        </m:r>\n      </m:e>\n    </m:acc>\n  </m:oMath>\n</m:oMathPara>\n",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Hat",
+              "fields": {
+                "attributes": {
+                  "accent": true
+                },
+                "parameter_one": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": "omml",
+                    "parameter_one": "a"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "source_path": "stages/omml/generations/000002/payloads/accents.yaml",
+      "source_sha256": "d696f6db7bf47f88b3232493ffdd20721af5808e80b77b29c7ba9125416d4907"
+    }
+  ]
+}

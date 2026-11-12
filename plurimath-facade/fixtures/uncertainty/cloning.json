@@ -1,0 +1,1327 @@
+{
+  "ruby": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+  "source": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "profile": "uncertainty-writers-source-v1",
+  "rows": [
+    {
+      "id": "independent/0/standard/distribution/:unknown/options0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": "unknown",
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.004"
+                  }
+                },
+                "notation": "absolute",
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "-001.230"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "split_on_linebreak": true
+      },
+      "writers": {
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Errors::InvalidUncertainty",
+            "message": "[plurimath] Invalid uncertainty: unknown distribution :unknown."
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "independent/1/standard/notation/:unknown/options0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.004"
+                  }
+                },
+                "notation": "unknown",
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "-001.230"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "split_on_linebreak": true
+      },
+      "writers": {
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Errors::InvalidUncertainty",
+            "message": "[plurimath] Invalid uncertainty: unknown notation :unknown."
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "independent/2/standard/notation/:concise/options0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.004"
+                  }
+                },
+                "notation": "concise",
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "-001.230"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "split_on_linebreak": true
+      },
+      "writers": {
+        "mathml": {
+          "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"standard-uncertainty:concise(-001.230,0.004)\">\n      <mn>-001.230</mn>\n      <mrow>\n        <mo>(</mo>\n        <mn>4</mn>\n        <mo>)</mo>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:box>\n      <m:e>\n        <m:phant>\n          <m:phantPr>\n            <m:show m:val=\"off\"/>\n            <m:zeroWid m:val=\"on\"/>\n            <m:zeroAsc m:val=\"on\"/>\n            <m:zeroDesc m:val=\"on\"/>\n          </m:phantPr>\n          <m:e>\n            <m:r>\n              <m:rPr>\n                <m:sty m:val=\"p\"/>\n              </m:rPr>\n              <m:t>standard-uncertainty:concise(-001.230,0.004)</m:t>\n            </m:r>\n          </m:e>\n        </m:phant>\n        <m:r>\n          <m:t>-001.230</m:t>\n        </m:r>\n        <m:d>\n          <m:dPr>\n            <m:begChr m:val=\"(\"/>\n            <m:sepChr m:val=\"\"/>\n            <m:endChr m:val=\")\"/>\n          </m:dPr>\n          <m:e>\n            <m:r>\n              <m:t>4</m:t>\n            </m:r>\n          </m:e>\n        </m:d>\n      </m:e>\n    </m:box>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      }
+    },
+    {
+      "id": "independent/3/standard/magnitude/nil/options0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": null,
+                "notation": "absolute",
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "-001.230"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "split_on_linebreak": true
+      },
+      "writers": {
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Errors::InvalidUncertainty",
+            "message": "[plurimath] Invalid uncertainty: magnitude is required for a standard uncertainty."
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "independent/4/standard/coverage_factor/#<Plurimath::Math::Number @value=\"2\", @mini_sub_sized=false, @mini_sup_sized=false, @base=nil>/options0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                },
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.004"
+                  }
+                },
+                "notation": "absolute",
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "-001.230"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "split_on_linebreak": true
+      },
+      "writers": {
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Errors::InvalidUncertainty",
+            "message": "[plurimath] Invalid uncertainty: coverage_factor does not apply to a standard uncertainty."
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "independent/5/standard/unit/#<Plurimath::Math::Formula @value=(0 items), @left_right_wrapper=true, @displaystyle=true>/options0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.004"
+                  }
+                },
+                "notation": "absolute",
+                "unit": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": []
+                  }
+                },
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "-001.230"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "split_on_linebreak": true
+      },
+      "writers": {
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Errors::InvalidUncertainty",
+            "message": "[plurimath] Invalid uncertainty: unit must not be empty."
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "independent/6/expanded/coverage_factor/#<Plurimath::Math::Number @value=\"0.000\", @mini_sub_sized=false, @mini_sup_sized=false, @base=nil>/options0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "expanded",
+                "coverage_factor": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.000"
+                  }
+                },
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.30"
+                  }
+                },
+                "notation": null,
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.00"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "split_on_linebreak": true
+      },
+      "writers": {
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Errors::InvalidUncertainty",
+            "message": "[plurimath] Invalid uncertainty: coverage factor 0.000 must be greater than 0."
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "independent/7/expanded/coverage_factor/nil/options0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "expanded",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.30"
+                  }
+                },
+                "notation": null,
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.00"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "split_on_linebreak": true
+      },
+      "writers": {
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Errors::InvalidUncertainty",
+            "message": "[plurimath] Invalid uncertainty: coverage_factor is required for a expanded uncertainty."
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "independent/8/expanded/coverage_probability/#<Plurimath::Math::Number @value=\"1.00\", @mini_sub_sized=false, @mini_sup_sized=false, @base=nil>/options0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "expanded",
+                "coverage_factor": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2.00"
+                  }
+                },
+                "coverage_probability": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1.00"
+                  }
+                },
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.30"
+                  }
+                },
+                "notation": null,
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.00"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "split_on_linebreak": true
+      },
+      "writers": {
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Errors::InvalidUncertainty",
+            "message": "[plurimath] Invalid uncertainty: coverage probability 1.00 must lie strictly between 0 and 1."
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "independent/9/expanded/coverage_probability/#<Plurimath::Math::Number @value=\"0.000\", @mini_sub_sized=false, @mini_sup_sized=false, @base=nil>/options0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "expanded",
+                "coverage_factor": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2.00"
+                  }
+                },
+                "coverage_probability": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.000"
+                  }
+                },
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.30"
+                  }
+                },
+                "notation": null,
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.00"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "split_on_linebreak": true
+      },
+      "writers": {
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Errors::InvalidUncertainty",
+            "message": "[plurimath] Invalid uncertainty: coverage probability 0.000 must lie strictly between 0 and 1."
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "independent/10/expanded/lower/#<Plurimath::Math::Number @value=\"1\", @mini_sub_sized=false, @mini_sup_sized=false, @base=nil>/options0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "expanded",
+                "coverage_factor": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2.00"
+                  }
+                },
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                },
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.30"
+                  }
+                },
+                "notation": null,
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.00"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "split_on_linebreak": true
+      },
+      "writers": {
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Errors::InvalidUncertainty",
+            "message": "[plurimath] Invalid uncertainty: lower does not apply to a expanded uncertainty."
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "independent/11/expanded/magnitude/#<Plurimath::Math::Number @value=\"-0.1\", @mini_sub_sized=false, @mini_sup_sized=false, @base=nil>/options0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "expanded",
+                "coverage_factor": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2.00"
+                  }
+                },
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "-0.1"
+                  }
+                },
+                "notation": null,
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.00"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "split_on_linebreak": true
+      },
+      "writers": {
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Errors::InvalidUncertainty",
+            "message": "[plurimath] Invalid uncertainty: magnitude must be a Math::Number holding a plain unsigned decimal, got #<Plurimath::Math::Number @value=\"-0.1\", @mini_sub_sized=false, @mini_sup_sized=false, @base=nil>."
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "independent/12/expanded/magnitude/#<Plurimath::Math::Number @value=\"bad\", @mini_sub_sized=false, @mini_sup_sized=false, @base=nil>/options0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "expanded",
+                "coverage_factor": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2.00"
+                  }
+                },
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "bad"
+                  }
+                },
+                "notation": null,
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.00"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "split_on_linebreak": true
+      },
+      "writers": {
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Errors::InvalidUncertainty",
+            "message": "[plurimath] Invalid uncertainty: magnitude must be a Math::Number holding a plain unsigned decimal, got #<Plurimath::Math::Number @value=\"bad\", @mini_sub_sized=false, @mini_sup_sized=false, @base=nil>."
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "independent/13/interval/lower/#<Plurimath::Math::Number @value=\"12.00\", @mini_sub_sized=false, @mini_sup_sized=false, @base=nil>/options0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "coverage_interval",
+                "coverage_factor": null,
+                "coverage_probability": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.950"
+                  }
+                },
+                "distribution": null,
+                "interval_kind": null,
+                "lower": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "12.00"
+                  }
+                },
+                "magnitude": null,
+                "notation": null,
+                "unit": null,
+                "upper": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "12.00"
+                  }
+                },
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.00"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "split_on_linebreak": true
+      },
+      "writers": {
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Errors::InvalidUncertainty",
+            "message": "[plurimath] Invalid uncertainty: lower endpoint 12.00 is not below upper endpoint 12.00."
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "independent/14/interval/lower/#<Plurimath::Math::Number @value=\"20\", @mini_sub_sized=false, @mini_sup_sized=false, @base=nil>/options0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "coverage_interval",
+                "coverage_factor": null,
+                "coverage_probability": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.950"
+                  }
+                },
+                "distribution": null,
+                "interval_kind": null,
+                "lower": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "20"
+                  }
+                },
+                "magnitude": null,
+                "notation": null,
+                "unit": null,
+                "upper": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "12.00"
+                  }
+                },
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.00"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "split_on_linebreak": true
+      },
+      "writers": {
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Errors::InvalidUncertainty",
+            "message": "[plurimath] Invalid uncertainty: lower endpoint 20 is not below upper endpoint 12.00."
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "independent/15/interval/coverage_probability/#<Plurimath::Math::Number @value=\"0\", @mini_sub_sized=false, @mini_sup_sized=false, @base=nil>/options0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "coverage_interval",
+                "coverage_factor": null,
+                "coverage_probability": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0"
+                  }
+                },
+                "distribution": null,
+                "interval_kind": null,
+                "lower": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1.00"
+                  }
+                },
+                "magnitude": null,
+                "notation": null,
+                "unit": null,
+                "upper": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "12.00"
+                  }
+                },
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.00"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "split_on_linebreak": true
+      },
+      "writers": {
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Errors::InvalidUncertainty",
+            "message": "[plurimath] Invalid uncertainty: coverage probability 0 must lie strictly between 0 and 1."
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "independent/16/interval/interval_kind/:unknown/options0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "coverage_interval",
+                "coverage_factor": null,
+                "coverage_probability": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.950"
+                  }
+                },
+                "distribution": null,
+                "interval_kind": "unknown",
+                "lower": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1.00"
+                  }
+                },
+                "magnitude": null,
+                "notation": null,
+                "unit": null,
+                "upper": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "12.00"
+                  }
+                },
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.00"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "split_on_linebreak": true
+      },
+      "writers": {
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Errors::InvalidUncertainty",
+            "message": "[plurimath] Invalid uncertainty: unknown interval kind :unknown."
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "independent/17/interval/magnitude/#<Plurimath::Math::Number @value=\"0.3\", @mini_sub_sized=false, @mini_sup_sized=false, @base=nil>/options0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "coverage_interval",
+                "coverage_factor": null,
+                "coverage_probability": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.950"
+                  }
+                },
+                "distribution": null,
+                "interval_kind": null,
+                "lower": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1.00"
+                  }
+                },
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.3"
+                  }
+                },
+                "notation": null,
+                "unit": null,
+                "upper": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "12.00"
+                  }
+                },
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.00"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "split_on_linebreak": true
+      },
+      "writers": {
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Errors::InvalidUncertainty",
+            "message": "[plurimath] Invalid uncertainty: magnitude does not apply to a coverage_interval uncertainty."
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "independent/18/concise/places/options0",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.0040"
+                  }
+                },
+                "notation": "concise",
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "-001.230"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "options": {
+        "split_on_linebreak": true
+      },
+      "writers": {
+        "mathml": {
+          "error": {
+            "class": "Plurimath::Errors::InvalidUncertainty",
+            "message": "[plurimath] Invalid uncertainty: magnitude 0.0040 cannot be written concisely after -001.230: it needs as many decimal places as the value."
+          }
+        },
+        "omml": {
+          "error": {
+            "class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `omml`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    }
+  ]
+}
