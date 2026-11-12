@@ -47,9 +47,9 @@ fn localize_number_symbols(template: &str) -> SymbolMap {
         }
         Some((groupdigits, decimal, i - f, c.get(i).copied()))
     };
-    for start in 0..c.len() {
-        let attempt = if c[start] != '#' {
-            tail(start + 1).map(|t| (Some(c[start]), t)).or_else(|| tail(start).map(|t| (None, t)))
+    for (start, ch) in c.iter().copied().enumerate() {
+        let attempt = if ch != '#' {
+            tail(start + 1).map(|t| (Some(ch), t)).or_else(|| tail(start).map(|t| (None, t)))
         } else {
             tail(start).map(|t| (None, t))
         };

@@ -89,26 +89,6 @@ pub(super) fn restore_rows(rows: &mut [ElementRow]) {
     }
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-    #[test]
-    fn entity_marking_preserves_the_source_standard_and_unknown_reference_policy() {
-        assert_eq!(
-            prepare("<r>&nbsp; &amp; &#160; &raw</r>"),
-            format!("<r>{MARKER}nbsp; &amp; &#160; &raw</r>")
-        );
-        assert_eq!(
-            restore(&format!("{MARKER}nbsp; &#xFFFC;&#xFEFF;alpha;")),
-            "&nbsp; &alpha;"
-        );
-        assert_eq!(
-            prepare("<?xml encoding='ISO-8859-1'?><r/>"),
-            "<?xml encoding=\"UTF-8\"?><r/>"
-        );
-    }
-}
-
 /// The source XHTML1 decoder used by Text#value= and accent-token lookup.
 pub(super) fn decode_html(input: &str) -> Result<String, String> {
     let mut output = String::new();
@@ -182,4 +162,24 @@ pub(super) fn decode_html(input: &str) -> Result<String, String> {
     }
     output.push_str(&input[cursor..]);
     Ok(output)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn entity_marking_preserves_the_source_standard_and_unknown_reference_policy() {
+        assert_eq!(
+            prepare("<r>&nbsp; &amp; &#160; &raw</r>"),
+            format!("<r>{MARKER}nbsp; &amp; &#160; &raw</r>")
+        );
+        assert_eq!(
+            restore(&format!("{MARKER}nbsp; &#xFFFC;&#xFEFF;alpha;")),
+            "&nbsp; &alpha;"
+        );
+        assert_eq!(
+            prepare("<?xml encoding='ISO-8859-1'?><r/>"),
+            "<?xml encoding=\"UTF-8\"?><r/>"
+        );
+    }
 }

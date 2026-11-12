@@ -4,7 +4,7 @@ use super::{child, control_properties, el, present, run, strict_slot_xml, Xml};
 use crate::model::Model;
 fn options(m: &Model) -> Result<(), String> {
     let v = m.field("options");
-    if !v.is_null() && v.as_object().map_or(true, |x| !x.is_empty()) {
+    if !v.is_null() && v.as_object().is_none_or(|x| !x.is_empty()) {
         return Err("unported source subscript size/options".into());
     }
     Ok(())

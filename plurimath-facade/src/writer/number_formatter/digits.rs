@@ -200,14 +200,14 @@ impl DigitSequence {
             return (digits, carry);
         }
         let mut carry = carry;
-        for i in 0..digits.len() {
-            if digit_value(&digits[i]).is_none() {
+        for digit in &mut digits {
+            if digit_value(digit).is_none() {
                 continue;
             }
-            if self.is_max_digit(&digits[i]) {
-                digits[i] = overflow.to_string();
+            if self.is_max_digit(digit) {
+                *digit = overflow.to_string();
             } else {
-                digits[i] = self.next_digit(&digits[i]);
+                *digit = self.next_digit(digit);
                 carry = 0;
                 break;
             }

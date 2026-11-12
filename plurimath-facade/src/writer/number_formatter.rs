@@ -15,8 +15,7 @@
 
 #[path = "number_formatter/digits.rs"]
 mod digits;
-#[path = "number_formatter/locales.rs"]
-mod locales;
+use crate::locale_data as locales;
 #[path = "number_formatter/options.rs"]
 mod options;
 #[path = "number_formatter/render.rs"]

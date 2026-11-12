@@ -227,15 +227,6 @@ fn node_mask(m: &Model) -> Result<Option<crate::source_values::RubyValue>, Strin
     Ok(options.get_symbol("mask").cloned())
 }
 
-fn ruby_mask_text(v: &Value) -> Result<String, String> {
-    match v {
-        Value::Null => Ok(String::new()),
-        Value::String(s) => Ok(s.clone()),
-        Value::Bool(b) => Ok(b.to_string()),
-        Value::Number(n) if !n.to_string().contains(['.', 'e', 'E']) => Ok(n.to_string()),
-        _ => Err("unported promised n-ary non-integer mask string spelling".into()),
-    }
-}
 fn latex_wrapped(v: &Value, ctx: &super::WriterContext) -> Result<String, String> {
     latex_wrapped_with_value(v, node_text(v, "latex", ctx)?)
 }
@@ -469,9 +460,7 @@ pub(super) fn mask_mod(v: &Value) -> Result<u8, String> {
             }
             let bits = f.abs().to_bits();
             let exponent = ((bits >> 52) & 0x7ff) as i32 - 1023;
-            let n = if exponent < 0 {
-                0
-            } else if exponent >= 57 {
+            let n = if !(0..57).contains(&exponent) {
                 0
             } else {
                 let mantissa = (bits & ((1u64 << 52) - 1)) | (1u64 << 52);
@@ -505,7 +494,8 @@ pub(super) fn source_mask_mod(value: &crate::source_values::RubyValue) -> Result
         _ => Err(source_error("mask has no to_i method")),
     }
 }
-fn element_parts(node: Xml) -> Result<(String, Vec<(String, String)>, Vec<Xml>), String> {
+type ElementParts = (String, Vec<(String, String)>, Vec<Xml>);
+fn element_parts(node: Xml) -> Result<ElementParts, String> {
     if let Xml::El(n, a, c) = node {
         Ok((n, a, c))
     } else {

@@ -355,7 +355,9 @@ pub(super) fn td_line_breaking(node:&mut Value)->Result<(),String>{
  let input=if parameter.is_null(){vec![]}else if let Some(values)=parameter.as_array(){values.clone()}else{vec![parameter]};
  let mut chunks=Vec::<Vec<Value>>::new();let mut current=Vec::new();
  for value in input {let line=value["class"]=="Math::Function::Linebreak";current.push(value);if line {chunks.push(std::mem::take(&mut current));}}
- if !current.is_empty(){chunks.push(current);}if chunks.len()<=1{return Ok(());}
+ if !current.is_empty(){chunks.push(current);}
+
+ if chunks.len()<=1{return Ok(());}
  let marker=chunks[0].pop().ok_or("source_render_error: missing table break marker")?;
  let value=&marker["fields"]["parameter_one"];
  if !value.is_null()&&value!=false {

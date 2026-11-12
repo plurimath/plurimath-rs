@@ -1,7 +1,6 @@
 //! Source Math.parse option validation precedes grammar parsing.
 use serde_json::{json, Value};
-#[path = "writer/number_formatter/locales.rs"]
-mod locale_data;
+use crate::locale_data;
 fn error(class: &str, message: String) -> Value {
     json!({"code":"PARSE_OPTION_ERROR","source_class":class,"message":message})
 }

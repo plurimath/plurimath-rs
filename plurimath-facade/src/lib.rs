@@ -1,6 +1,8 @@
 pub mod html_parse;
 mod json_request;
 pub mod model;
+#[path = "writer/number_formatter/locales.rs"]
+mod locale_data;
 mod parse_options;
 pub mod parser;
 pub mod pma_parse;
@@ -176,6 +178,9 @@ pub fn request_json(bytes: &[u8]) -> Value {
     }
 }
 
+/// # Safety
+/// A non-null input must point to `len` readable bytes for this call.
+/// Release the returned owned pointer once using `plurimath_facade_free`.
 #[no_mangle]
 pub unsafe extern "C" fn plurimath_facade_json(
     input: *const u8,
@@ -186,6 +191,8 @@ pub unsafe extern "C" fn plurimath_facade_json(
         .unwrap()
         .into_raw()
 }
+/// # Safety
+/// A non-null pointer must be an unreleased return from `plurimath_facade_json`.
 #[no_mangle]
 pub unsafe extern "C" fn plurimath_facade_free(p: *mut std::ffi::c_char) {
     if !p.is_null() {

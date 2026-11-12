@@ -136,7 +136,7 @@ fn omml_value(v: &Value) -> Result<String, String> {
     let mut out = String::new();
     for c in decoded.chars() {
         let n = c as u32;
-        if n < 0x20 || n > 0x7e || ['"', '&', '\'', '<', '>'].contains(&c) {
+        if !(0x20..=0x7e).contains(&n) || ['"', '&', '\'', '<', '>'].contains(&c) {
             out.push_str(&format!("&#x{n:x};"))
         } else {
             out.push(c)

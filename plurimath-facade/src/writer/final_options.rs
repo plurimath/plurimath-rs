@@ -1,5 +1,5 @@
 //! Source procedures for Limits, Underset, Underover and Frac option profiles.
-use super::{attrs, control_properties, el, text, Model, Value, WriterContext, Xml};
+use super::{attrs, control_properties, el, Model, Value, WriterContext, Xml};
 use crate::source_values::{self as source, Domain, Profile, RubyValue};
 pub(super) fn data() -> &'static Value {
     static DATA: std::sync::OnceLock<Value> = std::sync::OnceLock::new();
@@ -182,11 +182,10 @@ fn fraction_lookup(m: &Model) -> Result<String, String> {
 }
 fn fraction_unicode(m: &Model, ctx: &super::WriterContext) -> Result<String, String> {
     let options = named_options(m)?;
-    if !matches!(options, RubyValue::Nil) {
-        if lookup(&options, "unicodemath_fraction")?.is_some_and(ruby_truthy) {
+    if !matches!(options, RubyValue::Nil)
+        && lookup(&options, "unicodemath_fraction")?.is_some_and(ruby_truthy) {
             return fraction_lookup(m);
         }
-    }
     let a = m.field("parameter_one");
     let b = m.field("parameter_two");
     let first = if truthy(a) { parens(a, ctx)? } else { String::new() };

@@ -3,7 +3,7 @@ use super::{WriterContext, attrs, child, el, render_xml, text as xml_text, Model
 fn source_error(reason: &str) -> String {
     format!("source_render_error: {reason}")
 }
-fn row_values<'a>(v: &'a Value) -> Result<&'a [Value], String> {
+fn row_values(v: &Value) -> Result<&[Value], String> {
     v.as_array()
         .map(Vec::as_slice)
         .ok_or_else(|| source_error("stacked row/cell collection has no source array methods"))

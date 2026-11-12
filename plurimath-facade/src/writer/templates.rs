@@ -52,7 +52,7 @@ fn guard(v: &Value, g: &Value) -> bool {
     if g["value_type"] == "string" && !m.field("value").is_string() {
         return false;
     }
-    if g["nonempty_value"] == true && m.field("value").as_array().map_or(true, |a| a.is_empty()) {
+    if g["nonempty_value"] == true && m.field("value").as_array().is_none_or(|a| a.is_empty()) {
         return false;
     }
     true
@@ -63,7 +63,7 @@ fn eligible(p: &Value, m: &Model, f: &str) -> bool {
     }
     if p["profile_options"]
         .as_object()
-        .map_or(true, |a| !a.is_empty())
+        .is_none_or(|a| !a.is_empty())
     {
         return false;
     }

@@ -173,7 +173,7 @@ fn tx_rule_3(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>,
     }
     Ok(None)
 }
-fn tx_rule_4(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
+fn tx_rule_4(m: &Map<String, Value>, _depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if m.len() == 2 && m.contains_key("d") && m.contains_key("x") {
         let d = m["d"].as_str().ok_or("non-text differential d")?;
         let x = m["x"].as_str().ok_or("non-text differential x")?;
@@ -184,7 +184,7 @@ fn tx_rule_4(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>,
     }
     Ok(None)
 }
-fn tx_rule_5(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
+fn tx_rule_5(m: &Map<String, Value>, _depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if let Some(text) = m.get("unitsml").and_then(Value::as_str) {
         if m.len() != 1 {
             return Err("unported combined UnitsML capture".into());
@@ -512,19 +512,19 @@ fn tx_rule_18(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>
     }
     Ok(None)
 }
-fn tx_rule_19(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
+fn tx_rule_19(m: &Map<String, Value>, _depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if m.contains_key("number") && m.len() != 1 {
         return Err("unported source combined number capture".into());
     }
     Ok(None)
 }
-fn tx_rule_20(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
+fn tx_rule_20(m: &Map<String, Value>, _depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if m.contains_key("symbol") && m.len() != 1 {
         return Err("unported source combined symbol capture".into());
     }
     Ok(None)
 }
-fn tx_rule_21(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
+fn tx_rule_21(m: &Map<String, Value>, _depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if let Some(n) = m.get("number") {
         return Ok(Some(vec![number(
             n.as_str().ok_or("number capture is not source text")?,
@@ -532,7 +532,7 @@ fn tx_rule_21(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>
     }
     Ok(None)
 }
-fn tx_rule_22(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
+fn tx_rule_22(m: &Map<String, Value>, _depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if let Some(s) = m.get("symbol") {
         return Ok(Some(vec![crate::symbols::symbol(
             s.as_str().ok_or("symbol capture is not source text")?,
@@ -590,8 +590,7 @@ fn tx(v: &Value, depth: usize) -> Result<Vec<Value>, ConversionError> {
     let (mut v, mut depth) = (v, depth);
     // These source capture wrappers preserve their child's transformed value.
     // Iterate them instead of retaining a Rust frame for every grammar wrapper.
-    loop {
-        let Some(fields) = v.as_object() else { break };
+    while let Some(fields) = v.as_object() {
         if fields.len() != 1 {
             break;
         }

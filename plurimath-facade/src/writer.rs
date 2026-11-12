@@ -185,7 +185,7 @@ fn fence_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, String>
         return Err("unported promised nullable/raw fence delimiter profile".into());
     }
     let options = m.field("options");
-    if !options.is_null() && options.as_object().map_or(true, |o| !o.is_empty()) {
+    if !options.is_null() && options.as_object().is_none_or(|o| !o.is_empty()) {
         return Err("unported promised fence options".into());
     }
     let a = if f == "html" || f == "latex" {
@@ -651,7 +651,7 @@ fn unit_unicode_context(v: &mut Value) {
     {
         if let Some(value) = v["fields"]["parameter_one"]["fields"]["value"].as_str() {
             if !value.starts_with('\\')
-                && text_content::decode(value).map_or(false, |s| s.chars().count() > 1)
+                && text_content::decode(value).is_ok_and(|s| s.chars().count() > 1)
             {
                 let text = value.to_owned();
                 v["fields"]["parameter_one"] = crate::model::node(
@@ -1386,7 +1386,7 @@ fn render_xml_inner(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>,
             let a = delimiter("parameter_one")?;
             let b = delimiter("parameter_three")?;
             let options = m.field("options");
-            if !options.is_null() && options.as_object().map_or(true, |o| !o.is_empty()) {
+            if !options.is_null() && options.as_object().is_none_or(|o| !o.is_empty()) {
                 return Err("unported promised fence options".into());
             }
             let mut body = vec![];
@@ -2276,7 +2276,7 @@ fn formula_postprocess(nodes: &mut Vec<Xml>) -> Result<(), String> {
                         xml_attribute(&mut nodes[index], "arg", "f".into());
                     } else {
                         let terminal = nodes[index..].iter().find(|node| xml_name(node) != "mi");
-                        if !terminal.is_some_and(|node| xml_name(node) == "mrow") {
+                        if terminal.is_none_or(|node| xml_name(node) != "mrow") {
                             return Err(intent_error());
                         }
                     }
@@ -2483,7 +2483,6 @@ fn source_class_properties(m: &Model) -> (&'static [&'static str], bool, bool) {
         ),
         "Math::Function::Int"
         | "Math::Function::Limits"
-        | "Math::Function::Multiscript"
         | "Math::Function::Oint"
         | "Math::Function::PowerBase"
         | "Math::Function::Prod"
@@ -3025,5 +3024,5 @@ fn custom_array_line_breaking(node:&mut Value,obj:&mut Vec<Value>)->Result<(),St
             }
         }
     }
-    return Ok(());
+    Ok(())
 }

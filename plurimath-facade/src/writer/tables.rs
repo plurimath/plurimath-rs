@@ -1,9 +1,9 @@
 //! Default source table/row/cell text writers. Options requiring a new profile refuse.
-use super::{child, render_text, text_content, Model, Value};
+use super::{child, text_content, Model, Value};
 fn rows(m: &Model) -> Result<Vec<Vec<Model>>, String> {
     if m.field("options")
         .as_object()
-        .map_or(true, |o| !o.is_empty())
+        .is_none_or(|o| !o.is_empty())
     {
         return Err("unported source table options".into());
     }
@@ -38,7 +38,7 @@ fn rows(m: &Model) -> Result<Vec<Vec<Model>>, String> {
             if !options.is_null()
                 && options
                     .as_object()
-                    .map_or(true, |o| o.keys().any(|k| k != "columnalign"))
+                    .is_none_or(|o| o.keys().any(|k| k != "columnalign"))
             {
                 return Err("unported source Td attributes".into());
             }
@@ -55,8 +55,8 @@ fn rows(m: &Model) -> Result<Vec<Vec<Model>>, String> {
     Ok(out)
 }
 fn reject_null_formula_values(value: &Value) -> Result<(), String> {
-    if value["class"] == "Math::Formula" {
-        if value["fields"]["value"]
+    if value["class"] == "Math::Formula"
+        && value["fields"]["value"]
             .as_array()
             .is_some_and(|values| values.iter().any(Value::is_null))
         {
@@ -64,7 +64,6 @@ fn reject_null_formula_values(value: &Value) -> Result<(), String> {
                 "unported source table Formula with nil operand (source writer raises)".into(),
             );
         }
-    }
     match value {
         Value::Array(values) => {
             for value in values {

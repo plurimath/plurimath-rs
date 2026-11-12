@@ -199,10 +199,9 @@ pub fn document_model(document: &Value) -> Result<Value, String> {
         .and_then(Value::as_object)
         .ok_or("source document requires producer provenance")?;
     for key in ["implementation", "source_commit", "runtime", "codec_sha256"] {
-        if !producer
+        if producer
             .get(key)
-            .and_then(Value::as_str)
-            .is_some_and(|v| !v.is_empty())
+            .and_then(Value::as_str).is_none_or(|v| v.is_empty())
         {
             return Err(format!("source producer requires {key}"));
         }
