@@ -199,7 +199,7 @@ fn source_caller_register_wires() {
     // byte and gives the expectation for the bundled data; the legacy fixture
     // itself stays the frozen UnitsDB 2.2.0 (c2c7d18) profile.
     let profile: Value = serde_json::from_str(include_str!(
-        "../fixtures/source-profile-unitsdb-bc089c0.json"
+        "../fixtures/source-profile-unitsdb-b210137.json"
     ))
     .unwrap();
     let superseded: std::collections::BTreeMap<&str, &Value> = profile["superseded_legacy_rows"]
@@ -229,9 +229,9 @@ fn source_caller_register_wires() {
 
 #[cfg(feature = "quantity")]
 #[test]
-fn source_profile_unitsdb_bc089c0_definitions() {
+fn source_profile_unitsdb_b210137_definitions() {
     let profile: Value = serde_json::from_str(include_str!(
-        "../fixtures/source-profile-unitsdb-bc089c0.json"
+        "../fixtures/source-profile-unitsdb-b210137.json"
     ))
     .unwrap();
     let probes = profile["definition_probes"].as_array().unwrap();

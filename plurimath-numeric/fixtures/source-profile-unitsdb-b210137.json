@@ -1,22 +1,24 @@
 {
  "schema": "plurimath-numeric.source-data-profile/1",
- "profile": "unitsdb-bc089c0",
+ "profile": "unitsdb-b210137",
  "data": {
   "repository": "https://github.com/unitsml/unitsdb",
-  "commit": "bc089c0",
+  "commit": "b210137fd87c493ad437468c925c98ec921a4468",
   "base": "fcc9e41e0555b003cb17b20958dbbf966ac825e6",
-  "pull_request": "unitsml/unitsdb#142 (review required: ronaldtse; do not merge without approval)",
+  "pull_request": "unitsml/unitsdb#143 head (public, immutable); #142 merged as main 035665f",
   "tag": null,
   "projection": {
-   "unitsdb_ts": "b0786ff",
-   "unitsdb_rs": "9f1e87e",
-   "unitsdb.json_sha256": "3e02e237cdc5e18c7c82b00e5f2040f823cff1dc755298612b3040e506bc035a"
+   "unitsdb_ts": "2f27dbd",
+   "unitsdb_rs": "2d00c4c",
+   "unitsdb.json_sha256": "595e987112aed69d06ac2e68fda4b12e58266d5577ccd8cd8aa2cdc56eb765d4",
+   "record_tables_identical_to": "bc089c0 projection 3e02e237 (all six tables byte-identical; provenance differs)"
   },
   "commits": [
-   "060b566 (cwt US hecto-pound, kp kilo-gram-force)",
-   "bc089c0 (gram-force canonical_conversion to newton, self-reference removed)"
+   "035665f (main; #142 squash: cwt (US) hecto-pound, kp kilo-gram-force)",
+   "b210137 (#143: gram-force canonical_conversion to newton)"
   ],
-  "note": "local candidate on the #142 branch; bc089c0 not pushed (Suleman approves public PR updates)"
+  "note": "pinned to the public immutable commit; data tree identical to the earlier local candidate bc089c0",
+  "tree": "c57eb0ae330b051e6ea7909aeabe0a89b77707ed (identical to local candidate bc089c0)"
  },
  "supersedes": {
   "profile": "unitsdb-2.2.0 (c2c7d181f07f414520d91fafa831922e56db6469), frozen; legacy fixtures unchanged"
