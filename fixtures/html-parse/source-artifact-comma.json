@@ -1,0 +1,3834 @@
+{
+  "grammar": "PlurimathHtmlSource",
+  "version": "0.1.0",
+  "edition": 2,
+  "shape": "parsanol-tree/v2",
+  "entries": {
+    "document": {
+      "root": "expression",
+      "grammar": {
+        "atoms": [
+          {
+            "Entity": {
+              "atom": 1
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                2,
+                588,
+                590,
+                53
+              ]
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                3,
+                554,
+                587
+              ]
+            }
+          },
+          {
+            "Named": {
+              "name": "first_value",
+              "atom": 4
+            }
+          },
+          {
+            "Entity": {
+              "atom": 5
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                6,
+                524,
+                8,
+                526,
+                528,
+                96,
+                551
+              ]
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                7,
+                26
+              ]
+            }
+          },
+          {
+            "Named": {
+              "name": "sub_sup",
+              "atom": 8
+            }
+          },
+          {
+            "Entity": {
+              "atom": 9
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                10,
+                12,
+                14,
+                16,
+                18,
+                20,
+                22,
+                24
+              ]
+            }
+          },
+          {
+            "Named": {
+              "name": "sum_prod",
+              "atom": 11
+            }
+          },
+          {
+            "Str": {
+              "pattern": "&prod;"
+            }
+          },
+          {
+            "Named": {
+              "name": "sum_prod",
+              "atom": 13
+            }
+          },
+          {
+            "Str": {
+              "pattern": "&sum;"
+            }
+          },
+          {
+            "Named": {
+              "name": "sum_prod",
+              "atom": 15
+            }
+          },
+          {
+            "Str": {
+              "pattern": "&#x220f;"
+            }
+          },
+          {
+            "Named": {
+              "name": "sum_prod",
+              "atom": 17
+            }
+          },
+          {
+            "Str": {
+              "pattern": "&#x2211;"
+            }
+          },
+          {
+            "Named": {
+              "name": "sum_prod",
+              "atom": 19
+            }
+          },
+          {
+            "Str": {
+              "pattern": "log"
+            }
+          },
+          {
+            "Named": {
+              "name": "sum_prod",
+              "atom": 21
+            }
+          },
+          {
+            "Str": {
+              "pattern": "lim"
+            }
+          },
+          {
+            "Named": {
+              "name": "sum_prod",
+              "atom": 23
+            }
+          },
+          {
+            "Str": {
+              "pattern": "∏"
+            }
+          },
+          {
+            "Named": {
+              "name": "sum_prod",
+              "atom": 25
+            }
+          },
+          {
+            "Str": {
+              "pattern": "∑"
+            }
+          },
+          {
+            "Entity": {
+              "atom": 27
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                28,
+                523,
+                492,
+                29
+              ]
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                29,
+                492
+              ]
+            }
+          },
+          {
+            "Entity": {
+              "atom": 30
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                31,
+                32,
+                38,
+                51,
+                52,
+                485,
+                486,
+                487,
+                488,
+                489,
+                491
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "<"
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                33,
+                34,
+                35,
+                36
+              ]
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[sS]"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[uU]"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[bB]"
+            }
+          },
+          {
+            "Lookahead": {
+              "atom": 37,
+              "positive": true
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[\\s/>]"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 39,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                40,
+                45,
+                50
+              ]
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                41,
+                42,
+                44
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 43,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^\"]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                46,
+                47,
+                49
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 48,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^']"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^<>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Named": {
+              "name": "sub_value",
+              "atom": 53
+            }
+          },
+          {
+            "Entity": {
+              "atom": 54
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                55,
+                341,
+                435,
+                342,
+                436,
+                481,
+                483,
+                4
+              ]
+            }
+          },
+          {
+            "Named": {
+              "name": "parse_parenthesis",
+              "atom": 56
+            }
+          },
+          {
+            "Entity": {
+              "atom": 57
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                58,
+                339,
+                340
+              ]
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                59,
+                96,
+                302
+              ]
+            }
+          },
+          {
+            "Entity": {
+              "atom": 60
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                61,
+                83
+              ]
+            }
+          },
+          {
+            "Scope": {
+              "atom": 62
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                63,
+                64,
+                69,
+                82,
+                83,
+                91,
+                92,
+                93,
+                95
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "<"
+            }
+          },
+          {
+            "Capture": {
+              "name": "html_tag_name",
+              "atom": 65
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                66,
+                67
+              ]
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[a-zA-Z]"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 68,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[a-zA-Z0-9:._-]"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 70,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                71,
+                76,
+                81
+              ]
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                72,
+                73,
+                75
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 74,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^\"]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                77,
+                78,
+                80
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 79,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^']"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^<>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Entity": {
+              "atom": 84
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                85,
+                87,
+                89
+              ]
+            }
+          },
+          {
+            "Named": {
+              "name": "lparen",
+              "atom": 86
+            }
+          },
+          {
+            "Str": {
+              "pattern": "("
+            }
+          },
+          {
+            "Named": {
+              "name": "lparen",
+              "atom": 88
+            }
+          },
+          {
+            "Str": {
+              "pattern": "{"
+            }
+          },
+          {
+            "Named": {
+              "name": "lparen",
+              "atom": 90
+            }
+          },
+          {
+            "Str": {
+              "pattern": "["
+            }
+          },
+          {
+            "Str": {
+              "pattern": "</"
+            }
+          },
+          {
+            "StateMatchAscii": {
+              "slot": "html_tag_name"
+            }
+          },
+          {
+            "Lookahead": {
+              "atom": 94,
+              "positive": true
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[\\s/>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Entity": {
+              "atom": 97
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                98,
+                246,
+                264,
+                272,
+                280,
+                288,
+                295,
+                298,
+                300
+              ]
+            }
+          },
+          {
+            "Entity": {
+              "atom": 99
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                100,
+                134,
+                162,
+                190,
+                218
+              ]
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                101,
+                102,
+                110,
+                123,
+                124,
+                125,
+                126,
+                127,
+                128,
+                129,
+                130,
+                131,
+                133
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "<"
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                103,
+                104,
+                105,
+                106,
+                107,
+                108
+              ]
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[tT]"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[aA]"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[bB]"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[lL]"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[eE]"
+            }
+          },
+          {
+            "Lookahead": {
+              "atom": 109,
+              "positive": true
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[\\s/>]"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 111,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                112,
+                117,
+                122
+              ]
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                113,
+                114,
+                116
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 115,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^\"]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                118,
+                119,
+                121
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 120,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^']"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^<>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Named": {
+              "name": "table_value",
+              "atom": 53
+            }
+          },
+          {
+            "Str": {
+              "pattern": "</"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[tT]"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[aA]"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[bB]"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[lL]"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[eE]"
+            }
+          },
+          {
+            "Lookahead": {
+              "atom": 132,
+              "positive": true
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[\\s/>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                135,
+                136,
+                141,
+                154,
+                155,
+                156,
+                157,
+                158,
+                159,
+                161
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "<"
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                137,
+                138,
+                139
+              ]
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[tT]"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[rR]"
+            }
+          },
+          {
+            "Lookahead": {
+              "atom": 140,
+              "positive": true
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[\\s/>]"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 142,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                143,
+                148,
+                153
+              ]
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                144,
+                145,
+                147
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 146,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^\"]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                149,
+                150,
+                152
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 151,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^']"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^<>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Named": {
+              "name": "tr_value",
+              "atom": 53
+            }
+          },
+          {
+            "Str": {
+              "pattern": "</"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[tT]"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[rR]"
+            }
+          },
+          {
+            "Lookahead": {
+              "atom": 160,
+              "positive": true
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[\\s/>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                163,
+                164,
+                169,
+                182,
+                183,
+                184,
+                185,
+                186,
+                187,
+                189
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "<"
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                165,
+                166,
+                167
+              ]
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[tT]"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[dD]"
+            }
+          },
+          {
+            "Lookahead": {
+              "atom": 168,
+              "positive": true
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[\\s/>]"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 170,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                171,
+                176,
+                181
+              ]
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                172,
+                173,
+                175
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 174,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^\"]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                177,
+                178,
+                180
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 179,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^']"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^<>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Named": {
+              "name": "td_value",
+              "atom": 53
+            }
+          },
+          {
+            "Str": {
+              "pattern": "</"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[tT]"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[dD]"
+            }
+          },
+          {
+            "Lookahead": {
+              "atom": 188,
+              "positive": true
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[\\s/>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                191,
+                192,
+                197,
+                210,
+                211,
+                212,
+                213,
+                214,
+                215,
+                217
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "<"
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                193,
+                194,
+                195
+              ]
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[tT]"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[hH]"
+            }
+          },
+          {
+            "Lookahead": {
+              "atom": 196,
+              "positive": true
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[\\s/>]"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 198,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                199,
+                204,
+                209
+              ]
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                200,
+                201,
+                203
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 202,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^\"]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                205,
+                206,
+                208
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 207,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^']"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^<>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Named": {
+              "name": "td_value",
+              "atom": 53
+            }
+          },
+          {
+            "Str": {
+              "pattern": "</"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[tT]"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[hH]"
+            }
+          },
+          {
+            "Lookahead": {
+              "atom": 216,
+              "positive": true
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[\\s/>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Scope": {
+              "atom": 219
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                220,
+                221,
+                226,
+                239,
+                240,
+                241,
+                242,
+                243,
+                245
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "<"
+            }
+          },
+          {
+            "Capture": {
+              "name": "html_tag_name",
+              "atom": 222
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                223,
+                224
+              ]
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[a-zA-Z]"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 225,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[a-zA-Z0-9:._-]"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 227,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                228,
+                233,
+                238
+              ]
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                229,
+                230,
+                232
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 231,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^\"]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                234,
+                235,
+                237
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 236,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^']"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^<>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Named": {
+              "name": "sequence",
+              "atom": 53
+            }
+          },
+          {
+            "Str": {
+              "pattern": "</"
+            }
+          },
+          {
+            "StateMatchAscii": {
+              "slot": "html_tag_name"
+            }
+          },
+          {
+            "Lookahead": {
+              "atom": 244,
+              "positive": true
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[\\s/>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Named": {
+              "name": "symbol",
+              "atom": 247
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                248,
+                253,
+                258
+              ]
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                249,
+                250,
+                252
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "&#x"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 251,
+              "min": 1,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[0-9a-fA-F]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ";"
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                254,
+                255,
+                257
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "&#"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 256,
+              "min": 1,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[0-9]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ";"
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                259,
+                260,
+                261,
+                263
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "&"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[a-zA-Z]"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 262,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[a-zA-Z0-9]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ";"
+            }
+          },
+          {
+            "Entity": {
+              "atom": 265
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                266,
+                269
+              ]
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                267,
+                268
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "0x"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "0X"
+            }
+          },
+          {
+            "Named": {
+              "name": "hex_number",
+              "atom": 270
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 271,
+              "min": 1,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[0-9a-fA-F]"
+            }
+          },
+          {
+            "Entity": {
+              "atom": 273
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                274,
+                277
+              ]
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                275,
+                276
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "0b"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "0B"
+            }
+          },
+          {
+            "Named": {
+              "name": "binary_number",
+              "atom": 278
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 279,
+              "min": 1,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[01]"
+            }
+          },
+          {
+            "Entity": {
+              "atom": 281
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                282,
+                285
+              ]
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                283,
+                284
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "0o"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "0O"
+            }
+          },
+          {
+            "Named": {
+              "name": "octal_number",
+              "atom": 286
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 287,
+              "min": 1,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[0-7]"
+            }
+          },
+          {
+            "Named": {
+              "name": "number",
+              "atom": 289
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                290,
+                292,
+                293
+              ]
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 291,
+              "min": 1,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[0-9]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ","
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 294,
+              "min": 1,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[0-9]"
+            }
+          },
+          {
+            "Named": {
+              "name": "number",
+              "atom": 296
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 297,
+              "min": 1,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[0-9]"
+            }
+          },
+          {
+            "Named": {
+              "name": "text",
+              "atom": 299
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[a-zA-Z]"
+            }
+          },
+          {
+            "Named": {
+              "name": "symbol",
+              "atom": 301
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^0-9a-zA-Z<>(){}\\[\\] ]"
+            }
+          },
+          {
+            "Entity": {
+              "atom": 303
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                304,
+                326
+              ]
+            }
+          },
+          {
+            "Scope": {
+              "atom": 305
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                306,
+                307,
+                312,
+                325,
+                326,
+                334,
+                335,
+                336,
+                338
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "<"
+            }
+          },
+          {
+            "Capture": {
+              "name": "html_tag_name",
+              "atom": 308
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                309,
+                310
+              ]
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[a-zA-Z]"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 311,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[a-zA-Z0-9:._-]"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 313,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                314,
+                319,
+                324
+              ]
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                315,
+                316,
+                318
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 317,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^\"]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                320,
+                321,
+                323
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 322,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^']"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^<>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Entity": {
+              "atom": 327
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                328,
+                330,
+                332
+              ]
+            }
+          },
+          {
+            "Named": {
+              "name": "rparen",
+              "atom": 329
+            }
+          },
+          {
+            "Str": {
+              "pattern": ")"
+            }
+          },
+          {
+            "Named": {
+              "name": "rparen",
+              "atom": 331
+            }
+          },
+          {
+            "Str": {
+              "pattern": "}"
+            }
+          },
+          {
+            "Named": {
+              "name": "rparen",
+              "atom": 333
+            }
+          },
+          {
+            "Str": {
+              "pattern": "]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "</"
+            }
+          },
+          {
+            "StateMatchAscii": {
+              "slot": "html_tag_name"
+            }
+          },
+          {
+            "Lookahead": {
+              "atom": 337,
+              "positive": true
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[\\s/>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                59,
+                4,
+                302
+              ]
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                59,
+                0,
+                302
+              ]
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                342,
+                434
+              ]
+            }
+          },
+          {
+            "Entity": {
+              "atom": 343
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                344,
+                428,
+                431
+              ]
+            }
+          },
+          {
+            "Named": {
+              "name": "unary_function",
+              "atom": 345
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                346,
+                427
+              ]
+            }
+          },
+          {
+            "Entity": {
+              "atom": 347
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                348,
+                370
+              ]
+            }
+          },
+          {
+            "Scope": {
+              "atom": 349
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                350,
+                351,
+                356,
+                369,
+                370,
+                422,
+                423,
+                424,
+                426
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "<"
+            }
+          },
+          {
+            "Capture": {
+              "name": "html_tag_name",
+              "atom": 352
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                353,
+                354
+              ]
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[a-zA-Z]"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 355,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[a-zA-Z0-9:._-]"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 357,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                358,
+                363,
+                368
+              ]
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                359,
+                360,
+                362
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 361,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^\"]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                364,
+                365,
+                367
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 366,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^']"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^<>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Entity": {
+              "atom": 371
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                372,
+                374,
+                376,
+                378,
+                380,
+                382,
+                384,
+                386,
+                388,
+                390,
+                392,
+                394,
+                396,
+                398,
+                400,
+                402,
+                404,
+                406,
+                408,
+                410,
+                412,
+                414,
+                416,
+                418,
+                420
+              ]
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 373
+            }
+          },
+          {
+            "Str": {
+              "pattern": "arcsin"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 375
+            }
+          },
+          {
+            "Str": {
+              "pattern": "arccos"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 377
+            }
+          },
+          {
+            "Str": {
+              "pattern": "arctan"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 379
+            }
+          },
+          {
+            "Str": {
+              "pattern": "coth"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 381
+            }
+          },
+          {
+            "Str": {
+              "pattern": "tanh"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 383
+            }
+          },
+          {
+            "Str": {
+              "pattern": "sech"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 385
+            }
+          },
+          {
+            "Str": {
+              "pattern": "csch"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 387
+            }
+          },
+          {
+            "Str": {
+              "pattern": "sqrt"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 389
+            }
+          },
+          {
+            "Str": {
+              "pattern": "ceil"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 391
+            }
+          },
+          {
+            "Str": {
+              "pattern": "sinh"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 393
+            }
+          },
+          {
+            "Str": {
+              "pattern": "cosh"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 395
+            }
+          },
+          {
+            "Str": {
+              "pattern": "sin"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 397
+            }
+          },
+          {
+            "Str": {
+              "pattern": "cos"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 399
+            }
+          },
+          {
+            "Str": {
+              "pattern": "gcd"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 401
+            }
+          },
+          {
+            "Str": {
+              "pattern": "csc"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 403
+            }
+          },
+          {
+            "Str": {
+              "pattern": "abs"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 405
+            }
+          },
+          {
+            "Str": {
+              "pattern": "vec"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 407
+            }
+          },
+          {
+            "Str": {
+              "pattern": "exp"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 409
+            }
+          },
+          {
+            "Str": {
+              "pattern": "sec"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 411
+            }
+          },
+          {
+            "Str": {
+              "pattern": "tan"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 413
+            }
+          },
+          {
+            "Str": {
+              "pattern": "cot"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 415
+            }
+          },
+          {
+            "Str": {
+              "pattern": "lcm"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 417
+            }
+          },
+          {
+            "Str": {
+              "pattern": "det"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 419
+            }
+          },
+          {
+            "Str": {
+              "pattern": "ln"
+            }
+          },
+          {
+            "Named": {
+              "name": "unary",
+              "atom": 421
+            }
+          },
+          {
+            "Str": {
+              "pattern": "lg"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "</"
+            }
+          },
+          {
+            "StateMatchAscii": {
+              "slot": "html_tag_name"
+            }
+          },
+          {
+            "Lookahead": {
+              "atom": 425,
+              "positive": true
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[\\s/>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Named": {
+              "name": "first_value",
+              "atom": 56
+            }
+          },
+          {
+            "Named": {
+              "name": "unary_function",
+              "atom": 429
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                346,
+                430
+              ]
+            }
+          },
+          {
+            "Named": {
+              "name": "first_value",
+              "atom": 4
+            }
+          },
+          {
+            "Named": {
+              "name": "unary_function",
+              "atom": 432
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                346,
+                433
+              ]
+            }
+          },
+          {
+            "Named": {
+              "name": "first_value",
+              "atom": 53
+            }
+          },
+          {
+            "Named": {
+              "name": "sequence",
+              "atom": 53
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                436,
+                480
+              ]
+            }
+          },
+          {
+            "Entity": {
+              "atom": 437
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                438,
+                473,
+                475,
+                478
+              ]
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                439,
+                471,
+                472
+              ]
+            }
+          },
+          {
+            "Entity": {
+              "atom": 440
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                441,
+                463
+              ]
+            }
+          },
+          {
+            "Scope": {
+              "atom": 442
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                443,
+                444,
+                449,
+                462,
+                463,
+                466,
+                467,
+                468,
+                470
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "<"
+            }
+          },
+          {
+            "Capture": {
+              "name": "html_tag_name",
+              "atom": 445
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                446,
+                447
+              ]
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[a-zA-Z]"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 448,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[a-zA-Z0-9:._-]"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 450,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                451,
+                456,
+                461
+              ]
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                452,
+                453,
+                455
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 454,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^\"]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                457,
+                458,
+                460
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 459,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^']"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^<>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Entity": {
+              "atom": 464
+            }
+          },
+          {
+            "Named": {
+              "name": "binary",
+              "atom": 465
+            }
+          },
+          {
+            "Str": {
+              "pattern": "lim"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "</"
+            }
+          },
+          {
+            "StateMatchAscii": {
+              "slot": "html_tag_name"
+            }
+          },
+          {
+            "Lookahead": {
+              "atom": 469,
+              "positive": true
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[\\s/>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Named": {
+              "name": "first_value",
+              "atom": 56
+            }
+          },
+          {
+            "Named": {
+              "name": "second_value",
+              "atom": 56
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                439,
+                474
+              ]
+            }
+          },
+          {
+            "Named": {
+              "name": "first_value",
+              "atom": 56
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                439,
+                476,
+                477
+              ]
+            }
+          },
+          {
+            "Named": {
+              "name": "first_value",
+              "atom": 4
+            }
+          },
+          {
+            "Named": {
+              "name": "second_value",
+              "atom": 4
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                439,
+                479
+              ]
+            }
+          },
+          {
+            "Named": {
+              "name": "first_value",
+              "atom": 4
+            }
+          },
+          {
+            "Named": {
+              "name": "sequence",
+              "atom": 53
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                96,
+                482
+              ]
+            }
+          },
+          {
+            "Named": {
+              "name": "parse_parenthesis",
+              "atom": 56
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                4,
+                484
+              ]
+            }
+          },
+          {
+            "Named": {
+              "name": "expression",
+              "atom": 0
+            }
+          },
+          {
+            "Str": {
+              "pattern": "</"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[sS]"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[uU]"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[bB]"
+            }
+          },
+          {
+            "Lookahead": {
+              "atom": 490,
+              "positive": true
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[\\s/>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Entity": {
+              "atom": 493
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                494,
+                495,
+                501,
+                514,
+                515,
+                516,
+                517,
+                518,
+                519,
+                520,
+                522
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "<"
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                496,
+                497,
+                498,
+                499
+              ]
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[sS]"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[uU]"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[pP]"
+            }
+          },
+          {
+            "Lookahead": {
+              "atom": 500,
+              "positive": true
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[\\s/>]"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 502,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                503,
+                508,
+                513
+              ]
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                504,
+                505,
+                507
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 506,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^\"]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                509,
+                510,
+                512
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 511,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^']"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^<>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Named": {
+              "name": "sup_value",
+              "atom": 53
+            }
+          },
+          {
+            "Str": {
+              "pattern": "</"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[sS]"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[uU]"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[pP]"
+            }
+          },
+          {
+            "Lookahead": {
+              "atom": 521,
+              "positive": true
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[\\s/>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                492,
+                29
+              ]
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                525,
+                26
+              ]
+            }
+          },
+          {
+            "Named": {
+              "name": "sub_sup",
+              "atom": 96
+            }
+          },
+          {
+            "Entity": {
+              "atom": 527
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                346,
+                439
+              ]
+            }
+          },
+          {
+            "Entity": {
+              "atom": 529
+            }
+          },
+          {
+            "Named": {
+              "name": "linebreak",
+              "atom": 530
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                531,
+                532,
+                537,
+                550
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "<"
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                533,
+                534,
+                535
+              ]
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[bB]"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[rR]"
+            }
+          },
+          {
+            "Lookahead": {
+              "atom": 536,
+              "positive": true
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[\\s/>]"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 538,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                539,
+                544,
+                549
+              ]
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                540,
+                541,
+                543
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 542,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^\"]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                545,
+                546,
+                548
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 547,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^']"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^<>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Entity": {
+              "atom": 552
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 553,
+              "min": 1,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[ ]"
+            }
+          },
+          {
+            "Entity": {
+              "atom": 555
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                556,
+                585
+              ]
+            }
+          },
+          {
+            "Scope": {
+              "atom": 557
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                558,
+                559,
+                564,
+                577,
+                578,
+                580,
+                581,
+                582,
+                584
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "<"
+            }
+          },
+          {
+            "Capture": {
+              "name": "html_tag_name",
+              "atom": 560
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                561,
+                562
+              ]
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[a-zA-Z]"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 563,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[a-zA-Z0-9:._-]"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 565,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Alternative": {
+              "atoms": [
+                566,
+                571,
+                576
+              ]
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                567,
+                568,
+                570
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 569,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^\"]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "\""
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                572,
+                573,
+                575
+              ]
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Repetition": {
+              "atom": 574,
+              "min": 0,
+              "max": null,
+              "tag": "Repetition"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^']"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "'"
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[^<>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Named": {
+              "name": "binary",
+              "atom": 579
+            }
+          },
+          {
+            "Str": {
+              "pattern": "mod"
+            }
+          },
+          {
+            "Str": {
+              "pattern": "</"
+            }
+          },
+          {
+            "StateMatchAscii": {
+              "slot": "html_tag_name"
+            }
+          },
+          {
+            "Lookahead": {
+              "atom": 583,
+              "positive": true
+            }
+          },
+          {
+            "Re": {
+              "pattern": "[\\s/>]"
+            }
+          },
+          {
+            "Str": {
+              "pattern": ">"
+            }
+          },
+          {
+            "Named": {
+              "name": "binary",
+              "atom": 586
+            }
+          },
+          {
+            "Str": {
+              "pattern": "mod"
+            }
+          },
+          {
+            "Named": {
+              "name": "second_value",
+              "atom": 4
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                589,
+                26
+              ]
+            }
+          },
+          {
+            "Named": {
+              "name": "sub_sup",
+              "atom": 526
+            }
+          },
+          {
+            "Sequence": {
+              "atoms": [
+                591,
+                592
+              ]
+            }
+          },
+          {
+            "Named": {
+              "name": "sequence",
+              "atom": 53
+            }
+          },
+          {
+            "Named": {
+              "name": "expression",
+              "atom": 53
+            }
+          }
+        ],
+        "root": 0
+      },
+      "bindings": []
+    }
+  },
+  "provenance": {
+    "source_language": "ruby-parser-graph",
+    "core_head": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+    "grammar_source_sha256": "b6262929322518d8d14381a4d67b86460c7e019b3baef3c8b5bc2db7b6398d9e",
+    "matching_close_tag_line": 187,
+    "serializer_sha256": "ce71e4d7724da50ebeed6cd47bff88eee78cd3a0d210cb367cb693742d880dcf",
+    "producer_sha256": "f7a88403342110fe91cfaa1f3e599ce7a2a980a0bfb91219d1954033915d7483",
+    "decimal": ",",
+    "lowering": "explicit captured ASCII tag comparison plus original boundary/scope",
+    "validated": "source graph serialized; native/C/WASM replay receipts are separate"
+  },
+  "checksum": "sha256:5ea0a822bac93bf52a3dca159c561647c8910d29fb783feaee3de092c2af0e6d"
+}

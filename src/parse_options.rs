@@ -5,6 +5,23 @@ mod locale_data;
 fn error(class: &str, message: String) -> Value {
     json!({"code":"PARSE_OPTION_ERROR","source_class":class,"message":message})
 }
+fn unsupported_locale(locale: &Value) -> Result<String, Value> {
+    use crate::source_values::{decode, inspect, Domain, Profile, RubyValue};
+    let inspect_error = |message: String| json!({"code":"source_value_error","message":message});
+    let locale =
+        inspect(&decode(locale, Domain::Literal, Profile::Canonical).map_err(inspect_error)?)
+            .map_err(inspect_error)?;
+    let supported = locale_data::LOCALES
+        .iter()
+        .map(|entry| inspect(&RubyValue::Symbol(entry.0.into())))
+        .collect::<Result<Vec<_>, _>>()
+        .map_err(inspect_error)?
+        .join(", ");
+    Ok(format!(
+        "[plurimath] Unsupported locale {locale}. Supported locales are: {supported}."
+    ))
+}
+
 pub(crate) fn normalize(format: &str, value: Option<&Value>) -> Result<Value, Value> {
     let Some(value) = value else {
         return Ok(json!({}));
@@ -43,14 +60,50 @@ pub(crate) fn normalize(format: &str, value: Option<&Value>) -> Result<Value, Va
         else {
             return Err(error(
                 "Plurimath::Errors::UnsupportedLocale",
-                format!("unsupported locale {locale}"),
+                unsupported_locale(locale)?,
             ));
         };
         if *decimal != "." {
-            return Err(
-                json!({"code":"unported_capability","message":"source comma/non-ASCII decimal locale parsing remains incomplete"}),
-            );
+            // Preserve the validated source locale for the stage grammar. The
+            // decimal is selected per request; shared parser state is unchanged.
+            return Ok(json!({"locale": locale}));
         }
     }
     Ok(json!({}))
+}
+
+/// Decimal separator for source-validated parser options.
+///
+/// Call `normalize` before this accessor when accepting caller options.
+pub(crate) fn decimal(options: &Value) -> &'static str {
+    options
+        .get("locale")
+        .and_then(Value::as_str)
+        .and_then(|locale| locale_data::LOCALES.iter().find(|entry| entry.0 == locale))
+        .map_or(".", |entry| entry.1)
+}
+
+#[cfg(test)]
+mod locale_tests {
+    use super::*;
+
+    #[test]
+    fn source_validation_precedes_decimal_selection() {
+        for value in [json!({}), json!({"locale":null}), json!({"locale":"en"})] {
+            assert_eq!(normalize("html", Some(&value)).unwrap(), json!({}));
+        }
+        assert_eq!(decimal(&normalize("html", None).unwrap()), ".");
+        assert_eq!(
+            normalize("html", Some(&json!({"locale":"missing"}))).unwrap_err()["source_class"],
+            "Plurimath::Errors::UnsupportedLocale"
+        );
+        assert_eq!(
+            normalize("mathml", Some(&json!({"locale":"de"}))).unwrap_err()["source_class"],
+            "Plurimath::Math::ParseOptionError"
+        );
+        assert_eq!(
+            normalize("html", Some(&json!({"extra":true}))).unwrap_err()["source_class"],
+            "Plurimath::Math::ParseOptionError"
+        );
+    }
 }

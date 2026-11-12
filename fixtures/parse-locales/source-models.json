@@ -1,0 +1,3522 @@
+{
+  "profile": "source-decimal-locales/1",
+  "source_head": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "ruby": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+  "rows": [
+    {
+      "id": "asciimath-en-number",
+      "input": {
+        "format": "asciimath",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "en"
+      },
+      "index": 0,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1.25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "asciimath-en-expression",
+      "input": {
+        "format": "asciimath",
+        "text": "1.25+2"
+      },
+      "parseOptions": {
+        "locale": "en"
+      },
+      "index": 1,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25+2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1.25"
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "asciimath-en-negative",
+      "input": {
+        "format": "asciimath",
+        "text": "-0.5"
+      },
+      "parseOptions": {
+        "locale": "en"
+      },
+      "index": 2,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "-0.5",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Minus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0.5"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "asciimath-en-other-decimal",
+      "input": {
+        "format": "asciimath",
+        "text": "1,25"
+      },
+      "parseOptions": {
+        "locale": "en"
+      },
+      "index": 3,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1,25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1"
+              }
+            },
+            {
+              "class": "Math::Symbols::Comma",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "asciimath-de-number",
+      "input": {
+        "format": "asciimath",
+        "text": "1,25"
+      },
+      "parseOptions": {
+        "locale": "de"
+      },
+      "index": 4,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1,25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1,25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "asciimath-de-expression",
+      "input": {
+        "format": "asciimath",
+        "text": "1,25+2"
+      },
+      "parseOptions": {
+        "locale": "de"
+      },
+      "index": 5,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1,25+2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1,25"
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "asciimath-de-negative",
+      "input": {
+        "format": "asciimath",
+        "text": "-0,5"
+      },
+      "parseOptions": {
+        "locale": "de"
+      },
+      "index": 6,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "-0,5",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Minus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0,5"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "asciimath-de-other-decimal",
+      "input": {
+        "format": "asciimath",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "de"
+      },
+      "index": 7,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1"
+              }
+            },
+            {
+              "class": "Math::Symbols::Period",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "asciimath-fr-number",
+      "input": {
+        "format": "asciimath",
+        "text": "1,25"
+      },
+      "parseOptions": {
+        "locale": "fr"
+      },
+      "index": 8,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1,25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1,25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "asciimath-fr-expression",
+      "input": {
+        "format": "asciimath",
+        "text": "1,25+2"
+      },
+      "parseOptions": {
+        "locale": "fr"
+      },
+      "index": 9,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1,25+2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1,25"
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "asciimath-fr-negative",
+      "input": {
+        "format": "asciimath",
+        "text": "-0,5"
+      },
+      "parseOptions": {
+        "locale": "fr"
+      },
+      "index": 10,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "-0,5",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Minus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0,5"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "asciimath-fr-other-decimal",
+      "input": {
+        "format": "asciimath",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "fr"
+      },
+      "index": 11,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1"
+              }
+            },
+            {
+              "class": "Math::Symbols::Period",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "asciimath-ar-number",
+      "input": {
+        "format": "asciimath",
+        "text": "1٫25"
+      },
+      "parseOptions": {
+        "locale": "ar"
+      },
+      "index": 12,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1٫25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1٫25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "asciimath-ar-expression",
+      "input": {
+        "format": "asciimath",
+        "text": "1٫25+2"
+      },
+      "parseOptions": {
+        "locale": "ar"
+      },
+      "index": 13,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1٫25+2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1٫25"
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "asciimath-ar-negative",
+      "input": {
+        "format": "asciimath",
+        "text": "-0٫5"
+      },
+      "parseOptions": {
+        "locale": "ar"
+      },
+      "index": 14,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "-0٫5",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Minus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0٫5"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "asciimath-ar-other-decimal",
+      "input": {
+        "format": "asciimath",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "ar"
+      },
+      "index": 15,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1"
+              }
+            },
+            {
+              "class": "Math::Symbols::Period",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "asciimath-fa-number",
+      "input": {
+        "format": "asciimath",
+        "text": "1٫25"
+      },
+      "parseOptions": {
+        "locale": "fa"
+      },
+      "index": 16,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1٫25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1٫25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "asciimath-fa-expression",
+      "input": {
+        "format": "asciimath",
+        "text": "1٫25+2"
+      },
+      "parseOptions": {
+        "locale": "fa"
+      },
+      "index": 17,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1٫25+2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1٫25"
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "asciimath-fa-negative",
+      "input": {
+        "format": "asciimath",
+        "text": "-0٫5"
+      },
+      "parseOptions": {
+        "locale": "fa"
+      },
+      "index": 18,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "-0٫5",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Minus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0٫5"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "asciimath-fa-other-decimal",
+      "input": {
+        "format": "asciimath",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "fa"
+      },
+      "index": 19,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1"
+              }
+            },
+            {
+              "class": "Math::Symbols::Period",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "asciimath-invalid-None",
+      "input": {
+        "format": "asciimath",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": null
+      },
+      "index": 20,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1.25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "asciimath-invalid-nonexistent",
+      "input": {
+        "format": "asciimath",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "nonexistent"
+      },
+      "index": 21,
+      "canonical_format": "asciimath",
+      "parse_error": {
+        "class": "Plurimath::Errors::UnsupportedLocale",
+        "message": "[plurimath] Unsupported locale \"nonexistent\". Supported locales are: :\"sr-Cyrl-ME\", :\"sr-Latn-ME\", :\"zh-Hant\", :\"en-001\", :\"en-150\", :\"pt-PT\", :\"nl-BE\", :\"it-CH\", :\"fr-BE\", :\"fr-CA\", :\"fr-CH\", :\"de-AT\", :\"de-CH\", :\"en-AU\", :\"en-CA\", :\"en-GB\", :\"en-IE\", :\"en-IN\", :\"en-NZ\", :\"en-SG\", :\"en-US\", :\"en-ZA\", :\"es-419\", :\"es-AR\", :\"es-CO\", :\"es-MX\", :\"es-US\", :fil, :af, :ar, :az, :be, :bg, :bn, :bo, :bs, :ca, :cs, :cy, :da, :de, :el, :en, :eo, :es, :et, :eu, :fa, :fi, :fr, :ga, :gl, :gu, :he, :hi, :hr, :hu, :hy, :id, :is, :it, :ja, :ka, :kk, :km, :kn, :ko, :lo, :lt, :lv, :mk, :mr, :ms, :mt, :my, :nb, :nl, :pl, :pt, :ro, :ru, :sk, :sl, :sq, :sr, :sv, :sw, :ta, :th, :tr, :uk, :ur, :vi, :xh, :zh, :zu."
+      }
+    },
+    {
+      "id": "asciimath-invalid-123",
+      "input": {
+        "format": "asciimath",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": 123
+      },
+      "index": 22,
+      "canonical_format": "asciimath",
+      "parse_error": {
+        "class": "Plurimath::Errors::UnsupportedLocale",
+        "message": "[plurimath] Unsupported locale 123. Supported locales are: :\"sr-Cyrl-ME\", :\"sr-Latn-ME\", :\"zh-Hant\", :\"en-001\", :\"en-150\", :\"pt-PT\", :\"nl-BE\", :\"it-CH\", :\"fr-BE\", :\"fr-CA\", :\"fr-CH\", :\"de-AT\", :\"de-CH\", :\"en-AU\", :\"en-CA\", :\"en-GB\", :\"en-IE\", :\"en-IN\", :\"en-NZ\", :\"en-SG\", :\"en-US\", :\"en-ZA\", :\"es-419\", :\"es-AR\", :\"es-CO\", :\"es-MX\", :\"es-US\", :fil, :af, :ar, :az, :be, :bg, :bn, :bo, :bs, :ca, :cs, :cy, :da, :de, :el, :en, :eo, :es, :et, :eu, :fa, :fi, :fr, :ga, :gl, :gu, :he, :hi, :hr, :hu, :hy, :id, :is, :it, :ja, :ka, :kk, :km, :kn, :ko, :lo, :lt, :lv, :mk, :mr, :ms, :mt, :my, :nb, :nl, :pl, :pt, :ro, :ru, :sk, :sl, :sq, :sr, :sv, :sw, :ta, :th, :tr, :uk, :ur, :vi, :xh, :zh, :zu."
+      }
+    },
+    {
+      "id": "latex-en-number",
+      "input": {
+        "format": "latex",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "en"
+      },
+      "index": 23,
+      "canonical_format": "latex",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1.25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "latex-en-expression",
+      "input": {
+        "format": "latex",
+        "text": "1.25+2"
+      },
+      "parseOptions": {
+        "locale": "en"
+      },
+      "index": 24,
+      "canonical_format": "latex",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25+2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1.25"
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "latex-en-negative",
+      "input": {
+        "format": "latex",
+        "text": "-0.5"
+      },
+      "parseOptions": {
+        "locale": "en"
+      },
+      "index": 25,
+      "canonical_format": "latex",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "-0.5",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Minus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0.5"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "latex-en-other-decimal",
+      "input": {
+        "format": "latex",
+        "text": "1,25"
+      },
+      "parseOptions": {
+        "locale": "en"
+      },
+      "index": 26,
+      "canonical_format": "latex",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1,25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1"
+              }
+            },
+            {
+              "class": "Math::Symbols::Comma",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "latex-de-number",
+      "input": {
+        "format": "latex",
+        "text": "1,25"
+      },
+      "parseOptions": {
+        "locale": "de"
+      },
+      "index": 27,
+      "canonical_format": "latex",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1,25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1,25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "latex-de-expression",
+      "input": {
+        "format": "latex",
+        "text": "1,25+2"
+      },
+      "parseOptions": {
+        "locale": "de"
+      },
+      "index": 28,
+      "canonical_format": "latex",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1,25+2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1,25"
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "latex-de-negative",
+      "input": {
+        "format": "latex",
+        "text": "-0,5"
+      },
+      "parseOptions": {
+        "locale": "de"
+      },
+      "index": 29,
+      "canonical_format": "latex",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "-0,5",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Minus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0,5"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "latex-de-other-decimal",
+      "input": {
+        "format": "latex",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "de"
+      },
+      "index": 30,
+      "canonical_format": "latex",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1"
+              }
+            },
+            {
+              "class": "Math::Symbols::Period",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "latex-fr-number",
+      "input": {
+        "format": "latex",
+        "text": "1,25"
+      },
+      "parseOptions": {
+        "locale": "fr"
+      },
+      "index": 31,
+      "canonical_format": "latex",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1,25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1,25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "latex-fr-expression",
+      "input": {
+        "format": "latex",
+        "text": "1,25+2"
+      },
+      "parseOptions": {
+        "locale": "fr"
+      },
+      "index": 32,
+      "canonical_format": "latex",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1,25+2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1,25"
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "latex-fr-negative",
+      "input": {
+        "format": "latex",
+        "text": "-0,5"
+      },
+      "parseOptions": {
+        "locale": "fr"
+      },
+      "index": 33,
+      "canonical_format": "latex",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "-0,5",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Minus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0,5"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "latex-fr-other-decimal",
+      "input": {
+        "format": "latex",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "fr"
+      },
+      "index": 34,
+      "canonical_format": "latex",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1"
+              }
+            },
+            {
+              "class": "Math::Symbols::Period",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "latex-ar-number",
+      "input": {
+        "format": "latex",
+        "text": "1٫25"
+      },
+      "parseOptions": {
+        "locale": "ar"
+      },
+      "index": 35,
+      "canonical_format": "latex",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1٫25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1٫25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "latex-ar-expression",
+      "input": {
+        "format": "latex",
+        "text": "1٫25+2"
+      },
+      "parseOptions": {
+        "locale": "ar"
+      },
+      "index": 36,
+      "canonical_format": "latex",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1٫25+2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1٫25"
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "latex-ar-negative",
+      "input": {
+        "format": "latex",
+        "text": "-0٫5"
+      },
+      "parseOptions": {
+        "locale": "ar"
+      },
+      "index": 37,
+      "canonical_format": "latex",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "-0٫5",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Minus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0٫5"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "latex-ar-other-decimal",
+      "input": {
+        "format": "latex",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "ar"
+      },
+      "index": 38,
+      "canonical_format": "latex",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1"
+              }
+            },
+            {
+              "class": "Math::Symbols::Period",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "latex-fa-number",
+      "input": {
+        "format": "latex",
+        "text": "1٫25"
+      },
+      "parseOptions": {
+        "locale": "fa"
+      },
+      "index": 39,
+      "canonical_format": "latex",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1٫25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1٫25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "latex-fa-expression",
+      "input": {
+        "format": "latex",
+        "text": "1٫25+2"
+      },
+      "parseOptions": {
+        "locale": "fa"
+      },
+      "index": 40,
+      "canonical_format": "latex",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1٫25+2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1٫25"
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "latex-fa-negative",
+      "input": {
+        "format": "latex",
+        "text": "-0٫5"
+      },
+      "parseOptions": {
+        "locale": "fa"
+      },
+      "index": 41,
+      "canonical_format": "latex",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "-0٫5",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Minus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0٫5"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "latex-fa-other-decimal",
+      "input": {
+        "format": "latex",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "fa"
+      },
+      "index": 42,
+      "canonical_format": "latex",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1"
+              }
+            },
+            {
+              "class": "Math::Symbols::Period",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "latex-invalid-None",
+      "input": {
+        "format": "latex",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": null
+      },
+      "index": 43,
+      "canonical_format": "latex",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1.25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "latex-invalid-nonexistent",
+      "input": {
+        "format": "latex",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "nonexistent"
+      },
+      "index": 44,
+      "canonical_format": "latex",
+      "parse_error": {
+        "class": "Plurimath::Errors::UnsupportedLocale",
+        "message": "[plurimath] Unsupported locale \"nonexistent\". Supported locales are: :\"sr-Cyrl-ME\", :\"sr-Latn-ME\", :\"zh-Hant\", :\"en-001\", :\"en-150\", :\"pt-PT\", :\"nl-BE\", :\"it-CH\", :\"fr-BE\", :\"fr-CA\", :\"fr-CH\", :\"de-AT\", :\"de-CH\", :\"en-AU\", :\"en-CA\", :\"en-GB\", :\"en-IE\", :\"en-IN\", :\"en-NZ\", :\"en-SG\", :\"en-US\", :\"en-ZA\", :\"es-419\", :\"es-AR\", :\"es-CO\", :\"es-MX\", :\"es-US\", :fil, :af, :ar, :az, :be, :bg, :bn, :bo, :bs, :ca, :cs, :cy, :da, :de, :el, :en, :eo, :es, :et, :eu, :fa, :fi, :fr, :ga, :gl, :gu, :he, :hi, :hr, :hu, :hy, :id, :is, :it, :ja, :ka, :kk, :km, :kn, :ko, :lo, :lt, :lv, :mk, :mr, :ms, :mt, :my, :nb, :nl, :pl, :pt, :ro, :ru, :sk, :sl, :sq, :sr, :sv, :sw, :ta, :th, :tr, :uk, :ur, :vi, :xh, :zh, :zu."
+      }
+    },
+    {
+      "id": "latex-invalid-123",
+      "input": {
+        "format": "latex",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": 123
+      },
+      "index": 45,
+      "canonical_format": "latex",
+      "parse_error": {
+        "class": "Plurimath::Errors::UnsupportedLocale",
+        "message": "[plurimath] Unsupported locale 123. Supported locales are: :\"sr-Cyrl-ME\", :\"sr-Latn-ME\", :\"zh-Hant\", :\"en-001\", :\"en-150\", :\"pt-PT\", :\"nl-BE\", :\"it-CH\", :\"fr-BE\", :\"fr-CA\", :\"fr-CH\", :\"de-AT\", :\"de-CH\", :\"en-AU\", :\"en-CA\", :\"en-GB\", :\"en-IE\", :\"en-IN\", :\"en-NZ\", :\"en-SG\", :\"en-US\", :\"en-ZA\", :\"es-419\", :\"es-AR\", :\"es-CO\", :\"es-MX\", :\"es-US\", :fil, :af, :ar, :az, :be, :bg, :bn, :bo, :bs, :ca, :cs, :cy, :da, :de, :el, :en, :eo, :es, :et, :eu, :fa, :fi, :fr, :ga, :gl, :gu, :he, :hi, :hr, :hu, :hy, :id, :is, :it, :ja, :ka, :kk, :km, :kn, :ko, :lo, :lt, :lv, :mk, :mr, :ms, :mt, :my, :nb, :nl, :pl, :pt, :ro, :ru, :sk, :sl, :sq, :sr, :sv, :sw, :ta, :th, :tr, :uk, :ur, :vi, :xh, :zh, :zu."
+      }
+    },
+    {
+      "id": "unicode-en-number",
+      "input": {
+        "format": "unicode",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "en"
+      },
+      "index": 46,
+      "canonical_format": "unicode",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1.25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unicode-en-expression",
+      "input": {
+        "format": "unicode",
+        "text": "1.25+2"
+      },
+      "parseOptions": {
+        "locale": "en"
+      },
+      "index": 47,
+      "canonical_format": "unicode",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25+2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1.25"
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unicode-en-negative",
+      "input": {
+        "format": "unicode",
+        "text": "-0.5"
+      },
+      "parseOptions": {
+        "locale": "en"
+      },
+      "index": 48,
+      "canonical_format": "unicode",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "-0.5",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Minus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0.5"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unicode-en-other-decimal",
+      "input": {
+        "format": "unicode",
+        "text": "1,25"
+      },
+      "parseOptions": {
+        "locale": "en"
+      },
+      "index": 49,
+      "canonical_format": "unicode",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1,25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1,25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unicode-de-number",
+      "input": {
+        "format": "unicode",
+        "text": "1,25"
+      },
+      "parseOptions": {
+        "locale": "de"
+      },
+      "index": 50,
+      "canonical_format": "unicode",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1,25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1,25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unicode-de-expression",
+      "input": {
+        "format": "unicode",
+        "text": "1,25+2"
+      },
+      "parseOptions": {
+        "locale": "de"
+      },
+      "index": 51,
+      "canonical_format": "unicode",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1,25+2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1,25"
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unicode-de-negative",
+      "input": {
+        "format": "unicode",
+        "text": "-0,5"
+      },
+      "parseOptions": {
+        "locale": "de"
+      },
+      "index": 52,
+      "canonical_format": "unicode",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "-0,5",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Minus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0,5"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unicode-de-other-decimal",
+      "input": {
+        "format": "unicode",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "de"
+      },
+      "index": 53,
+      "canonical_format": "unicode",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1.25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unicode-fr-number",
+      "input": {
+        "format": "unicode",
+        "text": "1,25"
+      },
+      "parseOptions": {
+        "locale": "fr"
+      },
+      "index": 54,
+      "canonical_format": "unicode",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1,25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1,25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unicode-fr-expression",
+      "input": {
+        "format": "unicode",
+        "text": "1,25+2"
+      },
+      "parseOptions": {
+        "locale": "fr"
+      },
+      "index": 55,
+      "canonical_format": "unicode",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1,25+2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1,25"
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unicode-fr-negative",
+      "input": {
+        "format": "unicode",
+        "text": "-0,5"
+      },
+      "parseOptions": {
+        "locale": "fr"
+      },
+      "index": 56,
+      "canonical_format": "unicode",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "-0,5",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Minus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0,5"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unicode-fr-other-decimal",
+      "input": {
+        "format": "unicode",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "fr"
+      },
+      "index": 57,
+      "canonical_format": "unicode",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1.25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unicode-ar-number",
+      "input": {
+        "format": "unicode",
+        "text": "1٫25"
+      },
+      "parseOptions": {
+        "locale": "ar"
+      },
+      "index": 58,
+      "canonical_format": "unicode",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1٫25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1٫25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unicode-ar-expression",
+      "input": {
+        "format": "unicode",
+        "text": "1٫25+2"
+      },
+      "parseOptions": {
+        "locale": "ar"
+      },
+      "index": 59,
+      "canonical_format": "unicode",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1٫25+2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1٫25"
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unicode-ar-negative",
+      "input": {
+        "format": "unicode",
+        "text": "-0٫5"
+      },
+      "parseOptions": {
+        "locale": "ar"
+      },
+      "index": 60,
+      "canonical_format": "unicode",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "-0٫5",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Minus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0٫5"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unicode-ar-other-decimal",
+      "input": {
+        "format": "unicode",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "ar"
+      },
+      "index": 61,
+      "canonical_format": "unicode",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1.25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unicode-fa-number",
+      "input": {
+        "format": "unicode",
+        "text": "1٫25"
+      },
+      "parseOptions": {
+        "locale": "fa"
+      },
+      "index": 62,
+      "canonical_format": "unicode",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1٫25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1٫25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unicode-fa-expression",
+      "input": {
+        "format": "unicode",
+        "text": "1٫25+2"
+      },
+      "parseOptions": {
+        "locale": "fa"
+      },
+      "index": 63,
+      "canonical_format": "unicode",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1٫25+2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1٫25"
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unicode-fa-negative",
+      "input": {
+        "format": "unicode",
+        "text": "-0٫5"
+      },
+      "parseOptions": {
+        "locale": "fa"
+      },
+      "index": 64,
+      "canonical_format": "unicode",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "-0٫5",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Minus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0٫5"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unicode-fa-other-decimal",
+      "input": {
+        "format": "unicode",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "fa"
+      },
+      "index": 65,
+      "canonical_format": "unicode",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1.25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unicode-invalid-None",
+      "input": {
+        "format": "unicode",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": null
+      },
+      "index": 66,
+      "canonical_format": "unicode",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1.25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unicode-invalid-nonexistent",
+      "input": {
+        "format": "unicode",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "nonexistent"
+      },
+      "index": 67,
+      "canonical_format": "unicode",
+      "parse_error": {
+        "class": "Plurimath::Errors::UnsupportedLocale",
+        "message": "[plurimath] Unsupported locale \"nonexistent\". Supported locales are: :\"sr-Cyrl-ME\", :\"sr-Latn-ME\", :\"zh-Hant\", :\"en-001\", :\"en-150\", :\"pt-PT\", :\"nl-BE\", :\"it-CH\", :\"fr-BE\", :\"fr-CA\", :\"fr-CH\", :\"de-AT\", :\"de-CH\", :\"en-AU\", :\"en-CA\", :\"en-GB\", :\"en-IE\", :\"en-IN\", :\"en-NZ\", :\"en-SG\", :\"en-US\", :\"en-ZA\", :\"es-419\", :\"es-AR\", :\"es-CO\", :\"es-MX\", :\"es-US\", :fil, :af, :ar, :az, :be, :bg, :bn, :bo, :bs, :ca, :cs, :cy, :da, :de, :el, :en, :eo, :es, :et, :eu, :fa, :fi, :fr, :ga, :gl, :gu, :he, :hi, :hr, :hu, :hy, :id, :is, :it, :ja, :ka, :kk, :km, :kn, :ko, :lo, :lt, :lv, :mk, :mr, :ms, :mt, :my, :nb, :nl, :pl, :pt, :ro, :ru, :sk, :sl, :sq, :sr, :sv, :sw, :ta, :th, :tr, :uk, :ur, :vi, :xh, :zh, :zu."
+      }
+    },
+    {
+      "id": "unicode-invalid-123",
+      "input": {
+        "format": "unicode",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": 123
+      },
+      "index": 68,
+      "canonical_format": "unicode",
+      "parse_error": {
+        "class": "Plurimath::Errors::UnsupportedLocale",
+        "message": "[plurimath] Unsupported locale 123. Supported locales are: :\"sr-Cyrl-ME\", :\"sr-Latn-ME\", :\"zh-Hant\", :\"en-001\", :\"en-150\", :\"pt-PT\", :\"nl-BE\", :\"it-CH\", :\"fr-BE\", :\"fr-CA\", :\"fr-CH\", :\"de-AT\", :\"de-CH\", :\"en-AU\", :\"en-CA\", :\"en-GB\", :\"en-IE\", :\"en-IN\", :\"en-NZ\", :\"en-SG\", :\"en-US\", :\"en-ZA\", :\"es-419\", :\"es-AR\", :\"es-CO\", :\"es-MX\", :\"es-US\", :fil, :af, :ar, :az, :be, :bg, :bn, :bo, :bs, :ca, :cs, :cy, :da, :de, :el, :en, :eo, :es, :et, :eu, :fa, :fi, :fr, :ga, :gl, :gu, :he, :hi, :hr, :hu, :hy, :id, :is, :it, :ja, :ka, :kk, :km, :kn, :ko, :lo, :lt, :lv, :mk, :mr, :ms, :mt, :my, :nb, :nl, :pl, :pt, :ro, :ru, :sk, :sl, :sq, :sr, :sv, :sw, :ta, :th, :tr, :uk, :ur, :vi, :xh, :zh, :zu."
+      }
+    },
+    {
+      "id": "html-en-number",
+      "input": {
+        "format": "html",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "en"
+      },
+      "index": 69,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1.25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-en-expression",
+      "input": {
+        "format": "html",
+        "text": "1.25+2"
+      },
+      "parseOptions": {
+        "locale": "en"
+      },
+      "index": 70,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25+2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1.25"
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-en-negative",
+      "input": {
+        "format": "html",
+        "text": "-0.5"
+      },
+      "parseOptions": {
+        "locale": "en"
+      },
+      "index": 71,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "-0.5",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Minus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0.5"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-en-other-decimal",
+      "input": {
+        "format": "html",
+        "text": "1,25"
+      },
+      "parseOptions": {
+        "locale": "en"
+      },
+      "index": 72,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1,25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1"
+              }
+            },
+            {
+              "class": "Math::Symbols::Comma",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-de-number",
+      "input": {
+        "format": "html",
+        "text": "1,25"
+      },
+      "parseOptions": {
+        "locale": "de"
+      },
+      "index": 73,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1,25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1,25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-de-expression",
+      "input": {
+        "format": "html",
+        "text": "1,25+2"
+      },
+      "parseOptions": {
+        "locale": "de"
+      },
+      "index": 74,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1,25+2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1,25"
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-de-negative",
+      "input": {
+        "format": "html",
+        "text": "-0,5"
+      },
+      "parseOptions": {
+        "locale": "de"
+      },
+      "index": 75,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "-0,5",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Minus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0,5"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-de-other-decimal",
+      "input": {
+        "format": "html",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "de"
+      },
+      "index": 76,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1"
+              }
+            },
+            {
+              "class": "Math::Symbols::Period",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-fr-number",
+      "input": {
+        "format": "html",
+        "text": "1,25"
+      },
+      "parseOptions": {
+        "locale": "fr"
+      },
+      "index": 77,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1,25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1,25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-fr-expression",
+      "input": {
+        "format": "html",
+        "text": "1,25+2"
+      },
+      "parseOptions": {
+        "locale": "fr"
+      },
+      "index": 78,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1,25+2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1,25"
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-fr-negative",
+      "input": {
+        "format": "html",
+        "text": "-0,5"
+      },
+      "parseOptions": {
+        "locale": "fr"
+      },
+      "index": 79,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "-0,5",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Minus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0,5"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-fr-other-decimal",
+      "input": {
+        "format": "html",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "fr"
+      },
+      "index": 80,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1"
+              }
+            },
+            {
+              "class": "Math::Symbols::Period",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-ar-number",
+      "input": {
+        "format": "html",
+        "text": "1٫25"
+      },
+      "parseOptions": {
+        "locale": "ar"
+      },
+      "index": 81,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1٫25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1٫25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-ar-expression",
+      "input": {
+        "format": "html",
+        "text": "1٫25+2"
+      },
+      "parseOptions": {
+        "locale": "ar"
+      },
+      "index": 82,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1٫25+2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1٫25"
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-ar-negative",
+      "input": {
+        "format": "html",
+        "text": "-0٫5"
+      },
+      "parseOptions": {
+        "locale": "ar"
+      },
+      "index": 83,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "-0٫5",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Minus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0٫5"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-ar-other-decimal",
+      "input": {
+        "format": "html",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "ar"
+      },
+      "index": 84,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1"
+              }
+            },
+            {
+              "class": "Math::Symbols::Period",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-fa-number",
+      "input": {
+        "format": "html",
+        "text": "1٫25"
+      },
+      "parseOptions": {
+        "locale": "fa"
+      },
+      "index": 85,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1٫25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1٫25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-fa-expression",
+      "input": {
+        "format": "html",
+        "text": "1٫25+2"
+      },
+      "parseOptions": {
+        "locale": "fa"
+      },
+      "index": 86,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1٫25+2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1٫25"
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-fa-negative",
+      "input": {
+        "format": "html",
+        "text": "-0٫5"
+      },
+      "parseOptions": {
+        "locale": "fa"
+      },
+      "index": 87,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "-0٫5",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Minus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0٫5"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-fa-other-decimal",
+      "input": {
+        "format": "html",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "fa"
+      },
+      "index": 88,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1"
+              }
+            },
+            {
+              "class": "Math::Symbols::Period",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-invalid-None",
+      "input": {
+        "format": "html",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": null
+      },
+      "index": 89,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1.25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-invalid-nonexistent",
+      "input": {
+        "format": "html",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": "nonexistent"
+      },
+      "index": 90,
+      "canonical_format": "html",
+      "parse_error": {
+        "class": "Plurimath::Errors::UnsupportedLocale",
+        "message": "[plurimath] Unsupported locale \"nonexistent\". Supported locales are: :\"sr-Cyrl-ME\", :\"sr-Latn-ME\", :\"zh-Hant\", :\"en-001\", :\"en-150\", :\"pt-PT\", :\"nl-BE\", :\"it-CH\", :\"fr-BE\", :\"fr-CA\", :\"fr-CH\", :\"de-AT\", :\"de-CH\", :\"en-AU\", :\"en-CA\", :\"en-GB\", :\"en-IE\", :\"en-IN\", :\"en-NZ\", :\"en-SG\", :\"en-US\", :\"en-ZA\", :\"es-419\", :\"es-AR\", :\"es-CO\", :\"es-MX\", :\"es-US\", :fil, :af, :ar, :az, :be, :bg, :bn, :bo, :bs, :ca, :cs, :cy, :da, :de, :el, :en, :eo, :es, :et, :eu, :fa, :fi, :fr, :ga, :gl, :gu, :he, :hi, :hr, :hu, :hy, :id, :is, :it, :ja, :ka, :kk, :km, :kn, :ko, :lo, :lt, :lv, :mk, :mr, :ms, :mt, :my, :nb, :nl, :pl, :pt, :ro, :ru, :sk, :sl, :sq, :sr, :sv, :sw, :ta, :th, :tr, :uk, :ur, :vi, :xh, :zh, :zu."
+      }
+    },
+    {
+      "id": "html-invalid-123",
+      "input": {
+        "format": "html",
+        "text": "1.25"
+      },
+      "parseOptions": {
+        "locale": 123
+      },
+      "index": 91,
+      "canonical_format": "html",
+      "parse_error": {
+        "class": "Plurimath::Errors::UnsupportedLocale",
+        "message": "[plurimath] Unsupported locale 123. Supported locales are: :\"sr-Cyrl-ME\", :\"sr-Latn-ME\", :\"zh-Hant\", :\"en-001\", :\"en-150\", :\"pt-PT\", :\"nl-BE\", :\"it-CH\", :\"fr-BE\", :\"fr-CA\", :\"fr-CH\", :\"de-AT\", :\"de-CH\", :\"en-AU\", :\"en-CA\", :\"en-GB\", :\"en-IE\", :\"en-IN\", :\"en-NZ\", :\"en-SG\", :\"en-US\", :\"en-ZA\", :\"es-419\", :\"es-AR\", :\"es-CO\", :\"es-MX\", :\"es-US\", :fil, :af, :ar, :az, :be, :bg, :bn, :bo, :bs, :ca, :cs, :cy, :da, :de, :el, :en, :eo, :es, :et, :eu, :fa, :fi, :fr, :ga, :gl, :gu, :he, :hi, :hr, :hu, :hy, :id, :is, :it, :ja, :ka, :kk, :km, :kn, :ko, :lo, :lt, :lv, :mk, :mr, :ms, :mt, :my, :nb, :nl, :pl, :pt, :ro, :ru, :sk, :sl, :sq, :sr, :sv, :sw, :ta, :th, :tr, :uk, :ur, :vi, :xh, :zh, :zu."
+      }
+    },
+    {
+      "id": "html-extra-92",
+      "input": {
+        "format": "html",
+        "text": "<B>1,25</b>"
+      },
+      "parseOptions": {
+        "locale": "de"
+      },
+      "index": 92,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "<B>1,25</b>",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1,25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-extra-93",
+      "input": {
+        "format": "html",
+        "text": "<i>1٫25</I>"
+      },
+      "parseOptions": {
+        "locale": "ar"
+      },
+      "index": 93,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "<i>1٫25</I>",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1٫25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-extra-94",
+      "input": {
+        "format": "html",
+        "text": "x1,25"
+      },
+      "parseOptions": {
+        "locale": "de"
+      },
+      "index": 94,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "x1,25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Text",
+              "fields": {
+                "lang": null,
+                "parameter_one": "x"
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1,25"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-extra-95",
+      "input": {
+        "format": "html",
+        "text": "1,25x"
+      },
+      "parseOptions": {
+        "locale": "de"
+      },
+      "index": 95,
+      "canonical_format": "html",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1,25x",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1,25"
+              }
+            },
+            {
+              "class": "Math::Function::Text",
+              "fields": {
+                "lang": null,
+                "parameter_one": "x"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
