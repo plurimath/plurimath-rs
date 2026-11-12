@@ -357,7 +357,7 @@ fn newton(p: u32) -> Vec<u32> {
     let mut n = p;
     while n > 8 {
         ps.push(n);
-        n = (n + 1) / 2 + 2
+        n = n.div_ceil(2) + 2
     }
     ps.reverse();
     ps

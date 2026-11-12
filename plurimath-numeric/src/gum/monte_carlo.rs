@@ -650,7 +650,7 @@ mod tests {
     fn exact_singular_joint_factors_and_invalid_covariances() {
         let pdf = json!({"distribution":"normal","location":0,"sd":"0.005"});
         for sign in [1, -1] {
-            let off = Q::new((sign * 1_i64).into(), number(40000));
+            let off = Q::new(sign.into(), number(40000));
             let covariance = json!([["1/40000", tagged(&off)], [tagged(&off), "1/40000"],]);
             let sampler =
                 JointNormal::new(&[&pdf, &pdf], &covariance).unwrap_or_else(|e| panic!("{e:?}"));

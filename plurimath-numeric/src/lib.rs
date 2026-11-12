@@ -64,9 +64,7 @@ fn binding_decimal(s: &str) -> bool {
     let unsigned = s.strip_prefix('-').unwrap_or(s);
     let mut pieces = unsigned.split('.');
     let digits = |part: &str| !part.is_empty() && part.bytes().all(|c| c.is_ascii_digit());
-    pieces.next().is_some_and(digits)
-        && pieces.next().map_or(true, digits)
-        && pieces.next().is_none()
+    pieces.next().is_some_and(digits) && pieces.next().is_none_or(digits) && pieces.next().is_none()
 }
 fn qparse(s: &str) -> Result<Q, E> {
     let parts: Vec<_> = s.split(['e', 'E']).collect();
@@ -664,6 +662,9 @@ fn quantity_wire(_request: &J) -> String {
 pub extern "C" fn plurimath_numeric_abi_version() -> u32 {
     1
 }
+/// # Safety
+/// Input must be null or point to at least `len` readable bytes for this call.
+/// The caller must free each non-null return once with `plurimath_numeric_result_free`.
 #[no_mangle]
 pub unsafe extern "C" fn plurimath_numeric_evaluate(
     input: *const u8,
@@ -682,6 +683,8 @@ pub unsafe extern "C" fn plurimath_numeric_evaluate(
     });
     run.unwrap_or(std::ptr::null_mut())
 }
+/// # Safety
+/// A non-null pointer must be an unreleased return from `plurimath_numeric_evaluate`.
 #[no_mangle]
 pub unsafe extern "C" fn plurimath_numeric_result_free(result: *mut std::ffi::c_char) {
     if !result.is_null() {
@@ -693,6 +696,8 @@ pub extern "C" fn plurimath_numeric_alloc(len: usize) -> *mut u8 {
     let bytes = vec![0u8; len].into_boxed_slice();
     Box::into_raw(bytes) as *mut u8
 }
+/// # Safety
+/// A non-null pointer and length must match an unreleased `plurimath_numeric_alloc` allocation.
 #[no_mangle]
 pub unsafe extern "C" fn plurimath_numeric_dealloc(ptr: *mut u8, len: usize) {
     if !ptr.is_null() {
