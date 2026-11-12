@@ -1,0 +1,56 @@
+{
+  "source_revision": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "source_file": "lib/plurimath/asciimath/parser.rb",
+  "source_file_sha256": "9be5484cf1b2a9b395f53c8ae5ce5dafbdf3f6650fa50393244fad5069a90424",
+  "current_source_file_same": true,
+  "cases": [
+    {
+      "input": "|:",
+      "expected": "|"
+    },
+    {
+      "input": ":|",
+      "expected": "|"
+    },
+    {
+      "input": "|:|",
+      "expected": "||"
+    },
+    {
+      "input": ":|:",
+      "expected": "|:"
+    },
+    {
+      "input": "||:|",
+      "expected": "|||"
+    },
+    {
+      "input": "{:x:}",
+      "expected": "ℒxℛ"
+    },
+    {
+      "input": "(:x:)",
+      "expected": "ᑕxᑐ"
+    },
+    {
+      "input": "α{:x:}",
+      "expected": "αℒxℛ"
+    },
+    {
+      "input": "{(x,x>0),(0,x<=0):}",
+      "expected": "{(x,x>0),(0,x<=0)ℛ"
+    },
+    {
+      "input": "||",
+      "expected": "||"
+    },
+    {
+      "input": "text(\"{:x:}\")",
+      "expected": "text(\"ℒxℛ\")"
+    },
+    {
+      "input": "(:{:x:}:)",
+      "expected": "ᑕℒxℛᑐ"
+    }
+  ]
+}

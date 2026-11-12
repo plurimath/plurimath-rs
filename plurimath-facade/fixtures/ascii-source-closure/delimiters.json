@@ -1,0 +1,149 @@
+{
+  "ruby": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+  "rows": [
+    {
+      "text": "ℒ",
+      "model": {
+        "class": "Math::Symbols::Paren::OpenParen",
+        "fields": {
+          "value": null
+        }
+      }
+    },
+    {
+      "text": "ℛ",
+      "model": {
+        "class": "Math::Symbols::Paren::CloseParen",
+        "fields": {
+          "value": null
+        }
+      }
+    },
+    {
+      "text": "ᑕ",
+      "model": {
+        "class": "Math::Symbols::Paren::Langle",
+        "fields": {
+          "value": null
+        }
+      }
+    },
+    {
+      "text": "ᑐ",
+      "model": {
+        "class": "Math::Symbols::Paren::Rangle",
+        "fields": {
+          "value": null
+        }
+      }
+    },
+    {
+      "text": "{:",
+      "model": {
+        "class": "Math::Symbols::Paren::OpenParen",
+        "fields": {
+          "value": null
+        }
+      }
+    },
+    {
+      "text": ":}",
+      "model": {
+        "class": "Math::Symbols::Paren::CloseParen",
+        "fields": {
+          "value": null
+        }
+      }
+    },
+    {
+      "text": "(:",
+      "model": {
+        "class": "Math::Symbols::Paren::Langle",
+        "fields": {
+          "value": null
+        }
+      }
+    },
+    {
+      "text": ":)",
+      "model": {
+        "class": "Math::Symbols::Paren::Rangle",
+        "fields": {
+          "value": null
+        }
+      }
+    },
+    {
+      "text": ", ",
+      "model": {
+        "class": "Math::Symbols::Comma",
+        "fields": {
+          "value": null
+        }
+      }
+    },
+    {
+      "text": " ,\t",
+      "model": {
+        "class": "Math::Symbols::Comma",
+        "fields": {
+          "value": null
+        }
+      }
+    },
+    {
+      "text": "foo ",
+      "model": {
+        "class": "Math::Symbols::Symbol",
+        "fields": {
+          "value": "foo "
+        }
+      }
+    },
+    {
+      "text": " ℛ ",
+      "model": {
+        "class": "Math::Symbols::Symbol",
+        "fields": {
+          "value": " ℛ "
+        }
+      }
+    },
+    {
+      "text": "\\ ",
+      "model": {
+        "class": "Math::Symbols::Space",
+        "fields": {
+          "value": null
+        }
+      }
+    },
+    {
+      "text": "\\\t",
+      "model": {
+        "class": "Math::Symbols::Backslash",
+        "fields": {
+          "value": null
+        }
+      }
+    },
+    {
+      "text": "\\  ",
+      "model": {
+        "class": "Math::Symbols::Backslash",
+        "fields": {
+          "value": null
+        }
+      }
+    },
+    {
+      "text": "\\",
+      "model": {
+        "class": "Math::Symbols::Backslash",
+        "fields": {
+          "value": null
+        }
+      }
+    }
+  ]
+}

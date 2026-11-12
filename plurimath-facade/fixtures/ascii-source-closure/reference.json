@@ -1,0 +1,5602 @@
+{
+  "profile": "actual-ruby-extra-asciimath-models/1",
+  "source_file_sha256": "a8b94f2d2e66f64b9c2adb2062a9b37098ae8b7b2077fe92a58743891fa5c560",
+  "ruby": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+  "source_profile": "extra-source-input-models/1",
+  "cases": [
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "x"
+      },
+      "parseOptions": {
+        "foo": 1
+      },
+      "index": 70,
+      "canonical_format": "asciimath",
+      "parse_error": {
+        "class": "Plurimath::Math::ParseOptionError",
+        "message": "unknown parse option: :foo; supported parse options are :locale"
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "x"
+      },
+      "parseOptions": {
+        "foo": 1,
+        "bar": 2
+      },
+      "index": 71,
+      "canonical_format": "asciimath",
+      "parse_error": {
+        "class": "Plurimath::Math::ParseOptionError",
+        "message": "unknown parse options: :foo, :bar; supported parse options are :locale"
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "x"
+      },
+      "parseOptions": {
+        "locale": "xx",
+        "foo": 1
+      },
+      "index": 72,
+      "canonical_format": "asciimath",
+      "parse_error": {
+        "class": "Plurimath::Math::ParseOptionError",
+        "message": "unknown parse option: :foo; supported parse options are :locale"
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "x"
+      },
+      "parseOptions": {
+        "locale": "xx"
+      },
+      "index": 73,
+      "canonical_format": "asciimath",
+      "parse_error": {
+        "class": "Plurimath::Errors::UnsupportedLocale",
+        "message": "[plurimath] Unsupported locale \"xx\". Supported locales are: :\"sr-Cyrl-ME\", :\"sr-Latn-ME\", :\"zh-Hant\", :\"en-001\", :\"en-150\", :\"pt-PT\", :\"nl-BE\", :\"it-CH\", :\"fr-BE\", :\"fr-CA\", :\"fr-CH\", :\"de-AT\", :\"de-CH\", :\"en-AU\", :\"en-CA\", :\"en-GB\", :\"en-IE\", :\"en-IN\", :\"en-NZ\", :\"en-SG\", :\"en-US\", :\"en-ZA\", :\"es-419\", :\"es-AR\", :\"es-CO\", :\"es-MX\", :\"es-US\", :fil, :af, :ar, :az, :be, :bg, :bn, :bo, :bs, :ca, :cs, :cy, :da, :de, :el, :en, :eo, :es, :et, :eu, :fa, :fi, :fr, :ga, :gl, :gu, :he, :hi, :hr, :hu, :hy, :id, :is, :it, :ja, :ka, :kk, :km, :kn, :ko, :lo, :lt, :lv, :mk, :mr, :ms, :mt, :my, :nb, :nl, :pl, :pt, :ro, :ru, :sk, :sl, :sq, :sr, :sv, :sw, :ta, :th, :tr, :uk, :ur, :vi, :xh, :zh, :zu."
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "a/"
+      },
+      "parseOptions": {
+        "foo": 1
+      },
+      "index": 74,
+      "canonical_format": "asciimath",
+      "parse_error": {
+        "class": "Plurimath::Math::ParseOptionError",
+        "message": "unknown parse option: :foo; supported parse options are :locale"
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "a/"
+      },
+      "parseOptions": {
+        "locale": "xx"
+      },
+      "index": 75,
+      "canonical_format": "asciimath",
+      "parse_error": {
+        "class": "Plurimath::Errors::UnsupportedLocale",
+        "message": "[plurimath] Unsupported locale \"xx\". Supported locales are: :\"sr-Cyrl-ME\", :\"sr-Latn-ME\", :\"zh-Hant\", :\"en-001\", :\"en-150\", :\"pt-PT\", :\"nl-BE\", :\"it-CH\", :\"fr-BE\", :\"fr-CA\", :\"fr-CH\", :\"de-AT\", :\"de-CH\", :\"en-AU\", :\"en-CA\", :\"en-GB\", :\"en-IE\", :\"en-IN\", :\"en-NZ\", :\"en-SG\", :\"en-US\", :\"en-ZA\", :\"es-419\", :\"es-AR\", :\"es-CO\", :\"es-MX\", :\"es-US\", :fil, :af, :ar, :az, :be, :bg, :bn, :bo, :bs, :ca, :cs, :cy, :da, :de, :el, :en, :eo, :es, :et, :eu, :fa, :fi, :fr, :ga, :gl, :gu, :he, :hi, :hr, :hu, :hy, :id, :is, :it, :ja, :ka, :kk, :km, :kn, :ko, :lo, :lt, :lv, :mk, :mr, :ms, :mt, :my, :nb, :nl, :pl, :pt, :ro, :ru, :sk, :sl, :sq, :sr, :sv, :sw, :ta, :th, :tr, :uk, :ur, :vi, :xh, :zh, :zu."
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "a/"
+      },
+      "parseOptions": {},
+      "index": 76,
+      "canonical_format": "asciimath",
+      "parse_error": {
+        "class": "Plurimath::Math::ParseError",
+        "message": "[plurimath] Error: Failed to parse the following formula with type `asciimath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\na/\n---- FORMULA END ----\n"
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "a \\ b"
+      },
+      "parseOptions": {},
+      "index": 124,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "a \\ b",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "a"
+              }
+            },
+            {
+              "class": "Math::Symbols::Space",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "b"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "prod_(i=1)^n i^3"
+      },
+      "parseOptions": {},
+      "index": 125,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "prod_(i=1)^n i^3",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Prod",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "i"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Equal",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      {
+                        "class": "Math::Number",
+                        "fields": {
+                          "base": null,
+                          "mini_sub_sized": false,
+                          "mini_sup_sized": false,
+                          "value": "1"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "i"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Number",
+                      "fields": {
+                        "base": null,
+                        "mini_sub_sized": false,
+                        "mini_sup_sized": false,
+                        "value": "3"
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "n"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "sum_(i=1)^n i^3"
+      },
+      "parseOptions": {},
+      "index": 126,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "sum_(i=1)^n i^3",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sum",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "i"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Equal",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      {
+                        "class": "Math::Number",
+                        "fields": {
+                          "base": null,
+                          "mini_sub_sized": false,
+                          "mini_sup_sized": false,
+                          "value": "1"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "i"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Number",
+                      "fields": {
+                        "base": null,
+                        "mini_sub_sized": false,
+                        "mini_sup_sized": false,
+                        "value": "3"
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "n"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "cos(tan(1))"
+      },
+      "parseOptions": {},
+      "index": 127,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "cos(tan(1))",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Cos",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Fenced",
+                  "fields": {
+                    "options": {},
+                    "parameter_one": {
+                      "class": "Math::Symbols::Paren::Lround",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_three": {
+                      "class": "Math::Symbols::Paren::Rround",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_two": [
+                      {
+                        "class": "Math::Function::Tan",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Function::Fenced",
+                            "fields": {
+                              "options": {},
+                              "parameter_one": {
+                                "class": "Math::Symbols::Paren::Lround",
+                                "fields": {
+                                  "value": null
+                                }
+                              },
+                              "parameter_three": {
+                                "class": "Math::Symbols::Paren::Rround",
+                                "fields": {
+                                  "value": null
+                                }
+                              },
+                              "parameter_two": [
+                                {
+                                  "class": "Math::Number",
+                                  "fields": {
+                                    "base": null,
+                                    "mini_sub_sized": false,
+                                    "mini_sup_sized": false,
+                                    "value": "1"
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "sum_(i=1)^n i"
+      },
+      "parseOptions": {},
+      "index": 133,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "sum_(i=1)^n i",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sum",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "i"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Equal",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      {
+                        "class": "Math::Number",
+                        "fields": {
+                          "base": null,
+                          "mini_sub_sized": false,
+                          "mini_sup_sized": false,
+                          "value": "1"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "i"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "n"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "sum_i x"
+      },
+      "parseOptions": {},
+      "index": 134,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "sum_i x",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sum",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "i"
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "sum^n x"
+      },
+      "parseOptions": {},
+      "index": 135,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "sum^n x",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sum",
+              "fields": {
+                "parameter_one": null,
+                "parameter_three": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "n"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "sum x"
+      },
+      "parseOptions": {},
+      "index": 136,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "sum x",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sum",
+              "fields": {
+                "parameter_one": null,
+                "parameter_three": null,
+                "parameter_two": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "x"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "prod_(i=1) x"
+      },
+      "parseOptions": {},
+      "index": 137,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "prod_(i=1) x",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Prod",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "i"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Equal",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      {
+                        "class": "Math::Number",
+                        "fields": {
+                          "base": null,
+                          "mini_sub_sized": false,
+                          "mini_sup_sized": false,
+                          "value": "1"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "prod x"
+      },
+      "parseOptions": {},
+      "index": 138,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "prod x",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Prod",
+              "fields": {
+                "parameter_one": null,
+                "parameter_three": null,
+                "parameter_two": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "x"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "int_a^b f"
+      },
+      "parseOptions": {},
+      "index": 139,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "int_a^b f",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Int",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "f"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "b"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "int_a f"
+      },
+      "parseOptions": {},
+      "index": 140,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "int_a f",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Int",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "f"
+                  }
+                },
+                "parameter_two": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "int f"
+      },
+      "parseOptions": {},
+      "index": 141,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "int f",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Int",
+              "fields": {
+                "parameter_one": null,
+                "parameter_three": null,
+                "parameter_two": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "f"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "int_0^1 x dx"
+      },
+      "parseOptions": {},
+      "index": 142,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "int_0^1 x dx",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Int",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0"
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Formula",
+              "fields": {
+                "displaystyle": true,
+                "left_right_wrapper": true,
+                "value": [
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "d"
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "x"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "oint_C f"
+      },
+      "parseOptions": {},
+      "index": 143,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "oint_C f",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Oint",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "C"
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "f"
+                  }
+                },
+                "parameter_two": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "oint f"
+      },
+      "parseOptions": {},
+      "index": 144,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "oint f",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Oint",
+              "fields": {
+                "parameter_one": null,
+                "parameter_three": null,
+                "parameter_two": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "f"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "oint_a^b f"
+      },
+      "parseOptions": {},
+      "index": 145,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "oint_a^b f",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Oint",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "f"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "b"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "sin x"
+      },
+      "parseOptions": {},
+      "index": 158,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "sin x",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sin",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "sin"
+      },
+      "parseOptions": {},
+      "index": 159,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "sin",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sin",
+              "fields": {
+                "parameter_one": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "sin(x)"
+      },
+      "parseOptions": {},
+      "index": 160,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "sin(x)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Sin",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Fenced",
+                  "fields": {
+                    "options": {},
+                    "parameter_one": {
+                      "class": "Math::Symbols::Paren::Lround",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_three": {
+                      "class": "Math::Symbols::Paren::Rround",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_two": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "x"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "lim_(x->0) f(x)"
+      },
+      "parseOptions": {},
+      "index": 161,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "lim_(x->0) f(x)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Lim",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "x"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Rightarrow",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      {
+                        "class": "Math::Number",
+                        "fields": {
+                          "base": null,
+                          "mini_sub_sized": false,
+                          "mini_sup_sized": false,
+                          "value": "0"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "f"
+              }
+            },
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": [
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "x"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "lim x"
+      },
+      "parseOptions": {},
+      "index": 162,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "lim x",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Lim",
+              "fields": {
+                "parameter_one": null,
+                "parameter_two": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "x"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "lim_x"
+      },
+      "parseOptions": {},
+      "index": 163,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "lim_x",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Lim",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "log_2 x"
+      },
+      "parseOptions": {},
+      "index": 164,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "log_2 x",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Log",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                },
+                "parameter_two": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "x"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "max x"
+      },
+      "parseOptions": {},
+      "index": 165,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "max x",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Max",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "arg x"
+      },
+      "parseOptions": {},
+      "index": 166,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "arg x",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "a"
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "r"
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "g"
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "x"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "abs(x)"
+      },
+      "parseOptions": {},
+      "index": 169,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "abs(x)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Abs",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "|x|"
+      },
+      "parseOptions": {},
+      "index": 170,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "|x|",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Paren::Vert",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "x"
+              }
+            },
+            {
+              "class": "Math::Symbols::Paren::Vert",
+              "fields": {
+                "value": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "abs(x + 1)"
+      },
+      "parseOptions": {},
+      "index": 171,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "abs(x + 1)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Abs",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "x"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Plus",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      {
+                        "class": "Math::Number",
+                        "fields": {
+                          "base": null,
+                          "mini_sub_sized": false,
+                          "mini_sup_sized": false,
+                          "value": "1"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "abs(frac(1)(2))"
+      },
+      "parseOptions": {},
+      "index": 172,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "abs(frac(1)(2))",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Abs",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Frac",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Number",
+                      "fields": {
+                        "base": null,
+                        "mini_sub_sized": false,
+                        "mini_sup_sized": false,
+                        "value": "1"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Number",
+                      "fields": {
+                        "base": null,
+                        "mini_sub_sized": false,
+                        "mini_sup_sized": false,
+                        "value": "2"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "abs()"
+      },
+      "parseOptions": {},
+      "index": 173,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "abs()",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Abs",
+              "fields": {
+                "parameter_one": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "abs(sin x)"
+      },
+      "parseOptions": {},
+      "index": 174,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "abs(sin x)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Abs",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Sin",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "(a,b)"
+      },
+      "parseOptions": {},
+      "index": 175,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(a,b)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": [
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "a"
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Comma",
+                    "fields": {
+                      "value": null
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "b"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "(a,b]"
+      },
+      "parseOptions": {},
+      "index": 176,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(a,b]",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rsquare",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": [
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "a"
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Comma",
+                    "fields": {
+                      "value": null
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "b"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "[a,b]"
+      },
+      "parseOptions": {},
+      "index": 177,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "[a,b]",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lsquare",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rsquare",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": [
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "a"
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Comma",
+                    "fields": {
+                      "value": null
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "b"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "[a,b)"
+      },
+      "parseOptions": {},
+      "index": 178,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "[a,b)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lsquare",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": [
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "a"
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Comma",
+                    "fields": {
+                      "value": null
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "b"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "]a,b["
+      },
+      "parseOptions": {},
+      "index": 179,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "]a,b[",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Paren::Rsquare",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "a"
+              }
+            },
+            {
+              "class": "Math::Symbols::Comma",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "b"
+              }
+            },
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lsquare",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": null,
+                "parameter_two": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "]a,b]"
+      },
+      "parseOptions": {},
+      "index": 180,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "]a,b]",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Paren::Rsquare",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "a"
+              }
+            },
+            {
+              "class": "Math::Symbols::Comma",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "b"
+              }
+            },
+            {
+              "class": "Math::Symbols::Paren::Rsquare",
+              "fields": {
+                "value": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "(1,2]"
+      },
+      "parseOptions": {},
+      "index": 181,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(1,2]",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rsquare",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": [
+                  {
+                    "class": "Math::Number",
+                    "fields": {
+                      "base": null,
+                      "mini_sub_sized": false,
+                      "mini_sup_sized": false,
+                      "value": "1"
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Comma",
+                    "fields": {
+                      "value": null
+                    }
+                  },
+                  {
+                    "class": "Math::Number",
+                    "fields": {
+                      "base": null,
+                      "mini_sub_sized": false,
+                      "mini_sup_sized": false,
+                      "value": "2"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "(a)"
+      },
+      "parseOptions": {},
+      "index": 182,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(a)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": [
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "a"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "{x}"
+      },
+      "parseOptions": {},
+      "index": 183,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "{x}",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lcurly",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rcurly",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": [
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "x"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "(-oo,3]"
+      },
+      "parseOptions": {},
+      "index": 184,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(-oo,3]",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rsquare",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": [
+                  {
+                    "class": "Math::Symbols::Minus",
+                    "fields": {
+                      "value": null
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Oo",
+                    "fields": {
+                      "value": null
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Comma",
+                    "fields": {
+                      "value": null
+                    }
+                  },
+                  {
+                    "class": "Math::Number",
+                    "fields": {
+                      "base": null,
+                      "mini_sub_sized": false,
+                      "mini_sup_sized": false,
+                      "value": "3"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "[-oo,oo)"
+      },
+      "parseOptions": {},
+      "index": 185,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "[-oo,oo)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lsquare",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": [
+                  {
+                    "class": "Math::Symbols::Minus",
+                    "fields": {
+                      "value": null
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Oo",
+                    "fields": {
+                      "value": null
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Comma",
+                    "fields": {
+                      "value": null
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Oo",
+                    "fields": {
+                      "value": null
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "(a,b,c]"
+      },
+      "parseOptions": {},
+      "index": 186,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(a,b,c]",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rsquare",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": [
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "a"
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Comma",
+                    "fields": {
+                      "value": null
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "b"
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Comma",
+                    "fields": {
+                      "value": null
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "c"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "(a+b,c]"
+      },
+      "parseOptions": {},
+      "index": 187,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(a+b,c]",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rsquare",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": [
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "a"
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Plus",
+                    "fields": {
+                      "value": null
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "b"
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Comma",
+                    "fields": {
+                      "value": null
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "c"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "[a,b["
+      },
+      "parseOptions": {},
+      "index": 188,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "[a,b[",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lsquare",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": null,
+                "parameter_two": [
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "a"
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Comma",
+                    "fields": {
+                      "value": null
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "b"
+                    }
+                  },
+                  {
+                    "class": "Math::Function::Fenced",
+                    "fields": {
+                      "options": {},
+                      "parameter_one": {
+                        "class": "Math::Symbols::Paren::Lsquare",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      "parameter_three": null,
+                      "parameter_two": null
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "(a,-oo]"
+      },
+      "parseOptions": {},
+      "index": 189,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(a,-oo]",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rsquare",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": [
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "a"
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Comma",
+                    "fields": {
+                      "value": null
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Minus",
+                    "fields": {
+                      "value": null
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Oo",
+                    "fields": {
+                      "value": null
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "(n choose k)"
+      },
+      "parseOptions": {},
+      "index": 193,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(n choose k)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": [
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "n"
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "c"
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "h"
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Oo",
+                    "fields": {
+                      "value": null
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "s"
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "e"
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "k"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "binom(n)(k)"
+      },
+      "parseOptions": {},
+      "index": 194,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "binom(n)(k)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "b"
+              }
+            },
+            {
+              "class": "Math::Symbols::In",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "o"
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "m"
+              }
+            },
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": [
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "n"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": [
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "k"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "frac(d f)(d x)"
+      },
+      "parseOptions": {},
+      "index": 195,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "frac(d f)(d x)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "f"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "x"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "frac(d^2 f)(d x^2)"
+      },
+      "parseOptions": {},
+      "index": 196,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "frac(d^2 f)(d x^2)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Power",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "d"
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": false,
+                              "value": "2"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "f"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Power",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "x"
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": false,
+                              "value": "2"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "frac(d)(dx)"
+      },
+      "parseOptions": {},
+      "index": 197,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "frac(d)(dx)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "d"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "x"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "frac(del f)(del x)"
+      },
+      "parseOptions": {},
+      "index": 198,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "frac(del f)(del x)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Del",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "f"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Del",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "x"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "frac(del^2 f)(del x^2)"
+      },
+      "parseOptions": {},
+      "index": 199,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "frac(del^2 f)(del x^2)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Power",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Del",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": false,
+                              "value": "2"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "f"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Del",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Power",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "x"
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": false,
+                              "value": "2"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "frac(del^2 f)(del x del y)"
+      },
+      "parseOptions": {},
+      "index": 200,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "frac(del^2 f)(del x del y)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Power",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Del",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": false,
+                              "value": "2"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "f"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Del",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "x"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Del",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "y"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "frac(del)(del x)"
+      },
+      "parseOptions": {},
+      "index": 201,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "frac(del)(del x)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Del",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Del",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "x"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "frac(1)(2)"
+      },
+      "parseOptions": {},
+      "index": 202,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "frac(1)(2)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "frac(dy)(dx)"
+      },
+      "parseOptions": {},
+      "index": 203,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "frac(dy)(dx)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "y"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "x"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "frac(d f g)(d x y)"
+      },
+      "parseOptions": {},
+      "index": 204,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "frac(d f g)(d x y)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "f"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "g"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "x"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "y"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "frac(del f)(del)"
+      },
+      "parseOptions": {},
+      "index": 205,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "frac(del f)(del)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Del",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "f"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Del",
+                  "fields": {
+                    "value": null
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "(frac(del f)(del x) g)"
+      },
+      "parseOptions": {},
+      "index": 206,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(frac(del f)(del x) g)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": [
+                  {
+                    "class": "Math::Function::Frac",
+                    "fields": {
+                      "parameter_one": {
+                        "class": "Math::Formula",
+                        "fields": {
+                          "displaystyle": true,
+                          "left_right_wrapper": true,
+                          "value": [
+                            {
+                              "class": "Math::Symbols::Del",
+                              "fields": {
+                                "value": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "f"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "parameter_two": {
+                        "class": "Math::Formula",
+                        "fields": {
+                          "displaystyle": true,
+                          "left_right_wrapper": true,
+                          "value": [
+                            {
+                              "class": "Math::Symbols::Del",
+                              "fields": {
+                                "value": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "x"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "g"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "(frac(del f)(del x) frac(del g)(del y))"
+      },
+      "parseOptions": {},
+      "index": 207,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(frac(del f)(del x) frac(del g)(del y))",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": [
+                  {
+                    "class": "Math::Function::Frac",
+                    "fields": {
+                      "parameter_one": {
+                        "class": "Math::Formula",
+                        "fields": {
+                          "displaystyle": true,
+                          "left_right_wrapper": true,
+                          "value": [
+                            {
+                              "class": "Math::Symbols::Del",
+                              "fields": {
+                                "value": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "f"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "parameter_two": {
+                        "class": "Math::Formula",
+                        "fields": {
+                          "displaystyle": true,
+                          "left_right_wrapper": true,
+                          "value": [
+                            {
+                              "class": "Math::Symbols::Del",
+                              "fields": {
+                                "value": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "x"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "class": "Math::Function::Frac",
+                    "fields": {
+                      "parameter_one": {
+                        "class": "Math::Formula",
+                        "fields": {
+                          "displaystyle": true,
+                          "left_right_wrapper": true,
+                          "value": [
+                            {
+                              "class": "Math::Symbols::Del",
+                              "fields": {
+                                "value": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "g"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "parameter_two": {
+                        "class": "Math::Formula",
+                        "fields": {
+                          "displaystyle": true,
+                          "left_right_wrapper": true,
+                          "value": [
+                            {
+                              "class": "Math::Symbols::Del",
+                              "fields": {
+                                "value": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "y"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "del_x f"
+      },
+      "parseOptions": {},
+      "index": 212,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "del_x f",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Base",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Del",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "f"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "del_(x y) f"
+      },
+      "parseOptions": {},
+      "index": 213,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "del_(x y) f",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Base",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Del",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "x"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "y"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "f"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "del_1 f"
+      },
+      "parseOptions": {},
+      "index": 214,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "del_1 f",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Base",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Del",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "f"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "del_(x^2) f"
+      },
+      "parseOptions": {},
+      "index": 215,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "del_(x^2) f",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Base",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Del",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Number",
+                      "fields": {
+                        "base": null,
+                        "mini_sub_sized": false,
+                        "mini_sup_sized": false,
+                        "value": "2"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "f"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "del_x g h"
+      },
+      "parseOptions": {},
+      "index": 216,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "del_x g h",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Base",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Del",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "g"
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "h"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "del_x f + g"
+      },
+      "parseOptions": {},
+      "index": 217,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "del_x f + g",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Base",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Del",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "f"
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "g"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "del_x f del_y g"
+      },
+      "parseOptions": {},
+      "index": 218,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "del_x f del_y g",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Base",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Del",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "f"
+              }
+            },
+            {
+              "class": "Math::Function::Base",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Del",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "y"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "g"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "del_(12) f"
+      },
+      "parseOptions": {},
+      "index": 219,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "del_(12) f",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Base",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Del",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "12"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "f"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "d_x f"
+      },
+      "parseOptions": {},
+      "index": 224,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "d_x f",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Base",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "d"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "f"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "d^2 y"
+      },
+      "parseOptions": {},
+      "index": 225,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "d^2 y",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Power",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "d"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "y"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "[[a,b],[c,d]]"
+      },
+      "parseOptions": {},
+      "index": 247,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "[[a,b],[c,d]]",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Table",
+              "fields": {
+                "close_paren": {
+                  "class": "Math::Symbols::Paren::Rsquare",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "open_paren": {
+                  "class": "Math::Symbols::Paren::Lsquare",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "options": {},
+                "value": [
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "a"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        },
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "b"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "c"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        },
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "d"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "((a,b),(c,d))"
+      },
+      "parseOptions": {},
+      "index": 248,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "((a,b),(c,d))",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Table",
+              "fields": {
+                "close_paren": {
+                  "class": "Math::Symbols::Paren::Rround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "open_paren": {
+                  "class": "Math::Symbols::Paren::Lround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "options": {},
+                "value": [
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "a"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        },
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "b"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "c"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        },
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "d"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "{(a,b),(c,d)}"
+      },
+      "parseOptions": {},
+      "index": 249,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "{(a,b),(c,d)}",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lcurly",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rcurly",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": [
+                  {
+                    "class": "Math::Function::Fenced",
+                    "fields": {
+                      "options": {},
+                      "parameter_one": {
+                        "class": "Math::Symbols::Paren::Lround",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      "parameter_three": {
+                        "class": "Math::Symbols::Paren::Rround",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      "parameter_two": [
+                        {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "a"
+                          }
+                        },
+                        {
+                          "class": "Math::Symbols::Comma",
+                          "fields": {
+                            "value": null
+                          }
+                        },
+                        {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "b"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Comma",
+                    "fields": {
+                      "value": null
+                    }
+                  },
+                  {
+                    "class": "Math::Function::Fenced",
+                    "fields": {
+                      "options": {},
+                      "parameter_one": {
+                        "class": "Math::Symbols::Paren::Lround",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      "parameter_three": {
+                        "class": "Math::Symbols::Paren::Rround",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      "parameter_two": [
+                        {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "c"
+                          }
+                        },
+                        {
+                          "class": "Math::Symbols::Comma",
+                          "fields": {
+                            "value": null
+                          }
+                        },
+                        {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "d"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "f(x)={(x, x>0),(0, x<=0):}"
+      },
+      "parseOptions": {},
+      "index": 250,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "f(x)={(x, x>0),(0, x<=0):}",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "f"
+              }
+            },
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": [
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "x"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "class": "Math::Symbols::Equal",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Function::Table",
+              "fields": {
+                "close_paren": {
+                  "class": "Math::Symbols::Paren::CloseParen",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "open_paren": {
+                  "class": "Math::Symbols::Paren::Lcurly",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "options": {},
+                "value": [
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "x"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        },
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "x"
+                                }
+                              },
+                              {
+                                "class": "Math::Symbols::Greater",
+                                "fields": {
+                                  "value": null
+                                }
+                              },
+                              {
+                                "class": "Math::Number",
+                                "fields": {
+                                  "base": null,
+                                  "mini_sub_sized": false,
+                                  "mini_sup_sized": false,
+                                  "value": "0"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Number",
+                                "fields": {
+                                  "base": null,
+                                  "mini_sub_sized": false,
+                                  "mini_sup_sized": false,
+                                  "value": "0"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        },
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "x"
+                                }
+                              },
+                              {
+                                "class": "Math::Symbols::Le",
+                                "fields": {
+                                  "value": null
+                                }
+                              },
+                              {
+                                "class": "Math::Number",
+                                "fields": {
+                                  "base": null,
+                                  "mini_sub_sized": false,
+                                  "mini_sup_sized": false,
+                                  "value": "0"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "left ( d2 right )"
+      },
+      "parseOptions": {},
+      "index": 252,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "left ( d2 right )",
+          "left_right_wrapper": false,
+          "value": [
+            {
+              "class": "Math::Function::Left",
+              "fields": {
+                "parameter_one": "("
+              }
+            },
+            {
+              "class": "Math::Formula",
+              "fields": {
+                "displaystyle": true,
+                "left_right_wrapper": true,
+                "value": [
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "d"
+                    }
+                  },
+                  {
+                    "class": "Math::Number",
+                    "fields": {
+                      "base": null,
+                      "mini_sub_sized": false,
+                      "mini_sup_sized": false,
+                      "value": "2"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "class": "Math::Function::Right",
+              "fields": {
+                "parameter_one": ")"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "log_(d)^(d)log_(100)^(dd)log^(dd)"
+      },
+      "parseOptions": {},
+      "index": 253,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "log_(d)^(d)log_(100)^(dd)log^(dd)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Log",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "d"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "d"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Function::Log",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "100"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Function::Log",
+              "fields": {
+                "parameter_one": null,
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "[(a,b,0),(c,d,0),(e,f,1)]"
+      },
+      "parseOptions": {},
+      "index": 254,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "[(a,b,0),(c,d,0),(e,f,1)]",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Table",
+              "fields": {
+                "close_paren": {
+                  "class": "Math::Symbols::Paren::Rsquare",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "open_paren": {
+                  "class": "Math::Symbols::Paren::Lsquare",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "options": {},
+                "value": [
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "a"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        },
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "b"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        },
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Number",
+                                "fields": {
+                                  "base": null,
+                                  "mini_sub_sized": false,
+                                  "mini_sup_sized": false,
+                                  "value": "0"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "c"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        },
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "d"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        },
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Number",
+                                "fields": {
+                                  "base": null,
+                                  "mini_sub_sized": false,
+                                  "mini_sup_sized": false,
+                                  "value": "0"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "e"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        },
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "f"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        },
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Number",
+                                "fields": {
+                                  "base": null,
+                                  "mini_sub_sized": false,
+                                  "mini_sup_sized": false,
+                                  "value": "1"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "abs(ddot(sum))"
+      },
+      "parseOptions": {},
+      "index": 255,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "abs(ddot(sum))",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Abs",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Ddot",
+                  "fields": {
+                    "attributes": {},
+                    "parameter_one": {
+                      "class": "Math::Function::Sum",
+                      "fields": {
+                        "parameter_one": null,
+                        "parameter_three": null,
+                        "parameter_two": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "ii(E)[ii(S)//sqrt(n)\\ "
+      },
+      "parseOptions": {},
+      "index": 256,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "ii(E)[ii(S)//sqrt(n)\\ ",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::FontStyle::Italic",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "E"
+                  }
+                },
+                "parameter_two": "ii"
+              }
+            },
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lsquare",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": null,
+                "parameter_two": [
+                  {
+                    "class": "Math::Function::FontStyle::Italic",
+                    "fields": {
+                      "parameter_one": {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "S"
+                        }
+                      },
+                      "parameter_two": "ii"
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Mathslash",
+                    "fields": {
+                      "value": null
+                    }
+                  },
+                  {
+                    "class": "Math::Function::Sqrt",
+                    "fields": {
+                      "parameter_one": {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "n"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Space",
+                    "fields": {
+                      "value": null
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "lim_2^d"
+      },
+      "parseOptions": {},
+      "index": 257,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "lim_2^d",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Lim",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "d"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "cancel(2)"
+      },
+      "parseOptions": {},
+      "index": 258,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "cancel(2)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Cancel",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "ceil(2)"
+      },
+      "parseOptions": {},
+      "index": 259,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "ceil(2)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Ceil",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "color(red)(2 \\ \n e)"
+      },
+      "parseOptions": {},
+      "index": 260,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "color(red)(2 \\ \n e)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Color",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "r"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "e"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "d"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Number",
+                        "fields": {
+                          "base": null,
+                          "mini_sub_sized": false,
+                          "mini_sup_sized": false,
+                          "value": "2"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Linebreak",
+                        "fields": {
+                          "attributes": {},
+                          "parameter_one": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "e"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "det(theta)dim(3)dot(sigma)"
+      },
+      "parseOptions": {},
+      "index": 261,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "det(theta)dim(3)dot(sigma)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Det",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Fenced",
+                  "fields": {
+                    "options": {},
+                    "parameter_one": {
+                      "class": "Math::Symbols::Paren::Lround",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_three": {
+                      "class": "Math::Symbols::Paren::Rround",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_two": [
+                      {
+                        "class": "Math::Symbols::Theta",
+                        "fields": {
+                          "value": null
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Function::Dim",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Fenced",
+                  "fields": {
+                    "options": {},
+                    "parameter_one": {
+                      "class": "Math::Symbols::Paren::Lround",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_three": {
+                      "class": "Math::Symbols::Paren::Rround",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_two": [
+                      {
+                        "class": "Math::Number",
+                        "fields": {
+                          "base": null,
+                          "mini_sub_sized": false,
+                          "mini_sup_sized": false,
+                          "value": "3"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Function::Dot",
+              "fields": {
+                "attributes": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Sigma",
+                  "fields": {
+                    "value": null
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "oint_(sum)^d oint"
+      },
+      "parseOptions": {},
+      "index": 262,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "oint_(sum)^d oint",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Oint",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Sum",
+                  "fields": {
+                    "parameter_one": null,
+                    "parameter_three": null,
+                    "parameter_two": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Function::Oint",
+                  "fields": {
+                    "parameter_one": null,
+                    "parameter_three": null,
+                    "parameter_two": null
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "d"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "hat(ab) bar(xy) ul(A) vec(v)"
+      },
+      "parseOptions": {},
+      "index": 263,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "hat(ab) bar(xy) ul(A) vec(v)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Hat",
+              "fields": {
+                "attributes": {},
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "a"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "b"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Function::Bar",
+              "fields": {
+                "attributes": {},
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "x"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "y"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Function::Ul",
+              "fields": {
+                "attributes": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "A"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Function::Vec",
+              "fields": {
+                "attributes": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "v"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "underset(a)(b)"
+      },
+      "parseOptions": {},
+      "index": 264,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "underset(a)(b)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Underset",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "b"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "overset(a)(b)"
+      },
+      "parseOptions": {},
+      "index": 265,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "overset(a)(b)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Overset",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "b"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "format": "asciimath",
+        "text": "x^2"
+      },
+      "parseOptions": {},
+      "index": 266,
+      "canonical_format": "asciimath",
+      "parsed_model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "x^2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Power",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

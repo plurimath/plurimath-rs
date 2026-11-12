@@ -62,6 +62,25 @@ fn source_capture_tree(root: &Value, source: &str) -> Result<Value, String> {
         .pop()
         .ok_or("stage capture lowering produced no value".into())
 }
+// Source AsciiMath's symbol registry treats the legacy delimiter sentinels
+// as the corresponding delimiter tokens, not generic mathematical letters.
+fn source_symbol(text: &str) -> Value {
+    // Source Utility checks exact spellings first: "\\ " is Space, while
+    // the stripped fallback "\\" is Backslash.
+    if crate::symbols::tables()["input"][text].is_string() {
+        return crate::symbols::symbol(text);
+    }
+    crate::symbols::symbol_for(
+        match text {
+            "ℒ" => "{:",
+            "ℛ" => ":}",
+            "ᑕ" => "(:",
+            "ᑐ" => ":)",
+            other => other,
+        },
+        "asciimath",
+    )
+}
 fn single(mut a: Vec<Value>) -> Value {
     if a.is_empty() {
         Value::Null
@@ -73,6 +92,9 @@ fn single(mut a: Vec<Value>) -> Value {
 }
 fn unfence(v: Value) -> Value {
     if v["class"] == "Math::Function::Fenced" {
+        if v["fields"]["parameter_two"].is_null() {
+            return Value::Null;
+        }
         if let Some(a) = v["fields"]["parameter_two"].as_array() {
             return single(a.clone());
         }
@@ -98,12 +120,12 @@ fn tx_rule_0(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>,
     if m.contains_key("table_left") && m.contains_key("table_right") && m.contains_key("table_row")
     {
         let left = m["table_left"]
-            .get("table_left")
-            .and_then(Value::as_str)
+            .as_str()
+            .or_else(|| m["table_left"].get("table_left").and_then(Value::as_str))
             .ok_or("unported source table-left shape")?;
         let right = m["table_right"]
-            .get("table_right")
-            .and_then(Value::as_str)
+            .as_str()
+            .or_else(|| m["table_right"].get("table_right").and_then(Value::as_str))
             .ok_or("unported source table-right shape")?;
         let mut rows = tx(&m["table_row"], depth + 1)?;
         if let Some(rest) = m.get("expr") {
@@ -114,7 +136,7 @@ fn tx_rule_0(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>,
         }
         return Ok(Some(vec![node(
             "Math::Function::Table",
-            json!({"options":{},"open_paren":crate::symbols::symbol(left),"close_paren":crate::symbols::symbol(right),"value":rows}),
+            json!({"options":{},"open_paren":source_symbol(left),"close_paren":source_symbol(right),"value":rows}),
         )]));
     }
     Ok(None)
@@ -178,8 +200,8 @@ fn tx_rule_4(m: &Map<String, Value>, _depth: usize) -> Result<Option<Vec<Value>>
         let d = m["d"].as_str().ok_or("non-text differential d")?;
         let x = m["x"].as_str().ok_or("non-text differential x")?;
         return Ok(Some(vec![formula(vec![
-            crate::symbols::symbol(d),
-            crate::symbols::symbol(x),
+            source_symbol(d),
+            source_symbol(x),
         ])]));
     }
     Ok(None)
@@ -200,7 +222,7 @@ fn tx_rule_6(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>,
     if let Some(close) = m.get("rparen").and_then(Value::as_str) {
         if m.contains_key("lparen") { /* handled by the fenced rule below */
         } else {
-            let mut out = vec![crate::symbols::symbol(close)];
+            let mut out = vec![source_symbol(close)];
             if let Some(rest) = m.get("expr") {
                 out.extend(tx(rest, depth + 1)?);
             }
@@ -353,10 +375,22 @@ fn tx_rule_12(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>
 }
 fn tx_rule_13(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if let Some(c) = m.get("comma") {
-        let mut out = vec![crate::symbols::symbol(
-            c.as_str().ok_or("unported comma capture")?,
-        )];
-        if let Some(rest) = m.get("expr") {
+        let mut out = vec![];
+        if let Some(value) = m.get("number") {
+            if m.len() != 2 {
+                return Err("unported source number/comma fields".into());
+            }
+            out.push(number(
+                value.as_str().ok_or("number capture is not source text")?,
+            ));
+        } else if m.len() > 2
+            || m.keys()
+                .any(|key| !["comma", "expr", "left_right"].contains(&key.as_str()))
+        {
+            return Err("unported combined source comma fields".into());
+        }
+        out.push(source_symbol(c.as_str().ok_or("unported comma capture")?));
+        if let Some(rest) = m.get("expr").or_else(|| m.get("left_right")) {
             out.extend(tx(rest, depth + 1)?)
         }
         return Ok(Some(out));
@@ -500,11 +534,14 @@ fn tx_rule_18(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>
         }
         let mut model = node(class, json!({"parameter_one":arg}));
         let kind = class.rsplit("::").next().unwrap_or("");
-        if ["Hat", "Bar", "Vec"].contains(&kind) {
+        if ["Hat", "Bar", "Vec", "Ddot", "Dot", "Ul"].contains(&kind) {
             model["fields"]["attributes"] = json!({});
         }
         if !crate::writer::unary_class(&crate::model::Model::from_value(&model)?)
-            && !["Sqrt", "Abs", "Hat", "Bar", "Vec"].contains(&kind)
+            && ![
+                "Sqrt", "Abs", "Hat", "Bar", "Vec", "Ddot", "Dot", "Ul", "Cancel", "Ceil",
+            ]
+            .contains(&kind)
         {
             return Err(format!("unported promised source unary constructor {class}").into());
         }
@@ -512,19 +549,46 @@ fn tx_rule_18(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>
     }
     Ok(None)
 }
-fn tx_rule_19(m: &Map<String, Value>, _depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
+fn tx_rule_19(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if m.contains_key("number") && m.len() != 1 {
+        if m.len() == 2 && m.contains_key("sequence") {
+            let mut out = tx(&m["sequence"], depth + 1)?;
+            let text = m["number"]
+                .as_str()
+                .ok_or("number capture is not source text")?;
+            out.push(number(text));
+            return Ok(Some(out));
+        }
         return Err("unported source combined number capture".into());
     }
     Ok(None)
 }
-fn tx_rule_20(m: &Map<String, Value>, _depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
+fn tx_rule_20(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if m.contains_key("symbol") && m.len() != 1 {
+        if m.keys()
+            .all(|key| ["sequence", "symbol", "expr"].contains(&key.as_str()))
+        {
+            let mut out = match m.get("sequence") {
+                Some(value) => tx(value, depth + 1)?,
+                None => Vec::new(),
+            };
+            let name = m["symbol"]
+                .as_str()
+                .ok_or("symbol capture is not source text")?;
+            out.push(source_symbol(name));
+            if let Some(value) = m.get("expr") {
+                out.extend(tx(value, depth + 1)?);
+            }
+            return Ok(Some(out));
+        }
         return Err("unported source combined symbol capture".into());
     }
     Ok(None)
 }
-fn tx_rule_21(m: &Map<String, Value>, _depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
+fn tx_rule_21(
+    m: &Map<String, Value>,
+    _depth: usize,
+) -> Result<Option<Vec<Value>>, ConversionError> {
     if let Some(n) = m.get("number") {
         return Ok(Some(vec![number(
             n.as_str().ok_or("number capture is not source text")?,
@@ -532,9 +596,12 @@ fn tx_rule_21(m: &Map<String, Value>, _depth: usize) -> Result<Option<Vec<Value>
     }
     Ok(None)
 }
-fn tx_rule_22(m: &Map<String, Value>, _depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
+fn tx_rule_22(
+    m: &Map<String, Value>,
+    _depth: usize,
+) -> Result<Option<Vec<Value>>, ConversionError> {
     if let Some(s) = m.get("symbol") {
-        return Ok(Some(vec![crate::symbols::symbol(
+        return Ok(Some(vec![source_symbol(
             s.as_str().ok_or("symbol capture is not source text")?,
         )]));
     }
@@ -564,20 +631,21 @@ fn tx_rule_24(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>
 }
 fn tx_rule_25(m: &Map<String, Value>, depth: usize) -> Result<Option<Vec<Value>>, ConversionError> {
     if m.contains_key("lparen") && m.contains_key("rparen") {
-        let a = crate::symbols::symbol(m["lparen"].as_str().ok_or("fence open must be text")?);
+        let a = source_symbol(m["lparen"].as_str().ok_or("fence open must be text")?);
         let b = if m["rparen"].is_null() {
             Value::Null
         } else {
-            crate::symbols::symbol(m["rparen"].as_str().ok_or("fence close must be text")?)
+            source_symbol(m["rparen"].as_str().ok_or("fence close must be text")?)
         };
         let inner = m
             .get("expr")
             .or_else(|| m.get("rgb_color"))
             .ok_or("source fence has no body capture")?;
+        // Source Rules distinguish an empty Slice (nil) from an empty sequence ([]).
         let body = if inner == "" {
-            vec![]
+            Value::Null
         } else {
-            tx(inner, depth + 1)?
+            Value::Array(tx(inner, depth + 1)?)
         };
         return Ok(Some(vec![node(
             "Math::Function::Fenced",
@@ -608,6 +676,7 @@ fn tx(v: &Value, depth: usize) -> Result<Vec<Value>, ConversionError> {
             "ternary",
             "mod",
             "table",
+            "comma_separated",
         ]
         .contains(&key.as_str())
         {
@@ -635,6 +704,14 @@ fn tx(v: &Value, depth: usize) -> Result<Vec<Value>, ConversionError> {
             out.extend(tx(value, depth + 1)?);
         }
         return Ok(out);
+    }
+    if v.as_object()
+        .is_some_and(|fields| fields.len() == 1 && fields.contains_key("slash"))
+    {
+        return Ok(vec![node(
+            "Math::Function::Linebreak",
+            json!({"attributes":{},"parameter_one":null}),
+        )]);
     }
     if v.is_null() || v == "" {
         return Ok(vec![]);
@@ -767,6 +844,28 @@ impl From<ParseError> for String {
         e.to_string()
     }
 }
+// Ruby Asciimath::Parser#legacy_text performs these replacements in order.
+// The first alternation is one non-overlapping pass; sequential replacements
+// of its two arms would change overlapping text such as ":|:".
+fn legacy_text(input: &str) -> String {
+    let mut bars = String::with_capacity(input.len());
+    let mut chars = input.chars().peekable();
+    while let Some(character) = chars.next() {
+        if matches!(
+            (character, chars.peek().copied()),
+            ('|', Some(':')) | (':', Some('|'))
+        ) {
+            chars.next();
+            bars.push('|');
+        } else {
+            bars.push(character);
+        }
+    }
+    bars.replace("{:", "ℒ")
+        .replace(":}", "ℛ")
+        .replace("(:", "ᑕ")
+        .replace(":)", "ᑐ")
+}
 pub fn parse(input: &str, format: &str, options: &Value) -> Result<Value, ParseError> {
     if format != "asciimath" {
         return Err(ParseError::Unported(format!(
@@ -776,9 +875,12 @@ pub fn parse(input: &str, format: &str, options: &Value) -> Result<Value, ParseE
     let normalized = crate::parse_options::normalize("asciimath", Some(options))
         .map_err(ParseError::SourceOptions)?;
     let decimal = crate::parse_options::decimal(&normalized);
+    // Stage diagnostics intentionally address legacy_text, followed by any
+    // stage preprocessing, in UTF8 bytes. Keep input_string as caller text.
+    let legacy_input = legacy_text(input);
     let stage = CACHED_PARSER.with(|p| match p {
         Ok(parser) => parser
-            .parse_legacy_with_decimal(input, decimal)
+            .parse_legacy_with_decimal(&legacy_input, decimal)
             .map_err(ParseError::Stage),
         Err(message) => Err(ParseError::Initialization(message.clone())),
     })?;
@@ -824,14 +926,16 @@ pub fn response(v: &Value) -> Value {
                 }
                 ParseError::Stage(stage) => {
                     let resource = match stage {
-                        amath::Error::Runtime(
-                            parsanol::PargError::RecursionLimitExceeded { depth, max_depth },
-                        ) => Some(
+                        amath::Error::Runtime(parsanol::PargError::RecursionLimitExceeded {
+                            depth,
+                            max_depth,
+                        }) => Some(
                             json!({"kind":"recursion_limit","depth":depth,"max_depth":max_depth}),
                         ),
-                        amath::Error::Runtime(
-                            parsanol::PargError::CallDepthLimitExceeded { depth, max_depth },
-                        ) => Some(
+                        amath::Error::Runtime(parsanol::PargError::CallDepthLimitExceeded {
+                            depth,
+                            max_depth,
+                        }) => Some(
                             json!({"kind":"call_depth_limit","depth":depth,"max_depth":max_depth}),
                         ),
                         _ => None,
@@ -840,6 +944,42 @@ pub fn response(v: &Value) -> Value {
                 }
             };
             json!({"abi_version":1,"ok":false,"error":error})
+        }
+    }
+}
+
+#[cfg(test)]
+mod legacy_text_source_tests {
+    use super::{legacy_text, source_symbol};
+    use serde_json::Value;
+    #[test]
+    fn ruby_legacy_delimiter_symbol_identities() {
+        let fixture: Value = serde_json::from_str(include_str!(
+            "../fixtures/ascii-source-closure/delimiters.json"
+        ))
+        .unwrap();
+        for case in fixture["rows"].as_array().unwrap() {
+            assert_eq!(
+                source_symbol(case["text"].as_str().unwrap()),
+                case["model"],
+                "{}",
+                case["text"]
+            );
+        }
+    }
+    #[test]
+    fn ruby_legacy_text_order_and_overlaps() {
+        let fixture: Value = serde_json::from_str(include_str!(
+            "../fixtures/ascii-source-closure/normalization.json"
+        ))
+        .unwrap();
+        for case in fixture["cases"].as_array().unwrap() {
+            assert_eq!(
+                legacy_text(case["input"].as_str().unwrap()),
+                case["expected"].as_str().unwrap(),
+                "{}",
+                case["input"]
+            );
         }
     }
 }
