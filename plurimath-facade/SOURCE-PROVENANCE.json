@@ -85,15 +85,17 @@
     "unicode_matrix_parens": 5
   },
   "policy": "Static source-data extraction only. No Node/Ruby product runtime bridge.",
-  "facade_scope": "Partial source-backed8inputdispatch;6baselineformatfamilies plusdefaultUnitsML/unit-onlyPMA, withHTMLgrammar/measuredPMA/formatter/unportedwriterfamiliesexplicitlyincomplete.",
+  "facade_scope": "Source-backed eight-input/six-writer API under ongoing conformance qualification. Storing common models does not imply universal class validation or generated-class parity.",
   "parameterized_writer_artifact": {
-    "path": "handoffs/main-facade-python/parameterized-writers-v3.json",
+    "path": "fixtures/source-writers/parameterized-writers-v3.json.gz",
     "sha256": "2a54a7dc1d10014eebea13bc8c44ac2f4ec5b4b45efd949ec8ba2eec30b17cc3",
     "profiles": 1419,
     "checks": 5676,
     "policy": "Strict parent-fields/default-context and child-shape guards. No whole-input answers. Known literal-sensitive families use explicit native source handlers.",
     "validation_invocations": 5676,
-    "distinct_profile_inputs": 4145
+    "distinct_profile_inputs": 4145,
+    "encoding": "gzip",
+    "compressed_sha256": "73d6b92094ea62e7673a5e93b9e6929f4e8010a42dd4b864ec7fc640ecd7ad0e"
   },
   "input_sources": {
     "ruby": {
@@ -118,11 +120,13 @@
     }
   },
   "mixed_parameterized_profiles": {
-    "source": "handoffs/main-facade-python/parameterized-writers-mixed.json",
+    "source": "fixtures/source-writers/parameterized-writers-mixed.json.gz",
     "sha256": "d100be7941dfec2aeaab9fb98516e4bb2f0603dca159f0b04a972b83ce9a6e44",
     "additional_profiles": 53,
     "policy": "Per-field type guards and parameterized source fragments only, no observed input-value lookup.",
-    "validation_invocations": 212
+    "validation_invocations": 212,
+    "encoding": "gzip",
+    "compressed_sha256": "8680e08c708303752d5fbb1968ddb8e08a8b433ee51bb82f0604816c6d38cd5e"
   },
   "html_source_profile": {
     "grammar_source_sha256": "b6262929322518d8d14381a4d67b86460c7e019b3baef3c8b5bc2db7b6398d9e",
@@ -139,5 +143,10 @@
     "qualified_source_parser_refusals": 23,
     "wasm_transport": "pending",
     "nondefault_options": "incomplete"
+  },
+  "compiled_template_artifact": {
+    "path": "src/writer/templates.json",
+    "sha256": "4f6d735467505b30eba9e47fcfb5303525a3c1ba5c08ca61687feb3d7b8593ad",
+    "scope": "Derived guarded parameterized templates plus explicit source handlers; no whole-input result lookup."
   }
 }
