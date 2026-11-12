@@ -160,6 +160,61 @@ fn with_prefix(fragment: &str, prefix: &Value) -> Result<String, Value> {
         .and_then(|doc| doc.to_xml())
         .map_err(|error| incomplete(error.to_string()))
 }
+// Mirror Parser#update_units_exponents before rendering. Formula deliberately
+// resets the sqrt flag; a Sqrt wrapping a Formula visits that Formula twice.
+fn update_terms(values: &mut [Value], mut inverse: bool, square_root: bool) -> Result<(), Value> {
+    for value in values {
+        if value.get("open").is_none() && value["value"].is_object() {
+            let child = &mut value["value"];
+            if child.get("unitName").is_some() {
+                child["powerNumerator"] = json!({"value":"0.5"});
+            } else {
+                update_terms(std::slice::from_mut(child), inverse, true)?;
+            }
+            inverse = update_term(child, inverse, square_root)?;
+        } else {
+            inverse = update_term(value, inverse, square_root)?;
+        }
+    }
+    Ok(())
+}
+fn update_term(value: &mut Value, inverse: bool, square_root: bool) -> Result<bool, Value> {
+    if value.get("unitName").is_some() || value.get("dimensionName").is_some() {
+        if square_root {
+            value["powerNumerator"] = json!({"value":"0.5"});
+        } else if inverse {
+            let power = exponent(&value["powerNumerator"], true, false)?.unwrap();
+            value["powerNumerator"] = json!({"value":power});
+        }
+    } else if let Some(text) = value["text"].as_str() {
+        if matches!(text, "/" | "//") {
+            return Ok(!inverse);
+        }
+    } else if value.get("open").is_some() {
+        update_terms(
+            std::slice::from_mut(&mut value["value"]),
+            inverse,
+            square_root,
+        )?;
+    } else if let Some(values) = value["value"].as_array_mut() {
+        update_terms(values, inverse, false)?;
+    }
+    Ok(inverse)
+}
+fn dimension_fragment(name: &str) -> Result<String, Value> {
+    let symbols: Value = serde_json::from_str(include_str!(
+        "../fixtures/units-source/dimension-mathml.json"
+    ))
+    .map_err(|error| incomplete(error.to_string()))?;
+    symbols[name]["mathml"]
+        .as_str()
+        .map(str::to_owned)
+        .ok_or_else(|| {
+            incomplete(format!(
+                "source dimension symbol {name} has no measured MathML"
+            ))
+        })
+}
 fn render(value: &Value, inverse: bool, square_root: bool) -> Result<String, Value> {
     if let Some(name) = value["unitName"].as_str() {
         let symbol = unit_symbol(name)?;
@@ -172,10 +227,15 @@ fn render(value: &Value, inverse: bool, square_root: bool) -> Result<String, Val
         }
         return Ok(output);
     }
-    if value.get("dimensionName").is_some() {
-        return Err(incomplete(
-            "UnitsML dimension rendering requires the source dimension option policy",
-        ));
+    if let Some(name) = value["dimensionName"].as_str() {
+        let mut fragment = dimension_fragment(name)?;
+        if let Some(power) = exponent(&value["powerNumerator"], false, false)? {
+            fragment = format!("<msup><mrow>{fragment}</mrow>{}</msup>", number_xml(&power));
+        }
+        return Ok(fragment);
+    }
+    if value.get("prefixName").is_some() {
+        return with_prefix("<mi/>", value);
     }
     if value.get("open").is_some() {
         // Unitsml::Fenced#to_mathml retains actual parser-model fences when
@@ -195,12 +255,8 @@ fn render(value: &Value, inverse: bool, square_root: bool) -> Result<String, Val
     }
     if let Some(values) = value["value"].as_array() {
         let mut output = String::new();
-        let mut inverse = inverse;
         for item in values {
             if let Some(separator) = item["text"].as_str() {
-                if matches!(separator, "/" | "//") {
-                    inverse = !inverse;
-                }
                 if matches!(separator, "/" | "//" | "*")
                     || separator.chars().all(char::is_whitespace)
                 {
@@ -217,12 +273,7 @@ fn render(value: &Value, inverse: bool, square_root: bool) -> Result<String, Val
         return Ok(output);
     }
     if value["value"].is_object() {
-        if value["value"].get("unitName").is_none() {
-            return Err(incomplete(
-                "compound square-root exponent propagation requires the source recursive renderer",
-            ));
-        }
-        return render(&value["value"], inverse, true);
+        return render(&value["value"], inverse, square_root);
     }
     if let Some(number) = value["value"].as_str() {
         return Ok(number_xml(number));
@@ -241,8 +292,13 @@ pub fn formula(input: &str, units_options: &Value) -> Result<Value, Value> {
             "UnitsML custom rendering options require their source option policy",
         ));
     }
-    let value = stage(input)?;
+    let mut value = stage(input)?;
     validate(&value)?;
+    if let Some(values) = value["value"].as_array_mut() {
+        update_terms(values, false, false)?;
+    } else {
+        update_terms(std::slice::from_mut(&mut value), false, false)?;
+    }
     let body = render(&value, false, false)?;
     crate::xml_parse::parse(
         &format!("<math display=\"block\">{body}</math>"),
