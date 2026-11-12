@@ -1,0 +1,113 @@
+{
+  "source": {
+    "path": "writer-reference-2928.json",
+    "sha256": "9cc87736b3dcb32c852717fc976edda1ae599c9370379fe87916604079a0a6f3"
+  },
+  "rows": [
+    {
+      "id": "parse-options-x-foo-1",
+      "group": "parse-options",
+      "source": "measured on the oracle",
+      "input": {
+        "format": "asciimath",
+        "text": "x"
+      },
+      "options": {},
+      "parseOptions": {
+        "foo": 1
+      },
+      "raises": "Plurimath::Math::ParseOptionError",
+      "raisedIn": "options"
+    },
+    {
+      "id": "parse-options-x-foo-1-bar-2",
+      "group": "parse-options",
+      "source": "measured on the oracle",
+      "input": {
+        "format": "asciimath",
+        "text": "x"
+      },
+      "options": {},
+      "parseOptions": {
+        "foo": 1,
+        "bar": 2
+      },
+      "raises": "Plurimath::Math::ParseOptionError",
+      "raisedIn": "options"
+    },
+    {
+      "id": "parse-options-x-locale-xx-foo-1",
+      "group": "parse-options",
+      "source": "measured on the oracle",
+      "input": {
+        "format": "asciimath",
+        "text": "x"
+      },
+      "options": {},
+      "parseOptions": {
+        "locale": "xx",
+        "foo": 1
+      },
+      "raises": "Plurimath::Math::ParseOptionError",
+      "raisedIn": "options"
+    },
+    {
+      "id": "parse-options-x-locale-xx",
+      "group": "parse-options",
+      "source": "measured on the oracle",
+      "input": {
+        "format": "asciimath",
+        "text": "x"
+      },
+      "options": {},
+      "parseOptions": {
+        "locale": "xx"
+      },
+      "raises": "Plurimath::Errors::UnsupportedLocale",
+      "raisedIn": "options"
+    },
+    {
+      "id": "parse-options-bad-foo-1",
+      "group": "parse-options",
+      "source": "measured on the oracle",
+      "input": {
+        "format": "asciimath",
+        "text": "a/"
+      },
+      "options": {},
+      "parseOptions": {
+        "foo": 1
+      },
+      "raises": "Plurimath::Math::ParseOptionError",
+      "raisedIn": "options"
+    },
+    {
+      "id": "parse-options-bad-locale-xx",
+      "group": "parse-options",
+      "source": "measured on the oracle",
+      "input": {
+        "format": "asciimath",
+        "text": "a/"
+      },
+      "options": {},
+      "parseOptions": {
+        "locale": "xx"
+      },
+      "raises": "Plurimath::Errors::UnsupportedLocale",
+      "raisedIn": "options"
+    },
+    {
+      "id": "parse-options-bad-none",
+      "group": "parse-options",
+      "source": "measured on the oracle",
+      "input": {
+        "format": "asciimath",
+        "text": "a/"
+      },
+      "options": {},
+      "parseOptions": {},
+      "raises": "Plurimath::Math::ParseError",
+      "raisedIn": "parse"
+    }
+  ]
+}
