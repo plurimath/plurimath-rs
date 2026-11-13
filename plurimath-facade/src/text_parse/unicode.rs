@@ -531,6 +531,18 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
             "nary_sub_sup" => return Ok(Some(vec![simple(rec(value)?, "n-ary")?])),
             // Source `unary_sub_sup: simple` also preserves the built function.
             "unary_sub_sup" => return Ok(Some(vec![simple(rec(value)?, "unary")?])),
+            // Source unary_functions builds these binary classes with nil slots.
+            "unary_functions" if matches!(value.as_str(), Some("lim" | "inf" | "log")) => {
+                let class = match value.as_str().unwrap() {
+                    "lim" => "Lim",
+                    "inf" => "Inf",
+                    _ => "Log",
+                };
+                return Ok(Some(vec![node(
+                    &format!("Math::Function::{class}"),
+                    json!({"parameter_one":null,"parameter_two":null}),
+                )]));
+            }
             "td" => return Ok(Some(vec![td(cell(value, rec)?)])),
             "tr" => return Ok(Some(vec![tr(rec(value)?)])),
             "sup_digits" => return Ok(Some(vec![mini_digit(value, true)?])),

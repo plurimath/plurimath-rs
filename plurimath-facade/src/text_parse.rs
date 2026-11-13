@@ -207,7 +207,22 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         {
             return Err(incomplete("unported additional source capture fields"));
         }
-        let base = one(tx(format, &m["base"], depth + 1)?);
+        let mut base = one(tx(format, &m["base"], depth + 1)?);
+        // Unicode source base:simple/sup:simple fills an empty binary operand.
+        if format == "unicode"
+            && !m.contains_key("sub")
+            && ["Obrace", "Oint", "Prod", "Sum", "Int", "Lim", "Inf", "Log"]
+                .iter()
+                .any(|kind| base["class"] == format!("Math::Function::{kind}"))
+            && (base["fields"]["parameter_one"].is_null()
+                || base["fields"]["parameter_one"] == false)
+        {
+            let mut superscript = tx(format, &m["sup"], depth + 1)?;
+            if superscript.len() == 1 {
+                base["fields"]["parameter_two"] = unfence(superscript.pop().unwrap());
+                return Ok(vec![base]);
+            }
+        }
         return if m.contains_key("sub") && m.contains_key("sup") {
             Ok(vec![node(
                 "Math::Function::PowerBase",
