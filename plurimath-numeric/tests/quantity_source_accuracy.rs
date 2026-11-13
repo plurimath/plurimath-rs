@@ -185,3 +185,24 @@ fn explicit_conversion_rationalizes_typed_magnitude_and_signed_zero_survives() {
         serde_json::json!({"kind":"rational","numerator":"0","denominator":"1"})
     );
 }
+
+#[test]
+fn quantity_float_overflow_preserves_the_source_refusal_class() {
+    let corpus: Value = serde_json::from_str(include_str!(
+        "../fixtures/quantity-source-float-refusals-v1.json"
+    ))
+    .unwrap();
+    assert_eq!(corpus["cases"].as_array().unwrap().len(), 3);
+    for row in corpus["cases"].as_array().unwrap() {
+        let actual: Value = serde_json::from_str(&plurimath_numeric::evaluate_json(
+            &row["request"].to_string(),
+        ))
+        .unwrap();
+        assert_eq!(actual["ok"], false, "{}: {}", row["id"], actual);
+        assert_eq!(
+            actual["error"]["code"], row["expected_code"],
+            "{}: {}",
+            row["id"], actual
+        );
+    }
+}

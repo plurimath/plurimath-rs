@@ -26,7 +26,8 @@ pub(super) fn rational(value: &N) -> Result<Q, &'static str> {
             N::Float(f) if f.is_finite() => Q::from_float(*f),
             _ => None,
         })
-        .ok_or("NonFiniteResultError")
+        // QuantityEvaluator#real_result validates a finite magnitude via quantity().
+        .ok_or("InvalidBindingError")
 }
 
 pub(super) fn binding(value: &J) -> Result<N, &'static str> {
