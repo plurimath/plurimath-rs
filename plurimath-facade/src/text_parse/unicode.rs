@@ -429,12 +429,107 @@ fn masked_nary(m: &Map<String, Value>, rec: Rec) -> Result<Option<Value>, Value>
     )))
 }
 
+/// Unmasked n-ary rules: nary_class with sub and/or sup, or with a naryand.
+/// A ternary class (sum, prod, int, oint) builds its function; any other class
+/// builds a Nary over its symbol. Shapes whose source rule is missing, or whose
+/// source constructor call fails, are refused.
+fn unmasked_nary(m: &Map<String, Value>, rec: Rec) -> Result<Option<Value>, Value> {
+    let scripts = keys(m, &["nary_class", "sub"])
+        || keys(m, &["nary_class", "sup"])
+        || keys(m, &["nary_class", "sub", "sup"]);
+    if !scripts && !keys(m, &["nary_class", "naryand"]) {
+        return Ok(None);
+    }
+    let class = m["nary_class"]
+        .as_str()
+        .ok_or_else(|| incomplete("non-text n-ary class"))?;
+    let function = if NARY_CLASSES.iter().any(|(k, _)| *k == class) {
+        class.to_string()
+    } else if let Some((k, _)) = NARY_CLASSES.iter().find(|(_, v)| *v == class) {
+        k.to_string()
+    } else if let Some((_, v)) = NARY_SYMBOLS.iter().find(|(k, _)| *k == class) {
+        v.to_string()
+    } else {
+        class.to_string()
+    };
+    let ternary = NARY_CLASSES.iter().any(|(k, _)| *k == function);
+    let script =
+        |key: &str| -> Result<Option<Vec<Value>>, Value> { m.get(key).map(rec).transpose() };
+    // Source `simple` bindings only; sequence operands are not ported here.
+    let single = |values: Option<Vec<Value>>, what: &str| -> Result<Option<Value>, Value> {
+        values.map(|values| simple(values, what)).transpose()
+    };
+    // Source `sub.class_name == "underset" ? sub.parameter_N : unfenced_value(sub)`.
+    let unwrap = |value: Value, wrapper: &str, field: &str| -> Value {
+        if value["class"] == wrapper {
+            value["fields"][field].clone()
+        } else {
+            unfenced(value)
+        }
+    };
+    let name = || {
+        let mut name = function.clone();
+        name[..1].make_ascii_uppercase();
+        format!("Math::Function::{name}")
+    };
+    if let Some(naryand) = single(script("naryand")?, "n-ary naryand")? {
+        return Ok(Some(if ternary {
+            node(
+                &name(),
+                json!({"parameter_one":null,"parameter_two":null,"parameter_three":unwrap(naryand, "Math::Function::Underset", "parameter_two")}),
+            )
+        } else {
+            node(
+                "Math::Function::Nary",
+                json!({"parameter_one":symbol(&function),"parameter_two":null,"parameter_three":null,"parameter_four":naryand,"options":{}}),
+            )
+        }));
+    }
+    let sub = single(script("sub")?, "n-ary sub")?;
+    let sup = single(script("sup")?, "n-ary sup")?;
+    if ternary {
+        let sub = sub.map_or(Value::Null, |v| {
+            unwrap(v, "Math::Function::Underset", "parameter_one")
+        });
+        let sup = sup.map_or(Value::Null, |v| {
+            unwrap(v, "Math::Function::Overset", "parameter_one")
+        });
+        return Ok(Some(node(
+            &name(),
+            json!({"parameter_one":sub,"parameter_two":sup,"parameter_three":null}),
+        )));
+    }
+    if sub.is_none() {
+        // Source calls the n-ary symbol constructor with (nil, sup), which raises;
+        // Math.parse reports that as its ParseError.
+        return Err(error(
+            "PARSE_ERROR",
+            "source n-ary symbol constructor rejects a superscript-only shape",
+        ));
+    }
+    Ok(Some(node(
+        "Math::Function::Nary",
+        json!({"parameter_one":symbol(&function),"parameter_two":sub.map_or(Value::Null, unfenced),"parameter_three":sup.map_or(Value::Null, unfenced),"parameter_four":null,"options":{}}),
+    )))
+}
+
+/// A captured cell: an empty cell captures its bare `&`, which the source Td
+/// constructor deletes, leaving an empty cell.
+fn cell(value: &Value, rec: Rec) -> Result<Vec<Value>, Value> {
+    if value == "&" {
+        return Ok(Vec::new());
+    }
+    rec(value)
+}
+
 pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>, Value> {
     if m.len() == 1 {
         let (key, value) = m.iter().next().unwrap();
         match key.as_str() {
             "table" | "pre_script" | "exp" | "nary" | "trs" => return Ok(Some(rec(value)?)),
-            "td" => return Ok(Some(vec![td(rec(value)?)])),
+            // Source `nary_sub_sup: simple` returns the built n-ary unchanged.
+            "nary_sub_sup" => return Ok(Some(vec![simple(rec(value)?, "n-ary")?])),
+            "td" => return Ok(Some(vec![td(cell(value, rec)?)])),
             "tr" => return Ok(Some(vec![tr(rec(value)?)])),
             "sup_digits" => return Ok(Some(vec![mini_digit(value, true)?])),
             "sub_digits" => return Ok(Some(vec![mini_digit(value, false)?])),
@@ -442,7 +537,7 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
         }
     }
     if keys(m, &["td", "tds"]) {
-        let mut out = vec![td(rec(&m["td"])?)];
+        let mut out = vec![td(cell(&m["td"], rec)?)];
         out.extend(rec(&m["tds"])?);
         return Ok(Some(out));
     }
@@ -504,6 +599,9 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
         return Ok(Some(vec![value]));
     }
     if let Some(value) = masked_nary(m, rec)? {
+        return Ok(Some(vec![value]));
+    }
+    if let Some(value) = unmasked_nary(m, rec)? {
         return Ok(Some(vec![value]));
     }
     Ok(None)
