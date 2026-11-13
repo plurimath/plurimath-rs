@@ -1438,6 +1438,9 @@ fn render_xml_inner(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>,
     if matches!(
         m.class.as_str(),
         "Math::Function::Table"
+            | "Math::Function::Table::Align"
+            | "Math::Function::Table::Multline"
+            | "Math::Function::Table::Split"
             | "Math::Function::Table::Matrix"
             | "Math::Function::Table::Pmatrix"
             | "Math::Function::Table::Bmatrix"
@@ -1980,7 +1983,8 @@ fn apply_writer_intent(m: &Model, nodes: &mut [Xml]) -> Result<(), String> {
         }
         "Frac" => fraction_derivative_intent(m, node)?,
         "Fenced" => fences::intent(m, node)?,
-        "Table" | "Matrix" | "Pmatrix" | "Bmatrix" | "Vmatrix" | "Array"
+        "Table" | "Align" | "Multline" | "Split" | "Matrix" | "Pmatrix" | "Bmatrix" | "Vmatrix"
+        | "Array"
             if m.class.starts_with("Math::Function::Table") =>
         {
             table_intent(m, node)?
@@ -2659,6 +2663,9 @@ fn source_class_properties(m: &Model) -> (&'static [&'static str], bool, bool) {
             false,
         ),
         "Math::Function::Table"
+        | "Math::Function::Table::Align"
+        | "Math::Function::Table::Multline"
+        | "Math::Function::Table::Split"
         | "Math::Function::Table::Array"
         | "Math::Function::Table::Bmatrix"
         | "Math::Function::Table::Cases"

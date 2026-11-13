@@ -348,6 +348,9 @@ pub(super) fn render(model: &Model, format: &str, ctx: &WriterContext) -> Result
     reject_null_formula(&model.value())?;
     match model.class.as_str() {
         "Math::Function::Table"
+        | "Math::Function::Table::Align"
+        | "Math::Function::Table::Multline"
+        | "Math::Function::Table::Split"
         | "Math::Function::Table::Matrix"
         | "Math::Function::Table::Pmatrix"
         | "Math::Function::Table::Bmatrix"

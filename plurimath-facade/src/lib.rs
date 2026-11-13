@@ -199,3 +199,22 @@ pub unsafe extern "C" fn plurimath_facade_free(p: *mut std::ffi::c_char) {
         drop(std::ffi::CString::from_raw(p))
     }
 }
+
+/// Allocate input bytes in this instance's memory for a C ABI or WASM request.
+/// Returns null for a request larger than the facade's 16 MiB input limit.
+#[no_mangle]
+pub extern "C" fn plurimath_facade_alloc(len: usize) -> *mut u8 {
+    if len > 16 * 1024 * 1024 {
+        return std::ptr::null_mut();
+    }
+    Box::into_raw(vec![0u8; len].into_boxed_slice()) as *mut u8
+}
+
+/// # Safety
+/// Pointer and length must match an unreleased `plurimath_facade_alloc` allocation.
+#[no_mangle]
+pub unsafe extern "C" fn plurimath_facade_dealloc(ptr: *mut u8, len: usize) {
+    if !ptr.is_null() {
+        drop(Box::from_raw(std::ptr::slice_from_raw_parts_mut(ptr, len)));
+    }
+}

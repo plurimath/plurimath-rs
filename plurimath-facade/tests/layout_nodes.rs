@@ -50,7 +50,7 @@ fn existing_layout_reference() {
     source_cases(
         include_str!("../fixtures/layout-nodes/reference-source.json"),
         156,
-        133,
+        137,
         19,
     );
 }

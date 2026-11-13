@@ -1,0 +1,59 @@
+{
+  "schema": "plurimath.facade-source-profile/1",
+  "profile": "ruby0a1-cases-mathml-intent-v1",
+  "legacy": {
+    "writer_corpus_sha256": "03e18fd5ca1a91f83b78e861c6a0a01b8921c8ef611a324a4c57f957b3fd9bcb",
+    "mathml_payload_sha256": "fd19dc173f3750289bbfd779cea4f45b56890b6dfb96e0f46cad0559691c0896",
+    "mathml_manifest_sha256": "e8b1c9cf55eaa17c0c1a325f5f974673f8e449c7c5519e4958c6fab981ea57d8",
+    "oracle_commit": "2967dcc47a9f37d5b9a2dd13d94a2ad35d4cc256",
+    "xml_engine": "Plurimath::XmlEngine::OxEngine"
+  },
+  "source": {
+    "plurimath_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+    "ruby": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+    "generator_sha256": "3d5456b1f24a9af336bcb37976316b6c8ac75348e9c07cc9083cd14f2f24db6e",
+    "xml_engine": "Plurimath::XmlEngine::OxEngine",
+    "gems": {
+      "plurimath": "0.11.17",
+      "moxml": "0.6.4",
+      "lutaml-model": "0.8.169",
+      "ox": "2.14.29",
+      "oga": "3.5",
+      "parsanol": "1.3.134",
+      "bigdecimal": "4.1.3"
+    },
+    "lockfile_sha256": "80a7459216662cf9ab7b50d34aea08856038124868fb57877ceb6d94ab489cb9",
+    "probe_payload_sha256": "f77d9b94c5159cd863bcdd378113ec3bc4abda5ae67067fde2226aa463e3e770",
+    "probe_script": "probe-cases-exact-envelope-v2.rb"
+  },
+  "reason": "The frozen2967dcc producer records a ParseError for this row. Actual pinned0a1 parse and the exact MathML intent=true writer envelope both accept it. Preserve the old corpus and compare every byte against this separate source-versioned expectation.",
+  "corrections": [
+    {
+      "id": "intent-table-09",
+      "format": "mathml",
+      "legacy_case": {
+        "id": "intent-table-09",
+        "group": "intent-table",
+        "source": "measured on the oracle",
+        "input": {
+          "format": "latex",
+          "text": "\\begin{cases} x & y \\\\ z & w \\end{cases}"
+        },
+        "options": {
+          "intent": true
+        },
+        "raises": "Plurimath::Math::ParseError",
+        "raisedIn": "parse"
+      },
+      "legacy_case_sha256": "dd702fbdd83a168876a250e5e77a636ea9644c4c812ed2ace1482dea06cbe8e3",
+      "input": {
+        "format": "latex",
+        "text": "\\begin{cases} x & y \\\\ z & w \\end{cases}"
+      },
+      "options": {
+        "intent": true
+      },
+      "expected_output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\":equations\">\n      <mo>{</mo>\n      <mtable intent=\":cases\">\n        <mtr>\n          <mtd>\n            <mi>x</mi>\n          </mtd>\n          <mtd>\n            <mi>y</mi>\n          </mtd>\n        </mtr>\n        <mtr>\n          <mtd>\n            <mi>z</mi>\n          </mtd>\n          <mtd>\n            <mi>w</mi>\n          </mtd>\n        </mtr>\n      </mtable>\n      <mo></mo>\n    </mrow>\n  </mstyle>\n</math>\n"
+    }
+  ]
+}

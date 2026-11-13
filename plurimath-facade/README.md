@@ -35,3 +35,13 @@ Focused checks: `cargo test --locked --offline --test facade --test pma --test d
 Source profiles and test evidence are distinct: static symbol maps and guarded templates are not proof of universal writer parity. Templates substitute recursively rendered native children into source-produced text/XML trees, not complete-input answers. The source exporter validated1419profiles through5676source invocations over4145distinct per-profile inputs (finite null domains included), but native acceptance comes from actual frozen/current source differential replays. Named entities, literal-sensitive Text/Mbox/LeftRight and ordinary symbol escapes have dedicated source handlers.
 
 PMA source provenance is in `fixtures/pma/source-provenance.json`. Historical private unit-only PMA artifacts under `src/pma_parse/` are retained as evidence and are not loaded by the active parser. The numeric/quantity/GUM request profile is unchanged and uses its separate evaluator library.
+
+## WebAssembly input memory
+
+Initialize the official wasm-bindgen web glue before calling the exported ABI.
+`plurimath_facade_alloc(length)` allocates input bytes in the instance's memory;
+copy UTF-8 request bytes there and call `plurimath_facade_json(pointer, length)`.
+Release its owned result with `plurimath_facade_free`, then release the input
+with `plurimath_facade_dealloc(pointer, length)`, including when decoding fails.
+Input allocations above the 16 MiB request limit return null. These exports are
+additive; the facade ABI version remains 1.

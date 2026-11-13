@@ -1,7 +1,11 @@
 //! Default source table/row/cell text writers. Options requiring a new profile refuse.
 use super::{child, text_content, Model, Value};
 fn rows(m: &Model) -> Result<Vec<Vec<Model>>, String> {
-    if m.field("options").as_object().is_none_or(|o| !o.is_empty()) {
+    if m.field("options").as_object().is_none_or(|o| {
+        !o.is_empty()
+            && (!["Align", "Multline", "Split"].contains(&m.kind())
+                || o.keys().any(|key| key != "asterisk"))
+    }) {
         return Err("unported source table options".into());
     }
     let values = m
@@ -83,7 +87,7 @@ fn cell(c: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String
         .map(|v| child(v, f, ctx))
         .collect::<Result<Vec<_>, _>>()
         .map(|v| {
-            v.join(if f == "asciimath" || f == "latex" || f == "unicodemath" {
+            v.join(if f == "asciimath" || f == "latex" {
                 " "
             } else {
                 ""
@@ -91,7 +95,11 @@ fn cell(c: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String
         })
 }
 pub(super) fn render(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
-    if !["Matrix", "Pmatrix", "Bmatrix", "Vmatrix", "Array"].contains(&m.kind()) {
+    if ![
+        "Align", "Multline", "Split", "Matrix", "Pmatrix", "Bmatrix", "Vmatrix", "Array",
+    ]
+    .contains(&m.kind())
+    {
         return Err("unported promised table subclass".into());
     }
     let rs = rows(m)?;
@@ -124,7 +132,10 @@ pub(super) fn render(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<S
                 .map(|r| format!("[{}]", r.join(", ")))
                 .collect::<Vec<_>>()
                 .join(", ");
-            if open.is_null() && ["Matrix", "Array"].contains(&m.kind()) {
+            if open.is_null() && close.is_null() && m.kind() == "Multline" {
+                return Ok(format!("[{body}]"));
+            }
+            if open.is_null() && ["Align", "Split", "Matrix", "Array"].contains(&m.kind()) {
                 return Ok(format!("{{:{body}:}}"));
             }
             if open.is_null() || close.is_null() {
@@ -137,7 +148,7 @@ pub(super) fn render(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<S
             ))
         }
         "latex" => {
-            let env = if m.kind() == "Array" {
+            let mut env = if m.kind() == "Array" {
                 "array".to_owned()
             } else if open.is_null() {
                 m.kind().to_lowercase()
@@ -151,6 +162,15 @@ pub(super) fn render(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<S
                     .ok_or("unported source matrix environment")?
                     .to_owned()
             };
+            let source_options = crate::source_values::field(
+                m,
+                "options",
+                crate::source_values::Domain::NamedOptions,
+            )?;
+            let asterisk = source_options.get_symbol("asterisk");
+            if asterisk.is_some() {
+                env.push('*');
+            }
             let args = if m.kind() == "Array" {
                 let mut a = String::new();
                 for c in &rs[0] {
@@ -167,6 +187,21 @@ pub(super) fn render(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<S
                     )
                 }
                 format!("{{{a}}}")
+            } else if !matches!(
+                asterisk,
+                None | Some(crate::source_values::RubyValue::Nil)
+                    | Some(crate::source_values::RubyValue::Bool(false))
+            ) {
+                let alignment = rs[0][0].field("parameter_two")["columnalign"]
+                    .as_str()
+                    .unwrap_or("");
+                let letter = match alignment {
+                    "left" => "l",
+                    "center" => "c",
+                    "right" => "r",
+                    _ => "",
+                };
+                format!("[{letter}]")
             } else {
                 String::new()
             };
@@ -178,7 +213,9 @@ pub(super) fn render(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<S
             Ok(format!("\\begin{{{env}}}{args}{body}\\end{{{env}}}"))
         }
         "unicodemath" => {
-            let matrix = if open.is_null() && ["Matrix", "Array"].contains(&m.kind()) {
+            let matrix = if open.is_null()
+                && ["Align", "Multline", "Split", "Matrix", "Array"].contains(&m.kind())
+            {
                 String::from("matrix")
             } else {
                 let paren = child(open, "unicodemath", ctx)?;
