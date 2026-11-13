@@ -371,6 +371,14 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
                 one(values)
             })
         };
+        // Source SINGLE `binary` builder: a bare `\mod` (its `{}` group is an
+        // empty sibling) is Mod.new with both operands nil.
+        if format == "latex" && name == "mod" && m.len() == 1 {
+            return Ok(vec![node(
+                "Math::Function::Mod",
+                json!({"parameter_one":null,"parameter_two":null}),
+            )]);
+        }
         let first = operand("first_value", "missing first binary operand")?;
         // `\color{}` captures its colour as an empty symbol list that no source
         // rule builds, so the source model keeps an unbuilt capture Hash.
