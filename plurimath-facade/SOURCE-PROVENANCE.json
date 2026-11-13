@@ -1,0 +1,152 @@
+{
+  "sources": [
+    {
+      "path": "workspace/core/ts-ci-fix/src/generated/asciimath/symbols.ts",
+      "sha256": "4b35594b8dd9e9fdc5cb75dc7ce7e1e83f73db60020e212c29620f895ea6e492"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/generated/latex/symbols.ts",
+      "sha256": "1b8fba0890faf85f93adb57266e62b9e2308c87260a3ab3e846580821083f0e5"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/generated/unicodemath/symbols.ts",
+      "sha256": "f105d4684b24b8295c8ad70623d27ed0a54c2682c6e43c684cbe61af43464f14"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/generated/mathml/symbols.ts",
+      "sha256": "ce03ff70fd7483c748c9fddc04b288a5619b7aea8c28e8debfea094363d5126b"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/generated/omml/symbols.ts",
+      "sha256": "b41b8fc75fd84fc19e7153836df09839040f58fc8e14a988d27cbc7fdb90d0a3"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/generated/html/symbols.ts",
+      "sha256": "98c0f2bd2bd2ac12a68b50376a90b6884f49906aa5b8f6af92d0b82d028e1fdf"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/core/generated/symbol-canonical.ts",
+      "sha256": "19d41c09f772117a1779a3f836c1cf251613e03cfbe05be5b1c4b685eb064ca1"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/generated/asciimath/input.ts",
+      "sha256": "44a0b1a4a3035912e5ca36ae30a891ff594ea86954c06bfd372a086a698edb74"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/generated/asciimath/transform-registry.ts",
+      "sha256": "c02381d28efd65193076643ddd4f43cf1b13947897645e3d3d78642904837efd"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/generated/mathml/render-tables.ts",
+      "sha256": "7d6f3250af40ad3d4ad73784ef192e58cb12cea5f93f84a13d93cbd6c840f8d8"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/core/generated/html-entities.ts",
+      "sha256": "55a26022f83c2cb48aab92509595f2930f11d0ecc61244ade82151fdb4c6ffb8"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/generated/latex/render-tables.ts",
+      "sha256": "d36cda8f319c79e88cda7c6353f76626754a1592073005ba17a059338a6e19d3"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/formats/latex/generated/transform-tables.ts",
+      "sha256": "d033629913c34b7c0aee018e5f7a637d94d2564b759ac0d5b78cdb1fa54de508"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/formats/unicodemath/generated/transform-tables.ts",
+      "sha256": "71d29ee0f45cf33232cd6be56d75a160d6a9a0a9aa2012f75215a73ee891fc50"
+    },
+    {
+      "path": "workspace/core/ts-ci-fix/src/generated/unicodemath/render-tables.ts",
+      "sha256": "5f02822dc427aba0ea3a19bd07c9625d4f1418c115f5aaf0e6941aaec740910a"
+    }
+  ],
+  "counts": {
+    "asciimath": 1459,
+    "latex": 1459,
+    "unicodemath": 1459,
+    "mathml": 1459,
+    "omml": 1459,
+    "html": 1459,
+    "input": 3276,
+    "canonical": 1459,
+    "unary_keywords": 33,
+    "class_map": 63,
+    "font_map": 50,
+    "unary_mi": 33,
+    "text_unicode_invert": 144,
+    "text_symbols_invert": 17,
+    "html_entities": 253,
+    "latex_left_right": 23,
+    "latex_input": 3279,
+    "unicode_input": 3282,
+    "latex_matrix_environments": 5,
+    "unicode_matrix_marks": 8,
+    "unicode_matrix_parens": 5
+  },
+  "policy": "Static source-data extraction only. No Node/Ruby product runtime bridge.",
+  "facade_scope": "Source-backed eight-input/six-writer API under ongoing conformance qualification. Storing common models does not imply universal class validation or generated-class parity.",
+  "parameterized_writer_artifact": {
+    "path": "fixtures/source-writers/parameterized-writers-v3.json.gz",
+    "sha256": "2a54a7dc1d10014eebea13bc8c44ac2f4ec5b4b45efd949ec8ba2eec30b17cc3",
+    "profiles": 1419,
+    "checks": 5676,
+    "policy": "Strict parent-fields/default-context and child-shape guards. No whole-input answers. Known literal-sensitive families use explicit native source handlers.",
+    "validation_invocations": 5676,
+    "distinct_profile_inputs": 4145,
+    "encoding": "gzip",
+    "compressed_sha256": "73d6b92094ea62e7673a5e93b9e6929f4e8010a42dd4b864ec7fc640ecd7ad0e"
+  },
+  "input_sources": {
+    "ruby": {
+      "head": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+      "path": "workspace/core/plurimath-ruby"
+    },
+    "ts": {
+      "head": "a5348ddcc74370382624b00b88af71eda50fe77a",
+      "path": "workspace/core/ts-ci-fix"
+    },
+    "amath": {
+      "head": "d176af8c6d2df7fcdab7f2e83ab6d24ef92dd3c8",
+      "path": "workspace/compatibility/amath-rs"
+    },
+    "latexmath": {
+      "head": "4da0ddaf00d0f58ecce4f1e81cd9cdcc1b9b6c39",
+      "path": "workspace/compatibility/latexmath-rs"
+    },
+    "umath": {
+      "head": "504c74f6a3b8e4bc62cb650029f4d00cbf2438f3",
+      "path": "workspace/compatibility/umath-rs"
+    }
+  },
+  "mixed_parameterized_profiles": {
+    "source": "fixtures/source-writers/parameterized-writers-mixed.json.gz",
+    "sha256": "d100be7941dfec2aeaab9fb98516e4bb2f0603dca159f0b04a972b83ce9a6e44",
+    "additional_profiles": 53,
+    "policy": "Per-field type guards and parameterized source fragments only, no observed input-value lookup.",
+    "validation_invocations": 212,
+    "encoding": "gzip",
+    "compressed_sha256": "8680e08c708303752d5fbb1968ddb8e08a8b433ee51bb82f0604816c6d38cd5e"
+  },
+  "html_source_profile": {
+    "grammar_source_sha256": "b6262929322518d8d14381a4d67b86460c7e019b3baef3c8b5bc2db7b6398d9e",
+    "artifact_sha256": "ba690fbcc14909960d1241f3bdac899aa8e624b75ab0e6ec3829e276e67b20ae",
+    "artifact_checksum": "sha256:b1cb3fff495ef91f9898bbaadcb084180a722c9e860424843512bbef4d18d7d9",
+    "grammar_atoms": 593,
+    "ascii_state_match_operations": 6,
+    "runtime_repository": "parsanol/parsanol-rs",
+    "runtime_base": "533e2425a5bde4a177e90a0c4fc8d22fdaacc987",
+    "runtime_candidate": "5a4920ad59b187e5735f0f0f5fd735b4119f2f04",
+    "producer": "scripts/export-html-grammar.rb",
+    "source_transform_patterns": 78,
+    "qualified_default_models": 544,
+    "qualified_source_parser_refusals": 23,
+    "wasm_transport": "pending",
+    "nondefault_options": "incomplete"
+  },
+  "compiled_template_artifact": {
+    "path": "src/writer/templates.json",
+    "sha256": "4f6d735467505b30eba9e47fcfb5303525a3c1ba5c08ca61687feb3d7b8593ad",
+    "scope": "Derived guarded parameterized templates plus explicit source handlers; no whole-input result lookup."
+  }
+}

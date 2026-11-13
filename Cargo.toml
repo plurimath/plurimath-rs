@@ -1,0 +1,8 @@
+[workspace]
+resolver = "2"
+members = ["plurimath-facade", "plurimath-facade/transport", "plurimath-numeric"]
+default-members = ["plurimath-facade", "plurimath-numeric"]
+
+[profile.dev]
+debug = 0
+incremental = false

@@ -1,0 +1,4401 @@
+{
+  "source": {
+    "ruby": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+    "files": {
+      "lib/plurimath/math/evaluation/gum.rb": "c8d77a5593d5943d944cb71bc4dc86f95d42b030b386bf423e3aa6c6c07a7c85",
+      "lib/plurimath/math/evaluation/monte_carlo.rb": "9a2a944df89136d94c4ae49ad8a28af68ff65918bc9e0c9de73fc5760602d629"
+    },
+    "ruby_head": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+    "generator_sha256": "84211b90630a469bef9fe0747398609fa3fff6965baad755021abd24e94e5065"
+  },
+  "cases": [
+    {
+      "id": "actual-normal-symmetric",
+      "kind": "actual-source-MCM",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "adequacy": {
+            "symbol": "validated"
+          },
+          "probability": "19/20",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "tolerance": "1/2",
+          "monte_carlo_tolerance": "1/20",
+          "endpoint_differences": [
+            "6361548646223/250000000000000",
+            "566416857473/250000000000000"
+          ],
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM101-2008-8.1-8.2-v1"
+          }
+        }
+      }
+    },
+    {
+      "id": "actual-normal-shortest",
+      "kind": "actual-source-MCM",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "shortest"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "adequacy": {
+            "symbol": "validated"
+          },
+          "probability": "19/20",
+          "interval": {
+            "symbol": "shortest"
+          },
+          "tolerance": "1/2",
+          "monte_carlo_tolerance": "1/20",
+          "endpoint_differences": [
+            "15824504986473/250000000000000",
+            "9859544460027/250000000000000"
+          ],
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM101-2008-8.1-8.2-v1"
+          }
+        }
+      }
+    },
+    {
+      "id": "actual-far-interval",
+      "kind": "actual-source-MCM",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            2,
+            4
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "adequacy": {
+            "symbol": "not_validated"
+          },
+          "probability": "19/20",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "tolerance": "1/2",
+          "monte_carlo_tolerance": "1/20",
+          "endpoint_differences": [
+            "589074832733/200000000000",
+            "292219363651/100000000000"
+          ],
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM101-2008-8.1-8.2-v1"
+          }
+        }
+      }
+    },
+    {
+      "id": "actual-too-coarse",
+      "kind": "actual-source-MCM",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 2,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::UnsupportedModel",
+        "message": "MCM tolerance must be at least five times tighter for validation"
+      }
+    },
+    {
+      "id": "endpoint-equality-inclusive",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            {
+              "rational": [
+                "-289074832733",
+                "200000000000"
+              ]
+            },
+            {
+              "rational": [
+                "742219363651",
+                "100000000000"
+              ]
+            }
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "adequacy": {
+            "symbol": "validated"
+          },
+          "probability": "19/20",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "tolerance": "1/2",
+          "monte_carlo_tolerance": "1/20",
+          "endpoint_differences": [
+            "1/2",
+            "1/2"
+          ],
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM101-2008-8.1-8.2-v1"
+          }
+        }
+      }
+    },
+    {
+      "id": "endpoint-past-boundary",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            {
+              "rational": [
+                "-144537416366500000001",
+                "100000000000000000000"
+              ]
+            },
+            {
+              "rational": [
+                "742219363651",
+                "100000000000"
+              ]
+            }
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "adequacy": {
+            "symbol": "not_validated"
+          },
+          "probability": "19/20",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "tolerance": "1/2",
+          "monte_carlo_tolerance": "1/20",
+          "endpoint_differences": [
+            "50000000000000000001/100000000000000000000",
+            "1/2"
+          ],
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM101-2008-8.1-8.2-v1"
+          }
+        }
+      }
+    },
+    {
+      "id": "five-times-equality",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "1/10",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "adequacy": {
+            "symbol": "validated"
+          },
+          "probability": "19/20",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "tolerance": "1/2",
+          "monte_carlo_tolerance": "1/10",
+          "endpoint_differences": [
+            "6361548646223/250000000000000",
+            "566416857473/250000000000000"
+          ],
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM101-2008-8.1-8.2-v1"
+          }
+        }
+      }
+    },
+    {
+      "id": "five-times-past-boundary",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "10000000000000000001/100000000000000000000",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::UnsupportedModel",
+        "message": "MCM tolerance must be at least five times tighter for validation"
+      }
+    },
+    {
+      "id": "significant-digits-0",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 0,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::InvalidInput",
+        "message": "validation needs two endpoints and positive significant_digits"
+      }
+    },
+    {
+      "id": "significant-digits--1",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": -1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::InvalidInput",
+        "message": "validation needs two endpoints and positive significant_digits"
+      }
+    },
+    {
+      "id": "significant-digits-\"2\"",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": "2",
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::InvalidInput",
+        "message": "validation needs two endpoints and positive significant_digits"
+      }
+    },
+    {
+      "id": "significant-digits-1.0",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1.0,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::InvalidInput",
+        "message": "validation needs two endpoints and positive significant_digits"
+      }
+    },
+    {
+      "id": "significant-digits-13",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 13,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::InvalidInput",
+        "message": "tolerance significant_digits must lie in1..12"
+      }
+    },
+    {
+      "id": "uncertainty-0",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 0,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::NumericalFailure",
+        "message": "adaptive tolerance needs positive uncertainty"
+      }
+    },
+    {
+      "id": "uncertainty--1",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": -1,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::NumericalFailure",
+        "message": "adaptive tolerance needs positive uncertainty"
+      }
+    },
+    {
+      "id": "uncertainty-\"invalid\"",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": "invalid",
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::InvalidInput",
+        "message": "invalid exact numeric input"
+      }
+    },
+    {
+      "id": "uncertainty-nil",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": null,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::InvalidInput",
+        "message": "invalid exact numeric input"
+      }
+    },
+    {
+      "id": "GUF-endpoints-0",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::InvalidInput",
+        "message": "validation needs two endpoints and positive significant_digits"
+      }
+    },
+    {
+      "id": "GUF-endpoints-1",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            0
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::InvalidInput",
+        "message": "validation needs two endpoints and positive significant_digits"
+      }
+    },
+    {
+      "id": "GUF-endpoints-2",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            0,
+            1,
+            2
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::InvalidInput",
+        "message": "validation needs two endpoints and positive significant_digits"
+      }
+    },
+    {
+      "id": "GUF-endpoints-3",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            2,
+            1
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::InvalidInput",
+        "message": "GUF interval endpoints must increase"
+      }
+    },
+    {
+      "id": "probability-mismatch",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.9",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::InvalidInput",
+        "message": "coverage probability mismatch"
+      }
+    },
+    {
+      "id": "not-stabilized",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": false,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::UnsupportedModel",
+        "message": "validation requires stabilized adaptive MCM of the requested interval kind"
+      }
+    },
+    {
+      "id": "wrong-MCM-method",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "fixed_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::UnsupportedModel",
+        "message": "validation requires stabilized adaptive MCM of the requested interval kind"
+      }
+    },
+    {
+      "id": "wrong-interval-kind",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "both"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::UnsupportedModel",
+        "message": "validation requires stabilized adaptive MCM of the requested interval kind"
+      }
+    },
+    {
+      "id": "missing-probability",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::InvalidInput",
+        "message": "missing validation result field: probability"
+      }
+    },
+    {
+      "id": "missing-numerical_tolerance",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::InvalidInput",
+        "message": "missing validation result field: numerical_tolerance"
+      }
+    },
+    {
+      "id": "missing-intervals",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::InvalidInput",
+        "message": "missing validation result field: intervals"
+      }
+    },
+    {
+      "id": "missing-requested-interval",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {},
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::InvalidInput",
+        "message": "missing validation result field: symmetric"
+      }
+    },
+    {
+      "id": "malformed-intervals-0",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": null,
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "NoMethodError",
+        "message": "undefined method 'fetch' for nil"
+      }
+    },
+    {
+      "id": "malformed-intervals-1",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": [],
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "TypeError",
+        "message": "no implicit conversion of Symbol into Integer"
+      }
+    },
+    {
+      "id": "malformed-intervals-2",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": false,
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "NoMethodError",
+        "message": "undefined method 'fetch' for false"
+      }
+    },
+    {
+      "id": "malformed-intervals-3",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": "interval-map",
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "NoMethodError",
+        "message": "undefined method 'fetch' for an instance of String"
+      }
+    },
+    {
+      "id": "malformed-bounds-0",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": null
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "TypeError",
+        "message": "wrong argument type NilClass (must respond to :each)"
+      }
+    },
+    {
+      "id": "malformed-bounds-1",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": []
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::InvalidInput",
+        "message": "invalid exact numeric input"
+      }
+    },
+    {
+      "id": "malformed-bounds-2",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                0
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "Plurimath::Math::Evaluation::Gum::InvalidInput",
+        "message": "invalid exact numeric input"
+      }
+    },
+    {
+      "id": "malformed-bounds-3",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                0,
+                1,
+                2
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "adequacy": {
+            "symbol": "not_validated"
+          },
+          "probability": "19/20",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "tolerance": "1/2",
+          "monte_carlo_tolerance": "1/20",
+          "endpoint_differences": [
+            "229981992270027/250000000000000",
+            "1479981992270027/250000000000000"
+          ],
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM101-2008-8.1-8.2-v1"
+          }
+        }
+      }
+    },
+    {
+      "id": "malformed-bounds-4",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": "bounds"
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_class": "TypeError",
+        "message": "wrong argument type String (must respond to :each)"
+      }
+    },
+    {
+      "id": "metadata-negative-tolerance",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "-1",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "adequacy": {
+            "symbol": "validated"
+          },
+          "probability": "19/20",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "tolerance": "1/2",
+          "monte_carlo_tolerance": "-1/1",
+          "endpoint_differences": [
+            "6361548646223/250000000000000",
+            "566416857473/250000000000000"
+          ],
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM101-2008-8.1-8.2-v1"
+          }
+        }
+      }
+    },
+    {
+      "id": "metadata-out-of-range-probability",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            "-0.919927969080108",
+            "6.919927969080108"
+          ],
+          "guf_standard_uncertainty": 2,
+          "significant_digits": 1,
+          "probability": 2,
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                "-0.945374163665",
+                "6.92219363651"
+              ],
+              "shortest": [
+                "-0.983225989026",
+                "6.88048979124"
+              ]
+            },
+            "probability": 2,
+            "numerical_tolerance": "0.05",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "adequacy": {
+            "symbol": "validated"
+          },
+          "probability": "2/1",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "tolerance": "1/2",
+          "monte_carlo_tolerance": "1/20",
+          "endpoint_differences": [
+            "6361548646223/250000000000000",
+            "566416857473/250000000000000"
+          ],
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM101-2008-8.1-8.2-v1"
+          }
+        }
+      }
+    },
+    {
+      "id": "exact-tolerance-0",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            0,
+            1
+          ],
+          "guf_standard_uncertainty": "9.94",
+          "significant_digits": 2,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                0,
+                1
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "adequacy": {
+            "symbol": "validated"
+          },
+          "probability": "19/20",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "tolerance": "1/20",
+          "monte_carlo_tolerance": "0/1",
+          "endpoint_differences": [
+            "0/1",
+            "0/1"
+          ],
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM101-2008-8.1-8.2-v1"
+          }
+        }
+      }
+    },
+    {
+      "id": "exact-tolerance-1",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            0,
+            1
+          ],
+          "guf_standard_uncertainty": "9.95",
+          "significant_digits": 2,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                0,
+                1
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "adequacy": {
+            "symbol": "validated"
+          },
+          "probability": "19/20",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "tolerance": "1/2",
+          "monte_carlo_tolerance": "0/1",
+          "endpoint_differences": [
+            "0/1",
+            "0/1"
+          ],
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM101-2008-8.1-8.2-v1"
+          }
+        }
+      }
+    },
+    {
+      "id": "exact-tolerance-2",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            0,
+            1
+          ],
+          "guf_standard_uncertainty": "99.49",
+          "significant_digits": 2,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                0,
+                1
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "adequacy": {
+            "symbol": "validated"
+          },
+          "probability": "19/20",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "tolerance": "1/2",
+          "monte_carlo_tolerance": "0/1",
+          "endpoint_differences": [
+            "0/1",
+            "0/1"
+          ],
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM101-2008-8.1-8.2-v1"
+          }
+        }
+      }
+    },
+    {
+      "id": "exact-tolerance-3",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            0,
+            1
+          ],
+          "guf_standard_uncertainty": "99.5",
+          "significant_digits": 2,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                0,
+                1
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "adequacy": {
+            "symbol": "validated"
+          },
+          "probability": "19/20",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "tolerance": "5/1",
+          "monte_carlo_tolerance": "0/1",
+          "endpoint_differences": [
+            "0/1",
+            "0/1"
+          ],
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM101-2008-8.1-8.2-v1"
+          }
+        }
+      }
+    },
+    {
+      "id": "exact-tolerance-4",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            0,
+            1
+          ],
+          "guf_standard_uncertainty": "0.00995",
+          "significant_digits": 2,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                0,
+                1
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "adequacy": {
+            "symbol": "validated"
+          },
+          "probability": "19/20",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "tolerance": "1/2000",
+          "monte_carlo_tolerance": "0/1",
+          "endpoint_differences": [
+            "0/1",
+            "0/1"
+          ],
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM101-2008-8.1-8.2-v1"
+          }
+        }
+      }
+    },
+    {
+      "id": "exact-tolerance-5",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            0,
+            1
+          ],
+          "guf_standard_uncertainty": "1e-50",
+          "significant_digits": 2,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                0,
+                1
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "adequacy": {
+            "symbol": "validated"
+          },
+          "probability": "19/20",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "tolerance": "1/2000000000000000000000000000000000000000000000000000",
+          "monte_carlo_tolerance": "0/1",
+          "endpoint_differences": [
+            "0/1",
+            "0/1"
+          ],
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM101-2008-8.1-8.2-v1"
+          }
+        }
+      }
+    },
+    {
+      "id": "exact-tolerance-6",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            0,
+            1
+          ],
+          "guf_standard_uncertainty": "1e400",
+          "significant_digits": 2,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                0,
+                1
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "adequacy": {
+            "symbol": "validated"
+          },
+          "probability": "19/20",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "tolerance": "500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000/1",
+          "monte_carlo_tolerance": "0/1",
+          "endpoint_differences": [
+            "0/1",
+            "0/1"
+          ],
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM101-2008-8.1-8.2-v1"
+          }
+        }
+      }
+    },
+    {
+      "id": "exact-tolerance-7",
+      "kind": "metadata-boundary",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "validate_coverage",
+        "parameters": {
+          "guf_interval": [
+            0,
+            1
+          ],
+          "guf_standard_uncertainty": "1e-400",
+          "significant_digits": 2,
+          "probability": "0.95",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "monte_carlo": {
+            "estimate": "2.99434476541",
+            "standard_uncertainty": "2.00501519758",
+            "intervals": {
+              "symmetric": [
+                0,
+                1
+              ]
+            },
+            "probability": "19/20",
+            "numerical_tolerance": "0",
+            "twice_standard_errors": {
+              "estimate": "0.00716981160399",
+              "standard_uncertainty": "0.00712151935027",
+              "symmetric_lower": "0.028350165977",
+              "symmetric_upper": "0.0265018700845",
+              "shortest_lower": "0.0496358253541",
+              "shortest_upper": "0.0459141503485"
+            },
+            "samples": 170000,
+            "requested_max_samples": 200000,
+            "batches": 17,
+            "batch_size": 10000,
+            "significant_digits": 2,
+            "guard_digits": 12,
+            "precision_convention": {
+              "symbol": "significant_digits"
+            },
+            "stabilized": true,
+            "method": {
+              "symbol": "adaptive_mcm"
+            },
+            "variables": [
+              "x"
+            ],
+            "engine": {
+              "name": "plurimath",
+              "version": "0.11.17",
+              "method": "JCGM101-2008-7.9.4-v1",
+              "numeric_backend": "binary64-centered-exact-polynomial",
+              "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+              "initial_seeds": [
+                12345,
+                23456,
+                34567,
+                45678
+              ],
+              "final_state": [
+                823897486,
+                394856088,
+                2072856314,
+                40893416
+              ],
+              "uniform_draws": 170000
+            }
+          }
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "adequacy": {
+            "symbol": "validated"
+          },
+          "probability": "19/20",
+          "interval": {
+            "symbol": "symmetric"
+          },
+          "tolerance": "1/200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "monte_carlo_tolerance": "0/1",
+          "endpoint_differences": [
+            "0/1",
+            "0/1"
+          ],
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM101-2008-8.1-8.2-v1"
+          }
+        }
+      }
+    },
+    {
+      "id": "validation-source-normal-170k",
+      "kind": "actual-source-MCM-regression",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "monte_carlo",
+        "parameters": {
+          "inputs": [
+            {
+              "name": "x",
+              "pdf": {
+                "distribution": {
+                  "symbol": "normal"
+                },
+                "location": 3,
+                "sd": 2
+              }
+            }
+          ],
+          "independent": true,
+          "seeds": [
+            12345,
+            23456,
+            34567,
+            45678
+          ],
+          "probability": "0.95",
+          "interval": {
+            "symbol": "both"
+          },
+          "significant_digits": 2,
+          "guard_digits": 12,
+          "max_samples": 200000,
+          "ast": {
+            "type": "variable",
+            "name": "x"
+          }
+        }
+      },
+      "expected": {
+        "outcome": "ok",
+        "result": {
+          "estimate": "2.99434476541",
+          "standard_uncertainty": "2.00501519758",
+          "intervals": {
+            "symmetric": [
+              "-0.945374163665",
+              "6.92219363651"
+            ],
+            "shortest": [
+              "-0.983225989026",
+              "6.88048979124"
+            ]
+          },
+          "probability": "19/20",
+          "numerical_tolerance": "0.05",
+          "twice_standard_errors": {
+            "estimate": "0.00716981160399",
+            "standard_uncertainty": "0.00712151935027",
+            "symmetric_lower": "0.028350165977",
+            "symmetric_upper": "0.0265018700845",
+            "shortest_lower": "0.0496358253541",
+            "shortest_upper": "0.0459141503485"
+          },
+          "samples": 170000,
+          "requested_max_samples": 200000,
+          "batches": 17,
+          "batch_size": 10000,
+          "significant_digits": 2,
+          "guard_digits": 12,
+          "precision_convention": {
+            "symbol": "significant_digits"
+          },
+          "stabilized": true,
+          "method": {
+            "symbol": "adaptive_mcm"
+          },
+          "variables": [
+            "x"
+          ],
+          "engine": {
+            "name": "plurimath",
+            "version": "0.11.17",
+            "method": "JCGM101-2008-7.9.4-v1",
+            "numeric_backend": "binary64-centered-exact-polynomial",
+            "generator": "enhanced-Wichmann-Hill-C.3.3.3",
+            "initial_seeds": [
+              12345,
+              23456,
+              34567,
+              45678
+            ],
+            "final_state": [
+              823897486,
+              394856088,
+              2072856314,
+              40893416
+            ],
+            "uniform_draws": 170000
+          }
+        }
+      }
+    }
+  ]
+}

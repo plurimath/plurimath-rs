@@ -1,0 +1,134 @@
+{
+  "ruby": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+  "rows": [
+    {
+      "input": "0d17",
+      "to_i": 17,
+      "mod32": 17
+    },
+    {
+      "input": "0D17",
+      "to_i": 17,
+      "mod32": 17
+    },
+    {
+      "input": "-0d17",
+      "to_i": -17,
+      "mod32": 15
+    },
+    {
+      "input": "+0D31",
+      "to_i": 31,
+      "mod32": 31
+    },
+    {
+      "input": "  0d17x",
+      "to_i": 17,
+      "mod32": 17
+    },
+    {
+      "input": "0d",
+      "to_i": 0,
+      "mod32": 0
+    },
+    {
+      "input": "0D",
+      "to_i": 0,
+      "mod32": 0
+    },
+    {
+      "input": "0d_17",
+      "to_i": 0,
+      "mod32": 0
+    },
+    {
+      "input": "0d__17",
+      "to_i": 0,
+      "mod32": 0
+    },
+    {
+      "input": "0_d17",
+      "to_i": 0,
+      "mod32": 0
+    },
+    {
+      "input": "00d17",
+      "to_i": 0,
+      "mod32": 0
+    },
+    {
+      "input": "0d1_7",
+      "to_i": 17,
+      "mod32": 17
+    },
+    {
+      "input": "0d1__7",
+      "to_i": 1,
+      "mod32": 1
+    },
+    {
+      "input": "0d+17",
+      "to_i": 0,
+      "mod32": 0
+    },
+    {
+      "input": "0d-17",
+      "to_i": 0,
+      "mod32": 0
+    },
+    {
+      "input": "0d 17",
+      "to_i": 0,
+      "mod32": 0
+    },
+    {
+      "input": "0x17",
+      "to_i": 0,
+      "mod32": 0
+    },
+    {
+      "input": "0b17",
+      "to_i": 0,
+      "mod32": 0
+    },
+    {
+      "input": "0o17",
+      "to_i": 0,
+      "mod32": 0
+    },
+    {
+      "input": "0d017",
+      "to_i": 17,
+      "mod32": 17
+    },
+    {
+      "input": "0d0_17",
+      "to_i": 17,
+      "mod32": 17
+    },
+    {
+      "input": "0d_",
+      "to_i": 0,
+      "mod32": 0
+    },
+    {
+      "input": "\\t0D_1_7",
+      "to_i": 0,
+      "mod32": 0
+    },
+    {
+      "input": " -0d_31",
+      "to_i": 0,
+      "mod32": 0
+    },
+    {
+      "input": "0d999999999999999999999999999999999999999999999999999999999999999999",
+      "to_i": 999999999999999999999999999999999999999999999999999999999999999999,
+      "mod32": 31
+    }
+  ],
+  "fixture_projection": {
+    "original_sha256": "77f1db847c5b89715e30100da7d8badab9a1231489c37e1b38c96a73d55fc00f",
+    "omitted": "source error messages only; every initial model, option and successful output byte retained"
+  }
+}

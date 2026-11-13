@@ -1,0 +1,83 @@
+{
+  "schema": "quantity-source-unit-maps/1",
+  "ruby": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+  "quantity_source_sha256": "d01572e4a53afe0b57d7e85ab16189dda91a756736527678bc9571aee42bba83",
+  "units": [
+    {
+      "unit": "m",
+      "normalized_unit": "m",
+      "terms": [
+        {
+          "unit": "NISTu1",
+          "prefix": null,
+          "power": "1"
+        }
+      ],
+      "dimensions": {
+        "Length": "1"
+      },
+      "factor": "1",
+      "offset": "0"
+    },
+    {
+      "unit": "m*s",
+      "normalized_unit": "m*s",
+      "terms": [
+        {
+          "unit": "NISTu1",
+          "prefix": null,
+          "power": "1"
+        },
+        {
+          "unit": "NISTu3",
+          "prefix": null,
+          "power": "1"
+        }
+      ],
+      "dimensions": {
+        "Length": "1",
+        "Time": "1"
+      },
+      "factor": "1",
+      "offset": "0"
+    },
+    {
+      "unit": "m/s",
+      "normalized_unit": "m/s",
+      "terms": [
+        {
+          "unit": "NISTu1",
+          "prefix": null,
+          "power": "1"
+        },
+        {
+          "unit": "NISTu3",
+          "prefix": null,
+          "power": "-1"
+        }
+      ],
+      "dimensions": {
+        "Length": "1",
+        "Time": "-1"
+      },
+      "factor": "1",
+      "offset": "0"
+    },
+    {
+      "unit": "km",
+      "normalized_unit": "km",
+      "terms": [
+        {
+          "unit": "NISTu1",
+          "prefix": "NISTp10_3",
+          "power": "1"
+        }
+      ],
+      "dimensions": {
+        "Length": "1"
+      },
+      "factor": "1000",
+      "offset": "0"
+    }
+  ]
+}

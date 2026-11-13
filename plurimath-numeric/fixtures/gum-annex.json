@@ -1,0 +1,5475 @@
+{
+  "source": {
+    "ruby_commit": "9c90094a9077c686e0e03d7838eef8531bea8c3c",
+    "files": {
+      "spec/plurimath/math/evaluation_gum_spec.rb": "cb6fa004c2ff29b6fba52352145c43ae0262cb505f26ba3758c9f2eda3b46cec",
+      "spec/fixtures/evaluation/gum_h1.json": "4a3525110d6306cceae2d34e5783343b454c4326f96ebe83a321fed490058a40",
+      "spec/fixtures/evaluation/gum_annex_reference.json": "d5a87f01097aab53cfd314f797d871b4af73c6a5f36f831113c4c7383fb12338"
+    }
+  },
+  "h1": {
+    "profile": "jcgm101_table10_pdf",
+    "formula": "s+d+e+f-s*(b*(t+v)+a*c)-50000000",
+    "actual_pdf_normal": false,
+    "request": {
+      "schema": "plurimath.evaluate.gum/1",
+      "method": "analyze",
+      "parameters": {
+        "ast": {
+          "type": "binary",
+          "operator": "-",
+          "left": {
+            "type": "binary",
+            "operator": "-",
+            "left": {
+              "type": "binary",
+              "operator": "+",
+              "left": {
+                "type": "binary",
+                "operator": "+",
+                "left": {
+                  "type": "binary",
+                  "operator": "+",
+                  "left": {
+                    "type": "variable",
+                    "name": "s"
+                  },
+                  "right": {
+                    "type": "variable",
+                    "name": "d"
+                  }
+                },
+                "right": {
+                  "type": "variable",
+                  "name": "e"
+                }
+              },
+              "right": {
+                "type": "variable",
+                "name": "f"
+              }
+            },
+            "right": {
+              "type": "binary",
+              "operator": "*",
+              "left": {
+                "type": "variable",
+                "name": "s"
+              },
+              "right": {
+                "type": "binary",
+                "operator": "+",
+                "left": {
+                  "type": "binary",
+                  "operator": "*",
+                  "left": {
+                    "type": "variable",
+                    "name": "b"
+                  },
+                  "right": {
+                    "type": "binary",
+                    "operator": "+",
+                    "left": {
+                      "type": "variable",
+                      "name": "t"
+                    },
+                    "right": {
+                      "type": "variable",
+                      "name": "v"
+                    }
+                  }
+                },
+                "right": {
+                  "type": "binary",
+                  "operator": "*",
+                  "left": {
+                    "type": "variable",
+                    "name": "a"
+                  },
+                  "right": {
+                    "type": "variable",
+                    "name": "c"
+                  }
+                }
+              }
+            }
+          },
+          "right": {
+            "type": "number",
+            "text": "50000000"
+          }
+        },
+        "inputs": [
+          {
+            "name": "s",
+            "estimate": "50000623",
+            "component": {
+              "variance": "5625/8"
+            }
+          },
+          {
+            "name": "d",
+            "estimate": "215",
+            "component": {
+              "variance": "432/11"
+            }
+          },
+          {
+            "name": "e",
+            "estimate": "0",
+            "component": {
+              "variance": "80/3"
+            }
+          },
+          {
+            "name": "f",
+            "estimate": "0",
+            "component": {
+              "variance": "196/3"
+            }
+          },
+          {
+            "name": "a",
+            "estimate": "0.0000115",
+            "component": {
+              "variance": "1/750000000000"
+            }
+          },
+          {
+            "name": "t",
+            "estimate": "-0.1",
+            "component": {
+              "variance": "1/25"
+            }
+          },
+          {
+            "name": "v",
+            "estimate": "0",
+            "component": {
+              "variance": "1/8"
+            }
+          },
+          {
+            "name": "b",
+            "estimate": "0",
+            "component": {
+              "variance": "301/900000000000000"
+            }
+          },
+          {
+            "name": "c",
+            "estimate": "0",
+            "component": {
+              "variance": "13/14400"
+            }
+          }
+        ],
+        "independent": true,
+        "order": 1,
+        "guard_digits": 40
+      }
+    },
+    "expected": {
+      "estimate": {
+        "rational": [
+          "838",
+          "1"
+        ]
+      },
+      "gradient": [
+        {
+          "rational": [
+            "1",
+            "1"
+          ]
+        },
+        {
+          "rational": [
+            "1",
+            "1"
+          ]
+        },
+        {
+          "rational": [
+            "1",
+            "1"
+          ]
+        },
+        {
+          "rational": [
+            "1",
+            "1"
+          ]
+        },
+        {
+          "rational": [
+            "0",
+            "1"
+          ]
+        },
+        {
+          "rational": [
+            "0",
+            "1"
+          ]
+        },
+        {
+          "rational": [
+            "0",
+            "1"
+          ]
+        },
+        {
+          "rational": [
+            "50000623",
+            "10"
+          ]
+        },
+        {
+          "rational": [
+            "-1150014329",
+            "2000000"
+          ]
+        }
+      ],
+      "hessian": [
+        [
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "1",
+              "10"
+            ]
+          },
+          {
+            "rational": [
+              "-23",
+              "2000000"
+            ]
+          }
+        ],
+        [
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          }
+        ],
+        [
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          }
+        ],
+        [
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          }
+        ],
+        [
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "-50000623",
+              "1"
+            ]
+          }
+        ],
+        [
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "-50000623",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          }
+        ],
+        [
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "-50000623",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          }
+        ],
+        [
+          {
+            "rational": [
+              "1",
+              "10"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "-50000623",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "-50000623",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          }
+        ],
+        [
+          {
+            "rational": [
+              "-23",
+              "2000000"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "-50000623",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          },
+          {
+            "rational": [
+              "0",
+              "1"
+            ]
+          }
+        ]
+      ],
+      "third": [
+        [
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "-1",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "-1",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "-1",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "-1",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "-1",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "-1",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "-1",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "-1",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "-1",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "-1",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "-1",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "-1",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "-1",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "-1",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "-1",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "-1",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "-1",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "-1",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          [
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            },
+            {
+              "rational": [
+                "0",
+                "1"
+              ]
+            }
+          ]
+        ]
+      ],
+      "variance": {
+        "rational": [
+          "18077358621361881383479",
+          "15840000000000000000"
+        ]
+      }
+    }
+  },
+  "joint_gaussian": [
+    {
+      "id": "product",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "propagate_covariance",
+        "parameters": {
+          "estimate": "0",
+          "gradient": [
+            "0",
+            "0"
+          ],
+          "covariance": [
+            [
+              "1",
+              "3/5"
+            ],
+            [
+              "3/5",
+              "1"
+            ]
+          ],
+          "hessian": [
+            [
+              "0",
+              "1"
+            ],
+            [
+              "1",
+              "0"
+            ]
+          ],
+          "third": [
+            [
+              [
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0"
+              ]
+            ],
+            [
+              [
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0"
+              ]
+            ]
+          ],
+          "components": [
+            {
+              "variance": 1,
+              "distribution": "normal"
+            },
+            {
+              "variance": 1,
+              "distribution": "normal"
+            }
+          ],
+          "joint_distribution": "multivariate_normal",
+          "order": 2,
+          "derivatives_complete": true,
+          "guard_digits": 40
+        }
+      },
+      "expected": {
+        "estimate": {
+          "rational": [
+            "3",
+            "5"
+          ]
+        },
+        "variance": {
+          "rational": [
+            "34",
+            "25"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cross_third",
+      "request": {
+        "schema": "plurimath.evaluate.gum/1",
+        "method": "propagate_covariance",
+        "parameters": {
+          "estimate": "0",
+          "gradient": [
+            "1",
+            "0"
+          ],
+          "covariance": [
+            [
+              "1",
+              "3/5"
+            ],
+            [
+              "3/5",
+              "1"
+            ]
+          ],
+          "hessian": [
+            [
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "third": [
+            [
+              [
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "2"
+              ]
+            ],
+            [
+              [
+                "0",
+                "2"
+              ],
+              [
+                "2",
+                "0"
+              ]
+            ]
+          ],
+          "components": [
+            {
+              "variance": 1,
+              "distribution": "normal"
+            },
+            {
+              "variance": 1,
+              "distribution": "normal"
+            }
+          ],
+          "joint_distribution": "multivariate_normal",
+          "order": 2,
+          "derivatives_complete": true,
+          "guard_digits": 40
+        }
+      },
+      "expected": {
+        "estimate": {
+          "rational": [
+            "0",
+            "1"
+          ]
+        },
+        "variance": {
+          "rational": [
+            "111",
+            "25"
+          ]
+        }
+      }
+    }
+  ]
+}

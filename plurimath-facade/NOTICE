@@ -1,0 +1,2 @@
+Plurimath native facade candidate. BSD-2-Clause.
+Common model, writer semantics and generated symboldata derive from plurimath/plurimath and plurimath/plurimath-ts. Exactsource revisions and source-file SHA256pins are in SOURCE-PROVENANCE.json. The accepted AsciiMath PARG parser is plurimath-amath; its upstream artifact/model/runtime provenance remains in that dependency. No fixture answer tables are used by the runtime.

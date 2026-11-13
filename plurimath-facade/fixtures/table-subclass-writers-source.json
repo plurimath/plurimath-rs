@@ -1,0 +1,767 @@
+{
+  "schema": "plurimath-source-table-subclass-writers/1",
+  "plurimath_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "ruby": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+  "source_models_sha256": "c6b94a2c858608d551bfdfad45f7ffd66f390ddfc7f24680e78bab27016da0f7",
+  "generator_sha256": "e5c404cf8314f500a740e869c69ebfe0752aea9bb90771daa56f70bd2aacf928",
+  "rows": [
+    {
+      "id": "245",
+      "input": {
+        "format": "latex",
+        "text": "\\begin{align} a & b \\\\ c & d \\end{align}"
+      },
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\\begin{align} a & b \\\\ c & d \\end{align}",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Table::Align",
+              "fields": {
+                "close_paren": null,
+                "open_paren": null,
+                "options": {},
+                "value": [
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "a"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        },
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "b"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "c"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        },
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "d"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "value": "{:[a, b], [c, d]:}"
+        },
+        "latex": {
+          "value": "\\begin{align}a & b \\\\ c & d\\end{align}"
+        },
+        "unicodemath": {
+          "value": "■(a&b@c&d)"
+        },
+        "html": {
+          "value": "<table><tr><td>a</td><td>b</td></tr><tr><td>c</td><td>d</td></tr></table>"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtable>\n      <mtr>\n        <mtd>\n          <mi>a</mi>\n        </mtd>\n        <mtd>\n          <mi>b</mi>\n        </mtd>\n      </mtr>\n      <mtr>\n        <mtd>\n          <mi>c</mi>\n        </mtd>\n        <mtd>\n          <mi>d</mi>\n        </mtd>\n      </mtr>\n    </mtable>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:m>\n      <m:mPr>\n        <m:mcs>\n          <m:mc>\n            <m:mcPr>\n              <m:count m:val=\"2\"/>\n              <m:mcJc m:val=\"center\"/>\n            </m:mcPr>\n          </m:mc>\n        </m:mcs>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:mPr>\n      <m:mr>\n        <m:e>\n          <m:r>\n            <m:t>a</m:t>\n          </m:r>\n        </m:e>\n        <m:e>\n          <m:r>\n            <m:t>b</m:t>\n          </m:r>\n        </m:e>\n      </m:mr>\n      <m:mr>\n        <m:e>\n          <m:r>\n            <m:t>c</m:t>\n          </m:r>\n        </m:e>\n        <m:e>\n          <m:r>\n            <m:t>d</m:t>\n          </m:r>\n        </m:e>\n      </m:mr>\n    </m:m>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "mathml_intent": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtable intent=\":matrix(2,2)\">\n      <mtr>\n        <mtd>\n          <mi>a</mi>\n        </mtd>\n        <mtd>\n          <mi>b</mi>\n        </mtd>\n      </mtr>\n      <mtr>\n        <mtd>\n          <mi>c</mi>\n        </mtd>\n        <mtd>\n          <mi>d</mi>\n        </mtd>\n      </mtr>\n    </mtable>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "246",
+      "input": {
+        "format": "latex",
+        "text": "\\begin{split} a & b \\\\ c & d \\end{split}"
+      },
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\\begin{split} a & b \\\\ c & d \\end{split}",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Table::Split",
+              "fields": {
+                "close_paren": null,
+                "open_paren": null,
+                "options": {},
+                "value": [
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "a"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        },
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "b"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "c"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        },
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "d"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "value": "{:[a, b], [c, d]:}"
+        },
+        "latex": {
+          "value": "\\begin{split}a & b \\\\ c & d\\end{split}"
+        },
+        "unicodemath": {
+          "value": "■(a&b@c&d)"
+        },
+        "html": {
+          "value": "<table><tr><td>a</td><td>b</td></tr><tr><td>c</td><td>d</td></tr></table>"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtable>\n      <mtr>\n        <mtd>\n          <mi>a</mi>\n        </mtd>\n        <mtd>\n          <mi>b</mi>\n        </mtd>\n      </mtr>\n      <mtr>\n        <mtd>\n          <mi>c</mi>\n        </mtd>\n        <mtd>\n          <mi>d</mi>\n        </mtd>\n      </mtr>\n    </mtable>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:m>\n      <m:mPr>\n        <m:mcs>\n          <m:mc>\n            <m:mcPr>\n              <m:count m:val=\"2\"/>\n              <m:mcJc m:val=\"center\"/>\n            </m:mcPr>\n          </m:mc>\n        </m:mcs>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:mPr>\n      <m:mr>\n        <m:e>\n          <m:r>\n            <m:t>a</m:t>\n          </m:r>\n        </m:e>\n        <m:e>\n          <m:r>\n            <m:t>b</m:t>\n          </m:r>\n        </m:e>\n      </m:mr>\n      <m:mr>\n        <m:e>\n          <m:r>\n            <m:t>c</m:t>\n          </m:r>\n        </m:e>\n        <m:e>\n          <m:r>\n            <m:t>d</m:t>\n          </m:r>\n        </m:e>\n      </m:mr>\n    </m:m>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "mathml_intent": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtable intent=\":matrix(2,2)\">\n      <mtr>\n        <mtd>\n          <mi>a</mi>\n        </mtd>\n        <mtd>\n          <mi>b</mi>\n        </mtd>\n      </mtr>\n      <mtr>\n        <mtd>\n          <mi>c</mi>\n        </mtd>\n        <mtd>\n          <mi>d</mi>\n        </mtd>\n      </mtr>\n    </mtable>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "280",
+      "input": {
+        "format": "latex",
+        "text": "\\begin{multline}a\\end{multline}"
+      },
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\\begin{multline}a\\end{multline}",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Table::Multline",
+              "fields": {
+                "close_paren": null,
+                "open_paren": null,
+                "options": {},
+                "value": [
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "a"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "value": "[[a]]"
+        },
+        "latex": {
+          "value": "\\begin{multline}a\\end{multline}"
+        },
+        "unicodemath": {
+          "value": "■(a)"
+        },
+        "html": {
+          "value": "<table><tr><td>a</td></tr></table>"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtable>\n      <mtr>\n        <mtd>\n          <mi>a</mi>\n        </mtd>\n      </mtr>\n    </mtable>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:eqArr>\n      <m:eqArrPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:eqArrPr>\n      <m:e>\n        <m:r>\n          <m:t>a</m:t>\n        </m:r>\n      </m:e>\n    </m:eqArr>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "mathml_intent": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtable intent=\":matrix(1,1)\">\n      <mtr>\n        <mtd>\n          <mi>a</mi>\n        </mtd>\n      </mtr>\n    </mtable>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "281",
+      "input": {
+        "format": "latex",
+        "text": "\\begin{split}a\\\\b\\end{split}"
+      },
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\\begin{split}a\\\\b\\end{split}",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Table::Split",
+              "fields": {
+                "close_paren": null,
+                "open_paren": null,
+                "options": {},
+                "value": [
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "a"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "b"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "value": "{:[a], [b]:}"
+        },
+        "latex": {
+          "value": "\\begin{split}a \\\\ b\\end{split}"
+        },
+        "unicodemath": {
+          "value": "■(a@b)"
+        },
+        "html": {
+          "value": "<table><tr><td>a</td></tr><tr><td>b</td></tr></table>"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtable>\n      <mtr>\n        <mtd>\n          <mi>a</mi>\n        </mtd>\n      </mtr>\n      <mtr>\n        <mtd>\n          <mi>b</mi>\n        </mtd>\n      </mtr>\n    </mtable>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:eqArr>\n      <m:eqArrPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:eqArrPr>\n      <m:e>\n        <m:r>\n          <m:t>a</m:t>\n        </m:r>\n      </m:e>\n      <m:e>\n        <m:r>\n          <m:t>b</m:t>\n        </m:r>\n      </m:e>\n    </m:eqArr>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "mathml_intent": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtable intent=\":matrix(2,1)\">\n      <mtr>\n        <mtd>\n          <mi>a</mi>\n        </mtd>\n      </mtr>\n      <mtr>\n        <mtd>\n          <mi>b</mi>\n        </mtd>\n      </mtr>\n    </mtable>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "282",
+      "input": {
+        "format": "latex",
+        "text": "\\begin{align}a&=b\\\\c&=d\\end{align}"
+      },
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\\begin{align}a&=b\\\\c&=d\\end{align}",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Table::Align",
+              "fields": {
+                "close_paren": null,
+                "open_paren": null,
+                "options": {},
+                "value": [
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "a"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        },
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Equal",
+                                "fields": {
+                                  "value": null
+                                }
+                              },
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "b"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "c"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        },
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Equal",
+                                "fields": {
+                                  "value": null
+                                }
+                              },
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "d"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "value": "{:[a, = b], [c, = d]:}"
+        },
+        "latex": {
+          "value": "\\begin{align}a & = b \\\\ c & = d\\end{align}"
+        },
+        "unicodemath": {
+          "value": "■(a&=b@c&=d)"
+        },
+        "html": {
+          "value": "<table><tr><td>a</td><td>=b</td></tr><tr><td>c</td><td>=d</td></tr></table>"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtable>\n      <mtr>\n        <mtd>\n          <mi>a</mi>\n        </mtd>\n        <mtd>\n          <mo>=</mo>\n          <mi>b</mi>\n        </mtd>\n      </mtr>\n      <mtr>\n        <mtd>\n          <mi>c</mi>\n        </mtd>\n        <mtd>\n          <mo>=</mo>\n          <mi>d</mi>\n        </mtd>\n      </mtr>\n    </mtable>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:m>\n      <m:mPr>\n        <m:mcs>\n          <m:mc>\n            <m:mcPr>\n              <m:count m:val=\"2\"/>\n              <m:mcJc m:val=\"center\"/>\n            </m:mcPr>\n          </m:mc>\n        </m:mcs>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:mPr>\n      <m:mr>\n        <m:e>\n          <m:r>\n            <m:t>a</m:t>\n          </m:r>\n        </m:e>\n        <m:e>\n          <m:r>\n            <m:t>=</m:t>\n          </m:r>\n          <m:r>\n            <m:t>b</m:t>\n          </m:r>\n        </m:e>\n      </m:mr>\n      <m:mr>\n        <m:e>\n          <m:r>\n            <m:t>c</m:t>\n          </m:r>\n        </m:e>\n        <m:e>\n          <m:r>\n            <m:t>=</m:t>\n          </m:r>\n          <m:r>\n            <m:t>d</m:t>\n          </m:r>\n        </m:e>\n      </m:mr>\n    </m:m>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "mathml_intent": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtable intent=\":matrix(2,2)\">\n      <mtr>\n        <mtd>\n          <mi>a</mi>\n        </mtd>\n        <mtd>\n          <mo>=</mo>\n          <mi>b</mi>\n        </mtd>\n      </mtr>\n      <mtr>\n        <mtd>\n          <mi>c</mi>\n        </mtd>\n        <mtd>\n          <mo>=</mo>\n          <mi>d</mi>\n        </mtd>\n      </mtr>\n    </mtable>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "283",
+      "input": {
+        "format": "latex",
+        "text": "\\begin{align*}a&=b\\end{align*}"
+      },
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\\begin{align*}a&=b\\end{align*}",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Table::Align",
+              "fields": {
+                "close_paren": null,
+                "open_paren": null,
+                "options": {
+                  "asterisk": true
+                },
+                "value": [
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "a"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        },
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Equal",
+                                "fields": {
+                                  "value": null
+                                }
+                              },
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "b"
+                                }
+                              }
+                            ],
+                            "parameter_two": null
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "value": "{:[a, = b]:}"
+        },
+        "latex": {
+          "value": "\\begin{align*}[]a & = b\\end{align*}"
+        },
+        "unicodemath": {
+          "value": "■(a&=b)"
+        },
+        "html": {
+          "value": "<table><tr><td>a</td><td>=b</td></tr></table>"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtable>\n      <mtr>\n        <mtd>\n          <mi>a</mi>\n        </mtd>\n        <mtd>\n          <mo>=</mo>\n          <mi>b</mi>\n        </mtd>\n      </mtr>\n    </mtable>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:m>\n      <m:mPr>\n        <m:mcs>\n          <m:mc>\n            <m:mcPr>\n              <m:count m:val=\"2\"/>\n              <m:mcJc m:val=\"center\"/>\n            </m:mcPr>\n          </m:mc>\n        </m:mcs>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:mPr>\n      <m:mr>\n        <m:e>\n          <m:r>\n            <m:t>a</m:t>\n          </m:r>\n        </m:e>\n        <m:e>\n          <m:r>\n            <m:t>=</m:t>\n          </m:r>\n          <m:r>\n            <m:t>b</m:t>\n          </m:r>\n        </m:e>\n      </m:mr>\n    </m:m>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "mathml_intent": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtable intent=\":matrix(1,2)\">\n      <mtr>\n        <mtd>\n          <mi>a</mi>\n        </mtd>\n        <mtd>\n          <mo>=</mo>\n          <mi>b</mi>\n        </mtd>\n      </mtr>\n    </mtable>\n  </mstyle>\n</math>\n"
+        }
+      }
+    },
+    {
+      "id": "294",
+      "input": {
+        "format": "latex",
+        "text": "\\begin{align*}[c]a&b\\\\c&d\\end{align*}"
+      },
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "\\begin{align*}[c]a&b\\\\c&d\\end{align*}",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Table::Align",
+              "fields": {
+                "close_paren": null,
+                "open_paren": null,
+                "options": {
+                  "asterisk": true
+                },
+                "value": [
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "a"
+                                }
+                              }
+                            ],
+                            "parameter_two": {
+                              "columnalign": "center"
+                            }
+                          }
+                        },
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "b"
+                                }
+                              }
+                            ],
+                            "parameter_two": {
+                              "columnalign": "center"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "class": "Math::Function::Tr",
+                    "fields": {
+                      "parameter_one": [
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "c"
+                                }
+                              }
+                            ],
+                            "parameter_two": {
+                              "columnalign": "center"
+                            }
+                          }
+                        },
+                        {
+                          "class": "Math::Function::Td",
+                          "fields": {
+                            "parameter_one": [
+                              {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "d"
+                                }
+                              }
+                            ],
+                            "parameter_two": {
+                              "columnalign": "center"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": {
+          "value": "{:[a, b], [c, d]:}"
+        },
+        "latex": {
+          "value": "\\begin{align*}[c]a & b \\\\ c & d\\end{align*}"
+        },
+        "unicodemath": {
+          "value": "■(a&b@c&d)"
+        },
+        "html": {
+          "value": "<table><tr><td>a</td><td>b</td></tr><tr><td>c</td><td>d</td></tr></table>"
+        },
+        "mathml": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtable>\n      <mtr>\n        <mtd columnalign=\"center\">\n          <mi>a</mi>\n        </mtd>\n        <mtd columnalign=\"center\">\n          <mi>b</mi>\n        </mtd>\n      </mtr>\n      <mtr>\n        <mtd columnalign=\"center\">\n          <mi>c</mi>\n        </mtd>\n        <mtd columnalign=\"center\">\n          <mi>d</mi>\n        </mtd>\n      </mtr>\n    </mtable>\n  </mstyle>\n</math>\n"
+        },
+        "omml": {
+          "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:m>\n      <m:mPr>\n        <m:mcs>\n          <m:mc>\n            <m:mcPr>\n              <m:count m:val=\"2\"/>\n              <m:mcJc m:val=\"center\"/>\n            </m:mcPr>\n          </m:mc>\n        </m:mcs>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:mPr>\n      <m:mr>\n        <m:e>\n          <m:r>\n            <m:t>a</m:t>\n          </m:r>\n        </m:e>\n        <m:e>\n          <m:r>\n            <m:t>b</m:t>\n          </m:r>\n        </m:e>\n      </m:mr>\n      <m:mr>\n        <m:e>\n          <m:r>\n            <m:t>c</m:t>\n          </m:r>\n        </m:e>\n        <m:e>\n          <m:r>\n            <m:t>d</m:t>\n          </m:r>\n        </m:e>\n      </m:mr>\n    </m:m>\n  </m:oMath>\n</m:oMathPara>\n"
+        },
+        "mathml_intent": {
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtable intent=\":matrix(2,2)\">\n      <mtr>\n        <mtd columnalign=\"center\">\n          <mi>a</mi>\n        </mtd>\n        <mtd columnalign=\"center\">\n          <mi>b</mi>\n        </mtd>\n      </mtr>\n      <mtr>\n        <mtd columnalign=\"center\">\n          <mi>c</mi>\n        </mtd>\n        <mtd columnalign=\"center\">\n          <mi>d</mi>\n        </mtd>\n      </mtr>\n    </mtable>\n  </mstyle>\n</math>\n"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+Decimal and numeric evaluation behavior is ported from Ribose's Plurimath
+Ruby and TypeScript evaluators. Decimal/BigMath routines follow
+plurimath-ts src/evaluation/{big-decimal,big-math,numeric,evaluator}.ts,
+including the documented Ruby BigDecimal/BigMath algorithms and evaluation
+order. See LICENSE. The frozen numeric request fixture records its source.
+This local implementation is a numeric subset, not the full Plurimath facade.

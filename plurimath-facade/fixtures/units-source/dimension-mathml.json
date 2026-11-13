@@ -1,0 +1,42 @@
+{
+  "dim_L": {
+    "mathml": "<mi mathvariant='sans-serif'>L</mi>",
+    "ascii": "L",
+    "html": "&#x1D5AB;"
+  },
+  "dim_M": {
+    "mathml": "<mi mathvariant='sans-serif'>M</mi>",
+    "ascii": "M",
+    "html": "&#x1D5AC;"
+  },
+  "dim_T": {
+    "mathml": "<mi mathvariant='sans-serif'>T</mi>",
+    "ascii": "T",
+    "html": "&#x1D5B3;"
+  },
+  "dim_I": {
+    "mathml": "<mi mathvariant='sans-serif'>I</mi>",
+    "ascii": "I",
+    "html": "&#x1D5A8;"
+  },
+  "dim_Theta": {
+    "mathml": "<mi mathvariant='sans-serif'>&#x398;</mi>",
+    "ascii": "Theta",
+    "html": "&#x1D760;"
+  },
+  "dim_N": {
+    "mathml": "<mi mathvariant='sans-serif'>N</mi>",
+    "ascii": "N",
+    "html": "&#x1D5AD;"
+  },
+  "dim_J": {
+    "mathml": "<mi mathvariant='sans-serif'>J</mi>",
+    "ascii": "J",
+    "html": "&#x1D5A9;"
+  },
+  "dim_phi": {
+    "mathml": "<mi mathvariant='sans-serif'>&#x3c6;</mi>",
+    "ascii": "phi",
+    "html": "&#x1D785;"
+  }
+}

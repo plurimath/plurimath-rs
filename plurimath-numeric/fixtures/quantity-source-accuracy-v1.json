@@ -1,0 +1,734 @@
+{
+  "schema": "quantity-source-accuracy/1",
+  "source_reference": {
+    "ruby_core_head": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+    "unitsml_head": "de4f5b9de08760ed124e10eb3cf1f5ee0f3450cd",
+    "source_capture_sha256": "9b6e3b4ef471ea518aaeef3e7dfc248d472e068eb56178c611832750824c390e",
+    "producer_sha256": "f124a537ea83b82ab3db271cfa88a2fdea36b26f1c43665a182bcbf53dca7b58",
+    "quantity_source_sha256": "d01572e4a53afe0b57d7e85ab16189dda91a756736527678bc9571aee42bba83"
+  },
+  "cases": [
+    {
+      "id": "exact-rational",
+      "request": {
+        "schema": "plurimath.evaluate.quantity/1",
+        "ast": {
+          "type": "binary",
+          "operator": "*",
+          "left": {
+            "type": "variable",
+            "name": "x"
+          },
+          "right": {
+            "type": "variable",
+            "name": "y"
+          }
+        },
+        "bindings": {
+          "x": {
+            "value": {
+              "rational": [
+                "5",
+                "2"
+              ]
+            },
+            "unit": "m"
+          },
+          "y": {
+            "value": 3,
+            "unit": "s"
+          }
+        }
+      },
+      "source": {
+        "family": "accuracy_classes",
+        "id": "exact-rational",
+        "formula": "x*y",
+        "inputs": {
+          "x": {
+            "value": {
+              "rational": [
+                "5",
+                "2"
+              ]
+            },
+            "unit": "m"
+          },
+          "y": {
+            "value": 3,
+            "unit": "s"
+          }
+        },
+        "outcome": "ok",
+        "value": {
+          "rational": [
+            "15",
+            "2"
+          ]
+        },
+        "unit": "m*s",
+        "accuracy": {
+          "symbol": "exact"
+        }
+      }
+    },
+    {
+      "id": "limited-float",
+      "request": {
+        "schema": "plurimath.evaluate.quantity/1",
+        "ast": {
+          "type": "binary",
+          "operator": "*",
+          "left": {
+            "type": "variable",
+            "name": "x"
+          },
+          "right": {
+            "type": "variable",
+            "name": "y"
+          }
+        },
+        "bindings": {
+          "x": {
+            "value": {
+              "binary64": "4004000000000000"
+            },
+            "unit": "m"
+          },
+          "y": {
+            "value": 3,
+            "unit": "s"
+          }
+        }
+      },
+      "source": {
+        "family": "accuracy_classes",
+        "id": "limited-float",
+        "formula": "x*y",
+        "inputs": {
+          "x": {
+            "value": {
+              "binary64": "4004000000000000"
+            },
+            "unit": "m"
+          },
+          "y": {
+            "value": 3,
+            "unit": "s"
+          }
+        },
+        "outcome": "ok",
+        "value": {
+          "binary64": "401e000000000000"
+        },
+        "unit": "m*s",
+        "accuracy": {
+          "symbol": "limited_float"
+        }
+      }
+    },
+    {
+      "id": "limited-decimal",
+      "request": {
+        "schema": "plurimath.evaluate.quantity/1",
+        "ast": {
+          "type": "binary",
+          "operator": "*",
+          "left": {
+            "type": "variable",
+            "name": "x"
+          },
+          "right": {
+            "type": "variable",
+            "name": "y"
+          }
+        },
+        "bindings": {
+          "x": {
+            "value": {
+              "decimal": "2.5"
+            },
+            "unit": "m"
+          },
+          "y": {
+            "value": 3,
+            "unit": "s"
+          }
+        }
+      },
+      "source": {
+        "family": "accuracy_classes",
+        "id": "limited-decimal",
+        "formula": "x*y",
+        "inputs": {
+          "x": {
+            "value": {
+              "decimal": "2.5"
+            },
+            "unit": "m"
+          },
+          "y": {
+            "value": 3,
+            "unit": "s"
+          }
+        },
+        "outcome": "ok",
+        "value": {
+          "decimal": "7.5"
+        },
+        "unit": "m*s",
+        "accuracy": {
+          "symbol": "limited_2"
+        }
+      }
+    },
+    {
+      "id": "least-precise-wins-decimal",
+      "request": {
+        "schema": "plurimath.evaluate.quantity/1",
+        "ast": {
+          "type": "binary",
+          "operator": "*",
+          "left": {
+            "type": "variable",
+            "name": "x"
+          },
+          "right": {
+            "type": "variable",
+            "name": "y"
+          }
+        },
+        "bindings": {
+          "x": {
+            "value": {
+              "decimal": "2.5"
+            },
+            "unit": "m"
+          },
+          "y": {
+            "value": {
+              "decimal": "3.1"
+            },
+            "unit": "s"
+          }
+        }
+      },
+      "source": {
+        "family": "accuracy_classes",
+        "id": "least-precise-wins-decimal",
+        "formula": "x*y",
+        "inputs": {
+          "x": {
+            "value": {
+              "decimal": "2.5"
+            },
+            "unit": "m"
+          },
+          "y": {
+            "value": {
+              "decimal": "3.1"
+            },
+            "unit": "s"
+          }
+        },
+        "outcome": "ok",
+        "value": {
+          "decimal": "7.75"
+        },
+        "unit": "m*s",
+        "accuracy": {
+          "symbol": "limited_2"
+        }
+      }
+    },
+    {
+      "id": "least-precise-wins-float",
+      "request": {
+        "schema": "plurimath.evaluate.quantity/1",
+        "ast": {
+          "type": "binary",
+          "operator": "*",
+          "left": {
+            "type": "variable",
+            "name": "x"
+          },
+          "right": {
+            "type": "variable",
+            "name": "y"
+          }
+        },
+        "bindings": {
+          "x": {
+            "value": {
+              "decimal": "2.5"
+            },
+            "unit": "m"
+          },
+          "y": {
+            "value": {
+              "binary64": "4008000000000000"
+            },
+            "unit": "s"
+          }
+        }
+      },
+      "source": {
+        "family": "accuracy_classes",
+        "id": "least-precise-wins-float",
+        "formula": "x*y",
+        "inputs": {
+          "x": {
+            "value": {
+              "decimal": "2.5"
+            },
+            "unit": "m"
+          },
+          "y": {
+            "value": {
+              "binary64": "4008000000000000"
+            },
+            "unit": "s"
+          }
+        },
+        "outcome": "ok",
+        "value": {
+          "decimal": "7.5"
+        },
+        "unit": "m*s",
+        "accuracy": {
+          "symbol": "limited_float"
+        }
+      }
+    },
+    {
+      "id": "limited-sum-same-unit",
+      "request": {
+        "schema": "plurimath.evaluate.quantity/1",
+        "ast": {
+          "type": "binary",
+          "operator": "+",
+          "left": {
+            "type": "variable",
+            "name": "x"
+          },
+          "right": {
+            "type": "variable",
+            "name": "y"
+          }
+        },
+        "bindings": {
+          "x": {
+            "value": {
+              "decimal": "1.5"
+            },
+            "unit": "m"
+          },
+          "y": {
+            "value": 2,
+            "unit": "m"
+          }
+        }
+      },
+      "source": {
+        "family": "accuracy_classes",
+        "id": "limited-sum-same-unit",
+        "formula": "x+y",
+        "inputs": {
+          "x": {
+            "value": {
+              "decimal": "1.5"
+            },
+            "unit": "m"
+          },
+          "y": {
+            "value": 2,
+            "unit": "m"
+          }
+        },
+        "outcome": "ok",
+        "value": {
+          "decimal": "3.5"
+        },
+        "unit": "m",
+        "accuracy": {
+          "symbol": "limited_2"
+        }
+      }
+    },
+    {
+      "id": "unused-decimal-binding",
+      "request": {
+        "schema": "plurimath.evaluate.quantity/1",
+        "ast": {
+          "type": "variable",
+          "name": "x"
+        },
+        "bindings": {
+          "x": {
+            "value": 2,
+            "unit": "m"
+          },
+          "unused": {
+            "value": {
+              "decimal": "0.01"
+            },
+            "unit": "s"
+          }
+        }
+      },
+      "source": {
+        "family": "accuracy_classes",
+        "id": "unused-decimal-binding",
+        "formula": "x",
+        "inputs": {
+          "x": {
+            "value": 2,
+            "unit": "m"
+          },
+          "unused": {
+            "value": {
+              "decimal": "0.01"
+            },
+            "unit": "s"
+          }
+        },
+        "outcome": "ok",
+        "value": {
+          "rational": [
+            "2",
+            "1"
+          ]
+        },
+        "unit": "m",
+        "accuracy": {
+          "symbol": "limited_2"
+        }
+      }
+    },
+    {
+      "id": "unused-float-binding",
+      "request": {
+        "schema": "plurimath.evaluate.quantity/1",
+        "ast": {
+          "type": "variable",
+          "name": "x"
+        },
+        "bindings": {
+          "x": {
+            "value": 2,
+            "unit": "m"
+          },
+          "unused": {
+            "value": {
+              "binary64": "3fb999999999999a"
+            },
+            "unit": "s"
+          }
+        }
+      },
+      "source": {
+        "family": "accuracy_classes",
+        "id": "unused-float-binding",
+        "formula": "x",
+        "inputs": {
+          "x": {
+            "value": 2,
+            "unit": "m"
+          },
+          "unused": {
+            "value": {
+              "binary64": "3fb999999999999a"
+            },
+            "unit": "s"
+          }
+        },
+        "outcome": "ok",
+        "value": {
+          "rational": [
+            "2",
+            "1"
+          ]
+        },
+        "unit": "m",
+        "accuracy": {
+          "symbol": "limited_float"
+        }
+      }
+    },
+    {
+      "id": "decimal-zero-precision",
+      "request": {
+        "schema": "plurimath.evaluate.quantity/1",
+        "ast": {
+          "type": "variable",
+          "name": "x"
+        },
+        "bindings": {
+          "x": {
+            "value": {
+              "decimal": "0.0"
+            },
+            "unit": "m"
+          }
+        }
+      },
+      "source": {
+        "family": "accuracy_classes",
+        "id": "decimal-zero-precision",
+        "formula": "x",
+        "inputs": {
+          "x": {
+            "value": {
+              "decimal": "0.0"
+            },
+            "unit": "m"
+          }
+        },
+        "outcome": "ok",
+        "value": {
+          "decimal": "0.0"
+        },
+        "unit": "m",
+        "accuracy": {
+          "symbol": "limited_0"
+        }
+      }
+    },
+    {
+      "id": "decimal-leading-zero-precision",
+      "request": {
+        "schema": "plurimath.evaluate.quantity/1",
+        "ast": {
+          "type": "binary",
+          "operator": "*",
+          "left": {
+            "type": "variable",
+            "name": "x"
+          },
+          "right": {
+            "type": "variable",
+            "name": "y"
+          }
+        },
+        "bindings": {
+          "x": {
+            "value": {
+              "decimal": "0.01"
+            },
+            "unit": "m"
+          },
+          "y": {
+            "value": {
+              "decimal": "100.0"
+            },
+            "unit": "s"
+          }
+        }
+      },
+      "source": {
+        "family": "accuracy_classes",
+        "id": "decimal-leading-zero-precision",
+        "formula": "x*y",
+        "inputs": {
+          "x": {
+            "value": {
+              "decimal": "0.01"
+            },
+            "unit": "m"
+          },
+          "y": {
+            "value": {
+              "decimal": "100.0"
+            },
+            "unit": "s"
+          }
+        },
+        "outcome": "ok",
+        "value": {
+          "decimal": "1.0"
+        },
+        "unit": "m*s",
+        "accuracy": {
+          "symbol": "limited_1"
+        }
+      }
+    },
+    {
+      "id": "float-rounding-neighbor",
+      "request": {
+        "schema": "plurimath.evaluate.quantity/1",
+        "ast": {
+          "type": "binary",
+          "operator": "*",
+          "left": {
+            "type": "variable",
+            "name": "x"
+          },
+          "right": {
+            "type": "variable",
+            "name": "y"
+          }
+        },
+        "bindings": {
+          "x": {
+            "value": {
+              "binary64": "3fb999999999999a"
+            },
+            "unit": "m"
+          },
+          "y": {
+            "value": {
+              "binary64": "3fc999999999999a"
+            },
+            "unit": "s"
+          }
+        }
+      },
+      "source": {
+        "family": "accuracy_classes",
+        "id": "float-rounding-neighbor",
+        "formula": "x*y",
+        "inputs": {
+          "x": {
+            "value": {
+              "binary64": "3fb999999999999a"
+            },
+            "unit": "m"
+          },
+          "y": {
+            "value": {
+              "binary64": "3fc999999999999a"
+            },
+            "unit": "s"
+          }
+        },
+        "outcome": "ok",
+        "value": {
+          "binary64": "3f947ae147ae147c"
+        },
+        "unit": "m*s",
+        "accuracy": {
+          "symbol": "limited_float"
+        }
+      }
+    },
+    {
+      "id": "float-decimal-neighbor",
+      "request": {
+        "schema": "plurimath.evaluate.quantity/1",
+        "ast": {
+          "type": "binary",
+          "operator": "*",
+          "left": {
+            "type": "variable",
+            "name": "x"
+          },
+          "right": {
+            "type": "variable",
+            "name": "y"
+          }
+        },
+        "bindings": {
+          "x": {
+            "value": {
+              "decimal": "0.1"
+            },
+            "unit": "m"
+          },
+          "y": {
+            "value": {
+              "binary64": "3fc999999999999a"
+            },
+            "unit": "s"
+          }
+        }
+      },
+      "source": {
+        "family": "accuracy_classes",
+        "id": "float-decimal-neighbor",
+        "formula": "x*y",
+        "inputs": {
+          "x": {
+            "value": {
+              "decimal": "0.1"
+            },
+            "unit": "m"
+          },
+          "y": {
+            "value": {
+              "binary64": "3fc999999999999a"
+            },
+            "unit": "s"
+          }
+        },
+        "outcome": "ok",
+        "value": {
+          "decimal": "0.02"
+        },
+        "unit": "m*s",
+        "accuracy": {
+          "symbol": "limited_float"
+        }
+      }
+    },
+    {
+      "id": "decimal-conversion-neighbor",
+      "request": {
+        "schema": "plurimath.evaluate.quantity/1",
+        "ast": {
+          "type": "binary",
+          "operator": "+",
+          "left": {
+            "type": "variable",
+            "name": "x"
+          },
+          "right": {
+            "type": "variable",
+            "name": "y"
+          }
+        },
+        "bindings": {
+          "x": {
+            "value": {
+              "decimal": "0.1"
+            },
+            "unit": "m"
+          },
+          "y": {
+            "value": {
+              "decimal": "0.2"
+            },
+            "unit": "cm"
+          }
+        }
+      },
+      "source": {
+        "family": "accuracy_classes",
+        "id": "decimal-conversion-neighbor",
+        "formula": "x+y",
+        "inputs": {
+          "x": {
+            "value": {
+              "decimal": "0.1"
+            },
+            "unit": "m"
+          },
+          "y": {
+            "value": {
+              "decimal": "0.2"
+            },
+            "unit": "cm"
+          }
+        },
+        "outcome": "ok",
+        "value": {
+          "decimal": "0.102"
+        },
+        "unit": "m",
+        "accuracy": {
+          "symbol": "limited_1"
+        }
+      }
+    }
+  ]
+}

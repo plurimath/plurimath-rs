@@ -1,0 +1,122 @@
+{
+  "schema": "quantity-float-refusals-source/1",
+  "source_core_head": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "capture_sha256": "3c741d9a37d8eb8250ce4fc9b9bf98595137bd084b6c07c0c058594e420a88ae",
+  "cases": [
+    {
+      "id": "multiply-overflow",
+      "request": {
+        "schema": "plurimath.evaluate.quantity/1",
+        "ast": {
+          "type": "binary",
+          "operator": "*",
+          "left": {
+            "type": "variable",
+            "name": "x"
+          },
+          "right": {
+            "type": "variable",
+            "name": "y"
+          }
+        },
+        "bindings": {
+          "x": {
+            "value": {
+              "binary64": "7fefffffffffffff"
+            },
+            "unit": "m"
+          },
+          "y": {
+            "value": "2",
+            "unit": "s"
+          }
+        }
+      },
+      "source": {
+        "id": "multiply-overflow",
+        "outcome": "error",
+        "class": "Plurimath::Errors::Evaluation::InvalidBindingError",
+        "message": "wrong value for variable `quantity magnitude` (given Float, expected a real number)"
+      },
+      "expected_code": "InvalidBindingError"
+    },
+    {
+      "id": "sum-overflow",
+      "request": {
+        "schema": "plurimath.evaluate.quantity/1",
+        "ast": {
+          "type": "binary",
+          "operator": "+",
+          "left": {
+            "type": "variable",
+            "name": "x"
+          },
+          "right": {
+            "type": "variable",
+            "name": "y"
+          }
+        },
+        "bindings": {
+          "x": {
+            "value": {
+              "binary64": "7fefffffffffffff"
+            },
+            "unit": "m"
+          },
+          "y": {
+            "value": {
+              "binary64": "7fefffffffffffff"
+            },
+            "unit": "m"
+          }
+        }
+      },
+      "source": {
+        "id": "sum-overflow",
+        "outcome": "error",
+        "class": "Plurimath::Errors::Evaluation::InvalidBindingError",
+        "message": "wrong value for variable `quantity magnitude` (given Float, expected a real number)"
+      },
+      "expected_code": "InvalidBindingError"
+    },
+    {
+      "id": "divide-overflow",
+      "request": {
+        "schema": "plurimath.evaluate.quantity/1",
+        "ast": {
+          "type": "binary",
+          "operator": "/",
+          "left": {
+            "type": "variable",
+            "name": "x"
+          },
+          "right": {
+            "type": "variable",
+            "name": "y"
+          }
+        },
+        "bindings": {
+          "x": {
+            "value": {
+              "binary64": "7fefffffffffffff"
+            },
+            "unit": "m"
+          },
+          "y": {
+            "value": {
+              "binary64": "0010000000000000"
+            },
+            "unit": "s"
+          }
+        }
+      },
+      "source": {
+        "id": "divide-overflow",
+        "outcome": "error",
+        "class": "Plurimath::Errors::Evaluation::InvalidBindingError",
+        "message": "wrong value for variable `quantity magnitude` (given Float, expected a real number)"
+      },
+      "expected_code": "InvalidBindingError"
+    }
+  ]
+}

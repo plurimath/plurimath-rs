@@ -1,0 +1,88 @@
+{
+  "output_format": "mathml",
+  "case": {
+    "id": "intent-unicodemath-534",
+    "group": "intent-unicodemath-spec",
+    "source": "spec/plurimath/fixtures/formula_modules/unicode_math_parse_values.rb EXAMPLE_534 (ⓘ(\":derivative\"𝑓′(𝑥)))",
+    "input": {
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "ⓘ(\":derivative\"𝑓′(𝑥))",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Power",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "&#x1d453;"
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Symbols::Prime",
+                            "fields": {
+                              "value": null
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Fenced",
+                        "fields": {
+                          "options": {},
+                          "parameter_one": {
+                            "class": "Math::Symbols::Paren::Lround",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_three": {
+                            "class": "Math::Symbols::Paren::Rround",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_two": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "&#x1d465;"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": ":derivative"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "options": {
+      "intent": true
+    },
+    "expected": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\":derivative(1,𝑓(𝑥),𝑥)\">\n      <msup>\n        <mi>&#x1d453;</mi>\n        <mo>&#x2032;</mo>\n      </msup>\n      <mrow intent=\":fenced\">\n        <mo>(</mo>\n        <mi>&#x1d465;</mi>\n        <mo>)</mo>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+  }
+}

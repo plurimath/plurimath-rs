@@ -1,0 +1,46 @@
+{
+  "profile": "source-number-default/1",
+  "source": {
+    "repository": "https://github.com/plurimath/plurimath",
+    "commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+    "number_path": "lib/plurimath/math/number.rb",
+    "number_sha256": "016df0edb4c52f6eb59fcea3b407c91a3f619ab895e0fa61e6664cd6f7db2b15"
+  },
+  "runtime": {
+    "ruby": "4.0.1",
+    "xml_engine": "Ox",
+    "number_formatter": null
+  },
+  "producer": {
+    "path": "tests/support/export-numbers.rb",
+    "sha256": "eee6453f6d6505562d3b698665172c1c522bf7995b3ea271e85cdecfa3ca2a69"
+  },
+  "payloads": {
+    "src/writer/numbers-data.json": "469cc0097279454cd46d59015f248d290c00b2cb4a3671be9ddc6bac28ec6ca7",
+    "fixtures/numbers/source-reference.json": "88b65da797cdc993ff24a7d430e6816b4727599fce63215387c65e523b44775d",
+    "fixtures/numbers/operator-number-gaps.json": "6ed67084685799279603d803932f8c6c3d06a12eb55b539296d9d657c1655fd8"
+  },
+  "observations": {
+    "varied_source_models": 660,
+    "writer_observations": 3960,
+    "original_operator_gap_models": 17,
+    "original_gap_observations": 52
+  },
+  "contract": [
+    "Unformatted source Number ignores base in all six formats. Base is passed to an active formatter only.",
+    "Mini flags affect Unicode only; subscript takes precedence and whole source value is the map key.",
+    "Source initializer and value= setter are separate states. Each writer is called on a Marshal clone.",
+    "No formatter or caller-context propagation is added. Existing nonempty options refusals remain."
+  ],
+  "limitations": [
+    "Ruby Float#to_s display remains explicitly unported.",
+    "Array/Hash inspection remains explicitly unported: common serialization loses Symbol/String element and key kinds.",
+    "Source refusal classes are compared; exception message bytes are not qualified."
+  ],
+  "determinism": {
+    "timezone": "Pacific/Honolulu",
+    "locale": "C",
+    "working_directory": "tests",
+    "oracle_and_digit_metadata_byte_identical": true
+  }
+}

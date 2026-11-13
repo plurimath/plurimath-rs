@@ -1,0 +1,575 @@
+{
+  "profile": "multiscript-source-explicit-gaps-v1",
+  "gaps": [
+    {
+      "fixture": "multiscript",
+      "id": "lists-nil-mini",
+      "format": "asciimath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-nil-mini",
+      "format": "latex",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-nil-mini",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-false-mini",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-empty-mini",
+      "format": "asciimath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-empty-mini",
+      "format": "latex",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-empty-mini",
+      "format": "unicodemath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-empty-mini",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-empty-mini",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-one-mini",
+      "format": "asciimath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-one-mini",
+      "format": "latex",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-one-mini",
+      "format": "unicodemath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-one-mini",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-one-mini",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-two-mini",
+      "format": "asciimath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-two-mini",
+      "format": "latex",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-two-mini",
+      "format": "unicodemath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-two-mini",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-two-mini",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-none-mini",
+      "format": "asciimath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-none-mini",
+      "format": "latex",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-none-mini",
+      "format": "unicodemath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-none-mini",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-none-mini",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-nil_item-mini",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-nested-mini",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-nil",
+      "format": "asciimath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-nil",
+      "format": "latex",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-nil",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-nil",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-false",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-empty",
+      "format": "asciimath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-empty",
+      "format": "latex",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-empty",
+      "format": "unicodemath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-empty",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-empty",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-one",
+      "format": "asciimath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-one",
+      "format": "latex",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-one",
+      "format": "unicodemath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-one",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-one",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-two",
+      "format": "asciimath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-two",
+      "format": "latex",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-two",
+      "format": "unicodemath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-two",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-two",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-none",
+      "format": "asciimath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-none",
+      "format": "latex",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-none",
+      "format": "unicodemath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-none",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-none",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-nil_item",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-nested",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-mini",
+      "format": "asciimath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-mini",
+      "format": "latex",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-mini",
+      "format": "unicodemath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-mini",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-mini",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-prime",
+      "format": "asciimath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-prime",
+      "format": "latex",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-prime",
+      "format": "unicodemath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-prime",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-prime",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-power",
+      "format": "asciimath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-power",
+      "format": "latex",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-power",
+      "format": "unicodemath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-power",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-power",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-direct_node",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-empty_string",
+      "format": "unicodemath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-empty_string",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-formula",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-mini-empty_formula",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-prime-mini",
+      "format": "asciimath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-prime-mini",
+      "format": "latex",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-prime-mini",
+      "format": "unicodemath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-prime-mini",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-prime-mini",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-power-mini",
+      "format": "asciimath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-power-mini",
+      "format": "latex",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-power-mini",
+      "format": "unicodemath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-power-mini",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-power-mini",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-direct_node-mini",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-empty_string-mini",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-formula-mini",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "multiscript",
+      "id": "lists-empty_formula-mini",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "fixture": "reference",
+      "id": "line-break-083:mathml",
+      "format": "mathml",
+      "reason": "unported promised writer option splitOnLinebreak=true"
+    },
+    {
+      "fixture": "reference",
+      "id": "line-break-083-display-false:mathml",
+      "format": "mathml",
+      "reason": "unported promised writer option splitOnLinebreak=true"
+    },
+    {
+      "fixture": "reference",
+      "id": "line-break-090:mathml",
+      "format": "mathml",
+      "reason": "unported promised writer option splitOnLinebreak=true"
+    },
+    {
+      "fixture": "reference",
+      "id": "line-break-090-display-false:mathml",
+      "format": "mathml",
+      "reason": "unported promised writer option splitOnLinebreak=true"
+    },
+    {
+      "fixture": "reference",
+      "id": "line-break-083:omml",
+      "format": "omml",
+      "reason": "unported promised writer option splitOnLinebreak=true"
+    },
+    {
+      "fixture": "reference",
+      "id": "line-break-083-display-false:omml",
+      "format": "omml",
+      "reason": "unported promised writer option splitOnLinebreak=true"
+    },
+    {
+      "fixture": "reference",
+      "id": "line-break-090:omml",
+      "format": "omml",
+      "reason": "unported promised writer option splitOnLinebreak=true"
+    },
+    {
+      "fixture": "reference",
+      "id": "line-break-090-display-false:omml",
+      "format": "omml",
+      "reason": "unported promised writer option splitOnLinebreak=true"
+    }
+  ]
+}

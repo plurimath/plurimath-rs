@@ -1,0 +1,416 @@
+{
+  "schema": "actual-ruby-main-facade-slice/1",
+  "source": "plurimath Ruby0a1df68 / Ox / source CorpusGenerator.serialize_node; full runtime provenance in handoffs/main-facade-python",
+  "rows": [
+    {
+      "id": "native-slice-01",
+      "format": "asciimath",
+      "input": "1",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1"
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": "1",
+        "latex": "1",
+        "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>1</mn>\n  </mstyle>\n</math>\n",
+        "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n",
+        "unicodemath": "1",
+        "html": "1"
+      }
+    },
+    {
+      "id": "native-slice-02",
+      "format": "asciimath",
+      "input": "x",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "x",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "x"
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": "x",
+        "latex": "x",
+        "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>x</mi>\n  </mstyle>\n</math>\n",
+        "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>x</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n",
+        "unicodemath": "x",
+        "html": "x"
+      }
+    },
+    {
+      "id": "native-slice-03",
+      "format": "asciimath",
+      "input": "x+y",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "x+y",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "x"
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "y"
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": "x + y",
+        "latex": "x + y",
+        "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>x</mi>\n    <mo>+</mo>\n    <mi>y</mi>\n  </mstyle>\n</math>\n",
+        "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>x</m:t>\n    </m:r>\n    <m:r>\n      <m:t>+</m:t>\n    </m:r>\n    <m:r>\n      <m:t>y</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n",
+        "unicodemath": "x + y",
+        "html": "x &#x2b; y"
+      }
+    },
+    {
+      "id": "native-slice-04",
+      "format": "asciimath",
+      "input": "frac(1)(2)",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "frac(1)(2)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": "frac(1)(2)",
+        "latex": "\\frac{1}{2}",
+        "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mfrac>\n      <mn>1</mn>\n      <mn>2</mn>\n    </mfrac>\n  </mstyle>\n</math>\n",
+        "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:f>\n      <m:fPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:fPr>\n      <m:num>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:num>\n      <m:den>\n        <m:r>\n          <m:t>2</m:t>\n        </m:r>\n      </m:den>\n    </m:f>\n  </m:oMath>\n</m:oMathPara>\n",
+        "unicodemath": "(1)/(2)",
+        "html": "<i>1</i><i>2</i>"
+      }
+    },
+    {
+      "id": "native-slice-05",
+      "format": "asciimath",
+      "input": "1/2",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1/2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": "frac(1)(2)",
+        "latex": "\\frac{1}{2}",
+        "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mfrac>\n      <mn>1</mn>\n      <mn>2</mn>\n    </mfrac>\n  </mstyle>\n</math>\n",
+        "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:f>\n      <m:fPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:fPr>\n      <m:num>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:num>\n      <m:den>\n        <m:r>\n          <m:t>2</m:t>\n        </m:r>\n      </m:den>\n    </m:f>\n  </m:oMath>\n</m:oMathPara>\n",
+        "unicodemath": "(1)/(2)",
+        "html": "<i>1</i><i>2</i>"
+      }
+    },
+    {
+      "id": "native-slice-06",
+      "format": "asciimath",
+      "input": "(x+y)",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "(x+y)",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Fenced",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rround",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": [
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "x"
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Plus",
+                    "fields": {
+                      "value": null
+                    }
+                  },
+                  {
+                    "class": "Math::Symbols::Symbol",
+                    "fields": {
+                      "value": "y"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": "(x + y)",
+        "latex": "( x + y )",
+        "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mo>(</mo>\n      <mi>x</mi>\n      <mo>+</mo>\n      <mi>y</mi>\n      <mo>)</mo>\n    </mrow>\n  </mstyle>\n</math>\n",
+        "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:d>\n      <m:dPr>\n        <m:begChr m:val=\"(\"/>\n        <m:sepChr m:val=\"\"/>\n        <m:endChr m:val=\")\"/>\n      </m:dPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n        <m:r>\n          <m:t>+</m:t>\n        </m:r>\n        <m:r>\n          <m:t>y</m:t>\n        </m:r>\n      </m:e>\n    </m:d>\n  </m:oMath>\n</m:oMathPara>\n",
+        "unicodemath": "(x + y)",
+        "html": "<i>(</i>x&#x2b;y<i>)</i>"
+      }
+    },
+    {
+      "id": "native-slice-07",
+      "format": "asciimath",
+      "input": "x*y",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "x*y",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "x"
+              }
+            },
+            {
+              "class": "Math::Symbols::Cdot",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "y"
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": "x * y",
+        "latex": "x \\cdot y",
+        "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>x</mi>\n    <mo>&#x22c5;</mo>\n    <mi>y</mi>\n  </mstyle>\n</math>\n",
+        "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>x</m:t>\n    </m:r>\n    <m:r>\n      <m:t>&#x22c5;</m:t>\n    </m:r>\n    <m:r>\n      <m:t>y</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n",
+        "unicodemath": "x \u22c5 y",
+        "html": "x &#x22c5; y"
+      }
+    },
+    {
+      "id": "native-slice-08",
+      "format": "asciimath",
+      "input": "x=2",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "x=2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "x"
+              }
+            },
+            {
+              "class": "Math::Symbols::Equal",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": "x = 2",
+        "latex": "x = 2",
+        "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi>x</mi>\n    <mo>=</mo>\n    <mn>2</mn>\n  </mstyle>\n</math>\n",
+        "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>x</m:t>\n    </m:r>\n    <m:r>\n      <m:t>=</m:t>\n    </m:r>\n    <m:r>\n      <m:t>2</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n",
+        "unicodemath": "x = 2",
+        "html": "x = 2"
+      }
+    },
+    {
+      "id": "native-slice-09",
+      "format": "asciimath",
+      "input": "-2",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "-2",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Minus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": "- 2",
+        "latex": "- 2",
+        "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mo>&#x2212;</mo>\n    <mn>2</mn>\n  </mstyle>\n</math>\n",
+        "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>&#x2212;</m:t>\n    </m:r>\n    <m:r>\n      <m:t>2</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n",
+        "unicodemath": "\u2212 2",
+        "html": "&#x2212; 2"
+      }
+    },
+    {
+      "id": "native-slice-10",
+      "format": "asciimath",
+      "input": "1.25",
+      "model": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "input_string": "1.25",
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "1.25"
+              }
+            }
+          ]
+        }
+      },
+      "writers": {
+        "asciimath": "1.25",
+        "latex": "1.25",
+        "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>1.25</mn>\n  </mstyle>\n</math>\n",
+        "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1.25</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n",
+        "unicodemath": "1.25",
+        "html": "1.25"
+      }
+    }
+  ]
+}

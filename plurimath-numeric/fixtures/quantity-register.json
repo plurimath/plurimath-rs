@@ -1,0 +1,3122 @@
+{
+  "source": {
+    "unitsml_head": "c0a1bb5e1b5f35f03ce7eac9557ddfedabba3353",
+    "unitsml_sha256": "8d8e4694406eb16964999c4258ce1d2e042a2fe26291ff8fbc56e8a76dcaab20",
+    "asciiunits_head": "498cec2ce946c7bcb3b1b26313667b188ddf76aa",
+    "asciiunits_sha256": "921182c1d13ceb214919d1c7441d4652275cfc3d067191864cf631df2e3de449"
+  },
+  "cases": [
+    {
+      "id": "caller-factor",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"cwt (US)\",\"value\":\"2\"}},\"convert_to\":\"kg\",\"register\":[{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"100\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"100\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu27\"}]},\"value\":{\"canonical_magnitude\":\"100\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"2\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu230\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "resolve",
+        "register": [
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          }
+        ],
+        "left": {
+          "value": "2",
+          "model": {
+            "unitName": "cwt (US)"
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "value",
+        "value": {
+          "canonical_magnitude": "100",
+          "dimension_id": "NISTd2",
+          "dimensions": {
+            "Mass": "1"
+          },
+          "magnitude": "2",
+          "scale": "ratio",
+          "terms": [
+            {
+              "power": "1",
+              "prefix": null,
+              "unit": "NISTu230"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "register-does-not-persist",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"cwt (US)\",\"value\":\"2\"}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"MissingUnitConversionError\",\"detail\":\"MissingConversion(\\\"NISTu203\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_reference": "sealed1399 C ABI unit-spellings.json; requested without register after registered requests"
+    },
+    {
+      "id": "caller-rational-factor",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"cwt (US)\",\"value\":\"2\"}},\"convert_to\":\"kg\",\"register\":[{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"1/3\",\"unit\":\"NISTu230\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"2/3\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"2/3\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu27\"}]},\"value\":{\"canonical_magnitude\":\"2/3\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"2\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu230\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "resolve",
+        "register": [
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "1/3"
+          }
+        ],
+        "left": {
+          "value": "2",
+          "model": {
+            "unitName": "cwt (US)"
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "value",
+        "value": {
+          "canonical_magnitude": "2/3",
+          "dimension_id": "NISTd2",
+          "dimensions": {
+            "Mass": "1"
+          },
+          "magnitude": "2",
+          "scale": "ratio",
+          "terms": [
+            {
+              "power": "1",
+              "prefix": null,
+              "unit": "NISTu230"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "caller-symbol-alias",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"cwt (US)\",\"value\":\"2\"}},\"convert_to\":\"kg\",\"register\":[{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"cwt (US)\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"100\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"100\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu27\"}]},\"value\":{\"canonical_magnitude\":\"100\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"2\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu230\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "resolve",
+        "register": [
+          {
+            "unit": "cwt (US)",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          }
+        ],
+        "left": {
+          "value": "2",
+          "model": {
+            "unitName": "cwt (US)"
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "value",
+        "value": {
+          "canonical_magnitude": "100",
+          "dimension_id": "NISTd2",
+          "dimensions": {
+            "Mass": "1"
+          },
+          "magnitude": "2",
+          "scale": "ratio",
+          "terms": [
+            {
+              "power": "1",
+              "prefix": null,
+              "unit": "NISTu230"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "caller-referenced-id",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"cwt (US)\",\"value\":\"2\"}},\"convert_to\":\"kg\",\"register\":[{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu203\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"100\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"100\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu27\"}]},\"value\":{\"canonical_magnitude\":\"100\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"2\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu230\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "resolve",
+        "register": [
+          {
+            "unit": "NISTu203",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          }
+        ],
+        "left": {
+          "value": "2",
+          "model": {
+            "unitName": "cwt (US)"
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "value",
+        "value": {
+          "canonical_magnitude": "100",
+          "dimension_id": "NISTd2",
+          "dimensions": {
+            "Mass": "1"
+          },
+          "magnitude": "2",
+          "scale": "ratio",
+          "terms": [
+            {
+              "power": "1",
+              "prefix": null,
+              "unit": "NISTu230"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "caller-add",
+      "request_json": "{\"ast\":{\"left\":{\"name\":\"x\",\"type\":\"variable\"},\"operator\":\"+\",\"right\":{\"name\":\"y\",\"type\":\"variable\"},\"type\":\"binary\"},\"bindings\":{\"x\":{\"unit\":\"cwt (US)\",\"value\":\"2\"},\"y\":{\"unit\":\"kg\",\"value\":\"3\"}},\"convert_to\":\"kg\",\"register\":[{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"103\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"103\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu27\"}]},\"value\":{\"canonical_magnitude\":\"103\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"103/50\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu230\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "add",
+        "register": [
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          }
+        ],
+        "left": {
+          "value": "2",
+          "model": {
+            "unitName": "cwt (US)"
+          }
+        },
+        "right": {
+          "value": "3",
+          "model": {
+            "unitName": "g",
+            "prefix": {
+              "prefixName": "k",
+              "onlyInstance": false
+            }
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "value",
+        "value": {
+          "canonical_magnitude": "103",
+          "dimension_id": "NISTd2",
+          "dimensions": {
+            "Mass": "1"
+          },
+          "magnitude": "103/50",
+          "scale": "ratio",
+          "terms": [
+            {
+              "power": "1",
+              "prefix": null,
+              "unit": "NISTu230"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "caller-subtract",
+      "request_json": "{\"ast\":{\"left\":{\"name\":\"x\",\"type\":\"variable\"},\"operator\":\"-\",\"right\":{\"name\":\"y\",\"type\":\"variable\"},\"type\":\"binary\"},\"bindings\":{\"x\":{\"unit\":\"cwt (US)\",\"value\":\"2\"},\"y\":{\"unit\":\"kg\",\"value\":\"3\"}},\"convert_to\":\"kg\",\"register\":[{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"97\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"97\",\"scale\":\"difference\",\"terms\":[{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu27\"}]},\"value\":{\"canonical_magnitude\":\"97\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"97/50\",\"scale\":\"difference\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu230\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "subtract",
+        "register": [
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          }
+        ],
+        "left": {
+          "value": "2",
+          "model": {
+            "unitName": "cwt (US)"
+          }
+        },
+        "right": {
+          "value": "3",
+          "model": {
+            "unitName": "g",
+            "prefix": {
+              "prefixName": "k",
+              "onlyInstance": false
+            }
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "value",
+        "value": {
+          "canonical_magnitude": "97",
+          "dimension_id": "NISTd2",
+          "dimensions": {
+            "Mass": "1"
+          },
+          "magnitude": "97/50",
+          "scale": "difference",
+          "terms": [
+            {
+              "power": "1",
+              "prefix": null,
+              "unit": "NISTu230"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "caller-compound",
+      "request_json": "{\"ast\":{\"left\":{\"name\":\"x\",\"type\":\"variable\"},\"operator\":\"*\",\"right\":{\"name\":\"y\",\"type\":\"variable\"},\"type\":\"binary\"},\"bindings\":{\"x\":{\"unit\":\"cwt (US)\",\"value\":\"2\"},\"y\":{\"unit\":\"m\",\"value\":\"3\"}},\"register\":[{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"300\",\"dimension_id\":null,\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\"},\"magnitude\":\"6\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu1\"},{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu230\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "multiply",
+        "register": [
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          }
+        ],
+        "left": {
+          "value": "2",
+          "model": {
+            "unitName": "cwt (US)"
+          }
+        },
+        "right": {
+          "value": "3",
+          "model": {
+            "unitName": "m"
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "value",
+        "value": {
+          "canonical_magnitude": "300",
+          "dimension_id": null,
+          "dimensions": {
+            "Length": "1",
+            "Mass": "1"
+          },
+          "magnitude": "6",
+          "scale": "ratio",
+          "terms": [
+            {
+              "power": "1",
+              "prefix": null,
+              "unit": "NISTu1"
+            },
+            {
+              "power": "1",
+              "prefix": null,
+              "unit": "NISTu230"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "caller-ratio",
+      "request_json": "{\"ast\":{\"left\":{\"name\":\"x\",\"type\":\"variable\"},\"operator\":\"/\",\"right\":{\"name\":\"y\",\"type\":\"variable\"},\"type\":\"binary\"},\"bindings\":{\"x\":{\"unit\":\"cwt (US)\",\"value\":\"2\"},\"y\":{\"unit\":\"kg\",\"value\":\"4\"}},\"register\":[{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"25\",\"dimension_id\":null,\"dimensions\":{},\"magnitude\":\"1/2\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu230\"},{\"power\":\"-1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu27\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "divide",
+        "register": [
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          }
+        ],
+        "left": {
+          "value": "2",
+          "model": {
+            "unitName": "cwt (US)"
+          }
+        },
+        "right": {
+          "value": "4",
+          "model": {
+            "unitName": "g",
+            "prefix": {
+              "prefixName": "k",
+              "onlyInstance": false
+            }
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "value",
+        "value": {
+          "canonical_magnitude": "25",
+          "dimension_id": null,
+          "dimensions": {},
+          "magnitude": "1/2",
+          "scale": "ratio",
+          "terms": [
+            {
+              "power": "1",
+              "prefix": null,
+              "unit": "NISTu230"
+            },
+            {
+              "power": "-1",
+              "prefix": "NISTp10_3",
+              "unit": "NISTu27"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "caller-last-wins",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"cwt (US)\",\"value\":\"2\"}},\"convert_to\":\"kg\",\"register\":[{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"25\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"100\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"100\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu27\"}]},\"value\":{\"canonical_magnitude\":\"100\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"2\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu230\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "resolve",
+        "register": [
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "25"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          }
+        ],
+        "left": {
+          "value": "2",
+          "model": {
+            "unitName": "cwt (US)"
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "value",
+        "value": {
+          "canonical_magnitude": "100",
+          "dimension_id": "NISTd2",
+          "dimensions": {
+            "Mass": "1"
+          },
+          "magnitude": "2",
+          "scale": "ratio",
+          "terms": [
+            {
+              "power": "1",
+              "prefix": null,
+              "unit": "NISTu230"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "registered-affine-point",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"degC\",\"value\":\"20\"}},\"convert_to\":\"K\",\"register\":[{\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"factor\":\"1\",\"offset\":\"273.15\",\"unit\":\"degC\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"5863/20\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"5863/20\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu5\"}]},\"value\":{\"canonical_magnitude\":\"5863/20\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"20\",\"scale\":\"interval\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu23\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "resolve",
+        "register": [
+          {
+            "unit": "degC",
+            "dimensions": {
+              "ThermodynamicTemperature": "1"
+            },
+            "factor": "1",
+            "offset": "273.15"
+          }
+        ],
+        "left": {
+          "value": "20",
+          "model": {
+            "unitName": "degC"
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "value",
+        "value": {
+          "canonical_magnitude": "5863/20",
+          "dimension_id": "NISTd5",
+          "dimensions": {
+            "ThermodynamicTemperature": "1"
+          },
+          "magnitude": "20",
+          "scale": "interval",
+          "terms": [
+            {
+              "power": "1",
+              "prefix": null,
+              "unit": "NISTu23"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "registered-affine-difference",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"difference\":true,\"unit\":\"degC\",\"value\":\"20\"}},\"convert_to\":\"K\",\"register\":[{\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"factor\":\"1\",\"offset\":\"273.15\",\"unit\":\"degC\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"20\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"20\",\"scale\":\"difference\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu5\"}]},\"value\":{\"canonical_magnitude\":\"20\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"20\",\"scale\":\"difference\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu23\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "resolve",
+        "register": [
+          {
+            "unit": "degC",
+            "dimensions": {
+              "ThermodynamicTemperature": "1"
+            },
+            "factor": "1",
+            "offset": "273.15"
+          }
+        ],
+        "left": {
+          "value": "20",
+          "model": {
+            "unitName": "degC"
+          },
+          "difference": true
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "value",
+        "value": {
+          "canonical_magnitude": "20",
+          "dimension_id": "NISTd5",
+          "dimensions": {
+            "ThermodynamicTemperature": "1"
+          },
+          "magnitude": "20",
+          "scale": "difference",
+          "terms": [
+            {
+              "power": "1",
+              "prefix": null,
+              "unit": "NISTu23"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "registered-affine-subtraction",
+      "request_json": "{\"ast\":{\"left\":{\"name\":\"x\",\"type\":\"variable\"},\"operator\":\"-\",\"right\":{\"name\":\"y\",\"type\":\"variable\"},\"type\":\"binary\"},\"bindings\":{\"x\":{\"unit\":\"degC\",\"value\":\"20\"},\"y\":{\"unit\":\"degC\",\"value\":\"15\"}},\"register\":[{\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"factor\":\"1\",\"offset\":\"273.15\",\"unit\":\"degC\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"5\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"5\",\"scale\":\"difference\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu23\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "subtract",
+        "register": [
+          {
+            "unit": "degC",
+            "dimensions": {
+              "ThermodynamicTemperature": "1"
+            },
+            "factor": "1",
+            "offset": "273.15"
+          }
+        ],
+        "left": {
+          "value": "20",
+          "model": {
+            "unitName": "degC"
+          }
+        },
+        "right": {
+          "value": "15",
+          "model": {
+            "unitName": "degC"
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "value",
+        "value": {
+          "canonical_magnitude": "5",
+          "dimension_id": "NISTd5",
+          "dimensions": {
+            "ThermodynamicTemperature": "1"
+          },
+          "magnitude": "5",
+          "scale": "difference",
+          "terms": [
+            {
+              "power": "1",
+              "prefix": null,
+              "unit": "NISTu23"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "registered-affine-add-source-convention",
+      "request_json": "{\"ast\":{\"left\":{\"name\":\"x\",\"type\":\"variable\"},\"operator\":\"+\",\"right\":{\"name\":\"y\",\"type\":\"variable\"},\"type\":\"binary\"},\"bindings\":{\"x\":{\"unit\":\"degC\",\"value\":\"20\"},\"y\":{\"unit\":\"degC\",\"value\":\"15\"}},\"register\":[{\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"factor\":\"1\",\"offset\":\"273.15\",\"unit\":\"degC\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"6163/20\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"35\",\"scale\":\"interval\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu23\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "add",
+        "register": [
+          {
+            "unit": "degC",
+            "dimensions": {
+              "ThermodynamicTemperature": "1"
+            },
+            "factor": "1",
+            "offset": "273.15"
+          }
+        ],
+        "left": {
+          "value": "20",
+          "model": {
+            "unitName": "degC"
+          }
+        },
+        "right": {
+          "value": "15",
+          "model": {
+            "unitName": "degC"
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "value",
+        "value": {
+          "canonical_magnitude": "6163/20",
+          "dimension_id": "NISTd5",
+          "dimensions": {
+            "ThermodynamicTemperature": "1"
+          },
+          "magnitude": "35",
+          "scale": "interval",
+          "terms": [
+            {
+              "power": "1",
+              "prefix": null,
+              "unit": "NISTu23"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "registered-affine-compound-refusal",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"degC*m\",\"value\":\"20\"}},\"register\":[{\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"factor\":\"1\",\"offset\":\"273.15\",\"unit\":\"degC\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"AffineCompositionError\",\"detail\":\"AffineComposition\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "resolve",
+        "register": [
+          {
+            "unit": "degC",
+            "dimensions": {
+              "ThermodynamicTemperature": "1"
+            },
+            "factor": "1",
+            "offset": "273.15"
+          }
+        ],
+        "left": {
+          "value": "20",
+          "model": {
+            "value": [
+              {
+                "unitName": "degC"
+              },
+              {
+                "text": "*"
+              },
+              {
+                "unitName": "m"
+              }
+            ]
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "error",
+        "error": {
+          "code": "affine_composition",
+          "detail": "AffineComposition"
+        }
+      }
+    },
+    {
+      "id": "registered-difference-minus-point-refusal",
+      "request_json": "{\"ast\":{\"left\":{\"name\":\"x\",\"type\":\"variable\"},\"operator\":\"-\",\"right\":{\"name\":\"y\",\"type\":\"variable\"},\"type\":\"binary\"},\"bindings\":{\"x\":{\"difference\":true,\"unit\":\"degC\",\"value\":\"20\"},\"y\":{\"unit\":\"degC\",\"value\":\"15\"}},\"register\":[{\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"factor\":\"1\",\"offset\":\"273.15\",\"unit\":\"degC\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"ScaleOperationError\",\"detail\":\"ScaleOperation { scale: Difference, operation: \\\"difference minus absolute\\\" }\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "subtract",
+        "register": [
+          {
+            "unit": "degC",
+            "dimensions": {
+              "ThermodynamicTemperature": "1"
+            },
+            "factor": "1",
+            "offset": "273.15"
+          }
+        ],
+        "left": {
+          "value": "20",
+          "model": {
+            "unitName": "degC"
+          },
+          "difference": true
+        },
+        "right": {
+          "value": "15",
+          "model": {
+            "unitName": "degC"
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "error",
+        "error": {
+          "code": "scale_operation",
+          "detail": "ScaleOperation { scale: Difference, operation: \"difference minus absolute\" }"
+        }
+      }
+    },
+    {
+      "id": "registered-dimension-mismatch-refusal",
+      "request_json": "{\"ast\":{\"left\":{\"name\":\"x\",\"type\":\"variable\"},\"operator\":\"+\",\"right\":{\"name\":\"y\",\"type\":\"variable\"},\"type\":\"binary\"},\"bindings\":{\"x\":{\"unit\":\"cwt (US)\",\"value\":\"2\"},\"y\":{\"unit\":\"m\",\"value\":\"3\"}},\"register\":[{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"DimensionMismatchError\",\"detail\":\"DimensionMismatch\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "add",
+        "register": [
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          }
+        ],
+        "left": {
+          "value": "2",
+          "model": {
+            "unitName": "cwt (US)"
+          }
+        },
+        "right": {
+          "value": "3",
+          "model": {
+            "unitName": "m"
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "error",
+        "error": {
+          "code": "dimension_mismatch",
+          "detail": "DimensionMismatch"
+        }
+      }
+    },
+    {
+      "id": "canonical-tolerance-exact",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"W\",\"value\":\"2\"}},\"register\":[{\"dimensions\":{\"Length\":\"2\",\"Mass\":\"1\",\"Time\":\"-3\"},\"factor\":\"1.00000000005\",\"unit\":\"W\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"20000000001/10000000000\",\"dimension_id\":\"NISTd16\",\"dimensions\":{\"Length\":\"2\",\"Mass\":\"1\",\"Time\":\"-3\"},\"magnitude\":\"2\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu14\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "resolve",
+        "register": [
+          {
+            "unit": "W",
+            "dimensions": {
+              "Length": "2",
+              "Mass": "1",
+              "Time": "-3"
+            },
+            "factor": "1.00000000005"
+          }
+        ],
+        "left": {
+          "value": "2",
+          "model": {
+            "unitName": "W"
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "value",
+        "value": {
+          "canonical_magnitude": "20000000001/10000000000",
+          "dimension_id": "NISTd16",
+          "dimensions": {
+            "Length": "2",
+            "Mass": "1",
+            "Time": "-3"
+          },
+          "magnitude": "2",
+          "scale": "ratio",
+          "terms": [
+            {
+              "power": "1",
+              "prefix": null,
+              "unit": "NISTu14"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "register-refusal-null",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"kg\",\"value\":\"2\"}},\"register\":null,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"code\":\"InvalidRequest\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "resolve",
+        "register": null,
+        "left": {
+          "value": "2",
+          "model": {
+            "unitName": "g",
+            "prefix": {
+              "prefixName": "k",
+              "onlyInstance": false
+            }
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "error",
+        "error": {
+          "code": "invalid_request",
+          "detail": "invalid or missing register"
+        }
+      }
+    },
+    {
+      "id": "register-refusal-object",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"kg\",\"value\":\"2\"}},\"register\":{},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"code\":\"InvalidRequest\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "resolve",
+        "register": {},
+        "left": {
+          "value": "2",
+          "model": {
+            "unitName": "g",
+            "prefix": {
+              "prefixName": "k",
+              "onlyInstance": false
+            }
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "error",
+        "error": {
+          "code": "invalid_request",
+          "detail": "invalid or missing register"
+        }
+      }
+    },
+    {
+      "id": "register-refusal-extra-field",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"kg\",\"value\":\"2\"}},\"register\":[{\"dimensions\":{\"Mass\":\"1\"},\"extra\":1,\"factor\":\"50\",\"unit\":\"NISTu230\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"code\":\"InvalidRequest\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "resolve",
+        "register": [
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50",
+            "extra": 1
+          }
+        ],
+        "left": {
+          "value": "2",
+          "model": {
+            "unitName": "g",
+            "prefix": {
+              "prefixName": "k",
+              "onlyInstance": false
+            }
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "error",
+        "error": {
+          "code": "invalid_request",
+          "detail": "invalid or missing register entry fields"
+        }
+      }
+    },
+    {
+      "id": "register-refusal-numeric-factor",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"kg\",\"value\":\"2\"}},\"register\":[{\"dimensions\":{\"Mass\":\"1\"},\"factor\":50,\"unit\":\"NISTu230\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"code\":\"InvalidRequest\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "resolve",
+        "register": [
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": 50
+          }
+        ],
+        "left": {
+          "value": "2",
+          "model": {
+            "unitName": "g",
+            "prefix": {
+              "prefixName": "k",
+              "onlyInstance": false
+            }
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "error",
+        "error": {
+          "code": "invalid_request",
+          "detail": "invalid or missing register.factor"
+        }
+      }
+    },
+    {
+      "id": "register-refusal-zero-factor",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"kg\",\"value\":\"2\"}},\"register\":[{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"0\",\"unit\":\"NISTu230\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu230\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "resolve",
+        "register": [
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "0"
+          }
+        ],
+        "left": {
+          "value": "2",
+          "model": {
+            "unitName": "g",
+            "prefix": {
+              "prefixName": "k",
+              "onlyInstance": false
+            }
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "error",
+        "error": {
+          "code": "invalid_register",
+          "detail": "InvalidRegister(\"NISTu230\")"
+        }
+      }
+    },
+    {
+      "id": "register-refusal-negative-factor",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"kg\",\"value\":\"2\"}},\"register\":[{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"-1\",\"unit\":\"NISTu230\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu230\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "resolve",
+        "register": [
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "-1"
+          }
+        ],
+        "left": {
+          "value": "2",
+          "model": {
+            "unitName": "g",
+            "prefix": {
+              "prefixName": "k",
+              "onlyInstance": false
+            }
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "error",
+        "error": {
+          "code": "invalid_register",
+          "detail": "InvalidRegister(\"NISTu230\")"
+        }
+      }
+    },
+    {
+      "id": "register-refusal-invalid-factor",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"kg\",\"value\":\"2\"}},\"register\":[{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"NaN\",\"unit\":\"NISTu230\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidBindingError\",\"detail\":\"InvalidNumber(\\\"NaN\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "resolve",
+        "register": [
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "NaN"
+          }
+        ],
+        "left": {
+          "value": "2",
+          "model": {
+            "unitName": "g",
+            "prefix": {
+              "prefixName": "k",
+              "onlyInstance": false
+            }
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "error",
+        "error": {
+          "code": "invalid_number",
+          "detail": "InvalidNumber(\"NaN\")"
+        }
+      }
+    },
+    {
+      "id": "register-refusal-invalid-dimension",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"kg\",\"value\":\"2\"}},\"register\":[{\"dimensions\":{\"Length\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu230\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "resolve",
+        "register": [
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Length": "1"
+            },
+            "factor": "50"
+          }
+        ],
+        "left": {
+          "value": "2",
+          "model": {
+            "unitName": "g",
+            "prefix": {
+              "prefixName": "k",
+              "onlyInstance": false
+            }
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "error",
+        "error": {
+          "code": "invalid_register",
+          "detail": "InvalidRegister(\"NISTu230\")"
+        }
+      }
+    },
+    {
+      "id": "register-refusal-unknown-unit",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"kg\",\"value\":\"2\"}},\"register\":[{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"unregistered-unit\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"UnknownUnitError\",\"detail\":\"UnknownUnit(\\\"unregistered-unit\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "resolve",
+        "register": [
+          {
+            "unit": "unregistered-unit",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          }
+        ],
+        "left": {
+          "value": "2",
+          "model": {
+            "unitName": "g",
+            "prefix": {
+              "prefixName": "k",
+              "onlyInstance": false
+            }
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "error",
+        "error": {
+          "code": "unknown_unit",
+          "detail": "UnknownUnit(\"unregistered-unit\")"
+        }
+      }
+    },
+    {
+      "id": "register-refusal-too-many",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"kg\",\"value\":\"2\"}},\"register\":[{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"},{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"ResourceLimitError\",\"detail\":\"ResourceLimit\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "resolve",
+        "register": [
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          },
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          }
+        ],
+        "left": {
+          "value": "2",
+          "model": {
+            "unitName": "g",
+            "prefix": {
+              "prefixName": "k",
+              "onlyInstance": false
+            }
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "error",
+        "error": {
+          "code": "resource_limit",
+          "detail": "ResourceLimit"
+        }
+      }
+    },
+    {
+      "id": "register-refusal-canonical-conflict",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"kg\",\"value\":\"2\"}},\"register\":[{\"dimensions\":{\"Length\":\"2\",\"Mass\":\"1\",\"Time\":\"-3\"},\"factor\":\"2\",\"unit\":\"W\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"InvalidUnitRegisterError\",\"detail\":\"InvalidRegister(\\\"NISTu14\\\")\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "resolve",
+        "register": [
+          {
+            "unit": "W",
+            "dimensions": {
+              "Length": "2",
+              "Mass": "1",
+              "Time": "-3"
+            },
+            "factor": "2"
+          }
+        ],
+        "left": {
+          "value": "2",
+          "model": {
+            "unitName": "g",
+            "prefix": {
+              "prefixName": "k",
+              "onlyInstance": false
+            }
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "error",
+        "error": {
+          "code": "invalid_register",
+          "detail": "InvalidRegister(\"NISTu14\")"
+        }
+      }
+    },
+    {
+      "id": "register-empty",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"kg\",\"value\":\"2\"}},\"register\":[],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"2\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"2\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu27\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "resolve",
+        "register": [],
+        "left": {
+          "value": "2",
+          "model": {
+            "unitName": "g",
+            "prefix": {
+              "prefixName": "k",
+              "onlyInstance": false
+            }
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "value",
+        "value": {
+          "canonical_magnitude": "2",
+          "dimension_id": "NISTd2",
+          "dimensions": {
+            "Mass": "1"
+          },
+          "magnitude": "2",
+          "scale": "ratio",
+          "terms": [
+            {
+              "power": "1",
+              "prefix": "NISTp10_3",
+              "unit": "NISTu27"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "caller-target-only",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"kg\",\"value\":\"100\"}},\"convert_to\":\"cwt (US)\",\"register\":[{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"100\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"2\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu230\"}]},\"value\":{\"canonical_magnitude\":\"100\",\"dimension_id\":\"NISTd2\",\"dimensions\":{\"Mass\":\"1\"},\"magnitude\":\"100\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu27\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "resolve",
+        "register": [
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          }
+        ],
+        "left": {
+          "value": "100",
+          "model": {
+            "unitName": "g",
+            "prefix": {
+              "prefixName": "k",
+              "onlyInstance": false
+            }
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "value",
+        "value": {
+          "canonical_magnitude": "100",
+          "dimension_id": "NISTd2",
+          "dimensions": {
+            "Mass": "1"
+          },
+          "magnitude": "100",
+          "scale": "ratio",
+          "terms": [
+            {
+              "power": "1",
+              "prefix": "NISTp10_3",
+              "unit": "NISTu27"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "caller-compound-target",
+      "request_json": "{\"ast\":{\"name\":\"x\",\"type\":\"variable\"},\"bindings\":{\"x\":{\"unit\":\"kg*m\",\"value\":\"100\"}},\"convert_to\":\"cwt (US)*m\",\"register\":[{\"dimensions\":{\"Mass\":\"1\"},\"factor\":\"50\",\"unit\":\"NISTu230\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":{\"canonical_magnitude\":\"100\",\"dimension_id\":null,\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\"},\"magnitude\":\"2\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu1\"},{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu230\"}]},\"value\":{\"canonical_magnitude\":\"100\",\"dimension_id\":null,\"dimensions\":{\"Length\":\"1\",\"Mass\":\"1\"},\"magnitude\":\"100\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu1\"},{\"power\":\"1\",\"prefix\":\"NISTp10_3\",\"unit\":\"NISTu27\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "source_request": {
+        "op": "resolve",
+        "register": [
+          {
+            "unit": "NISTu230",
+            "dimensions": {
+              "Mass": "1"
+            },
+            "factor": "50"
+          }
+        ],
+        "left": {
+          "value": "100",
+          "model": {
+            "value": [
+              {
+                "unitName": "g",
+                "prefix": {
+                  "prefixName": "k",
+                  "onlyInstance": false
+                }
+              },
+              {
+                "text": "*"
+              },
+              {
+                "unitName": "m"
+              }
+            ]
+          }
+        }
+      },
+      "source_reply": {
+        "abi_version": 1,
+        "class": "value",
+        "value": {
+          "canonical_magnitude": "100",
+          "dimension_id": null,
+          "dimensions": {
+            "Length": "1",
+            "Mass": "1"
+          },
+          "magnitude": "100",
+          "scale": "ratio",
+          "terms": [
+            {
+              "power": "1",
+              "prefix": null,
+              "unit": "NISTu1"
+            },
+            {
+              "power": "1",
+              "prefix": "NISTp10_3",
+              "unit": "NISTu27"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

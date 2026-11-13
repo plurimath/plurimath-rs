@@ -1,0 +1,745 @@
+{
+  "profile": "operator-source-explicit-gaps-v1",
+  "gaps": [
+    {
+      "id": "powerbase-slot1-mini_sub",
+      "format": "asciimath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot1-mini_sub",
+      "format": "latex",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot1-mini_sub",
+      "format": "html",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot1-mini_sub",
+      "format": "unicodemath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot1-mini_sub",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot1-mini_sub",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot1-mini_sup",
+      "format": "asciimath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot1-mini_sup",
+      "format": "latex",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot1-mini_sup",
+      "format": "html",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot1-mini_sup",
+      "format": "unicodemath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot1-mini_sup",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot1-mini_sup",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot1-sum_function",
+      "format": "asciimath",
+      "reason": "unported promised writer node Math::Function::Sum"
+    },
+    {
+      "id": "powerbase-slot1-sum_function",
+      "format": "latex",
+      "reason": "unported promised writer node Math::Function::Sum"
+    },
+    {
+      "id": "powerbase-slot1-sum_function",
+      "format": "html",
+      "reason": "unported promised writer node Math::Function::Sum"
+    },
+    {
+      "id": "powerbase-slot1-sum_function",
+      "format": "unicodemath",
+      "reason": "unported promised writer node Math::Function::Sum"
+    },
+    {
+      "id": "powerbase-slot1-sum_function",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Sum"
+    },
+    {
+      "id": "powerbase-slot1-sum_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Sum"
+    },
+    {
+      "id": "powerbase-slot1-prod_function",
+      "format": "asciimath",
+      "reason": "unported promised writer node Math::Function::Prod"
+    },
+    {
+      "id": "powerbase-slot1-prod_function",
+      "format": "latex",
+      "reason": "unported promised writer node Math::Function::Prod"
+    },
+    {
+      "id": "powerbase-slot1-prod_function",
+      "format": "html",
+      "reason": "unported promised writer node Math::Function::Prod"
+    },
+    {
+      "id": "powerbase-slot1-prod_function",
+      "format": "unicodemath",
+      "reason": "unported promised writer node Math::Function::Prod"
+    },
+    {
+      "id": "powerbase-slot1-prod_function",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Prod"
+    },
+    {
+      "id": "powerbase-slot1-prod_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Prod"
+    },
+    {
+      "id": "powerbase-slot1-int_function",
+      "format": "asciimath",
+      "reason": "unported promised writer node Math::Function::Int"
+    },
+    {
+      "id": "powerbase-slot1-int_function",
+      "format": "latex",
+      "reason": "unported promised writer node Math::Function::Int"
+    },
+    {
+      "id": "powerbase-slot1-int_function",
+      "format": "html",
+      "reason": "unported promised writer node Math::Function::Int"
+    },
+    {
+      "id": "powerbase-slot1-int_function",
+      "format": "unicodemath",
+      "reason": "unported promised writer node Math::Function::Int"
+    },
+    {
+      "id": "powerbase-slot1-int_function",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Int"
+    },
+    {
+      "id": "powerbase-slot1-int_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Int"
+    },
+    {
+      "id": "powerbase-slot1-obrace",
+      "format": "asciimath",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "id": "powerbase-slot1-obrace",
+      "format": "latex",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "id": "powerbase-slot1-obrace",
+      "format": "html",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "id": "powerbase-slot1-obrace",
+      "format": "unicodemath",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "id": "powerbase-slot1-obrace",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "id": "powerbase-slot1-obrace",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "id": "powerbase-slot2-mini_sub",
+      "format": "asciimath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot2-mini_sub",
+      "format": "latex",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot2-mini_sub",
+      "format": "html",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot2-mini_sub",
+      "format": "unicodemath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot2-mini_sub",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot2-mini_sub",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot2-mini_sup",
+      "format": "asciimath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot2-mini_sup",
+      "format": "latex",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot2-mini_sup",
+      "format": "html",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot2-mini_sup",
+      "format": "unicodemath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot2-mini_sup",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot2-mini_sup",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot2-sum_function",
+      "format": "asciimath",
+      "reason": "unported promised writer node Math::Function::Sum"
+    },
+    {
+      "id": "powerbase-slot2-sum_function",
+      "format": "latex",
+      "reason": "unported promised writer node Math::Function::Sum"
+    },
+    {
+      "id": "powerbase-slot2-sum_function",
+      "format": "html",
+      "reason": "unported promised writer node Math::Function::Sum"
+    },
+    {
+      "id": "powerbase-slot2-sum_function",
+      "format": "unicodemath",
+      "reason": "unported promised writer node Math::Function::Sum"
+    },
+    {
+      "id": "powerbase-slot2-sum_function",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Sum"
+    },
+    {
+      "id": "powerbase-slot2-sum_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Sum"
+    },
+    {
+      "id": "powerbase-slot2-prod_function",
+      "format": "asciimath",
+      "reason": "unported promised writer node Math::Function::Prod"
+    },
+    {
+      "id": "powerbase-slot2-prod_function",
+      "format": "latex",
+      "reason": "unported promised writer node Math::Function::Prod"
+    },
+    {
+      "id": "powerbase-slot2-prod_function",
+      "format": "html",
+      "reason": "unported promised writer node Math::Function::Prod"
+    },
+    {
+      "id": "powerbase-slot2-prod_function",
+      "format": "unicodemath",
+      "reason": "unported promised writer node Math::Function::Prod"
+    },
+    {
+      "id": "powerbase-slot2-prod_function",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Prod"
+    },
+    {
+      "id": "powerbase-slot2-prod_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Prod"
+    },
+    {
+      "id": "powerbase-slot2-int_function",
+      "format": "asciimath",
+      "reason": "unported promised writer node Math::Function::Int"
+    },
+    {
+      "id": "powerbase-slot2-int_function",
+      "format": "latex",
+      "reason": "unported promised writer node Math::Function::Int"
+    },
+    {
+      "id": "powerbase-slot2-int_function",
+      "format": "html",
+      "reason": "unported promised writer node Math::Function::Int"
+    },
+    {
+      "id": "powerbase-slot2-int_function",
+      "format": "unicodemath",
+      "reason": "unported promised writer node Math::Function::Int"
+    },
+    {
+      "id": "powerbase-slot2-int_function",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Int"
+    },
+    {
+      "id": "powerbase-slot2-int_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Int"
+    },
+    {
+      "id": "powerbase-slot2-obrace",
+      "format": "asciimath",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "id": "powerbase-slot2-obrace",
+      "format": "latex",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "id": "powerbase-slot2-obrace",
+      "format": "html",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "id": "powerbase-slot2-obrace",
+      "format": "unicodemath",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "id": "powerbase-slot2-obrace",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "id": "powerbase-slot2-obrace",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "id": "powerbase-slot3-mini_sub",
+      "format": "asciimath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot3-mini_sub",
+      "format": "latex",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot3-mini_sub",
+      "format": "html",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot3-mini_sub",
+      "format": "unicodemath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot3-mini_sub",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot3-mini_sub",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot3-mini_sup",
+      "format": "asciimath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot3-mini_sup",
+      "format": "latex",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot3-mini_sup",
+      "format": "html",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot3-mini_sup",
+      "format": "unicodemath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot3-mini_sup",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot3-mini_sup",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-slot3-sum_function",
+      "format": "asciimath",
+      "reason": "unported promised writer node Math::Function::Sum"
+    },
+    {
+      "id": "powerbase-slot3-sum_function",
+      "format": "latex",
+      "reason": "unported promised writer node Math::Function::Sum"
+    },
+    {
+      "id": "powerbase-slot3-sum_function",
+      "format": "html",
+      "reason": "unported promised writer node Math::Function::Sum"
+    },
+    {
+      "id": "powerbase-slot3-sum_function",
+      "format": "unicodemath",
+      "reason": "unported promised writer node Math::Function::Sum"
+    },
+    {
+      "id": "powerbase-slot3-sum_function",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Sum"
+    },
+    {
+      "id": "powerbase-slot3-sum_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Sum"
+    },
+    {
+      "id": "powerbase-slot3-prod_function",
+      "format": "asciimath",
+      "reason": "unported promised writer node Math::Function::Prod"
+    },
+    {
+      "id": "powerbase-slot3-prod_function",
+      "format": "latex",
+      "reason": "unported promised writer node Math::Function::Prod"
+    },
+    {
+      "id": "powerbase-slot3-prod_function",
+      "format": "html",
+      "reason": "unported promised writer node Math::Function::Prod"
+    },
+    {
+      "id": "powerbase-slot3-prod_function",
+      "format": "unicodemath",
+      "reason": "unported promised writer node Math::Function::Prod"
+    },
+    {
+      "id": "powerbase-slot3-prod_function",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Prod"
+    },
+    {
+      "id": "powerbase-slot3-prod_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Prod"
+    },
+    {
+      "id": "powerbase-slot3-int_function",
+      "format": "asciimath",
+      "reason": "unported promised writer node Math::Function::Int"
+    },
+    {
+      "id": "powerbase-slot3-int_function",
+      "format": "latex",
+      "reason": "unported promised writer node Math::Function::Int"
+    },
+    {
+      "id": "powerbase-slot3-int_function",
+      "format": "html",
+      "reason": "unported promised writer node Math::Function::Int"
+    },
+    {
+      "id": "powerbase-slot3-int_function",
+      "format": "unicodemath",
+      "reason": "unported promised writer node Math::Function::Int"
+    },
+    {
+      "id": "powerbase-slot3-int_function",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Int"
+    },
+    {
+      "id": "powerbase-slot3-int_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Int"
+    },
+    {
+      "id": "powerbase-slot3-obrace",
+      "format": "asciimath",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "id": "powerbase-slot3-obrace",
+      "format": "latex",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "id": "powerbase-slot3-obrace",
+      "format": "html",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "id": "powerbase-slot3-obrace",
+      "format": "unicodemath",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "id": "powerbase-slot3-obrace",
+      "format": "mathml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "id": "powerbase-slot3-obrace",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "id": "powerbase-pair-1",
+      "format": "asciimath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-pair-1",
+      "format": "latex",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-pair-1",
+      "format": "html",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-pair-1",
+      "format": "unicodemath",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-pair-1",
+      "format": "mathml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "powerbase-pair-1",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "sqrt-mini_sub",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "sqrt-mini_sup",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "sqrt-sum_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Sum"
+    },
+    {
+      "id": "sqrt-prod_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Prod"
+    },
+    {
+      "id": "sqrt-int_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Int"
+    },
+    {
+      "id": "sqrt-obrace",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "id": "mod-named-slot1-mini_sub",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "mod-named-slot1-mini_sup",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "mod-named-slot1-sum_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Sum"
+    },
+    {
+      "id": "mod-named-slot1-prod_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Prod"
+    },
+    {
+      "id": "mod-named-slot1-int_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Int"
+    },
+    {
+      "id": "mod-named-slot1-obrace",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "id": "mod-named-slot2-mini_sub",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "mod-named-slot2-mini_sup",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "mod-named-slot2-sum_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Sum"
+    },
+    {
+      "id": "mod-named-slot2-prod_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Prod"
+    },
+    {
+      "id": "mod-named-slot2-int_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Int"
+    },
+    {
+      "id": "mod-named-slot2-obrace",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "id": "mod-hidden-slot1-mini_sub",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "mod-hidden-slot1-mini_sup",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "mod-hidden-slot1-sum_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Sum"
+    },
+    {
+      "id": "mod-hidden-slot1-prod_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Prod"
+    },
+    {
+      "id": "mod-hidden-slot1-int_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Int"
+    },
+    {
+      "id": "mod-hidden-slot1-obrace",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "id": "mod-hidden-slot2-mini_sub",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "mod-hidden-slot2-mini_sup",
+      "format": "omml",
+      "reason": "number base/mini formatting not yet ported"
+    },
+    {
+      "id": "mod-hidden-slot2-sum_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Sum"
+    },
+    {
+      "id": "mod-hidden-slot2-prod_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Prod"
+    },
+    {
+      "id": "mod-hidden-slot2-int_function",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Int"
+    },
+    {
+      "id": "mod-hidden-slot2-obrace",
+      "format": "omml",
+      "reason": "unported promised writer node Math::Function::Obrace"
+    },
+    {
+      "id": "powerbase-underover-inline-1",
+      "format": "omml",
+      "reason": "unported explicit display-style context for under/over PowerBase"
+    },
+    {
+      "id": "powerbase-underover-inline-2",
+      "format": "omml",
+      "reason": "unported explicit display-style context for under/over PowerBase"
+    },
+    {
+      "id": "powerbase-underover-inline-3",
+      "format": "omml",
+      "reason": "unported explicit display-style context for under/over PowerBase"
+    },
+    {
+      "id": "powerbase-underover-inline-4",
+      "format": "omml",
+      "reason": "unported explicit display-style context for under/over PowerBase"
+    }
+  ]
+}

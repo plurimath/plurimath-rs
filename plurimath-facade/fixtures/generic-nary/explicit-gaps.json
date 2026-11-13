@@ -1,0 +1,46 @@
+{
+  "gaps": [
+    {
+      "fixture": "generic-nary",
+      "id": "slot1-fenced",
+      "format": "latex",
+      "reason": "unported promised Ruby fence scalar spelling"
+    },
+    {
+      "fixture": "generic-nary",
+      "id": "slot2-fenced",
+      "format": "latex",
+      "reason": "unported promised Ruby fence scalar spelling"
+    },
+    {
+      "fixture": "generic-nary",
+      "id": "slot2-fenced",
+      "format": "omml",
+      "reason": "unported promised Ruby fence scalar spelling"
+    },
+    {
+      "fixture": "generic-nary",
+      "id": "slot3-fenced",
+      "format": "latex",
+      "reason": "unported promised Ruby fence scalar spelling"
+    },
+    {
+      "fixture": "generic-nary",
+      "id": "slot3-fenced",
+      "format": "omml",
+      "reason": "unported promised Ruby fence scalar spelling"
+    },
+    {
+      "fixture": "generic-nary",
+      "id": "slot4-fenced",
+      "format": "latex",
+      "reason": "unported promised Ruby fence scalar spelling"
+    },
+    {
+      "fixture": "generic-nary",
+      "id": "slot4-fenced",
+      "format": "omml",
+      "reason": "unported promised Ruby fence scalar spelling"
+    }
+  ]
+}

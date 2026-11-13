@@ -1,0 +1,31 @@
+{
+  "source_heads": {
+    "workspace/core/plurimath-ruby": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+    "workspace/units/unitsml-ruby": "de4f5b9de08760ed124e10eb3cf1f5ee0f3450cd",
+    "workspace/units/unitsdb-ruby": "05c4a2269ca850b4c2ca5c8205f38799c0ee675d",
+    "workspace/units-native/asciiunits-rs": "498cec2ce946c7bcb3b1b26313667b188ddf76aa",
+    "workspace/units-native/unitsdb-rs": "c631488e03f58c5cfd0ada369948b946a23a4f42"
+  },
+  "new_reference": "R31/Gemfile.lock +actual Unitsml::Dimension#dim_symbols; source-probe.rb",
+  "r31_lock_sha256": "80a7459216662cf9ab7b50d34aea08856038124868fb57877ceb6d94ab489cb9",
+  "probe_sha256": "5f05c908ab592e0a3b7dd68c8e69e883996ca033af67a0e6d72191d06136d9c1",
+  "dimension_ids": [
+    "dim_L",
+    "dim_M",
+    "dim_T",
+    "dim_I",
+    "dim_Theta",
+    "dim_N",
+    "dim_J",
+    "dim_phi"
+  ],
+  "native_dimension_ascii_html_pairs_match_source": true,
+  "source_worktrees_clean": true,
+  "regeneration_trigger": "UnitsML dimension getter or source UnitsDB symbol data changes; rerun source-probe.rb against pinned sources, do not infer font styles",
+  "profiles": {
+    "baseline": "42 string outputs",
+    "extended": "66 string outputs;6historical k- source errors preserved separately",
+    "independent": "48 string outputs includingcurrent R31 k- successes;2parse errors preserved"
+  },
+  "historical_error_scope": "Original extended k- errors remain untouched; fresh R31 k- observations are a distinct dependency profile, not an assertion that old source errors match current successful render."
+}

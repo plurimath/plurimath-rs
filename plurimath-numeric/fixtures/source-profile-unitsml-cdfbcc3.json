@@ -1,0 +1,158 @@
+{
+  "schema": "plurimath-numeric.source-scale-profile/1",
+  "profile": "unitsml-cdfbcc3-source-scale",
+  "native_unitsml_commit": "cdfbcc3087f271d8723b3c3d1e4764860601e570",
+  "source": {
+    "plurimath_ruby": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+    "unitsml_ruby": "de4f5b9de08760ed124e10eb3cf1f5ee0f3450cd",
+    "source_vector_sha256": "a944397cb1c4a6974b5876ad7e21aef680330448580d370db4843fc516fd7f74",
+    "f40_frozen_fixture_sha256": "3aadf68a23261bf159a8344d1095201d38a11d854cb1d685929a536587ee2398",
+    "f40_case": "register-registered-difference-minus-point-refusal",
+    "f40_expected": {
+      "outcome": "ok",
+      "value": {
+        "rational": [
+          "5",
+          "1"
+        ]
+      },
+      "unit": "degC",
+      "scale": {
+        "symbol": "difference"
+      }
+    },
+    "generator_name": "capture-final-quantity-profile.rb",
+    "generator_sha256": "d6556f931ad4a31f47e9bcc68f92e556b0eb3c814ae2c0bed206babe0823e524"
+  },
+  "rationale": "The original refusal was native-produced. Actual Ruby accepts difference minus a point and retains the difference scale; addition answers in the left operand unit. Legacy fixture bytes stay frozen.",
+  "superseded_legacy_rows": [
+    {
+      "id": "registered-difference-minus-point-refusal",
+      "request_json": "{\"ast\":{\"left\":{\"name\":\"x\",\"type\":\"variable\"},\"operator\":\"-\",\"right\":{\"name\":\"y\",\"type\":\"variable\"},\"type\":\"binary\"},\"bindings\":{\"x\":{\"difference\":true,\"unit\":\"degC\",\"value\":\"20\"},\"y\":{\"unit\":\"degC\",\"value\":\"15\"}},\"register\":[{\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"factor\":\"1\",\"offset\":\"273.15\",\"unit\":\"degC\"}],\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "legacy_expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"error\":{\"class\":\"error\",\"code\":\"ScaleOperationError\",\"detail\":\"ScaleOperation { scale: Difference, operation: \\\"difference minus absolute\\\" }\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.quantity/1\"}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"5\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"5\",\"scale\":\"difference\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu23\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    }
+  ],
+  "scale_transitions": [
+    {
+      "id": "scale24:0",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"+\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":false},\"y\":{\"value\":\"15\",\"unit\":\"degC\",\"difference\":false}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"6163/20\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"35\",\"scale\":\"interval\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu23\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    },
+    {
+      "id": "scale24:1",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"-\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":false},\"y\":{\"value\":\"15\",\"unit\":\"degC\",\"difference\":false}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"5\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"5\",\"scale\":\"difference\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu23\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    },
+    {
+      "id": "scale24:2",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"+\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":false},\"y\":{\"value\":\"15\",\"unit\":\"degC\",\"difference\":true}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"6163/20\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"35\",\"scale\":\"interval\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu23\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    },
+    {
+      "id": "scale24:3",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"-\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":false},\"y\":{\"value\":\"15\",\"unit\":\"degC\",\"difference\":true}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"5563/20\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"5\",\"scale\":\"interval\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu23\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    },
+    {
+      "id": "scale24:4",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"+\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":true},\"y\":{\"value\":\"15\",\"unit\":\"degC\",\"difference\":false}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"6163/20\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"35\",\"scale\":\"interval\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu23\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    },
+    {
+      "id": "scale24:5",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"-\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":true},\"y\":{\"value\":\"15\",\"unit\":\"degC\",\"difference\":false}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"5\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"5\",\"scale\":\"difference\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu23\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    },
+    {
+      "id": "scale24:6",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"+\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":true},\"y\":{\"value\":\"15\",\"unit\":\"degC\",\"difference\":true}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"35\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"35\",\"scale\":\"difference\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu23\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    },
+    {
+      "id": "scale24:7",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"-\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":true},\"y\":{\"value\":\"15\",\"unit\":\"degC\",\"difference\":true}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"5\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"5\",\"scale\":\"difference\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu23\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    },
+    {
+      "id": "scale24:8",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"+\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"5\",\"unit\":\"K\",\"difference\":false},\"y\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":false}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"5963/20\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"5963/20\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu5\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    },
+    {
+      "id": "scale24:9",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"-\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"5\",\"unit\":\"K\",\"difference\":false},\"y\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":false}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"-5763/20\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"-5763/20\",\"scale\":\"difference\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu5\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    },
+    {
+      "id": "scale24:10",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"+\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"5\",\"unit\":\"K\",\"difference\":false},\"y\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":true}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"25\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"25\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu5\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    },
+    {
+      "id": "scale24:11",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"-\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"5\",\"unit\":\"K\",\"difference\":false},\"y\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":true}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"-15\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"-15\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu5\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    },
+    {
+      "id": "scale24:12",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"+\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"5\",\"unit\":\"K\",\"difference\":true},\"y\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":false}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"5963/20\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"5963/20\",\"scale\":\"ratio\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu5\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    },
+    {
+      "id": "scale24:13",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"-\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"5\",\"unit\":\"K\",\"difference\":true},\"y\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":false}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"-5763/20\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"-5763/20\",\"scale\":\"difference\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu5\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    },
+    {
+      "id": "scale24:14",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"+\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"5\",\"unit\":\"K\",\"difference\":true},\"y\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":true}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"25\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"25\",\"scale\":\"difference\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu5\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    },
+    {
+      "id": "scale24:15",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"-\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"5\",\"unit\":\"K\",\"difference\":true},\"y\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":true}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"-15\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"-15\",\"scale\":\"difference\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu5\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    },
+    {
+      "id": "scale24:16",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"+\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":false},\"y\":{\"value\":\"288.15\",\"unit\":\"K\",\"difference\":false}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"6163/20\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"35\",\"scale\":\"interval\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu23\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    },
+    {
+      "id": "scale24:17",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"-\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":false},\"y\":{\"value\":\"288.15\",\"unit\":\"K\",\"difference\":false}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"5\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"5\",\"scale\":\"difference\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu23\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    },
+    {
+      "id": "scale24:18",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"+\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":false},\"y\":{\"value\":\"288.15\",\"unit\":\"K\",\"difference\":true}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"5813/10\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"6163/20\",\"scale\":\"interval\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu23\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    },
+    {
+      "id": "scale24:19",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"-\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":false},\"y\":{\"value\":\"288.15\",\"unit\":\"K\",\"difference\":true}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"5\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"-5363/20\",\"scale\":\"interval\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu23\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    },
+    {
+      "id": "scale24:20",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"+\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":true},\"y\":{\"value\":\"288.15\",\"unit\":\"K\",\"difference\":false}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"6163/20\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"35\",\"scale\":\"interval\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu23\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    },
+    {
+      "id": "scale24:21",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"-\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":true},\"y\":{\"value\":\"288.15\",\"unit\":\"K\",\"difference\":false}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"5\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"5\",\"scale\":\"difference\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu23\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    },
+    {
+      "id": "scale24:22",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"+\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":true},\"y\":{\"value\":\"288.15\",\"unit\":\"K\",\"difference\":true}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"6163/20\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"6163/20\",\"scale\":\"difference\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu23\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    },
+    {
+      "id": "scale24:23",
+      "request_json": "{\"schema\":\"plurimath.evaluate.quantity/1\",\"ast\":{\"type\":\"binary\",\"operator\":\"-\",\"left\":{\"type\":\"variable\",\"name\":\"x\"},\"right\":{\"type\":\"variable\",\"name\":\"y\"}},\"bindings\":{\"x\":{\"value\":\"20\",\"unit\":\"degC\",\"difference\":true},\"y\":{\"value\":\"288.15\",\"unit\":\"K\",\"difference\":true}}}",
+      "expected_wire": "{\"engine\":\"plurimath.quantity/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"accuracy\":{\"symbol\":\"exact\"},\"converted\":null,\"value\":{\"canonical_magnitude\":\"-5363/20\",\"dimension_id\":\"NISTd5\",\"dimensions\":{\"ThermodynamicTemperature\":\"1\"},\"magnitude\":\"-5363/20\",\"scale\":\"difference\",\"terms\":[{\"power\":\"1\",\"prefix\":null,\"unit\":\"NISTu23\"}]}},\"schema\":\"plurimath.evaluate.quantity/1\"}"
+    }
+  ]
+}

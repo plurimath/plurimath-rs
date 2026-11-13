@@ -1,0 +1,508 @@
+{
+  "source_head": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "producer_sha256": "845e22c8717026c656d8de06f17269fc828cc3a1f2d9c4cfe37d8254520ab834",
+  "classes": {
+    "Math::Function::FontStyle::Bold": {
+      "aliases": [
+        "mathbf",
+        "textbf",
+        "bold",
+        "mbf",
+        "bb",
+        "bf"
+      ],
+      "text": {
+        "asciimath": {
+          "prefix": "mathbf(",
+          "suffix": ")"
+        },
+        "latex": {
+          "prefix": "\\mathbf{",
+          "suffix": "}"
+        },
+        "unicodemath": {
+          "prefix": "\\mbf",
+          "suffix": ""
+        },
+        "html": {
+          "prefix": "",
+          "suffix": ""
+        }
+      },
+      "mathvariant": "bold",
+      "unicode_family": "\\mbf",
+      "omml_properties": [
+        [
+          "m:sty",
+          "b"
+        ]
+      ]
+    },
+    "Math::Function::FontStyle::BoldFraktur": {
+      "aliases": [
+        "bold-fraktur",
+        "mbffrak"
+      ],
+      "text": {
+        "asciimath": {
+          "prefix": "",
+          "suffix": ""
+        },
+        "latex": {
+          "prefix": "",
+          "suffix": ""
+        },
+        "unicodemath": {
+          "prefix": "\\mbffrak",
+          "suffix": ""
+        },
+        "html": {
+          "prefix": "",
+          "suffix": ""
+        }
+      },
+      "mathvariant": "bold-fraktur",
+      "unicode_family": "\\mbffrak",
+      "omml_properties": [
+        [
+          "m:scr",
+          "fraktur"
+        ],
+        [
+          "m:sty",
+          "b"
+        ]
+      ]
+    },
+    "Math::Function::FontStyle::BoldItalic": {
+      "aliases": [
+        "bold-italic",
+        "mbfit"
+      ],
+      "text": {
+        "asciimath": {
+          "prefix": "",
+          "suffix": ""
+        },
+        "latex": {
+          "prefix": "",
+          "suffix": ""
+        },
+        "unicodemath": {
+          "prefix": "\\mbfit",
+          "suffix": ""
+        },
+        "html": {
+          "prefix": "",
+          "suffix": ""
+        }
+      },
+      "mathvariant": "bold-italic",
+      "unicode_family": "\\mbfit",
+      "omml_properties": [
+        [
+          "m:sty",
+          "bi"
+        ]
+      ]
+    },
+    "Math::Function::FontStyle::BoldSansSerif": {
+      "aliases": [
+        "bold-sans-serif",
+        "mbfsans"
+      ],
+      "text": {
+        "asciimath": {
+          "prefix": "",
+          "suffix": ""
+        },
+        "latex": {
+          "prefix": "",
+          "suffix": ""
+        },
+        "unicodemath": {
+          "prefix": "\\mbfsans",
+          "suffix": ""
+        },
+        "html": {
+          "prefix": "",
+          "suffix": ""
+        }
+      },
+      "mathvariant": "bold-sans-serif",
+      "unicode_family": "\\mbfsans",
+      "omml_properties": [
+        [
+          "m:scr",
+          "sans-serif"
+        ],
+        [
+          "m:sty",
+          "b"
+        ]
+      ]
+    },
+    "Math::Function::FontStyle::BoldScript": {
+      "aliases": [
+        "bold-script",
+        "mbfscr"
+      ],
+      "text": {
+        "asciimath": {
+          "prefix": "",
+          "suffix": ""
+        },
+        "latex": {
+          "prefix": "",
+          "suffix": ""
+        },
+        "unicodemath": {
+          "prefix": "\\mbfscr",
+          "suffix": ""
+        },
+        "html": {
+          "prefix": "",
+          "suffix": ""
+        }
+      },
+      "mathvariant": "bold-script",
+      "unicode_family": "\\mbfscr",
+      "omml_properties": [
+        [
+          "m:scr",
+          "script"
+        ],
+        [
+          "m:sty",
+          "b"
+        ]
+      ]
+    },
+    "Math::Function::FontStyle::DoubleStruck": {
+      "aliases": [
+        "double-struck",
+        "mathbb",
+        "double",
+        "bbb",
+        "Bbb"
+      ],
+      "text": {
+        "asciimath": {
+          "prefix": "mathbb(",
+          "suffix": ")"
+        },
+        "latex": {
+          "prefix": "\\mathbb{",
+          "suffix": "}"
+        },
+        "unicodemath": {
+          "prefix": "\\Bbb",
+          "suffix": ""
+        },
+        "html": {
+          "prefix": "",
+          "suffix": ""
+        }
+      },
+      "mathvariant": "double-struck",
+      "unicode_family": "\\Bbb",
+      "omml_properties": [
+        [
+          "m:scr",
+          "double-struck"
+        ]
+      ]
+    },
+    "Math::Function::FontStyle::Fraktur": {
+      "aliases": [
+        "mathfrak",
+        "fraktur",
+        "mfrak",
+        "fr"
+      ],
+      "text": {
+        "asciimath": {
+          "prefix": "mathfrak(",
+          "suffix": ")"
+        },
+        "latex": {
+          "prefix": "\\mathfrak{",
+          "suffix": "}"
+        },
+        "unicodemath": {
+          "prefix": "\\mfrak",
+          "suffix": ""
+        },
+        "html": {
+          "prefix": "",
+          "suffix": ""
+        }
+      },
+      "mathvariant": "fraktur",
+      "unicode_family": "\\mfrak",
+      "omml_properties": [
+        [
+          "m:scr",
+          "fraktur"
+        ],
+        [
+          "m:sty",
+          "p"
+        ]
+      ]
+    },
+    "Math::Function::FontStyle::Italic": {
+      "aliases": [
+        "italic",
+        "mathit",
+        "textit",
+        "mit",
+        "ii"
+      ],
+      "text": {
+        "asciimath": {
+          "prefix": "ii(",
+          "suffix": ")"
+        },
+        "latex": {
+          "prefix": "\\mathit{",
+          "suffix": "}"
+        },
+        "unicodemath": {
+          "prefix": "\\mit",
+          "suffix": ""
+        },
+        "html": {
+          "prefix": "",
+          "suffix": ""
+        }
+      },
+      "mathvariant": "italic",
+      "unicode_family": "\\mit",
+      "omml_properties": [
+        [
+          "m:sty",
+          "i"
+        ]
+      ]
+    },
+    "Math::Function::FontStyle::Monospace": {
+      "aliases": [
+        "monospace",
+        "mathtt",
+        "mtt",
+        "tt"
+      ],
+      "text": {
+        "asciimath": {
+          "prefix": "mathtt(",
+          "suffix": ")"
+        },
+        "latex": {
+          "prefix": "\\mathtt{",
+          "suffix": "}"
+        },
+        "unicodemath": {
+          "prefix": "ￗ(",
+          "suffix": ")"
+        },
+        "html": {
+          "prefix": "",
+          "suffix": ""
+        }
+      },
+      "mathvariant": "monospace",
+      "unicode_family": "\\mtt",
+      "omml_properties": [
+        [
+          "m:scr",
+          "monospace"
+        ]
+      ]
+    },
+    "Math::Function::FontStyle::Normal": {
+      "aliases": [
+        "mathrm",
+        "textrm",
+        "normal",
+        "mup",
+        "rm"
+      ],
+      "text": {
+        "asciimath": {
+          "prefix": "rm(",
+          "suffix": ")"
+        },
+        "latex": {
+          "prefix": "\\mathrm{",
+          "suffix": "}"
+        },
+        "unicodemath": {
+          "prefix": "\\mup",
+          "suffix": ""
+        },
+        "html": {
+          "prefix": "",
+          "suffix": ""
+        }
+      },
+      "mathvariant": "normal",
+      "unicode_family": "\\mup",
+      "omml_properties": [
+        [
+          "m:sty",
+          "p"
+        ]
+      ]
+    },
+    "Math::Function::FontStyle::SansSerif": {
+      "aliases": [
+        "sans-serif",
+        "mathsf",
+        "msans",
+        "sf"
+      ],
+      "text": {
+        "asciimath": {
+          "prefix": "mathsf(",
+          "suffix": ")"
+        },
+        "latex": {
+          "prefix": "\\mathsf{",
+          "suffix": "}"
+        },
+        "unicodemath": {
+          "prefix": "\\msans",
+          "suffix": ""
+        },
+        "html": {
+          "prefix": "",
+          "suffix": ""
+        }
+      },
+      "mathvariant": "sans-serif",
+      "unicode_family": "\\msans",
+      "omml_properties": [
+        [
+          "m:scr",
+          "sans-serif"
+        ],
+        [
+          "m:sty",
+          "p"
+        ]
+      ]
+    },
+    "Math::Function::FontStyle::SansSerifBoldItalic": {
+      "aliases": [
+        "sans-serif-bold-italic",
+        "mbfitsans"
+      ],
+      "text": {
+        "asciimath": {
+          "prefix": "",
+          "suffix": ""
+        },
+        "latex": {
+          "prefix": "",
+          "suffix": ""
+        },
+        "unicodemath": {
+          "prefix": "\\mbfitsans",
+          "suffix": ""
+        },
+        "html": {
+          "prefix": "",
+          "suffix": ""
+        }
+      },
+      "mathvariant": "sans-serif-bold-italic",
+      "unicode_family": "\\mbfitsans",
+      "omml_properties": [
+        [
+          "m:scr",
+          "sans-serif"
+        ],
+        [
+          "m:sty",
+          "bi"
+        ]
+      ]
+    },
+    "Math::Function::FontStyle::SansSerifItalic": {
+      "aliases": [
+        "sans-serif-italic",
+        "mitsans"
+      ],
+      "text": {
+        "asciimath": {
+          "prefix": "",
+          "suffix": ""
+        },
+        "latex": {
+          "prefix": "",
+          "suffix": ""
+        },
+        "unicodemath": {
+          "prefix": "\\mitsans",
+          "suffix": ""
+        },
+        "html": {
+          "prefix": "",
+          "suffix": ""
+        }
+      },
+      "mathvariant": "sans-serif-italic",
+      "unicode_family": "\\mitsans",
+      "omml_properties": [
+        [
+          "m:scr",
+          "sans-serif"
+        ],
+        [
+          "m:sty",
+          "i"
+        ]
+      ]
+    },
+    "Math::Function::FontStyle::Script": {
+      "aliases": [
+        "mathcal",
+        "script",
+        "mscr",
+        "cal",
+        "cc"
+      ],
+      "text": {
+        "asciimath": {
+          "prefix": "mathcal(",
+          "suffix": ")"
+        },
+        "latex": {
+          "prefix": "\\mathcal{",
+          "suffix": "}"
+        },
+        "unicodemath": {
+          "prefix": "\\mscr",
+          "suffix": ""
+        },
+        "html": {
+          "prefix": "",
+          "suffix": ""
+        }
+      },
+      "mathvariant": "script",
+      "unicode_family": "\\mscr",
+      "omml_properties": [
+        [
+          "m:scr",
+          "script"
+        ],
+        [
+          "m:sty",
+          "p"
+        ]
+      ]
+    }
+  }
+}
