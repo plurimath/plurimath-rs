@@ -37,6 +37,6 @@ jobs:
         if: runner.os == 'Linux'
         run: cargo clippy --locked --workspace --all-targets --all-features -- -D warnings
       - name: Workspace tests with all supported profiles
-        run: cargo test --locked --workspace --all-features
+        run: cargo test --locked --workspace --all-features --no-fail-fast
       - name: Numeric default feature boundary
         run: cargo test --locked -p plurimath-numeric --no-default-features

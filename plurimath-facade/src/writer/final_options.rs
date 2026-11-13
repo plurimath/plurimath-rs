@@ -410,6 +410,9 @@ fn direct(v: &Value, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     if v.is_array() {
         return Err("source_render_error: Array cannot receive direct XML writer".into());
     }
+    if v == false {
+        return Err("source_render_error: false cannot receive direct XML writer".into());
+    }
     super::generic_nary::slot(v, f, ctx)
 }
 fn validate(v: &Value, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
