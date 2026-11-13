@@ -397,15 +397,18 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         {
             return Err(incomplete("unported additional source capture fields"));
         }
-        return Ok(vec![unary(
-            "sqrt",
-            one(tx(
-                format,
-                m.get("intermediate_exp")
-                    .ok_or_else(|| incomplete("missing sqrt operand"))?,
-                depth + 1,
-            )?),
-        )?]);
+        let values = tx(
+            format,
+            m.get("intermediate_exp")
+                .ok_or_else(|| incomplete("missing sqrt operand"))?,
+            depth + 1,
+        )?;
+        let operand = if format == "latex" && values.is_empty() {
+            Value::Null
+        } else {
+            one(values)
+        };
+        return Ok(vec![unary("sqrt", operand)?]);
     }
     if m.contains_key("root_symbol") {
         if m.keys()

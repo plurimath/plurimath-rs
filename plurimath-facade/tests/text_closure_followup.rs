@@ -10,25 +10,28 @@ fn residual_text_shapes_match_ruby_source_outcomes() {
     ))
     .unwrap();
     let rows = fixture["rows"].as_array().unwrap();
+    let mut differences = Vec::new();
     for row in rows {
         let input = &row["input"];
         let actual = plurimath_facade::request(
             &json!({"op":"parse","format":input["format"],"input":input["text"],"options":{}}),
         );
-        match row["outcome"].as_str().unwrap() {
-            "model" => {
-                assert_eq!(actual["ok"], true, "{input}: {actual}");
-                assert_eq!(actual["model"], row["parsed_model"], "{input}");
-            }
+        let exact = match row["outcome"].as_str().unwrap() {
+            "model" => actual["ok"] == true && actual["model"] == row["parsed_model"],
             "error" => {
-                assert_eq!(actual["ok"], false, "{input}: {actual}");
-                assert_eq!(
-                    actual["error"]["source_class"], row["parse_error"]["class"],
-                    "{input}"
-                );
+                actual["ok"] == false
+                    && actual["error"]["source_class"] == row["parse_error"]["class"]
             }
-            _ => assert_eq!(actual["ok"], false, "{input}: {actual}"),
+            _ => actual["ok"] == false,
+        };
+        if !exact {
+            differences.push(json!({"input":input,"actual":actual,"expected":row}));
         }
     }
     assert_eq!(rows.len(), 87);
+    assert!(
+        differences.is_empty(),
+        "{} source differences: {differences:#?}",
+        differences.len()
+    );
 }
