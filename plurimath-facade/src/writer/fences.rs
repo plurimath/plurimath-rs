@@ -92,15 +92,27 @@ fn delimiter(v: &Value, f: &str, ctx: &super::WriterContext) -> Result<Option<St
     }
 }
 fn choose(v: &Value) -> bool {
-    if v["class"]!="Math::Function::Frac" {return false;}
-    let Ok(model)=Model::from_value(v)else{return false};
-    crate::source_values::field(&model,"options",crate::source_values::Domain::NamedOptions).ok().is_some_and(|options|options.get_symbol("choose").is_some())
+    if v["class"] != "Math::Function::Frac" {
+        return false;
+    }
+    let Ok(model) = Model::from_value(v) else {
+        return false;
+    };
+    crate::source_values::field(
+        &model,
+        "options",
+        crate::source_values::Domain::NamedOptions,
+    )
+    .ok()
+    .is_some_and(|options| options.get_symbol("choose").is_some())
 }
 
 fn choose_truthy(v: &Value) -> Result<bool, String> {
     use crate::source_values::{field, Domain, RubyValue};
-    let options=field(&Model::from_value(v)?,"options",Domain::NamedOptions)?;
-    Ok(options.get_symbol("choose").is_some_and(|value|!matches!(value,RubyValue::Nil|RubyValue::Bool(false))))
+    let options = field(&Model::from_value(v)?, "options", Domain::NamedOptions)?;
+    Ok(options
+        .get_symbol("choose")
+        .is_some_and(|value| !matches!(value, RubyValue::Nil | RubyValue::Bool(false))))
 }
 
 fn child_model(v: &Value) -> Result<Value, String> {
@@ -111,48 +123,53 @@ fn child_model(v: &Value) -> Result<Value, String> {
     Ok(v)
 }
 pub(super) fn symbol_unicode(v: &Value) -> Result<Option<String>, String> {
-    if v["class"] != "Math::Symbols::Symbol" {return Ok(None);}
+    if v["class"] != "Math::Symbols::Symbol" {
+        return Ok(None);
+    }
 
-        let fields = &v["fields"];
-        let value = fields["value"].as_str();
-        if present(&fields["slashed"]) || value.is_some_and(|s| ["&", "@", "^"].contains(&s)) {
-            return Ok(Some(format!("\\{}", scalar(&fields["value"])?)));
+    let fields = &v["fields"];
+    let value = fields["value"].as_str();
+    if present(&fields["slashed"]) || value.is_some_and(|s| ["&", "@", "^"].contains(&s)) {
+        return Ok(Some(format!("\\{}", scalar(&fields["value"])?)));
+    }
+    let prefix = if present(&fields["mini_sub_sized"]) {
+        Some("SUB")
+    } else if present(&fields["mini_sup_sized"]) {
+        Some("SUP")
+    } else {
+        None
+    };
+    if let Some(prefix) = prefix {
+        let value = value.ok_or_else(|| source_error("Mini Symbol value has no to_sym method"))?;
+        static DATA: std::sync::OnceLock<Value> = std::sync::OnceLock::new();
+        let data = DATA.get_or_init(|| {
+            serde_json::from_str(include_str!("fences-data.json"))
+                .expect("sealed source glyph constants")
+        });
+        let data = &data["mini_constants"];
+        for suffix in ["ALPHABETS", "OPERATORS"] {
+            if let Some(s) = data[format!("{prefix}_{suffix}")][value].as_str() {
+                return Ok(Some(s.into()));
+            }
         }
-        let prefix = if present(&fields["mini_sub_sized"]) {
-            Some("SUB")
-        } else if present(&fields["mini_sup_sized"]) {
-            Some("SUP")
-        } else {
-            None
-        };
-        if let Some(prefix) = prefix {
-            let value =
-                value.ok_or_else(|| source_error("Mini Symbol value has no to_sym method"))?;
-            static DATA: std::sync::OnceLock<Value> = std::sync::OnceLock::new();
-            let data = DATA.get_or_init(|| {
-                serde_json::from_str(include_str!("fences-data.json"))
-                    .expect("sealed source glyph constants")
-            });
-            let data = &data["mini_constants"];
-            for suffix in ["ALPHABETS", "OPERATORS"] {
-                if let Some(s) = data[format!("{prefix}_{suffix}")][value].as_str() {
+        if let Some(groups) = data[format!("{prefix}_PARENTHESIS")].as_object() {
+            for group in groups.values() {
+                if let Some(s) = group[value].as_str() {
                     return Ok(Some(s.into()));
                 }
             }
-            if let Some(groups) = data[format!("{prefix}_PARENTHESIS")].as_object() {
-                for group in groups.values() {
-                    if let Some(s) = group[value].as_str() {
-                        return Ok(Some(s.into()));
-                    }
-                }
-            }
-            return Ok(Some(String::new()));
         }
+        return Ok(Some(String::new()));
+    }
     Ok(None)
 }
 fn ordinary_child(v: &Value, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
-    if f=="unicodemath" {if let Some(value)=symbol_unicode(v)? {return Ok(value);}}
-    child(&child_model(v)?,f,ctx)
+    if f == "unicodemath" {
+        if let Some(value) = symbol_unicode(v)? {
+            return Ok(value);
+        }
+    }
+    child(&child_model(v)?, f, ctx)
 }
 
 fn fraction_part(v: &Value, ctx: &super::WriterContext) -> Result<String, String> {
@@ -419,13 +436,19 @@ fn attributes(v: &Value) -> Result<Vec<(String, String)>, String> {
         .collect()
 }
 pub(super) fn xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
-    if f=="mathml" {
-        if let Some(first)=m.field("parameter_two").as_array().and_then(|values|values.first()) {
-            if first["class"]=="Math::Function::Frac" {
-                use crate::source_values::{field,Domain,RubyValue};
-                let options=field(&Model::from_value(first)?,"options",Domain::NamedOptions)?;
-                if !matches!(options,RubyValue::Nil|RubyValue::Hash(_)) {
-                    return Err("source_render_error: fenced fraction options have no key? method".into());
+    if f == "mathml" {
+        if let Some(first) = m
+            .field("parameter_two")
+            .as_array()
+            .and_then(|values| values.first())
+        {
+            if first["class"] == "Math::Function::Frac" {
+                use crate::source_values::{field, Domain, RubyValue};
+                let options = field(&Model::from_value(first)?, "options", Domain::NamedOptions)?;
+                if !matches!(options, RubyValue::Nil | RubyValue::Hash(_)) {
+                    return Err(
+                        "source_render_error: fenced fraction options have no key? method".into(),
+                    );
                 }
             }
         }
@@ -572,7 +595,11 @@ mod tests {
         let reference: Value =
             serde_json::from_str(include_str!("../../fixtures/fences/caller-reference.json"))
                 .unwrap();
-        let ctx = WriterContext {table:false, formula_input:None,source_format:"asciimath", formatter: None,
+        let ctx = WriterContext {
+            table: false,
+            formula_input: None,
+            source_format: "asciimath",
+            formatter: None,
             display_style: true,
             unary_function_spacing: true,
             intent: false,

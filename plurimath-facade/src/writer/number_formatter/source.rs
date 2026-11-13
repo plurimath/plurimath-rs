@@ -15,7 +15,11 @@ pub(crate) struct Parts {
 
 impl Parts {
     pub(crate) fn new(sign: i32, integer_digits: &str, fraction_digits: &str) -> Parts {
-        Parts { sign, integer_digits: normalize_integer(integer_digits), fraction_digits: fraction_digits.to_string() }
+        Parts {
+            sign,
+            integer_digits: normalize_integer(integer_digits),
+            fraction_digits: fraction_digits.to_string(),
+        }
     }
     pub(crate) fn is_fractional(&self) -> bool {
         !self.fraction_digits.is_empty()
@@ -23,7 +27,11 @@ impl Parts {
     pub(crate) fn is_integer_zero(&self) -> bool {
         self.integer_digits == "0"
     }
-    pub(crate) fn with_digits(&self, integer_digits: Option<&str>, fraction_digits: Option<&str>) -> Parts {
+    pub(crate) fn with_digits(
+        &self,
+        integer_digits: Option<&str>,
+        fraction_digits: Option<&str>,
+    ) -> Parts {
         Parts::new(
             self.sign,
             integer_digits.unwrap_or(&self.integer_digits),
@@ -104,7 +112,9 @@ pub(crate) fn numeric_pattern(raw: &str) -> bool {
 }
 
 fn strip_sign(raw: &str) -> &str {
-    raw.strip_prefix('-').or_else(|| raw.strip_prefix('+')).unwrap_or(raw)
+    raw.strip_prefix('-')
+        .or_else(|| raw.strip_prefix('+'))
+        .unwrap_or(raw)
 }
 
 /// `decimal_input?`: `/\A[0-9.]+(?:e[+-]?[0-9]+)?\z/i` on the sign-stripped raw.
@@ -139,7 +149,11 @@ impl Source {
     pub(crate) fn new(raw: &str, base: &RubyValue) -> Result<Source, FormatterError> {
         let raw = raw.to_string();
         // `@base = base || DEFAULT_BASE`
-        let base = if base.truthy() { base.clone() } else { RubyValue::Int(10) };
+        let base = if base.truthy() {
+            base.clone()
+        } else {
+            RubyValue::Int(10)
+        };
         let non_decimal_base = !base.eq_int(10);
         if !non_decimal_base && !numeric_pattern(&raw) {
             return Err(FormatterError::InvalidNumber { value: raw });
@@ -158,7 +172,8 @@ impl Source {
                 });
             }
             let exponent = match exponent_text {
-                Some(t) => string_to_i_lenient(&t).ok_or(FormatterError::ResourceLimit { what: "exponent" })?,
+                Some(t) => string_to_i_lenient(&t)
+                    .ok_or(FormatterError::ResourceLimit { what: "exponent" })?,
                 None => 0,
             };
             let (i, f) = match mantissa.split_once('.') {
@@ -173,13 +188,18 @@ impl Source {
                 RubyValue::Float(t) => t.parse::<f64>().map(|f| f.trunc() as i64).unwrap_or(0),
                 other => {
                     return Err(FormatterError::RubyTypeError {
-                        message: format!("no implicit conversion of {} into Integer", ruby_class_name(other)),
+                        message: format!(
+                            "no implicit conversion of {} into Integer",
+                            ruby_class_name(other)
+                        ),
                     })
                 }
             };
             // String#to_i: radix 0 auto-detects; 1, negatives and > 36 raise.
             if radix != 0 && !(2..=36).contains(&radix) {
-                return Err(FormatterError::RubyArgumentError { message: format!("invalid radix {radix}") });
+                return Err(FormatterError::RubyArgumentError {
+                    message: format!("invalid radix {radix}"),
+                });
             }
             let (_neg, values, effective) = string_to_i_digits(strip_sign(&raw), radix as u32);
             (base_values_to_decimal(&values, effective), String::new(), 0)
@@ -187,8 +207,18 @@ impl Source {
         if exponent.unsigned_abs() as usize > MAX_EXPANSION {
             return Err(FormatterError::ResourceLimit { what: "exponent" });
         }
-        let zero = !integer_digits.bytes().chain(fraction_digits.bytes()).any(|b| b != b'0');
-        Ok(Source { raw, sign, exponent, integer_digits, fraction_digits, zero })
+        let zero = !integer_digits
+            .bytes()
+            .chain(fraction_digits.bytes())
+            .any(|b| b != b'0');
+        Ok(Source {
+            raw,
+            sign,
+            exponent,
+            integer_digits,
+            fraction_digits,
+            zero,
+        })
     }
 
     /// `fractional?`
@@ -215,7 +245,11 @@ impl Source {
     pub(crate) fn target_base_integer_length(&self, base: u32) -> usize {
         if base == 10 {
             let parts = self.to_parts(None);
-            return if parts.is_integer_zero() { 0 } else { parts.integer_digits.len() };
+            return if parts.is_integer_zero() {
+                0
+            } else {
+                parts.integer_digits.len()
+            };
         }
         let integer = self.decimal_digits().0;
         if !integer.bytes().any(|b| b != b'0') {
@@ -239,9 +273,23 @@ impl Source {
         let digits = format!("{}{}", self.integer_digits, self.fraction_digits);
         let decimal_index = self.integer_digits.len() as i64 + self.exponent;
         if decimal_index <= 0 {
-            ("0".into(), format!("{}{}", "0".repeat(decimal_index.unsigned_abs() as usize), digits))
+            (
+                "0".into(),
+                format!(
+                    "{}{}",
+                    "0".repeat(decimal_index.unsigned_abs() as usize),
+                    digits
+                ),
+            )
         } else if decimal_index as usize >= digits.len() {
-            (format!("{}{}", digits, "0".repeat(decimal_index as usize - digits.len())), String::new())
+            (
+                format!(
+                    "{}{}",
+                    digits,
+                    "0".repeat(decimal_index as usize - digits.len())
+                ),
+                String::new(),
+            )
         } else {
             let i = decimal_index as usize;
             (digits[..i].to_string(), digits[i..].to_string())

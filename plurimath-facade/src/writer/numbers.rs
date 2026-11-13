@@ -112,15 +112,45 @@ pub(super) fn text(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<Str
             return Ok(data()[map][value].as_str().unwrap_or("").to_owned());
         }
     }
-    if let Some(formatter)=ctx.formatter { return formatter.text(m,f).map_err(|error|super::formatter_context::scope_error(ctx,error)); }
-    if let Some(value)=source_value {crate::source_values::to_s(&value)} else {ordinary_string(m.field("value"))}
+    if let Some(formatter) = ctx.formatter {
+        return formatter
+            .text(m, f)
+            .map_err(|error| super::formatter_context::scope_error(ctx, error));
+    }
+    if let Some(value) = source_value {
+        crate::source_values::to_s(&value)
+    } else {
+        ordinary_string(m.field("value"))
+    }
 }
 pub(super) fn xml(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<Vec<Xml>, String> {
-    if let Some(formatter)=ctx.formatter {
-        if f=="mathml" {return formatter.mathml(m).map_err(|error|super::formatter_context::scope_error(ctx,error))}
-        if f=="omml" {return Ok(vec![el("m:r",vec![el("m:t",vec![xml_text(&formatter.text(m,"plain").map_err(|error|super::formatter_context::scope_error(ctx,error))?)])])])}
+    if let Some(formatter) = ctx.formatter {
+        if f == "mathml" {
+            return formatter
+                .mathml(m)
+                .map_err(|error| super::formatter_context::scope_error(ctx, error));
+        }
+        if f == "omml" {
+            return Ok(vec![el(
+                "m:r",
+                vec![el(
+                    "m:t",
+                    vec![xml_text(&formatter.text(m, "plain").map_err(|error| {
+                        super::formatter_context::scope_error(ctx, error)
+                    })?)],
+                )],
+            )]);
+        }
     }
-    let value = if m.profile()==crate::source_values::Profile::RubyValuesV1 {crate::source_values::to_s(&crate::source_values::field(m,"value",crate::source_values::Domain::Literal)?)?}else{ordinary_string(m.field("value"))?};
+    let value = if m.profile() == crate::source_values::Profile::RubyValuesV1 {
+        crate::source_values::to_s(&crate::source_values::field(
+            m,
+            "value",
+            crate::source_values::Domain::Literal,
+        )?)?
+    } else {
+        ordinary_string(m.field("value"))?
+    };
     Ok(vec![if f == "mathml" {
         el("mn", vec![xml_text(&value)])
     } else if f == "omml" {

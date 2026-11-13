@@ -232,7 +232,9 @@ fn latex_wrapped(v: &Value, ctx: &super::WriterContext) -> Result<String, String
 }
 pub(super) fn latex_wrapped_with_value(v: &Value, value: String) -> Result<String, String> {
     let m = Model::from_value(v)?;
-    let function_formula = if m.class=="Math::Function::None" {true} else if m.kind() == "Formula" {
+    let function_formula = if m.class == "Math::Function::None" {
+        true
+    } else if m.kind() == "Formula" {
         let values = m
             .field("value")
             .as_array()

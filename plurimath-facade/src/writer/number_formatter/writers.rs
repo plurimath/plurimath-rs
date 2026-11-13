@@ -25,13 +25,19 @@ impl FmtXml {
     /// Compact serialization (escapes `&`, `<`, `>`), for tests/diagnostics.
     pub(crate) fn to_compact(&self) -> String {
         match self {
-            FmtXml::Text(t) => t.replace('&', "&amp;").replace('<', "&lt;").replace('>', "&gt;"),
+            FmtXml::Text(t) => t
+                .replace('&', "&amp;")
+                .replace('<', "&lt;")
+                .replace('>', "&gt;"),
             FmtXml::El(n, a, c) => {
                 let attrs: String = a.iter().map(|(k, v)| format!(" {k}=\"{v}\"")).collect();
                 if c.is_empty() {
                     format!("<{n}{attrs}/>")
                 } else {
-                    format!("<{n}{attrs}>{}</{n}>", c.iter().map(FmtXml::to_compact).collect::<String>())
+                    format!(
+                        "<{n}{attrs}>{}</{n}>",
+                        c.iter().map(FmtXml::to_compact).collect::<String>()
+                    )
                 }
             }
         }
@@ -115,13 +121,22 @@ fn mathml_notation(n: &FormattedNotation) -> FmtXml {
         vec![
             leaf("mn", &n.coefficient.to_string()),
             leaf("mo", &n.times_symbol),
-            el("msup", vec![leaf("mn", "10"), leaf("mn", &n.formatted_exponent())]),
+            el(
+                "msup",
+                vec![leaf("mn", "10"), leaf("mn", &n.formatted_exponent())],
+            ),
         ],
     )
 }
 
 fn mathml_semantic_base(n: &FormattedNumber) -> FmtXml {
-    let sub = el("msub", vec![leaf("mn", &n.digits_string()), leaf("mn", &n.base_notation.base.to_string())]);
+    let sub = el(
+        "msub",
+        vec![
+            leaf("mn", &n.digits_string()),
+            leaf("mn", &n.base_notation.base.to_string()),
+        ],
+    );
     match n.sign_text() {
         None => sub,
         Some(sign) => el("mrow", vec![leaf("mo", sign), sub]),
@@ -138,7 +153,10 @@ fn ctrl_pr() -> FmtXml {
             vec![
                 FmtXml::El(
                     "w:rFonts".into(),
-                    vec![("w:ascii".into(), "Cambria Math".into()), ("w:hAnsi".into(), "Cambria Math".into())],
+                    vec![
+                        ("w:ascii".into(), "Cambria Math".into()),
+                        ("w:hAnsi".into(), "Cambria Math".into()),
+                    ],
                     vec![],
                 ),
                 el("w:i", vec![]),
@@ -160,7 +178,11 @@ fn omml(result: &Formatted) -> FmtXml {
                 el("m:sSupPr", vec![ctrl_pr()]),
                 el(
                     "m:e",
-                    vec![run(&n.coefficient.to_string()), run(&format!(" {} ", n.times_symbol)), run("10")],
+                    vec![
+                        run(&n.coefficient.to_string()),
+                        run(&format!(" {} ", n.times_symbol)),
+                        run("10"),
+                    ],
                 ),
                 el("m:sup", vec![run(&n.formatted_exponent())]),
             ],
@@ -169,7 +191,14 @@ fn omml(result: &Formatted) -> FmtXml {
             "m:sSub",
             vec![
                 el("m:sSubPr", vec![ctrl_pr()]),
-                el("m:e", vec![run(&format!("{}{}", n.sign_text().unwrap_or(""), n.digits_string()))]),
+                el(
+                    "m:e",
+                    vec![run(&format!(
+                        "{}{}",
+                        n.sign_text().unwrap_or(""),
+                        n.digits_string()
+                    ))],
+                ),
                 el("m:sub", vec![run(&n.base_notation.base.to_string())]),
             ],
         ),

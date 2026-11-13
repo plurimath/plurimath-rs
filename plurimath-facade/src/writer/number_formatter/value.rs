@@ -18,7 +18,10 @@ pub(crate) enum RubyValue {
     Str(String),
     Sym(String),
     /// Any other Ruby object (Hash, Array, ...): class name and `inspect`.
-    Other { class: String, inspect: String },
+    Other {
+        class: String,
+        inspect: String,
+    },
 }
 
 impl RubyValue {
@@ -195,7 +198,11 @@ pub(crate) fn kernel_integer_base10(text: &str) -> Result<Option<i64>, ()> {
         }
     }
     let magnitude: Option<i128> = digits.trim_start_matches('0').parse::<i128>().ok().or(
-        if digits.trim_start_matches('0').is_empty() { Some(0) } else { None },
+        if digits.trim_start_matches('0').is_empty() {
+            Some(0)
+        } else {
+            None
+        },
     );
     Ok(magnitude
         .map(|m| if neg { -m } else { m })
@@ -210,7 +217,11 @@ pub(crate) fn string_to_i_lenient(text: &str) -> Option<i64> {
     if trimmed.len() > 18 {
         return None;
     }
-    let v: i64 = if trimmed.is_empty() { 0 } else { trimmed.parse().ok()? };
+    let v: i64 = if trimmed.is_empty() {
+        0
+    } else {
+        trimmed.parse().ok()?
+    };
     Some(if neg { -v } else { v })
 }
 
@@ -233,7 +244,10 @@ pub(crate) fn string_to_i_digits(text: &str, base: u32) -> (bool, Vec<u32>, u32)
     }
     let mut base = base;
     if base == 0 {
-        base = match (chars.get(i), chars.get(i + 1).map(|c| c.to_ascii_lowercase())) {
+        base = match (
+            chars.get(i),
+            chars.get(i + 1).map(|c| c.to_ascii_lowercase()),
+        ) {
             (Some('0'), Some('x')) => 16,
             (Some('0'), Some('b')) => 2,
             (Some('0'), Some('o')) => 8,

@@ -7,7 +7,15 @@ use super::{FormatterError, MAX_EXPANSION};
 
 fn capitalize_hex_digits(base: u32, hex: HexCapital, s: &str) -> String {
     if base == 16 && hex == HexCapital::NumbersOnly {
-        s.chars().map(|c| if ('a'..='f').contains(&c) { c.to_ascii_uppercase() } else { c }).collect()
+        s.chars()
+            .map(|c| {
+                if ('a'..='f').contains(&c) {
+                    c.to_ascii_uppercase()
+                } else {
+                    c
+                }
+            })
+            .collect()
     } else {
         s.to_string()
     }
@@ -15,7 +23,9 @@ fn capitalize_hex_digits(base: u32, hex: HexCapital, s: &str) -> String {
 
 fn expansion(n: i64) -> Result<usize, FormatterError> {
     if n as u64 > MAX_EXPANSION as u64 {
-        return Err(FormatterError::ResourceLimit { what: "digit expansion" });
+        return Err(FormatterError::ResourceLimit {
+            what: "digit expansion",
+        });
     }
     Ok(n.max(0) as usize)
 }
@@ -121,7 +131,11 @@ impl FractionFormat {
         })
     }
 
-    pub(crate) fn apply_parts(&mut self, parts: &Parts, precision: i64) -> Result<Parts, FormatterError> {
+    pub(crate) fn apply_parts(
+        &mut self,
+        parts: &Parts,
+        precision: i64,
+    ) -> Result<Parts, FormatterError> {
         if precision <= 0 {
             return Ok(parts.with_digits(None, Some("")));
         }
@@ -155,7 +169,11 @@ impl FractionFormat {
         if chars.is_empty() {
             return String::new();
         }
-        chars.chunks(length.max(1)).map(|c| c.iter().collect::<String>()).collect::<Vec<_>>().join(&self.separator)
+        chars
+            .chunks(length.max(1))
+            .map(|c| c.iter().collect::<String>())
+            .collect::<Vec<_>>()
+            .join(&self.separator)
     }
 
     fn digit_count_format(&mut self, fraction: &str) -> Result<String, FormatterError> {
@@ -170,7 +188,11 @@ impl FractionFormat {
             }
             Ok(self.round_base_string(fraction))
         } else if int_length < self.digit_count {
-            Ok(format!("{}{}", fraction, "0".repeat(expansion(self.digit_count - int_length)?)))
+            Ok(format!(
+                "{}{}",
+                fraction,
+                "0".repeat(expansion(self.digit_count - int_length)?)
+            ))
         } else {
             Ok(fraction.to_string())
         }
@@ -219,7 +241,10 @@ const DOT: &str = ".";
 
 impl Significant {
     pub(crate) fn new(options: &FormatOptions, base: u32) -> Result<Self, FormatterError> {
-        Ok(Significant { seq: DigitSequence::new(base), significant: options.significant()? })
+        Ok(Significant {
+            seq: DigitSequence::new(base),
+            significant: options.significant()?,
+        })
     }
 
     pub(crate) fn is_active(&self) -> bool {
@@ -249,7 +274,8 @@ impl Significant {
     }
 
     fn skip(&self, chars: &[String]) -> bool {
-        self.seq.significant_digit_count(chars) == 0 || self.seq.digit_count(chars, None) == self.sig()
+        self.seq.significant_digit_count(chars) == 0
+            || self.seq.digit_count(chars, None) == self.sig()
     }
 
     fn signify(&self, chars: &[String]) -> Result<String, FormatterError> {
@@ -276,12 +302,20 @@ impl Significant {
 
     fn round_chars(&self, chars: &[String], result: &mut Vec<String>, frac_part: bool) {
         let len = result.len();
-        let index = if self.seq.is_digit(chars.get(len).map(String::as_str)) { len } else { len + 1 };
+        let index = if self.seq.is_digit(chars.get(len).map(String::as_str)) {
+            len
+        } else {
+            len + 1
+        };
         if !(index < chars.len() && self.seq.round_up(Some(&chars[index]))) {
             return;
         }
         let reversed: Vec<String> = result.iter().rev().cloned().collect();
-        let mut rounded = if frac_part { self.increment_fractional(reversed) } else { self.increment_integer(reversed) };
+        let mut rounded = if frac_part {
+            self.increment_fractional(reversed)
+        } else {
+            self.increment_integer(reversed)
+        };
         rounded.reverse();
         *result = rounded;
     }

@@ -62,7 +62,11 @@ pub(super) fn text(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<Str
                 };
                 Ok(format!("ⓐ({second} {first})"))
             } else {
-                Ok(format!("ⓘ({}{})", child(second, f, ctx)?, child(first, f, ctx)?))
+                Ok(format!(
+                    "ⓘ({}{})",
+                    child(second, f, ctx)?,
+                    child(first, f, ctx)?
+                ))
             }
         }
         _ => Err("unported ExplicitIntent text format".into()),

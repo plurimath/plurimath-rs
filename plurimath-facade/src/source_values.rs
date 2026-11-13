@@ -201,7 +201,8 @@ pub fn document_model(document: &Value) -> Result<Value, String> {
     for key in ["implementation", "source_commit", "runtime", "codec_sha256"] {
         if producer
             .get(key)
-            .and_then(Value::as_str).is_none_or(|v| v.is_empty())
+            .and_then(Value::as_str)
+            .is_none_or(|v| v.is_empty())
         {
             return Err(format!("source producer requires {key}"));
         }
@@ -252,13 +253,31 @@ pub fn writer_admission(model: &crate::model::Model) -> Result<(), String> {
         for (name, tag) in &metadata.fields {
             let value = decode(tag, Domain::Literal, Profile::RubyValuesV1)?;
             default_options &= if name == "options" {
-                matches!(&value, RubyValue::Nil) || matches!(&value, RubyValue::Hash(entries) if entries.is_empty())
-            } else { !self::sensitive(&value) };
+                matches!(&value, RubyValue::Nil)
+                    || matches!(&value, RubyValue::Hash(entries) if entries.is_empty())
+            } else {
+                !self::sensitive(&value)
+            };
         }
-        if default_options { return Ok(()); }
+        if default_options {
+            return Ok(());
+        }
     }
     if sensitive
-        && !["Number", "Nary", "Sum", "Prod", "Int", "Oint", "Mpadded", "Limits", "Underset", "Underover", "Frac"].contains(&model.kind())
+        && ![
+            "Number",
+            "Nary",
+            "Sum",
+            "Prod",
+            "Int",
+            "Oint",
+            "Mpadded",
+            "Limits",
+            "Underset",
+            "Underover",
+            "Frac",
+        ]
+        .contains(&model.kind())
     {
         return Err(format!(
             "unported provenance-aware source writer {}",

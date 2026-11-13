@@ -137,7 +137,13 @@ fn font_children(v: &Value, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     if m.kind() == "Number" {
         return Ok(vec![el(
             "m:t",
-            vec![xml_text(&if let Some(formatter)=ctx.formatter {formatter.text(&m,"plain").map_err(|error|super::formatter_context::scope_error(ctx,error))?} else {value_text(m.field("value"))?})],
+            vec![xml_text(&if let Some(formatter) = ctx.formatter {
+                formatter
+                    .text(&m, "plain")
+                    .map_err(|error| super::formatter_context::scope_error(ctx, error))?
+            } else {
+                value_text(m.field("value"))?
+            })],
         )]);
     }
     if m.class.starts_with("Math::Symbols::") {

@@ -1,5 +1,8 @@
 //! Source PowerBase procedures and the Mod/Sqrt OMML insertion boundaries.
-use super::{WriterContext, attrs, control_properties, el, render_text, render_xml, run, text, Model, Value, Xml};
+use super::{
+    attrs, control_properties, el, render_text, render_xml, run, text, Model, Value, WriterContext,
+    Xml,
+};
 use std::sync::OnceLock;
 fn truthy(value: &Value) -> bool {
     !value.is_null() && value != false
@@ -87,7 +90,11 @@ fn unicode_parens(value: &Value, ctx: &super::WriterContext) -> Result<String, S
         },
     )
 }
-pub(super) fn text_writer(node: &Model, format: &str, ctx: &super::WriterContext) -> Result<String, String> {
+pub(super) fn text_writer(
+    node: &Model,
+    format: &str,
+    ctx: &super::WriterContext,
+) -> Result<String, String> {
     if node.class != "Math::Function::PowerBase" {
         return Err("unported operator text class".into());
     }
@@ -174,7 +181,8 @@ pub(super) fn text_writer(node: &Model, format: &str, ctx: &super::WriterContext
             } else if mini(c) || is_prime {
                 child(c, format, ctx)?
             } else if c["class"] == "Math::Function::Power"
-                || (a["class"] == "Math::Function::Power" && prime(&a["fields"]["parameter_two"], ctx)?)
+                || (a["class"] == "Math::Function::Power"
+                    && prime(&a["fields"]["parameter_two"], ctx)?)
             {
                 format!("^{}", child(c, format, ctx)?)
             } else {
@@ -318,10 +326,5 @@ pub(super) fn xml_writer(
     format: &str,
     ctx: &WriterContext,
 ) -> Result<Vec<Xml>, String> {
-    xml_with_style(
-        node,
-        format,
-        ctx,
-        Some(ctx.display_style),
-    )
+    xml_with_style(node, format, ctx, Some(ctx.display_style))
 }

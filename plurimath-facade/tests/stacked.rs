@@ -58,10 +58,35 @@ fn source_stacked_and_glyph_writers() {
 
 #[test]
 fn current_ruby_xml_writer_regressions() {
- let source:Value=serde_json::from_str(include_str!("../fixtures/stacked-writers/xml-source-writer-regressions.json")).unwrap();
- for row in source["rows"].as_array().unwrap(){for(format,expected)in row["writers"].as_object().unwrap(){
- let actual=request(&json!({"op":"write","model":row["parsed_model"],"format":format,"options":{}}));
- if source["regression_targets"].as_array().unwrap().iter().any(|t|t["id"]==row["id"]&&t["format"]==format.as_str()) {assert_eq!(actual["ok"],true,"required fix {} {format}: {actual}",row["id"]);}
- if actual["ok"]==true {assert_eq!(&actual["output"],expected.get("output").unwrap_or(expected),"{} {format}",row["id"]);}
- }}
+    let source: Value = serde_json::from_str(include_str!(
+        "../fixtures/stacked-writers/xml-source-writer-regressions.json"
+    ))
+    .unwrap();
+    for row in source["rows"].as_array().unwrap() {
+        for (format, expected) in row["writers"].as_object().unwrap() {
+            let actual = request(
+                &json!({"op":"write","model":row["parsed_model"],"format":format,"options":{}}),
+            );
+            if source["regression_targets"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .any(|t| t["id"] == row["id"] && t["format"] == format.as_str())
+            {
+                assert_eq!(
+                    actual["ok"], true,
+                    "required fix {} {format}: {actual}",
+                    row["id"]
+                );
+            }
+            if actual["ok"] == true {
+                assert_eq!(
+                    &actual["output"],
+                    expected.get("output").unwrap_or(expected),
+                    "{} {format}",
+                    row["id"]
+                );
+            }
+        }
+    }
 }

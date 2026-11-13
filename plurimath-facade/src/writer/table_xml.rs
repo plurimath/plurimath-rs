@@ -45,11 +45,18 @@ fn set_attribute(attributes: &mut Vec<(String, String)>, name: &str, value: Stri
         attributes.push((name.into(), value));
     }
 }
-fn table_attributes(table: &Model, rows: &[Value], ctx: &WriterContext) -> Result<Vec<(String, String)>, String> {
-    let first = model(
-        rows.first()
-            .ok_or_else(||super::formatter_context::source_error(ctx,"NoMethodError","undefined method parameter_one for nil in Table#column_lines".into()))?,
-    )?;
+fn table_attributes(
+    table: &Model,
+    rows: &[Value],
+    ctx: &WriterContext,
+) -> Result<Vec<(String, String)>, String> {
+    let first = model(rows.first().ok_or_else(|| {
+        super::formatter_context::source_error(
+            ctx,
+            "NoMethodError",
+            "undefined method parameter_one for nil in Table#column_lines".into(),
+        )
+    })?)?;
     let mut columns = Vec::<String>::new();
     for (index, cell) in values(first.field("parameter_one"), "table row")?
         .iter()
@@ -104,9 +111,18 @@ fn parenthesis(value: &Value, format: &str) -> Result<String, String> {
             },
         );
     }
-    if format=="mathml" && delimiter.class=="Math::Symbols::Symbol" && matches!(delimiter.field("value").as_str(),Some("{:"|":}")){return Ok(String::new());}
+    if format == "mathml"
+        && delimiter.class == "Math::Symbols::Symbol"
+        && matches!(delimiter.field("value").as_str(), Some("{:" | ":}"))
+    {
+        return Ok(String::new());
+    }
     let glyph = super::symbol(&delimiter, format)?;
-    if format=="mathml"&&["&#x3016;","&#x3017;","&#x2524;","&#x251c;"].contains(&glyph.as_str()){return Ok(String::new())}
+    if format == "mathml"
+        && ["&#x3016;", "&#x3017;", "&#x2524;", "&#x251c;"].contains(&glyph.as_str())
+    {
+        return Ok(String::new());
+    }
     // Source OMML sets an attribute through its XML adapter, which decodes
     // numeric character references before serializing the attribute value.
     crate::xml_parse::source_entity_decode(&glyph)
@@ -179,10 +195,13 @@ fn omml_table(table: &Model, rows: &[Value], ctx: &WriterContext) -> Result<Vec<
     // Source && short-circuits: nil options refuse only when every row has
     // one cell. nil_option? also treats empty strings and "none" as absent.
     if single {
-        let options = table
-            .field("options")
-            .as_object()
-            .ok_or_else(||super::formatter_context::source_error(ctx,"NoMethodError","undefined method [] for nil Table options".into()))?;
+        let options = table.field("options").as_object().ok_or_else(|| {
+            super::formatter_context::source_error(
+                ctx,
+                "NoMethodError",
+                "undefined method [] for nil Table options".into(),
+            )
+        })?;
         single = ["frame", "columnlines", "rowlines"].iter().all(|key| {
             let value = options.get(*key).unwrap_or(&Value::Null);
             value.is_null() || value == "" || value == "none"
@@ -195,7 +214,13 @@ fn omml_table(table: &Model, rows: &[Value], ctx: &WriterContext) -> Result<Vec<
         content.push(el("m:eqArrPr", vec![control_properties()]));
     } else {
         name = "m:m";
-        let count = if let Some(first)=rows.first(){values(model(first)?.field("parameter_one"),"table row")?.len().to_string()}else{String::new()};
+        let count = if let Some(first) = rows.first() {
+            values(model(first)?.field("parameter_one"), "table row")?
+                .len()
+                .to_string()
+        } else {
+            String::new()
+        };
         let properties = el(
             "m:mcPr",
             vec![
@@ -329,19 +354,33 @@ pub(super) fn render(model: &Model, format: &str, ctx: &WriterContext) -> Result
         | "Math::Function::Table::Vmatrix"
         | "Math::Function::Table::Array" => table(model, format, ctx),
         "Math::Function::Table::Cases" | "Math::Function::Table::Eqarray" => {
-            let mut nodes=table(model,format,ctx)?;
-            if format=="mathml" && ctx.intent {
+            let mut nodes = table(model, format, ctx)?;
+            if format == "mathml" && ctx.intent {
                 for node in &mut nodes {
-                    if let Xml::El(_,attributes,children)=node {
-                        let mut found=false;
-                        for child in children.iter_mut(){if let Xml::El(name,attributes,_)=child{if name=="mtable"{set_attribute(attributes,"intent",":cases".into());found=true;break;}}}
-                        if model.kind()=="Cases"&&!found{return Err(super::formatter_context::source_error(ctx,"NoMethodError","undefined method '[]=' for nil".into()));}
-                        set_attribute(attributes,"intent",":equations".into());
+                    if let Xml::El(_, attributes, children) = node {
+                        let mut found = false;
+                        for child in children.iter_mut() {
+                            if let Xml::El(name, attributes, _) = child {
+                                if name == "mtable" {
+                                    set_attribute(attributes, "intent", ":cases".into());
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if model.kind() == "Cases" && !found {
+                            return Err(super::formatter_context::source_error(
+                                ctx,
+                                "NoMethodError",
+                                "undefined method '[]=' for nil".into(),
+                            ));
+                        }
+                        set_attribute(attributes, "intent", ":equations".into());
                     }
                 }
             }
             Ok(nodes)
-        },
+        }
         "Math::Function::Tr" => row(model, format, ctx),
         "Math::Function::Td" => cell(model, format, ctx),
         _ => Err(format!("unported source table XML class {}", model.class)),
@@ -350,19 +389,43 @@ pub(super) fn render(model: &Model, format: &str, ctx: &WriterContext) -> Result
 
 // Td has a source-specific line-break method: its continuations become a
 // nested table inside the same cell, never a Core Formula replacement.
-pub(super) fn td_line_breaking(node:&mut Value)->Result<(),String>{
- let parameter=node["fields"]["parameter_one"].clone();
- let input=if parameter.is_null(){vec![]}else if let Some(values)=parameter.as_array(){values.clone()}else{vec![parameter]};
- let mut chunks=Vec::<Vec<Value>>::new();let mut current=Vec::new();
- for value in input {let line=value["class"]=="Math::Function::Linebreak";current.push(value);if line {chunks.push(std::mem::take(&mut current));}}
- if !current.is_empty(){chunks.push(current);}
+pub(super) fn td_line_breaking(node: &mut Value) -> Result<(), String> {
+    let parameter = node["fields"]["parameter_one"].clone();
+    let input = if parameter.is_null() {
+        vec![]
+    } else if let Some(values) = parameter.as_array() {
+        values.clone()
+    } else {
+        vec![parameter]
+    };
+    let mut chunks = Vec::<Vec<Value>>::new();
+    let mut current = Vec::new();
+    for value in input {
+        let line = value["class"] == "Math::Function::Linebreak";
+        current.push(value);
+        if line {
+            chunks.push(std::mem::take(&mut current));
+        }
+    }
+    if !current.is_empty() {
+        chunks.push(current);
+    }
 
- if chunks.len()<=1{return Ok(());}
- let marker=chunks[0].pop().ok_or("source_render_error: missing table break marker")?;
- let value=&marker["fields"]["parameter_one"];
- if !value.is_null()&&value!=false {
-  if marker["fields"]["attributes"]["linebreakstyle"]=="after"{chunks[0].push(value.clone());}else{chunks[1].insert(0,value.clone());}
- }
- let rows=chunks.into_iter().map(|values|serde_json::json!({"class":"Math::Function::Tr","fields":{"parameter_one":[{"class":"Math::Function::Td","fields":{"parameter_one":values,"parameter_two":null}}]}})).collect::<Vec<_>>();
- node["fields"]["parameter_one"]=serde_json::json!([{"class":"Math::Function::Table","fields":{"value":rows,"open_paren":null,"close_paren":null,"options":{}}}]);Ok(())
+    if chunks.len() <= 1 {
+        return Ok(());
+    }
+    let marker = chunks[0]
+        .pop()
+        .ok_or("source_render_error: missing table break marker")?;
+    let value = &marker["fields"]["parameter_one"];
+    if !value.is_null() && value != false {
+        if marker["fields"]["attributes"]["linebreakstyle"] == "after" {
+            chunks[0].push(value.clone());
+        } else {
+            chunks[1].insert(0, value.clone());
+        }
+    }
+    let rows=chunks.into_iter().map(|values|serde_json::json!({"class":"Math::Function::Tr","fields":{"parameter_one":[{"class":"Math::Function::Td","fields":{"parameter_one":values,"parameter_two":null}}]}})).collect::<Vec<_>>();
+    node["fields"]["parameter_one"] = serde_json::json!([{"class":"Math::Function::Table","fields":{"value":rows,"open_paren":null,"close_paren":null,"options":{}}}]);
+    Ok(())
 }

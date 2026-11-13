@@ -1,5 +1,5 @@
 //! Source Multiscript procedures, including inherited HTML and prescript quirks.
-use super::{WriterContext, attrs, el, render_text, render_xml, run, Model, Value, Xml};
+use super::{attrs, el, render_text, render_xml, run, Model, Value, WriterContext, Xml};
 
 fn truthy(value: &Value) -> bool {
     !value.is_null() && value != false
@@ -7,7 +7,11 @@ fn truthy(value: &Value) -> bool {
 fn node(value: &Value) -> Result<Model, String> {
     Model::from_value(value).map_err(|error| source_error(&error))
 }
-pub(super) fn child(value: &Value, format: &str, ctx: &super::WriterContext) -> Result<String, String> {
+pub(super) fn child(
+    value: &Value,
+    format: &str,
+    ctx: &super::WriterContext,
+) -> Result<String, String> {
     let m = node(value)?;
     // None is the explicit source Multiscript placeholder. Its four
     // textual methods return nil, which the source joins as empty text.
@@ -62,7 +66,12 @@ fn empty(value: &Value) -> Result<bool, String> {
         _ => Err(source_error("field has no source empty? method")),
     }
 }
-fn mapped(value: &Value, format: &str, nil_allowed: bool, ctx: &super::WriterContext) -> Result<String, String> {
+fn mapped(
+    value: &Value,
+    format: &str,
+    nil_allowed: bool,
+    ctx: &super::WriterContext,
+) -> Result<String, String> {
     if nil_allowed && value.is_null() {
         return Ok(String::new());
     }
@@ -205,11 +214,7 @@ pub(super) fn text(m: &Model, format: &str, ctx: &super::WriterContext) -> Resul
         _ => Err(format!("unported Multiscript text format {format}")),
     }
 }
-fn xml_slot(
-    value: &Value,
-    format: &str,
-    ctx: &WriterContext,
-) -> Result<Vec<Xml>, String> {
+fn xml_slot(value: &Value, format: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     if format == "omml" && !truthy(value) {
         return Ok(vec![run("&#8203;")]);
     }
@@ -272,11 +277,7 @@ fn prescripts(b: &Value, c: &Value) -> Result<Vec<Value>, String> {
     }
     Ok(joined.into_iter().cloned().collect())
 }
-pub(super) fn xml(
-    m: &Model,
-    format: &str,
-    ctx: &WriterContext,
-) -> Result<Vec<Xml>, String> {
+pub(super) fn xml(m: &Model, format: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     if m.class == "Math::Function::Linebreak" {
         return linebreak_xml(m, format, ctx);
     }
@@ -365,11 +366,7 @@ fn linebreak_text(m: &Model, format: &str, ctx: &super::WriterContext) -> Result
         format!("{token}{body}")
     })
 }
-fn linebreak_xml(
-    m: &Model,
-    format: &str,
-    ctx: &WriterContext,
-) -> Result<Vec<Xml>, String> {
+fn linebreak_xml(m: &Model, format: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     let value = m.field("parameter_one");
     if format == "omml" {
         return if value.is_null() {

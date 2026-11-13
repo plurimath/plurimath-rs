@@ -30,7 +30,13 @@ pub(super) fn handles(m: &Model) -> bool {
             | "Math::Function::Rule"
     )
 }
-fn array_text(v: &Value, f: &str, compact: bool, separator: &str, ctx: &super::WriterContext) -> Result<String, String> {
+fn array_text(
+    v: &Value,
+    f: &str,
+    compact: bool,
+    separator: &str,
+    ctx: &super::WriterContext,
+) -> Result<String, String> {
     let values = v
         .as_array()
         .ok_or("source_render_error: layout field has no map method")?;
@@ -59,7 +65,10 @@ fn unary_html(m: &Model, ctx: &super::WriterContext) -> Result<String, String> {
     let name = m.kind().to_ascii_lowercase();
     let mut result = format!("<i>{name}</i>");
     if v.is_array() {
-        result.push_str(&format!("<i>{}</i>", array_text(v, "html", false, "", ctx)?));
+        result.push_str(&format!(
+            "<i>{}</i>",
+            array_text(v, "html", false, "", ctx)?
+        ));
     } else if truthy(v) {
         result.push_str(&format!("<i>{}</i>", child(v, "html", ctx)?));
     }
@@ -84,17 +93,22 @@ fn bind_padded(value: RubyValue, profile: Profile) -> Result<RubyValue, String> 
 }
 fn source_options(m: &Model) -> Result<RubyValue, String> {
     bind_padded(
-        source::field(m,"options", Domain::NamedOptions)?,
+        source::field(m, "options", Domain::NamedOptions)?,
         m.profile(),
     )
 }
-pub(super) fn phantom_prefix(m:&Model)->Result<String,String>{
- let options=source_options(m)?;
- for(name,value)in data()["phantom_options"].as_object().unwrap(){
-  let declaration=bind_padded(source::hash(value,Domain::NamedOptions,Profile::Canonical)?,Profile::Canonical)?;
-  if source::equal(&declaration,&options){return Ok(data()["unary_symbols"][name].as_str().unwrap_or("").into());}
- }
- Ok(String::new())
+pub(super) fn phantom_prefix(m: &Model) -> Result<String, String> {
+    let options = source_options(m)?;
+    for (name, value) in data()["phantom_options"].as_object().unwrap() {
+        let declaration = bind_padded(
+            source::hash(value, Domain::NamedOptions, Profile::Canonical)?,
+            Profile::Canonical,
+        )?;
+        if source::equal(&declaration, &options) {
+            return Ok(data()["unary_symbols"][name].as_str().unwrap_or("").into());
+        }
+    }
+    Ok(String::new())
 }
 fn padded_unicode(m: &Model, ctx: &super::WriterContext) -> Result<String, String> {
     let v = m.field("parameter_one");
@@ -142,11 +156,19 @@ fn padded_unicode(m: &Model, ctx: &super::WriterContext) -> Result<String, Strin
         "⟡".into()
     })
 }
-pub(super) fn text_writer(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
+pub(super) fn text_writer(
+    m: &Model,
+    f: &str,
+    ctx: &super::WriterContext,
+) -> Result<String, String> {
     let v = m.field("parameter_one");
     if f == "html" {
         if matches!(m.kind(), "Rule" | "Msgroup") {
-            return Err(super::formatter_context::source_error(ctx,"ArgumentError","unknown keyword: :options".into()));
+            return Err(super::formatter_context::source_error(
+                ctx,
+                "ArgumentError",
+                "unknown keyword: :options".into(),
+            ));
         }
         return unary_html(m, ctx);
     }

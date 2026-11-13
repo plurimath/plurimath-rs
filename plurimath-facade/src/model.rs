@@ -73,7 +73,9 @@ pub fn node(class: &str, fields: Value) -> Value {
     serde_json::json!({"class":class,"fields":fields})
 }
 pub fn formula(value: Vec<Value>) -> Value {
-    let wrapper = !value.first().is_some_and(|v|v["class"]=="Math::Function::Left");
+    let wrapper = !value
+        .first()
+        .is_some_and(|v| v["class"] == "Math::Function::Left");
     node(
         "Math::Formula",
         serde_json::json!({"displaystyle":true,"left_right_wrapper":wrapper,"value":value}),

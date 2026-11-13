@@ -1,10 +1,7 @@
 //! Default source table/row/cell text writers. Options requiring a new profile refuse.
 use super::{child, text_content, Model, Value};
 fn rows(m: &Model) -> Result<Vec<Vec<Model>>, String> {
-    if m.field("options")
-        .as_object()
-        .is_none_or(|o| !o.is_empty())
-    {
+    if m.field("options").as_object().is_none_or(|o| !o.is_empty()) {
         return Err("unported source table options".into());
     }
     let values = m
@@ -59,11 +56,9 @@ fn reject_null_formula_values(value: &Value) -> Result<(), String> {
         && value["fields"]["value"]
             .as_array()
             .is_some_and(|values| values.iter().any(Value::is_null))
-        {
-            return Err(
-                "unported source table Formula with nil operand (source writer raises)".into(),
-            );
-        }
+    {
+        return Err("unported source table Formula with nil operand (source writer raises)".into());
+    }
     match value {
         Value::Array(values) => {
             for value in values {
@@ -102,7 +97,11 @@ pub(super) fn render(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<S
     let rs = rows(m)?;
     let cells = rs
         .iter()
-        .map(|r| r.iter().map(|c| cell(c, f, ctx)).collect::<Result<Vec<_>, _>>())
+        .map(|r| {
+            r.iter()
+                .map(|c| cell(c, f, ctx))
+                .collect::<Result<Vec<_>, _>>()
+        })
         .collect::<Result<Vec<_>, _>>()?;
     let open = m.field("open_paren");
     let close = m.field("close_paren");
@@ -131,7 +130,11 @@ pub(super) fn render(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<S
             if open.is_null() || close.is_null() {
                 return Err("unported missing table delimiters".into());
             }
-            Ok(format!("{}{body}{}", child(open, f, ctx)?, child(close, f, ctx)?))
+            Ok(format!(
+                "{}{body}{}",
+                child(open, f, ctx)?,
+                child(close, f, ctx)?
+            ))
         }
         "latex" => {
             let env = if m.kind() == "Array" {

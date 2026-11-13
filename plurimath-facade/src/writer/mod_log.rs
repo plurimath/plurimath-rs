@@ -62,7 +62,11 @@ pub(super) fn handles(m: &Model) -> bool {
         "Math::Function::Mod" | "Math::Function::Log"
     )
 }
-pub(super) fn text_writer(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
+pub(super) fn text_writer(
+    m: &Model,
+    f: &str,
+    ctx: &super::WriterContext,
+) -> Result<String, String> {
     let a = m.field("parameter_one");
     let b = m.field("parameter_two");
     if m.class == "Math::Function::Mod" {

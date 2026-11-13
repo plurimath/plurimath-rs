@@ -34,7 +34,11 @@ impl BaseNotation {
         let base = options.base();
         let b = match base {
             RubyValue::Int(b) if default_prefix(b).is_some() => b,
-            other => return Err(FormatterError::UnsupportedBase { base: other.inspect() }),
+            other => {
+                return Err(FormatterError::UnsupportedBase {
+                    base: other.inspect(),
+                })
+            }
         };
         let prefix = if options.has_base_prefix() {
             options.base_prefix()?
@@ -101,10 +105,22 @@ impl FormattedNumber {
         let digits = if self.fraction_part.is_empty() {
             self.integer_part.clone()
         } else {
-            format!("{}{}{}", self.integer_part, self.decimal_separator, self.fraction_part)
+            format!(
+                "{}{}{}",
+                self.integer_part, self.decimal_separator, self.fraction_part
+            )
         };
         if self.base_notation.upcase_hex() {
-            digits.chars().map(|c| if ('a'..='f').contains(&c) { c.to_ascii_uppercase() } else { c }).collect()
+            digits
+                .chars()
+                .map(|c| {
+                    if ('a'..='f').contains(&c) {
+                        c.to_ascii_uppercase()
+                    } else {
+                        c
+                    }
+                })
+                .collect()
         } else {
             digits
         }
@@ -160,8 +176,20 @@ impl std::fmt::Display for FormattedNotation {
     /// `FormattedNotation#to_s`.
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self.notation_style {
-            NotationStyle::E => write!(f, "{}{}{}", self.coefficient, self.exponent_separator, self.formatted_exponent()),
-            _ => write!(f, "{} {} 10^{}", self.coefficient, self.times_symbol, self.formatted_exponent()),
+            NotationStyle::E => write!(
+                f,
+                "{}{}{}",
+                self.coefficient,
+                self.exponent_separator,
+                self.formatted_exponent()
+            ),
+            _ => write!(
+                f,
+                "{} {} 10^{}",
+                self.coefficient,
+                self.times_symbol,
+                self.formatted_exponent()
+            ),
         }
     }
 }
@@ -220,10 +248,18 @@ impl<'a> NumberRenderer<'a> {
         self.format_parts(parts, precision)
     }
 
-    pub(crate) fn format_parts(&mut self, parts: Parts, precision: i64) -> Result<FormattedNumber, FormatterError> {
+    pub(crate) fn format_parts(
+        &mut self,
+        parts: Parts,
+        precision: i64,
+    ) -> Result<FormattedNumber, FormatterError> {
         let mut parts = parts;
         if let Some(p) = self.decimal_precision_for(precision) {
-            let truncated: String = parts.fraction_digits.chars().take(p.max(0) as usize).collect();
+            let truncated: String = parts
+                .fraction_digits
+                .chars()
+                .take(p.max(0) as usize)
+                .collect();
             parts = parts.with_digits(None, Some(&truncated));
         }
         let integer = self.integer_format.number_to_base(&parts.integer_digits);
@@ -233,8 +269,11 @@ impl<'a> NumberRenderer<'a> {
             parts = self.significant_format.apply_parts(&parts)?;
         }
         let integer_part = self.integer_format.format_groups(&parts.integer_digits)?;
-        let fraction_part =
-            if parts.is_fractional() { self.fraction_format.format_groups(&parts.fraction_digits) } else { String::new() };
+        let fraction_part = if parts.is_fractional() {
+            self.fraction_format.format_groups(&parts.fraction_digits)
+        } else {
+            String::new()
+        };
         Ok(FormattedNumber {
             sign: parts.sign,
             integer_part,
@@ -247,13 +286,24 @@ impl<'a> NumberRenderer<'a> {
 }
 
 /// `NotationRenderer#render`.
-pub(crate) fn render_notation(options: &FormatOptions, source: &Source) -> Result<FormattedNotation, FormatterError> {
+pub(crate) fn render_notation(
+    options: &FormatOptions,
+    source: &Source,
+) -> Result<FormattedNotation, FormatterError> {
     let precision = options.precision;
     let (style, coefficient, exponent) = match options.notation.as_deref() {
         Some("e") | Some("scientific") => {
             let (parts, exponent) = notation_parts(source);
-            let style = if options.notation.as_deref() == Some("e") { NotationStyle::E } else { NotationStyle::Scientific };
-            (style, NumberRenderer::new(options)?.format_parts(parts, precision)?, exponent)
+            let style = if options.notation.as_deref() == Some("e") {
+                NotationStyle::E
+            } else {
+                NotationStyle::Scientific
+            };
+            (
+                style,
+                NumberRenderer::new(options)?.format_parts(parts, precision)?,
+                exponent,
+            )
         }
         _ => {
             let (mut parts, mut exponent) = notation_parts(source);
@@ -261,7 +311,11 @@ pub(crate) fn render_notation(options: &FormatOptions, source: &Source) -> Resul
                 (parts, exponent) = engineering_coefficient_parts(parts, exponent);
             }
             let p = engineering_precision(options, source, &parts)?;
-            (NotationStyle::Engineering, NumberRenderer::new(options)?.format_parts(parts, p)?, exponent)
+            (
+                NotationStyle::Engineering,
+                NumberRenderer::new(options)?.format_parts(parts, p)?,
+                exponent,
+            )
         }
     };
     Ok(FormattedNotation {
@@ -280,12 +334,21 @@ fn notation_parts(source: &Source) -> (Parts, i64) {
     }
     let parts = source.to_parts(None);
     let (digits, exponent) = if parts.is_integer_zero() {
-        let index = parts.fraction_digits.find(|c: char| ('1'..='9').contains(&c)).unwrap_or(0);
-        (parts.fraction_digits[index..].to_string(), -(index as i64 + 1))
+        let index = parts
+            .fraction_digits
+            .find(|c: char| ('1'..='9').contains(&c))
+            .unwrap_or(0);
+        (
+            parts.fraction_digits[index..].to_string(),
+            -(index as i64 + 1),
+        )
     } else {
         let digits = format!("{}{}", parts.integer_digits, parts.fraction_digits);
         let index = digits.find(|c: char| ('1'..='9').contains(&c)).unwrap_or(0);
-        (digits[index..].to_string(), parts.integer_digits.len() as i64 - index as i64 - 1)
+        (
+            digits[index..].to_string(),
+            parts.integer_digits.len() as i64 - index as i64 - 1,
+        )
     };
     (Parts::new(parts.sign, &digits[..1], &digits[1..]), exponent)
 }
@@ -293,17 +356,27 @@ fn notation_parts(source: &Source) -> (Parts, i64) {
 fn engineering_coefficient_parts(coefficient: Parts, exponent: i64) -> (Parts, i64) {
     let index = exponent.rem_euclid(3);
     let new_exponent = exponent - index;
-    let digits = format!("{}{}", coefficient.integer_digits, coefficient.fraction_digits);
+    let digits = format!(
+        "{}{}",
+        coefficient.integer_digits, coefficient.fraction_digits
+    );
     let integer_length = (index + 1) as usize;
     let mut integer: String = digits.chars().take(integer_length).collect();
     while integer.len() < integer_length {
         integer.push('0');
     }
     let fraction: String = digits.chars().skip(integer_length).collect();
-    (Parts::new(coefficient.sign, &integer, &fraction), new_exponent)
+    (
+        Parts::new(coefficient.sign, &integer, &fraction),
+        new_exponent,
+    )
 }
 
-fn engineering_precision(options: &FormatOptions, source: &Source, coefficient: &Parts) -> Result<i64, FormatterError> {
+fn engineering_precision(
+    options: &FormatOptions,
+    source: &Source,
+    coefficient: &Parts,
+) -> Result<i64, FormatterError> {
     let precision = options.precision;
     if options.explicit_precision && precision > 0 {
         return Ok(precision);

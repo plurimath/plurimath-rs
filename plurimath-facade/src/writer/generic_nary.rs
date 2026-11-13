@@ -89,7 +89,11 @@ fn parens(v: &Value, ctx: &super::WriterContext) -> Result<String, String> {
         },
     )
 }
-pub(super) fn text_writer(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
+pub(super) fn text_writer(
+    m: &Model,
+    f: &str,
+    ctx: &super::WriterContext,
+) -> Result<String, String> {
     let a = m.field("parameter_one");
     let b = m.field("parameter_two");
     let c = m.field("parameter_three");
@@ -154,7 +158,8 @@ pub(super) fn text_writer(m: &Model, f: &str, ctx: &super::WriterContext) -> Res
             } else if mini(c)? || is_prime {
                 child(c, f, ctx)?
             } else if c["class"] == "Math::Function::Power"
-                || (a["class"] == "Math::Function::Power" && prime(&a["fields"]["parameter_two"], ctx)?)
+                || (a["class"] == "Math::Function::Power"
+                    && prime(&a["fields"]["parameter_two"], ctx)?)
             {
                 format!("^{}", child(c, f, ctx)?)
             } else {
@@ -199,6 +204,14 @@ fn type_string(v: &Value) -> Result<String, String> {
         Value::Number(n) => Ok(n.to_string()),
         Value::Array(a) if a.is_empty() => Ok("[]".into()),
         Value::Object(o) if o.is_empty() => Ok("{}".into()),
+        Value::Object(o) if o.contains_key("$source_hash") => {
+            let source = crate::source_values::decode(
+                &o["$source_hash"],
+                crate::source_values::Domain::Literal,
+                crate::source_values::Profile::RubyValuesV1,
+            )?;
+            crate::source_values::to_s(&source)
+        }
         _ => Err("unported compound generic Nary type.to_s value".into()),
     }
 }

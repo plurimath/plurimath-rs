@@ -206,3 +206,21 @@ fn quantity_float_overflow_preserves_the_source_refusal_class() {
         );
     }
 }
+
+#[test]
+fn source_point_difference_scale_transitions_match_exact_wires() {
+    let profile: Value = serde_json::from_str(include_str!(
+        "../fixtures/source-profile-unitsml-cdfbcc3.json"
+    ))
+    .unwrap();
+    let rows = profile["scale_transitions"].as_array().unwrap();
+    assert_eq!(rows.len(), 24);
+    for row in rows {
+        assert_eq!(
+            plurimath_numeric::evaluate_json(row["request_json"].as_str().unwrap()),
+            row["expected_wire"].as_str().unwrap(),
+            "{}",
+            row["id"]
+        );
+    }
+}

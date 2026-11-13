@@ -68,7 +68,11 @@ pub(super) fn handles(m: &Model) -> bool {
         "Math::Function::Sup" | "Math::Function::Root" | "Math::Function::Ms"
     )
 }
-pub(super) fn text_writer(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
+pub(super) fn text_writer(
+    m: &Model,
+    f: &str,
+    ctx: &super::WriterContext,
+) -> Result<String, String> {
     let a = m.field("parameter_one");
     let b = m.field("parameter_two");
     match m.kind() {
@@ -96,7 +100,11 @@ pub(super) fn text_writer(m: &Model, f: &str, ctx: &super::WriterContext) -> Res
                 }
                 Ok(out)
             }
-            "latex" => Ok(format!("\\sqrt[{}]{{{}}}", safe(a, f, ctx)?, safe(b, f, ctx)?)),
+            "latex" => Ok(format!(
+                "\\sqrt[{}]{{{}}}",
+                safe(a, f, ctx)?,
+                safe(b, f, ctx)?
+            )),
             "html" => {
                 let mut out = String::new();
                 for v in [a, b] {

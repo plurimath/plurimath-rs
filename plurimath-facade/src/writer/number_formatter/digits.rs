@@ -2,8 +2,9 @@
 //! `Formatter::Numbers::DigitSequence` helper.
 
 /// `Base::HEX_ALPHANUMERIC`.
-pub(crate) const HEX_ALPHANUMERIC: [char; 16] =
-    ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+pub(crate) const HEX_ALPHANUMERIC: [char; 16] = [
+    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f',
+];
 
 /// `Base::DIGIT_VALUE[s]` — only single lowercase hex characters are digits.
 pub(crate) fn digit_value(s: &str) -> Option<u32> {
@@ -23,7 +24,11 @@ const LIMB: u64 = 1_000_000_000;
 
 /// Big-endian base-1e9 limbs of a decimal digit string (non-digits ignored).
 fn decimal_to_limbs(dec: &str) -> Vec<u64> {
-    let digits: Vec<u8> = dec.bytes().filter(u8::is_ascii_digit).map(|b| b - b'0').collect();
+    let digits: Vec<u8> = dec
+        .bytes()
+        .filter(u8::is_ascii_digit)
+        .map(|b| b - b'0')
+        .collect();
     let start = digits.iter().position(|d| *d != 0).unwrap_or(digits.len());
     let digits = &digits[start..];
     let mut limbs = Vec::with_capacity(digits.len() / 9 + 1);
@@ -34,7 +39,11 @@ fn decimal_to_limbs(dec: &str) -> Vec<u64> {
         i = head;
     }
     while i < digits.len() {
-        limbs.push(digits[i..i + 9].iter().fold(0u64, |a, d| a * 10 + *d as u64));
+        limbs.push(
+            digits[i..i + 9]
+                .iter()
+                .fold(0u64, |a, d| a * 10 + *d as u64),
+        );
         i += 9;
     }
     limbs
@@ -118,7 +127,11 @@ pub(crate) fn base_values_to_decimal(values: &[u32], base: u32) -> String {
 /// `Fraction#change_base`: exact `Rational(fraction.to_i, 10**len)` times
 /// `base`, emitting `precision` target-base digits by truncation.
 pub(crate) fn fraction_change_base(fraction: &str, base: u32, precision: usize) -> String {
-    let mut digits: Vec<u32> = fraction.bytes().filter(u8::is_ascii_digit).map(|b| (b - b'0') as u32).collect();
+    let mut digits: Vec<u32> = fraction
+        .bytes()
+        .filter(u8::is_ascii_digit)
+        .map(|b| (b - b'0') as u32)
+        .collect();
     let mut out = String::with_capacity(precision);
     for _ in 0..precision {
         let mut carry = 0u32;
@@ -190,11 +203,17 @@ impl DigitSequence {
         self.base / 2
     }
     pub(crate) fn round_up(&self, s: Option<&str>) -> bool {
-        s.and_then(digit_value).is_some_and(|v| v >= self.threshold())
+        s.and_then(digit_value)
+            .is_some_and(|v| v >= self.threshold())
     }
     /// `increment_reversed(digits, carry:, overflow:)` (skip is unused by
     /// every source caller and therefore omitted).
-    pub(crate) fn increment_reversed(&self, digits: &[String], carry: u32, overflow: &str) -> (Vec<String>, u32) {
+    pub(crate) fn increment_reversed(
+        &self,
+        digits: &[String],
+        carry: u32,
+        overflow: &str,
+    ) -> (Vec<String>, u32) {
         let mut digits = digits.to_vec();
         if carry == 0 {
             return (digits, carry);

@@ -1,32 +1,32 @@
 //! Procedural source-writer port; unported nodes/options fail, never return approximations.
-mod uncertainty_writers;
-mod layout_nodes;
-mod generic_nary;
-mod final_options;
-mod mod_log;
-mod portable_functions;
-mod intent_nodes;
-mod leaf_nodes;
-mod operators;
-mod numbers;
-mod number_formatter;
-mod formatter_context;
-mod multiscripts;
-mod stacked;
 mod accents;
-mod scripts;
-mod styles;
-mod font_styles;
 mod fences;
+mod final_options;
+mod font_styles;
+mod formatter_context;
+mod generic_nary;
+mod intent_nodes;
+mod layout_nodes;
+mod leaf_nodes;
 mod line_break_overrides;
+mod mod_log;
+mod multiscripts;
 mod nary;
+mod number_formatter;
+mod numbers;
+mod operators;
+mod portable_functions;
+mod scripts;
+mod stacked;
+mod styles;
 mod symbol_content;
+mod table_text;
 mod table_xml;
 mod tables;
-mod table_text;
-mod underline;
 mod templates;
 mod text_content;
+mod uncertainty_writers;
+mod underline;
 use crate::model::Model;
 use serde_json::Value;
 #[derive(Clone, Debug)]
@@ -47,9 +47,22 @@ struct WriterContext<'a> {
     intent: bool,
 }
 impl<'a> WriterContext<'a> {
-    fn with_table(self)->Self {Self {table:true,..self}}
-    fn with_formula<'b>(&'b self, model:&'b Model)->WriterContext<'b> {
-        WriterContext {table:self.table,formatter:self.formatter,formula_input:Some(model.field("input_string")),source_format:self.source_format,display_style:self.display_style,unary_function_spacing:self.unary_function_spacing,intent:self.intent}
+    fn with_table(self) -> Self {
+        Self {
+            table: true,
+            ..self
+        }
+    }
+    fn with_formula<'b>(&'b self, model: &'b Model) -> WriterContext<'b> {
+        WriterContext {
+            table: self.table,
+            formatter: self.formatter,
+            formula_input: Some(model.field("input_string")),
+            source_format: self.source_format,
+            display_style: self.display_style,
+            unary_function_spacing: self.unary_function_spacing,
+            intent: self.intent,
+        }
     }
     fn with_display_style(self, display_style: bool) -> Self {
         Self {
@@ -59,7 +72,17 @@ impl<'a> WriterContext<'a> {
     }
 }
 impl Default for WriterContext<'_> {
- fn default()->Self {Self {display_style:true,unary_function_spacing:true,intent:false,formatter:None,table:false,formula_input:None,source_format:"asciimath"}}
+    fn default() -> Self {
+        Self {
+            display_style: true,
+            unary_function_spacing: true,
+            intent: false,
+            formatter: None,
+            table: false,
+            formula_input: None,
+            source_format: "asciimath",
+        }
+    }
 }
 fn el(n: &str, c: Vec<Xml>) -> Xml {
     Xml::El(n.into(), vec![], c)
@@ -134,7 +157,9 @@ fn symbol(m: &Model, f: &str) -> Result<String, String> {
             });
         }
         if f == "unicodemath" {
-            if let Some(value)=fences::symbol_unicode(&m.value())? {return Ok(value);}
+            if let Some(value) = fences::symbol_unicode(&m.value())? {
+                return Ok(value);
+            }
         }
         return Ok(value);
     }
@@ -207,12 +232,29 @@ fn fence_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, String>
         .collect::<Result<Vec<_>, _>>()?
         .join(if f == "html" { "" } else { " " });
     Ok(match f {
-        "latex" => format!("{} {body} {}", if ["{:", ":}"].contains(&a.as_str()) { a.replace(':', "") } else { a }, if ["{:", ":}"].contains(&b.as_str()) { b.replace(':', "") } else { b }),
+        "latex" => format!(
+            "{} {body} {}",
+            if ["{:", ":}"].contains(&a.as_str()) {
+                a.replace(':', "")
+            } else {
+                a
+            },
+            if ["{:", ":}"].contains(&b.as_str()) {
+                b.replace(':', "")
+            } else {
+                b
+            }
+        ),
         "html" => format!("<i>{a}</i>{body}<i>{b}</i>"),
-        "unicodemath" if m.field("parameter_one")["class"] == "Math::Symbols::Paren::Vert"
-            || (m.field("parameter_one")["class"] == "Math::Symbols::Symbol"
-                && m.field("parameter_one")["fields"]["value"]
-                    .as_str().is_some_and(|s| s.contains('|'))) => format!("{a}({body}){b}"),
+        "unicodemath"
+            if m.field("parameter_one")["class"] == "Math::Symbols::Paren::Vert"
+                || (m.field("parameter_one")["class"] == "Math::Symbols::Symbol"
+                    && m.field("parameter_one")["fields"]["value"]
+                        .as_str()
+                        .is_some_and(|s| s.contains('|'))) =>
+        {
+            format!("{a}({body}){b}")
+        }
         _ => format!("{a}{body}{b}"),
     })
 }
@@ -501,7 +543,9 @@ fn special_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, Stri
         vec![el("m:borderBoxPr", props), el("m:e", body)],
     )])
 }
-fn prime_symbol(v: &Value, _ctx: &WriterContext) -> Result<bool, String> { final_options::source_prime(v) }
+fn prime_symbol(v: &Value, _ctx: &WriterContext) -> Result<bool, String> {
+    final_options::source_prime(v)
+}
 
 fn power_accent(v: &Value, ctx: &WriterContext) -> Result<bool, String> {
     let Ok(m) = Model::from_value(v) else {
@@ -770,26 +814,65 @@ fn normal_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, Strin
     Ok(c)
 }
 fn render_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, String> {
- if m.class=="Math::Function::Uncertainty" {return uncertainty_writers::text_writer(m,f,ctx);}
+    if m.class == "Math::Function::Uncertainty" {
+        return uncertainty_writers::text_writer(m, f, ctx);
+    }
     crate::source_values::writer_admission(m)?;
     let scoped;
-    let ctx=if m.class=="Math::Formula"||m.class.starts_with("Math::Formula::") {scoped=ctx.with_formula(m);&scoped}else{ctx};
-    if ["Math::Function::Intent","Math::Function::Arg"].contains(&m.class.as_str()) { return intent_nodes::text(m,f,ctx); }
-    if leaf_nodes::handles(m) {return leaf_nodes::text_writer(m,f,ctx);}
-    if underline::handles(m) {return underline::text_writer(m,f,ctx)}
-    if table_text::handles(m) {return table_text::render(m,f,ctx)}
-    if m.class=="Math::Symbols::Comma"&&f=="asciimath"&&ctx.table {return Ok("\",\"".into())}
-    if portable_functions::handles(m) {return portable_functions::text_writer(m,f,ctx);}
-    if mod_log::handles(m) {return mod_log::text_writer(m,f,ctx);}
-    if m.class=="Math::Function::None" {return multiscripts::child(&m.value(),f,ctx);}
-    if final_options::handles(m) {return final_options::text_writer(m,f,ctx);}
-    if layout_nodes::handles(m) { return layout_nodes::text_writer(m, f, ctx); }
-    if fences::handles(m) { return fences::text(m, f, ctx); }
-    if m.class == "Math::Function::Nary" { return generic_nary::text_writer(m, f, ctx); }
-    if numbers::handles(m) { return numbers::text(m, f, ctx); }
-    if ["Math::Function::Multiscript", "Math::Function::Linebreak"].contains(&m.class.as_str()) { return multiscripts::text(m, f, ctx); }
-    if stacked::handles_text(m) { return stacked::text(m, f, ctx); }
-    if m.class == "Math::Function::PowerBase" { return operators::text_writer(m,f, ctx); }
+    let ctx = if m.class == "Math::Formula" || m.class.starts_with("Math::Formula::") {
+        scoped = ctx.with_formula(m);
+        &scoped
+    } else {
+        ctx
+    };
+    if ["Math::Function::Intent", "Math::Function::Arg"].contains(&m.class.as_str()) {
+        return intent_nodes::text(m, f, ctx);
+    }
+    if leaf_nodes::handles(m) {
+        return leaf_nodes::text_writer(m, f, ctx);
+    }
+    if underline::handles(m) {
+        return underline::text_writer(m, f, ctx);
+    }
+    if table_text::handles(m) {
+        return table_text::render(m, f, ctx);
+    }
+    if m.class == "Math::Symbols::Comma" && f == "asciimath" && ctx.table {
+        return Ok("\",\"".into());
+    }
+    if portable_functions::handles(m) {
+        return portable_functions::text_writer(m, f, ctx);
+    }
+    if mod_log::handles(m) {
+        return mod_log::text_writer(m, f, ctx);
+    }
+    if m.class == "Math::Function::None" {
+        return multiscripts::child(&m.value(), f, ctx);
+    }
+    if final_options::handles(m) {
+        return final_options::text_writer(m, f, ctx);
+    }
+    if layout_nodes::handles(m) {
+        return layout_nodes::text_writer(m, f, ctx);
+    }
+    if fences::handles(m) {
+        return fences::text(m, f, ctx);
+    }
+    if m.class == "Math::Function::Nary" {
+        return generic_nary::text_writer(m, f, ctx);
+    }
+    if numbers::handles(m) {
+        return numbers::text(m, f, ctx);
+    }
+    if ["Math::Function::Multiscript", "Math::Function::Linebreak"].contains(&m.class.as_str()) {
+        return multiscripts::text(m, f, ctx);
+    }
+    if stacked::handles_text(m) {
+        return stacked::text(m, f, ctx);
+    }
+    if m.class == "Math::Function::PowerBase" {
+        return operators::text_writer(m, f, ctx);
+    }
     if accents::handles(m) {
         return accents::text(m, f, ctx);
     }
@@ -814,8 +897,12 @@ fn render_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, String
     if m.class == "Math::Function::FontStyle::Normal" {
         return normal_text(m, f, ctx);
     }
-    if font_styles::handles(m) { return font_styles::text(m, f, ctx); }
-    if nary::handles(m) { return nary::text(m, f, ctx); }
+    if font_styles::handles(m) {
+        return font_styles::text(m, f, ctx);
+    }
+    if nary::handles(m) {
+        return nary::text(m, f, ctx);
+    }
     if ["Text", "Mbox", "Left", "Right"].contains(&m.kind()) {
         return text_content::text_writer(m, f);
     }
@@ -838,10 +925,20 @@ fn render_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, String
                 .iter()
                 .map(|v| child(v, f, ctx))
                 .collect::<Result<Vec<_>, _>>()?;
-            let joined = c.join(if f == "unicodemath" && m.kind() == "Formula" { if fences::formula_starts_mini_fence(m) { "" } else { numbers::unicode_separator(m) } } else { " " });
+            let joined = c.join(if f == "unicodemath" && m.kind() == "Formula" {
+                if fences::formula_starts_mini_fence(m) {
+                    ""
+                } else {
+                    numbers::unicode_separator(m)
+                }
+            } else {
+                " "
+            });
             if f == "unicodemath" {
-                static SLASH_SPACING: std::sync::OnceLock<regex::Regex> = std::sync::OnceLock::new();
-                let spacing = SLASH_SPACING.get_or_init(|| regex::Regex::new(r"(?-u:\s)/(?-u:\s)").unwrap());
+                static SLASH_SPACING: std::sync::OnceLock<regex::Regex> =
+                    std::sync::OnceLock::new();
+                let spacing =
+                    SLASH_SPACING.get_or_init(|| regex::Regex::new(r"(?-u:\s)/(?-u:\s)").unwrap());
                 text_content::decode(&joined).map(|s| spacing.replace_all(&s, "/").into_owned())
             } else {
                 Ok(joined)
@@ -864,9 +961,19 @@ fn render_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, String
             let a = child(m.field("parameter_one"), f, ctx)?;
             let b = child(m.field("parameter_two"), f, ctx)?;
             Ok(match f {
-                "asciimath" => format!("frac{}{}",
-                    if present(m.field("parameter_one")) {format!("({a})")} else {String::new()},
-                    if present(m.field("parameter_two")) {format!("({b})")} else {String::new()}),
+                "asciimath" => format!(
+                    "frac{}{}",
+                    if present(m.field("parameter_one")) {
+                        format!("({a})")
+                    } else {
+                        String::new()
+                    },
+                    if present(m.field("parameter_two")) {
+                        format!("({b})")
+                    } else {
+                        String::new()
+                    }
+                ),
                 "latex" => format!("\\frac{{{a}}}{{{b}}}"),
                 "html" => format!(
                     "{}{}",
@@ -1119,7 +1226,10 @@ fn update_partial_arguments(nodes: &mut [Xml]) {
 }
 
 fn radical_mathml(m: &Model, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
-    Ok(vec![el("msqrt", strict_slot_xml(m.field("parameter_one"), "mathml", ctx, false)?)])
+    Ok(vec![el(
+        "msqrt",
+        strict_slot_xml(m.field("parameter_one"), "mathml", ctx, false)?,
+    )])
 }
 fn delimiter_unary_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     let kind = m.kind();
@@ -1189,30 +1299,69 @@ fn render_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, Strin
     Ok(nodes)
 }
 fn render_xml_inner(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
- if m.class=="Math::Function::Uncertainty" {return uncertainty_writers::xml(m,f,ctx);}
+    if m.class == "Math::Function::Uncertainty" {
+        return uncertainty_writers::xml(m, f, ctx);
+    }
     crate::source_values::writer_admission(m)?;
-    if ["Math::Function::Intent","Math::Function::Arg"].contains(&m.class.as_str()) { return intent_nodes::xml(m,f,ctx); }
-    if leaf_nodes::handles(m) {return leaf_nodes::xml(m,f,ctx);}
-    if underline::handles(m) {return underline::xml(m,f,ctx)}
-    if matches!(m.kind(),"Stackrel"|"Obrace"|"Sqrt") {return portable_functions::xml(m,f,ctx);}
-    if m.class=="Math::Function::Log" {return mod_log::log_xml(m,f,ctx);}
-    if m.class=="Math::Function::None" {return multiscripts::xml_child(&m.value(),f,ctx);}
-    if final_options::handles(m) {return final_options::xml(m,f,ctx);}
-    if layout_nodes::handles(m) { return layout_nodes::xml(m, f, ctx); }
-    if m.class == "Math::Function::Mod" { return line_break_overrides::mod_xml(m, f, ctx); }
-    if fences::handles(m) { return fences::xml(m, f, ctx); }
-    if m.class == "Math::Formula" && f == "mathml" && ctx.intent
+    if ["Math::Function::Intent", "Math::Function::Arg"].contains(&m.class.as_str()) {
+        return intent_nodes::xml(m, f, ctx);
+    }
+    if leaf_nodes::handles(m) {
+        return leaf_nodes::xml(m, f, ctx);
+    }
+    if underline::handles(m) {
+        return underline::xml(m, f, ctx);
+    }
+    if matches!(m.kind(), "Stackrel" | "Obrace" | "Sqrt") {
+        return portable_functions::xml(m, f, ctx);
+    }
+    if m.class == "Math::Function::Log" {
+        return mod_log::log_xml(m, f, ctx);
+    }
+    if m.class == "Math::Function::None" {
+        return multiscripts::xml_child(&m.value(), f, ctx);
+    }
+    if final_options::handles(m) {
+        return final_options::xml(m, f, ctx);
+    }
+    if layout_nodes::handles(m) {
+        return layout_nodes::xml(m, f, ctx);
+    }
+    if m.class == "Math::Function::Mod" {
+        return line_break_overrides::mod_xml(m, f, ctx);
+    }
+    if fences::handles(m) {
+        return fences::xml(m, f, ctx);
+    }
+    if m.class == "Math::Formula"
+        && f == "mathml"
+        && ctx.intent
         && present(m.field("left_right_wrapper"))
         && m.field("value").as_array().is_some_and(Vec::is_empty)
     {
         return Err("source_render_error: empty Formula has no first parameter for intent".into());
     }
-    if m.class == "Math::Function::Nary" { return generic_nary::xml(m, f, ctx); }
-    if numbers::handles(m) { return numbers::xml(m, f, ctx); }
-    if ["Math::Function::Multiscript", "Math::Function::Linebreak"].contains(&m.class.as_str()) { return multiscripts::xml(m, f, ctx); }
-    if ["Substack", "Msline", "Mglyph"].contains(&m.kind()) { return stacked::xml(m, f, ctx); }
-    if nary::handles(m) { return nary::xml(m, f, ctx); }
-    if m.class == "Math::Function::PowerBase" || (f == "omml" && ["Math::Function::Mod", "Math::Function::Sqrt"].contains(&m.class.as_str())) { return operators::xml_with_style(m, f, ctx, Some(ctx.display_style)); }
+    if m.class == "Math::Function::Nary" {
+        return generic_nary::xml(m, f, ctx);
+    }
+    if numbers::handles(m) {
+        return numbers::xml(m, f, ctx);
+    }
+    if ["Math::Function::Multiscript", "Math::Function::Linebreak"].contains(&m.class.as_str()) {
+        return multiscripts::xml(m, f, ctx);
+    }
+    if ["Substack", "Msline", "Mglyph"].contains(&m.kind()) {
+        return stacked::xml(m, f, ctx);
+    }
+    if nary::handles(m) {
+        return nary::xml(m, f, ctx);
+    }
+    if m.class == "Math::Function::PowerBase"
+        || (f == "omml"
+            && ["Math::Function::Mod", "Math::Function::Sqrt"].contains(&m.class.as_str()))
+    {
+        return operators::xml_with_style(m, f, ctx, Some(ctx.display_style));
+    }
     if m.class == "Math::Function::Sqrt" && f == "mathml" {
         return radical_mathml(m, ctx);
     }
@@ -2386,7 +2535,11 @@ fn formula_line_breaking(values: &mut Vec<Value>, obj: &mut Vec<Value>) -> Resul
 // 0a1df68. The exporter and full observations accompany the task evidence.
 fn source_class_properties(m: &Model) -> (&'static [&'static str], bool, bool) {
     match m.class.as_str() {
-        "Math::Function::Multiscript" => (&["parameter_one", "parameter_two", "parameter_three"], true, false),
+        "Math::Function::Multiscript" => (
+            &["parameter_one", "parameter_two", "parameter_three"],
+            true,
+            false,
+        ),
         "Math::Formula" => (
             &["value", "left_right_wrapper", "displaystyle"],
             false,
@@ -2627,37 +2780,64 @@ fn core_updated_values(
     Ok(())
 }
 fn source_line_breaking(node: &mut Value, obj: &mut Vec<Value>) -> Result<(), String> {
-    if node["class"] == "Math::Function::Uncertainty" {return Ok(());}
-    if node["class"]=="Math::Function::Td" {return table_xml::td_line_breaking(node);}
-    if node["class"]=="Math::Function::Stackrel" {
-        source_line_breaking(&mut node["fields"]["parameter_one"],obj)?;
-        if !obj.is_empty(){*obj=vec![new_source_node("Math::Function::Stackrel",serde_json::json!({"parameter_one":filter_source_values(std::mem::take(obj)),"parameter_two":node["fields"]["parameter_two"]}))];node["fields"]["parameter_two"]=Value::Null;}
+    if node["class"] == "Math::Function::Uncertainty" {
+        return Ok(());
+    }
+    if node["class"] == "Math::Function::Td" {
+        return table_xml::td_line_breaking(node);
+    }
+    if node["class"] == "Math::Function::Stackrel" {
+        source_line_breaking(&mut node["fields"]["parameter_one"], obj)?;
+        if !obj.is_empty() {
+            *obj = vec![new_source_node(
+                "Math::Function::Stackrel",
+                serde_json::json!({"parameter_one":filter_source_values(std::mem::take(obj)),"parameter_two":node["fields"]["parameter_two"]}),
+            )];
+            node["fields"]["parameter_two"] = Value::Null;
+        }
         return Ok(());
     }
 
-    if node["class"]=="Math::Function::Log" {return mod_log::log_line_breaking(node,obj);}
-    if node["class"]=="Math::Function::Underset" {return final_options::underset_line_breaking(node,obj); }
-    if node["class"] == "Math::Function::Fenced" { return fences::line_breaking(node, obj); }
+    if node["class"] == "Math::Function::Log" {
+        return mod_log::log_line_breaking(node, obj);
+    }
+    if node["class"] == "Math::Function::Underset" {
+        return final_options::underset_line_breaking(node, obj);
+    }
+    if node["class"] == "Math::Function::Fenced" {
+        return fences::line_breaking(node, obj);
+    }
     let m = Model::from_value(node)
         .map_err(|_| "source_render_error: non-node cannot receive line_breaking")?;
     let kind = m.kind();
-    if line_break_overrides::handles(&m) { return line_break_overrides::line_breaking(node, obj); }
-    if nary::handles(&m) { return nary::line_breaking(node, obj); }
-    if m.class == "Math::Function::Nary" { return generic_nary::line_breaking(node, obj); }
+    if line_break_overrides::handles(&m) {
+        return line_break_overrides::line_breaking(node, obj);
+    }
+    if nary::handles(&m) {
+        return nary::line_breaking(node, obj);
+    }
+    if m.class == "Math::Function::Nary" {
+        return generic_nary::line_breaking(node, obj);
+    }
     if kind == "Multiscript" {
         source_break_child(&mut node["fields"]["parameter_one"], obj, true)?;
         if !obj.is_empty() {
-            *obj = vec![new_source_node(&m.class, serde_json::json!({
-                "parameter_one": filter_source_values(std::mem::take(obj)),
-                "parameter_two": node["fields"]["parameter_two"],
-                "parameter_three": node["fields"]["parameter_three"]
-            }))];
+            *obj = vec![new_source_node(
+                &m.class,
+                serde_json::json!({
+                    "parameter_one": filter_source_values(std::mem::take(obj)),
+                    "parameter_two": node["fields"]["parameter_two"],
+                    "parameter_three": node["fields"]["parameter_three"]
+                }),
+            )];
             node["fields"]["parameter_two"] = Value::Null;
             node["fields"]["parameter_three"] = Value::Null;
             return Ok(());
         }
         let field = node["fields"]["parameter_two"].clone();
-        let values = field.as_array().ok_or("source_render_error: multiscript subscript field has no array line-breaking methods")?;
+        let values = field.as_array().ok_or(
+            "source_render_error: multiscript subscript field has no array line-breaking methods",
+        )?;
         if linebreak_index(values).is_some() {
             let mut values = values.clone();
             formula_line_breaking(&mut values, obj)?;
@@ -2668,11 +2848,14 @@ fn source_line_breaking(node: &mut Value, obj: &mut Vec<Value>) -> Result<(), St
             }
         }
         if !obj.is_empty() {
-            *obj = vec![new_source_node(&m.class, serde_json::json!({
-                "parameter_one": null,
-                "parameter_two": std::mem::take(obj),
-                "parameter_three": node["fields"]["parameter_three"]
-            }))];
+            *obj = vec![new_source_node(
+                &m.class,
+                serde_json::json!({
+                    "parameter_one": null,
+                    "parameter_two": std::mem::take(obj),
+                    "parameter_three": node["fields"]["parameter_three"]
+                }),
+            )];
             node["fields"]["parameter_three"] = Value::Null;
         }
         return Ok(());
@@ -2697,8 +2880,11 @@ fn source_line_breaking(node: &mut Value, obj: &mut Vec<Value>) -> Result<(), St
         }
         return Ok(());
     }
-    if matches!(m.class.as_str(),"Math::Function::Phantom"|"Math::Function::Msgroup"|"Math::Function::Longdiv") {
-        return custom_array_line_breaking(node,obj);
+    if matches!(
+        m.class.as_str(),
+        "Math::Function::Phantom" | "Math::Function::Msgroup" | "Math::Function::Longdiv"
+    ) {
+        return custom_array_line_breaking(node, obj);
     }
     let drop = matches!(
         kind,
@@ -2926,16 +3112,23 @@ pub fn write(model: &Value, format: &str, options: &Value) -> Result<String, Str
     {
         return Err(format!("unknown writer format {format}"));
     }
-    if ["mathml","omml"].contains(&format) && opts.contains_key("format") { return Err("source_argument_error: unknown keyword: :options".into()); }
-    let formatter_request = formatter_context::decode(opts.get("formatterOptions"), opts.get("format"))?;
+    if ["mathml", "omml"].contains(&format) && opts.contains_key("format") {
+        return Err("source_argument_error: unknown keyword: :options".into());
+    }
+    let formatter_request =
+        formatter_context::decode(opts.get("formatterOptions"), opts.get("format"))?;
     let ds = opts
         .get("displayStyle")
         .unwrap_or_else(|| m.field("displaystyle"));
-    let formula_input=m.field("input_string").clone();
+    let formula_input = m.field("input_string").clone();
     let context = WriterContext {
         formatter: formatter_request.as_ref(),
-        table:false,
-        formula_input: if m.class=="Math::Formula"||m.class.starts_with("Math::Formula::") {Some(&formula_input)}else{None},
+        table: false,
+        formula_input: if m.class == "Math::Formula" || m.class.starts_with("Math::Formula::") {
+            Some(&formula_input)
+        } else {
+            None
+        },
         source_format: format,
         display_style: ds == true || ds == "true",
         unary_function_spacing: opts
@@ -2946,7 +3139,10 @@ pub fn write(model: &Value, format: &str, options: &Value) -> Result<String, Str
     };
     let ctx = &context;
     if !["mathml", "omml"].contains(&format) {
-        if opts.keys().any(|k| !["formatterOptions","format"].contains(&k.as_str())) {
+        if opts
+            .keys()
+            .any(|k| !["formatterOptions", "format"].contains(&k.as_str()))
+        {
             return Err("writer options not yet ported for text formats".into());
         }
         return render_text(&m, format, ctx);
@@ -2988,8 +3184,8 @@ pub fn write(model: &Value, format: &str, options: &Value) -> Result<String, Str
 }
 
 // Shared UnaryFunction#custom_array_line_breaking source procedure.
-fn custom_array_line_breaking(node:&mut Value,obj:&mut Vec<Value>)->Result<(),String>{
-    let m=Model::from_value(node)?;
+fn custom_array_line_breaking(node: &mut Value, obj: &mut Vec<Value>) -> Result<(), String> {
+    let m = Model::from_value(node)?;
     let values = node["fields"]["parameter_one"]
         .as_array_mut()
         .ok_or("source_render_error: phantom line breaking requires an array")?;

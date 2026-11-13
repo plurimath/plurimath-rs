@@ -59,7 +59,12 @@ pub(crate) enum ConfigErrorKind {
 #[derive(Clone, Debug, PartialEq)]
 pub(crate) enum FormatterError {
     /// `Plurimath::ConfigurationError`; `value` is the Ruby `inspect` text.
-    Configuration { kind: ConfigErrorKind, option: Option<String>, value: Option<String>, supported: Option<String> },
+    Configuration {
+        kind: ConfigErrorKind,
+        option: Option<String>,
+        value: Option<String>,
+        supported: Option<String>,
+    },
     /// `Plurimath::Errors::InvalidNumber` (value = raw number text).
     InvalidNumber { value: String },
     /// `Plurimath::Errors::UnsupportedBase` (base = Ruby `inspect`).
@@ -97,10 +102,20 @@ pub(crate) enum FormatterProfile {
     /// `Plurimath::Formatter::Standard.new(locale:, string_format:, options:, precision:)`
     /// (the formatter66 `number_formatter` call profile; defaults
     /// `locale: "en"`, `string_format: nil`, `options: {}`, `precision: nil`).
-    Standard { locale: RubyValue, string_format: RubyValue, options: HashArg, precision: RubyValue },
+    Standard {
+        locale: RubyValue,
+        string_format: RubyValue,
+        options: HashArg,
+        precision: RubyValue,
+    },
     /// `Plurimath::NumberFormatter.new(locale, localize_number:, localizer_symbols:, precision:)`
     /// (defaults `"en"`, `nil`, `{}`, `nil`).
-    Base { locale: RubyValue, localize_number: RubyValue, localizer_symbols: HashArg, precision: RubyValue },
+    Base {
+        locale: RubyValue,
+        localize_number: RubyValue,
+        localizer_symbols: HashArg,
+        precision: RubyValue,
+    },
 }
 
 /// `Formatter::Standard::DEFAULT_OPTIONS` keys applied by
@@ -135,13 +150,23 @@ impl NumberFormatter {
     /// Construct as Ruby would (only `Standard` can raise at construction).
     pub(crate) fn new(profile: &FormatterProfile) -> Result<Self, FormatterError> {
         match profile {
-            FormatterProfile::Base { locale, localize_number, localizer_symbols, precision } => Ok(NumberFormatter {
+            FormatterProfile::Base {
+                locale,
+                localize_number,
+                localizer_symbols,
+                precision,
+            } => Ok(NumberFormatter {
                 locale: supported_locale(locale),
                 localize_number: localize_number.clone(),
                 localizer_symbols: localizer_symbols.clone(),
                 precision: precision.clone(),
             }),
-            FormatterProfile::Standard { locale, string_format, options, precision } => {
+            FormatterProfile::Standard {
+                locale,
+                string_format,
+                options,
+                precision,
+            } => {
                 let mut symbols = match options {
                     HashArg::Nil => SymbolMap::new(),
                     HashArg::Hash(h) => h.clone(),
@@ -171,7 +196,11 @@ impl NumberFormatter {
 
     /// `NumberFormatter#formatted_number(number_string, format:)` with the
     /// instance locale and precision.
-    pub(crate) fn formatted_number(&self, number: &str, format: &HashArg) -> Result<Formatted, FormatterError> {
+    pub(crate) fn formatted_number(
+        &self,
+        number: &str,
+        format: &HashArg,
+    ) -> Result<Formatted, FormatterError> {
         let format = match format {
             HashArg::Nil => SymbolMap::new(),
             HashArg::Hash(h) => h.clone(),
@@ -188,13 +217,21 @@ impl NumberFormatter {
         let symbols = self.symbols_for(&format)?;
         let options = FormatOptions::new(&source, symbols, &self.precision)?;
         if options.notation_supported() {
-            return Ok(Formatted::Notation(render::render_notation(&options, &source)?));
+            return Ok(Formatted::Notation(render::render_notation(
+                &options, &source,
+            )?));
         }
-        Ok(Formatted::Number(render::NumberRenderer::new(&options)?.format(&source)?))
+        Ok(Formatted::Number(
+            render::NumberRenderer::new(&options)?.format(&source)?,
+        ))
     }
 
     /// `NumberFormatter#localized_number` (`formatted_number(...).to_s`).
-    pub(crate) fn localized_number(&self, number: &str, format: &HashArg) -> Result<String, FormatterError> {
+    pub(crate) fn localized_number(
+        &self,
+        number: &str,
+        format: &HashArg,
+    ) -> Result<String, FormatterError> {
         Ok(self.formatted_number(number, format)?.to_string())
     }
 
@@ -209,9 +246,13 @@ impl NumberFormatter {
     ) -> Result<Formatted, FormatterError> {
         let format = match (writer_format, number_base) {
             (HashArg::NotHash(_), Some(_)) => {
-                return Err(FormatterError::RubyNoMethodError { message: "undefined method 'key?'".into() })
+                return Err(FormatterError::RubyNoMethodError {
+                    message: "undefined method 'key?'".into(),
+                })
             }
-            (HashArg::Nil, Some(b)) => HashArg::Hash(SymbolMap::from_pairs(&[("base", RubyValue::Int(b))])),
+            (HashArg::Nil, Some(b)) => {
+                HashArg::Hash(SymbolMap::from_pairs(&[("base", RubyValue::Int(b))]))
+            }
             (HashArg::Hash(h), Some(b)) if !h.has("base") => {
                 let mut h = h.clone();
                 h.set("base", RubyValue::Int(b));

@@ -1,8 +1,8 @@
 pub mod html_parse;
 mod json_request;
-pub mod model;
 #[path = "writer/number_formatter/locales.rs"]
 mod locale_data;
+pub mod model;
 mod parse_options;
 pub mod parser;
 pub mod pma_parse;

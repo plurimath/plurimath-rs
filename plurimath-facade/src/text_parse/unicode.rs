@@ -358,11 +358,11 @@ const NARY_SYMBOLS: [(&str, &str); 25] = [
 ];
 /// Masked n-ary rules (nary_class + mask + sub and/or sup).
 fn masked_nary(m: &Map<String, Value>, rec: Rec) -> Result<Option<Value>, Value> {
-    if !(m.contains_key("nary_class") && m.contains_key("mask"))
-        || !m
-            .keys()
+    if !(m.contains_key("nary_class")
+        && m.contains_key("mask")
+        && m.keys()
             .all(|k| ["nary_class", "mask", "sub", "sup"].contains(&k.as_str()))
-        || !(m.contains_key("sub") || m.contains_key("sup"))
+        && (m.contains_key("sub") || m.contains_key("sup")))
     {
         return Ok(None);
     }
@@ -384,8 +384,8 @@ fn masked_nary(m: &Map<String, Value>, rec: Rec) -> Result<Option<Value>, Value>
         return Err(incomplete("unported UnicodeMath n-ary mask value"));
     }
     let mask = mask["fields"]["value"].clone();
-    let sub = m.get("sub").map(|v| rec(v)).transpose()?;
-    let sup = m.get("sup").map(|v| rec(v)).transpose()?;
+    let sub = m.get("sub").map(rec).transpose()?;
+    let sup = m.get("sup").map(rec).transpose()?;
     // Source has no sup-only sequence rule.
     if sub.is_none() && sup.as_ref().is_some_and(|v| v.len() != 1) {
         return Err(incomplete("unported UnicodeMath masked n-ary sup sequence"));

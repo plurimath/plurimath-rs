@@ -194,18 +194,22 @@ fn source_caller_register_wires() {
     let fixture: Value =
         serde_json::from_str(include_str!("../fixtures/quantity-register.json")).unwrap();
     assert_eq!(fixture["cases"].as_array().unwrap().len(), 32);
-    // Rows whose result changes with the bundled UnitsDB data are listed in
-    // the source-versioned profile, which pins the legacy expectation byte for
-    // byte and gives the expectation for the bundled data; the legacy fixture
-    // itself stays the frozen UnitsDB 2.2.0 (c2c7d18) profile.
+    // Separate source profiles record changes from UnitsDB data and corrected
+    // quantity scale semantics. Each pins the superseded expectation byte for
+    // byte; the legacy UnitsDB 2.2.0 (c2c7d18) fixture stays frozen.
     let profile: Value = serde_json::from_str(include_str!(
         "../fixtures/source-profile-unitsdb-b210137.json"
+    ))
+    .unwrap();
+    let scale_profile: Value = serde_json::from_str(include_str!(
+        "../fixtures/source-profile-unitsml-cdfbcc3.json"
     ))
     .unwrap();
     let superseded: std::collections::BTreeMap<&str, &Value> = profile["superseded_legacy_rows"]
         .as_array()
         .unwrap()
         .iter()
+        .chain(scale_profile["superseded_legacy_rows"].as_array().unwrap())
         .map(|row| (row["id"].as_str().unwrap(), row))
         .collect();
     for case in fixture["cases"].as_array().unwrap() {
@@ -224,7 +228,7 @@ fn source_caller_register_wires() {
             "{id}"
         );
     }
-    assert_eq!(superseded.len(), 2);
+    assert_eq!(superseded.len(), 3);
 }
 
 #[cfg(feature = "quantity")]

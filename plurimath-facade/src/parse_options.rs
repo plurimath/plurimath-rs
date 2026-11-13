@@ -1,6 +1,6 @@
 //! Source Math.parse option validation precedes grammar parsing.
-use serde_json::{json, Value};
 use crate::locale_data;
+use serde_json::{json, Value};
 fn error(class: &str, message: String) -> Value {
     json!({"code":"PARSE_OPTION_ERROR","source_class":class,"message":message})
 }

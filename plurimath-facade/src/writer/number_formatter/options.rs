@@ -17,8 +17,15 @@ pub(crate) fn supported_locale(locale: &RubyValue) -> &'static str {
 }
 
 fn locale_symbols(locale: &str) -> SymbolMap {
-    let (_, decimal, group) = LOCALES.iter().find(|(k, _, _)| *k == locale).copied().unwrap_or(("en", ".", ","));
-    SymbolMap::from_pairs(&[("decimal", RubyValue::str(decimal)), ("group", RubyValue::str(group))])
+    let (_, decimal, group) = LOCALES
+        .iter()
+        .find(|(k, _, _)| *k == locale)
+        .copied()
+        .unwrap_or(("en", ".", ","));
+    SymbolMap::from_pairs(&[
+        ("decimal", RubyValue::str(decimal)),
+        ("group", RubyValue::str(group)),
+    ])
 }
 
 /// `SymbolResolver::LOCALIZE_NUMBER_REGEX` (unanchored, leftmost match):
@@ -49,7 +56,9 @@ fn localize_number_symbols(template: &str) -> SymbolMap {
     };
     for (start, ch) in c.iter().copied().enumerate() {
         let attempt = if ch != '#' {
-            tail(start + 1).map(|t| (Some(ch), t)).or_else(|| tail(start).map(|t| (None, t)))
+            tail(start + 1)
+                .map(|t| (Some(ch), t))
+                .or_else(|| tail(start).map(|t| (None, t)))
         } else {
             tail(start).map(|t| (None, t))
         };
@@ -81,8 +90,13 @@ pub(crate) fn resolve_symbols(
     localize_number: Option<&str>,
     format: &SymbolMap,
 ) -> SymbolMap {
-    let template = localize_number.map(localize_number_symbols).unwrap_or_default();
-    locale_symbols(locale).merged(localizer_symbols).merged(&template).merged(format)
+    let template = localize_number
+        .map(localize_number_symbols)
+        .unwrap_or_default();
+    locale_symbols(locale)
+        .merged(localizer_symbols)
+        .merged(&template)
+        .merged(format)
 }
 
 #[derive(Clone, Copy, Debug, PartialEq)]
@@ -120,7 +134,9 @@ fn coerce_integer(value: &RubyValue) -> Result<i64, Option<FormatterError>> {
         RubyValue::Bool(_) | RubyValue::Float(_) => Err(None),
         other => match kernel_integer_base10(&other.to_s()) {
             Ok(Some(i)) => Ok(i),
-            Ok(None) => Err(Some(FormatterError::ResourceLimit { what: "integer option" })),
+            Ok(None) => Err(Some(FormatterError::ResourceLimit {
+                what: "integer option",
+            })),
             Err(()) => Err(None),
         },
     }
@@ -131,7 +147,11 @@ const NON_NEGATIVE: &str = "a non-negative integer";
 impl FormatOptions {
     /// `FormatOptions.new(source, symbols:, precision:, precision_resolver:)`
     /// with the source `PrecisionResolver` always supplied.
-    pub(crate) fn new(source: &Source, symbols: SymbolMap, precision: &RubyValue) -> Result<Self, FormatterError> {
+    pub(crate) fn new(
+        source: &Source,
+        symbols: SymbolMap,
+        precision: &RubyValue,
+    ) -> Result<Self, FormatterError> {
         let mut o = FormatOptions {
             symbols,
             notation: None,
@@ -157,8 +177,16 @@ impl FormatOptions {
         Ok(o)
     }
 
-    fn resolve_precision(&mut self, source: &Source, precision: &RubyValue) -> Result<i64, FormatterError> {
-        let effective = if precision.is_nil() { self.symbols.get("precision") } else { precision.clone() };
+    fn resolve_precision(
+        &mut self,
+        source: &Source,
+        precision: &RubyValue,
+    ) -> Result<i64, FormatterError> {
+        let effective = if precision.is_nil() {
+            self.symbols.get("precision")
+        } else {
+            precision.clone()
+        };
         let explicit = if effective.is_nil() {
             None
         } else {
@@ -178,7 +206,14 @@ impl FormatOptions {
         let significant = self.significant()?;
         let digit_count = self.digit_count()?;
         let notation_supported = self.notation_supported();
-        Ok(resolve_precision(source, explicit, &base, significant, notation_supported, digit_count))
+        Ok(resolve_precision(
+            source,
+            explicit,
+            &base,
+            significant,
+            notation_supported,
+            digit_count,
+        ))
     }
 
     /// `base`: numeric forms coerced, anything else left raw.
@@ -211,7 +246,9 @@ impl FormatOptions {
         Ok(self.integer_option("digit_count")?.unwrap_or(0))
     }
     pub(crate) fn fraction_group(&self) -> Result<String, FormatterError> {
-        Ok(self.separator_option("fraction_group", RubyValue::Nil)?.to_s())
+        Ok(self
+            .separator_option("fraction_group", RubyValue::Nil)?
+            .to_s())
     }
     pub(crate) fn fraction_group_digits(&self) -> Result<Option<i64>, FormatterError> {
         self.integer_option("fraction_group_digits")
@@ -227,11 +264,13 @@ impl FormatOptions {
         let value = self.symbols.get("hex_capital");
         match &value {
             RubyValue::Nil => Ok(HexCapital::None),
-            RubyValue::Bool(_) | RubyValue::Str(_) | RubyValue::Sym(_) => Ok(match value.to_s().as_str() {
-                "true" => HexCapital::True,
-                "numbers_only" => HexCapital::NumbersOnly,
-                _ => HexCapital::None,
-            }),
+            RubyValue::Bool(_) | RubyValue::Str(_) | RubyValue::Sym(_) => {
+                Ok(match value.to_s().as_str() {
+                    "true" => HexCapital::True,
+                    "numbers_only" => HexCapital::NumbersOnly,
+                    _ => HexCapital::None,
+                })
+            }
             _ => Err(invalid("hex_capital", &value, None)),
         }
     }
@@ -239,8 +278,13 @@ impl FormatOptions {
         self.symbol_option("number_sign")
     }
     pub(crate) fn padding(&self) -> Result<String, FormatterError> {
-        let v = self.separator_option("padding", RubyValue::str("0"))?.to_s();
-        Ok(v.chars().next().map(|c| c.to_string()).unwrap_or_else(|| "0".into()))
+        let v = self
+            .separator_option("padding", RubyValue::str("0"))?
+            .to_s();
+        Ok(v.chars()
+            .next()
+            .map(|c| c.to_string())
+            .unwrap_or_else(|| "0".into()))
     }
     pub(crate) fn padding_digits(&self) -> Result<i64, FormatterError> {
         Ok(self.integer_option("padding_digits")?.unwrap_or(0))
@@ -249,7 +293,10 @@ impl FormatOptions {
         Ok(self.integer_option("padding_group_digits")?.unwrap_or(0))
     }
     pub(crate) fn notation_supported(&self) -> bool {
-        matches!(self.notation.as_deref(), Some("e" | "scientific" | "engineering"))
+        matches!(
+            self.notation.as_deref(),
+            Some("e" | "scientific" | "engineering")
+        )
     }
     pub(crate) fn significant(&self) -> Result<i64, FormatterError> {
         Ok(self.integer_option("significant")?.unwrap_or(0))
@@ -327,7 +374,8 @@ fn significant_base_precision(source: &Source, base: &RubyValue, significant: i6
     }
     let source_significant = source.significant_digit_count() as i64;
     let effective = significant.min(source_significant);
-    let mut target_precision = (effective - source.target_base_integer_length(target) as i64).max(0);
+    let mut target_precision =
+        (effective - source.target_base_integer_length(target) as i64).max(0);
     if source_significant > effective {
         target_precision += 1;
     }

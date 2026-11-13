@@ -113,7 +113,13 @@ fn value<'a>(m: &'a Model, s: &Value) -> Result<&'a Value, String> {
     }
     Ok(v)
 }
-fn slot_text(m: &Model, p: &Value, name: &str, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
+fn slot_text(
+    m: &Model,
+    p: &Value,
+    name: &str,
+    f: &str,
+    ctx: &super::WriterContext,
+) -> Result<String, String> {
     let s = slot(p, name)?;
     let v = value(m, s)?;
     if s.get("call").is_none() {
@@ -128,7 +134,13 @@ fn slot_text(m: &Model, p: &Value, name: &str, f: &str, ctx: &super::WriterConte
     }
     render_text(&Model::from_value(v)?, f, ctx)
 }
-fn parts(m: &Model, p: &Value, ps: &Value, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
+fn parts(
+    m: &Model,
+    p: &Value,
+    ps: &Value,
+    f: &str,
+    ctx: &super::WriterContext,
+) -> Result<String, String> {
     let mut out = String::new();
     for part in ps.as_array().ok_or("source template parts not an array")? {
         if let Some(l) = part["literal"].as_str() {
@@ -141,7 +153,11 @@ fn parts(m: &Model, p: &Value, ps: &Value, f: &str, ctx: &super::WriterContext) 
     }
     Ok(out)
 }
-pub(super) fn text_template(m: &Model, f: &str, ctx: &super::WriterContext) -> Option<Result<String, String>> {
+pub(super) fn text_template(
+    m: &Model,
+    f: &str,
+    ctx: &super::WriterContext,
+) -> Option<Result<String, String>> {
     let p = find(m, f, "text")?;
     Some(parts(m, p, &p["template"]["parts"], f, ctx))
 }

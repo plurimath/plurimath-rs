@@ -31,7 +31,11 @@ pub(super) fn text(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<Str
     Ok(match f {
         "asciimath" => format!(
             "color({})({})",
-            if present(a) { color(m, ctx)? } else { String::new() },
+            if present(a) {
+                color(m, ctx)?
+            } else {
+                String::new()
+            },
             if present(b) {
                 child(b, f, ctx)?
             } else {
@@ -40,7 +44,11 @@ pub(super) fn text(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<Str
         ),
         "latex" => format!(
             "{{\\color{{{}}} {}}}",
-            if present(a) { color(m, ctx)? } else { String::new() },
+            if present(a) {
+                color(m, ctx)?
+            } else {
+                String::new()
+            },
             if present(b) {
                 child(b, f, ctx)?
             } else {

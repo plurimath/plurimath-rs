@@ -1,5 +1,5 @@
 //! Source Substack/Msline/Mglyph and row/cell text procedures (Ruby 0a1df68a).
-use super::{WriterContext, attrs, child, el, render_xml, text as xml_text, Model, Value, Xml};
+use super::{attrs, child, el, render_xml, text as xml_text, Model, Value, WriterContext, Xml};
 fn source_error(reason: &str) -> String {
     format!("source_render_error: {reason}")
 }
@@ -8,7 +8,12 @@ fn row_values(v: &Value) -> Result<&[Value], String> {
         .map(Vec::as_slice)
         .ok_or_else(|| source_error("stacked row/cell collection has no source array methods"))
 }
-fn node_text(v: &Value, f: &str, nullable: bool, ctx: &super::WriterContext) -> Result<String, String> {
+fn node_text(
+    v: &Value,
+    f: &str,
+    nullable: bool,
+    ctx: &super::WriterContext,
+) -> Result<String, String> {
     if v.is_null() && nullable {
         return Ok(String::new());
     }

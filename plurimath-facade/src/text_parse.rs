@@ -447,7 +447,18 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         };
     }
     if m.contains_key("left") {
-        if !m.keys().all(|k|["left","right","left_paren","right_paren","expression","dividend","divisor"].contains(&k.as_str())) {
+        if !m.keys().all(|k| {
+            [
+                "left",
+                "right",
+                "left_paren",
+                "right_paren",
+                "expression",
+                "dividend",
+                "divisor",
+            ]
+            .contains(&k.as_str())
+        }) {
             return Err(incomplete("unported left/right capture fields"));
         }
         let delimiter = |value: &Value| -> Result<Value, Value> {
@@ -475,15 +486,25 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
             };
             Ok(mapped.map_or(Value::Null, |x| json!(x)))
         };
-        let left = node("Math::Function::Left",json!({"parameter_one":if m.contains_key("left_paren"){delimiter(&m["left_paren"])?}else{Value::Null}}));
-        if m.len()==2 && m.contains_key("left_paren") {return Ok(vec![left]);}
-        if !m.contains_key("right") {return Err(incomplete("unported incomplete left/right shape"));}
-        let right=node("Math::Function::Right",json!({"parameter_one":if m.contains_key("right_paren"){delimiter(&m["right_paren"])?}else{Value::Null}}));
-        let mut items=vec![left];
+        let left = node(
+            "Math::Function::Left",
+            json!({"parameter_one":if m.contains_key("left_paren"){delimiter(&m["left_paren"])?}else{Value::Null}}),
+        );
+        if m.len() == 2 && m.contains_key("left_paren") {
+            return Ok(vec![left]);
+        }
+        if !m.contains_key("right") {
+            return Err(incomplete("unported incomplete left/right shape"));
+        }
+        let right = node(
+            "Math::Function::Right",
+            json!({"parameter_one":if m.contains_key("right_paren"){delimiter(&m["right_paren"])?}else{Value::Null}}),
+        );
+        let mut items = vec![left];
         if m.contains_key("dividend") && m.contains_key("divisor") {
             items.push(node("Math::Function::Over",json!({"parameter_one":formula(tx(format,&m["dividend"],depth+1)?),"parameter_two":formula(tx(format,&m["divisor"],depth+1)?)})));
         } else if m.contains_key("expression") {
-            items.push(one(tx(format,&m["expression"],depth+1)?));
+            items.push(one(tx(format, &m["expression"], depth + 1)?));
         }
         items.push(right);
         return Ok(vec![formula(items)]);
@@ -726,7 +747,9 @@ pub fn parse(input: &str, format: &str, options: &Value) -> Result<Value, Value>
     let options = crate::parse_options::normalize(format, Some(options).filter(|o| !o.is_null()))?;
     let decimal = crate::parse_options::decimal(&options);
     if format == "latex" && latex::undecodable_reference(input) {
-        return Err(json!({"code":"PARSE_ERROR","message":"undecodable numeric character reference"}));
+        return Err(
+            json!({"code":"PARSE_ERROR","message":"undecodable numeric character reference"}),
+        );
     }
     let raw=match format{
         "latex"=>LATEX.with(|cell|{let mut cell=cell.borrow_mut();if cell.is_none(){*cell=Some(latexmath::Parser::new().map_err(|e|error("FORMAT_BACKEND_INITIALIZATION",e))?)}let parsed=cell.as_ref().unwrap().parse_legacy_with_decimal(input, decimal).map_err(|e|json!({"code":"PARSE_ERROR","message":e.to_string(),"byte_offset":e.byte_offset(),"offset_policy":"caller_utf8_bytes_when_reported"}))?;untag(&parsed.canonical())}),
