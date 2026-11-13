@@ -1,6 +1,9 @@
 //! Accepted LaTeX/Unicode stage captures -> existing source common-node wire.
 //! Parsing is delegated to the pinned stage crates; this module only transforms captures.
+mod capture;
+mod latex;
 mod table;
+mod unicode;
 use crate::model::{formula, node, number};
 use serde_json::{json, Map, Value};
 use std::cell::RefCell;
@@ -130,6 +133,14 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
     let m = v
         .as_object()
         .ok_or_else(|| incomplete("capture scalar outside a source leaf rule"))?;
+    if let Some(values) = capture::parse(format, m, depth)? {
+        return Ok(values);
+    }
+    if format == "unicode" {
+        if let Some(values) = unicode::tx(m, &|x| tx(format, x, depth + 1))? {
+            return Ok(values);
+        }
+    }
     if m.contains_key("whole") && m.contains_key("decimal") {
         if m.keys()
             .any(|key| !["whole", "decimal", "fractional"].contains(&key.as_str()))
@@ -155,7 +166,7 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         } else {
             format!("{decimal}{whole}")
         };
-        return Ok(vec![number(&value)]);
+        return Ok(vec![number(&latex::number_text(&value))]);
     }
     if format == "latex" && m.contains_key("lparen") && m.contains_key("rparen") {
         if m.len() == 2 {
@@ -177,6 +188,11 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
             "Math::Function::Root",
             json!({"parameter_one":first,"parameter_two":second}),
         )]);
+    }
+    if format == "latex" {
+        if let Some(values) = latex::capture(m, depth)? {
+            return Ok(values);
+        }
     }
     if m.len() == 1 && m.get("environment").is_some_and(Value::is_object) {
         return tx(format, &m["environment"], depth + 1);
@@ -237,11 +253,15 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
             json!({"parameter_one":argument("subscript")?,"parameter_two":argument("supscript")?,"parameter_three":argument("third_value")?}),
         )]);
     }
-    if let Some(name @ ("lim" | "log")) = m.get("binary").and_then(Value::as_str) {
+    if let Some(name @ ("lim" | "log" | "inf")) = m.get("binary").and_then(Value::as_str) {
         if m.keys()
             .any(|key| !["binary", "subscript", "supscript"].contains(&key.as_str()))
         {
             return Err(incomplete("unported logarithm/limit capture fields"));
+        }
+        // Source has no {binary, supscript} rule: \inf^n stays an unbuilt capture Hash.
+        if name == "inf" && m.contains_key("supscript") && !m.contains_key("subscript") {
+            return Err(incomplete("unported source infimum superscript-only shape"));
         }
         let operand = |key: &str| -> Result<Value, Value> {
             match m.get(key) {
@@ -250,10 +270,10 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
             }
         };
         return Ok(vec![node(
-            if name == "lim" {
-                "Math::Function::Lim"
-            } else {
-                "Math::Function::Log"
+            match name {
+                "lim" => "Math::Function::Lim",
+                "inf" => "Math::Function::Inf",
+                _ => "Math::Function::Log",
             },
             json!({"parameter_one":operand("subscript")?,"parameter_two":operand("supscript")?}),
         )]);
@@ -529,7 +549,7 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         if key == "number" {
             return x
                 .as_str()
-                .map(|s| vec![number(s)])
+                .map(|s| vec![number(&latex::number_text(s))])
                 .ok_or_else(|| incomplete("non-text number capture"));
         }
         if [
@@ -631,8 +651,13 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         }
     }
     if m.contains_key("sequence") && m.contains_key("expression") && m.len() == 2 {
-        let mut out = tx(format, &m["sequence"], depth + 1)?;
-        out.extend(tx(format, &m["expression"], depth + 1)?);
+        let sequence = tx(format, &m["sequence"], depth + 1)?;
+        let expression = tx(format, &m["expression"], depth + 1)?;
+        if format == "latex" {
+            return Ok(latex::nary(sequence, expression));
+        }
+        let mut out = sequence;
+        out.extend(expression);
         return Ok(out);
     }
     if m.contains_key("factor") && m.contains_key("operand") && m.len() == 2 {
@@ -697,28 +722,15 @@ fn label(input: &str) -> Option<String> {
     }
 }
 pub fn parse(input: &str, format: &str, options: &Value) -> Result<Value, Value> {
-    if !options.is_null() {
-        let opts = options
-            .as_object()
-            .ok_or_else(|| error("INVALID_PARSE_OPTIONS", "parse options must be an object"))?;
-        for (key, value) in opts {
-            if key != "locale" {
-                return Err(error(
-                    "INCOMPLETE_PARSE_OPTIONS",
-                    format!("unported promised parse option {key}"),
-                ));
-            }
-            if !value.is_null() && value != "en" {
-                return Err(error(
-                    "INCOMPLETE_PARSE_OPTIONS",
-                    "non-English locale conversion is not yet ported",
-                ));
-            }
-        }
+    // Source Math.parse validates options first; the locale selects the grammar decimal.
+    let options = crate::parse_options::normalize(format, Some(options).filter(|o| !o.is_null()))?;
+    let decimal = crate::parse_options::decimal(&options);
+    if format == "latex" && latex::undecodable_reference(input) {
+        return Err(json!({"code":"PARSE_ERROR","message":"undecodable numeric character reference"}));
     }
     let raw=match format{
-        "latex"=>LATEX.with(|cell|{let mut cell=cell.borrow_mut();if cell.is_none(){*cell=Some(latexmath::Parser::new().map_err(|e|error("FORMAT_BACKEND_INITIALIZATION",e))?)}let parsed=cell.as_ref().unwrap().parse_legacy(input).map_err(|e|json!({"code":"PARSE_ERROR","message":e.to_string(),"byte_offset":e.byte_offset(),"offset_policy":"caller_utf8_bytes_when_reported"}))?;untag(&parsed.canonical())}),
-        "unicode"=>UNICODE.with(|cell|{let mut cell=cell.borrow_mut();if cell.is_none(){*cell=Some(umath::Parser::new().map_err(|e|error("FORMAT_BACKEND_INITIALIZATION",e))?)}let parsed=cell.as_ref().unwrap().parse_legacy(input).map_err(|e|json!({"code":"PARSE_ERROR","message":e.to_string(),"byte_offset":e.byte_offset(),"offset_policy":"preprocessed_utf8_bytes_when_reported"}))?;untag(&parsed.canonical())}),
+        "latex"=>LATEX.with(|cell|{let mut cell=cell.borrow_mut();if cell.is_none(){*cell=Some(latexmath::Parser::new().map_err(|e|error("FORMAT_BACKEND_INITIALIZATION",e))?)}let parsed=cell.as_ref().unwrap().parse_legacy_with_decimal(input, decimal).map_err(|e|json!({"code":"PARSE_ERROR","message":e.to_string(),"byte_offset":e.byte_offset(),"offset_policy":"caller_utf8_bytes_when_reported"}))?;untag(&parsed.canonical())}),
+        "unicode"=>UNICODE.with(|cell|{let mut cell=cell.borrow_mut();if cell.is_none(){*cell=Some(umath::Parser::new().map_err(|e|error("FORMAT_BACKEND_INITIALIZATION",e))?)}let parsed=cell.as_ref().unwrap().parse_legacy_with_decimal(input, decimal).map_err(|e|json!({"code":"PARSE_ERROR","message":e.to_string(),"byte_offset":e.byte_offset(),"offset_policy":"preprocessed_utf8_bytes_when_reported"}))?;untag(&parsed.canonical())}),
         _=>Err(incomplete(format!("unported text input format {format}"))),
     }?;
     let mut values = tx(format, &raw, 0)?;
@@ -731,6 +743,7 @@ pub fn parse(input: &str, format: &str, options: &Value) -> Result<Value, Value>
             )]
         }
     }
+    values.iter_mut().for_each(latex::validate_left_right);
     let mut result = formula(values);
     result["fields"]["input_string"] = json!(input);
     Ok(result)

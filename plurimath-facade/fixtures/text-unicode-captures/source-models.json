@@ -1,0 +1,4733 @@
+{
+ "source": "Ruby plurimath 0a1df68a5903d43da13b1e1ef85b6c0523feb1b4 (ruby 4.0.1); rows from handoffs main-native-pma-integrated/extra-input-models338.json and W2 ruby/extra-out.json",
+ "counts": {
+  "model": 73,
+  "refuse": 7
+ },
+ "rows": [
+  {
+   "format": "unicodemath",
+   "text": "ln⁡x",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "ln⁡x",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Ln",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "x"
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "det⁡A",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "det⁡A",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Det",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "A"
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "max⁡A",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "max⁡A",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Max",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "A"
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "gcd⁡(a , b)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "gcd⁡(a , b)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Gcd",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Function::Fenced",
+         "fields": {
+          "options": {},
+          "parameter_one": {
+           "class": "Math::Symbols::Paren::Lround",
+           "fields": {
+            "value": null
+           }
+          },
+          "parameter_three": {
+           "class": "Math::Symbols::Paren::Rround",
+           "fields": {
+            "value": null
+           }
+          },
+          "parameter_two": [
+           {
+            "class": "Math::Symbols::Symbol",
+            "fields": {
+             "value": "a"
+            }
+           },
+           {
+            "class": "Math::Symbols::Comma",
+            "fields": {
+             "value": null
+            }
+           },
+           {
+            "class": "Math::Symbols::Symbol",
+            "fields": {
+             "value": "b"
+            }
+           }
+          ]
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "^3 X",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "^3 X",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Multiscript",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Function::PowerBase",
+         "fields": {
+          "parameter_one": {
+           "class": "Math::Symbols::Symbol",
+           "fields": {
+            "value": "X"
+           }
+          },
+          "parameter_three": null,
+          "parameter_two": null
+         }
+        },
+        "parameter_three": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "3"
+          }
+         }
+        ],
+        "parameter_two": []
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "_2 X",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "_2 X",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Multiscript",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Function::PowerBase",
+         "fields": {
+          "parameter_one": {
+           "class": "Math::Symbols::Symbol",
+           "fields": {
+            "value": "X"
+           }
+          },
+          "parameter_three": null,
+          "parameter_two": null
+         }
+        },
+        "parameter_three": [],
+        "parameter_two": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "2"
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "^3 X_5",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "^3 X_5",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Multiscript",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Function::PowerBase",
+         "fields": {
+          "parameter_one": {
+           "class": "Math::Symbols::Symbol",
+           "fields": {
+            "value": "X"
+           }
+          },
+          "parameter_three": null,
+          "parameter_two": {
+           "class": "Math::Number",
+           "fields": {
+            "base": null,
+            "mini_sub_sized": false,
+            "mini_sup_sized": false,
+            "value": "5"
+           }
+          }
+         }
+        },
+        "parameter_three": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "3"
+          }
+         }
+        ],
+        "parameter_two": []
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "_2^3 X",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "_2^3 X",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Multiscript",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Function::PowerBase",
+         "fields": {
+          "parameter_one": {
+           "class": "Math::Symbols::Symbol",
+           "fields": {
+            "value": "X"
+           }
+          },
+          "parameter_three": null,
+          "parameter_two": null
+         }
+        },
+        "parameter_three": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "3"
+          }
+         }
+        ],
+        "parameter_two": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "2"
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "_2 X_5",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "_2 X_5",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Multiscript",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Function::PowerBase",
+         "fields": {
+          "parameter_one": {
+           "class": "Math::Symbols::Symbol",
+           "fields": {
+            "value": "X"
+           }
+          },
+          "parameter_three": null,
+          "parameter_two": {
+           "class": "Math::Number",
+           "fields": {
+            "base": null,
+            "mini_sub_sized": false,
+            "mini_sup_sized": false,
+            "value": "5"
+           }
+          }
+         }
+        },
+        "parameter_three": [],
+        "parameter_two": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "2"
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "_2 X₅",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "_2 X₅",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Multiscript",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Function::PowerBase",
+         "fields": {
+          "parameter_one": {
+           "class": "Math::Symbols::Symbol",
+           "fields": {
+            "value": "X"
+           }
+          },
+          "parameter_three": null,
+          "parameter_two": {
+           "class": "Math::Number",
+           "fields": {
+            "base": null,
+            "mini_sub_sized": true,
+            "mini_sup_sized": false,
+            "value": "5"
+           }
+          }
+         }
+        },
+        "parameter_three": [],
+        "parameter_two": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "2"
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "_2^3 X_5",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "_2^3 X_5",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Multiscript",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Function::PowerBase",
+         "fields": {
+          "parameter_one": {
+           "class": "Math::Symbols::Symbol",
+           "fields": {
+            "value": "X"
+           }
+          },
+          "parameter_three": null,
+          "parameter_two": {
+           "class": "Math::Number",
+           "fields": {
+            "base": null,
+            "mini_sub_sized": false,
+            "mini_sup_sized": false,
+            "value": "5"
+           }
+          }
+         }
+        },
+        "parameter_three": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "3"
+          }
+         }
+        ],
+        "parameter_two": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "2"
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "(_2)X",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "(_2)X",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Multiscript",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Function::PowerBase",
+         "fields": {
+          "parameter_one": {
+           "class": "Math::Symbols::Symbol",
+           "fields": {
+            "value": "X"
+           }
+          },
+          "parameter_three": null,
+          "parameter_two": null
+         }
+        },
+        "parameter_three": [],
+        "parameter_two": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "2"
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "(_2)X_5",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "(_2)X_5",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Multiscript",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Function::PowerBase",
+         "fields": {
+          "parameter_one": {
+           "class": "Math::Symbols::Symbol",
+           "fields": {
+            "value": "X"
+           }
+          },
+          "parameter_three": null,
+          "parameter_two": {
+           "class": "Math::Number",
+           "fields": {
+            "base": null,
+            "mini_sub_sized": false,
+            "mini_sup_sized": false,
+            "value": "5"
+           }
+          }
+         }
+        },
+        "parameter_three": [],
+        "parameter_two": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "2"
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "_2^3 X_5^6",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "_2^3 X_5^6",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Multiscript",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Function::PowerBase",
+         "fields": {
+          "parameter_one": {
+           "class": "Math::Symbols::Symbol",
+           "fields": {
+            "value": "X"
+           }
+          },
+          "parameter_three": {
+           "class": "Math::Number",
+           "fields": {
+            "base": null,
+            "mini_sub_sized": false,
+            "mini_sup_sized": false,
+            "value": "6"
+           }
+          },
+          "parameter_two": {
+           "class": "Math::Number",
+           "fields": {
+            "base": null,
+            "mini_sub_sized": false,
+            "mini_sup_sized": false,
+            "value": "5"
+           }
+          }
+         }
+        },
+        "parameter_three": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "3"
+          }
+         }
+        ],
+        "parameter_two": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "2"
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "(_2^3)X",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "(_2^3)X",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Multiscript",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Function::PowerBase",
+         "fields": {
+          "parameter_one": {
+           "class": "Math::Symbols::Symbol",
+           "fields": {
+            "value": "X"
+           }
+          },
+          "parameter_three": null,
+          "parameter_two": null
+         }
+        },
+        "parameter_three": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "3"
+          }
+         }
+        ],
+        "parameter_two": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "2"
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "(_2^3)X_5^6",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "(_2^3)X_5^6",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Multiscript",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Function::PowerBase",
+         "fields": {
+          "parameter_one": {
+           "class": "Math::Symbols::Symbol",
+           "fields": {
+            "value": "X"
+           }
+          },
+          "parameter_three": {
+           "class": "Math::Number",
+           "fields": {
+            "base": null,
+            "mini_sub_sized": false,
+            "mini_sup_sized": false,
+            "value": "6"
+           }
+          },
+          "parameter_two": {
+           "class": "Math::Number",
+           "fields": {
+            "base": null,
+            "mini_sub_sized": false,
+            "mini_sup_sized": false,
+            "value": "5"
+           }
+          }
+         }
+        },
+        "parameter_three": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "3"
+          }
+         }
+        ],
+        "parameter_two": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "2"
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "_2 X_(5)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "_2 X_(5)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Multiscript",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Function::PowerBase",
+         "fields": {
+          "parameter_one": {
+           "class": "Math::Symbols::Symbol",
+           "fields": {
+            "value": "X"
+           }
+          },
+          "parameter_three": null,
+          "parameter_two": {
+           "class": "Math::Number",
+           "fields": {
+            "base": null,
+            "mini_sub_sized": false,
+            "mini_sup_sized": false,
+            "value": "5"
+           }
+          }
+         }
+        },
+        "parameter_three": [],
+        "parameter_two": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "2"
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "_2^3 X_(5)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "_2^3 X_(5)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Multiscript",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Function::PowerBase",
+         "fields": {
+          "parameter_one": {
+           "class": "Math::Symbols::Symbol",
+           "fields": {
+            "value": "X"
+           }
+          },
+          "parameter_three": null,
+          "parameter_two": {
+           "class": "Math::Number",
+           "fields": {
+            "base": null,
+            "mini_sub_sized": false,
+            "mini_sup_sized": false,
+            "value": "5"
+           }
+          }
+         }
+        },
+        "parameter_three": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "3"
+          }
+         }
+        ],
+        "parameter_two": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "2"
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "_2^3 X_(5)^(6)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "_2^3 X_(5)^(6)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Multiscript",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Function::PowerBase",
+         "fields": {
+          "parameter_one": {
+           "class": "Math::Symbols::Symbol",
+           "fields": {
+            "value": "X"
+           }
+          },
+          "parameter_three": {
+           "class": "Math::Number",
+           "fields": {
+            "base": null,
+            "mini_sub_sized": false,
+            "mini_sup_sized": false,
+            "value": "6"
+           }
+          },
+          "parameter_two": {
+           "class": "Math::Number",
+           "fields": {
+            "base": null,
+            "mini_sub_sized": false,
+            "mini_sup_sized": false,
+            "value": "5"
+           }
+          }
+         }
+        },
+        "parameter_three": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "3"
+          }
+         }
+        ],
+        "parameter_two": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "2"
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "(_2^3)X_(5)^(6)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "(_2^3)X_(5)^(6)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Multiscript",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Function::PowerBase",
+         "fields": {
+          "parameter_one": {
+           "class": "Math::Symbols::Symbol",
+           "fields": {
+            "value": "X"
+           }
+          },
+          "parameter_three": {
+           "class": "Math::Number",
+           "fields": {
+            "base": null,
+            "mini_sub_sized": false,
+            "mini_sup_sized": false,
+            "value": "6"
+           }
+          },
+          "parameter_two": {
+           "class": "Math::Number",
+           "fields": {
+            "base": null,
+            "mini_sub_sized": false,
+            "mini_sup_sized": false,
+            "value": "5"
+           }
+          }
+         }
+        },
+        "parameter_three": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "3"
+          }
+         }
+        ],
+        "parameter_two": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "2"
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "_(2)^(3) X_5",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "_(2)^(3) X_5",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Multiscript",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Function::PowerBase",
+         "fields": {
+          "parameter_one": {
+           "class": "Math::Symbols::Symbol",
+           "fields": {
+            "value": "X"
+           }
+          },
+          "parameter_three": null,
+          "parameter_two": {
+           "class": "Math::Number",
+           "fields": {
+            "base": null,
+            "mini_sub_sized": false,
+            "mini_sup_sized": false,
+            "value": "5"
+           }
+          }
+         }
+        },
+        "parameter_three": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "3"
+          }
+         }
+        ],
+        "parameter_two": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "2"
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "_(2)^(3) X_5^6",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "_(2)^(3) X_5^6",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Multiscript",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Function::PowerBase",
+         "fields": {
+          "parameter_one": {
+           "class": "Math::Symbols::Symbol",
+           "fields": {
+            "value": "X"
+           }
+          },
+          "parameter_three": {
+           "class": "Math::Number",
+           "fields": {
+            "base": null,
+            "mini_sub_sized": false,
+            "mini_sup_sized": false,
+            "value": "6"
+           }
+          },
+          "parameter_two": {
+           "class": "Math::Number",
+           "fields": {
+            "base": null,
+            "mini_sub_sized": false,
+            "mini_sup_sized": false,
+            "value": "5"
+           }
+          }
+         }
+        },
+        "parameter_three": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "3"
+          }
+         }
+        ],
+        "parameter_two": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "2"
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "#",
+   "expect": "refuse",
+   "ruby": "parse_error"
+  },
+  {
+   "format": "latex",
+   "text": "\\inf_{i=1}^n",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "\\inf_{i=1}^n",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Inf",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Formula",
+         "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+           {
+            "class": "Math::Symbols::Symbol",
+            "fields": {
+             "value": "i"
+            }
+           },
+           {
+            "class": "Math::Symbols::Equal",
+            "fields": {
+             "value": null
+            }
+           },
+           {
+            "class": "Math::Number",
+            "fields": {
+             "base": null,
+             "mini_sub_sized": false,
+             "mini_sup_sized": false,
+             "value": "1"
+            }
+           }
+          ]
+         }
+        },
+        "parameter_two": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "n"
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "latex",
+   "text": "\\inf x",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "\\inf x",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Inf",
+       "fields": {
+        "parameter_one": null,
+        "parameter_two": null
+       }
+      },
+      {
+       "class": "Math::Symbols::Symbol",
+       "fields": {
+        "value": "x"
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "latex",
+   "text": "\\inf_i x",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "\\inf_i x",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Inf",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "i"
+         }
+        },
+        "parameter_two": null
+       }
+      },
+      {
+       "class": "Math::Symbols::Symbol",
+       "fields": {
+        "value": "x"
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "⒨(a@b)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "⒨(a@b)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table::Pmatrix",
+       "fields": {
+        "close_paren": {
+         "class": "Math::Symbols::Paren::Rround",
+         "fields": {
+          "value": null
+         }
+        },
+        "open_paren": {
+         "class": "Math::Symbols::Paren::Lround",
+         "fields": {
+          "value": null
+         }
+        },
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "a"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         },
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "b"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "ⓢ(a&b@c&d)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "ⓢ(a&b@c&d)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table::Bmatrix",
+       "fields": {
+        "close_paren": {
+         "class": "Math::Symbols::Paren::Rsquare",
+         "fields": {
+          "value": null
+         }
+        },
+        "open_paren": {
+         "class": "Math::Symbols::Paren::Lsquare",
+         "fields": {
+          "value": null
+         }
+        },
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "a"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "b"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         },
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "c"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "d"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "■(a&b)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "■(a&b)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table",
+       "fields": {
+        "close_paren": null,
+        "open_paren": null,
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "a"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "b"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "ⓢ(a)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "ⓢ(a)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table::Bmatrix",
+       "fields": {
+        "close_paren": {
+         "class": "Math::Symbols::Paren::Rsquare",
+         "fields": {
+          "value": null
+         }
+        },
+        "open_paren": {
+         "class": "Math::Symbols::Paren::Lsquare",
+         "fields": {
+          "value": null
+         }
+        },
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "a"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "⒱(a&b@c&d)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "⒱(a&b@c&d)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table::Vmatrix",
+       "fields": {
+        "close_paren": {
+         "class": "Math::Symbols::Paren::Vert",
+         "fields": {
+          "value": null
+         }
+        },
+        "open_paren": {
+         "class": "Math::Symbols::Paren::Vert",
+         "fields": {
+          "value": null
+         }
+        },
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "a"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "b"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         },
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "c"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "d"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "Ⓢ(a)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "Ⓢ(a)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table::Bmatrix",
+       "fields": {
+        "close_paren": {
+         "class": "Math::Symbols::Paren::Rcurly",
+         "fields": {
+          "value": null
+         }
+        },
+        "open_paren": {
+         "class": "Math::Symbols::Paren::Lcurly",
+         "fields": {
+          "value": null
+         }
+        },
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "a"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "³/₂",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "³/₂",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Frac",
+       "fields": {
+        "options": {
+         "displaystyle": false
+        },
+        "parameter_one": {
+         "class": "Math::Number",
+         "fields": {
+          "base": null,
+          "mini_sub_sized": false,
+          "mini_sup_sized": true,
+          "value": "3"
+         }
+        },
+        "parameter_two": {
+         "class": "Math::Number",
+         "fields": {
+          "base": null,
+          "mini_sub_sized": true,
+          "mini_sup_sized": false,
+          "value": "2"
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "x \\atop y",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "x \\atop y",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Frac",
+       "fields": {
+        "options": {
+         "linethickness": "0"
+        },
+        "parameter_one": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "x"
+         }
+        },
+        "parameter_two": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "y"
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "x \\choose y",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "x \\choose y",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Fenced",
+       "fields": {
+        "options": {},
+        "parameter_one": {
+         "class": "Math::Symbols::Paren::Lround",
+         "fields": {
+          "value": null
+         }
+        },
+        "parameter_three": {
+         "class": "Math::Symbols::Paren::Rround",
+         "fields": {
+          "value": null
+         }
+        },
+        "parameter_two": [
+         {
+          "class": "Math::Function::Frac",
+          "fields": {
+           "options": {
+            "linethickness": "0",
+            "choose": true
+           },
+           "parameter_one": {
+            "class": "Math::Symbols::Symbol",
+            "fields": {
+             "value": "x"
+            }
+           },
+           "parameter_two": {
+            "class": "Math::Symbols::Symbol",
+            "fields": {
+             "value": "y"
+            }
+           }
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "x\\sdiv y",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "x\\sdiv y",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Frac",
+       "fields": {
+        "options": {
+         "bevelled": true
+        },
+        "parameter_one": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "x"
+         }
+        },
+        "parameter_two": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "y"
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "x\\ldiv y",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "x\\ldiv y",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Frac",
+       "fields": {
+        "options": {
+         "ldiv": true
+        },
+        "parameter_one": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "x"
+         }
+        },
+        "parameter_two": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "y"
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "x\\ndiv y",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "x\\ndiv y",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Frac",
+       "fields": {
+        "options": {
+         "displaystyle": false
+        },
+        "parameter_one": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "x"
+         }
+        },
+        "parameter_two": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "y"
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "■(a)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "■(a)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table",
+       "fields": {
+        "close_paren": null,
+        "open_paren": null,
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "a"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "■3",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "■3",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table",
+       "fields": {
+        "close_paren": null,
+        "open_paren": null,
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Number",
+                "fields": {
+                 "base": null,
+                 "mini_sub_sized": false,
+                 "mini_sup_sized": false,
+                 "value": "1"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Number",
+                "fields": {
+                 "base": null,
+                 "mini_sub_sized": false,
+                 "mini_sup_sized": false,
+                 "value": "0"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Number",
+                "fields": {
+                 "base": null,
+                 "mini_sub_sized": false,
+                 "mini_sup_sized": false,
+                 "value": "0"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         },
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Number",
+                "fields": {
+                 "base": null,
+                 "mini_sub_sized": false,
+                 "mini_sup_sized": false,
+                 "value": "0"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Number",
+                "fields": {
+                 "base": null,
+                 "mini_sub_sized": false,
+                 "mini_sup_sized": false,
+                 "value": "1"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Number",
+                "fields": {
+                 "base": null,
+                 "mini_sub_sized": false,
+                 "mini_sup_sized": false,
+                 "value": "0"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         },
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Number",
+                "fields": {
+                 "base": null,
+                 "mini_sub_sized": false,
+                 "mini_sup_sized": false,
+                 "value": "0"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Number",
+                "fields": {
+                 "base": null,
+                 "mini_sub_sized": false,
+                 "mini_sup_sized": false,
+                 "value": "0"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Number",
+                "fields": {
+                 "base": null,
+                 "mini_sub_sized": false,
+                 "mini_sup_sized": false,
+                 "value": "1"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "■(3x)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "■(3x)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table",
+       "fields": {
+        "close_paren": null,
+        "open_paren": null,
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Number",
+                "fields": {
+                 "base": null,
+                 "mini_sub_sized": false,
+                 "mini_sup_sized": false,
+                 "value": "3"
+                }
+               },
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "x"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "■(a&b&c)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "■(a&b&c)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table",
+       "fields": {
+        "close_paren": null,
+        "open_paren": null,
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "a"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "b"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "c"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "■((x)y&c)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "■((x)y&c)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table",
+       "fields": {
+        "close_paren": null,
+        "open_paren": null,
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Function::Fenced",
+                "fields": {
+                 "options": {},
+                 "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lround",
+                  "fields": {
+                   "value": null
+                  }
+                 },
+                 "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rround",
+                  "fields": {
+                   "value": null
+                  }
+                 },
+                 "parameter_two": [
+                  {
+                   "class": "Math::Symbols::Symbol",
+                   "fields": {
+                    "value": "x"
+                   }
+                  }
+                 ]
+                }
+               },
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "y"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "c"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "■((x)y&c&d)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "■((x)y&c&d)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table",
+       "fields": {
+        "close_paren": null,
+        "open_paren": null,
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Function::Fenced",
+                "fields": {
+                 "options": {},
+                 "parameter_one": {
+                  "class": "Math::Symbols::Paren::Lround",
+                  "fields": {
+                   "value": null
+                  }
+                 },
+                 "parameter_three": {
+                  "class": "Math::Symbols::Paren::Rround",
+                  "fields": {
+                   "value": null
+                  }
+                 },
+                 "parameter_two": [
+                  {
+                   "class": "Math::Symbols::Symbol",
+                   "fields": {
+                    "value": "x"
+                   }
+                  }
+                 ]
+                }
+               },
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "y"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "c"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "d"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "■(a@b@c)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "■(a@b@c)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table",
+       "fields": {
+        "close_paren": null,
+        "open_paren": null,
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "a"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         },
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "b"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         },
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "c"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "■(a&b@c&d@e&f)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "■(a&b@c&d@e&f)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table",
+       "fields": {
+        "close_paren": null,
+        "open_paren": null,
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "a"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "b"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         },
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "c"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "d"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         },
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "e"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "f"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "⒱(a@b)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "⒱(a@b)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table::Vmatrix",
+       "fields": {
+        "close_paren": {
+         "class": "Math::Symbols::Paren::Vert",
+         "fields": {
+          "value": null
+         }
+        },
+        "open_paren": {
+         "class": "Math::Symbols::Paren::Vert",
+         "fields": {
+          "value": null
+         }
+        },
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "a"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         },
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "b"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "⒩(a@b)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "⒩(a@b)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table::Vmatrix",
+       "fields": {
+        "close_paren": {
+         "class": "Math::Symbols::Paren::Vert",
+         "fields": {
+          "value": null
+         }
+        },
+        "open_paren": {
+         "class": "Math::Symbols::Paren::Norm",
+         "fields": {
+          "value": null
+         }
+        },
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "a"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         },
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "b"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "Ⓢ(a@b)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "Ⓢ(a@b)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table::Bmatrix",
+       "fields": {
+        "close_paren": {
+         "class": "Math::Symbols::Paren::Rcurly",
+         "fields": {
+          "value": null
+         }
+        },
+        "open_paren": {
+         "class": "Math::Symbols::Paren::Lcurly",
+         "fields": {
+          "value": null
+         }
+        },
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "a"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         },
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "b"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "█(a@b)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "█(a@b)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table::Eqarray",
+       "fields": {
+        "close_paren": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": ""
+         }
+        },
+        "open_paren": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": ""
+         }
+        },
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "a"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         },
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "b"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "■(a@b)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "■(a@b)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table",
+       "fields": {
+        "close_paren": null,
+        "open_paren": null,
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "a"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         },
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "b"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "Ⓒ(a@b)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "Ⓒ(a@b)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table::Cases",
+       "fields": {
+        "close_paren": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": ":}"
+         }
+        },
+        "open_paren": {
+         "class": "Math::Symbols::Paren::Lcurly",
+         "fields": {
+          "value": null
+         }
+        },
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "a"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         },
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "b"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "\\amalg13_d\\of d",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "\\amalg13_d\\of d",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Nary",
+       "fields": {
+        "options": {
+         "mask": "13"
+        },
+        "parameter_four": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "d"
+         }
+        },
+        "parameter_one": {
+         "class": "Math::Symbols::Coprod",
+         "fields": {
+          "value": null
+         }
+        },
+        "parameter_three": null,
+        "parameter_two": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "d"
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "\\amalg13^d\\of d",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "\\amalg13^d\\of d",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Nary",
+       "fields": {
+        "options": {
+         "mask": "13"
+        },
+        "parameter_four": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "d"
+         }
+        },
+        "parameter_one": {
+         "class": "Math::Symbols::Coprod",
+         "fields": {
+          "value": null
+         }
+        },
+        "parameter_three": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "d"
+         }
+        },
+        "parameter_two": null
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "\\amalg13_d^d\\of d",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "\\amalg13_d^d\\of d",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Nary",
+       "fields": {
+        "options": {
+         "mask": "13"
+        },
+        "parameter_four": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "d"
+         }
+        },
+        "parameter_one": {
+         "class": "Math::Symbols::Coprod",
+         "fields": {
+          "value": null
+         }
+        },
+        "parameter_three": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "d"
+         }
+        },
+        "parameter_two": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "d"
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "■(a&b@c&d)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "■(a&b@c&d)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table",
+       "fields": {
+        "close_paren": null,
+        "open_paren": null,
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "a"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "b"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         },
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "c"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "d"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "Ⓢ(a&b@c&d)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "Ⓢ(a&b@c&d)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table::Bmatrix",
+       "fields": {
+        "close_paren": {
+         "class": "Math::Symbols::Paren::Rcurly",
+         "fields": {
+          "value": null
+         }
+        },
+        "open_paren": {
+         "class": "Math::Symbols::Paren::Lcurly",
+         "fields": {
+          "value": null
+         }
+        },
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "a"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "b"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         },
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "c"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "d"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "latex",
+   "text": "\\inf^n",
+   "expect": "refuse",
+   "ruby": "unbuilt capture in model"
+  },
+  {
+   "format": "latex",
+   "text": "\\inf",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "\\inf",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Inf",
+       "fields": {
+        "parameter_one": null,
+        "parameter_two": null
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "latex",
+   "text": "\\inf_{i}",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "\\inf_{i}",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Inf",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "i"
+         }
+        },
+        "parameter_two": null
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "latex",
+   "text": "\\inf_i^n x",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "\\inf_i^n x",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Inf",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "i"
+         }
+        },
+        "parameter_two": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "n"
+         }
+        }
+       }
+      },
+      {
+       "class": "Math::Symbols::Symbol",
+       "fields": {
+        "value": "x"
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "\\sum13_d\\of d",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "\\sum13_d\\of d",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Sum",
+       "fields": {
+        "options": {
+         "mask": "13"
+        },
+        "parameter_one": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "d"
+         }
+        },
+        "parameter_three": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "d"
+         }
+        },
+        "parameter_two": null
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "\\sum13_d^d\\of d",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "\\sum13_d^d\\of d",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Sum",
+       "fields": {
+        "options": {
+         "mask": "13"
+        },
+        "parameter_one": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "d"
+         }
+        },
+        "parameter_three": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "d"
+         }
+        },
+        "parameter_two": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "d"
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "\\amalg13_d\\of(d+e)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "\\amalg13_d\\of(d+e)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Nary",
+       "fields": {
+        "options": {
+         "mask": "13"
+        },
+        "parameter_four": {
+         "class": "Math::Function::Fenced",
+         "fields": {
+          "options": {},
+          "parameter_one": {
+           "class": "Math::Symbols::Paren::Lround",
+           "fields": {
+            "value": null
+           }
+          },
+          "parameter_three": {
+           "class": "Math::Symbols::Paren::Rround",
+           "fields": {
+            "value": null
+           }
+          },
+          "parameter_two": [
+           {
+            "class": "Math::Symbols::Symbol",
+            "fields": {
+             "value": "d"
+            }
+           },
+           {
+            "class": "Math::Symbols::Plus",
+            "fields": {
+             "value": null
+            }
+           },
+           {
+            "class": "Math::Symbols::Symbol",
+            "fields": {
+             "value": "e"
+            }
+           }
+          ]
+         }
+        },
+        "parameter_one": {
+         "class": "Math::Symbols::Coprod",
+         "fields": {
+          "value": null
+         }
+        },
+        "parameter_three": null,
+        "parameter_two": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "d"
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "■(a&b&c@d&e&f)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "■(a&b&c@d&e&f)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table",
+       "fields": {
+        "close_paren": null,
+        "open_paren": null,
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "a"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "b"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "c"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         },
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "d"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "e"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Symbols::Symbol",
+                "fields": {
+                 "value": "f"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "■2",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "■2",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table",
+       "fields": {
+        "close_paren": null,
+        "open_paren": null,
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Number",
+                "fields": {
+                 "base": null,
+                 "mini_sub_sized": false,
+                 "mini_sup_sized": false,
+                 "value": "1"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Number",
+                "fields": {
+                 "base": null,
+                 "mini_sub_sized": false,
+                 "mini_sup_sized": false,
+                 "value": "0"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         },
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Number",
+                "fields": {
+                 "base": null,
+                 "mini_sub_sized": false,
+                 "mini_sup_sized": false,
+                 "value": "0"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Number",
+                "fields": {
+                 "base": null,
+                 "mini_sub_sized": false,
+                 "mini_sup_sized": false,
+                 "value": "1"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "⒱3",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "⒱3",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Table::Vmatrix",
+       "fields": {
+        "close_paren": {
+         "class": "Math::Symbols::Paren::Vert",
+         "fields": {
+          "value": null
+         }
+        },
+        "open_paren": {
+         "class": "Math::Symbols::Paren::Vert",
+         "fields": {
+          "value": null
+         }
+        },
+        "options": {},
+        "value": [
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Number",
+                "fields": {
+                 "base": null,
+                 "mini_sub_sized": false,
+                 "mini_sup_sized": false,
+                 "value": "1"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Number",
+                "fields": {
+                 "base": null,
+                 "mini_sub_sized": false,
+                 "mini_sup_sized": false,
+                 "value": "0"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Number",
+                "fields": {
+                 "base": null,
+                 "mini_sub_sized": false,
+                 "mini_sup_sized": false,
+                 "value": "0"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         },
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Number",
+                "fields": {
+                 "base": null,
+                 "mini_sub_sized": false,
+                 "mini_sup_sized": false,
+                 "value": "0"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Number",
+                "fields": {
+                 "base": null,
+                 "mini_sub_sized": false,
+                 "mini_sup_sized": false,
+                 "value": "1"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Number",
+                "fields": {
+                 "base": null,
+                 "mini_sub_sized": false,
+                 "mini_sup_sized": false,
+                 "value": "0"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         },
+         {
+          "class": "Math::Function::Tr",
+          "fields": {
+           "parameter_one": [
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Number",
+                "fields": {
+                 "base": null,
+                 "mini_sub_sized": false,
+                 "mini_sup_sized": false,
+                 "value": "0"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Number",
+                "fields": {
+                 "base": null,
+                 "mini_sub_sized": false,
+                 "mini_sup_sized": false,
+                 "value": "0"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            },
+            {
+             "class": "Math::Function::Td",
+             "fields": {
+              "parameter_one": [
+               {
+                "class": "Math::Number",
+                "fields": {
+                 "base": null,
+                 "mini_sub_sized": false,
+                 "mini_sup_sized": false,
+                 "value": "1"
+                }
+               }
+              ],
+              "parameter_two": null
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "x\\ndiv (a+b)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "x\\ndiv (a+b)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Frac",
+       "fields": {
+        "options": {
+         "displaystyle": false
+        },
+        "parameter_one": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "x"
+         }
+        },
+        "parameter_two": {
+         "class": "Math::Formula",
+         "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+           {
+            "class": "Math::Symbols::Symbol",
+            "fields": {
+             "value": "a"
+            }
+           },
+           {
+            "class": "Math::Symbols::Plus",
+            "fields": {
+             "value": null
+            }
+           },
+           {
+            "class": "Math::Symbols::Symbol",
+            "fields": {
+             "value": "b"
+            }
+           }
+          ]
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "x \\atop (y)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "x \\atop (y)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Frac",
+       "fields": {
+        "options": {
+         "linethickness": "0"
+        },
+        "parameter_one": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "x"
+         }
+        },
+        "parameter_two": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "y"
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "(x+1) \\atop y",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "(x+1) \\atop y",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Frac",
+       "fields": {
+        "options": {
+         "linethickness": "0"
+        },
+        "parameter_one": {
+         "class": "Math::Formula",
+         "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+           {
+            "class": "Math::Symbols::Symbol",
+            "fields": {
+             "value": "x"
+            }
+           },
+           {
+            "class": "Math::Symbols::Plus",
+            "fields": {
+             "value": null
+            }
+           },
+           {
+            "class": "Math::Number",
+            "fields": {
+             "base": null,
+             "mini_sub_sized": false,
+             "mini_sup_sized": false,
+             "value": "1"
+            }
+           }
+          ]
+         }
+        },
+        "parameter_two": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "y"
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "x \\choose (y)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "x \\choose (y)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Fenced",
+       "fields": {
+        "options": {},
+        "parameter_one": {
+         "class": "Math::Symbols::Paren::Lround",
+         "fields": {
+          "value": null
+         }
+        },
+        "parameter_three": {
+         "class": "Math::Symbols::Paren::Rround",
+         "fields": {
+          "value": null
+         }
+        },
+        "parameter_two": [
+         {
+          "class": "Math::Function::Frac",
+          "fields": {
+           "options": {
+            "linethickness": "0",
+            "choose": true
+           },
+           "parameter_one": {
+            "class": "Math::Symbols::Symbol",
+            "fields": {
+             "value": "x"
+            }
+           },
+           "parameter_two": {
+            "class": "Math::Symbols::Symbol",
+            "fields": {
+             "value": "y"
+            }
+           }
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "²/₃",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "²/₃",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Frac",
+       "fields": {
+        "options": {
+         "displaystyle": false
+        },
+        "parameter_one": {
+         "class": "Math::Number",
+         "fields": {
+          "base": null,
+          "mini_sub_sized": false,
+          "mini_sup_sized": true,
+          "value": "2"
+         }
+        },
+        "parameter_two": {
+         "class": "Math::Number",
+         "fields": {
+          "base": null,
+          "mini_sub_sized": true,
+          "mini_sup_sized": false,
+          "value": "3"
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "x\\sdiv(y+z)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "x\\sdiv(y+z)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Frac",
+       "fields": {
+        "options": {
+         "bevelled": true
+        },
+        "parameter_one": {
+         "class": "Math::Symbols::Symbol",
+         "fields": {
+          "value": "x"
+         }
+        },
+        "parameter_two": {
+         "class": "Math::Formula",
+         "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+           {
+            "class": "Math::Symbols::Symbol",
+            "fields": {
+             "value": "y"
+            }
+           },
+           {
+            "class": "Math::Symbols::Plus",
+            "fields": {
+             "value": null
+            }
+           },
+           {
+            "class": "Math::Symbols::Symbol",
+            "fields": {
+             "value": "z"
+            }
+           }
+          ]
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "_2^3 X^6",
+   "expect": "refuse",
+   "ruby": "unbuilt capture in model"
+  },
+  {
+   "format": "unicodemath",
+   "text": "(_2)X_(5)",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "(_2)X_(5)",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Multiscript",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Function::PowerBase",
+         "fields": {
+          "parameter_one": {
+           "class": "Math::Symbols::Symbol",
+           "fields": {
+            "value": "X"
+           }
+          },
+          "parameter_three": null,
+          "parameter_two": {
+           "class": "Math::Function::Fenced",
+           "fields": {
+            "options": {},
+            "parameter_one": {
+             "class": "Math::Symbols::Paren::Lround",
+             "fields": {
+              "value": null
+             }
+            },
+            "parameter_three": {
+             "class": "Math::Symbols::Paren::Rround",
+             "fields": {
+              "value": null
+             }
+            },
+            "parameter_two": [
+             {
+              "class": "Math::Number",
+              "fields": {
+               "base": null,
+               "mini_sub_sized": false,
+               "mini_sup_sized": false,
+               "value": "5"
+              }
+             }
+            ]
+           }
+          }
+         }
+        },
+        "parameter_three": [],
+        "parameter_two": [
+         {
+          "class": "Math::Number",
+          "fields": {
+           "base": null,
+           "mini_sub_sized": false,
+           "mini_sup_sized": false,
+           "value": "2"
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "_(2) X",
+   "expect": "model",
+   "parsed_model": {
+    "class": "Math::Formula",
+    "fields": {
+     "displaystyle": true,
+     "input_string": "_(2) X",
+     "left_right_wrapper": true,
+     "value": [
+      {
+       "class": "Math::Function::Multiscript",
+       "fields": {
+        "parameter_one": {
+         "class": "Math::Function::PowerBase",
+         "fields": {
+          "parameter_one": {
+           "class": "Math::Symbols::Symbol",
+           "fields": {
+            "value": "X"
+           }
+          },
+          "parameter_three": null,
+          "parameter_two": null
+         }
+        },
+        "parameter_three": [],
+        "parameter_two": [
+         {
+          "class": "Math::Function::Fenced",
+          "fields": {
+           "options": {},
+           "parameter_one": {
+            "class": "Math::Symbols::Paren::Lround",
+            "fields": {
+             "value": null
+            }
+           },
+           "parameter_three": {
+            "class": "Math::Symbols::Paren::Rround",
+            "fields": {
+             "value": null
+            }
+           },
+           "parameter_two": [
+            {
+             "class": "Math::Number",
+             "fields": {
+              "base": null,
+              "mini_sub_sized": false,
+              "mini_sup_sized": false,
+              "value": "2"
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "format": "unicodemath",
+   "text": "_2 X_5^6",
+   "expect": "refuse",
+   "ruby": "unbuilt capture in model"
+  },
+  {
+   "format": "unicodemath",
+   "text": "(^3)X",
+   "expect": "refuse",
+   "ruby": "unbuilt capture in model"
+  },
+  {
+   "format": "unicodemath",
+   "text": "^3 X^6",
+   "expect": "refuse",
+   "ruby": "unbuilt capture in model"
+  },
+  {
+   "format": "unicodemath",
+   "text": "■()",
+   "expect": "refuse",
+   "ruby": "parse_error"
+  }
+ ]
+}
