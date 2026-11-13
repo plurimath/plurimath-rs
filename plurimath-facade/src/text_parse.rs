@@ -259,8 +259,12 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         {
             return Err(incomplete("unported logarithm/limit capture fields"));
         }
-        // Source has no {binary, supscript} rule: \inf^n stays an unbuilt capture Hash.
-        if name == "inf" && m.contains_key("supscript") && !m.contains_key("subscript") {
+        // Source has no {binary, supscript} rule: \inf^n, and in LaTeX also \lim^n
+        // and \log^n, stay unbuilt capture Hashes.
+        if (name == "inf" || format == "latex")
+            && m.contains_key("supscript")
+            && !m.contains_key("subscript")
+        {
             return Err(incomplete("unported source infimum superscript-only shape"));
         }
         let operand = |key: &str| -> Result<Value, Value> {
@@ -353,7 +357,35 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
                 )))
             }
         };
-        let mut fields = json!({"parameter_one":one(tx(format,m.get("first_value").ok_or_else(||incomplete("missing first binary operand"))?,depth+1)?),"parameter_two":one(tx(format,m.get("second_value").ok_or_else(||incomplete("missing second binary operand"))?,depth+1)?)});
+        // Source LaTeX binary constructors receive nil for an empty `{}` operand,
+        // never an empty Formula (`\frac{}{x}` is Frac(nil, x)).
+        let operand = |key: &str, missing: &str| -> Result<Value, Value> {
+            let values = tx(
+                format,
+                m.get(key).ok_or_else(|| incomplete(missing))?,
+                depth + 1,
+            )?;
+            Ok(if format == "latex" && values.is_empty() {
+                Value::Null
+            } else {
+                one(values)
+            })
+        };
+        // Source SINGLE `binary` builder: a bare `\mod` (its `{}` group is an
+        // empty sibling) is Mod.new with both operands nil.
+        if format == "latex" && name == "mod" && m.len() == 1 {
+            return Ok(vec![node(
+                "Math::Function::Mod",
+                json!({"parameter_one":null,"parameter_two":null}),
+            )]);
+        }
+        let first = operand("first_value", "missing first binary operand")?;
+        // `\color{}` captures its colour as an empty symbol list that no source
+        // rule builds, so the source model keeps an unbuilt capture Hash.
+        if name == "color" && first.is_null() {
+            return Err(incomplete("unported source empty colour capture"));
+        }
+        let mut fields = json!({"parameter_one":first,"parameter_two":operand("second_value", "missing second binary operand")?});
         if name == "underset" {
             fields["options"] = json!({});
         }
