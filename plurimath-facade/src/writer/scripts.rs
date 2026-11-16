@@ -81,13 +81,12 @@ pub(super) fn text(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<Str
             }
         ),
         "unicodemath" => {
-            if b["fields"]["mini_sub_sized"] == true || b["fields"]["mini_sup_sized"] == true {
-                return Err("unported source mini-sized subscript".into());
-            }
-            let suffix = if b.is_null() {
-                "()".into()
-            } else if b["class"] == "Math::Function::Base" {
+            let suffix = if b["class"] == "Math::Function::Base" {
                 format!("_{}{}", size_overrides(&opts)?, child(b, f, ctx)?)
+            } else if super::numbers::mini_sized(b) {
+                child(b, f, ctx)?
+            } else if b.is_null() {
+                "()".into()
             } else if options_present(&opts) {
                 format!("_{}〖{}〗", size_overrides(&opts)?, child(b, f, ctx)?)
             } else if b["class"] == "Math::Function::Fenced" {
