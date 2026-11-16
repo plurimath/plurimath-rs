@@ -71,9 +71,32 @@ def convert_row(row, reg, freg, problems):
         return v
     return build(graph['root'])
 
+def expected_writers(row, base):
+    """Recorded Ruby outcomes: default calls, replaced by the follow-up reruns where
+    the call differs (display_style: false for flag 0; the 305 to_unicodemath rerun
+    with a longer timeout)."""
+    w = json.loads(json.dumps(row['ruby'].get('writers')))
+    if w is None:
+        return None
+    f = pathlib.Path(base, 'followup', 'writers-display', row['id'] + '.json')
+    if f.exists():
+        d = json.loads(f.read_text())
+        assert d['display_flag'] == row['display_flag'] == '0'
+        for k, v in d['writers'].items():
+            w[k] = {x: y for x, y in v.items() if x != 'same_as_default'}
+    elif row['display_flag'] != '1':
+        raise SystemExit(f"flag {row['display_flag']} row {row['id']} lacks display rerun")
+    sup = pathlib.Path(base, 'data', 'supplement-' + row['id'].split('-')[-1] + '-to_unicodemath.json')
+    if sup.exists():
+        d = json.loads(sup.read_text())
+        assert d['id'] == row['id']
+        w['to_unicodemath'] = d['result']
+    return w
+
 def main():
     src, out = sys.argv[1], sys.argv[2]
     facade = sys.argv[4] if len(sys.argv) > 4 and sys.argv[3] == '--facade' else '.'
+    base = str(pathlib.Path(src).parent.parent)
     reg, freg = registry(facade), fields_registry(facade)
     problems, n_ok, n_ref = [], 0, 0
     with open(out, 'w') as o:
@@ -85,7 +108,7 @@ def main():
             else:
                 n_ok += 1
             o.write(json.dumps({'id': row['id'], 'display_flag': row['display_flag'],
-                                'model': model, 'source_writers': row['ruby'].get('writers')},
+                                'model': model, 'source_writers': expected_writers(row, base)},
                                ensure_ascii=False) + '\n')
     print(json.dumps({'rows_with_model': n_ok, 'source_refusals': n_ref,
                       'problems': len(problems), 'sha256': hashlib.sha256(open(src,'rb').read()).hexdigest()}))
