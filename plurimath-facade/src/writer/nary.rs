@@ -240,11 +240,13 @@ pub(super) fn latex_wrapped_with_value(v: &Value, value: String) -> Result<Strin
         };
         !has(&data()["left_classes"]) || !has(&data()["right_classes"])
     } else {
-        data()["latex_wrap_static"][&m.class]
-            .as_bool()
-            .ok_or_else(|| {
-                "unported promised value-sensitive LaTeX wrapping predicate".to_owned()
-            })?
+        match data()["latex_wrap_static"][&m.class].as_bool() {
+            Some(known) => known,
+            // Every Symbols subclass inherits Symbol#validate_function_formula (false);
+            // no subclass overrides it.
+            None if m.class.starts_with("Math::Symbols::") => false,
+            None => return Err("unported promised value-sensitive LaTeX wrapping predicate".into()),
+        }
     };
     if function_formula {
         Ok(format!("{{ \\left ( {value} \\right ) }}"))
