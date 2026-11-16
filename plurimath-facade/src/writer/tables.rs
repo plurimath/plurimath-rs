@@ -97,6 +97,7 @@ fn cell(c: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String
 pub(super) fn render(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
     if ![
         "Align", "Multline", "Split", "Matrix", "Pmatrix", "Bmatrix", "Vmatrix", "Array",
+        "Eqarray", "Cases",
     ]
     .contains(&m.kind())
     {
@@ -145,6 +146,34 @@ pub(super) fn render(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<S
                 "{}{body}{}",
                 child(open, f, ctx)?,
                 child(close, f, ctx)?
+            ))
+        }
+        "latex" if matches!(m.kind(), "Eqarray" | "Cases") => {
+            let body = cells
+                .iter()
+                .map(|r| r.join(" & "))
+                .collect::<Vec<_>>()
+                .join(" \\\\ ");
+            if m.kind() == "Cases" {
+                return Ok(format!("\\begin{{cases}}{body}\\end{{cases}}"));
+            }
+            if open["class"] == "Math::Symbols::Paren::Norm" {
+                return Ok(format!("\\begin{{Vmatrix}}{body}\\end{{Vmatrix}}"));
+            }
+            let side = |v: &Value, prefix: &str| -> Result<String, String> {
+                if v.is_null() {
+                    Ok(".".into())
+                } else {
+                    Ok(child(v, "latex", ctx)?
+                        .strip_prefix(prefix)
+                        .map(str::to_owned)
+                        .unwrap_or(child(v, "latex", ctx)?))
+                }
+            };
+            Ok(format!(
+                "\\left {}\\begin{{matrix}}{body}\\end{{matrix}}\\right {}",
+                side(open, "\\left")?,
+                side(close, "\\right")?
             ))
         }
         "latex" => {
@@ -211,6 +240,24 @@ pub(super) fn render(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<S
                 .collect::<Vec<_>>()
                 .join(" \\\\ ");
             Ok(format!("\\begin{{{env}}}{args}{body}\\end{{{env}}}"))
+        }
+        "unicodemath" if matches!(m.kind(), "Eqarray" | "Cases") => {
+            let body = cells
+                .iter()
+                .map(|r| r.join("&"))
+                .collect::<Vec<_>>()
+                .join("@");
+            if m.kind() == "Cases" {
+                return Ok(format!("Ⓒ({body})"));
+            }
+            let side = |v: &Value| -> Result<String, String> {
+                if v.is_null() {
+                    Ok(String::new())
+                } else {
+                    child(v, "unicodemath", ctx)
+                }
+            };
+            Ok(format!("{}█({body}){}", side(open)?, side(close)?))
         }
         "unicodemath" => {
             let matrix = if open.is_null()
