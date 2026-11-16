@@ -4,6 +4,7 @@
 //! any other shape falls through to the shared converter.
 use super::{error, fenced, incomplete};
 mod decorations;
+mod intent;
 mod structural_scripts;
 use crate::model::{formula, node, number};
 use serde_json::{json, Map, Value};
@@ -805,6 +806,9 @@ fn cell(value: &Value, rec: Rec) -> Result<Vec<Value>, Value> {
 }
 
 pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>, Value> {
+    if let Some(values) = intent::tx(m, rec)? {
+        return Ok(Some(values));
+    }
     if let Some(values) = decorations::tx(m, rec)? {
         return Ok(Some(values));
     }

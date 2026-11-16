@@ -1,6 +1,14 @@
 //! Measured intent, argument and uncertainty-marker models from Ruby 0a1df68.
 use serde_json::{json, Value};
 
+/// The facade records the source text on the root Formula; fixtures omit it.
+fn without_input_string(mut model: Value) -> Value {
+    if let Some(fields) = model.get_mut("fields").and_then(Value::as_object_mut) {
+        fields.remove("input_string");
+    }
+    model
+}
+
 #[test]
 fn unicode_intents_arguments_and_markers_match_source() {
     let fixture: Value = serde_json::from_str(include_str!(
@@ -15,7 +23,7 @@ fn unicode_intents_arguments_and_markers_match_source() {
             &json!({"op":"parse","format":"unicode","input":row["input"],"options":{}}),
         );
         let matches = if row.get("expected").is_some() {
-            actual["ok"] == true && actual["model"] == row["expected"]
+            actual["ok"] == true && without_input_string(actual["model"].clone()) == row["expected"]
         } else {
             actual["ok"] == false
                 && actual["error"]["code"] == "PARSE_ERROR"
