@@ -988,6 +988,46 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
             json!({"parameter_one":first,"parameter_two":filter_values(syms)}),
         )]));
     }
+    if keys(m, &["unary_symbols", "first_value"]) {
+        return unary_symbols(m, rec).map(Some);
+    }
+    if keys(m, &["rect_value", "first_value"]) {
+        let mask = capture_text(&m["rect_value"], "rect mask")?;
+        let attrs = enclosure_attrs(mask.trim().parse::<i64>().unwrap_or(0))?;
+        return Ok(Some(vec![node(
+            "Math::Function::Menclose",
+            json!({"parameter_one":attrs,"parameter_two":unf(rec(&m["first_value"])?)}),
+        )]));
+    }
+    for (key, backcolor) in [("color_value", false), ("backcolor_value", true)] {
+        if keys(m, &[key, "first_value"]) {
+            let color = capture_text(&m[key], "color")?;
+            let body = rec(&m["first_value"])?;
+            let body = if body.len() == 1 {
+                body.into_iter().next().unwrap()
+            } else {
+                filter_values(body)
+            };
+            let color = node("Math::Symbols::Symbol", json!({"value":color}));
+            let fields = if backcolor {
+                json!({"options":{"backgroundcolor":true},"parameter_one":color,"parameter_two":body})
+            } else {
+                json!({"parameter_one":color,"parameter_two":body})
+            };
+            return Ok(Some(vec![node("Math::Function::Color", fields)]));
+        }
+    }
+    for body_key in ["first_value", "scripted_first_value"] {
+        if keys(m, &["hbracket_class", body_key]) {
+            let hbrack = capture_text(&m["hbracket_class"], "bracket")?;
+            let value = unf(rec(&m[body_key])?);
+            return Ok(Some(vec![hbracket(
+                &hbrack,
+                value,
+                body_key == "scripted_first_value",
+            )]));
+        }
+    }
     if keys(m, &["factor", "operand", "expr"]) {
         let mut out = rec(&m["factor"])?;
         out.extend(rec(&m["operand"])?);
@@ -1096,4 +1136,142 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
         return Ok(Some(vec![value]));
     }
     Ok(None)
+}
+
+fn capture_text(value: &Value, what: &str) -> Result<String, Value> {
+    value
+        .as_str()
+        .map(str::to_string)
+        .ok_or_else(|| incomplete(format!("non-text {what} capture")))
+}
+/// Source Utility.enclosure_attrs.
+fn enclosure_attrs(mask: i64) -> Result<String, Value> {
+    if !(0..=255).contains(&mask) {
+        return Err(incomplete("enclosure mask is not between 0 and 255"));
+    }
+    let mask = mask ^ 15;
+    let names = [
+        "top",
+        "bottom",
+        "left",
+        "right",
+        "horizontalstrike",
+        "verticalstrike",
+        "downdiagonalstrike",
+        "updiagonalstrike",
+    ];
+    Ok((0..8)
+        .filter(|i| mask & (1 << i) != 0)
+        .map(|i| names[i])
+        .collect::<Vec<_>>()
+        .join(" "))
+}
+/// Source `unary_symbols, first_value` rule: phantom/smash or menclose.
+fn unary_symbols(m: &Map<String, Value>, rec: Rec) -> Result<Vec<Value>, Value> {
+    const UNARY: [(&str, &str); 13] = [
+        ("underline", "&#x2581;"),
+        ("hphantom", "&#x2b04;"),
+        ("vphantom", "&#x21f3;"),
+        ("underbar", "&#x2581;"),
+        ("overline", "&#xaf;"),
+        ("phantom", "&#x27e1;"),
+        ("longdiv", "&#x27cc;"),
+        ("circle", "&#x25cb;"),
+        ("asmash", "&#x2b06;"),
+        ("dsmash", "&#x2b07;"),
+        ("hsmash", "&#x2b0c;"),
+        ("smash", "&#x2b0d;"),
+        ("overbar", "&#xaf;"),
+    ];
+    const MENCLOSE: [(&str, &str); 10] = [
+        ("underline", "bottom"),
+        ("underbar", "bottom"),
+        ("longdiv", "longdiv"),
+        ("xcancel", "updiagonalstrike downdiagonalstrike"),
+        ("bcancel", "updiagonalstrike"),
+        ("ellipse", "circle"),
+        ("circle", "circle"),
+        ("cancel", "downdiagonalstrike"),
+        ("rrect", "roundedbox"),
+        ("rect", "box"),
+    ];
+    let unary = capture_text(&m["unary_symbols"], "unary symbol")?;
+    let name = UNARY
+        .iter()
+        .find(|(_, v)| *v == unary)
+        .map_or(unary.as_str(), |(k, _)| *k);
+    let first = unf(rec(&m["first_value"])?);
+    // Source PHANTOM_SYMBOLS entry: (mpadded options, phantom flag).
+    let phantom: Option<(Option<Value>, bool)> = match name {
+        "hphantom" => Some((Some(json!({"depth":"0","height":"0"})), true)),
+        "vphantom" => Some((Some(json!({"width":"0"})), true)),
+        "phantom" => Some((None, true)),
+        "hsmash" => Some((Some(json!({"width":"0"})), false)),
+        "asmash" => Some((Some(json!({"height":"0"})), false)),
+        "dsmash" => Some((Some(json!({"depth":"0"})), false)),
+        "smash" => Some((Some(json!({"height":"0","depth":"0"})), false)),
+        _ => None,
+    };
+    if let Some((mpadded, wrap)) = phantom {
+        let mut value = first;
+        if let Some(options) = mpadded {
+            // The source stores the whole PHANTOM_SYMBOLS entry as the options.
+            value = node(
+                "Math::Function::Mpadded",
+                json!({"options":{"mpadded":options,"phantom":wrap},"parameter_one":value}),
+            );
+        }
+        if wrap {
+            value = node("Math::Function::Phantom", json!({"parameter_one":value}));
+        }
+        return Ok(vec![value]);
+    }
+    let notation = MENCLOSE
+        .iter()
+        .find(|(k, _)| *k == unary)
+        .or_else(|| MENCLOSE.iter().find(|(k, _)| *k == name))
+        .map(|(_, v)| *v);
+    Ok(vec![node(
+        "Math::Function::Menclose",
+        json!({"parameter_one":notation,"parameter_two":first}),
+    )])
+}
+/// Source `hbracket_class` rules (first_value and scripted_first_value).
+fn hbracket(hbrack: &str, value: Value, scripted: bool) -> Value {
+    let bracket = |name: &str, v: Value| {
+        node(
+            &format!("Math::Function::{name}"),
+            json!({"parameter_one":v}),
+        )
+    };
+    let symbol = node("Math::Symbols::Symbol", json!({"value":hbrack}));
+    match hbrack {
+        "&#x23de;" => bracket("Obrace", value),
+        "&#x23df;" => {
+            let f = &value["fields"];
+            if value["class"] == "Math::Function::Base"
+                && f["parameter_one"]["class"] != "Math::Formula"
+            {
+                let inner = if scripted {
+                    unfenced(f["parameter_one"].clone())
+                } else {
+                    f["parameter_one"].clone()
+                };
+                node(
+                    "Math::Function::Underset",
+                    json!({"parameter_one":f["parameter_two"],"parameter_two":bracket("Ubrace", inner)}),
+                )
+            } else {
+                bracket("Ubrace", value)
+            }
+        }
+        "&#x23b5;" | "&#x23e1;" | "&#x23dd;" => node(
+            "Math::Function::Underset",
+            json!({"parameter_one":symbol,"parameter_two":value}),
+        ),
+        _ => node(
+            "Math::Function::Overset",
+            json!({"parameter_one":symbol,"parameter_two":value}),
+        ),
+    }
 }
