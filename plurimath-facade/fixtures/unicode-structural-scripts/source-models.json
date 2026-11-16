@@ -1,0 +1,1808 @@
+{
+  "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "source_operation": "Plurimath::UnicodeMath::Parser.new(input).parse",
+  "rows": [
+    {
+      "input": "x┬a",
+      "capture": {
+        "sub_exp": {
+          "base": {
+            "symbol": "x"
+          },
+          "sub": {
+            "under": "&#x252c;",
+            "sub_script": {
+              "operand": {
+                "factor": {
+                  "atom": {
+                    "alphanumeric": "a"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Underset",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "x┬(a+b)",
+      "capture": {
+        "sub_exp": {
+          "base": {
+            "symbol": "x"
+          },
+          "sub": {
+            "under": "&#x252c;",
+            "sub_script": {
+              "operand": {
+                "factor": {
+                  "intermediate_exp": {
+                    "open_paren": "(",
+                    "factor": {
+                      "atom": {
+                        "alphanumeric": "a"
+                      }
+                    },
+                    "exp": {
+                      "operator": "+",
+                      "exp": {
+                        "factor": {
+                          "atom": {
+                            "alphanumeric": "b"
+                          }
+                        }
+                      }
+                    },
+                    "close_paren": ")"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Underset",
+              "fields": {
+                "options": {},
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "a"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Plus",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "b"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "x┬a┴b",
+      "capture": {
+        "subsup_exp": {
+          "base": {
+            "symbol": "x"
+          },
+          "sub": {
+            "under": "&#x252c;",
+            "sub_script": {
+              "operand": {
+                "factor": {
+                  "atom": {
+                    "alphanumeric": "a"
+                  }
+                }
+              }
+            }
+          },
+          "sup": {
+            "over": "&#x2534;",
+            "sup_script": {
+              "operand": {
+                "factor": {
+                  "atom": {
+                    "alphanumeric": "b"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Underover",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "b"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "x┴a┬b",
+      "capture": {
+        "subsup_exp": {
+          "base": {
+            "symbol": "x"
+          },
+          "sub": {
+            "under": "&#x252c;",
+            "sub_script": {
+              "operand": {
+                "factor": {
+                  "atom": {
+                    "alphanumeric": "b"
+                  }
+                }
+              }
+            }
+          },
+          "sup": {
+            "over": "&#x2534;",
+            "sup_script": {
+              "operand": {
+                "factor": {
+                  "atom": {
+                    "alphanumeric": "a"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Underover",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "b"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "a_b_c",
+      "capture": {
+        "sub_exp": {
+          "base": {
+            "symbol": "a"
+          },
+          "sub": {
+            "sub_script": {
+              "operand": {
+                "factor": {
+                  "atom": {
+                    "alphanumeric": "b"
+                  }
+                }
+              }
+            },
+            "sub_recursion": {
+              "sub_script": {
+                "operand": {
+                  "factor": {
+                    "atom": {
+                      "alphanumeric": "c"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Base",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Base",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "b"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "c"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "a_b_c_d",
+      "capture": {
+        "sub_exp": {
+          "base": {
+            "symbol": "a"
+          },
+          "sub": {
+            "sub_script": {
+              "operand": {
+                "factor": {
+                  "atom": {
+                    "alphanumeric": "b"
+                  }
+                }
+              }
+            },
+            "sub_recursion": {
+              "sub_script": {
+                "operand": {
+                  "factor": {
+                    "atom": {
+                      "alphanumeric": "c"
+                    }
+                  }
+                }
+              },
+              "sub_recursion": {
+                "sub_script": {
+                  "operand": {
+                    "factor": {
+                      "atom": {
+                        "alphanumeric": "d"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Base",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Base",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Function::Base",
+                      "fields": {
+                        "parameter_one": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "b"
+                          }
+                        },
+                        "parameter_two": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "c"
+                          }
+                        }
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "d"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "a_(b_c)_d",
+      "capture": {
+        "sub_exp": {
+          "base": {
+            "symbol": "a"
+          },
+          "sub": {
+            "sub_script": {
+              "operand": {
+                "factor": {
+                  "intermediate_exp": {
+                    "open_paren": "(",
+                    "sub_exp": {
+                      "base": {
+                        "symbol": "b"
+                      },
+                      "sub": {
+                        "sub_script": {
+                          "operand": {
+                            "factor": {
+                              "atom": {
+                                "alphanumeric": "c"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "close_paren": ")"
+                  }
+                }
+              }
+            },
+            "sub_recursion": {
+              "sub_script": {
+                "operand": {
+                  "factor": {
+                    "atom": {
+                      "alphanumeric": "d"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Base",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Base",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Function::Fenced",
+                      "fields": {
+                        "options": {},
+                        "parameter_one": {
+                          "class": "Math::Symbols::Paren::Lround",
+                          "fields": {
+                            "value": null
+                          }
+                        },
+                        "parameter_three": {
+                          "class": "Math::Symbols::Paren::Rround",
+                          "fields": {
+                            "value": null
+                          }
+                        },
+                        "parameter_two": [
+                          {
+                            "class": "Math::Function::Base",
+                            "fields": {
+                              "parameter_one": {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "b"
+                                }
+                              },
+                              "parameter_two": {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "c"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "d"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "a_b_(c_d)",
+      "capture": {
+        "sub_exp": {
+          "base": {
+            "symbol": "a"
+          },
+          "sub": {
+            "sub_script": {
+              "operand": {
+                "factor": {
+                  "atom": {
+                    "alphanumeric": "b"
+                  }
+                }
+              }
+            },
+            "sub_recursion": {
+              "sub_script": {
+                "operand": {
+                  "factor": {
+                    "intermediate_exp": {
+                      "open_paren": "(",
+                      "sub_exp": {
+                        "base": {
+                          "symbol": "c"
+                        },
+                        "sub": {
+                          "sub_script": {
+                            "operand": {
+                              "factor": {
+                                "atom": {
+                                  "alphanumeric": "d"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "close_paren": ")"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Base",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Base",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "b"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Function::Fenced",
+                      "fields": {
+                        "options": {},
+                        "parameter_one": {
+                          "class": "Math::Symbols::Paren::Lround",
+                          "fields": {
+                            "value": null
+                          }
+                        },
+                        "parameter_three": {
+                          "class": "Math::Symbols::Paren::Rround",
+                          "fields": {
+                            "value": null
+                          }
+                        },
+                        "parameter_two": [
+                          {
+                            "class": "Math::Function::Base",
+                            "fields": {
+                              "parameter_one": {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "c"
+                                }
+                              },
+                              "parameter_two": {
+                                "class": "Math::Symbols::Symbol",
+                                "fields": {
+                                  "value": "d"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "a_b_b^c",
+      "capture": {
+        "subsup_exp": {
+          "base": {
+            "symbol": "a"
+          },
+          "sub": {
+            "sub_script": {
+              "operand": {
+                "factor": {
+                  "atom": {
+                    "alphanumeric": "b"
+                  }
+                }
+              }
+            },
+            "sub_recursion": {
+              "sub_script": {
+                "operand": {
+                  "factor": {
+                    "atom": {
+                      "alphanumeric": "b"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "sup": {
+            "sup_script": {
+              "operand": {
+                "factor": {
+                  "atom": {
+                    "alphanumeric": "c"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::PowerBase",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "c"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Base",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "b"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "b"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "a^1_2_3_4",
+      "capture": {
+        "subsup_exp": {
+          "base": {
+            "symbol": "a"
+          },
+          "sub": {
+            "sub_script": {
+              "operand": {
+                "factor": {
+                  "digit": {
+                    "number": "2"
+                  }
+                }
+              }
+            },
+            "sub_recursion": {
+              "sub_script": {
+                "operand": {
+                  "factor": {
+                    "digit": {
+                      "number": "3"
+                    }
+                  }
+                }
+              },
+              "sub_recursion": {
+                "sub_script": {
+                  "operand": {
+                    "factor": {
+                      "digit": {
+                        "number": "4"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "sup": {
+            "sup_script": {
+              "operand": {
+                "factor": {
+                  "digit": {
+                    "number": "1"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::PowerBase",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_three": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Base",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Function::Base",
+                      "fields": {
+                        "parameter_one": {
+                          "class": "Math::Number",
+                          "fields": {
+                            "base": null,
+                            "mini_sub_sized": false,
+                            "mini_sup_sized": false,
+                            "value": "2"
+                          }
+                        },
+                        "parameter_two": {
+                          "class": "Math::Number",
+                          "fields": {
+                            "base": null,
+                            "mini_sub_sized": false,
+                            "mini_sup_sized": false,
+                            "value": "3"
+                          }
+                        }
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Number",
+                      "fields": {
+                        "base": null,
+                        "mini_sub_sized": false,
+                        "mini_sup_sized": false,
+                        "value": "4"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "a₂₃",
+      "capture": {
+        "mini_sub": {
+          "base": {
+            "symbol": "a"
+          },
+          "sub": {
+            "sub_digits": "&#x2082;",
+            "sub_recursion_expr": {
+              "sub_digits": "&#x2083;"
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Base",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Number",
+                        "fields": {
+                          "base": null,
+                          "mini_sub_sized": true,
+                          "mini_sup_sized": false,
+                          "value": "2"
+                        }
+                      },
+                      {
+                        "class": "Math::Number",
+                        "fields": {
+                          "base": null,
+                          "mini_sub_sized": true,
+                          "mini_sup_sized": false,
+                          "value": "3"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "a_b₂",
+      "capture": {
+        "sub_exp": {
+          "base": {
+            "symbol": "a"
+          },
+          "sub": {
+            "sub_script": {
+              "mini_sub": {
+                "base": {
+                  "symbol": "b"
+                },
+                "sub": {
+                  "sub_digits": "&#x2082;"
+                }
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Base",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Base",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "b"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Number",
+                      "fields": {
+                        "base": null,
+                        "mini_sub_sized": true,
+                        "mini_sup_sized": false,
+                        "value": "2"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "a_b²",
+      "capture": {
+        "sub_exp": {
+          "base": {
+            "symbol": "a"
+          },
+          "sub": {
+            "sub_script": {
+              "mini_sup": {
+                "base": {
+                  "symbol": "b"
+                },
+                "sup": {
+                  "sup_digits": "&#xb2;"
+                }
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Base",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "a"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "b"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Number",
+                      "fields": {
+                        "base": null,
+                        "mini_sub_sized": false,
+                        "mini_sup_sized": true,
+                        "value": "2"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "x²y/z",
+      "capture": {
+        "frac": {
+          "numerator": {
+            "mini_sup": {
+              "base": {
+                "symbol": "x"
+              },
+              "sup": {
+                "sup_digits": "&#xb2;"
+              }
+            },
+            "recursive_numerator": {
+              "atom": {
+                "alphanumeric": "y"
+              }
+            }
+          },
+          "denominator": {
+            "factor": {
+              "atom": {
+                "alphanumeric": "z"
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Power",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "x"
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": true,
+                              "value": "2"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "y"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "z"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "x³y/z²",
+      "capture": {
+        "frac": {
+          "numerator": {
+            "mini_sup": {
+              "base": {
+                "symbol": "x"
+              },
+              "sup": {
+                "sup_digits": "&#xb3;"
+              }
+            },
+            "recursive_numerator": {
+              "atom": {
+                "alphanumeric": "y"
+              }
+            }
+          },
+          "denominator": {
+            "mini_sup": {
+              "base": {
+                "symbol": "z"
+              },
+              "sup": {
+                "sup_digits": "&#xb2;"
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Power",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "x"
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": true,
+                              "value": "3"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "y"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "z"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Number",
+                      "fields": {
+                        "base": null,
+                        "mini_sub_sized": false,
+                        "mini_sup_sized": true,
+                        "value": "2"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⅆ²x/ⅆy²",
+      "capture": {
+        "frac": {
+          "numerator": {
+            "mini_sup": {
+              "base": {
+                "binary_symbols": "&#x2146;"
+              },
+              "sup": {
+                "sup_digits": "&#xb2;"
+              }
+            },
+            "recursive_numerator": {
+              "atom": {
+                "alphanumeric": "x"
+              }
+            }
+          },
+          "denominator": {
+            "binary_symbols": "&#x2146;",
+            "recursive_denominator": {
+              "mini_sup": {
+                "base": {
+                  "symbol": "y"
+                },
+                "sup": {
+                  "sup_digits": "&#xb2;"
+                }
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Power",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Dd",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": true,
+                              "value": "2"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "x"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Dd",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Power",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "y"
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": true,
+                              "value": "2"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "𝑑²𝑓(𝑥)/𝑑𝑥²=0",
+      "capture": {
+        "frac": {
+          "numerator": {
+            "mini_sup": {
+              "base": {
+                "factor": {
+                  "atom": {
+                    "char": {
+                      "unicode_symbols": "&#x1d451;"
+                    }
+                  }
+                }
+              },
+              "sup": {
+                "sup_digits": "&#xb2;"
+              }
+            },
+            "recursive_numerator": {
+              "atom": {
+                "char": {
+                  "unicode_symbols": "&#x1d453;"
+                }
+              },
+              "recursive_numerator": {
+                "intermediate_exp": {
+                  "open_paren": "(",
+                  "factor": {
+                    "atom": {
+                      "char": {
+                        "unicode_symbols": "&#x1d465;"
+                      }
+                    }
+                  },
+                  "close_paren": ")"
+                }
+              }
+            }
+          },
+          "denominator": {
+            "mini_sup": {
+              "base": {
+                "factor": {
+                  "atom": {
+                    "char": {
+                      "unicode_symbols": "&#x1d451;"
+                    },
+                    "diacritics": {
+                      "char": {
+                        "unicode_symbols": "&#x1d465;"
+                      }
+                    }
+                  }
+                }
+              },
+              "sup": {
+                "sup_digits": "&#xb2;"
+              }
+            }
+          }
+        },
+        "expr": {
+          "operator": "=",
+          "expr": {
+            "factor": {
+              "digit": {
+                "number": "0"
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Frac",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Power",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "&#x1d451;"
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": true,
+                              "value": "2"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x1d453;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Fenced",
+                        "fields": {
+                          "options": {},
+                          "parameter_one": {
+                            "class": "Math::Symbols::Paren::Lround",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_three": {
+                            "class": "Math::Symbols::Paren::Rround",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_two": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "&#x1d465;"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x1d451;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Power",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "&#x1d465;"
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Number",
+                            "fields": {
+                              "base": null,
+                              "mini_sub_sized": false,
+                              "mini_sup_sized": true,
+                              "value": "2"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Equal",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "x┬()",
+      "capture": {
+        "sub_exp": {
+          "base": {
+            "symbol": "x"
+          },
+          "sub": {
+            "under": "&#x252c;",
+            "sub_script": {
+              "operand": {
+                "factor": {
+                  "intermediate_exp": {
+                    "open_paren": "(",
+                    "close_paren": ")"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Underset",
+              "fields": {
+                "options": {},
+                "parameter_one": null,
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "x_()_a",
+      "capture": {
+        "sub_exp": {
+          "base": {
+            "symbol": "x"
+          },
+          "sub": {
+            "sub_script": {
+              "operand": {
+                "factor": {
+                  "intermediate_exp": {
+                    "open_paren": "(",
+                    "close_paren": ")"
+                  }
+                }
+              }
+            },
+            "sub_recursion": {
+              "sub_script": {
+                "operand": {
+                  "factor": {
+                    "atom": {
+                      "alphanumeric": "a"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Base",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Base",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Function::Fenced",
+                      "fields": {
+                        "options": {},
+                        "parameter_one": {
+                          "class": "Math::Symbols::Paren::Lround",
+                          "fields": {
+                            "value": null
+                          }
+                        },
+                        "parameter_three": {
+                          "class": "Math::Symbols::Paren::Rround",
+                          "fields": {
+                            "value": null
+                          }
+                        },
+                        "parameter_two": []
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "a"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "x_(a+b)_c",
+      "capture": {
+        "sub_exp": {
+          "base": {
+            "symbol": "x"
+          },
+          "sub": {
+            "sub_script": {
+              "operand": {
+                "factor": {
+                  "intermediate_exp": {
+                    "open_paren": "(",
+                    "factor": {
+                      "atom": {
+                        "alphanumeric": "a"
+                      }
+                    },
+                    "exp": {
+                      "operator": "+",
+                      "exp": {
+                        "factor": {
+                          "atom": {
+                            "alphanumeric": "b"
+                          }
+                        }
+                      }
+                    },
+                    "close_paren": ")"
+                  }
+                }
+              }
+            },
+            "sub_recursion": {
+              "sub_script": {
+                "operand": {
+                  "factor": {
+                    "atom": {
+                      "alphanumeric": "c"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Base",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Base",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Function::Fenced",
+                      "fields": {
+                        "options": {},
+                        "parameter_one": {
+                          "class": "Math::Symbols::Paren::Lround",
+                          "fields": {
+                            "value": null
+                          }
+                        },
+                        "parameter_three": {
+                          "class": "Math::Symbols::Paren::Rround",
+                          "fields": {
+                            "value": null
+                          }
+                        },
+                        "parameter_two": [
+                          {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "a"
+                            }
+                          },
+                          {
+                            "class": "Math::Symbols::Plus",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "b"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "c"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
