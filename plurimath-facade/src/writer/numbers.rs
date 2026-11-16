@@ -23,6 +23,9 @@ pub(super) fn mini_sized(v: &Value) -> bool {
     };
     match m.kind() {
         "Number" => truthy(m.field("mini_sub_sized")) || truthy(m.field("mini_sup_sized")),
+        _ if m.class.starts_with("Math::Symbols::") => {
+            truthy(m.field("mini_sub_sized")) || truthy(m.field("mini_sup_sized"))
+        }
         "Formula" => m
             .field("value")
             .as_array()

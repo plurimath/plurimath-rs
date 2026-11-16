@@ -614,10 +614,10 @@ fn power_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, String>
                     "source_render_error: power exponent cannot receive mini_sized?".into(),
                 );
             }
-            if b["fields"]["mini_sub_sized"] == true || b["fields"]["mini_sup_sized"] == true {
-                return Err("unported promised mini-sized power exponent".into());
-            }
             let base = child(a, f, ctx)?;
+            if !power_accent(b, ctx)? && numbers::mini_sized(b) {
+                return Ok(format!("{base}{}", child(b, f, ctx)?));
+            }
             if power_accent(b, ctx)? {
                 return Ok(format!(
                     "{base}{}",
