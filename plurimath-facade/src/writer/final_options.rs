@@ -226,16 +226,27 @@ fn fraction_unicode(m: &Model, ctx: &super::WriterContext) -> Result<String, Str
     }
     let a = m.field("parameter_one");
     let b = m.field("parameter_two");
-    let first = if truthy(a) {
-        parens(a, ctx)?
-    } else {
-        String::new()
+    // The writer is deterministic, so Ruby's second render of the same child
+    // (the displaystyle branch) equals the first; reuse it to stay linear.
+    let wrap = |v: &Value, raw: &str| {
+        if v["class"] == "Math::Function::Fenced" {
+            raw.to_owned()
+        } else {
+            format!("({raw})")
+        }
     };
-    let second = if truthy(b) {
-        parens(b, ctx)?
+    let raw_a = if truthy(a) {
+        Some(child(a, "unicodemath", ctx)?)
     } else {
-        String::new()
+        None
     };
+    let raw_b = if truthy(b) {
+        Some(child(b, "unicodemath", ctx)?)
+    } else {
+        None
+    };
+    let first = raw_a.as_deref().map(|r| wrap(a, r)).unwrap_or_default();
+    let second = raw_b.as_deref().map(|r| wrap(b, r)).unwrap_or_default();
     if !truthy(m.field("options")) {
         return Ok(format!("{first}/{second}"));
     }
@@ -243,11 +254,15 @@ fn fraction_unicode(m: &Model, ctx: &super::WriterContext) -> Result<String, Str
         return Ok(format!("{first}¦{second}"));
     }
     if lookup(&options, "displaystyle")?.is_some() {
-        return Ok(format!(
-            "{}⊘{}",
-            child(a, "unicodemath", ctx)?,
-            child(b, "unicodemath", ctx)?
-        ));
+        let left = match raw_a {
+            Some(raw) => raw,
+            None => child(a, "unicodemath", ctx)?,
+        };
+        let right = match raw_b {
+            Some(raw) => raw,
+            None => child(b, "unicodemath", ctx)?,
+        };
+        return Ok(format!("{left}⊘{right}"));
     }
     if lookup(&options, "ldiv")?.is_some() {
         return Ok(format!("{first}∕{second}"));
