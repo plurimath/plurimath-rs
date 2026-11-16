@@ -16,14 +16,14 @@ fn nil_safe(v: &Value, f: &str, ctx: &WriterContext) -> Result<String, String> {
 fn parens(v: &Value, ctx: &WriterContext) -> Result<String, String> {
     super::final_options::parens(v, ctx)
 }
-fn wrapped(v: &Value, ctx: &WriterContext) -> Result<String, String> {
+pub(super) fn wrapped(v: &Value, ctx: &WriterContext) -> Result<String, String> {
     if truthy(v) {
         Ok(format!("({})", child(v, "asciimath", ctx)?))
     } else {
         Ok(String::new())
     }
 }
-fn latex_wrapped(v: &Value, ctx: &WriterContext) -> Result<String, String> {
+pub(super) fn latex_wrapped(v: &Value, ctx: &WriterContext) -> Result<String, String> {
     super::nary::latex_wrapped_with_value(v, child(v, "latex", ctx)?)
 }
 pub(super) fn handles(m: &Model) -> bool {
