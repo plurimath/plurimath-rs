@@ -1,13 +1,13 @@
 //! Procedural source-writer port; unported nodes/options fail, never return approximations.
 mod accents;
 mod enclose;
-mod labeledtr;
 mod fences;
 mod final_options;
 mod font_styles;
 mod formatter_context;
 mod generic_nary;
 mod intent_nodes;
+mod labeledtr;
 mod layout_nodes;
 mod leaf_nodes;
 mod line_break_overrides;
