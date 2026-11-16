@@ -58,7 +58,12 @@ fn oracle_models_match_ruby_writers() {
                     .unwrap();
             }
             let got = rx
-                .recv_timeout(std::time::Duration::from_secs(std::env::var("ORACLE_TIMEOUT").ok().and_then(|v| v.parse().ok()).unwrap_or(20)))
+                .recv_timeout(std::time::Duration::from_secs(
+                    std::env::var("ORACLE_TIMEOUT")
+                        .ok()
+                        .and_then(|v| v.parse().ok())
+                        .unwrap_or(20),
+                ))
                 .unwrap_or_else(|_| Err("native_timeout".to_string()));
             let entry = report
                 .entry(fmt.to_string())
