@@ -1,5 +1,6 @@
 //! Procedural source-writer port; unported nodes/options fail, never return approximations.
 mod accents;
+mod enclose;
 mod fences;
 mod final_options;
 mod font_styles;
@@ -834,6 +835,9 @@ fn render_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, String
     if underline::handles(m) {
         return underline::text_writer(m, f, ctx);
     }
+    if enclose::handles(m) {
+        return enclose::text_writer(m, f, ctx);
+    }
     if table_text::handles(m) {
         return table_text::render(m, f, ctx);
     }
@@ -1311,6 +1315,9 @@ fn render_xml_inner(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>,
     }
     if underline::handles(m) {
         return underline::xml(m, f, ctx);
+    }
+    if enclose::handles(m) {
+        return enclose::xml(m, f, ctx);
     }
     if matches!(m.kind(), "Stackrel" | "Obrace" | "Sqrt") {
         return portable_functions::xml(m, f, ctx);

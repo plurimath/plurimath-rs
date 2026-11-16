@@ -243,7 +243,7 @@ pub(super) fn text_writer(m: &Model, f: &str, ctx: &WriterContext) -> Result<Str
 fn xml_child(v: &Value, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     super::multiscripts::xml_child(v, f, ctx)
 }
-fn omml_parameter(v: &Value, tag: &str, ctx: &WriterContext) -> Result<Xml, String> {
+pub(super) fn omml_parameter(v: &Value, tag: &str, ctx: &WriterContext) -> Result<Xml, String> {
     if !truthy(v) {
         return Ok(el(
             tag,
