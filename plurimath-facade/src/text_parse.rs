@@ -256,12 +256,51 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
                 return Ok(vec![base]);
             }
         }
+        // Source base:simple/sup:simple: a horizontal bracket base takes the sup as an Overset.
+        if format == "unicode" && m.contains_key("sup") && !m.contains_key("sub") {
+            const BRACKETS: [&str; 8] = [
+                "&#x23b5;", "&#x23b4;", "&#x23e1;", "&#x23dd;", "&#x23df;", "&#x23e0;", "&#x23dc;",
+                "&#x23de;",
+            ];
+            let bracketed = base["class"] == "Math::Function::Overset"
+                && base["fields"]["parameter_one"]["fields"]["value"]
+                    .as_str()
+                    .is_some_and(|v| BRACKETS.contains(&v));
+            if bracketed || base["class"] == "Math::Function::Obrace" {
+                let sup = tx(format, &m["sup"], depth + 1)?;
+                if sup.len() == 1 {
+                    return Ok(vec![node(
+                        "Math::Function::Overset",
+                        json!({"parameter_one":unicode::unfenced(sup.into_iter().next().unwrap()),"parameter_two":base}),
+                    )]);
+                }
+            }
+        }
         return if m.contains_key("sub") && m.contains_key("sup") {
             Ok(vec![node(
                 "Math::Function::PowerBase",
                 json!({"parameter_one":base,"parameter_two":unfence(one(tx(format, &m["sub"],depth+1)?)),"parameter_three":unfence(one(tx(format, &m["sup"],depth+1)?))}),
             )])
         } else {
+            if format == "unicode" && m.contains_key("sub") && !m.contains_key("sup") {
+                const BRACKETS: [&str; 8] = [
+                    "&#x23b5;", "&#x23b4;", "&#x23e1;", "&#x23dd;", "&#x23df;", "&#x23e0;",
+                    "&#x23dc;", "&#x23de;",
+                ];
+                let bracket_underset = base["class"] == "Math::Function::Underset"
+                    && base["fields"]["parameter_one"]["fields"]["value"]
+                        .as_str()
+                        .is_some_and(|v| BRACKETS.contains(&v));
+                let ubrace = base["class"] == "Math::Function::Ubrace"
+                    && base["fields"]["parameter_one"]["class"] != "Math::Formula";
+                if bracket_underset || ubrace {
+                    let sub = unicode::unfenced(one(tx(format, &m["sub"], depth + 1)?));
+                    return Ok(vec![node(
+                        "Math::Function::Underset",
+                        json!({"options":{},"parameter_one":sub,"parameter_two":base}),
+                    )]);
+                }
+            }
             let (key, class) = if m.contains_key("sub") {
                 ("sub", "Math::Function::Base")
             } else {

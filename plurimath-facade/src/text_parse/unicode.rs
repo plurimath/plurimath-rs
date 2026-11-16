@@ -373,24 +373,32 @@ fn fractions(
         filter_values(denominator)
     };
     if denominator["class"] == "Math::Function::Frac" {
-        if denominator["fields"]["parameter_one"]["class"] == "Math::Function::Frac" {
-            return Err(incomplete("unported UnicodeMath recursive fraction shape"));
-        }
+        // Source recursion_fraction: descend the numerator chain to its first non-fraction.
         let mut outer = denominator;
-        let inner = unfenced(outer["fields"]["parameter_one"].clone());
-        outer["fields"]["parameter_one"] = node(
-            "Math::Function::Frac",
-            json!({"parameter_one":numerator,"parameter_two":inner,"options":options}),
-        );
+        let mut slot = &mut outer;
+        while slot["fields"]["parameter_one"]["class"] == "Math::Function::Frac" {
+            slot = &mut slot["fields"]["parameter_one"];
+        }
+        let inner = unfenced(slot["fields"]["parameter_one"].clone());
+        slot["fields"]["parameter_one"] = new_frac(numerator, inner, options);
         return Ok(outer);
     }
-    Ok(node(
-        "Math::Function::Frac",
-        json!({"parameter_one":numerator,"parameter_two":unfenced(denominator),"options":options}),
-    ))
+    Ok(new_frac(numerator, unfenced(denominator), options))
+}
+fn new_frac(numerator: Value, denominator: Value, options: Value) -> Value {
+    let mut fields = json!({"parameter_one":numerator,"parameter_two":denominator});
+    if !options.is_null() {
+        fields["options"] = options;
+    }
+    node("Math::Function::Frac", fields)
 }
 
 fn frac(m: &Map<String, Value>, rec: Rec) -> Result<Option<Value>, Value> {
+    if keys(m, &["numerator", "denominator"]) {
+        let n = rec(&m["numerator"])?;
+        let d = rec(&m["denominator"])?;
+        return Ok(Some(fractions(n, d, Value::Null)?));
+    }
     let operator = ["atop", "choose", "bevelled", "ldiv", "no_display_style"]
         .into_iter()
         .find(|k| keys(m, &["numerator", *k, "denominator"]));
@@ -1241,7 +1249,7 @@ fn hbracket(hbrack: &str, value: Value, scripted: bool) -> Value {
     let bracket = |name: &str, v: Value| {
         node(
             &format!("Math::Function::{name}"),
-            json!({"parameter_one":v}),
+            json!({"attributes":{},"parameter_one":v}),
         )
     };
     let symbol = node("Math::Symbols::Symbol", json!({"value":hbrack}));
@@ -1259,7 +1267,7 @@ fn hbracket(hbrack: &str, value: Value, scripted: bool) -> Value {
                 };
                 node(
                     "Math::Function::Underset",
-                    json!({"parameter_one":f["parameter_two"],"parameter_two":bracket("Ubrace", inner)}),
+                    json!({"options":{},"parameter_one":f["parameter_two"],"parameter_two":bracket("Ubrace", inner)}),
                 )
             } else {
                 bracket("Ubrace", value)
@@ -1267,7 +1275,7 @@ fn hbracket(hbrack: &str, value: Value, scripted: bool) -> Value {
         }
         "&#x23b5;" | "&#x23e1;" | "&#x23dd;" => node(
             "Math::Function::Underset",
-            json!({"parameter_one":symbol,"parameter_two":value}),
+            json!({"options":{},"parameter_one":symbol,"parameter_two":value}),
         ),
         _ => node(
             "Math::Function::Overset",
