@@ -208,6 +208,39 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
             return Err(incomplete("unported additional source capture fields"));
         }
         let mut base = one(tx(format, &m["base"], depth + 1)?);
+        // Source base:simple/sup:simple: an Overset with no operand yet takes the base.
+        if format == "unicode" && m.contains_key("sup") && !m.contains_key("sub") {
+            let mut sup = tx(format, &m["sup"], depth + 1)?;
+            if sup.len() == 1
+                && sup[0]["class"] == "Math::Function::Overset"
+                && sup[0]["fields"]["parameter_two"].is_null()
+            {
+                let mut overset = sup.pop().unwrap();
+                overset["fields"]["parameter_two"] = unicode::unfenced(base);
+                return Ok(vec![overset]);
+            }
+        }
+        // Source base:simple/sub:simple: an empty binary function takes the subscript first.
+        if format == "unicode"
+            && m.contains_key("sub")
+            && !m.contains_key("sup")
+            && ["Obrace", "Oint", "Prod", "Sum", "Int", "Lim", "Inf", "Log"]
+                .iter()
+                .any(|kind| base["class"] == format!("Math::Function::{kind}"))
+            && (base["fields"]["parameter_one"].is_null()
+                || base["fields"]["parameter_one"] == false)
+        {
+            let mut sub = tx(format, &m["sub"], depth + 1)?;
+            if sub.len() == 1 {
+                let sub = sub.pop().unwrap();
+                base["fields"]["parameter_one"] = if sub["class"] == "Math::Function::Underset" {
+                    sub["fields"]["parameter_one"].clone()
+                } else {
+                    unicode::unfenced(sub)
+                };
+                return Ok(vec![base]);
+            }
+        }
         // Unicode source base:simple/sup:simple fills an empty binary operand.
         if format == "unicode"
             && !m.contains_key("sub")
@@ -568,13 +601,20 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         .or_else(|| m.get("close_paren"))
         .or_else(|| m.get("closer"));
     if let (Some(l), Some(r)) = (open, close) {
+        let (mut open_mask, mut close_mask) = (None, None);
         let left = if let Some(s) = l.as_str() {
             crate::symbols::symbol_for(s, format)
+        } else if let Some(masked) = unicode::masked_paren(l)?.filter(|_| format == "unicode") {
+            open_mask = Some(masked.size);
+            masked.symbol
         } else {
             one(tx(format, l, depth + 1)?)
         };
         let right = if let Some(s) = r.as_str() {
             crate::symbols::symbol_for(s, format)
+        } else if let Some(masked) = unicode::masked_paren(r)?.filter(|_| format == "unicode") {
+            close_mask = Some(masked.size);
+            masked.symbol
         } else {
             one(tx(format, r, depth + 1)?)
         };
@@ -594,7 +634,19 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         } else {
             tx(format, &Value::Object(rest), depth + 1)?
         };
-        return Ok(vec![fenced(left, body, right)]);
+        let mut fence = fenced(left, body, right);
+        for (mask, prefixed, sized) in [
+            (open_mask, "open_prefixed", "open_paren"),
+            (close_mask, "close_prefixed", "close_paren"),
+        ] {
+            if let Some(size) = mask {
+                fence["fields"]["options"][prefixed] = json!(true);
+                if let Some(size) = size {
+                    fence["fields"]["options"][sized] = json!({"minsize":size,"maxsize":size});
+                }
+            }
+        }
+        return Ok(vec![fence]);
     }
     if m.len() == 1 {
         let (key, x) = m.iter().next().unwrap();

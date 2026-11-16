@@ -29,7 +29,7 @@ fn filter_values(mut values: Vec<Value>) -> Value {
     }
 }
 /// Source Utility.unfenced_value(object, paren_specific: true) on one value.
-fn unfenced(value: Value) -> Value {
+pub(super) fn unfenced(value: Value) -> Value {
     let f = &value["fields"];
     if value["class"] == "Math::Function::Fenced"
         && f["parameter_one"]["class"] == "Math::Symbols::Paren::Lround"
@@ -59,6 +59,278 @@ fn simple(mut values: Vec<Value>, what: &str) -> Result<Value, Value> {
             "unported UnicodeMath {what} capture sequence shape"
         )))
     }
+}
+
+/// HTMLEntities.decode for the entity forms the grammar captures.
+fn decode_entities(text: &str) -> String {
+    let mut out = String::new();
+    let mut rest = text;
+    while let Some(i) = rest.find('&') {
+        out.push_str(&rest[..i]);
+        let tail = &rest[i..];
+        let decoded = tail.find(';').and_then(|e| {
+            let body = &tail[1..e];
+            let ch = if let Some(h) = body.strip_prefix("#x").or(body.strip_prefix("#X")) {
+                u32::from_str_radix(h, 16).ok().and_then(char::from_u32)
+            } else if let Some(d) = body.strip_prefix('#') {
+                d.parse::<u32>().ok().and_then(char::from_u32)
+            } else {
+                match body {
+                    "amp" => Some('&'),
+                    "lt" => Some('<'),
+                    "gt" => Some('>'),
+                    "quot" => Some('"'),
+                    "apos" => Some('\''),
+                    _ => None,
+                }
+            };
+            ch.map(|c| (c, e + 1))
+        });
+        match decoded {
+            Some((c, n)) => {
+                out.push(c);
+                rest = &tail[n..];
+            }
+            None => {
+                out.push('&');
+                rest = &tail[1..];
+            }
+        }
+    }
+    out.push_str(rest);
+    out
+}
+/// Source Utility.slashed_values on one captured value.
+fn slashed_one(text: &str) -> Value {
+    let decoded = decode_entities(text);
+    let word = decoded
+        .chars()
+        .next()
+        .is_some_and(|c| c.is_ascii_alphanumeric() || c == '_');
+    if word {
+        text_node(&format!("\\{decoded}"))
+    } else {
+        node(
+            "Math::Symbols::Symbol",
+            json!({"slashed":true,"value":decoded}),
+        )
+    }
+}
+/// Source slashed_value rules, simple (one text) or sequence (symbol/number items).
+fn slashed(value: &Value) -> Result<Vec<Value>, Value> {
+    if let Some(t) = value.as_str() {
+        return Ok(vec![slashed_one(t)]);
+    }
+    let items = value
+        .as_array()
+        .ok_or_else(|| incomplete("unported slashed_value capture shape"))?;
+    let mut out = Vec::new();
+    for (i, item) in items.iter().enumerate() {
+        let text = item
+            .as_object()
+            .and_then(|m| m.values().next())
+            .and_then(Value::as_str)
+            .ok_or_else(|| incomplete("unported slashed_value item shape"))?;
+        let decoded = decode_entities(text);
+        out.push(if i == 0 {
+            slashed_one(text)
+        } else if decoded.chars().any(|c| c.is_ascii_digit()) {
+            number(&decoded)
+        } else {
+            symbol(&decoded)
+        });
+    }
+    Ok(out)
+}
+fn text_node(text: &str) -> Value {
+    node(
+        "Math::Function::Text",
+        json!({"lang":null,"parameter_one":text}),
+    )
+}
+/// Source negated_operator / ordinary_negated_operator: the operator then a
+/// combining long solidus overlay, in one Formula.
+fn negated(operator: &Value) -> Result<Value, Value> {
+    let operator = operator
+        .as_str()
+        .ok_or_else(|| incomplete("non-text negated operator capture"))?;
+    Ok(formula(vec![
+        symbol(operator),
+        node("Math::Symbols::Symbol", json!({"value":"&#x338;"})),
+    ]))
+}
+fn overset(over: Value, under: Value, accent: bool) -> Value {
+    if accent {
+        node(
+            "Math::Function::Overset",
+            json!({"options":{"accent":true},"parameter_one":over,"parameter_two":under}),
+        )
+    } else {
+        node(
+            "Math::Function::Overset",
+            json!({"parameter_one":over,"parameter_two":under}),
+        )
+    }
+}
+/// Source Utility.unicode_accents on a captured accent list: the first item
+/// carries the base value, each later accent wraps what precedes it.
+fn accents(value: &Value, rec: Rec) -> Result<Value, Value> {
+    if value.is_object() {
+        // A prime accent capture already builds its Power; the source keeps a
+        // BinaryFunction unchanged.
+        return simple(rec(value)?, "accents");
+    }
+    let items = value
+        .as_array()
+        .ok_or_else(|| incomplete("non-list accents capture"))?;
+    let first = items
+        .first()
+        .and_then(Value::as_object)
+        .filter(|m| keys(m, &["first_value"]))
+        .ok_or_else(|| incomplete("unported UnicodeMath accents base shape"))?;
+    if items.len() < 2 {
+        return Err(incomplete("unported UnicodeMath single accent capture"));
+    }
+    let mut head = rec(&first["first_value"])?;
+    let mut current = head
+        .pop()
+        .ok_or_else(|| incomplete("empty accents base capture"))?;
+    for item in &items[1..] {
+        let accent = item
+            .as_object()
+            .filter(|m| keys(m, &["accent_symbols"]))
+            .and_then(|m| m["accent_symbols"].as_str())
+            .ok_or_else(|| incomplete("unported UnicodeMath accent capture shape"))?;
+        current = overset(symbol(accent), unfenced(current), true);
+    }
+    if head.is_empty() {
+        Ok(current)
+    } else {
+        head.push(current);
+        Ok(formula(head))
+    }
+}
+const UNARY_FUNCTIONS: &[&str] = &[
+    "Arctan",
+    "Coth",
+    "Bar",
+    "Arcsin",
+    "Dim",
+    "Cosh",
+    "Abs",
+    "Cos",
+    "Arccos",
+    "Gcd",
+    "Ceil",
+    "Ddot",
+    "Deg",
+    "Det",
+    "Ker",
+    "Floor",
+    "Csc",
+    "Cancel",
+    "Limsup",
+    "Liminf",
+    "Cot",
+    "Csch",
+    "Mbox",
+    "Longdiv",
+    "Dot",
+    "Exp",
+    "Mpadded",
+    "Min",
+    "Hom",
+    "Lub",
+    "Glb",
+    "Max",
+    "Hat",
+    "Norm",
+    "Lg",
+    "Lcm",
+    "Left",
+    "Linebreak",
+    "None",
+    "Ln",
+    "Scarry",
+    "Sinh",
+    "Mglyph",
+    "Phantom",
+    "Ms",
+    "Msgroup",
+    "Scarries",
+    "Sin",
+    "Tr",
+    "Overleftrightarrow",
+    "Obrace",
+    "Sqrt",
+    "Tanh",
+    "Right",
+    "Tan",
+    "Ubrace",
+    "Msline",
+    "Ul",
+    "Sech",
+    "Vec",
+    "Sup",
+    "Substack",
+    "Text",
+    "Tilde",
+    "Sec",
+    "Merror",
+];
+fn is_unary(value: &Value) -> bool {
+    value["class"]
+        .as_str()
+        .and_then(|c| c.strip_prefix("Math::Function::"))
+        .is_some_and(|c| UNARY_FUNCTIONS.contains(&c))
+}
+/// A captured open/close paren carrying a size prefix (`├1(`): the symbol and
+/// the em size the source derives as 1.25 ** mask. `None` size is a bare prefix.
+pub(super) struct Masked {
+    pub symbol: Value,
+    pub size: Option<String>,
+}
+pub(super) fn masked_paren(v: &Value) -> Result<Option<Masked>, Value> {
+    let Some(m) = v.as_object() else {
+        return Ok(None);
+    };
+    if !(m.contains_key("paren_open_prefix") || m.contains_key("paren_close_prefix")) {
+        return Ok(None);
+    }
+    let paren = ["open_paren", "close_paren"]
+        .iter()
+        .find_map(|k| m.get(*k).and_then(Value::as_str))
+        .ok_or_else(|| incomplete("unported UnicodeMath prefixed paren capture"))?;
+    let size = match m.len() {
+        2 => None,
+        3 => {
+            let mask = ["open_paren_mask", "close_paren_mask"]
+                .iter()
+                .find_map(|k| m.get(*k))
+                .and_then(Value::as_object)
+                .filter(|mask| keys(mask, &["number"]))
+                .and_then(|mask| mask["number"].as_str())
+                .ok_or_else(|| incomplete("unported UnicodeMath paren mask capture"))?;
+            if mask.is_empty() {
+                None
+            } else {
+                let digits: String = mask.chars().take_while(char::is_ascii_digit).collect();
+                let exponent = digits.parse::<i32>().unwrap_or(0);
+                let size = format!("{}", 1.25f64.powf(f64::from(exponent)));
+                let size = if size.contains('.') || size.contains('e') {
+                    size
+                } else {
+                    format!("{size}.0")
+                };
+                Some(format!("{size}em"))
+            }
+        }
+        _ => return Err(incomplete("unported UnicodeMath prefixed paren capture")),
+    };
+    Ok(Some(Masked {
+        symbol: symbol(paren),
+        size,
+    }))
 }
 
 const SUP_DIGITS: [&str; 10] = [
@@ -543,12 +815,217 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
                     json!({"parameter_one":null,"parameter_two":null}),
                 )]));
             }
+            "negated_operator" | "ordinary_negated_operator" => {
+                return Ok(Some(vec![negated(value)?]))
+            }
+            // Source simple/sequence pass-through rules (rules.rb lines 22-98).
+            "char" | "unary_function" | "rect" | "color" | "backcolor" | "mini_sup"
+            | "mini_sub" | "mini_sub_sup" | "diacritics_accents" | "fonts" | "hbrack"
+            | "diacritic_belows" | "diacritic_overlays" | "sup_recursion" => {
+                return Ok(Some(rec(value)?))
+            }
+            "spaces" => {
+                let name = value
+                    .as_str()
+                    .ok_or_else(|| incomplete("non-text spaces capture"))?;
+                let space = match name {
+                    "vthicksp" => "&#x2004;",
+                    "thicksp" => "&#x2005;",
+                    "thinsp" => "&#x2006;",
+                    "hairsp" => "&#x200a;",
+                    "numsp" => "&#x2007;",
+                    "quad" | "emsp" => "&#x2003;",
+                    "ensp" => "&#x2002;",
+                    "nbsp" => "&#xa0;",
+                    other => other,
+                };
+                return Ok(Some(vec![node(
+                    "Math::Symbols::Symbol",
+                    json!({"options":{"space":true},"value":space}),
+                )]));
+            }
+            "accents" => return Ok(Some(vec![accents(value, rec)?])),
+            "slashed_value" => return Ok(Some(slashed(value)?)),
             "td" => return Ok(Some(vec![td(cell(value, rec)?)])),
             "tr" => return Ok(Some(vec![tr(rec(value)?)])),
             "sup_digits" => return Ok(Some(vec![mini_digit(value, true)?])),
             "sub_digits" => return Ok(Some(vec![mini_digit(value, false)?])),
             _ => {}
         }
+    }
+    for (head, tail) in [("text", "expr"), ("text", "operand")] {
+        if keys(m, &[head, tail]) {
+            let text = m[head]
+                .as_str()
+                .ok_or_else(|| incomplete("non-text text capture"))?;
+            let mut out = vec![text_node(text)];
+            out.extend(rec(&m[tail])?);
+            return Ok(Some(out));
+        }
+    }
+    for head in ["negated_operator", "ordinary_negated_operator"] {
+        if keys(m, &[head, "expr"]) {
+            let mut out = vec![negated(&m[head])?];
+            out.extend(rec(&m["expr"])?);
+            return Ok(Some(out));
+        }
+    }
+    for tail in ["expr", "naryand_recursion"] {
+        if keys(m, &["nary", tail]) {
+            let mut out = vec![simple(rec(&m["nary"])?, "n-ary")?];
+            out.extend(rec(&m[tail])?);
+            return Ok(Some(out));
+        }
+    }
+    // umath-rs parses `a^k b^(n-k)` as factor + pre-script where the source grammar
+    // yields two sup_exp nodes; rebuild those so the source sup_exp rules apply.
+    if keys(m, &["factor", "pre_script"]) {
+        if let Some(p) = m["pre_script"].as_object() {
+            if keys(p, &["pre_supscript", "base", "sup"]) {
+                let first = json!({"base": m["factor"], "sup": {"sup_script": {"operand": p["pre_supscript"]}}});
+                let second = json!({"base": p["base"], "sup": p["sup"]});
+                let mut out = rec(&first)?;
+                out.extend(rec(&second)?);
+                return Ok(Some(out));
+            }
+        }
+    }
+    for tail in ["sup_exp", "sub_exp", "pre_script"] {
+        if keys(m, &["factor", tail]) {
+            let mut out = rec(&m["factor"])?;
+            out.extend(rec(&m[tail])?);
+            return Ok(Some(out));
+        }
+    }
+    // Source `[head] + tail` rules: the head capture is kept as is, then the tail list.
+    const HEADS: [&str; 17] = [
+        "sub_exp",
+        "frac",
+        "subsup_exp",
+        "override_subsup",
+        "unary_subsup",
+        "fonts",
+        "phantom",
+        "pre_script",
+        "accents_subsup",
+        "monospace",
+        "mini_sub",
+        "mini_sup",
+        "expression",
+        "unary_function",
+        "rect",
+        "table",
+        "digit",
+    ];
+    if m.len() == 2 && m.contains_key("slashed_value") {
+        for tail in ["expr", "exp"] {
+            if m.contains_key(tail) {
+                let mut out = slashed(&m["slashed_value"])?;
+                out.extend(rec(&m[tail])?);
+                return Ok(Some(out));
+            }
+        }
+    }
+    for head in HEADS {
+        for tail in ["expr", "exp", "naryand_recursion"] {
+            if keys(m, &[head, tail]) {
+                let mut out = rec(&m[head])?;
+                out.extend(rec(&m[tail])?);
+                return Ok(Some(out));
+            }
+        }
+    }
+    // Source sequence rules over pass-through captures concatenate in grammar order.
+    const PASS: [&str; 12] = [
+        "atom",
+        "atoms",
+        "factor",
+        "sub_exp",
+        "sup_exp",
+        "expr",
+        "exp",
+        "naryand_recursion",
+        "operand",
+        "recursive_numerator",
+        "recursive_denominator",
+        "digit",
+    ];
+    if m.len() >= 2 && m.keys().all(|k| PASS.contains(&k.as_str())) {
+        let rank = |k: &str| match k {
+            "atom" => 0,
+            "factor" | "operand" | "digit" => 1,
+            "sub_exp" | "sup_exp" => 2,
+            "exp" | "atoms" => 3,
+            "recursive_numerator" => 4,
+            "recursive_denominator" => 5,
+            _ => 6,
+        };
+        let mut ordered: Vec<(&String, &Value)> = m.iter().collect();
+        ordered.sort_by_key(|(k, _)| rank(k));
+        let mut out = Vec::new();
+        for (_, value) in ordered {
+            out.extend(rec(value)?);
+        }
+        return Ok(Some(out));
+    }
+    if keys(m, &["first_value", "prime_accent_symbols"]) {
+        let primes = m["prime_accent_symbols"]
+            .as_str()
+            .ok_or_else(|| incomplete("non-text prime accent capture"))?;
+        let mut syms = Vec::new();
+        let mut rest = primes;
+        while let Some(start) = rest.find("&#x") {
+            let tail = &rest[start..];
+            let end = tail
+                .find(';')
+                .ok_or_else(|| incomplete("unterminated prime entity"))?;
+            syms.push(symbol(&tail[..=end]));
+            rest = &tail[end + 1..];
+        }
+        let first = unf(rec(&m["first_value"])?);
+        return Ok(Some(vec![node(
+            "Math::Function::Power",
+            json!({"parameter_one":first,"parameter_two":filter_values(syms)}),
+        )]));
+    }
+    if keys(m, &["factor", "operand", "expr"]) {
+        let mut out = rec(&m["factor"])?;
+        out.extend(rec(&m["operand"])?);
+        out.extend(rec(&m["expr"])?);
+        return Ok(Some(out));
+    }
+    for tail in ["expr", "exp"] {
+        if keys(m, &["accents", tail]) {
+            let mut out = vec![accents(&m["accents"], rec)?];
+            out.extend(rec(&m[tail])?);
+            return Ok(Some(out));
+        }
+        if keys(m, &["sup_exp", tail]) {
+            let mut out = rec(&m["sup_exp"])?;
+            out.extend(rec(&m[tail])?);
+            return Ok(Some(out));
+        }
+    }
+    if keys(m, &["over", "sup_script"]) {
+        return Ok(Some(vec![overset(
+            unf(rec(&m["sup_script"])?),
+            Value::Null,
+            false,
+        )]));
+    }
+    if keys(m, &["unary_sub_sup", "first_value"]) {
+        let mut sub_sup = simple(rec(&m["unary_sub_sup"])?, "unary")?;
+        let first = rec(&m["first_value"])?;
+        if is_unary(&sub_sup) {
+            if !sub_sup["fields"]["parameter_one"].is_object() {
+                return Err(incomplete("unported UnicodeMath unary operand shape"));
+            }
+            sub_sup["fields"]["parameter_one"]["fields"]["parameter_one"] = filter_values(first);
+            return Ok(Some(vec![sub_sup]));
+        }
+        let mut out = vec![sub_sup];
+        out.extend(first);
+        return Ok(Some(vec![formula(out)]));
     }
     if keys(m, &["td", "tds"]) {
         let mut out = vec![td(cell(&m["td"], rec)?)];
