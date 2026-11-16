@@ -1,0 +1,850 @@
+{
+  "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "source_operation": "Plurimath::UnicodeMath::Parser.new(input).parse",
+  "rows": [
+    {
+      "input": "\\scriptH",
+      "capture": {
+        "fonts": {
+          "unicoded_font_class": "script",
+          "symbol": "H"
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x210b;"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "\\frakturH",
+      "capture": {
+        "fonts": {
+          "unicoded_font_class": "fraktur",
+          "symbol": "H"
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x210c;"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "\\doubleH",
+      "capture": {
+        "fonts": {
+          "unicoded_font_class": "double",
+          "symbol": "H"
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x210d;"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "\\mitBbbD",
+      "capture": {
+        "fonts": {
+          "unicoded_font_class": "mitBbb",
+          "symbol": "D"
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::UpcaseDd",
+              "fields": {
+                "value": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "\\mitBbbd",
+      "capture": {
+        "fonts": {
+          "unicoded_font_class": "mitBbb",
+          "symbol": "d"
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Dd",
+              "fields": {
+                "value": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "\\mitBbbe",
+      "capture": {
+        "fonts": {
+          "unicoded_font_class": "mitBbb",
+          "symbol": "e"
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x2147;"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "\\mitBbbi",
+      "capture": {
+        "fonts": {
+          "unicoded_font_class": "mitBbb",
+          "symbol": "i"
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Ii",
+              "fields": {
+                "value": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "\\mitBbbj",
+      "capture": {
+        "fonts": {
+          "unicoded_font_class": "mitBbb",
+          "symbol": "j"
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Jj",
+              "fields": {
+                "value": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⅅ",
+      "capture": {
+        "fonts": {
+          "unicoded_font_class": {
+            "mitBbb": null
+          },
+          "symbol": "&#x2145;"
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::UpcaseDd",
+              "fields": {
+                "value": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⅆ",
+      "capture": {
+        "fonts": {
+          "unicoded_font_class": {
+            "mitBbb": null
+          },
+          "symbol": "&#x2146;"
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Dd",
+              "fields": {
+                "value": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⅇ",
+      "capture": {
+        "fonts": {
+          "unicoded_font_class": {
+            "mitBbb": null
+          },
+          "symbol": "&#x2147;"
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x2147;"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⅈ",
+      "capture": {
+        "fonts": {
+          "unicoded_font_class": {
+            "mitBbb": null
+          },
+          "symbol": "&#x2148;"
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Ii",
+              "fields": {
+                "value": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⅉ",
+      "capture": {
+        "fonts": {
+          "unicoded_font_class": {
+            "mitBbb": null
+          },
+          "symbol": "&#x2149;"
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Jj",
+              "fields": {
+                "value": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "𝐏",
+      "capture": {
+        "factor": {
+          "atom": {
+            "char": {
+              "unicode_symbols": "&#x1d40f;"
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x1d40f;"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "𝐏𝓁",
+      "capture": {
+        "factor": {
+          "atom": {
+            "char": {
+              "unicode_symbols": "&#x1d40f;"
+            },
+            "diacritics": {
+              "char": {
+                "unicode_symbols": "&#x1d4c1;"
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x1d40f;"
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x1d4c1;"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "𝐏a",
+      "capture": {
+        "factor": {
+          "atom": {
+            "char": {
+              "unicode_symbols": "&#x1d40f;"
+            },
+            "alphanumeric": "a"
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x1d40f;"
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "a"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "𝐏2",
+      "capture": {
+        "factor": {
+          "atom": {
+            "char": {
+              "unicode_symbols": "&#x1d40f;"
+            },
+            "number": "2"
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x1d40f;"
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "𝐏𝓁2",
+      "capture": {
+        "factor": {
+          "atom": {
+            "char": {
+              "unicode_symbols": "&#x1d40f;"
+            },
+            "diacritics": {
+              "char": {
+                "unicode_symbols": "&#x1d4c1;"
+              }
+            },
+            "number": "2"
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x1d40f;"
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x1d4c1;"
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "𝐏𝓁a",
+      "capture": {
+        "factor": {
+          "atom": {
+            "char": {
+              "unicode_symbols": "&#x1d40f;"
+            },
+            "diacritics": {
+              "char": {
+                "unicode_symbols": "&#x1d4c1;"
+              }
+            },
+            "alphanumeric": "a"
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x1d40f;"
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x1d4c1;"
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "a"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "𝐏𝓁𝔞",
+      "capture": {
+        "factor": {
+          "atom": {
+            "char": {
+              "unicode_symbols": "&#x1d40f;"
+            },
+            "diacritics": {
+              "char": {
+                "unicode_symbols": "&#x1d4c1;"
+              },
+              "diacritics": {
+                "char": {
+                  "unicode_symbols": "&#x1d51e;"
+                }
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x1d40f;"
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x1d4c1;"
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x1d51e;"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "𝒦︀",
+      "capture": {
+        "factor": {
+          "atom": {
+            "char": {
+              "unicode_symbols": "&#x1d4a6;"
+            },
+            "diacritics": {
+              "char": {
+                "unicode_symbols": "&#xfe00;"
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x1d4a6;"
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#xfe00;"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "𝑥𝑎̂𝑏𝑐̃𝑦",
+      "capture": {
+        "accents": [
+          {
+            "first_value": {
+              "atom": {
+                "char": {
+                  "unicode_symbols": "&#x1d465;"
+                },
+                "diacritics": {
+                  "char": {
+                    "unicode_symbols": "&#x1d44e;"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "accent_symbols": "&#x302;"
+          }
+        ],
+        "expr": {
+          "accents": [
+            {
+              "first_value": {
+                "atom": {
+                  "char": {
+                    "unicode_symbols": "&#x1d44f;"
+                  },
+                  "diacritics": {
+                    "char": {
+                      "unicode_symbols": "&#x1d450;"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "accent_symbols": "&#x303;"
+            }
+          ],
+          "expr": {
+            "factor": {
+              "atom": {
+                "char": {
+                  "unicode_symbols": "&#x1d466;"
+                }
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            [
+              "accents",
+              [
+                {
+                  "first_value": [
+                    {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "&#x1d465;"
+                      }
+                    },
+                    {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "&#x1d44e;"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "accent_symbols": "&#x302;"
+                }
+              ]
+            ],
+            [
+              "expr",
+              {
+                "accents": [
+                  {
+                    "first_value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x1d44f;"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x1d450;"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "accent_symbols": "&#x303;"
+                  }
+                ],
+                "expr": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "&#x1d466;"
+                  }
+                }
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "input": "𝑖ℏ",
+      "capture": {
+        "factor": {
+          "atom": {
+            "char": {
+              "unicode_symbols": "&#x1d456;"
+            }
+          }
+        },
+        "operand": {
+          "factor": {
+            "ordinary_symbols": "&#x210f;"
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x1d456;"
+              }
+            },
+            {
+              "class": "Math::Symbols::Hbar",
+              "fields": {
+                "value": null
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "𝛁⨯𝐄",
+      "capture": {
+        "factor": {
+          "atom": {
+            "char": {
+              "unicode_symbols": "&#x1d6c1;"
+            },
+            "diacritics": {
+              "char": {
+                "unicode_symbols": "&#x2a2f;"
+              },
+              "diacritics": {
+                "char": {
+                  "unicode_symbols": "&#x1d404;"
+                }
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x1d6c1;"
+              }
+            },
+            {
+              "class": "Math::Symbols::Vectimes",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x1d404;"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
