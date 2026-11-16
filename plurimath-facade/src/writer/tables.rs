@@ -259,6 +259,22 @@ pub(super) fn render(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<S
             };
             Ok(format!("{}█({body}){}", side(open)?, side(close)?))
         }
+        "unicodemath" if matches!(m.kind(), "Pmatrix" | "Vmatrix" | "Bmatrix") => {
+            let class = open.get("class").and_then(Value::as_str).unwrap_or("");
+            let mark = match m.kind() {
+                "Pmatrix" => "⒨",
+                "Vmatrix" if class == "Math::Symbols::Paren::Norm" => "⒩",
+                "Vmatrix" => "⒱",
+                _ if class == "Math::Symbols::Paren::Lcurly" => "Ⓢ",
+                _ => "ⓢ",
+            };
+            let body = cells
+                .iter()
+                .map(|r| r.join("&"))
+                .collect::<Vec<_>>()
+                .join("@");
+            Ok(format!("{mark}({body})"))
+        }
         "unicodemath" => {
             let matrix = if open.is_null()
                 && ["Align", "Multline", "Split", "Matrix", "Array"].contains(&m.kind())
