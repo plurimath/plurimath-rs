@@ -3,6 +3,8 @@
 //! Each rule matches an exact capture key set, as the source transform does;
 //! any other shape falls through to the shared converter.
 use super::{error, fenced, incomplete};
+mod decorations;
+mod structural_scripts;
 use crate::model::{formula, node, number};
 use serde_json::{json, Map, Value};
 
@@ -803,6 +805,12 @@ fn cell(value: &Value, rec: Rec) -> Result<Vec<Value>, Value> {
 }
 
 pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>, Value> {
+    if let Some(values) = decorations::tx(m, rec)? {
+        return Ok(Some(values));
+    }
+    if let Some(values) = structural_scripts::tx(m, rec)? {
+        return Ok(Some(values));
+    }
     if m.len() == 1 {
         let (key, value) = m.iter().next().unwrap();
         match key.as_str() {
