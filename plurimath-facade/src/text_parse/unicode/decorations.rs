@@ -11,7 +11,8 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
         let font = if let Some(text) = selector.as_str() {
             text
         } else if selector.as_object().is_some_and(|m| {
-            keys(m, &["mitBbb"]) && !m["mitBbb"].is_object() && !m["mitBbb"].is_array()
+            keys(m, &["mitBbb"])
+                && (m["mitBbb"].is_null() || m["mitBbb"] == serde_json::json!({"nil":true}))
         }) {
             // Source `mitBbb: simple` builds :mitBbb, including the nil marker
             // produced by umath for the literal Unicode letter forms.

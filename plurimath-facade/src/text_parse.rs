@@ -207,7 +207,29 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         {
             return Err(incomplete("unported additional source capture fields"));
         }
-        let mut base = one(tx(format, &m["base"], depth + 1)?);
+        let base_values = tx(format, &m["base"], depth + 1)?;
+        // Source unicode rules.rb 1161-1193: a sequence base powers only its last
+        // item; a simple sup wraps the result in a Formula, a sequence sup does not.
+        if format == "unicode"
+            && m.contains_key("sup")
+            && !m.contains_key("sub")
+            && base_values.len() > 1
+        {
+            let sup = tx(format, &m["sup"], depth + 1)?;
+            let simple_sup = sup.len() == 1;
+            let mut values = base_values;
+            let last = values.pop().unwrap();
+            values.push(node(
+                "Math::Function::Power",
+                json!({"parameter_one":last,"parameter_two":unfence(one(sup))}),
+            ));
+            return Ok(if simple_sup {
+                vec![formula(values)]
+            } else {
+                values
+            });
+        }
+        let mut base = one(base_values);
         // Source base:simple/sup:simple: an Overset with no operand yet takes the base.
         if format == "unicode" && m.contains_key("sup") && !m.contains_key("sub") {
             let mut sup = tx(format, &m["sup"], depth + 1)?;
@@ -506,15 +528,19 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         if m["root_symbol"] != "&#x221a;" && m["root_symbol"] != "√" {
             return Err(incomplete("unported indexed Unicode radical"));
         }
-        return Ok(vec![unary(
-            "sqrt",
-            one(tx(
-                format,
-                m.get("first_value")
-                    .ok_or_else(|| incomplete("missing radical operand"))?,
-                depth + 1,
-            )?),
-        )?]);
+        let operand = one(tx(
+            format,
+            m.get("first_value")
+                .ok_or_else(|| incomplete("missing radical operand"))?,
+            depth + 1,
+        )?);
+        // Source unicode rules.rb 1119-1136 unwrap a round-paren operand.
+        let operand = if format == "unicode" {
+            unicode::unfenced(operand)
+        } else {
+            operand
+        };
+        return Ok(vec![unary("sqrt", operand)?]);
     }
     if m.get("underover").is_some_and(Value::is_string)
         || m.get("unary").is_some_and(Value::is_string)
@@ -668,7 +694,11 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         ] {
             rest.remove(key);
         }
-        let body = if rest.len() == 1 && rest.contains_key("expression") {
+        // Source unicode rules.rb 2042-2050: a bare open/close pair builds an
+        // empty Fenced body.
+        let body = if rest.is_empty() && format == "unicode" {
+            Vec::new()
+        } else if rest.len() == 1 && rest.contains_key("expression") {
             tx(format, &rest["expression"], depth + 1)?
         } else {
             tx(format, &Value::Object(rest), depth + 1)?

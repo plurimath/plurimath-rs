@@ -175,6 +175,59 @@ fn overset(over: Value, under: Value, accent: bool) -> Value {
         )
     }
 }
+/// Source rules.rb 351-359 build `accents` only when `expr` is a sequence. A
+/// single-valued `expr` (a lone symbol, or a nested unbuilt capture) matches no
+/// rule, so Parslet leaves the capture Hash with its children transformed.
+/// Returns the ordered key/value pairs of that Hash, or `None` when the source
+/// rule builds the list.
+fn unbuilt_accents(
+    m: &Map<String, Value>,
+    tail: &str,
+    rec: Rec,
+) -> Result<Option<Vec<(String, Value)>>, Value> {
+    let Some(items) = m["accents"].as_array() else {
+        return Ok(None);
+    };
+    let expr = &m[tail];
+    let expr_value = match expr.as_object() {
+        Some(inner) if keys(inner, &["accents", tail]) => {
+            match unbuilt_accents(inner, tail, rec)? {
+                Some(pairs) => Value::Object(pairs.into_iter().collect()),
+                None => return Ok(None),
+            }
+        }
+        _ => {
+            let mut values = rec(expr)?;
+            if values.len() != 1 || expr.is_array() {
+                return Ok(None);
+            }
+            values.pop().unwrap()
+        }
+    };
+    let mut accents = Vec::new();
+    for item in items {
+        let item = item
+            .as_object()
+            .ok_or_else(|| incomplete("unported UnicodeMath accent capture shape"))?;
+        if keys(item, &["first_value"]) {
+            let mut values = rec(&item["first_value"])?;
+            let value = if values.len() == 1 {
+                values.pop().unwrap()
+            } else {
+                Value::Array(values)
+            };
+            accents.push(json!({"first_value": value}));
+        } else if keys(item, &["accent_symbols"]) && item["accent_symbols"].is_string() {
+            accents.push(Value::Object(item.clone()));
+        } else {
+            return Err(incomplete("unported UnicodeMath accent capture shape"));
+        }
+    }
+    Ok(Some(vec![
+        ("accents".to_string(), Value::Array(accents)),
+        (tail.to_string(), expr_value),
+    ]))
+}
 /// Source Utility.unicode_accents on a captured accent list: the first item
 /// carries the base value, each later accent wraps what precedes it.
 fn accents(value: &Value, rec: Rec) -> Result<Value, Value> {
@@ -883,6 +936,29 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
             return Ok(Some(out));
         }
     }
+    // Source rules.rb 3604-3672: the text-led fence bodies of ⓘ("text"…) read an
+    // operator tail as `exp`, optionally after one `operand`.
+    for tail in [&["exp"][..], &["operand", "exp"][..]] {
+        let mut want = vec!["text"];
+        want.extend_from_slice(tail);
+        if keys(m, &want) {
+            let text = m["text"]
+                .as_str()
+                .ok_or_else(|| incomplete("non-text text capture"))?;
+            let mut out = vec![text_node(text)];
+            for key in tail {
+                out.extend(rec(&m[*key])?);
+            }
+            return Ok(Some(out));
+        }
+    }
+    // Source rules.rb 575-587: a subscript digit run is a mini-sized Number
+    // followed by its recursion, whether that is one value or a sequence.
+    if keys(m, &["sub_digits", "sub_recursion_expr"]) {
+        let mut out = vec![mini_digit(&m["sub_digits"], false)?];
+        out.extend(rec(&m["sub_recursion_expr"])?);
+        return Ok(Some(out));
+    }
     for head in ["negated_operator", "ordinary_negated_operator"] {
         if keys(m, &[head, "expr"]) {
             let mut out = vec![negated(&m[head])?];
@@ -954,6 +1030,24 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
                 return Ok(Some(out));
             }
         }
+    }
+    // Source rules.rb 476-494: a unicode symbol heads its `exp`/`expr` tail.
+    for tail in ["exp", "expr"] {
+        if keys(m, &["unicode_symbols", tail]) {
+            let mut out = vec![symbol(&capture_text(
+                &m["unicode_symbols"],
+                "unicode symbol",
+            )?)];
+            out.extend(rec(&m[tail])?);
+            return Ok(Some(out));
+        }
+    }
+    // Source rules.rb 294-304: the binary symbol heads its recursive denominator.
+    if keys(m, &["binary_symbols", "recursive_denominator"]) {
+        let text = capture_text(&m["binary_symbols"], "binary symbol")?;
+        let mut out = vec![symbol(&text)];
+        out.extend(rec(&m["recursive_denominator"])?);
+        return Ok(Some(out));
     }
     // Source sequence rules over pass-through captures concatenate in grammar order.
     const PASS: [&str; 12] = [
@@ -1056,6 +1150,12 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
     }
     for tail in ["expr", "exp"] {
         if keys(m, &["accents", tail]) {
+            if let Some(pairs) = unbuilt_accents(m, tail, rec)? {
+                // A Formula over a Hash holds its [key, value] pairs.
+                return Ok(Some(
+                    pairs.into_iter().map(|(k, v)| json!([k, v])).collect(),
+                ));
+            }
             let mut out = vec![accents(&m["accents"], rec)?];
             out.extend(rec(&m[tail])?);
             return Ok(Some(out));
