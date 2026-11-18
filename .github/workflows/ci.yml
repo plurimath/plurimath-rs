@@ -37,6 +37,22 @@ jobs:
         if: runner.os == 'Linux'
         run: cargo clippy --locked --workspace --all-targets --all-features -- -D warnings
       - name: Workspace tests with all supported profiles
-        run: cargo test --locked --workspace --all-features --no-fail-fast
+        run: cargo test --locked --workspace --all-features --no-fail-fast -- --skip unicode675_rows_match_ruby_source
       - name: Numeric default feature boundary
         run: cargo test --locked -p plurimath-numeric --no-default-features
+  unicode675:
+    name: UnicodeMath 675 shard ${{ matrix.shard }}/8
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@1.95.0
+      - name: Source-oracle rows for this shard
+        env:
+          UNICODE675_SHARD: ${{ matrix.shard }}/8
+          UNICODE675_SHOW: "1"
+        run: cargo test --locked -p plurimath-facade --all-features --test unicode675 -- --nocapture

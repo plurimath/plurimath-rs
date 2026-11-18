@@ -146,8 +146,21 @@ fn unicode_child(v: &Value, ctx: &super::WriterContext) -> Result<String, String
             .collect::<Result<Vec<_>, _>>()?;
         return super::text_content::decode(&pieces.join(separator));
     }
-    if contains_mini(v) && !handles(&m) {
-        return Err("unported promised nested mini-number Unicode child writer".into());
+    if contains_mini(v)
+        && !handles(&m)
+        && !matches!(
+            m.class.as_str(),
+            "Math::Function::Base"
+                | "Math::Function::Frac"
+                | "Math::Function::Power"
+                | "Math::Function::PowerBase"
+                | "Math::Function::Fenced"
+        )
+    {
+        return Err(format!(
+            "unported promised nested mini-number Unicode child writer {}",
+            m.class
+        ));
     }
     node_text(v, "unicodemath", ctx)
 }
@@ -165,34 +178,7 @@ fn parens(v: &Value, f: &str, ctx: &super::WriterContext) -> Result<String, Stri
     }
 }
 fn prime(v: &Value) -> Result<bool, String> {
-    let class = v.get("class").and_then(Value::as_str).unwrap_or("");
-    if !class.starts_with("Math::Symbols::") {
-        return Ok(false);
-    }
-    // The source reads `value&.include?`, so a nil value skips the entity check.
-    let value = match v.get("fields").and_then(|o| o.get("value")) {
-        None | Some(Value::Null) => None,
-        Some(Value::String(s)) => Some(s.as_str()),
-        Some(_) => return Err(source_error("prime predicate requires a symbol value")),
-    };
-    if value.is_some_and(|s| s.contains("&#x27;")) {
-        return Ok(true);
-    }
-    let input = if class == "Math::Symbols::Symbol" {
-        let Some(value) = value else {
-            return Ok(false);
-        };
-        value
-    } else {
-        data()["prime_inputs"][class]
-            .as_str()
-            .ok_or_else(|| "unported promised typed-symbol prime predicate".to_owned())?
-    };
-    Ok(data()["primes"]
-        .as_array()
-        .unwrap()
-        .iter()
-        .any(|p| input.contains(p.as_str().unwrap())))
+    super::final_options::source_prime(v)
 }
 fn unicode_bound(m: &Model, upper: bool, ctx: &super::WriterContext) -> Result<String, String> {
     let v = m.field(if upper {

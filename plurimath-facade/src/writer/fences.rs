@@ -603,6 +603,7 @@ mod tests {
             display_style: true,
             unary_function_spacing: true,
             intent: false,
+            unitsml_xml: false,
         };
         for row in reference["rows"].as_array().unwrap() {
             let model = Model::from_value(&row["model"]).unwrap();

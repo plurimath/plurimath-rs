@@ -207,7 +207,109 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         {
             return Err(incomplete("unported additional source capture fields"));
         }
-        let mut base = one(tx(format, &m["base"], depth + 1)?);
+        let base_values = tx(format, &m["base"], depth + 1)?;
+        // Source unicode rules.rb 1161-1193: a sequence base powers only its last
+        // item; a simple sup wraps the result in a Formula, a sequence sup does not.
+        if format == "unicode"
+            && m.contains_key("sup")
+            && !m.contains_key("sub")
+            && base_values.len() > 1
+        {
+            let sup = tx(format, &m["sup"], depth + 1)?;
+            let simple_sup = sup.len() == 1;
+            let mut values = base_values;
+            let last = values.pop().unwrap();
+            values.push(node(
+                "Math::Function::Power",
+                json!({"parameter_one":last,"parameter_two":unfence(one(sup))}),
+            ));
+            return Ok(if simple_sup {
+                vec![formula(values)]
+            } else {
+                values
+            });
+        }
+        // Source unicode rules.rb 1076-1098: a sequence base subscripts only its
+        // last item and stays a list; a simple Underset sub takes that item.
+        if format == "unicode"
+            && m.contains_key("sub")
+            && !m.contains_key("sup")
+            && base_values.len() > 1
+        {
+            let mut sub = tx(format, &m["sub"], depth + 1)?;
+            let mut values = base_values;
+            let last = values.pop().unwrap();
+            let object = if sub.len() == 1 && sub[0]["class"] == "Math::Function::Underset" {
+                let mut under = sub.pop().unwrap();
+                under["fields"]["parameter_two"] = last;
+                under
+            } else {
+                let sub = match sub.len() {
+                    0 => Value::Null,
+                    1 => unicode::unfenced(sub.pop().unwrap()),
+                    _ => formula(sub),
+                };
+                node(
+                    "Math::Function::Base",
+                    json!({"parameter_one":last,"parameter_two":sub}),
+                )
+            };
+            values.push(object);
+            return Ok(values);
+        }
+        // Source unicode rules.rb 2164-2173: a sequence base takes simple scripts
+        // on its last item only.
+        if format == "unicode"
+            && m.contains_key("sub")
+            && m.contains_key("sup")
+            && base_values.len() > 1
+        {
+            let sub = tx(format, &m["sub"], depth + 1)?;
+            let sup = tx(format, &m["sup"], depth + 1)?;
+            if sub.len() == 1 && sup.len() == 1 {
+                let mut values = base_values;
+                let last = values.pop().unwrap();
+                values.push(node(
+                    "Math::Function::PowerBase",
+                    json!({"parameter_one":last,"parameter_two":unicode::unfenced(one(sub)),"parameter_three":unicode::unfenced(one(sup))}),
+                ));
+                return Ok(values);
+            }
+        }
+        let mut base = one(base_values);
+        // Source base:simple/sup:simple: an Overset with no operand yet takes the base.
+        if format == "unicode" && m.contains_key("sup") && !m.contains_key("sub") {
+            let mut sup = tx(format, &m["sup"], depth + 1)?;
+            if sup.len() == 1
+                && sup[0]["class"] == "Math::Function::Overset"
+                && sup[0]["fields"]["parameter_two"].is_null()
+            {
+                let mut overset = sup.pop().unwrap();
+                overset["fields"]["parameter_two"] = unicode::unfenced(base);
+                return Ok(vec![overset]);
+            }
+        }
+        // Source base:simple/sub:simple: an empty binary function takes the subscript first.
+        if format == "unicode"
+            && m.contains_key("sub")
+            && !m.contains_key("sup")
+            && ["Obrace", "Oint", "Prod", "Sum", "Int", "Lim", "Inf", "Log"]
+                .iter()
+                .any(|kind| base["class"] == format!("Math::Function::{kind}"))
+            && (base["fields"]["parameter_one"].is_null()
+                || base["fields"]["parameter_one"] == false)
+        {
+            let mut sub = tx(format, &m["sub"], depth + 1)?;
+            if sub.len() == 1 {
+                let sub = sub.pop().unwrap();
+                base["fields"]["parameter_one"] = if sub["class"] == "Math::Function::Underset" {
+                    sub["fields"]["parameter_one"].clone()
+                } else {
+                    unicode::unfenced(sub)
+                };
+                return Ok(vec![base]);
+            }
+        }
         // Unicode source base:simple/sup:simple fills an empty binary operand.
         if format == "unicode"
             && !m.contains_key("sub")
@@ -223,12 +325,63 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
                 return Ok(vec![base]);
             }
         }
+        // Source base:simple/sup:simple: a horizontal bracket base takes the sup as an Overset.
+        if format == "unicode" && m.contains_key("sup") && !m.contains_key("sub") {
+            const BRACKETS: [&str; 8] = [
+                "&#x23b5;", "&#x23b4;", "&#x23e1;", "&#x23dd;", "&#x23df;", "&#x23e0;", "&#x23dc;",
+                "&#x23de;",
+            ];
+            let bracketed = base["class"] == "Math::Function::Overset"
+                && base["fields"]["parameter_one"]["fields"]["value"]
+                    .as_str()
+                    .is_some_and(|v| BRACKETS.contains(&v));
+            if bracketed || base["class"] == "Math::Function::Obrace" {
+                let sup = tx(format, &m["sup"], depth + 1)?;
+                if sup.len() == 1 {
+                    return Ok(vec![node(
+                        "Math::Function::Overset",
+                        json!({"parameter_one":unicode::unfenced(sup.into_iter().next().unwrap()),"parameter_two":base}),
+                    )]);
+                }
+            }
+        }
+        if format == "unicode" && m.contains_key("sub") && m.contains_key("sup") {
+            let sub = tx(format, &m["sub"], depth + 1)?;
+            let sup = tx(format, &m["sup"], depth + 1)?;
+            return Ok(vec![unicode::sub_sup(base, sub, sup)]);
+        }
         return if m.contains_key("sub") && m.contains_key("sup") {
             Ok(vec![node(
                 "Math::Function::PowerBase",
                 json!({"parameter_one":base,"parameter_two":unfence(one(tx(format, &m["sub"],depth+1)?)),"parameter_three":unfence(one(tx(format, &m["sup"],depth+1)?))}),
             )])
         } else {
+            if format == "unicode" && m.contains_key("sub") && !m.contains_key("sup") {
+                const BRACKETS: [&str; 8] = [
+                    "&#x23b5;", "&#x23b4;", "&#x23e1;", "&#x23dd;", "&#x23df;", "&#x23e0;",
+                    "&#x23dc;", "&#x23de;",
+                ];
+                let bracket_underset = base["class"] == "Math::Function::Underset"
+                    && base["fields"]["parameter_one"]["fields"]["value"]
+                        .as_str()
+                        .is_some_and(|v| BRACKETS.contains(&v));
+                let ubrace = base["class"] == "Math::Function::Ubrace"
+                    && base["fields"]["parameter_one"]["class"] != "Math::Formula";
+                if bracket_underset || ubrace {
+                    let sub = unicode::unfenced(one(tx(format, &m["sub"], depth + 1)?));
+                    return Ok(vec![node(
+                        "Math::Function::Underset",
+                        json!({"options":{},"parameter_one":sub,"parameter_two":base}),
+                    )]);
+                }
+            }
+            if format == "unicode" {
+                return Ok(vec![if m.contains_key("sub") {
+                    unicode::sub_only(base, tx(format, &m["sub"], depth + 1)?)
+                } else {
+                    unicode::sup_only(base, tx(format, &m["sup"], depth + 1)?)
+                }]);
+            }
             let (key, class) = if m.contains_key("sub") {
                 ("sub", "Math::Function::Base")
             } else {
@@ -431,18 +584,34 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         {
             return Err(incomplete("unported additional source capture fields"));
         }
-        if m["root_symbol"] != "&#x221a;" && m["root_symbol"] != "√" {
-            return Err(incomplete("unported indexed Unicode radical"));
+        // Source unicode rules.rb 1119: cube and fourth roots build Root with
+        // a Number index; every other radical symbol (including \sqrt) is Sqrt.
+        let index = match m["root_symbol"].as_str() {
+            Some("&#x221b;" | "\\cbrt" | "∛") if format == "unicode" => Some("3"),
+            Some("&#x221c;" | "\\qdrt" | "∜") if format == "unicode" => Some("4"),
+            Some("&#x221a;" | "√") => None,
+            Some("\\sqrt") if format == "unicode" => None,
+            _ => return Err(incomplete("unported indexed Unicode radical")),
+        };
+        let operand = one(tx(
+            format,
+            m.get("first_value")
+                .ok_or_else(|| incomplete("missing radical operand"))?,
+            depth + 1,
+        )?);
+        // Source unicode rules.rb 1119-1136 unwrap a round-paren operand.
+        let operand = if format == "unicode" {
+            unicode::unfenced(operand)
+        } else {
+            operand
+        };
+        if let Some(index) = index {
+            return Ok(vec![node(
+                "Math::Function::Root",
+                json!({"parameter_one":number(index),"parameter_two":operand}),
+            )]);
         }
-        return Ok(vec![unary(
-            "sqrt",
-            one(tx(
-                format,
-                m.get("first_value")
-                    .ok_or_else(|| incomplete("missing radical operand"))?,
-                depth + 1,
-            )?),
-        )?]);
+        return Ok(vec![unary("sqrt", operand)?]);
     }
     if m.get("underover").is_some_and(Value::is_string)
         || m.get("unary").is_some_and(Value::is_string)
@@ -567,14 +736,39 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         .get("right_paren")
         .or_else(|| m.get("close_paren"))
         .or_else(|| m.get("closer"));
+    // Source unicode rules.rb 2565-2577 and 2708-2724: a prefixed close paren
+    // ends the fence when no plain close is captured.
+    let close_prefix = format == "unicode" && open.is_some() && close.is_none();
+    let close = close.or_else(|| {
+        m.get("paren_close_prefix")
+            .filter(|x| close_prefix && x.is_string())
+    });
     if let (Some(l), Some(r)) = (open, close) {
+        let (mut open_mask, mut close_mask) = (None, None);
+        // Source int_exp opener/closer wrap the paren capture in its own key.
+        let wrapped = |x: &Value, key: &str| -> Option<Value> {
+            x.as_object()
+                .filter(|o| format == "unicode" && o.len() == 1)
+                .and_then(|o| o.get(key).cloned())
+        };
+        let l = &wrapped(l, "open_paren").unwrap_or_else(|| l.clone());
+        let r = &wrapped(r, "close_paren").unwrap_or_else(|| r.clone());
+        if close_prefix && l.is_string() {
+            close_mask = Some(None);
+        }
         let left = if let Some(s) = l.as_str() {
             crate::symbols::symbol_for(s, format)
+        } else if let Some(masked) = unicode::masked_paren(l)?.filter(|_| format == "unicode") {
+            open_mask = Some(masked.size);
+            masked.symbol
         } else {
             one(tx(format, l, depth + 1)?)
         };
         let right = if let Some(s) = r.as_str() {
             crate::symbols::symbol_for(s, format)
+        } else if let Some(masked) = unicode::masked_paren(r)?.filter(|_| format == "unicode") {
+            close_mask = Some(masked.size);
+            masked.symbol
         } else {
             one(tx(format, r, depth + 1)?)
         };
@@ -589,12 +783,87 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         ] {
             rest.remove(key);
         }
-        let body = if rest.len() == 1 && rest.contains_key("expression") {
+        if close_prefix {
+            rest.remove("paren_close_prefix");
+        }
+        // Source unicode rules.rb 3350, 3811-3842 and 3843-3855: a script on the
+        // fence makes a Power; a sub_exp body unfences it.
+        let power = if format == "unicode" && rest.len() == 3 && rest.contains_key("exp") {
+            let head = ["operator", "sub_exp", "unicode_symbols"]
+                .into_iter()
+                .find(|k| rest.contains_key(*k));
+            match (head, rest.get("sup").cloned()) {
+                (Some(head), Some(sup)) => {
+                    rest.remove("sup");
+                    Some((head == "sub_exp", sup))
+                }
+                _ => None,
+            }
+        } else {
+            None
+        };
+        // Source unicode rules.rb 3159-3194: an n-ary operand tail follows the fence.
+        let tail = if format == "unicode"
+            && rest.len() == 2
+            && rest.contains_key("factor")
+            && rest.contains_key("naryand_recursion")
+        {
+            rest.remove("naryand_recursion")
+        } else {
+            None
+        };
+        let bar_factor = format == "unicode"
+            && (l.as_str() == Some("|") || r.as_str() == Some("|"))
+            && rest.len() == 1
+            && rest.contains_key("factor");
+        // Source unicode rules.rb 2042-2050: a bare open/close pair builds an
+        // empty Fenced body.
+        let body = if rest.is_empty() && format == "unicode" {
+            Vec::new()
+        } else if rest.len() == 1 && rest.contains_key("expression") {
             tx(format, &rest["expression"], depth + 1)?
         } else {
             tx(format, &Value::Object(rest), depth + 1)?
         };
-        return Ok(vec![fenced(left, body, right)]);
+        // Source unicode rules.rb 2659-2700: a single factor between bars loses
+        // its own round parens.
+        let body = if bar_factor {
+            match <[Value; 1]>::try_from(body) {
+                Ok([factor]) => vec![unicode::unfenced(factor)],
+                Err(body) => body,
+            }
+        } else {
+            body
+        };
+        let mut fence = fenced(left, body, right);
+        for (mask, prefixed, sized) in [
+            (open_mask, "open_prefixed", "open_paren"),
+            (close_mask, "close_prefixed", "close_paren"),
+        ] {
+            if let Some(size) = mask {
+                fence["fields"]["options"][prefixed] = json!(true);
+                if let Some(size) = size {
+                    fence["fields"]["options"][sized] = json!({"minsize":size,"maxsize":size});
+                }
+            }
+        }
+        if let Some((unfence_sup, sup)) = power {
+            let sup = one(tx(format, &sup, depth + 1)?);
+            let sup = if unfence_sup {
+                unicode::unfenced(sup)
+            } else {
+                sup
+            };
+            fence = node(
+                "Math::Function::Power",
+                json!({"parameter_one":fence,"parameter_two":sup}),
+            );
+        }
+        let mut out = vec![fence];
+        if let Some(tail) = tail {
+            out.extend(tx(format, &tail, depth + 1)?);
+        }
+        return Ok(out);
     }
     if m.len() == 1 {
         let (key, x) = m.iter().next().unwrap();
@@ -641,8 +910,11 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         ]
         .contains(&key.as_str())
         {
+            // Ruby `rule(ldots: simple(:ldots)) { ldots }` reduces the
+            // nested capture to its "..." text before the symbol rule.
             return x
                 .as_str()
+                .or_else(|| x.get("ldots").and_then(|v| v.as_str()))
                 .map(|s| vec![crate::symbols::symbol_for(s, format)])
                 .ok_or_else(|| incomplete("non-text symbol capture"));
         }

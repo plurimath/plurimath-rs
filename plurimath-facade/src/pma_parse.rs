@@ -287,7 +287,7 @@ fn scale_number(text: &str, power: i64) -> Result<String, Value> {
     Ok(format!("{sign}{trimmed}"))
 }
 
-fn uncertainty_node(mut fields: Map<String, Value>) -> Result<Value, Value> {
+pub(crate) fn uncertainty_node(mut fields: Map<String, Value>) -> Result<Value, Value> {
     let class = fields
         .remove("uncertainty_class")
         .and_then(|v| v.as_str().map(str::to_string));

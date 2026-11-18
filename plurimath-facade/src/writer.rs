@@ -1,5 +1,6 @@
 //! Procedural source-writer port; unported nodes/options fail, never return approximations.
 mod accents;
+mod enclose;
 mod enclose_nodes;
 mod fences;
 mod final_options;
@@ -7,6 +8,7 @@ mod font_styles;
 mod formatter_context;
 mod generic_nary;
 mod intent_nodes;
+mod labeledtr;
 mod layout_nodes;
 mod leaf_nodes;
 mod line_break_overrides;
@@ -28,6 +30,7 @@ mod templates;
 mod text_content;
 mod uncertainty_writers;
 mod underline;
+mod unitsml_xml;
 use crate::model::Model;
 use serde_json::Value;
 #[derive(Clone, Debug)]
@@ -46,6 +49,8 @@ struct WriterContext<'a> {
     display_style: bool,
     unary_function_spacing: bool,
     intent: bool,
+    // Source `unitsml: {xml: true}`: append UnitsML records to unit rows.
+    unitsml_xml: bool,
 }
 impl<'a> WriterContext<'a> {
     fn with_table(self) -> Self {
@@ -63,6 +68,7 @@ impl<'a> WriterContext<'a> {
             display_style: self.display_style,
             unary_function_spacing: self.unary_function_spacing,
             intent: self.intent,
+            unitsml_xml: self.unitsml_xml,
         }
     }
     fn with_display_style(self, display_style: bool) -> Self {
@@ -78,6 +84,7 @@ impl Default for WriterContext<'_> {
             display_style: true,
             unary_function_spacing: true,
             intent: false,
+            unitsml_xml: false,
             formatter: None,
             table: false,
             formula_input: None,
@@ -123,19 +130,22 @@ fn dump(x: &Xml, depth: usize) -> String {
                     c.iter().map(|v| dump(v, 0)).collect::<String>()
                 );
             };
-            format!(
-                "{pad}<{n}{at}>\n{}{}</{n}>",
-                c.iter()
-                    .filter(|v| !matches!(v, Xml::Text(s) if s.is_empty()))
-                    .map(|v| dump(v, depth + 1))
-                    .collect::<Vec<_>>()
-                    .join("\n"),
-                if matches!(c.last(), Some(Xml::Text(_))) {
-                    String::new()
-                } else {
-                    format!("\n{pad}")
+            // Ox appends text inline and starts each element on its own line.
+            let mut out = format!("{pad}<{n}{at}>");
+            for v in c {
+                match v {
+                    Xml::Text(s) => out.push_str(&escape(s, false)),
+                    Xml::El(..) => {
+                        out.push('\n');
+                        out.push_str(&dump(v, depth + 1));
+                    }
                 }
-            )
+            }
+            if !matches!(c.last(), Some(Xml::Text(_))) {
+                out.push('\n');
+                out.push_str(&pad);
+            }
+            format!("{out}</{n}>")
         }
     }
 }
@@ -613,10 +623,10 @@ fn power_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, String>
                     "source_render_error: power exponent cannot receive mini_sized?".into(),
                 );
             }
-            if b["fields"]["mini_sub_sized"] == true || b["fields"]["mini_sup_sized"] == true {
-                return Err("unported promised mini-sized power exponent".into());
-            }
             let base = child(a, f, ctx)?;
+            if !power_accent(b, ctx)? && numbers::mini_sized(b) {
+                return Ok(format!("{base}{}", child(b, f, ctx)?));
+            }
             if power_accent(b, ctx)? {
                 return Ok(format!(
                     "{base}{}",
@@ -834,6 +844,12 @@ fn render_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, String
     }
     if underline::handles(m) {
         return underline::text_writer(m, f, ctx);
+    }
+    if enclose::handles(m) {
+        return enclose::text_writer(m, f, ctx);
+    }
+    if labeledtr::handles(m) {
+        return labeledtr::text_writer(m, f, ctx);
     }
     if enclose_nodes::handles(m) {
         return enclose_nodes::text_writer(m, f, ctx);
@@ -1316,6 +1332,12 @@ fn render_xml_inner(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>,
     if underline::handles(m) {
         return underline::xml(m, f, ctx);
     }
+    if enclose::handles(m) {
+        return enclose::xml(m, f, ctx);
+    }
+    if labeledtr::handles(m) {
+        return labeledtr::xml(m, f, ctx);
+    }
     if enclose_nodes::handles(m) {
         return enclose_nodes::xml(m, f, ctx);
     }
@@ -1462,7 +1484,20 @@ fn render_xml_inner(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>,
     }
 
     if m.kind() == "Unitsml" {
-        return render_xml(&derived_units(m)?, f, ctx);
+        let mut nodes = render_xml(&derived_units(m)?, f, ctx)?;
+        if ctx.unitsml_xml {
+            let text = m.field("text").as_str().unwrap_or_default();
+            let (id, records) = unitsml_xml::nodes(text)?;
+            let [Xml::El(name, row_attrs, children)] = nodes.as_mut_slice() else {
+                return Err("unported promised UnitsML XML outside one formula row".into());
+            };
+            if name.as_str() != "mrow" {
+                return Err("unported promised UnitsML XML outside one formula row".into());
+            }
+            row_attrs.push(("xref".into(), id));
+            children.extend(records);
+        }
+        return Ok(nodes);
     }
     if m.class == "Math::Function::FontStyle::Normal" {
         return normal_xml(m, f, ctx);
@@ -3093,6 +3128,24 @@ fn mathml_document(content: Vec<Xml>, display_style: bool) -> String {
     )
 }
 
+// Unitsml#to_mathml reads options.dig(:unitsml, :xml); other writers are unported.
+fn unitsml_xml_option(option: Option<&Value>, format: &str) -> Result<bool, String> {
+    let Some(option) = option else {
+        return Ok(false);
+    };
+    let fields = option
+        .as_object()
+        .filter(|fields| fields.keys().all(|k| k == "xml"))
+        .ok_or("unported promised writer option unitsml")?;
+    let xml = fields.get("xml").is_some_and(present);
+    if xml && format != "mathml" {
+        return Err(format!(
+            "unported promised writer option unitsml for {format}"
+        ));
+    }
+    Ok(xml)
+}
+
 pub fn write(model: &Value, format: &str, options: &Value) -> Result<String, String> {
     let m = Model::from_value(model)?;
     let opts = options.as_object().ok_or("options must be an object")?;
@@ -3107,6 +3160,7 @@ pub fn write(model: &Value, format: &str, options: &Value) -> Result<String, Str
             "unaryFunctionSpacing",
             "formatterOptions",
             "format",
+            "unitsml",
         ]
         .contains(&k.as_str())
         {
@@ -3150,6 +3204,7 @@ pub fn write(model: &Value, format: &str, options: &Value) -> Result<String, Str
             .map(present)
             .unwrap_or(true),
         intent: opts.get("intent").map(present).unwrap_or(false),
+        unitsml_xml: unitsml_xml_option(opts.get("unitsml"), format)?,
     };
     let ctx = &context;
     if !["mathml", "omml"].contains(&format) {

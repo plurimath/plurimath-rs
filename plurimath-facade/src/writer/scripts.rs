@@ -2,15 +2,39 @@
 use super::WriterContext;
 use super::{child, control_properties, el, present, run, strict_slot_xml, Xml};
 use crate::model::Model;
-fn options(m: &Model) -> Result<(), String> {
-    let v = m.field("options");
-    if !v.is_null() && v.as_object().is_none_or(|x| !x.is_empty()) {
-        return Err("unported source subscript size/options".into());
+/// Ruby `options` of Base: `nil` or a Hash; only `options[:size]` affects UnicodeMath output.
+fn options(m: &Model) -> Result<crate::source_values::RubyValue, String> {
+    use crate::source_values::{field, Domain, RubyValue};
+    let v = field(m, "options", Domain::NamedOptions)?;
+    match v {
+        RubyValue::Nil | RubyValue::Hash(_) => Ok(v),
+        _ => Err("unported source subscript options shape (not nil or Hash)".into()),
     }
-    Ok(())
+}
+fn options_present(o: &crate::source_values::RubyValue) -> bool {
+    use crate::source_values::RubyValue;
+    matches!(o, RubyValue::Hash(e) if !e.is_empty())
+}
+/// `size_overrides`: nil without a :size, else "Ⅎ" + the inverted SIZE_OVERRIDES_SYMBOLS key.
+fn size_overrides(o: &crate::source_values::RubyValue) -> Result<String, String> {
+    use crate::source_values::RubyValue;
+    match o.get_symbol("size") {
+        None | Some(RubyValue::Nil) | Some(RubyValue::Bool(false)) => Ok(String::new()),
+        Some(RubyValue::String(v)) => Ok(format!(
+            "Ⅎ{}",
+            match v.as_str() {
+                "1.25em" => "A",
+                "1.5625em" => "B",
+                "0.8em" => "C",
+                "0.64em" => "D",
+                _ => "",
+            }
+        )),
+        _ => Err("unported source subscript size value shape".into()),
+    }
 }
 pub(super) fn text(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<String, String> {
-    options(m)?;
+    let opts = options(m)?;
     let a = m.field("parameter_one");
     let b = m.field("parameter_two");
     let first = if present(a) {
@@ -57,13 +81,15 @@ pub(super) fn text(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<Str
             }
         ),
         "unicodemath" => {
-            if b["fields"]["mini_sub_sized"] == true || b["fields"]["mini_sup_sized"] == true {
-                return Err("unported source mini-sized subscript".into());
-            }
-            let suffix = if b.is_null() {
+            let suffix = if b["class"] == "Math::Function::Base" {
+                format!("_{}{}", size_overrides(&opts)?, child(b, f, ctx)?)
+            } else if super::numbers::mini_sized(b) {
+                child(b, f, ctx)?
+            } else if b.is_null() {
                 "()".into()
-            } else if b["class"] == "Math::Function::Base" || b["class"] == "Math::Function::Fenced"
-            {
+            } else if options_present(&opts) {
+                format!("_{}〖{}〗", size_overrides(&opts)?, child(b, f, ctx)?)
+            } else if b["class"] == "Math::Function::Fenced" {
                 format!("_{}", child(b, f, ctx)?)
             } else {
                 format!("_({})", child(b, f, ctx)?)

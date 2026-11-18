@@ -74,10 +74,14 @@ pub(super) fn text(m: &Model, f: &str, ctx: &super::WriterContext) -> Result<Str
                     "source_render_error: color arguments must receive to_unicodemath".into(),
                 );
             }
+            // Color#to_unicodemath strips Ruby /\s/ from the colour name.
+            let name: String = child(a, f, ctx)?
+                .chars()
+                .filter(|c| !matches!(*c, ' ' | '\t' | '\n' | '\u{b}' | '\u{c}' | '\r'))
+                .collect();
             format!(
-                "{}({}&{})",
+                "{}({name}&{})",
                 if bg { "☁" } else { "✎" },
-                child(a, f, ctx)?,
                 child(b, f, ctx)?
             )
         }

@@ -6,7 +6,7 @@ from pathlib import Path
 import subprocess
 import sys
 
-EXPECTED_REVISION = "5206a33b5417b4ecd3a601930461ed2967c871e7"
+EXPECTED_REVISION = "8f8afd878a3e91b83e43c2005459bc9dc4927851"
 parser = argparse.ArgumentParser()
 parser.add_argument("--metadata", type=Path, help="Check an existing complete Cargo metadata file")
 args = parser.parse_args()

@@ -64,6 +64,12 @@ fn validate(value: &Value) -> Result<(), Value> {
     }
     Ok(())
 }
+/// The accepted AsciiUnits stage of a validated UnitsML input.
+pub(crate) fn staged(input: &str) -> Result<Value, Value> {
+    let value = stage(input)?;
+    validate(&value)?;
+    Ok(value)
+}
 /// The source façade stores text on Unitsml and wraps its bare node in Formula.
 pub fn parse(input: &str, _options: &Value) -> Result<Value, Value> {
     let value = stage(input)?;

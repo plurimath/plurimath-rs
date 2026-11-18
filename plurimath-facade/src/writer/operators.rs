@@ -55,27 +55,10 @@ fn property(value: &Value, omml: bool) -> Result<String, String> {
     )
 }
 fn mini(value: &Value) -> bool {
-    let class = value["class"].as_str().unwrap_or("");
-    (class == "Math::Number" || class.starts_with("Math::Symbols::"))
-        && (truthy(&value["fields"]["mini_sub_sized"])
-            || truthy(&value["fields"]["mini_sup_sized"]))
+    super::numbers::mini_sized(value)
 }
-fn prime(value: &Value, ctx: &super::WriterContext) -> Result<bool, String> {
-    if !value["class"]
-        .as_str()
-        .unwrap_or("")
-        .starts_with("Math::Symbols::")
-    {
-        return Ok(false);
-    }
-    if value["fields"]["value"]
-        .as_str()
-        .is_some_and(|v| v.contains("&#x27;"))
-    {
-        return Ok(true);
-    }
-    let glyph = child(value, "unicodemath", ctx)?;
-    Ok(["′", "″", "‴", "⁗"].iter().any(|p| glyph.contains(p)))
+fn prime(value: &Value, _ctx: &super::WriterContext) -> Result<bool, String> {
+    super::final_options::source_prime(value)
 }
 fn unicode_parens(value: &Value, ctx: &super::WriterContext) -> Result<String, String> {
     let content = child(value, "unicodemath", ctx)?;

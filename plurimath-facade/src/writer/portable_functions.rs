@@ -16,14 +16,14 @@ fn nil_safe(v: &Value, f: &str, ctx: &WriterContext) -> Result<String, String> {
 fn parens(v: &Value, ctx: &WriterContext) -> Result<String, String> {
     super::final_options::parens(v, ctx)
 }
-fn wrapped(v: &Value, ctx: &WriterContext) -> Result<String, String> {
+pub(super) fn wrapped(v: &Value, ctx: &WriterContext) -> Result<String, String> {
     if truthy(v) {
         Ok(format!("({})", child(v, "asciimath", ctx)?))
     } else {
         Ok(String::new())
     }
 }
-fn latex_wrapped(v: &Value, ctx: &WriterContext) -> Result<String, String> {
+pub(super) fn latex_wrapped(v: &Value, ctx: &WriterContext) -> Result<String, String> {
     super::nary::latex_wrapped_with_value(v, child(v, "latex", ctx)?)
 }
 pub(super) fn handles(m: &Model) -> bool {
@@ -243,7 +243,7 @@ pub(super) fn text_writer(m: &Model, f: &str, ctx: &WriterContext) -> Result<Str
 fn xml_child(v: &Value, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String> {
     super::multiscripts::xml_child(v, f, ctx)
 }
-fn omml_parameter(v: &Value, tag: &str, ctx: &WriterContext) -> Result<Xml, String> {
+pub(super) fn omml_parameter(v: &Value, tag: &str, ctx: &WriterContext) -> Result<Xml, String> {
     if !truthy(v) {
         return Ok(el(
             tag,
