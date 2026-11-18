@@ -827,9 +827,9 @@ fn unmasked_nary(m: &Map<String, Value>, rec: Rec) -> Result<Option<Value>, Valu
     let many = |values: &Option<Vec<Value>>| values.as_ref().is_some_and(|v| v.len() > 1);
     // Source `sequence` bindings (rules.rb 1941, 2205, 2867, 2896) for the
     // ternary classes; a superscript-only sequence has no source rule.
-    if ternary && (many(&sub) || many(&sup)) && sub.is_some() {
-        let sub_many = many(&sub);
-        let sub = sub.unwrap();
+    let sub_many = many(&sub);
+    let sequence = ternary && (sub_many || many(&sup));
+    if let (true, Some(sub)) = (sequence, sub.clone()) {
         let sub = if sub_many {
             filter_values(sub)
         } else {
@@ -1013,7 +1013,7 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
             }
         }
     }
-    for tail in ["sup_exp", "sub_exp", "pre_script"] {
+    for tail in ["sup_exp", "sub_exp", "pre_script", "unary_subsup"] {
         if keys(m, &["factor", tail]) {
             let mut out = rec(&m["factor"])?;
             out.extend(rec(&m[tail])?);

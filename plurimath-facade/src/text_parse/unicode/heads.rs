@@ -517,6 +517,23 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
             }
         }
     }
+    // rules.rb 2637-2647: Constants::SUB_PARENTHESIS mini-sub parens.
+    if keys(m, &["sub_open_paren", "mini_expr", "sub_close_paren"]) {
+        let open = if m["sub_open_paren"].as_str() == Some("&#x208d;") {
+            "("
+        } else {
+            ""
+        };
+        let close = if m["sub_close_paren"].as_str() == Some("&#x208e;") {
+            ")"
+        } else {
+            ""
+        };
+        return Ok(Some(vec![node(
+            "Math::Function::Fenced",
+            json!({"options":{},"parameter_one":mini_symbol(open, false),"parameter_two":rec(&m["mini_expr"])?,"parameter_three":mini_symbol(close, false)}),
+        )]));
+    }
     // rules.rb 2801-2806: the table takes the paren and the close prefix.
     if keys(m, &["open_paren", "table", "paren_close_prefix"]) {
         if let (Some(o), Some(c)) = (m["open_paren"].as_str(), m["paren_close_prefix"].as_str()) {
