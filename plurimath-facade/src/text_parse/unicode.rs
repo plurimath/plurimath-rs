@@ -1077,6 +1077,16 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
         out.extend(rec(&m["recursive_denominator"])?);
         return Ok(Some(out));
     }
+    // Source rules.rb 2369-2373 and 2381-2385: three simple values in order.
+    for head in ["factor", "intermediate_exp"] {
+        if keys(m, &[head, "expr", "expression"]) {
+            return Ok(Some(vec![
+                simple(rec(&m[head])?, head)?,
+                simple(rec(&m["expr"])?, "expr")?,
+                simple(rec(&m["expression"])?, "expression")?,
+            ]));
+        }
+    }
     // Source sequence rules over pass-through captures concatenate in grammar order.
     const PASS: [&str; 12] = [
         "atom",

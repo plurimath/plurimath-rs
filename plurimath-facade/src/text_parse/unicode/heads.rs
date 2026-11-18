@@ -534,9 +534,12 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
             json!({"options":{},"parameter_one":mini_symbol(open, false),"parameter_two":rec(&m["mini_expr"])?,"parameter_three":mini_symbol(close, false)}),
         )]));
     }
-    // rules.rb 2801-2806: the table takes the paren and the close prefix.
-    if keys(m, &["open_paren", "table", "paren_close_prefix"]) {
-        if let (Some(o), Some(c)) = (m["open_paren"].as_str(), m["paren_close_prefix"].as_str()) {
+    // rules.rb 2801-2814: the table takes the paren and the close paren or prefix.
+    for close in ["paren_close_prefix", "close_paren"] {
+        if !keys(m, &["open_paren", "table", close]) {
+            continue;
+        }
+        if let (Some(o), Some(c)) = (m["open_paren"].as_str(), m[close].as_str()) {
             let mut table = simple(rec(&m["table"])?, "table")?;
             if table["class"]
                 .as_str()
