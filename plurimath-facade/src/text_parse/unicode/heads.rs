@@ -628,6 +628,15 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
         values.push(overlay(&text, unf(vec![last])));
         return Ok(Some(vec![crate::model::formula(values)]));
     }
+    // rules.rb 1495-1511: a leading overlay (simple bindings only).
+    if keys(m, &["overlay_before", "first_value"]) {
+        let text = capture_text(
+            reduced(&m["overlay_before"], "diacritic_overlays"),
+            "overlay",
+        )?;
+        let value = unf(vec![simple(rec(&m["first_value"])?, "overlay base")?]);
+        return Ok(Some(vec![overlay(&text, value)]));
+    }
     // rules.rb 1513-1527
     if keys(m, &["first_value", "below_after"]) {
         // rules.rb 84 reduces a nested diacritic_belows capture to its text first.
