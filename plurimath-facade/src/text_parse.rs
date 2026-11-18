@@ -525,9 +525,15 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         {
             return Err(incomplete("unported additional source capture fields"));
         }
-        if m["root_symbol"] != "&#x221a;" && m["root_symbol"] != "√" {
-            return Err(incomplete("unported indexed Unicode radical"));
-        }
+        // Source unicode rules.rb 1119: cube and fourth roots build Root with
+        // a Number index; every other radical symbol (including \sqrt) is Sqrt.
+        let index = match m["root_symbol"].as_str() {
+            Some("&#x221b;" | "\\cbrt" | "∛") if format == "unicode" => Some("3"),
+            Some("&#x221c;" | "\\qdrt" | "∜") if format == "unicode" => Some("4"),
+            Some("&#x221a;" | "√") => None,
+            Some("\\sqrt") if format == "unicode" => None,
+            _ => return Err(incomplete("unported indexed Unicode radical")),
+        };
         let operand = one(tx(
             format,
             m.get("first_value")
@@ -540,6 +546,12 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         } else {
             operand
         };
+        if let Some(index) = index {
+            return Ok(vec![node(
+                "Math::Function::Root",
+                json!({"parameter_one":number(index),"parameter_two":operand}),
+            )]);
+        }
         return Ok(vec![unary("sqrt", operand)?]);
     }
     if m.get("underover").is_some_and(Value::is_string)
@@ -762,8 +774,11 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         ]
         .contains(&key.as_str())
         {
+            // Ruby `rule(ldots: simple(:ldots)) { ldots }` reduces the
+            // nested capture to its "..." text before the symbol rule.
             return x
                 .as_str()
+                .or_else(|| x.get("ldots").and_then(|v| v.as_str()))
                 .map(|s| vec![crate::symbols::symbol_for(s, format)])
                 .ok_or_else(|| incomplete("non-text symbol capture"));
         }

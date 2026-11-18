@@ -2,7 +2,7 @@
 //! built value followed by a tail, pinned to Ruby 0a1df68
 //! (lib/plurimath/unicode_math/mapper/rules.rb, line numbers cited per rule).
 use super::{capture_text, filter_values, keys, overset, simple, symbol, unf, Rec};
-use crate::model::{node, number};
+use crate::model::{formula, node, number};
 use serde_json::{json, Map, Value};
 
 use super::super::incomplete;
@@ -241,10 +241,49 @@ fn head_symbol(key: &str, text: &str) -> Result<Value, Value> {
     }
 }
 
+/// Constants::UNDEF_UNARY_FUNCTIONS: names kept as plain symbols.
+const UNDEF_UNARY: &[&str] = &["arg", "def", "erf", "Im", "Pr", "Re", "tg"];
+/// Utility.get_class(name) for the one-slot UnaryFunction classes.
+fn plain_unary(name: &str) -> Option<String> {
+    const PLAIN: &[&str] = &[
+        "Arccos", "Arcsin", "Arctan", "Cos", "Cosh", "Cot", "Coth", "Csc", "Csch", "Deg", "Det",
+        "Dim", "Exp", "Gcd", "Glb", "Hom", "Ker", "Lcm", "Lg", "Liminf", "Limsup", "Ln", "Lub",
+        "Max", "Min", "Sec", "Sech", "Sin", "Sinh", "Sup", "Tan", "Tanh", "Tr",
+    ];
+    let class: String = name
+        .split('_')
+        .map(|w| {
+            let mut c = w.chars();
+            c.next()
+                .map(|f| {
+                    f.to_uppercase()
+                        .chain(c.flat_map(char::to_lowercase))
+                        .collect()
+                })
+                .unwrap_or_default()
+        })
+        .collect::<Vec<String>>()
+        .join("");
+    PLAIN
+        .contains(&class.as_str())
+        .then(|| format!("Math::Function::{class}"))
+}
+
 pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>, Value> {
     if m.len() == 1 {
         let (key, value) = m.iter().next().unwrap();
         match key.as_str() {
+            // rules.rb 129
+            "unary_functions" => {
+                if let Some(name) = value.as_str() {
+                    if UNDEF_UNARY.contains(&name) {
+                        return Ok(Some(vec![symbol(name)]));
+                    }
+                    if let Some(class) = plain_unary(name) {
+                        return Ok(Some(vec![node(&class, json!({"parameter_one":null}))]));
+                    }
+                }
+            }
             // rules.rb 57
             "sup_alpha" => {
                 let text = capture_text(value, "superscript letter")?;
@@ -282,6 +321,27 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
                 )]));
             }
             _ => {}
+        }
+    }
+    // rules.rb 1569
+    if keys(m, &["unary_functions", "first_value"]) {
+        if let Some(name) = m["unary_functions"].as_str() {
+            let first = rec(&m["first_value"])?;
+            if first.len() == 1 && !first[0].is_array() {
+                let first = first.into_iter().next().unwrap();
+                if UNDEF_UNARY.contains(&name) {
+                    return Ok(Some(vec![formula(vec![symbol(name), first])]));
+                }
+                if name == "mod" {
+                    return Ok(Some(vec![node(
+                        "Math::Function::Mod",
+                        json!({"parameter_one":null,"parameter_two":first}),
+                    )]));
+                }
+                if let Some(class) = plain_unary(name) {
+                    return Ok(Some(vec![node(&class, json!({"parameter_one":first}))]));
+                }
+            }
         }
     }
     for &(head, tails) in SYMBOL_HEADS {
