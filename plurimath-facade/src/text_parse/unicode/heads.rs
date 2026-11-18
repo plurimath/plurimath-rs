@@ -225,7 +225,11 @@ const SYMBOL_HEADS: &[(&str, &[&str])] = &[
     // rules.rb 461-470
     ("mid_symbol", &["expr"]),
     // rules.rb 306-311
-    ("binary_symbols", &["recursive_numerator"]),
+    // rules.rb 276-280, 288-292
+    (
+        "binary_symbols",
+        &["recursive_numerator", "exp", "naryand_recursion"],
+    ),
     // rules.rb 688-695
     ("relational_symbols", &["recursive_denominator"]),
     // rules.rb 531-535
@@ -239,6 +243,36 @@ fn head_symbol(key: &str, text: &str) -> Result<Value, Value> {
         "unicode_fractions" => unicode_fraction(text),
         _ => Ok(symbol(text)),
     }
+}
+
+/// A source `rule(key: simple(:x)) { x }` applied to a one-key capture.
+fn reduced<'a>(value: &'a Value, key: &str) -> &'a Value {
+    match value.as_object() {
+        Some(m) if m.len() == 1 && m.get(key).is_some_and(Value::is_string) => &m[key],
+        _ => value,
+    }
+}
+
+/// rules.rb 178-185 class resolution, limited to the ternary NARY_CLASSES.
+fn bare_nary(class: &str) -> Option<String> {
+    use super::{NARY_CLASSES, NARY_SYMBOLS};
+    let function = if NARY_CLASSES.iter().any(|(k, _)| *k == class) {
+        class
+    } else if let Some((k, _)) = NARY_CLASSES.iter().find(|(_, v)| *v == class) {
+        *k
+    } else if let Some((_, v)) = NARY_SYMBOLS.iter().find(|(k, _)| *k == class) {
+        *v
+    } else {
+        class
+    };
+    NARY_CLASSES
+        .iter()
+        .find(|(k, _)| *k == function)
+        .map(|(k, _)| {
+            let mut name = k.to_string();
+            name[..1].make_ascii_uppercase();
+            format!("Math::Function::{name}")
+        })
 }
 
 /// Constants::UNDEF_UNARY_FUNCTIONS: names kept as plain symbols.
@@ -282,6 +316,25 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
                     if let Some(class) = plain_unary(name) {
                         return Ok(Some(vec![node(&class, json!({"parameter_one":null}))]));
                     }
+                }
+            }
+            // rules.rb 102-105
+            "combined_symbols" => {
+                if let Some(text) = value.as_str() {
+                    return Ok(Some(vec![symbol(combining(text).unwrap_or(text))]));
+                }
+            }
+            // rules.rb 100
+            "mini_intermediate_exp" => {
+                return Ok(Some(vec![simple(rec(value)?, "mini intermediate")?]))
+            }
+            // rules.rb 178-185: a bare n-ary class builds with nil slots.
+            "nary_class" => {
+                if let Some(name) = value.as_str().and_then(bare_nary) {
+                    return Ok(Some(vec![node(
+                        &name,
+                        json!({"parameter_one":null,"parameter_two":null,"parameter_three":null}),
+                    )]));
                 }
             }
             // rules.rb 57
@@ -354,6 +407,139 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
             }
         }
     }
+    // rules.rb 1015-1023, 1753-1756, 1828-1836: built values in rule order;
+    // `true` marks a source `simple` binding.
+    const CONCAT: &[&[(&str, bool)]] = &[
+        &[("sup_script", true), ("mini_sup", true)],
+        &[("sup_script", true), ("mini_sub", true)],
+        &[("factor", true), ("mini_sup", true)],
+        &[("expr", true), ("func_expr", false)],
+    ];
+    for &parts in CONCAT {
+        let names: Vec<&str> = parts.iter().map(|(k, _)| *k).collect();
+        if keys(m, &names) {
+            let mut out = Vec::new();
+            for &(key, single) in parts {
+                let values = rec(&m[key])?;
+                if single {
+                    out.push(simple(values, key)?);
+                } else {
+                    out.extend(values);
+                }
+            }
+            return Ok(Some(out));
+        }
+    }
+    // rules.rb 1868-1871
+    if keys(m, &["intermediate_exp", "exclamation_symbol"]) {
+        let mut out = vec![simple(rec(&m["intermediate_exp"])?, "intermediate_exp")?];
+        out.push(symbol(&capture_text(
+            &m["exclamation_symbol"],
+            "exclamation",
+        )?));
+        return Ok(Some(out));
+    }
+    // rules.rb 2423-2431
+    if keys(m, &["fonts", "relational_symbols", "expr"]) {
+        let mut out = vec![simple(rec(&m["fonts"])?, "fonts")?];
+        out.push(symbol(&capture_text(
+            &m["relational_symbols"],
+            "relational symbol",
+        )?));
+        out.push(simple(rec(&m["expr"])?, "expr")?);
+        return Ok(Some(out));
+    }
+    // rules.rb 2837-2844
+    if keys(m, &["operator", "frac", "expr"]) {
+        let mut out = vec![symbol(&capture_text(&m["operator"], "operator")?)];
+        out.push(simple(rec(&m["frac"])?, "frac")?);
+        out.extend(rec(&m["expr"])?);
+        return Ok(Some(out));
+    }
+    // rules.rb 674-684: a mini-sup operator heads its recursions.
+    if keys(m, &["sup_operators", "sup_recursions"]) {
+        let text = capture_text(&m["sup_operators"], "superscript operator")?;
+        let mut out = vec![mini_symbol(mini_operator(&text, true), true)];
+        out.extend(rec(&m["sup_recursions"])?);
+        return Ok(Some(out));
+    }
+    // rules.rb 2466-2474: the operator is a mini-sub Number, not a Symbol.
+    if keys(
+        m,
+        &["mini_intermediate_exp", "sub_operators", "sub_recursions"],
+    ) {
+        let mut out = vec![simple(
+            rec(&m["mini_intermediate_exp"])?,
+            "mini intermediate",
+        )?];
+        let text = capture_text(&m["sub_operators"], "subscript operator")?;
+        let mut op = number(mini_operator(&text, false));
+        op["fields"]["mini_sub_sized"] = json!(true);
+        out.push(op);
+        out.extend(rec(&m["sub_recursions"])?);
+        return Ok(Some(out));
+    }
+    // rules.rb 2144-2161: a size-overridden subscript base.
+    if keys(m, &["base", "size_overrides", "sub_script"]) {
+        let size = match capture_text(&m["size_overrides"], "size override")?.as_str() {
+            "A" => "1.25em",
+            "B" => "1.5625em",
+            "C" => "0.8em",
+            "D" => "0.64em",
+            _ => return Err(incomplete("unknown UnicodeMath size override")),
+        };
+        let base = simple(rec(&m["base"])?, "base")?;
+        let sub = rec(&m["sub_script"])?;
+        let sub = if m["sub_script"].is_array() || sub.len() != 1 {
+            filter_values(sub)
+        } else {
+            unf(sub)
+        };
+        return Ok(Some(vec![node(
+            "Math::Function::Base",
+            json!({"options":{"size":size},"parameter_one":base,"parameter_two":sub}),
+        )]));
+    }
+    // rules.rb 2565-2585: a one-sided prefixed paren around a factor.
+    for (open, close, prefixed) in [
+        ("open_paren", "paren_close_prefix", "close_prefixed"),
+        ("paren_open_prefix", "close_paren", "open_prefixed"),
+    ] {
+        if keys(m, &[open, "factor", close]) {
+            if let (Some(o), Some(c)) = (m[open].as_str(), m[close].as_str()) {
+                let factor = simple(rec(&m["factor"])?, "factor")?;
+                let mut options = Map::new();
+                options.insert(prefixed.to_string(), json!(true));
+                return Ok(Some(vec![node(
+                    "Math::Function::Fenced",
+                    json!({"options":options,"parameter_one":symbol(o),"parameter_two":[factor],"parameter_three":symbol(c)}),
+                )]));
+            }
+        }
+    }
+    // rules.rb 2801-2806: the table takes the paren and the close prefix.
+    if keys(m, &["open_paren", "table", "paren_close_prefix"]) {
+        if let (Some(o), Some(c)) = (m["open_paren"].as_str(), m["paren_close_prefix"].as_str()) {
+            let mut table = simple(rec(&m["table"])?, "table")?;
+            if table["class"]
+                .as_str()
+                .is_some_and(|class| class.starts_with("Math::Function::Table"))
+            {
+                table["fields"]["open_paren"] = symbol(o);
+                table["fields"]["close_paren"] = symbol(c);
+                return Ok(Some(vec![table]));
+            }
+        }
+    }
+    // rules.rb 1583-1589
+    if keys(m, &["phantom_value", "first_value"]) {
+        let mask = capture_text(&m["phantom_value"], "phantom mask")?;
+        let first = simple(rec(&m["first_value"])?, "phantom operand")?;
+        return Ok(Some(vec![node(
+            "Math::Function::Mpadded",
+            json!({"options":{"mask":mask},"parameter_one":first}),
+        )]));
+    }
     // rules.rb 662-673: a mini-sub operator heads its recursions.
     if keys(m, &["sub_operators", "sub_recursions"]) {
         let text = capture_text(&m["sub_operators"], "subscript operator")?;
@@ -409,7 +595,11 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
     }
     // rules.rb 1442-1490
     if keys(m, &["first_value", "overlay_after"]) {
-        let text = capture_text(&m["overlay_after"], "overlay")?;
+        // rules.rb 97 reduces a nested diacritic_overlays capture to its text first.
+        let text = capture_text(
+            reduced(&m["overlay_after"], "diacritic_overlays"),
+            "overlay",
+        )?;
         let mut values = rec(&m["first_value"])?;
         if values.len() == 1 && !m["first_value"].is_array() {
             let value = unf(values);
@@ -423,7 +613,11 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
     }
     // rules.rb 1513-1527
     if keys(m, &["first_value", "below_after"]) {
-        let text = capture_text(&m["below_after"], "below accent")?;
+        // rules.rb 84 reduces a nested diacritic_belows capture to its text first.
+        let text = capture_text(
+            reduced(&m["below_after"], "diacritic_belows"),
+            "below accent",
+        )?;
         let value = unf(vec![simple(rec(&m["first_value"])?, "below base")?]);
         return Ok(Some(vec![below(&text, value)]));
     }

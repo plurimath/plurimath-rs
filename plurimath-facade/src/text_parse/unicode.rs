@@ -822,8 +822,31 @@ fn unmasked_nary(m: &Map<String, Value>, rec: Rec) -> Result<Option<Value>, Valu
             )
         }));
     }
-    let sub = single(script("sub")?, "n-ary sub")?;
-    let sup = single(script("sup")?, "n-ary sup")?;
+    let sub = script("sub")?;
+    let sup = script("sup")?;
+    let many = |values: &Option<Vec<Value>>| values.as_ref().is_some_and(|v| v.len() > 1);
+    // Source `sequence` bindings (rules.rb 1941, 2205, 2867, 2896) for the
+    // ternary classes; a superscript-only sequence has no source rule.
+    if ternary && (many(&sub) || many(&sup)) && sub.is_some() {
+        let sub_many = many(&sub);
+        let sub = sub.unwrap();
+        let sub = if sub_many {
+            filter_values(sub)
+        } else {
+            unwrap(
+                simple(sub, "n-ary sub")?,
+                "Math::Function::Underset",
+                "parameter_one",
+            )
+        };
+        let sup = sup.map_or(Value::Null, filter_values);
+        return Ok(Some(node(
+            &name(),
+            json!({"parameter_one":sub,"parameter_two":sup,"parameter_three":null}),
+        )));
+    }
+    let sub = single(sub, "n-ary sub")?;
+    let sup = single(sup, "n-ary sup")?;
     if ternary {
         let sub = sub.map_or(Value::Null, |v| {
             unwrap(v, "Math::Function::Underset", "parameter_one")

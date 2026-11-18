@@ -229,6 +229,34 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
                 values
             });
         }
+        // Source unicode rules.rb 1076-1098: a sequence base subscripts only its
+        // last item and stays a list; a simple Underset sub takes that item.
+        if format == "unicode"
+            && m.contains_key("sub")
+            && !m.contains_key("sup")
+            && base_values.len() > 1
+        {
+            let mut sub = tx(format, &m["sub"], depth + 1)?;
+            let mut values = base_values;
+            let last = values.pop().unwrap();
+            let object = if sub.len() == 1 && sub[0]["class"] == "Math::Function::Underset" {
+                let mut under = sub.pop().unwrap();
+                under["fields"]["parameter_two"] = last;
+                under
+            } else {
+                let sub = match sub.len() {
+                    0 => Value::Null,
+                    1 => unicode::unfenced(sub.pop().unwrap()),
+                    _ => formula(sub),
+                };
+                node(
+                    "Math::Function::Base",
+                    json!({"parameter_one":last,"parameter_two":sub}),
+                )
+            };
+            values.push(object);
+            return Ok(values);
+        }
         let mut base = one(base_values);
         // Source base:simple/sup:simple: an Overset with no operand yet takes the base.
         if format == "unicode" && m.contains_key("sup") && !m.contains_key("sub") {
