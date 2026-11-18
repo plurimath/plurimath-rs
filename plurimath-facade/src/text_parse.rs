@@ -326,6 +326,11 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
                 }
             }
         }
+        if format == "unicode" && m.contains_key("sub") && m.contains_key("sup") {
+            let sub = tx(format, &m["sub"], depth + 1)?;
+            let sup = tx(format, &m["sup"], depth + 1)?;
+            return Ok(vec![unicode::sub_sup(base, sub, sup)]);
+        }
         return if m.contains_key("sub") && m.contains_key("sup") {
             Ok(vec![node(
                 "Math::Function::PowerBase",
@@ -350,6 +355,13 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
                         json!({"options":{},"parameter_one":sub,"parameter_two":base}),
                     )]);
                 }
+            }
+            if format == "unicode" {
+                return Ok(vec![if m.contains_key("sub") {
+                    unicode::sub_only(base, tx(format, &m["sub"], depth + 1)?)
+                } else {
+                    unicode::sup_only(base, tx(format, &m["sup"], depth + 1)?)
+                }]);
             }
             let (key, class) = if m.contains_key("sub") {
                 ("sub", "Math::Function::Base")

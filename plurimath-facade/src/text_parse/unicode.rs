@@ -46,6 +46,121 @@ pub(super) fn unfenced(value: Value) -> Value {
     }
     value
 }
+/// Source `simple` vs `sequence` binding of a built script: one value is bound
+/// as is, several are a list.
+fn bound(values: Vec<Value>) -> Result<Value, Vec<Value>> {
+    let mut values = values;
+    if values.len() == 1 {
+        Ok(values.pop().unwrap())
+    } else {
+        Err(values)
+    }
+}
+/// Source Utility.base_is_prime?: the Power exponent is a prime symbol.
+fn base_is_prime(power: &Value) -> bool {
+    const PRIMES: [&str; 5] = ["&#x27;", "&#x2032;", "&#x2033;", "&#x2034;", "&#x2057;"];
+    const CLASSES: [&str; 7] = [
+        "Sprime", "Prime", "Dprime", "Pprime", "Ppprime", "Pppprime", "Qprime",
+    ];
+    let exponent = &power["fields"]["parameter_two"];
+    let class = exponent["class"].as_str().unwrap_or("");
+    CLASSES
+        .iter()
+        .any(|c| class == format!("Math::Symbols::{c}"))
+        || exponent["fields"]["value"]
+            .as_str()
+            .is_some_and(|v| PRIMES.contains(&v))
+}
+/// Source Utility.base_is_sub_or_sup?.
+fn base_is_sub_or_sup(value: &Value) -> bool {
+    let f = &value["fields"];
+    match value["class"].as_str().unwrap_or("") {
+        "Math::Formula" => f["value"].get(0).is_some_and(base_is_sub_or_sup),
+        "Math::Function::Fenced" => f["parameter_two"].get(0).is_some_and(base_is_sub_or_sup),
+        "Math::Number" => f["mini_sub_sized"] == true || f["mini_sup_sized"] == true,
+        c if c.starts_with("Math::Symbols::") => {
+            f["mini_sub_sized"] == true || f["mini_sup_sized"] == true
+        }
+        _ => false,
+    }
+}
+/// Source rules.rb 2125-2201: base with both scripts.
+pub(super) fn sub_sup(base: Value, sub: Vec<Value>, sup: Vec<Value>) -> Value {
+    let power_base = |base: Value, sub: Value, sup: Value| {
+        node(
+            "Math::Function::PowerBase",
+            json!({"parameter_one":base,"parameter_two":sub,"parameter_three":sup}),
+        )
+    };
+    match (bound(sub), bound(sup)) {
+        (Ok(sub), Ok(sup)) => {
+            let under_over = ["Math::Function::Underset", "Math::Function::Overset"];
+            if under_over.iter().any(|c| sub["class"] == *c)
+                && under_over.iter().any(|c| sup["class"] == *c)
+            {
+                return node(
+                    "Math::Function::Underover",
+                    json!({"parameter_one":base,"parameter_two":sub["fields"]["parameter_one"],"parameter_three":sup["fields"]["parameter_one"]}),
+                );
+            }
+            power_base(base, unfenced(sub), unfenced(sup))
+        }
+        (Err(sub), Ok(sup)) => power_base(base, filter_values(sub), unfenced(sup)),
+        // filter_values leaves a simple subscript as it is.
+        (Ok(sub), Err(sup)) => power_base(base, sub, filter_values(sup)),
+        (Err(sub), Err(sup)) => power_base(base, filter_values(sub), filter_values(sup)),
+    }
+}
+/// Source rules.rb 1041-1074 and 1100-1114 after the binary-function and
+/// bracket cases: an Underset takes the base, a primed Power becomes a PowerBase.
+pub(super) fn sub_only(base: Value, sub: Vec<Value>) -> Value {
+    let primed = base["class"] == "Math::Function::Power" && base_is_prime(&base);
+    match bound(sub) {
+        Ok(mut sub) if sub["class"] == "Math::Function::Underset" => {
+            sub["fields"]["parameter_two"] = base;
+            sub
+        }
+        Ok(sub) if primed => node(
+            "Math::Function::PowerBase",
+            json!({"parameter_one":base["fields"]["parameter_one"],"parameter_two":sub,"parameter_three":base["fields"]["parameter_two"]}),
+        ),
+        Err(sub) if primed => node(
+            "Math::Function::PowerBase",
+            json!({"parameter_one":base["fields"]["parameter_one"],"parameter_two":sub,"parameter_three":base["fields"]["parameter_two"]}),
+        ),
+        Ok(sub) => node(
+            "Math::Function::Base",
+            json!({"parameter_one":base,"parameter_two":unfenced(sub)}),
+        ),
+        Err(sub) => node(
+            "Math::Function::Base",
+            json!({"parameter_one":base,"parameter_two":filter_values(sub)}),
+        ),
+    }
+}
+/// Source rules.rb 1138-1159 and 1170-1184 after the overset and binary cases:
+/// a sequence superscript over a mini-scripted Base completes a PowerBase.
+pub(super) fn sup_only(base: Value, sup: Vec<Value>) -> Value {
+    match bound(sup) {
+        Ok(sup) => node(
+            "Math::Function::Power",
+            json!({"parameter_one":base,"parameter_two":unfenced(sup)}),
+        ),
+        Err(sup)
+            if base["class"] == "Math::Function::Base"
+                && base_is_sub_or_sup(&base["fields"]["parameter_two"]) =>
+        {
+            node(
+                "Math::Function::PowerBase",
+                json!({"parameter_one":base["fields"]["parameter_one"],"parameter_two":base["fields"]["parameter_two"],"parameter_three":filter_values(sup)}),
+            )
+        }
+        Err(sup) => node(
+            "Math::Function::Power",
+            json!({"parameter_one":base,"parameter_two":filter_values(sup)}),
+        ),
+    }
+}
 /// unfenced_value on a captured value: a list is filtered, one value unfenced.
 fn unf(mut values: Vec<Value>) -> Value {
     if values.len() == 1 {
