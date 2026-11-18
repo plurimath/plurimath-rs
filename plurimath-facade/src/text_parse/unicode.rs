@@ -1021,7 +1021,8 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
         }
     }
     // Source `[head] + tail` rules: the head capture is kept as is, then the tail list.
-    const HEADS: [&str; 17] = [
+    const HEADS: [&str; 18] = [
+        "diacritics_accents",
         "sub_exp",
         "frac",
         "subsup_exp",

@@ -73,6 +73,15 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
         let rest = unfenced(simple(rec(&m["sup_recursion"])?, "superscript recursion")?);
         return Ok(Some(vec![recursive_sup(first, rest)]));
     }
+    // rules.rb 636-642: an operator superscript recursion (simple only).
+    if keys(m, &["operator", "sup_recursion"]) {
+        let operator = m["operator"]
+            .as_str()
+            .map(super::symbol)
+            .ok_or_else(|| super::super::incomplete("non-text operator capture"))?;
+        let rest = unfenced(simple(rec(&m["sup_recursion"])?, "superscript recursion")?);
+        return Ok(Some(vec![recursive_sup(operator, rest)]));
+    }
     // rules.rb 644-657: an operator subscript recursion.
     if keys(m, &["operator", "sub_recursion"]) {
         let operator = m["operator"]
