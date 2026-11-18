@@ -1438,6 +1438,12 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
         out.extend(rec(&m["exp"])?);
         return Ok(Some(out));
     }
+    // Source rules.rb 199-213: a signed infinity is its sign and infinity symbols.
+    for sign in ["positive", "negative"] {
+        if keys(m, &[sign, "infty"]) {
+            return Ok(Some(vec![leaf(m, sign)?, leaf(m, "infty")?]));
+        }
+    }
     // Source rules.rb 3984-4036: an interval body; a list side is filtered.
     if keys(m, &["left_value", "comma", "right_value"]) {
         return Ok(Some(vec![
