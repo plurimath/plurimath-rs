@@ -121,10 +121,12 @@ fn text_node(value: &str) -> Xml {
     text(&escape_amp(value))
 }
 
+// An open element while reading a symbol fragment: name, attributes, children.
+type Frame = (String, Vec<(String, String)>, Vec<Xml>);
+
 /// A tag/attribute/text reader for the small UnitsDB HTML and MathML symbols.
 fn fragment(input: &str) -> Result<Vec<Xml>, String> {
-    let mut stack: Vec<(String, Vec<(String, String)>, Vec<Xml>)> =
-        vec![(String::new(), vec![], vec![])];
+    let mut stack: Vec<Frame> = vec![(String::new(), vec![], vec![])];
     let mut rest = input;
     while !rest.is_empty() {
         if let Some(tag) = rest.strip_prefix('<') {
