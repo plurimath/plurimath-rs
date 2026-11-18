@@ -257,6 +257,25 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
             values.push(object);
             return Ok(values);
         }
+        // Source unicode rules.rb 2164-2173: a sequence base takes simple scripts
+        // on its last item only.
+        if format == "unicode"
+            && m.contains_key("sub")
+            && m.contains_key("sup")
+            && base_values.len() > 1
+        {
+            let sub = tx(format, &m["sub"], depth + 1)?;
+            let sup = tx(format, &m["sup"], depth + 1)?;
+            if sub.len() == 1 && sup.len() == 1 {
+                let mut values = base_values;
+                let last = values.pop().unwrap();
+                values.push(node(
+                    "Math::Function::PowerBase",
+                    json!({"parameter_one":last,"parameter_two":unicode::unfenced(one(sub)),"parameter_three":unicode::unfenced(one(sup))}),
+                ));
+                return Ok(values);
+            }
+        }
         let mut base = one(base_values);
         // Source base:simple/sup:simple: an Overset with no operand yet takes the base.
         if format == "unicode" && m.contains_key("sup") && !m.contains_key("sub") {
@@ -746,6 +765,20 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         ] {
             rest.remove(key);
         }
+        // Source unicode rules.rb 3159-3194: an n-ary operand tail follows the fence.
+        let tail = if format == "unicode"
+            && rest.len() == 2
+            && rest.contains_key("factor")
+            && rest.contains_key("naryand_recursion")
+        {
+            rest.remove("naryand_recursion")
+        } else {
+            None
+        };
+        let bar_factor = format == "unicode"
+            && (l.as_str() == Some("|") || r.as_str() == Some("|"))
+            && rest.len() == 1
+            && rest.contains_key("factor");
         // Source unicode rules.rb 2042-2050: a bare open/close pair builds an
         // empty Fenced body.
         let body = if rest.is_empty() && format == "unicode" {
@@ -754,6 +787,16 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
             tx(format, &rest["expression"], depth + 1)?
         } else {
             tx(format, &Value::Object(rest), depth + 1)?
+        };
+        // Source unicode rules.rb 2659-2700: a single factor between bars loses
+        // its own round parens.
+        let body = if bar_factor {
+            match <[Value; 1]>::try_from(body) {
+                Ok([factor]) => vec![unicode::unfenced(factor)],
+                Err(body) => body,
+            }
+        } else {
+            body
         };
         let mut fence = fenced(left, body, right);
         for (mask, prefixed, sized) in [
@@ -767,7 +810,11 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
                 }
             }
         }
-        return Ok(vec![fence]);
+        let mut out = vec![fence];
+        if let Some(tail) = tail {
+            out.extend(tx(format, &tail, depth + 1)?);
+        }
+        return Ok(out);
     }
     if m.len() == 1 {
         let (key, x) = m.iter().next().unwrap();

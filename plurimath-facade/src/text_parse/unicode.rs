@@ -48,8 +48,7 @@ pub(super) fn unfenced(value: Value) -> Value {
 }
 /// Source `simple` vs `sequence` binding of a built script: one value is bound
 /// as is, several are a list.
-fn bound(values: Vec<Value>) -> Result<Value, Vec<Value>> {
-    let mut values = values;
+fn bound(mut values: Vec<Value>) -> Result<Value, Vec<Value>> {
     if values.len() == 1 {
         Ok(values.pop().unwrap())
     } else {
@@ -1218,14 +1217,16 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
         "digit",
     ];
     if m.len() >= 2 && m.keys().all(|k| PASS.contains(&k.as_str())) {
+        // Source rules.rb 757-777: an operand follows its factor.
         let rank = |k: &str| match k {
             "atom" => 0,
-            "factor" | "operand" | "digit" => 1,
-            "sub_exp" | "sup_exp" => 2,
-            "exp" | "atoms" => 3,
-            "recursive_numerator" => 4,
-            "recursive_denominator" => 5,
-            _ => 6,
+            "factor" | "digit" => 1,
+            "operand" => 2,
+            "sub_exp" | "sup_exp" => 3,
+            "exp" | "atoms" => 4,
+            "recursive_numerator" => 5,
+            "recursive_denominator" => 6,
+            _ => 7,
         };
         let mut ordered: Vec<(&String, &Value)> = m.iter().collect();
         ordered.sort_by_key(|(k, _)| rank(k));
