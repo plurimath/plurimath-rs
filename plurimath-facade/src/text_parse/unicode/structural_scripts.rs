@@ -63,6 +63,36 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
         let rest = simple(rec(&m["sub_recursion"])?, "subscript recursion")?;
         return Ok(Some(vec![recursive_sub(first, rest)]));
     }
+    // rules.rb 2443-2464: a base with a sequence subscript and a simple
+    // subscript recursion. Only the plain Base branch is ported; the binary
+    // function branch reads an undefined `sub_value` in the source, and the
+    // primed-Power branch builds a PowerBase from a raw list.
+    if keys(m, &["base", "sub", "sub_recursion"]) {
+        let base_value = simple(rec(&m["base"])?, "subscript recursion base")?;
+        if m["base"].is_array() {
+            return Err(super::super::incomplete(
+                "sequence base with subscript recursion",
+            ));
+        }
+        let sub = rec(&m["sub"])?;
+        if sub.len() == 1 && !m["sub"].is_array() {
+            return Err(super::super::incomplete(
+                "simple subscript with subscript recursion",
+            ));
+        }
+        if empty_binary(&base_value)
+            || (base_value["class"] == "Math::Function::Power" && super::base_is_prime(&base_value))
+        {
+            return Err(super::super::incomplete(
+                "unported base for subscript recursion",
+            ));
+        }
+        let rest = simple(rec(&m["sub_recursion"])?, "subscript recursion")?;
+        return Ok(Some(vec![base(
+            base_value,
+            recursive_sub(super::filter_values(sub), rest),
+        )]));
+    }
     if keys(m, &["sup_script", "sup_recursion"]) {
         let script = rec(&m["sup_script"])?;
         let first = if script.len() == 1 && !m["sup_script"].is_array() {
