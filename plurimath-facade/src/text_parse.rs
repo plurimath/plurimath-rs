@@ -736,8 +736,26 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         .get("right_paren")
         .or_else(|| m.get("close_paren"))
         .or_else(|| m.get("closer"));
+    // Source unicode rules.rb 2565-2577 and 2708-2724: a prefixed close paren
+    // ends the fence when no plain close is captured.
+    let close_prefix = format == "unicode" && open.is_some() && close.is_none();
+    let close = close.or_else(|| {
+        m.get("paren_close_prefix")
+            .filter(|x| close_prefix && x.is_string())
+    });
     if let (Some(l), Some(r)) = (open, close) {
         let (mut open_mask, mut close_mask) = (None, None);
+        // Source int_exp opener/closer wrap the paren capture in its own key.
+        let wrapped = |x: &Value, key: &str| -> Option<Value> {
+            x.as_object()
+                .filter(|o| format == "unicode" && o.len() == 1)
+                .and_then(|o| o.get(key).cloned())
+        };
+        let l = &wrapped(l, "open_paren").unwrap_or_else(|| l.clone());
+        let r = &wrapped(r, "close_paren").unwrap_or_else(|| r.clone());
+        if close_prefix && l.is_string() {
+            close_mask = Some(None);
+        }
         let left = if let Some(s) = l.as_str() {
             crate::symbols::symbol_for(s, format)
         } else if let Some(masked) = unicode::masked_paren(l)?.filter(|_| format == "unicode") {
@@ -765,6 +783,25 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
         ] {
             rest.remove(key);
         }
+        if close_prefix {
+            rest.remove("paren_close_prefix");
+        }
+        // Source unicode rules.rb 3350, 3811-3842 and 3843-3855: a script on the
+        // fence makes a Power; a sub_exp body unfences it.
+        let power = if format == "unicode" && rest.len() == 3 && rest.contains_key("exp") {
+            let head = ["operator", "sub_exp", "unicode_symbols"]
+                .into_iter()
+                .find(|k| rest.contains_key(*k));
+            match (head, rest.get("sup").cloned()) {
+                (Some(head), Some(sup)) => {
+                    rest.remove("sup");
+                    Some((head == "sub_exp", sup))
+                }
+                _ => None,
+            }
+        } else {
+            None
+        };
         // Source unicode rules.rb 3159-3194: an n-ary operand tail follows the fence.
         let tail = if format == "unicode"
             && rest.len() == 2
@@ -809,6 +846,18 @@ fn tx(format: &str, v: &Value, depth: usize) -> Result<Vec<Value>, Value> {
                     fence["fields"]["options"][sized] = json!({"minsize":size,"maxsize":size});
                 }
             }
+        }
+        if let Some((unfence_sup, sup)) = power {
+            let sup = one(tx(format, &sup, depth + 1)?);
+            let sup = if unfence_sup {
+                unicode::unfenced(sup)
+            } else {
+                sup
+            };
+            fence = node(
+                "Math::Function::Power",
+                json!({"parameter_one":fence,"parameter_two":sup}),
+            );
         }
         let mut out = vec![fence];
         if let Some(tail) = tail {

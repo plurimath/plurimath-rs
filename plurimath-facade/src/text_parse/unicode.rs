@@ -1135,8 +1135,9 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
         }
     }
     // Source `[head] + tail` rules: the head capture is kept as is, then the tail list.
-    const HEADS: [&str; 18] = [
+    const HEADS: [&str; 19] = [
         "diacritics_accents",
+        "mini_sub_sup",
         "sub_exp",
         "frac",
         "subsup_exp",
@@ -1409,7 +1410,95 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
     if let Some(value) = unmasked_nary(m, rec)? {
         return Ok(Some(vec![value]));
     }
+    // Source rules.rb 99 and 215-222: a vulgar fraction character, then any tail.
+    if let Some(text) = m.get("unicode_fractions") {
+        let tail = ["expr", "exp"].into_iter().find(|k| m.contains_key(*k));
+        if m.len() == 1 || (m.len() == 2 && tail.is_some()) {
+            let text = text
+                .as_str()
+                .ok_or_else(|| incomplete("non-text unicode fraction capture"))?;
+            let mut out = vec![unicode_fraction(text)?];
+            if let Some(tail) = tail {
+                out.extend(rec(&m[tail])?);
+            }
+            return Ok(Some(out));
+        }
+    }
+    // Source rules.rb 3328-3337: a symbol heads the rest of a fence body.
+    if keys(m, &["unicode_symbols", "exp"]) {
+        let mut out = vec![leaf(m, "unicode_symbols")?];
+        out.extend(rec(&m["exp"])?);
+        return Ok(Some(out));
+    }
+    // Source rules.rb 3928-3939: monospace, arrow, its operand, then the rest.
+    if keys(m, &["monospace", "relational_symbols", "expr", "exp"]) {
+        let mut out = rec(&m["monospace"])?;
+        out.push(leaf(m, "relational_symbols")?);
+        out.extend(rec(&m["expr"])?);
+        out.extend(rec(&m["exp"])?);
+        return Ok(Some(out));
+    }
+    // Source rules.rb 3984-4036: an interval body; a list side is filtered.
+    if keys(m, &["left_value", "comma", "right_value"]) {
+        return Ok(Some(vec![
+            filter_values(rec(&m["left_value"])?),
+            leaf(m, "comma")?,
+            filter_values(rec(&m["right_value"])?),
+        ]));
+    }
+    // Source rules.rb 1583-1589: a phantom with a mask pads its value.
+    if keys(m, &["phantom_value", "first_value"]) {
+        let mask = m["phantom_value"]
+            .as_str()
+            .ok_or_else(|| incomplete("non-text phantom mask capture"))?;
+        let value = simple(rec(&m["first_value"])?, "phantom")?;
+        return Ok(Some(vec![node(
+            "Math::Function::Mpadded",
+            json!({"options":{"mask":mask},"parameter_one":value}),
+        )]));
+    }
+    if keys(m, &["phantom"]) {
+        return Ok(Some(rec(&m["phantom"])?));
+    }
     Ok(None)
+}
+fn leaf(m: &Map<String, Value>, key: &str) -> Result<Value, Value> {
+    m[key]
+        .as_str()
+        .map(symbol)
+        .ok_or_else(|| incomplete(format!("non-text {key} capture")))
+}
+/// Source UnicodeMath::Utility.unicode_fractions over UNICODE_FRACTIONS.
+fn unicode_fraction(text: &str) -> Result<Value, Value> {
+    const FRACTIONS: [(&str, &str, &str); 18] = [
+        ("&#x2153;", "1", "3"),
+        ("&#x2154;", "2", "3"),
+        ("&#x2155;", "1", "5"),
+        ("&#x2156;", "2", "5"),
+        ("&#x2157;", "3", "5"),
+        ("&#x2158;", "4", "5"),
+        ("&#x2159;", "1", "6"),
+        ("&#x215a;", "5", "6"),
+        ("&#x2150;", "1", "7"),
+        ("&#x215b;", "1", "8"),
+        ("&#x215c;", "3", "8"),
+        ("&#x215d;", "5", "8"),
+        ("&#x215e;", "7", "8"),
+        ("&#x2151;", "1", "9"),
+        ("&#x2189;", "0", "3"),
+        ("&#xbd;", "1", "2"),
+        ("&#xbc;", "1", "4"),
+        ("&#xbe;", "3", "4"),
+    ];
+    let (_, n, d) = FRACTIONS
+        .iter()
+        .find(|(k, _, _)| *k == text)
+        .ok_or_else(|| incomplete("unported unicode fraction character"))?;
+    Ok(new_frac(
+        number(n),
+        number(d),
+        json!({"displaystyle":false,"unicodemath_fraction":true}),
+    ))
 }
 
 fn capture_text(value: &Value, what: &str) -> Result<String, Value> {
