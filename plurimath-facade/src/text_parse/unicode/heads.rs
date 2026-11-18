@@ -635,7 +635,13 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
             "overlay",
         )?;
         let value = unf(vec![simple(rec(&m["first_value"])?, "overlay base")?]);
-        return Ok(Some(vec![overlay(&text, value)]));
+        // Unlike the trailing rule, U+0304 keeps its "top" notation here.
+        let notation = overlay_notation(&text);
+        return Ok(Some(vec![if notation == Some("mover") {
+            overset(symbol(&text), value, true)
+        } else {
+            menclose(notation, value)
+        }]));
     }
     // rules.rb 1513-1527
     if keys(m, &["first_value", "below_after"]) {
