@@ -54,4 +54,5 @@ jobs:
       - name: Source-oracle rows for this shard
         env:
           UNICODE675_SHARD: ${{ matrix.shard }}/8
+          UNICODE675_SHOW: "1"
         run: cargo test --locked -p plurimath-facade --all-features --test unicode675 -- --nocapture

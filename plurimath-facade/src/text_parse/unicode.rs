@@ -4,6 +4,7 @@
 //! any other shape falls through to the shared converter.
 use super::{error, fenced, incomplete};
 mod decorations;
+mod heads;
 mod intent;
 mod structural_scripts;
 use crate::model::{formula, node, number};
@@ -866,6 +867,9 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
         return Ok(Some(values));
     }
     if let Some(values) = structural_scripts::tx(m, rec)? {
+        return Ok(Some(values));
+    }
+    if let Some(values) = heads::tx(m, rec)? {
         return Ok(Some(values));
     }
     if m.len() == 1 {

@@ -1,6 +1,6 @@
 //! UnicodeMath structural script rules, pinned to Ruby 0a1df68.
 use super::{keys, simple, unf, unfenced, Rec};
-use crate::model::node;
+use crate::model::{formula, node};
 use serde_json::{json, Map, Value};
 
 fn base(first: Value, second: Value) -> Value {
@@ -19,6 +19,27 @@ fn recursive_sub(first: Value, mut rest: Value) -> Value {
         cursor = &mut cursor["fields"]["parameter_one"];
     }
     *cursor = base(first, cursor.take());
+    rest
+}
+
+fn power(first: Value, second: Value) -> Value {
+    node(
+        "Math::Function::Power",
+        json!({"parameter_one":first,"parameter_two":second}),
+    )
+}
+
+/// Utility.recursive_sup/sup_recursion insert at the deepest Power base
+/// (rules.rb 1007-1040). A non-Power recursion becomes the exponent.
+fn recursive_sup(first: Value, mut rest: Value) -> Value {
+    if rest["class"] != "Math::Function::Power" {
+        return power(first, rest);
+    }
+    let mut cursor = &mut rest["fields"]["parameter_one"];
+    while cursor["class"] == "Math::Function::Power" {
+        cursor = &mut cursor["fields"]["parameter_one"];
+    }
+    *cursor = power(first, cursor.take());
     rest
 }
 
@@ -41,6 +62,29 @@ pub(super) fn tx(m: &Map<String, Value>, rec: Rec) -> Result<Option<Vec<Value>>,
         let first = simple(rec(&m["sub_script"])?, "recursive subscript")?;
         let rest = simple(rec(&m["sub_recursion"])?, "subscript recursion")?;
         return Ok(Some(vec![recursive_sub(first, rest)]));
+    }
+    if keys(m, &["sup_script", "sup_recursion"]) {
+        let script = rec(&m["sup_script"])?;
+        let first = if script.len() == 1 && !m["sup_script"].is_array() {
+            script.into_iter().next().unwrap()
+        } else {
+            formula(script)
+        };
+        let rest = unfenced(simple(rec(&m["sup_recursion"])?, "superscript recursion")?);
+        return Ok(Some(vec![recursive_sup(first, rest)]));
+    }
+    // rules.rb 644-657: an operator subscript recursion.
+    if keys(m, &["operator", "sub_recursion"]) {
+        let operator = m["operator"]
+            .as_str()
+            .map(super::symbol)
+            .ok_or_else(|| super::super::incomplete("non-text operator capture"))?;
+        let mut rest = rec(&m["sub_recursion"])?;
+        if rest.len() == 1 && !m["sub_recursion"].is_array() {
+            return Ok(Some(vec![recursive_sub(operator, rest.pop().unwrap())]));
+        }
+        rest.insert(0, operator);
+        return Ok(Some(rest));
     }
     // Source list rules preserve the mini-sized fields in each built node.
     // In particular, recursive numerators become a list before fractions
