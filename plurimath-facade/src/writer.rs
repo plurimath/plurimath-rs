@@ -1,11 +1,13 @@
 //! Procedural source-writer port; unported nodes/options fail, never return approximations.
 mod accents;
+mod enclose;
 mod fences;
 mod final_options;
 mod font_styles;
 mod formatter_context;
 mod generic_nary;
 mod intent_nodes;
+mod labeledtr;
 mod layout_nodes;
 mod leaf_nodes;
 mod line_break_overrides;
@@ -620,10 +622,10 @@ fn power_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, String>
                     "source_render_error: power exponent cannot receive mini_sized?".into(),
                 );
             }
-            if b["fields"]["mini_sub_sized"] == true || b["fields"]["mini_sup_sized"] == true {
-                return Err("unported promised mini-sized power exponent".into());
-            }
             let base = child(a, f, ctx)?;
+            if !power_accent(b, ctx)? && numbers::mini_sized(b) {
+                return Ok(format!("{base}{}", child(b, f, ctx)?));
+            }
             if power_accent(b, ctx)? {
                 return Ok(format!(
                     "{base}{}",
@@ -841,6 +843,12 @@ fn render_text(m: &Model, f: &str, ctx: &WriterContext) -> Result<String, String
     }
     if underline::handles(m) {
         return underline::text_writer(m, f, ctx);
+    }
+    if enclose::handles(m) {
+        return enclose::text_writer(m, f, ctx);
+    }
+    if labeledtr::handles(m) {
+        return labeledtr::text_writer(m, f, ctx);
     }
     if table_text::handles(m) {
         return table_text::render(m, f, ctx);
@@ -1319,6 +1327,12 @@ fn render_xml_inner(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>,
     }
     if underline::handles(m) {
         return underline::xml(m, f, ctx);
+    }
+    if enclose::handles(m) {
+        return enclose::xml(m, f, ctx);
+    }
+    if labeledtr::handles(m) {
+        return labeledtr::xml(m, f, ctx);
     }
     if matches!(m.kind(), "Stackrel" | "Obrace" | "Sqrt") {
         return portable_functions::xml(m, f, ctx);

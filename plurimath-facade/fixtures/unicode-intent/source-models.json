@@ -1,0 +1,1845 @@
+{
+  "source_commit": "0a1df68a5903d43da13b1e1ef85b6c0523feb1b4",
+  "source_operation": "Plurimath::UnicodeMath::Parser.new(input).parse; Ruby4.0.1/Ox; no writer normalization",
+  "rows": [
+    {
+      "input": "ⓘ(\"$op($a)\"ⓐ(a 𝐴)^ⓐopⓘ(\"transpose\"𝑇))=0",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Function::Arg",
+                      "fields": {
+                        "parameter_one": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "&#x1d434;"
+                          }
+                        },
+                        "parameter_two": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "a"
+                          }
+                        }
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Function::Arg",
+                      "fields": {
+                        "parameter_one": {
+                          "class": "Math::Function::Intent",
+                          "fields": {
+                            "parameter_one": {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "&#x1d447;"
+                              }
+                            },
+                            "parameter_two": {
+                              "class": "Math::Function::Text",
+                              "fields": {
+                                "lang": null,
+                                "parameter_one": "transpose"
+                              }
+                            }
+                          }
+                        },
+                        "parameter_two": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "op"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "$op($a)"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Equal",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"Ackermann\"𝜙(𝑚,𝑛,𝑝))",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x1d719;"
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Fenced",
+                        "fields": {
+                          "options": {},
+                          "parameter_one": {
+                            "class": "Math::Symbols::Paren::Lround",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_three": {
+                            "class": "Math::Symbols::Paren::Rround",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_two": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "&#x1d45a;"
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Comma",
+                              "fields": {
+                                "value": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "&#x1d45b;"
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Comma",
+                              "fields": {
+                                "value": null
+                              }
+                            },
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "&#x1d45d;"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "Ackermann"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"Differential d\"ⅆ)+ⅆ+ⓘ(\"Euler's number\" ⅇ)+ⅇ",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Dd",
+                  "fields": {
+                    "value": null
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "Differential d"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Dd",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "&#x2147;"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "Euler&#x27;s number"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Plus",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Symbols::Symbol",
+              "fields": {
+                "value": "&#x2147;"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"binom\"𝑛⒞𝑘)",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Fenced",
+                  "fields": {
+                    "options": {},
+                    "parameter_one": {
+                      "class": "Math::Symbols::Paren::Lround",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_three": {
+                      "class": "Math::Symbols::Paren::Rround",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_two": [
+                      {
+                        "class": "Math::Function::Frac",
+                        "fields": {
+                          "options": {
+                            "linethickness": "0",
+                            "choose": true
+                          },
+                          "parameter_one": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "&#x1d45b;"
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "&#x1d458;"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "binom"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"binom\"𝑛¦𝑘)",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Frac",
+                  "fields": {
+                    "options": {
+                      "linethickness": "0"
+                    },
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "&#x1d45b;"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "&#x1d458;"
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "binom"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"cardinality\"|𝑥|)",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Fenced",
+                  "fields": {
+                    "options": {},
+                    "parameter_one": {
+                      "class": "Math::Symbols::Paren::Vert",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_three": {
+                      "class": "Math::Symbols::Paren::Vert",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_two": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x1d465;"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "cardinality"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\":derivative\"𝑓′(𝑥))",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Function::Power",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Symbols::Symbol",
+                            "fields": {
+                              "value": "&#x1d453;"
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Symbols::Prime",
+                            "fields": {
+                              "value": null
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Fenced",
+                        "fields": {
+                          "options": {},
+                          "parameter_one": {
+                            "class": "Math::Symbols::Paren::Lround",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_three": {
+                            "class": "Math::Symbols::Paren::Rround",
+                            "fields": {
+                              "value": null
+                            }
+                          },
+                          "parameter_two": [
+                            {
+                              "class": "Math::Symbols::Symbol",
+                              "fields": {
+                                "value": "&#x1d465;"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": ":derivative"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"index\"a^2)",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "a"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Number",
+                      "fields": {
+                        "base": null,
+                        "mini_sub_sized": false,
+                        "mini_sup_sized": false,
+                        "value": "2"
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "index"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"power($base,$exp)\"ⓐ(base 𝑥)^(ⓐexp𝑛))=0",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Function::Arg",
+                      "fields": {
+                        "parameter_one": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "&#x1d465;"
+                          }
+                        },
+                        "parameter_two": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "base"
+                          }
+                        }
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Function::Arg",
+                      "fields": {
+                        "parameter_one": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "&#x1d45b;"
+                          }
+                        },
+                        "parameter_two": {
+                          "class": "Math::Symbols::Symbol",
+                          "fields": {
+                            "value": "exp"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "power($base,$exp)"
+                  }
+                }
+              }
+            },
+            {
+              "class": "Math::Symbols::Equal",
+              "fields": {
+                "value": null
+              }
+            },
+            {
+              "class": "Math::Number",
+              "fields": {
+                "base": null,
+                "mini_sub_sized": false,
+                "mini_sup_sized": false,
+                "value": "0"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"quadratic equation\"𝑥=(−𝑏±√(𝑏²−4𝑎𝑐))/2𝑎)",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "&#x1d465;"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Equal",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      {
+                        "class": "Math::Function::Frac",
+                        "fields": {
+                          "parameter_one": {
+                            "class": "Math::Formula",
+                            "fields": {
+                              "displaystyle": true,
+                              "left_right_wrapper": true,
+                              "value": [
+                                {
+                                  "class": "Math::Symbols::Minus",
+                                  "fields": {
+                                    "value": null
+                                  }
+                                },
+                                {
+                                  "class": "Math::Symbols::Symbol",
+                                  "fields": {
+                                    "value": "&#x1d44f;"
+                                  }
+                                },
+                                {
+                                  "class": "Math::Symbols::Pm",
+                                  "fields": {
+                                    "value": null
+                                  }
+                                },
+                                {
+                                  "class": "Math::Function::Sqrt",
+                                  "fields": {
+                                    "parameter_one": {
+                                      "class": "Math::Formula",
+                                      "fields": {
+                                        "displaystyle": true,
+                                        "left_right_wrapper": true,
+                                        "value": [
+                                          {
+                                            "class": "Math::Function::Power",
+                                            "fields": {
+                                              "parameter_one": {
+                                                "class": "Math::Symbols::Symbol",
+                                                "fields": {
+                                                  "value": "&#x1d44f;"
+                                                }
+                                              },
+                                              "parameter_two": {
+                                                "class": "Math::Number",
+                                                "fields": {
+                                                  "base": null,
+                                                  "mini_sub_sized": false,
+                                                  "mini_sup_sized": true,
+                                                  "value": "2"
+                                                }
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "class": "Math::Symbols::Minus",
+                                            "fields": {
+                                              "value": null
+                                            }
+                                          },
+                                          {
+                                            "class": "Math::Number",
+                                            "fields": {
+                                              "base": null,
+                                              "mini_sub_sized": false,
+                                              "mini_sup_sized": false,
+                                              "value": "4"
+                                            }
+                                          },
+                                          {
+                                            "class": "Math::Symbols::Symbol",
+                                            "fields": {
+                                              "value": "&#x1d44e;"
+                                            }
+                                          },
+                                          {
+                                            "class": "Math::Symbols::Symbol",
+                                            "fields": {
+                                              "value": "&#x1d450;"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "parameter_two": {
+                            "class": "Math::Formula",
+                            "fields": {
+                              "displaystyle": true,
+                              "left_right_wrapper": true,
+                              "value": [
+                                {
+                                  "class": "Math::Number",
+                                  "fields": {
+                                    "base": null,
+                                    "mini_sub_sized": false,
+                                    "mini_sup_sized": false,
+                                    "value": "2"
+                                  }
+                                },
+                                {
+                                  "class": "Math::Symbols::Symbol",
+                                  "fields": {
+                                    "value": "&#x1d44e;"
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "quadratic equation"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\":sup\"𝑎²)",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "&#x1d44e;"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Number",
+                      "fields": {
+                        "base": null,
+                        "mini_sub_sized": false,
+                        "mini_sup_sized": true,
+                        "value": "2"
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": ":sup"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"time derivative\"𝜌̇)",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Overset",
+                  "fields": {
+                    "options": {
+                      "accent": true
+                    },
+                    "parameter_one": {
+                      "class": "Math::Symbols::Dot",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "&#x1d70c;"
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "time derivative"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"hello\"x)",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "hello"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"hello\"x+y)",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "x"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Plus",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "y"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "hello"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"label with spaces\"(x+y))",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Fenced",
+                  "fields": {
+                    "options": {},
+                    "parameter_one": {
+                      "class": "Math::Symbols::Paren::Lround",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_three": {
+                      "class": "Math::Symbols::Paren::Rround",
+                      "fields": {
+                        "value": null
+                      }
+                    },
+                    "parameter_two": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "x"
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Plus",
+                        "fields": {
+                          "value": null
+                        }
+                      },
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "y"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "label with spaces"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"a\"ⓘ(\"b\"x))",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Intent",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Function::Text",
+                      "fields": {
+                        "lang": null,
+                        "parameter_one": "b"
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "a"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓐ(name x)",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Arg",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "name"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓐname x",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Arg",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "name"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"uncertainty\"x)",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "uncertainty"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"absolute_standard_uncertainty\"x)",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "absolute_standard_uncertainty"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"foo\"1.23)",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1.23"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "foo"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"foo\"ⓐ(bar x))",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Arg",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "bar"
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "foo"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"foo\"x^2)",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Function::Power",
+                  "fields": {
+                    "parameter_one": {
+                      "class": "Math::Symbols::Symbol",
+                      "fields": {
+                        "value": "x"
+                      }
+                    },
+                    "parameter_two": {
+                      "class": "Math::Number",
+                      "fields": {
+                        "base": null,
+                        "mini_sub_sized": false,
+                        "mini_sup_sized": false,
+                        "value": "2"
+                      }
+                    }
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "foo"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"standard-uncertainty(1.230,0.004)\"x)",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.004"
+                  }
+                },
+                "notation": "absolute",
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1.230"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"standard-uncertainty:concise(1.230,0.004)\"x)",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.004"
+                  }
+                },
+                "notation": "concise",
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1.230"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"expanded-uncertainty(10.0,0.3,2)\"x)",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "expanded",
+                "coverage_factor": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                },
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.3"
+                  }
+                },
+                "notation": null,
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.0"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"expanded-uncertainty(10.0,0.3,2,0.95)\"x)",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "expanded",
+                "coverage_factor": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "2"
+                  }
+                },
+                "coverage_probability": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.95"
+                  }
+                },
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.3"
+                  }
+                },
+                "notation": null,
+                "unit": null,
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "10.0"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"coverage-interval(1.0,0.9,1.1,0.95)\"x)",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "coverage_interval",
+                "coverage_factor": null,
+                "coverage_probability": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.95"
+                  }
+                },
+                "distribution": null,
+                "interval_kind": null,
+                "lower": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.9"
+                  }
+                },
+                "magnitude": null,
+                "notation": null,
+                "unit": null,
+                "upper": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1.1"
+                  }
+                },
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"coverage-interval:shortest(1.0,0.9,1.1,0.95)\"x)",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "coverage_interval",
+                "coverage_factor": null,
+                "coverage_probability": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.95"
+                  }
+                },
+                "distribution": null,
+                "interval_kind": "shortest",
+                "lower": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.9"
+                  }
+                },
+                "magnitude": null,
+                "notation": null,
+                "unit": null,
+                "upper": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1.1"
+                  }
+                },
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"coverage-interval:probabilistically-symmetric(1.0,0.9,1.1,0.95)\"x)",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "coverage_interval",
+                "coverage_factor": null,
+                "coverage_probability": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.95"
+                  }
+                },
+                "distribution": null,
+                "interval_kind": "probabilistically_symmetric",
+                "lower": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.9"
+                  }
+                },
+                "magnitude": null,
+                "notation": null,
+                "unit": null,
+                "upper": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1.1"
+                  }
+                },
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1.0"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"standard-uncertainty(1.230,-0.004)\"x)",
+      "expected_error": "Plurimath::Errors::InvalidUncertainty"
+    },
+    {
+      "input": "ⓘ(\"standard-uncertainty:bad(1,0.1)\"x)",
+      "expected_error": "Plurimath::Errors::InvalidUncertainty"
+    },
+    {
+      "input": "ⓘ(\"standard-uncertainty(1)\"x)",
+      "expected_error": "Plurimath::Errors::InvalidUncertainty"
+    },
+    {
+      "input": "ⓘ(\"standard-uncertainty nope\"x)",
+      "expected_error": "Plurimath::Errors::InvalidUncertainty"
+    },
+    {
+      "input": "ⓘ(\"standard-uncertainty-ish\"x)",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Intent",
+              "fields": {
+                "parameter_one": {
+                  "class": "Math::Symbols::Symbol",
+                  "fields": {
+                    "value": "x"
+                  }
+                },
+                "parameter_two": {
+                  "class": "Math::Function::Text",
+                  "fields": {
+                    "lang": null,
+                    "parameter_one": "standard-uncertainty-ish"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"standard-uncertainty(1.23,0.04,$unit)\"ⓐ(unit m))",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.04"
+                  }
+                },
+                "notation": "absolute",
+                "unit": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "m"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1.23"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"standard-uncertainty(1.23,0.04,$unit)\"x)",
+      "expected_error": "Plurimath::Errors::InvalidUncertainty"
+    },
+    {
+      "input": "ⓘ(\"standard-uncertainty(1.230,0.004,$unit)\"ⓐ(unit m))",
+      "expected": {
+        "class": "Math::Formula",
+        "fields": {
+          "displaystyle": true,
+          "left_right_wrapper": true,
+          "value": [
+            {
+              "class": "Math::Function::Uncertainty",
+              "fields": {
+                "category": "standard",
+                "coverage_factor": null,
+                "coverage_probability": null,
+                "distribution": null,
+                "interval_kind": null,
+                "lower": null,
+                "magnitude": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "0.004"
+                  }
+                },
+                "notation": "absolute",
+                "unit": {
+                  "class": "Math::Formula",
+                  "fields": {
+                    "displaystyle": true,
+                    "left_right_wrapper": true,
+                    "value": [
+                      {
+                        "class": "Math::Symbols::Symbol",
+                        "fields": {
+                          "value": "m"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "upper": null,
+                "value": {
+                  "class": "Math::Number",
+                  "fields": {
+                    "base": null,
+                    "mini_sub_sized": false,
+                    "mini_sup_sized": false,
+                    "value": "1.230"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": "ⓘ(\"standard-uncertainty(1.230,0.004,$unit)\"x)",
+      "expected_error": "Plurimath::Errors::InvalidUncertainty"
+    },
+    {
+      "input": "ⓘ(\"expanded-uncertainty(10.0,0.3,2,$unit)\"ⓐ(unit m)ⓐ(unit s))",
+      "expected_error": "Plurimath::Errors::InvalidUncertainty"
+    }
+  ]
+}

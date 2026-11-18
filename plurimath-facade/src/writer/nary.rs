@@ -146,8 +146,21 @@ fn unicode_child(v: &Value, ctx: &super::WriterContext) -> Result<String, String
             .collect::<Result<Vec<_>, _>>()?;
         return super::text_content::decode(&pieces.join(separator));
     }
-    if contains_mini(v) && !handles(&m) {
-        return Err("unported promised nested mini-number Unicode child writer".into());
+    if contains_mini(v)
+        && !handles(&m)
+        && !matches!(
+            m.class.as_str(),
+            "Math::Function::Base"
+                | "Math::Function::Frac"
+                | "Math::Function::Power"
+                | "Math::Function::PowerBase"
+                | "Math::Function::Fenced"
+        )
+    {
+        return Err(format!(
+            "unported promised nested mini-number Unicode child writer {}",
+            m.class
+        ));
     }
     node_text(v, "unicodemath", ctx)
 }
@@ -165,30 +178,7 @@ fn parens(v: &Value, f: &str, ctx: &super::WriterContext) -> Result<String, Stri
     }
 }
 fn prime(v: &Value) -> Result<bool, String> {
-    let class = v.get("class").and_then(Value::as_str).unwrap_or("");
-    if !class.starts_with("Math::Symbols::") {
-        return Ok(false);
-    }
-    let value = v
-        .get("fields")
-        .and_then(|o| o.get("value"))
-        .and_then(Value::as_str)
-        .ok_or_else(|| source_error("prime predicate requires a symbol value"))?;
-    if value.contains("&#x27;") {
-        return Ok(true);
-    }
-    let input = if class == "Math::Symbols::Symbol" {
-        value
-    } else {
-        data()["prime_inputs"][class]
-            .as_str()
-            .ok_or_else(|| "unported promised typed-symbol prime predicate".to_owned())?
-    };
-    Ok(data()["primes"]
-        .as_array()
-        .unwrap()
-        .iter()
-        .any(|p| input.contains(p.as_str().unwrap())))
+    super::final_options::source_prime(v)
 }
 fn unicode_bound(m: &Model, upper: bool, ctx: &super::WriterContext) -> Result<String, String> {
     let v = m.field(if upper {
@@ -250,11 +240,13 @@ pub(super) fn latex_wrapped_with_value(v: &Value, value: String) -> Result<Strin
         };
         !has(&data()["left_classes"]) || !has(&data()["right_classes"])
     } else {
-        data()["latex_wrap_static"][&m.class]
-            .as_bool()
-            .ok_or_else(|| {
-                "unported promised value-sensitive LaTeX wrapping predicate".to_owned()
-            })?
+        match data()["latex_wrap_static"][&m.class].as_bool() {
+            Some(known) => known,
+            // Every Symbols subclass inherits Symbol#validate_function_formula (false);
+            // no subclass overrides it.
+            None if m.class.starts_with("Math::Symbols::") => false,
+            None => return Err("unported promised value-sensitive LaTeX wrapping predicate".into()),
+        }
     };
     if function_formula {
         Ok(format!("{{ \\left ( {value} \\right ) }}"))
