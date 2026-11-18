@@ -169,15 +169,19 @@ fn prime(v: &Value) -> Result<bool, String> {
     if !class.starts_with("Math::Symbols::") {
         return Ok(false);
     }
-    let value = v
-        .get("fields")
-        .and_then(|o| o.get("value"))
-        .and_then(Value::as_str)
-        .ok_or_else(|| source_error("prime predicate requires a symbol value"))?;
-    if value.contains("&#x27;") {
+    // The source reads `value&.include?`, so a nil value skips the entity check.
+    let value = match v.get("fields").and_then(|o| o.get("value")) {
+        None | Some(Value::Null) => None,
+        Some(Value::String(s)) => Some(s.as_str()),
+        Some(_) => return Err(source_error("prime predicate requires a symbol value")),
+    };
+    if value.is_some_and(|s| s.contains("&#x27;")) {
         return Ok(true);
     }
     let input = if class == "Math::Symbols::Symbol" {
+        let Some(value) = value else {
+            return Ok(false);
+        };
         value
     } else {
         data()["prime_inputs"][class]
@@ -234,7 +238,7 @@ pub(super) fn latex_wrapped_with_value(v: &Value, value: String) -> Result<Strin
     let m = Model::from_value(v)?;
     let function_formula = if m.class == "Math::Function::None" {
         true
-    } else if m.kind() == "Formula" {
+    } else if m.class == "Math::Formula" || m.class.starts_with("Math::Formula::") {
         let values = m
             .field("value")
             .as_array()
@@ -249,12 +253,16 @@ pub(super) fn latex_wrapped_with_value(v: &Value, value: String) -> Result<Strin
             })
         };
         !has(&data()["left_classes"]) || !has(&data()["right_classes"])
+    } else if let Some(wrap) = data()["latex_wrap_static"][&m.class].as_bool() {
+        wrap
+    } else if m.class.starts_with("Math::Symbols::") {
+        // Every typed symbol inherits Symbol#validate_function_formula (false).
+        false
+    } else if m.class.starts_with("Math::Function::FontStyle::") {
+        // FontStyle#validate_function_formula is true; no subclass overrides it.
+        true
     } else {
-        data()["latex_wrap_static"][&m.class]
-            .as_bool()
-            .ok_or_else(|| {
-                "unported promised value-sensitive LaTeX wrapping predicate".to_owned()
-            })?
+        return Err("unported promised value-sensitive LaTeX wrapping predicate".to_owned());
     };
     if function_formula {
         Ok(format!("{{ \\left ( {value} \\right ) }}"))
