@@ -33,9 +33,9 @@ checksum = "683d7910e743518b0e34f1186f92494becacb047c7b6bf616c96772180fef923"
 [[package]]
 name = "asciiunits"
 version = "0.1.0"
-source = "git+https://github.com/unitsml/asciiunits-rs?rev=1f771caef878b9d383a5f29b02f434b8b614b780#1f771caef878b9d383a5f29b02f434b8b614b780"
+source = "git+https://github.com/unitsml/asciiunits-rs?rev=ffae242e27b34371fcbbe41a767cc6deda7cd0e9#ffae242e27b34371fcbbe41a767cc6deda7cd0e9"
 dependencies = [
- "parsanol 0.20.14 (git+https://github.com/parsanol/parsanol-rs?rev=5206a33b5417b4ecd3a601930461ed2967c871e7)",
+ "parsanol",
  "serde",
  "serde_json",
  "sha2",
@@ -191,9 +191,9 @@ dependencies = [
 [[package]]
 name = "latexmath"
 version = "0.1.0"
-source = "git+https://github.com/plurimath/latexmath-rs?rev=0f6ad8c243f3fc5a0ce1addf3116e6b8d544dd1e#0f6ad8c243f3fc5a0ce1addf3116e6b8d544dd1e"
+source = "git+https://github.com/plurimath/latexmath-rs?rev=d72024fa9f31cdbc4aad5dfdc2db07cbf892bf39#d72024fa9f31cdbc4aad5dfdc2db07cbf892bf39"
 dependencies = [
- "parsanol 0.20.14 (git+https://github.com/parsanol/parsanol-rs?rev=5206a33b5417b4ecd3a601930461ed2967c871e7)",
+ "parsanol",
  "serde_json",
 ]
 
@@ -286,47 +286,19 @@ checksum = "9f7c3e4beb33f85d45ae3e3a1792185706c8e16d043238c593331cc7cd313b50"
 [[package]]
 name = "parsanol"
 version = "0.20.14"
-source = "git+https://github.com/parsanol/parsanol-rs?rev=5206a33b5417b4ecd3a601930461ed2967c871e7#5206a33b5417b4ecd3a601930461ed2967c871e7"
-dependencies = [
- "ahash",
- "getrandom 0.3.4",
- "getrandom 0.4.3",
- "hashbrown",
- "parsanol-derive 0.20.14 (git+https://github.com/parsanol/parsanol-rs?rev=5206a33b5417b4ecd3a601930461ed2967c871e7)",
- "regex",
- "regex-automata",
- "regex-syntax",
- "serde",
- "serde_json",
- "sha2",
-]
-
-[[package]]
-name = "parsanol"
-version = "0.20.14"
 source = "git+https://github.com/parsanol/parsanol-rs?rev=8f8afd878a3e91b83e43c2005459bc9dc4927851#8f8afd878a3e91b83e43c2005459bc9dc4927851"
 dependencies = [
  "ahash",
  "getrandom 0.3.4",
  "getrandom 0.4.3",
  "hashbrown",
- "parsanol-derive 0.20.14 (git+https://github.com/parsanol/parsanol-rs?rev=8f8afd878a3e91b83e43c2005459bc9dc4927851)",
+ "parsanol-derive",
  "regex",
  "regex-automata",
  "regex-syntax",
  "serde",
  "serde_json",
  "sha2",
-]
-
-[[package]]
-name = "parsanol-derive"
-version = "0.20.14"
-source = "git+https://github.com/parsanol/parsanol-rs?rev=5206a33b5417b4ecd3a601930461ed2967c871e7#5206a33b5417b4ecd3a601930461ed2967c871e7"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 3.0.10",
 ]
 
 [[package]]
@@ -342,10 +314,10 @@ dependencies = [
 [[package]]
 name = "plurimath-amath"
 version = "0.1.0"
-source = "git+https://github.com/plurimath/amath-rs?rev=7a26965528cda91030d164ec27f10b6c89e14f6b#7a26965528cda91030d164ec27f10b6c89e14f6b"
+source = "git+https://github.com/plurimath/amath-rs?rev=65459926bfd1b9ec4521220235004866d1662d3e#65459926bfd1b9ec4521220235004866d1662d3e"
 dependencies = [
  "lutaml-rs",
- "parsanol 0.20.14 (git+https://github.com/parsanol/parsanol-rs?rev=5206a33b5417b4ecd3a601930461ed2967c871e7)",
+ "parsanol",
  "serde",
  "serde_json",
  "sha2",
@@ -358,7 +330,7 @@ dependencies = [
  "asciiunits",
  "latexmath",
  "moxml",
- "parsanol 0.20.14 (git+https://github.com/parsanol/parsanol-rs?rev=5206a33b5417b4ecd3a601930461ed2967c871e7)",
+ "parsanol",
  "plurimath-amath",
  "plurimath-json",
  "plurimath-umath",
@@ -396,7 +368,7 @@ name = "plurimath-umath"
 version = "0.1.0"
 source = "git+https://github.com/plurimath/umath-rs?rev=df62d3d2ea0598d1f2431fc6048ad4cc829550ea#df62d3d2ea0598d1f2431fc6048ad4cc829550ea"
 dependencies = [
- "parsanol 0.20.14 (git+https://github.com/parsanol/parsanol-rs?rev=8f8afd878a3e91b83e43c2005459bc9dc4927851)",
+ "parsanol",
  "serde_json",
 ]
 

@@ -13,14 +13,14 @@ plurimath-json = { path = "transport" }
 serde = "=1.0.219"
 regex = "1"
 # PMA (dialect P) typed model: public amath-rs 16195ed (fast-forward of d176af8; dialect L runtime unchanged).
-amath = { package = "plurimath-amath", git = "https://github.com/plurimath/amath-rs", rev = "7a26965528cda91030d164ec27f10b6c89e14f6b", features = ["models"] }
+amath = { package = "plurimath-amath", git = "https://github.com/plurimath/amath-rs", rev = "65459926bfd1b9ec4521220235004866d1662d3e", features = ["models"] }
 serde_json = { version = "=1.0.140", features = ["arbitrary_precision", "preserve_order", "unbounded_depth", "raw_value"] }
-latexmath = { git = "https://github.com/plurimath/latexmath-rs", rev = "0f6ad8c243f3fc5a0ce1addf3116e6b8d544dd1e" }
+latexmath = { git = "https://github.com/plurimath/latexmath-rs", rev = "d72024fa9f31cdbc4aad5dfdc2db07cbf892bf39" }
 # umath-rs main: replays all 747 unicode gen-5 raw-tree rows against Ruby (parsanol 8f8afd8 legacy memo fix).
 umath = { package = "plurimath-umath", git = "https://github.com/plurimath/umath-rs", rev = "df62d3d2ea0598d1f2431fc6048ad4cc829550ea" }
 moxml = { git = "https://github.com/lutaml/moxml-rs", rev = "e49cdfc97df78bc681c804947e122399f09c50ae" }
 
-asciiunits = { git = "https://github.com/unitsml/asciiunits-rs", rev = "1f771caef878b9d383a5f29b02f434b8b614b780" }
+asciiunits = { git = "https://github.com/unitsml/asciiunits-rs", rev = "ffae242e27b34371fcbbe41a767cc6deda7cd0e9" }
 unitsdb-rs = { git = "https://github.com/unitsml/unitsdb-rs", rev = "969a131b8992930a6ff6f869291f1f0d7cb68d33" }
 
-parsanol = { git = "https://github.com/parsanol/parsanol-rs", rev = "5206a33b5417b4ecd3a601930461ed2967c871e7" }
+parsanol = { git = "https://github.com/parsanol/parsanol-rs", rev = "8f8afd878a3e91b83e43c2005459bc9dc4927851" }
