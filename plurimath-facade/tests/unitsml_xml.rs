@@ -57,8 +57,12 @@ fn unitsml_xml_writer_matches_source_or_stays_unported() {
     ] {
         assert!(equal.contains(&input), "{input} must be ported");
     }
+    // A `/` inverts the power of every unit after it, as `a*b^-1` would.
+    for input in ["km/h", "km/L", "kgf*s^2/m", "h-bar/E_h"] {
+        assert!(equal.contains(&input), "{input} must be ported");
+    }
     assert!(
-        equal.len() >= 705,
+        equal.len() >= 710,
         "{} equal source rows; unported rows with source xml:\n{}",
         equal.len(),
         skipped.join("\n")
