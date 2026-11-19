@@ -51,11 +51,14 @@ fn unitsml_xml_writer_matches_source_or_stays_unported() {
         );
         equal.push(input);
     }
-    for input in ["m", "kg", "uF", "uH", "sr", "ksr", "rad", "Mrad"] {
+    for input in [
+        "m", "kg", "uF", "uH", "sr", "ksr", "rad", "Mrad", "m^2", "N*m", "m*s^-1", "km*s^-1",
+        "C*kg^-1",
+    ] {
         assert!(equal.contains(&input), "{input} must be ported");
     }
     assert!(
-        equal.len() >= 408,
+        equal.len() >= 705,
         "{} equal source rows; unported rows with source xml:\n{}",
         equal.len(),
         skipped.join("\n")
