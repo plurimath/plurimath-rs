@@ -33,7 +33,7 @@ checksum = "683d7910e743518b0e34f1186f92494becacb047c7b6bf616c96772180fef923"
 [[package]]
 name = "asciiunits"
 version = "0.1.0"
-source = "git+https://github.com/unitsml/asciiunits-rs?rev=ffae242e27b34371fcbbe41a767cc6deda7cd0e9#ffae242e27b34371fcbbe41a767cc6deda7cd0e9"
+source = "git+https://github.com/unitsml/asciiunits-rs?rev=5d917151d5ef6964015af696e3d69ca4ceea0f1a#5d917151d5ef6964015af696e3d69ca4ceea0f1a"
 dependencies = [
  "parsanol",
  "serde",
@@ -191,7 +191,7 @@ dependencies = [
 [[package]]
 name = "latexmath"
 version = "0.1.0"
-source = "git+https://github.com/plurimath/latexmath-rs?rev=d72024fa9f31cdbc4aad5dfdc2db07cbf892bf39#d72024fa9f31cdbc4aad5dfdc2db07cbf892bf39"
+source = "git+https://github.com/plurimath/latexmath-rs?rev=a02d96606dd215fed30762209bdae7d8bae4e2c4#a02d96606dd215fed30762209bdae7d8bae4e2c4"
 dependencies = [
  "parsanol",
  "serde_json",
@@ -285,8 +285,9 @@ checksum = "9f7c3e4beb33f85d45ae3e3a1792185706c8e16d043238c593331cc7cd313b50"
 
 [[package]]
 name = "parsanol"
-version = "0.20.14"
-source = "git+https://github.com/parsanol/parsanol-rs?rev=8f8afd878a3e91b83e43c2005459bc9dc4927851#8f8afd878a3e91b83e43c2005459bc9dc4927851"
+version = "1.5.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ac148f686069b8a96a12c201f3cd994130ba3b7a4bcfe12a69b19669638852f0"
 dependencies = [
  "ahash",
  "getrandom 0.3.4",
@@ -303,8 +304,9 @@ dependencies = [
 
 [[package]]
 name = "parsanol-derive"
-version = "0.20.14"
-source = "git+https://github.com/parsanol/parsanol-rs?rev=8f8afd878a3e91b83e43c2005459bc9dc4927851#8f8afd878a3e91b83e43c2005459bc9dc4927851"
+version = "1.5.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2ff31943034449ba0061b2abd48d13289173c0e1035f720fc991306345313bcf"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -314,7 +316,7 @@ dependencies = [
 [[package]]
 name = "plurimath-amath"
 version = "0.1.0"
-source = "git+https://github.com/plurimath/amath-rs?rev=65459926bfd1b9ec4521220235004866d1662d3e#65459926bfd1b9ec4521220235004866d1662d3e"
+source = "git+https://github.com/plurimath/amath-rs?rev=ae9de7e482f7db12efedec4d7ff107fefc88d987#ae9de7e482f7db12efedec4d7ff107fefc88d987"
 dependencies = [
  "lutaml-rs",
  "parsanol",
@@ -366,7 +368,7 @@ dependencies = [
 [[package]]
 name = "plurimath-umath"
 version = "0.1.0"
-source = "git+https://github.com/plurimath/umath-rs?rev=df62d3d2ea0598d1f2431fc6048ad4cc829550ea#df62d3d2ea0598d1f2431fc6048ad4cc829550ea"
+source = "git+https://github.com/plurimath/umath-rs?rev=72969db0e4b056e6a35301bd0d11d728d683cb4c#72969db0e4b056e6a35301bd0d11d728d683cb4c"
 dependencies = [
  "parsanol",
  "serde_json",

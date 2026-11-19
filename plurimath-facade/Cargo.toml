@@ -12,15 +12,15 @@ plurimath-json = { path = "transport" }
 # DECISION for root: amath `models` and lutaml-rs 945e6ad pin serde =1.0.219 exactly.
 serde = "=1.0.219"
 regex = "1"
-# PMA (dialect P) typed model: public amath-rs 16195ed (fast-forward of d176af8; dialect L runtime unchanged).
-amath = { package = "plurimath-amath", git = "https://github.com/plurimath/amath-rs", rev = "65459926bfd1b9ec4521220235004866d1662d3e", features = ["models"] }
+# PMA (dialect P) typed model: amath-rs main on parsanol 1.5.9 (crates.io).
+amath = { package = "plurimath-amath", git = "https://github.com/plurimath/amath-rs", rev = "ae9de7e482f7db12efedec4d7ff107fefc88d987", features = ["models"] }
 serde_json = { version = "=1.0.140", features = ["arbitrary_precision", "preserve_order", "unbounded_depth", "raw_value"] }
-latexmath = { git = "https://github.com/plurimath/latexmath-rs", rev = "d72024fa9f31cdbc4aad5dfdc2db07cbf892bf39" }
-# umath-rs main: replays all 747 unicode gen-5 raw-tree rows against Ruby (parsanol 8f8afd8 legacy memo fix).
-umath = { package = "plurimath-umath", git = "https://github.com/plurimath/umath-rs", rev = "df62d3d2ea0598d1f2431fc6048ad4cc829550ea" }
+latexmath = { git = "https://github.com/plurimath/latexmath-rs", rev = "a02d96606dd215fed30762209bdae7d8bae4e2c4" }
+# umath-rs main on parsanol 1.5.9: replays all 747 unicode gen-5 raw-tree rows against Ruby.
+umath = { package = "plurimath-umath", git = "https://github.com/plurimath/umath-rs", rev = "72969db0e4b056e6a35301bd0d11d728d683cb4c" }
 moxml = { git = "https://github.com/lutaml/moxml-rs", rev = "e49cdfc97df78bc681c804947e122399f09c50ae" }
 
-asciiunits = { git = "https://github.com/unitsml/asciiunits-rs", rev = "ffae242e27b34371fcbbe41a767cc6deda7cd0e9" }
+asciiunits = { git = "https://github.com/unitsml/asciiunits-rs", rev = "5d917151d5ef6964015af696e3d69ca4ceea0f1a" }
 unitsdb-rs = { git = "https://github.com/unitsml/unitsdb-rs", rev = "969a131b8992930a6ff6f869291f1f0d7cb68d33" }
 
-parsanol = { git = "https://github.com/parsanol/parsanol-rs", rev = "8f8afd878a3e91b83e43c2005459bc9dc4927851" }
+parsanol = "1.5.9"
