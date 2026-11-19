@@ -205,35 +205,49 @@ struct Base {
 }
 type Components = Vec<(String, String, i64)>;
 
-fn combine_known(reference: &Value, prefix: Option<&Value>) -> bool {
-    let own = str_of(reference, "id").and_then(|id| first_with_id(Collection::Prefixes, id));
-    let (Some(own), Some(prefix)) = (own, prefix) else {
-        return true;
+// Utility.combine_prefixes; Err is the source UNKNOWN prefix.
+fn combine_prefixes(
+    a: Option<&'static Value>,
+    b: Option<&'static Value>,
+) -> Result<Option<&'static Value>, ()> {
+    let (a, b) = match (a, b) {
+        (None, other) | (other, None) => return Ok(other),
+        (Some(a), Some(b)) => (a, b),
     };
-    if own["base"] != prefix["base"] {
-        return false;
+    if a["base"] != b["base"] {
+        return Err(());
     }
-    let power = integer(&own["power"]).zip(integer(&prefix["power"]));
-    power.is_some_and(|(a, b)| {
-        records(Collection::Prefixes)
-            .iter()
-            .any(|p| p["base"] == own["base"] && integer(&p["power"]) == Some(a + b))
-    })
+    let power = integer(&a["power"]).zip(integer(&b["power"])).ok_or(())?;
+    records(Collection::Prefixes)
+        .iter()
+        .find(|p| p["base"] == a["base"] && integer(&p["power"]) == Some(power.0 + power.1))
+        .map(Some)
+        .ok_or(())
 }
 // Unitsml::Formula#units dimension list for one unit; None when no vector.
-fn bases(name: &str, unit: &Value, prefix: Option<&Value>) -> Result<Option<Vec<Base>>, String> {
-    let mut parts: Vec<(String, i64, bool)> = vec![];
+// Utility.decompose_unit then gather_units: repeated bases add their
+// exponents and combine their prefixes.
+fn bases(
+    name: &str,
+    unit: &Value,
+    prefix: Option<&'static Value>,
+) -> Result<Option<Vec<Base>>, String> {
+    type Part = (String, i64, Result<Option<&'static Value>, ()>);
+    let mut parts: Vec<Part> = vec![];
     if name == "g" || system_id(unit) == "si_base" {
-        parts.push((name.to_owned(), 1, true));
+        parts.push((name.to_owned(), 1, Ok(prefix)));
     } else if let Some(derived) = unit["si_derived_bases"]
         .as_array()
         .filter(|bases| !bases.is_empty())
     {
         for base in derived {
-            let known = if base["prefix_reference"].is_null() {
-                true
+            let own = if base["prefix_reference"].is_null() {
+                Ok(prefix)
             } else {
-                combine_known(&base["prefix_reference"], prefix)
+                str_of(&base["prefix_reference"], "id")
+                    .and_then(|id| first_with_id(Collection::Prefixes, id))
+                    .ok_or(())
+                    .and_then(|own| combine_prefixes(Some(own), prefix))
             };
             let symbol = str_of(&base["unit_reference"], "id")
                 .and_then(|id| unitsdb_rs::find(Lookup::UnitId, id))
@@ -245,20 +259,30 @@ fn bases(name: &str, unit: &Value, prefix: Option<&Value>) -> Result<Option<Vec<
             } else {
                 integer(&base["power"]).ok_or_else(|| unported(format!("base power of {name}")))?
             };
-            parts.push((symbol.to_owned(), exponent, known));
+            parts.push((symbol.to_owned(), exponent, own));
         }
     } else {
         return Ok(None);
     }
     parts.sort_by(|(a, ..), (b, ..)| a.cmp(b));
-    if parts.windows(2).any(|pair| pair[0].0 == pair[1].0) {
-        return Err(unported(format!("repeated derived base of {name}")));
+    let mut gathered: Vec<Part> = vec![];
+    for part in parts {
+        match gathered.last_mut() {
+            Some(last) if last.0 == part.0 => {
+                last.1 += part.1;
+                last.2 = match (last.2, part.2) {
+                    (Ok(a), Ok(b)) => combine_prefixes(a, b),
+                    _ => Err(()),
+                };
+            }
+            _ => gathered.push(part),
+        }
     }
-    if parts.iter().any(|part| !part.2) {
+    if gathered.iter().any(|part| part.2.is_err()) {
         return Ok(None);
     }
     let mut out = vec![];
-    for (symbol, exponent, _) in parts {
+    for (symbol, exponent, _) in gathered {
         let &(_, dimension, letter, order) = U2D
             .iter()
             .find(|row| row.0 == symbol)
