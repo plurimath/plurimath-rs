@@ -6,7 +6,8 @@ from pathlib import Path
 import subprocess
 import sys
 
-EXPECTED_REVISION = "8f8afd878a3e91b83e43c2005459bc9dc4927851"
+EXPECTED_SOURCE = "registry+https://github.com/rust-lang/crates.io-index"
+EXPECTED_VERSION = "1.5.9"
 parser = argparse.ArgumentParser()
 parser.add_argument("--metadata", type=Path, help="Check an existing complete Cargo metadata file")
 args = parser.parse_args()
@@ -29,7 +30,8 @@ if len(sdks) != 1:
         print(package["id"], file=sys.stderr)
     raise SystemExit(1)
 source = sdks[0].get("source") or ""
-if not source.startswith("git+https://github.com/parsanol/parsanol-rs?rev=" + EXPECTED_REVISION + "#"):
-    print("Parsanol must use the declared official source revision: " + source, file=sys.stderr)
+version = sdks[0].get("version") or ""
+if source != EXPECTED_SOURCE or version != EXPECTED_VERSION:
+    print("Parsanol must be the published crate " + EXPECTED_VERSION + ": " + version + " " + source, file=sys.stderr)
     raise SystemExit(1)
-print("Single Parsanol SDK source verified: " + source)
+print("Single Parsanol SDK verified: parsanol " + version + " from " + source)
