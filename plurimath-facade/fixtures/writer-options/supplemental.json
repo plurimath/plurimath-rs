@@ -4870,7 +4870,7 @@
         "displayStyle": false
       },
       "expected": {
-        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mrow mathcolor=\"red\">\n    <mrow>\n      <mrow>\n        <mo rspace=\"thickmathspace\"/>\n        <mrow intent=\":function\">\n          <mi>sin</mi>\n          <mover>\n            <mi>x</mi>\n            <mo>^</mo>\n          </mover>\n        </mrow>\n      </mrow>\n    </mrow>\n  </mrow>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mrow mathcolor=\"red\">\n    <mi>b</mi>\n  </mrow>\n</math>\n"
+        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mrow mathcolor=\"red\">\n    <mrow>\n      <mrow>\n        <mo rspace=\"0.2778em\"/>\n        <mrow intent=\":function\">\n          <mi>sin</mi>\n          <mover>\n            <mi>x</mi>\n            <mo>^</mo>\n          </mover>\n        </mrow>\n      </mrow>\n    </mrow>\n  </mrow>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mrow mathcolor=\"red\">\n    <mi>b</mi>\n  </mrow>\n</math>\n"
       }
     },
     {
@@ -6600,7 +6600,7 @@
         "displayStyle": false
       },
       "expected": {
-        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mrow mathcolor=\"red\">\n    <mrow>\n      <mrow>\n        <mo rspace=\"thickmathspace\"/>\n        <mrow intent=\":function\">\n          <mi>sin</mi>\n          <mover>\n            <mi>x</mi>\n            <mo>^</mo>\n          </mover>\n        </mrow>\n      </mrow>\n      <mo linebreak=\"newline\"/>\n      <mi>b</mi>\n    </mrow>\n  </mrow>\n</math>\n"
+        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mrow mathcolor=\"red\">\n    <mrow>\n      <mrow>\n        <mo rspace=\"0.2778em\"/>\n        <mrow intent=\":function\">\n          <mi>sin</mi>\n          <mover>\n            <mi>x</mi>\n            <mo>^</mo>\n          </mover>\n        </mrow>\n      </mrow>\n      <mo linebreak=\"newline\"/>\n      <mi>b</mi>\n    </mrow>\n  </mrow>\n</math>\n"
       }
     },
     {

@@ -3285,7 +3285,7 @@
         "intent": true
       },
       "expected": {
-        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow>\n    <mo rspace=\"thickmathspace\"/>\n    <mrow intent=\":function\">\n      <mi>sin</mi>\n      <mover>\n        <mi>x</mi>\n        <mo>^</mo>\n      </mover>\n    </mrow>\n  </mrow>\n</math>\n"
+        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow>\n    <mo rspace=\"0.2778em\"/>\n    <mrow intent=\":function\">\n      <mi>sin</mi>\n      <mover>\n        <mi>x</mi>\n        <mo>^</mo>\n      </mover>\n    </mrow>\n  </mrow>\n</math>\n"
       }
     },
     {
@@ -3507,7 +3507,7 @@
         "intent": true
       },
       "expected": {
-        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow>\n    <mo rspace=\"thickmathspace\"/>\n    <mrow intent=\":function\">\n      <mi>cos</mi>\n      <mover>\n        <mi>x</mi>\n        <mo>^</mo>\n      </mover>\n    </mrow>\n  </mrow>\n</math>\n"
+        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow>\n    <mo rspace=\"0.2778em\"/>\n    <mrow intent=\":function\">\n      <mi>cos</mi>\n      <mover>\n        <mi>x</mi>\n        <mo>^</mo>\n      </mover>\n    </mrow>\n  </mrow>\n</math>\n"
       }
     },
     {
@@ -3729,7 +3729,7 @@
         "intent": true
       },
       "expected": {
-        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow>\n    <mo rspace=\"thickmathspace\"/>\n    <mrow intent=\":function\">\n      <mi>ln</mi>\n      <mover>\n        <mi>x</mi>\n        <mo>^</mo>\n      </mover>\n    </mrow>\n  </mrow>\n</math>\n"
+        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow>\n    <mo rspace=\"0.2778em\"/>\n    <mrow intent=\":function\">\n      <mi>ln</mi>\n      <mover>\n        <mi>x</mi>\n        <mo>^</mo>\n      </mover>\n    </mrow>\n  </mrow>\n</math>\n"
       }
     },
     {
@@ -3951,7 +3951,7 @@
         "intent": true
       },
       "expected": {
-        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow>\n    <mo rspace=\"thickmathspace\"/>\n    <mrow intent=\":function\">\n      <mi>exp</mi>\n      <mover>\n        <mi>x</mi>\n        <mo>^</mo>\n      </mover>\n    </mrow>\n  </mrow>\n</math>\n"
+        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow>\n    <mo rspace=\"0.2778em\"/>\n    <mrow intent=\":function\">\n      <mi>exp</mi>\n      <mover>\n        <mi>x</mi>\n        <mo>^</mo>\n      </mover>\n    </mrow>\n  </mrow>\n</math>\n"
       }
     },
     {
@@ -7421,7 +7421,7 @@
         "intent": true
       },
       "expected": {
-        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mrow>\n    <mo rspace=\"thickmathspace\"/>\n    <mrow intent=\":function\">\n      <mi>sin</mi>\n      <mover>\n        <mi>x</mi>\n        <mo>^</mo>\n      </mover>\n    </mrow>\n  </mrow>\n</math>\n"
+        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mrow>\n    <mo rspace=\"0.2778em\"/>\n    <mrow intent=\":function\">\n      <mi>sin</mi>\n      <mover>\n        <mi>x</mi>\n        <mo>^</mo>\n      </mover>\n    </mrow>\n  </mrow>\n</math>\n"
       }
     },
     {
@@ -7643,7 +7643,7 @@
         "intent": true
       },
       "expected": {
-        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mrow>\n    <mo rspace=\"thickmathspace\"/>\n    <mrow intent=\":function\">\n      <mi>cos</mi>\n      <mover>\n        <mi>x</mi>\n        <mo>^</mo>\n      </mover>\n    </mrow>\n  </mrow>\n</math>\n"
+        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mrow>\n    <mo rspace=\"0.2778em\"/>\n    <mrow intent=\":function\">\n      <mi>cos</mi>\n      <mover>\n        <mi>x</mi>\n        <mo>^</mo>\n      </mover>\n    </mrow>\n  </mrow>\n</math>\n"
       }
     },
     {
@@ -7865,7 +7865,7 @@
         "intent": true
       },
       "expected": {
-        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mrow>\n    <mo rspace=\"thickmathspace\"/>\n    <mrow intent=\":function\">\n      <mi>ln</mi>\n      <mover>\n        <mi>x</mi>\n        <mo>^</mo>\n      </mover>\n    </mrow>\n  </mrow>\n</math>\n"
+        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mrow>\n    <mo rspace=\"0.2778em\"/>\n    <mrow intent=\":function\">\n      <mi>ln</mi>\n      <mover>\n        <mi>x</mi>\n        <mo>^</mo>\n      </mover>\n    </mrow>\n  </mrow>\n</math>\n"
       }
     },
     {
@@ -8087,7 +8087,7 @@
         "intent": true
       },
       "expected": {
-        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mrow>\n    <mo rspace=\"thickmathspace\"/>\n    <mrow intent=\":function\">\n      <mi>exp</mi>\n      <mover>\n        <mi>x</mi>\n        <mo>^</mo>\n      </mover>\n    </mrow>\n  </mrow>\n</math>\n"
+        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mrow>\n    <mo rspace=\"0.2778em\"/>\n    <mrow intent=\":function\">\n      <mi>exp</mi>\n      <mover>\n        <mi>x</mi>\n        <mo>^</mo>\n      </mover>\n    </mrow>\n  </mrow>\n</math>\n"
       }
     },
     {
@@ -9818,7 +9818,7 @@
         "intent": true
       },
       "expected": {
-        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow>\n    <mo rspace=\"thickmathspace\"/>\n    <mrow intent=\":function\">\n      <mi>sin</mi>\n      <mrow>\n        <mi>a</mi>\n        <mo linebreak=\"newline\"/>\n        <mi>b</mi>\n      </mrow>\n    </mrow>\n  </mrow>\n</math>\n"
+        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow>\n    <mo rspace=\"0.2778em\"/>\n    <mrow intent=\":function\">\n      <mi>sin</mi>\n      <mrow>\n        <mi>a</mi>\n        <mo linebreak=\"newline\"/>\n        <mi>b</mi>\n      </mrow>\n    </mrow>\n  </mrow>\n</math>\n"
       }
     },
     {
@@ -10694,7 +10694,7 @@
         "intent": true
       },
       "expected": {
-        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow>\n    <mo rspace=\"thickmathspace\"/>\n    <mrow intent=\":function\">\n      <mi>sin</mi>\n      <mrow>\n        <mi>a</mi>\n      </mrow>\n    </mrow>\n  </mrow>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow>\n    <mo rspace=\"thickmathspace\"/>\n    <mrow intent=\":function\">\n      <mi>b</mi>\n    </mrow>\n  </mrow>\n</math>\n"
+        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow>\n    <mo rspace=\"0.2778em\"/>\n    <mrow intent=\":function\">\n      <mi>sin</mi>\n      <mrow>\n        <mi>a</mi>\n      </mrow>\n    </mrow>\n  </mrow>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow>\n    <mo rspace=\"0.2778em\"/>\n    <mrow intent=\":function\">\n      <mi>b</mi>\n    </mrow>\n  </mrow>\n</math>\n"
       }
     },
     {

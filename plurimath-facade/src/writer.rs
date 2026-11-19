@@ -412,7 +412,7 @@ fn unary_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String
         if mi && ctx.unary_function_spacing {
             let mut children = vec![attrs(
                 "mo",
-                vec![("rspace".into(), "thickmathspace".into())],
+                vec![("rspace".into(), "0.2778em".into())],
                 vec![],
             )];
             children.extend(value);
