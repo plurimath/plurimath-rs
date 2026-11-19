@@ -83,6 +83,6 @@
     "options": {
       "intent": true
     },
-    "expected": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\":derivative(1,𝑓(𝑥),𝑥)\">\n      <msup>\n        <mi>&#x1d453;</mi>\n        <mo>&#x2032;</mo>\n      </msup>\n      <mrow intent=\":fenced\">\n        <mo>(</mo>\n        <mi>&#x1d465;</mi>\n        <mo>)</mo>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+    "expected": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\":derivative(1,𝑓(𝑥),𝑥)\">\n    <msup>\n      <mi>&#x1d453;</mi>\n      <mo>&#x2032;</mo>\n    </msup>\n    <mrow intent=\":fenced\">\n      <mo>(</mo>\n      <mi>&#x1d465;</mi>\n      <mo>)</mo>\n    </mrow>\n  </mrow>\n</math>\n"
   }
 }

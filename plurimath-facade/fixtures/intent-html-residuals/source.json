@@ -50,7 +50,7 @@
       "options": {
         "intent": true
       },
-      "expected": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mfrac intent=\":derivative(1,$f,x)\">\n      <mi>d</mi>\n      <mrow>\n        <mi>d</mi>\n        <mi>x</mi>\n      </mrow>\n    </mfrac>\n  </mstyle>\n</math>\n"
+      "expected": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mfrac intent=\":derivative(1,$f,x)\">\n    <mi>d</mi>\n    <mrow>\n      <mi>d</mi>\n      <mi>x</mi>\n    </mrow>\n  </mfrac>\n</math>\n"
     },
     {
       "id": "intent-frac-14",
@@ -106,7 +106,7 @@
       "options": {
         "intent": true
       },
-      "expected": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mfrac intent=\":derivative(1,$f,x)\">\n      <mi>d</mi>\n      <mrow>\n        <mi>d</mi>\n        <mi>x</mi>\n      </mrow>\n    </mfrac>\n    <mi>f</mi>\n  </mstyle>\n</math>\n"
+      "expected": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mfrac intent=\":derivative(1,$f,x)\">\n    <mi>d</mi>\n    <mrow>\n      <mi>d</mi>\n      <mi>x</mi>\n    </mrow>\n  </mfrac>\n  <mi>f</mi>\n</math>\n"
     }
   ]
 }

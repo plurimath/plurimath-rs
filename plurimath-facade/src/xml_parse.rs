@@ -426,6 +426,27 @@ impl Xml {
     fn name(&self, id: usize) -> &str {
         &self.row(id).name.local
     }
+    // MathML <mstyle>, and the styled <mrow> plurimath#477 emits instead.
+    fn mstyle(&self, id: usize, values: Vec<Value>) -> Value {
+        let color = self.attr(id, "mathcolor").filter(|s| !s.is_empty());
+        let variant = self.attr(id, "mathvariant").unwrap_or("");
+        let content = wrap(values.clone());
+        let content = if let Some(color) = color {
+            function("Color", vec![text(color), content])
+        } else {
+            content
+        };
+        if tables()["MATHML_FONT_STYLES"][variant].is_string() {
+            font(content, variant)
+        } else if color.is_some() {
+            content
+        } else {
+            node(
+                "Math::Formula::Mstyle",
+                json!({"value":values,"left_right_wrapper":true,"displaystyle":self.attr(id,"displaystyle")!=Some("false")}),
+            )
+        }
+    }
     fn attr(&self, id: usize, name: &str) -> Option<&str> {
         let namespace = if self.ns(id).is_empty() || self.ns(id) == MATHML {
             ""
@@ -611,6 +632,10 @@ impl Xml {
             "math" => {
                 values = nary_pair(values);
                 let mut display = self.attr(id, "display") != Some("false");
+                // plurimath#477 output carries displaystyle on <math> itself.
+                if let Some(style) = self.attr(id, "displaystyle").filter(|s| !s.is_empty()) {
+                    display = style != "false";
+                }
                 if values.len() == 1 && kind(&values[0]) == "Mstyle" {
                     display = values[0]["fields"]["displaystyle"]
                         .as_bool()
@@ -625,27 +650,35 @@ impl Xml {
                 result
             }
             "mrow" => {
-                let result = organize_row(values);
-                if let Some(intent) = self.attr(id, "intent").filter(|s| !s.is_empty()) {
-                    if intent.starts_with(":") || intent.contains("uncertainty") {
-                        return Err(error(
-                            "MathML uncertainty intent conversion remains incomplete",
-                        ));
-                    }
-                    if is_formula(&result)
-                        && result["fields"]["value"]
-                            .as_array()
-                            .is_some_and(|a| a.len() > 1)
-                    {
-                        let mut row = result;
-                        row["class"] = json!("Math::Formula::Mrow");
-                        row["fields"]["is_mrow"] = json!(true);
-                        function("Intent", vec![row, text(intent)])
-                    } else {
-                        result
-                    }
+                let intent = self.attr(id, "intent").filter(|s| !s.is_empty());
+                if intent.is_some_and(|i| i.starts_with(":") || i.contains("uncertainty")) {
+                    return Err(error(
+                        "MathML uncertainty intent conversion remains incomplete",
+                    ));
+                }
+                // An mrow carrying mathcolor/mathvariant is what plurimath#477
+                // emits in place of <mstyle>; read it back the same way.
+                if ["mathcolor", "mathvariant"]
+                    .iter()
+                    .any(|a| self.attr(id, a).is_some_and(|v| !v.is_empty()))
+                {
+                    self.mstyle(id, values)
                 } else {
-                    result
+                    let result = organize_row(values);
+                    match intent {
+                        Some(intent)
+                            if is_formula(&result)
+                                && result["fields"]["value"]
+                                    .as_array()
+                                    .is_some_and(|a| a.len() > 1) =>
+                        {
+                            let mut row = result;
+                            row["class"] = json!("Math::Formula::Mrow");
+                            row["fields"]["is_mrow"] = json!(true);
+                            function("Intent", vec![row, text(intent)])
+                        }
+                        _ => result,
+                    }
                 }
             }
             "mfrac" | "mfraction" => {
@@ -762,26 +795,7 @@ impl Xml {
                 }
                 result
             }
-            "mstyle" => {
-                let color = self.attr(id, "mathcolor").filter(|s| !s.is_empty());
-                let variant = self.attr(id, "mathvariant").unwrap_or("");
-                let content = wrap(values.clone());
-                let content = if let Some(color) = color {
-                    function("Color", vec![text(color), content])
-                } else {
-                    content
-                };
-                if tables()["MATHML_FONT_STYLES"][variant].is_string() {
-                    font(content, variant)
-                } else if color.is_some() {
-                    content
-                } else {
-                    node(
-                        "Math::Formula::Mstyle",
-                        json!({"value":values,"left_right_wrapper":true,"displaystyle":self.attr(id,"displaystyle")!=Some("false")}),
-                    )
-                }
-            }
+            "mstyle" => self.mstyle(id, values),
             "mfenced" => {
                 let open = self.attr(id, "open");
                 let close = self.attr(id, "close");

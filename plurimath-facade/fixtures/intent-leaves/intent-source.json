@@ -2014,7 +2014,7 @@
           "value": "ⓘ(variablex)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi intent=\"variable\">x</mi>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mi intent=\"variable\">x</mi>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>x</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -2064,7 +2064,7 @@
           "value": "ⓘ(αx)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi intent=\"α\">x</mi>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mi intent=\"α\">x</mi>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>x</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -2114,7 +2114,7 @@
           "value": "ⓘ(:derivativex)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi intent=\":derivative\">x</mi>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mi intent=\":derivative\">x</mi>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>x</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -2167,7 +2167,7 @@
           "value": "ⓘ(1x)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi intent=\"1\">x</mi>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mi intent=\"1\">x</mi>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>x</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -2218,7 +2218,7 @@
           "value": "ⓘ(\"variable\"x)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi intent=\"variable\">x</mi>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mi intent=\"variable\">x</mi>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>x</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -2330,7 +2330,7 @@
           "value": "ⓘ(xx)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi intent=\"[#&lt;Plurimath::Math::Symbols::Symbol @value=&quot;x&quot;&gt;]\">x</mi>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mi intent=\"[#&lt;Plurimath::Math::Symbols::Symbol @value=&quot;x&quot;&gt;]\">x</mi>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>x</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -2608,7 +2608,7 @@
           "value": "ⓘ(variable1)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn intent=\"variable\">1</mn>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mn intent=\"variable\">1</mn>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -2661,7 +2661,7 @@
           "value": "ⓘ(α1)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn intent=\"α\">1</mn>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mn intent=\"α\">1</mn>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -2714,7 +2714,7 @@
           "value": "ⓘ(:derivative1)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn intent=\":derivative\">1</mn>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mn intent=\":derivative\">1</mn>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -2770,7 +2770,7 @@
           "value": "ⓘ(11)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn intent=\"1\">1</mn>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mn intent=\"1\">1</mn>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -2824,7 +2824,7 @@
           "value": "ⓘ(\"variable\"1)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn intent=\"variable\">1</mn>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mn intent=\"variable\">1</mn>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -2942,7 +2942,7 @@
           "value": "ⓘ(x1)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn intent=\"[#&lt;Plurimath::Math::Symbols::Symbol @value=&quot;x&quot;&gt;]\">1</mn>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mn intent=\"[#&lt;Plurimath::Math::Symbols::Symbol @value=&quot;x&quot;&gt;]\">1</mn>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>1</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -3215,7 +3215,7 @@
           "value": "ⓘ(variable\"hi\")"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtext intent=\"variable\">hi</mtext>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mtext intent=\"variable\">hi</mtext>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:rPr>\n        <m:sty m:val=\"p\"/>\n      </m:rPr>\n      <m:t>hi</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -3266,7 +3266,7 @@
           "value": "ⓘ(α\"hi\")"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtext intent=\"α\">hi</mtext>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mtext intent=\"α\">hi</mtext>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:rPr>\n        <m:sty m:val=\"p\"/>\n      </m:rPr>\n      <m:t>hi</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -3317,7 +3317,7 @@
           "value": "ⓘ(:derivative\"hi\")"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtext intent=\":derivative\">hi</mtext>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mtext intent=\":derivative\">hi</mtext>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:rPr>\n        <m:sty m:val=\"p\"/>\n      </m:rPr>\n      <m:t>hi</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -3371,7 +3371,7 @@
           "value": "ⓘ(1\"hi\")"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtext intent=\"1\">hi</mtext>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mtext intent=\"1\">hi</mtext>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:rPr>\n        <m:sty m:val=\"p\"/>\n      </m:rPr>\n      <m:t>hi</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -3423,7 +3423,7 @@
           "value": "ⓘ(\"variable\"\"hi\")"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtext intent=\"variable\">hi</mtext>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mtext intent=\"variable\">hi</mtext>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:rPr>\n        <m:sty m:val=\"p\"/>\n      </m:rPr>\n      <m:t>hi</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -3537,7 +3537,7 @@
           "value": "ⓘ(x\"hi\")"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtext intent=\"[#&lt;Plurimath::Math::Symbols::Symbol @value=&quot;x&quot;&gt;]\">hi</mtext>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mtext intent=\"[#&lt;Plurimath::Math::Symbols::Symbol @value=&quot;x&quot;&gt;]\">hi</mtext>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:rPr>\n        <m:sty m:val=\"p\"/>\n      </m:rPr>\n      <m:t>hi</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -3804,7 +3804,7 @@
           "value": "ⓘ(variable)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <none intent=\"variable\"/>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <none intent=\"variable\"/>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>&#8203;</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -3854,7 +3854,7 @@
           "value": "ⓘ(α)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <none intent=\"α\"/>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <none intent=\"α\"/>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>&#8203;</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -3904,7 +3904,7 @@
           "value": "ⓘ(:derivative)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <none intent=\":derivative\"/>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <none intent=\":derivative\"/>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>&#8203;</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -3957,7 +3957,7 @@
           "value": "ⓘ(1)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <none intent=\"1\"/>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <none intent=\"1\"/>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>&#8203;</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -4008,7 +4008,7 @@
           "value": "ⓘ(\"variable\")"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <none intent=\"variable\"/>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <none intent=\"variable\"/>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>&#8203;</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -4120,7 +4120,7 @@
           "value": "ⓘ(x)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <none intent=\"[#&lt;Plurimath::Math::Symbols::Symbol @value=&quot;x&quot;&gt;]\"/>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <none intent=\"[#&lt;Plurimath::Math::Symbols::Symbol @value=&quot;x&quot;&gt;]\"/>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>&#8203;</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -4394,7 +4394,7 @@
           "value": "ⓘ(variable)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"variable\"/>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\"variable\"/>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath/>\n</m:oMathPara>\n"
@@ -4446,7 +4446,7 @@
           "value": "ⓘ(α)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"α\"/>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\"α\"/>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath/>\n</m:oMathPara>\n"
@@ -4498,7 +4498,7 @@
           "value": "ⓘ(:derivative)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\":derivative\"/>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\":derivative\"/>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath/>\n</m:oMathPara>\n"
@@ -4553,7 +4553,7 @@
           "value": "ⓘ(1)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"1\"/>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\"1\"/>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath/>\n</m:oMathPara>\n"
@@ -4606,7 +4606,7 @@
           "value": "ⓘ(\"variable\")"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"variable\"/>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\"variable\"/>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath/>\n</m:oMathPara>\n"
@@ -4722,7 +4722,7 @@
           "value": "ⓘ(x)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"[#&lt;Plurimath::Math::Symbols::Symbol @value=&quot;x&quot;&gt;]\"/>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\"[#&lt;Plurimath::Math::Symbols::Symbol @value=&quot;x&quot;&gt;]\"/>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath/>\n</m:oMathPara>\n"
@@ -5062,7 +5062,7 @@
           "value": "ⓘ(variablex 1)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"variable\">\n      <mi>x</mi>\n      <mn>1</mn>\n    </mrow>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\"variable\">\n    <mi>x</mi>\n    <mn>1</mn>\n  </mrow>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>x</m:t>\n    </m:r>\n    <m:r>\n      <m:t>1</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -5130,7 +5130,7 @@
           "value": "ⓘ(αx 1)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"α\">\n      <mi>x</mi>\n      <mn>1</mn>\n    </mrow>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\"α\">\n    <mi>x</mi>\n    <mn>1</mn>\n  </mrow>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>x</m:t>\n    </m:r>\n    <m:r>\n      <m:t>1</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -5198,7 +5198,7 @@
           "value": "ⓘ(:derivativex 1)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\":derivative\">\n      <mi>x</mi>\n      <mn>1</mn>\n    </mrow>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\":derivative\">\n    <mi>x</mi>\n    <mn>1</mn>\n  </mrow>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>x</m:t>\n    </m:r>\n    <m:r>\n      <m:t>1</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -5269,7 +5269,7 @@
           "value": "ⓘ(1x 1)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"1\">\n      <mi>x</mi>\n      <mn>1</mn>\n    </mrow>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\"1\">\n    <mi>x</mi>\n    <mn>1</mn>\n  </mrow>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>x</m:t>\n    </m:r>\n    <m:r>\n      <m:t>1</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -5338,7 +5338,7 @@
           "value": "ⓘ(\"variable\"x 1)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"variable\">\n      <mi>x</mi>\n      <mn>1</mn>\n    </mrow>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\"variable\">\n    <mi>x</mi>\n    <mn>1</mn>\n  </mrow>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>x</m:t>\n    </m:r>\n    <m:r>\n      <m:t>1</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -5486,7 +5486,7 @@
           "value": "ⓘ(xx 1)"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"[#&lt;Plurimath::Math::Symbols::Symbol @value=&quot;x&quot;&gt;]\">\n      <mi>x</mi>\n      <mn>1</mn>\n    </mrow>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\"[#&lt;Plurimath::Math::Symbols::Symbol @value=&quot;x&quot;&gt;]\">\n    <mi>x</mi>\n    <mn>1</mn>\n  </mrow>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:t>x</m:t>\n    </m:r>\n    <m:r>\n      <m:t>1</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -5886,7 +5886,7 @@
           "value": "ⓘ(variable(x 1))"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"variable\">\n      <mo>(</mo>\n      <mi>x</mi>\n      <mn>1</mn>\n      <mo>)</mo>\n    </mrow>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\"variable\">\n    <mo>(</mo>\n    <mi>x</mi>\n    <mn>1</mn>\n    <mo>)</mo>\n  </mrow>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:d>\n      <m:dPr>\n        <m:begChr m:val=\"(\"/>\n        <m:sepChr m:val=\"\"/>\n        <m:endChr m:val=\")\"/>\n      </m:dPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:e>\n    </m:d>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -5965,7 +5965,7 @@
           "value": "ⓘ(α(x 1))"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"α\">\n      <mo>(</mo>\n      <mi>x</mi>\n      <mn>1</mn>\n      <mo>)</mo>\n    </mrow>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\"α\">\n    <mo>(</mo>\n    <mi>x</mi>\n    <mn>1</mn>\n    <mo>)</mo>\n  </mrow>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:d>\n      <m:dPr>\n        <m:begChr m:val=\"(\"/>\n        <m:sepChr m:val=\"\"/>\n        <m:endChr m:val=\")\"/>\n      </m:dPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:e>\n    </m:d>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -6044,7 +6044,7 @@
           "value": "ⓘ(:derivative(x 1))"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\":derivative\">\n      <mo>(</mo>\n      <mi>x</mi>\n      <mn>1</mn>\n      <mo>)</mo>\n    </mrow>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\":derivative\">\n    <mo>(</mo>\n    <mi>x</mi>\n    <mn>1</mn>\n    <mo>)</mo>\n  </mrow>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:d>\n      <m:dPr>\n        <m:begChr m:val=\"(\"/>\n        <m:sepChr m:val=\"\"/>\n        <m:endChr m:val=\")\"/>\n      </m:dPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:e>\n    </m:d>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -6126,7 +6126,7 @@
           "value": "ⓘ(1(x 1))"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"1\">\n      <mo>(</mo>\n      <mi>x</mi>\n      <mn>1</mn>\n      <mo>)</mo>\n    </mrow>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\"1\">\n    <mo>(</mo>\n    <mi>x</mi>\n    <mn>1</mn>\n    <mo>)</mo>\n  </mrow>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:d>\n      <m:dPr>\n        <m:begChr m:val=\"(\"/>\n        <m:sepChr m:val=\"\"/>\n        <m:endChr m:val=\")\"/>\n      </m:dPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:e>\n    </m:d>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -6206,7 +6206,7 @@
           "value": "ⓘ(\"variable\"(x 1))"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"variable\">\n      <mo>(</mo>\n      <mi>x</mi>\n      <mn>1</mn>\n      <mo>)</mo>\n    </mrow>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\"variable\">\n    <mo>(</mo>\n    <mi>x</mi>\n    <mn>1</mn>\n    <mo>)</mo>\n  </mrow>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:d>\n      <m:dPr>\n        <m:begChr m:val=\"(\"/>\n        <m:sepChr m:val=\"\"/>\n        <m:endChr m:val=\")\"/>\n      </m:dPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:e>\n    </m:d>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -6376,7 +6376,7 @@
           "value": "ⓘ(x(x 1))"
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\"[#&lt;Plurimath::Math::Symbols::Symbol @value=&quot;x&quot;&gt;]\">\n      <mo>(</mo>\n      <mi>x</mi>\n      <mn>1</mn>\n      <mo>)</mo>\n    </mrow>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\"[#&lt;Plurimath::Math::Symbols::Symbol @value=&quot;x&quot;&gt;]\">\n    <mo>(</mo>\n    <mi>x</mi>\n    <mn>1</mn>\n    <mo>)</mo>\n  </mrow>\n</math>\n"
         },
         "omml": {
           "value": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:d>\n      <m:dPr>\n        <m:begChr m:val=\"(\"/>\n        <m:sepChr m:val=\"\"/>\n        <m:endChr m:val=\")\"/>\n      </m:dPr>\n      <m:e>\n        <m:r>\n          <m:t>x</m:t>\n        </m:r>\n        <m:r>\n          <m:t>1</m:t>\n        </m:r>\n      </m:e>\n    </m:d>\n  </m:oMath>\n</m:oMathPara>\n"
@@ -9106,7 +9106,7 @@
           }
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mi intent=\":derivative\">x</mi>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mi intent=\":derivative\">x</mi>\n</math>\n"
         },
         "omml": {
           "error": {
@@ -9519,7 +9519,7 @@
           }
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi intent=\":derivative\">x</mi>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mi intent=\":derivative\">x</mi>\n</math>\n"
         },
         "omml": {
           "error": {
@@ -9641,7 +9641,7 @@
           }
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mrow intent=\":derivative(1,f(x),x)\">\n      <msup>\n        <mi>f</mi>\n        <mi>&#x27;</mi>\n      </msup>\n      <mrow intent=\":fenced\">\n        <mo>(</mo>\n        <mi>x</mi>\n        <mn>1</mn>\n        <mo>)</mo>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mrow intent=\":derivative(1,f(x),x)\">\n    <msup>\n      <mi>f</mi>\n      <mi>&#x27;</mi>\n    </msup>\n    <mrow intent=\":fenced\">\n      <mo>(</mo>\n      <mi>x</mi>\n      <mn>1</mn>\n      <mo>)</mo>\n    </mrow>\n  </mrow>\n</math>\n"
         },
         "omml": {
           "error": {
@@ -9859,7 +9859,7 @@
           }
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mrow intent=\":derivative(1,f(x),x)\">\n      <msup>\n        <mi>f</mi>\n        <mi>&#x27;</mi>\n      </msup>\n      <mrow intent=\":fenced\">\n        <mo>(</mo>\n        <mi>x</mi>\n        <mn>1</mn>\n        <mo>)</mo>\n      </mrow>\n      <mi>x</mi>\n    </mrow>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mrow intent=\":derivative(1,f(x),x)\">\n    <msup>\n      <mi>f</mi>\n      <mi>&#x27;</mi>\n    </msup>\n    <mrow intent=\":fenced\">\n      <mo>(</mo>\n      <mi>x</mi>\n      <mn>1</mn>\n      <mo>)</mo>\n    </mrow>\n    <mi>x</mi>\n  </mrow>\n</math>\n"
         },
         "omml": {
           "error": {
@@ -9926,7 +9926,7 @@
           }
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mi intent=\":derivative\">x</mi>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mi intent=\":derivative\">x</mi>\n</math>\n"
         },
         "omml": {
           "error": {
@@ -10048,7 +10048,7 @@
           }
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\":derivative(1,f(x),x)\">\n      <msup>\n        <mi>f</mi>\n        <mi>&#x27;</mi>\n      </msup>\n      <mrow intent=\":fenced\">\n        <mo>(</mo>\n        <mi>x</mi>\n        <mn>1</mn>\n        <mo>)</mo>\n      </mrow>\n    </mrow>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\":derivative(1,f(x),x)\">\n    <msup>\n      <mi>f</mi>\n      <mi>&#x27;</mi>\n    </msup>\n    <mrow intent=\":fenced\">\n      <mo>(</mo>\n      <mi>x</mi>\n      <mn>1</mn>\n      <mo>)</mo>\n    </mrow>\n  </mrow>\n</math>\n"
         },
         "omml": {
           "error": {
@@ -10266,7 +10266,7 @@
           }
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\":derivative(1,f(x),x)\">\n      <msup>\n        <mi>f</mi>\n        <mi>&#x27;</mi>\n      </msup>\n      <mrow intent=\":fenced\">\n        <mo>(</mo>\n        <mi>x</mi>\n        <mn>1</mn>\n        <mo>)</mo>\n      </mrow>\n      <mi>x</mi>\n    </mrow>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\":derivative(1,f(x),x)\">\n    <msup>\n      <mi>f</mi>\n      <mi>&#x27;</mi>\n    </msup>\n    <mrow intent=\":fenced\">\n      <mo>(</mo>\n      <mi>x</mi>\n      <mn>1</mn>\n      <mo>)</mo>\n    </mrow>\n    <mi>x</mi>\n  </mrow>\n</math>\n"
         },
         "omml": {
           "error": {
@@ -10333,7 +10333,7 @@
           }
         },
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi intent=\":derivative\">x</mi>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mi intent=\":derivative\">x</mi>\n</math>\n"
         },
         "omml": {
           "error": {

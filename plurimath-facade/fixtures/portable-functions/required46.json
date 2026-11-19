@@ -196,7 +196,7 @@
     "profile": "model-options",
     "format": "mathml",
     "expected": {
-      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow>\n      <mo>[</mo>\n      <mtable>\n        <mtr>\n          <mtd>\n            <mn>1</mn>\n          </mtd>\n          <mtd>\n            <mn>2</mn>\n          </mtd>\n        </mtr>\n        <mtr>\n          <mtd>\n            <mtable>\n              <mtr>\n                <mtd>\n                  <mn>3</mn>\n                </mtd>\n              </mtr>\n              <mtr>\n                <mtd>\n                  <mi>&#x3c3;</mi>\n                </mtd>\n              </mtr>\n            </mtable>\n          </mtd>\n          <mtd>\n            <mn>5</mn>\n          </mtd>\n        </mtr>\n      </mtable>\n      <mo>]</mo>\n    </mrow>\n  </mstyle>\n</math>\n"
+      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow>\n    <mo>[</mo>\n    <mtable>\n      <mtr>\n        <mtd>\n          <mn>1</mn>\n        </mtd>\n        <mtd>\n          <mn>2</mn>\n        </mtd>\n      </mtr>\n      <mtr>\n        <mtd>\n          <mtable>\n            <mtr>\n              <mtd>\n                <mn>3</mn>\n              </mtd>\n            </mtr>\n            <mtr>\n              <mtd>\n                <mi>&#x3c3;</mi>\n              </mtd>\n            </mtr>\n          </mtable>\n        </mtd>\n        <mtd>\n          <mn>5</mn>\n        </mtd>\n      </mtr>\n    </mtable>\n    <mo>]</mo>\n  </mrow>\n</math>\n"
     },
     "actual": {
       "abi_version": 1,
@@ -341,7 +341,7 @@
     "profile": "model-options",
     "format": "mathml",
     "expected": {
-      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mrow>\n      <mo>[</mo>\n      <mtable>\n        <mtr>\n          <mtd>\n            <mn>1</mn>\n          </mtd>\n          <mtd>\n            <mn>2</mn>\n          </mtd>\n        </mtr>\n        <mtr>\n          <mtd>\n            <mtable>\n              <mtr>\n                <mtd>\n                  <mn>3</mn>\n                </mtd>\n              </mtr>\n              <mtr>\n                <mtd>\n                  <mi>&#x3c3;</mi>\n                </mtd>\n              </mtr>\n            </mtable>\n          </mtd>\n          <mtd>\n            <mn>5</mn>\n          </mtd>\n        </mtr>\n      </mtable>\n      <mo>]</mo>\n    </mrow>\n  </mstyle>\n</math>\n"
+      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mrow>\n    <mo>[</mo>\n    <mtable>\n      <mtr>\n        <mtd>\n          <mn>1</mn>\n        </mtd>\n        <mtd>\n          <mn>2</mn>\n        </mtd>\n      </mtr>\n      <mtr>\n        <mtd>\n          <mtable>\n            <mtr>\n              <mtd>\n                <mn>3</mn>\n              </mtd>\n            </mtr>\n            <mtr>\n              <mtd>\n                <mi>&#x3c3;</mi>\n              </mtd>\n            </mtr>\n          </mtable>\n        </mtd>\n        <mtd>\n          <mn>5</mn>\n        </mtd>\n      </mtr>\n    </mtable>\n    <mo>]</mo>\n  </mrow>\n</math>\n"
     },
     "actual": {
       "abi_version": 1,
@@ -487,7 +487,7 @@
     "profile": "model-options",
     "format": "mathml",
     "expected": {
-      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mover>\n      <mrow>\n        <mo>&#x2211;</mo>\n      </mrow>\n      <mo>&#x23de;</mo>\n    </mover>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mo>&#x220f;</mo>\n  </mstyle>\n</math>\n"
+      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mover>\n    <mrow>\n      <mo>&#x2211;</mo>\n    </mrow>\n    <mo>&#x23de;</mo>\n  </mover>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mo>&#x220f;</mo>\n</math>\n"
     },
     "actual": {
       "abi_version": 1,
@@ -555,7 +555,7 @@
     "profile": "model-options",
     "format": "mathml",
     "expected": {
-      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mover>\n      <mrow>\n        <mo>&#x2211;</mo>\n      </mrow>\n      <mo>&#x23de;</mo>\n    </mover>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mo>&#x220f;</mo>\n  </mstyle>\n</math>\n"
+      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mover>\n    <mrow>\n      <mo>&#x2211;</mo>\n    </mrow>\n    <mo>&#x23de;</mo>\n  </mover>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mo>&#x220f;</mo>\n</math>\n"
     },
     "actual": {
       "abi_version": 1,
@@ -624,7 +624,7 @@
     "profile": "model-options",
     "format": "mathml",
     "expected": {
-      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtable>\n      <mtr>\n        <mtd>\n          <mtable>\n            <mtr>\n              <mtd>\n                <mi>a</mi>\n                <mi>b</mi>\n              </mtd>\n            </mtr>\n            <mtr>\n              <mtd>\n                <mi>d</mi>\n              </mtd>\n            </mtr>\n          </mtable>\n        </mtd>\n      </mtr>\n      <mtr>\n        <mtd>\n          <mtable>\n            <mtr>\n              <mtd>\n                <mi>d</mi>\n              </mtd>\n            </mtr>\n            <mtr>\n              <mtd>\n                <mi>e</mi>\n                <mi>c</mi>\n              </mtd>\n            </mtr>\n          </mtable>\n        </mtd>\n      </mtr>\n    </mtable>\n  </mstyle>\n</math>\n"
+      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mtable>\n    <mtr>\n      <mtd>\n        <mtable>\n          <mtr>\n            <mtd>\n              <mi>a</mi>\n              <mi>b</mi>\n            </mtd>\n          </mtr>\n          <mtr>\n            <mtd>\n              <mi>d</mi>\n            </mtd>\n          </mtr>\n        </mtable>\n      </mtd>\n    </mtr>\n    <mtr>\n      <mtd>\n        <mtable>\n          <mtr>\n            <mtd>\n              <mi>d</mi>\n            </mtd>\n          </mtr>\n          <mtr>\n            <mtd>\n              <mi>e</mi>\n              <mi>c</mi>\n            </mtd>\n          </mtr>\n        </mtable>\n      </mtd>\n    </mtr>\n  </mtable>\n</math>\n"
     },
     "actual": {
       "abi_version": 1,
@@ -741,7 +741,7 @@
     "profile": "model-options",
     "format": "mathml",
     "expected": {
-      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mtable>\n      <mtr>\n        <mtd>\n          <mtable>\n            <mtr>\n              <mtd>\n                <mi>a</mi>\n                <mi>b</mi>\n              </mtd>\n            </mtr>\n            <mtr>\n              <mtd>\n                <mi>d</mi>\n              </mtd>\n            </mtr>\n          </mtable>\n        </mtd>\n      </mtr>\n      <mtr>\n        <mtd>\n          <mtable>\n            <mtr>\n              <mtd>\n                <mi>d</mi>\n              </mtd>\n            </mtr>\n            <mtr>\n              <mtd>\n                <mi>e</mi>\n                <mi>c</mi>\n              </mtd>\n            </mtr>\n          </mtable>\n        </mtd>\n      </mtr>\n    </mtable>\n  </mstyle>\n</math>\n"
+      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mtable>\n    <mtr>\n      <mtd>\n        <mtable>\n          <mtr>\n            <mtd>\n              <mi>a</mi>\n              <mi>b</mi>\n            </mtd>\n          </mtr>\n          <mtr>\n            <mtd>\n              <mi>d</mi>\n            </mtd>\n          </mtr>\n        </mtable>\n      </mtd>\n    </mtr>\n    <mtr>\n      <mtd>\n        <mtable>\n          <mtr>\n            <mtd>\n              <mi>d</mi>\n            </mtd>\n          </mtr>\n          <mtr>\n            <mtd>\n              <mi>e</mi>\n              <mi>c</mi>\n            </mtd>\n          </mtr>\n        </mtable>\n      </mtd>\n    </mtr>\n  </mtable>\n</math>\n"
     },
     "actual": {
       "abi_version": 1,
@@ -859,7 +859,7 @@
     "profile": "model-options",
     "format": "mathml",
     "expected": {
-      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mover>\n      <mrow></mrow>\n      <mrow>\n        <mrow>\n          <mi>d</mi>\n        </mrow>\n      </mrow>\n    </mover>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mover>\n      <mrow>\n        <mrow>\n          <mi>s</mi>\n          <mo linebreak=\"newline\"/>\n          <mi>p</mi>\n        </mrow>\n      </mrow>\n      <mrow>\n        <mi>e</mi>\n      </mrow>\n    </mover>\n  </mstyle>\n</math>\n"
+      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mover>\n    <mrow></mrow>\n    <mrow>\n      <mrow>\n        <mi>d</mi>\n      </mrow>\n    </mrow>\n  </mover>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mover>\n    <mrow>\n      <mrow>\n        <mi>s</mi>\n        <mo linebreak=\"newline\"/>\n        <mi>p</mi>\n      </mrow>\n    </mrow>\n    <mrow>\n      <mi>e</mi>\n    </mrow>\n  </mover>\n</math>\n"
     },
     "actual": {
       "abi_version": 1,
@@ -950,7 +950,7 @@
     "profile": "model-options",
     "format": "mathml",
     "expected": {
-      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mover>\n      <mrow></mrow>\n      <mrow>\n        <mrow>\n          <mi>d</mi>\n        </mrow>\n      </mrow>\n    </mover>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mover>\n      <mrow>\n        <mrow>\n          <mi>s</mi>\n          <mo linebreak=\"newline\"/>\n          <mi>p</mi>\n        </mrow>\n      </mrow>\n      <mrow>\n        <mi>e</mi>\n      </mrow>\n    </mover>\n  </mstyle>\n</math>\n"
+      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mover>\n    <mrow></mrow>\n    <mrow>\n      <mrow>\n        <mi>d</mi>\n      </mrow>\n    </mrow>\n  </mover>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mover>\n    <mrow>\n      <mrow>\n        <mi>s</mi>\n        <mo linebreak=\"newline\"/>\n        <mi>p</mi>\n      </mrow>\n    </mrow>\n    <mrow>\n      <mi>e</mi>\n    </mrow>\n  </mover>\n</math>\n"
     },
     "actual": {
       "abi_version": 1,
@@ -1042,7 +1042,7 @@
     "profile": "model-options",
     "format": "mathml",
     "expected": {
-      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\":equations\">\n      <mo>{</mo>\n      <mtable intent=\":cases\">\n        <mtr>\n          <mtd>\n            <mi>a</mi>\n          </mtd>\n          <mtd>\n            <mi>b</mi>\n          </mtd>\n        </mtr>\n        <mtr>\n          <mtd>\n            <mi>c</mi>\n          </mtd>\n          <mtd>\n            <mi>d</mi>\n          </mtd>\n        </mtr>\n      </mtable>\n      <mo></mo>\n    </mrow>\n  </mstyle>\n</math>\n"
+      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\":equations\">\n    <mo>{</mo>\n    <mtable intent=\":cases\">\n      <mtr>\n        <mtd>\n          <mi>a</mi>\n        </mtd>\n        <mtd>\n          <mi>b</mi>\n        </mtd>\n      </mtr>\n      <mtr>\n        <mtd>\n          <mi>c</mi>\n        </mtd>\n        <mtd>\n          <mi>d</mi>\n        </mtd>\n      </mtr>\n    </mtable>\n    <mo></mo>\n  </mrow>\n</math>\n"
     },
     "actual": {
       "abi_version": 1,
@@ -1272,7 +1272,7 @@
     "profile": "model-options",
     "format": "mathml",
     "expected": {
-      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mtable intent=\":equations\">\n      <mtr>\n        <mtd>\n          <mi>a</mi>\n        </mtd>\n        <mtd>\n          <mi>b</mi>\n        </mtd>\n      </mtr>\n      <mtr>\n        <mtd>\n          <mi>c</mi>\n        </mtd>\n        <mtd>\n          <mi>d</mi>\n        </mtd>\n      </mtr>\n    </mtable>\n  </mstyle>\n</math>\n"
+      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mtable intent=\":equations\">\n    <mtr>\n      <mtd>\n        <mi>a</mi>\n      </mtd>\n      <mtd>\n        <mi>b</mi>\n      </mtd>\n    </mtr>\n    <mtr>\n      <mtd>\n        <mi>c</mi>\n      </mtd>\n      <mtd>\n        <mi>d</mi>\n      </mtd>\n    </mtr>\n  </mtable>\n</math>\n"
     },
     "actual": {
       "abi_version": 1,
@@ -1391,7 +1391,7 @@
     "profile": "model-options",
     "format": "mathml",
     "expected": {
-      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\":equations\">\n      <mo>(</mo>\n      <mtable intent=\":cases\">\n        <mtr>\n          <mtd>\n            <mi>a</mi>\n          </mtd>\n          <mtd>\n            <mi>b</mi>\n          </mtd>\n        </mtr>\n        <mtr>\n          <mtd>\n            <mi>c</mi>\n          </mtd>\n          <mtd>\n            <mi>d</mi>\n          </mtd>\n        </mtr>\n      </mtable>\n      <mo>)</mo>\n    </mrow>\n  </mstyle>\n</math>\n"
+      "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\":equations\">\n    <mo>(</mo>\n    <mtable intent=\":cases\">\n      <mtr>\n        <mtd>\n          <mi>a</mi>\n        </mtd>\n        <mtd>\n          <mi>b</mi>\n        </mtd>\n      </mtr>\n      <mtr>\n        <mtd>\n          <mi>c</mi>\n        </mtd>\n        <mtd>\n          <mi>d</mi>\n        </mtd>\n      </mtr>\n    </mtable>\n    <mo>)</mo>\n  </mrow>\n</math>\n"
     },
     "actual": {
       "abi_version": 1,

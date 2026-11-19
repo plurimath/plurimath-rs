@@ -432,7 +432,7 @@ fn xml_inner(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, String
             }
             nodes.push(attrs(
                 "mo",
-                vec![("rspace".into(), "thickmathspace".into())],
+                vec![("rspace".into(), "0.2778em".into())],
                 vec![text("&#x2062;")],
             ));
             nodes.push(row);

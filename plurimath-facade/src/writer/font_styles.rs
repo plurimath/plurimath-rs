@@ -169,11 +169,15 @@ pub(super) fn xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, S
     let p = argument(m)?;
     if f == "mathml" {
         let children = strict_slot_xml(p, f, ctx, false)?;
-        return Ok(vec![attrs(
-            "mstyle",
-            vec![("mathvariant".into(), family(m)?.0)],
-            children,
-        )]);
+        // LaTeX \displaystyle parses as a font, but it is a style, not a
+        // mathvariant value: emit displaystyle on the mrow (plurimath#477).
+        let variant = family(m)?.0;
+        let attributes = if variant == "displaystyle" {
+            vec![("displaystyle".into(), "true".into())]
+        } else {
+            vec![("mathvariant".into(), variant)]
+        };
+        return Ok(vec![attrs("mrow", attributes, children)]);
     }
     if f != "omml" {
         return Err("unported FontStyle XML format".into());
