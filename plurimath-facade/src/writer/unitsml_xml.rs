@@ -1,8 +1,9 @@
 //! Source `Unitsml#to_mathml` with `unitsml: {xml: true}`: the formula row gets
 //! an `xref` and the UnitsML records that unitsml-ruby `Formula#to_xml` builds.
-//! Units joined by `*`, each with an optional prefix and an integer power other
-//! than 1, are ported; every other staged shape (a `/` separator, a fractional
-//! or structured power, a power of 1) stays an unported capability.
+//! Units joined by `*`, `/` or `//`, each with an optional prefix and an integer
+//! power other than 1 (after a `/` inverts it), are ported; every other staged
+//! shape (a fractional or structured power, a power of 1) stays an unported
+//! capability.
 use super::{attrs, text, Xml};
 use serde_json::Value;
 use unitsdb_rs::{records, Collection, Lookup};
@@ -477,32 +478,53 @@ fn item(fields: &serde_json::Map<String, Value>) -> Result<Item, String> {
         power,
     })
 }
-// The units of a staged formula joined by `*`, with right-nested sub-formulas
-// flattened as Formula#extract_units does; any other separator or term is unported.
+// The units of a staged formula joined by `*`, `/` or `//`, with right-nested
+// sub-formulas flattened as Formula#extract_units does. As in the source
+// Parser#update_units_exponents, each `/` or `//` flips the inverse state for the
+// terms after it in the same formula, an inverted unit gets its power negated
+// (no power counts as 1), and a sub-formula starts from the state of its position
+// without passing its own flips back out. Any other separator or term is unported.
 fn items(staged: &Value) -> Result<Vec<Item>, String> {
+    terms(staged, false)
+}
+fn terms(staged: &Value, inverse: bool) -> Result<Vec<Item>, String> {
     let fields = staged
         .as_object()
         .ok_or_else(|| unported("for this staged shape"))?;
     let Some(value) = fields.get("value") else {
-        return Ok(vec![item(fields)?]);
+        let mut unit = item(fields)?;
+        if inverse {
+            let power = -unit.power.unwrap_or(1);
+            if power == 1 {
+                return Err(unported(format!("power 1 of {}", unit.name)));
+            }
+            unit.power = Some(power);
+        }
+        return Ok(vec![unit]);
     };
-    let terms = value
+    let values = value
         .as_array()
         .filter(|_| fields.len() == 1)
         .ok_or_else(|| unported("for this staged shape"))?;
-    if terms.len() % 2 == 0 {
+    if values.len() % 2 == 0 {
         return Err(unported("for a dangling separator"));
     }
     let mut out = vec![];
-    for (index, term) in terms.iter().enumerate() {
+    let mut inverse = inverse;
+    for (index, term) in values.iter().enumerate() {
         if index % 2 == 1 {
-            if term.as_object().map(|o| o.len()) != Some(1)
-                || term.get("text").and_then(Value::as_str) != Some("*")
-            {
-                return Err(unported("for a separator other than *"));
+            let separator = term
+                .as_object()
+                .filter(|o| o.len() == 1)
+                .and_then(|o| o.get("text"))
+                .and_then(Value::as_str);
+            match separator {
+                Some("*") => {}
+                Some("/" | "//") => inverse = !inverse,
+                _ => return Err(unported("for a separator other than *, / or //")),
             }
         } else {
-            out.extend(items(term)?);
+            out.extend(terms(term, inverse)?);
         }
     }
     Ok(out)
