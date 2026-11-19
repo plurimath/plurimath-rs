@@ -224,7 +224,7 @@ pub(super) fn latex_wrapped_with_value(v: &Value, value: String) -> Result<Strin
     let m = Model::from_value(v)?;
     let function_formula = if m.class == "Math::Function::None" {
         true
-    } else if m.kind() == "Formula" {
+    } else if m.class == "Math::Formula" || m.class.starts_with("Math::Formula::") {
         let values = m
             .field("value")
             .as_array()
@@ -239,14 +239,16 @@ pub(super) fn latex_wrapped_with_value(v: &Value, value: String) -> Result<Strin
             })
         };
         !has(&data()["left_classes"]) || !has(&data()["right_classes"])
+    } else if let Some(wrap) = data()["latex_wrap_static"][&m.class].as_bool() {
+        wrap
+    } else if m.class.starts_with("Math::Symbols::") {
+        // Every typed symbol inherits Symbol#validate_function_formula (false).
+        false
+    } else if m.class.starts_with("Math::Function::FontStyle::") {
+        // FontStyle#validate_function_formula is true; no subclass overrides it.
+        true
     } else {
-        match data()["latex_wrap_static"][&m.class].as_bool() {
-            Some(known) => known,
-            // Every Symbols subclass inherits Symbol#validate_function_formula (false);
-            // no subclass overrides it.
-            None if m.class.starts_with("Math::Symbols::") => false,
-            None => return Err("unported promised value-sensitive LaTeX wrapping predicate".into()),
-        }
+        return Err("unported promised value-sensitive LaTeX wrapping predicate".to_owned());
     };
     if function_formula {
         Ok(format!("{{ \\left ( {value} \\right ) }}"))
