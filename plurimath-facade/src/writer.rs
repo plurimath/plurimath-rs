@@ -777,7 +777,7 @@ fn normal_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, Strin
     if p.is_null() {
         return Ok(vec![if f == "mathml" {
             attrs(
-                "mstyle",
+                "mrow",
                 vec![("mathvariant".into(), "normal".into())],
                 vec![],
             )
@@ -798,7 +798,7 @@ fn normal_xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, Strin
     };
     if f == "mathml" {
         return Ok(vec![attrs(
-            "mstyle",
+            "mrow",
             vec![("mathvariant".into(), "normal".into())],
             c,
         )]);
@@ -3107,6 +3107,8 @@ fn root_xml(m: &Model, format: &str, ctx: &WriterContext) -> Result<Vec<Xml>, St
     }
     Ok(content)
 }
+// MathML 4 carries displaystyle on <math> itself, so no <mstyle> wrapper
+// is emitted (plurimath#477).
 fn mathml_document(content: Vec<Xml>, display_style: bool) -> String {
     format!(
         "{}\n",
@@ -3116,12 +3118,9 @@ fn mathml_document(content: Vec<Xml>, display_style: bool) -> String {
                 vec![
                     ("xmlns".into(), "http://www.w3.org/1998/Math/MathML".into()),
                     ("display".into(), "block".into()),
+                    ("displaystyle".into(), display_style.to_string()),
                 ],
-                vec![attrs(
-                    "mstyle",
-                    vec![("displaystyle".into(), display_style.to_string())],
-                    content
-                )]
+                content
             ),
             0
         )

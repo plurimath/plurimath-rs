@@ -107,7 +107,7 @@ pub(super) fn xml(m: &Model, f: &str, ctx: &WriterContext) -> Result<Vec<Xml>, S
         vec![]
     };
     Ok(vec![attrs(
-        "mstyle",
+        "mrow",
         attributes,
         strict_slot_xml(b, f, ctx, false)?,
     )])

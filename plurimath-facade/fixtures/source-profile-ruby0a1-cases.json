@@ -53,7 +53,7 @@
       "options": {
         "intent": true
       },
-      "expected_output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mrow intent=\":equations\">\n      <mo>{</mo>\n      <mtable intent=\":cases\">\n        <mtr>\n          <mtd>\n            <mi>x</mi>\n          </mtd>\n          <mtd>\n            <mi>y</mi>\n          </mtd>\n        </mtr>\n        <mtr>\n          <mtd>\n            <mi>z</mi>\n          </mtd>\n          <mtd>\n            <mi>w</mi>\n          </mtd>\n        </mtr>\n      </mtable>\n      <mo></mo>\n    </mrow>\n  </mstyle>\n</math>\n"
+      "expected_output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mrow intent=\":equations\">\n    <mo>{</mo>\n    <mtable intent=\":cases\">\n      <mtr>\n        <mtd>\n          <mi>x</mi>\n        </mtd>\n        <mtd>\n          <mi>y</mi>\n        </mtd>\n      </mtr>\n      <mtr>\n        <mtd>\n          <mi>z</mi>\n        </mtd>\n        <mtd>\n          <mi>w</mi>\n        </mtd>\n      </mtr>\n    </mtable>\n    <mo></mo>\n  </mrow>\n</math>\n"
     }
   ]
 }

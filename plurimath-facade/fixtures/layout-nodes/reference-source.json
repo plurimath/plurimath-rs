@@ -2575,7 +2575,7 @@
       },
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msgroup>\n      <mi>&#x3b8;</mi>\n      <mrow>\n        <mi>cos</mi>\n        <mrow>\n          <mi>asd</mi>\n        </mrow>\n      </mrow>\n    </msgroup>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msgroup>\n      <mrow>\n        <mtext>dsa</mtext>\n      </mrow>\n    </msgroup>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msgroup>\n      <mi>&#x3b3;</mi>\n    </msgroup>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <msgroup>\n    <mi>&#x3b8;</mi>\n    <mrow>\n      <mi>cos</mi>\n      <mrow>\n        <mi>asd</mi>\n      </mrow>\n    </mrow>\n  </msgroup>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <msgroup>\n    <mrow>\n      <mtext>dsa</mtext>\n    </mrow>\n  </msgroup>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <msgroup>\n    <mi>&#x3b3;</mi>\n  </msgroup>\n</math>\n"
         }
       }
     },
@@ -2657,7 +2657,7 @@
       },
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <msgroup>\n      <mi>&#x3b8;</mi>\n      <mrow>\n        <mi>cos</mi>\n        <mrow>\n          <mi>asd</mi>\n        </mrow>\n      </mrow>\n    </msgroup>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <msgroup>\n      <mrow>\n        <mtext>dsa</mtext>\n      </mrow>\n    </msgroup>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <msgroup>\n      <mi>&#x3b3;</mi>\n    </msgroup>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <msgroup>\n    <mi>&#x3b8;</mi>\n    <mrow>\n      <mi>cos</mi>\n      <mrow>\n        <mi>asd</mi>\n      </mrow>\n    </mrow>\n  </msgroup>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <msgroup>\n    <mrow>\n      <mtext>dsa</mtext>\n    </mrow>\n  </msgroup>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <msgroup>\n    <mi>&#x3b3;</mi>\n  </msgroup>\n</math>\n"
         }
       }
     },
@@ -2704,7 +2704,7 @@
       },
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mlongdiv>\n      <mi>&#x3b8;</mi>\n    </mlongdiv>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mlongdiv>\n      <mi>&#x3b3;</mi>\n    </mlongdiv>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mlongdiv>\n    <mi>&#x3b8;</mi>\n  </mlongdiv>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mlongdiv>\n    <mi>&#x3b3;</mi>\n  </mlongdiv>\n</math>\n"
         }
       }
     },
@@ -2752,7 +2752,7 @@
       },
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mlongdiv>\n      <mi>&#x3b8;</mi>\n    </mlongdiv>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mlongdiv>\n      <mi>&#x3b3;</mi>\n    </mlongdiv>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mlongdiv>\n    <mi>&#x3b8;</mi>\n  </mlongdiv>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mlongdiv>\n    <mi>&#x3b3;</mi>\n  </mlongdiv>\n</math>\n"
         }
       }
     },
@@ -2810,7 +2810,7 @@
       },
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mscarries>\n      <mrow>\n        <mo>&#x2211;</mo>\n      </mrow>\n    </mscarries>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mscarries>\n      <mo>&#x220f;</mo>\n    </mscarries>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mscarries>\n    <mrow>\n      <mo>&#x2211;</mo>\n    </mrow>\n  </mscarries>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mscarries>\n    <mo>&#x220f;</mo>\n  </mscarries>\n</math>\n"
         }
       }
     },
@@ -2869,7 +2869,7 @@
       },
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mscarries>\n      <mrow>\n        <mo>&#x2211;</mo>\n      </mrow>\n    </mscarries>\n  </mstyle>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"false\">\n    <mscarries>\n      <mo>&#x220f;</mo>\n    </mscarries>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mscarries>\n    <mrow>\n      <mo>&#x2211;</mo>\n    </mrow>\n  </mscarries>\n</math>\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"false\">\n  <mscarries>\n    <mo>&#x220f;</mo>\n  </mscarries>\n</math>\n"
         }
       }
     },
@@ -2898,7 +2898,7 @@
       "options": {},
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mlongdiv>\n      <mi>x</mi>\n    </mlongdiv>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mlongdiv>\n    <mi>x</mi>\n  </mlongdiv>\n</math>\n"
         }
       }
     },
@@ -2949,7 +2949,7 @@
       "options": {},
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mlongdiv>\n      <mrow>\n        <munderover>\n          <mo>&#x2211;</mo>\n          <mo>&</mo>\n          <mtext>so</mtext>\n        </munderover>\n      </mrow>\n    </mlongdiv>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mlongdiv>\n    <mrow>\n      <munderover>\n        <mo>&#x2211;</mo>\n        <mo>&</mo>\n        <mtext>so</mtext>\n      </munderover>\n    </mrow>\n  </mlongdiv>\n</math>\n"
         }
       }
     },
@@ -2973,7 +2973,7 @@
       "options": {},
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mlongdiv/>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mlongdiv/>\n</math>\n"
         }
       }
     },
@@ -3003,7 +3003,7 @@
       "options": {},
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mlongdiv>\n      <mi>x</mi>\n    </mlongdiv>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mlongdiv>\n    <mi>x</mi>\n  </mlongdiv>\n</math>\n"
         }
       }
     },
@@ -3032,7 +3032,7 @@
       "options": {},
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <merror>\n      <mi>x</mi>\n    </merror>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <merror>\n    <mi>x</mi>\n  </merror>\n</math>\n"
         }
       }
     },
@@ -3083,7 +3083,7 @@
       "options": {},
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <merror>\n      <mrow>\n        <munderover>\n          <mo>&#x2211;</mo>\n          <mo>&</mo>\n          <mtext>so</mtext>\n        </munderover>\n      </mrow>\n    </merror>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <merror>\n    <mrow>\n      <munderover>\n        <mo>&#x2211;</mo>\n        <mo>&</mo>\n        <mtext>so</mtext>\n      </munderover>\n    </mrow>\n  </merror>\n</math>\n"
         }
       }
     },
@@ -3107,7 +3107,7 @@
       "options": {},
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <merror/>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <merror/>\n</math>\n"
         }
       }
     },
@@ -3137,7 +3137,7 @@
       "options": {},
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <merror>\n      <mi>x</mi>\n    </merror>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <merror>\n    <mi>x</mi>\n  </merror>\n</math>\n"
         }
       }
     },
@@ -3166,7 +3166,7 @@
       "options": {},
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mscarries>\n      <mi>x</mi>\n    </mscarries>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mscarries>\n    <mi>x</mi>\n  </mscarries>\n</math>\n"
         }
       }
     },
@@ -3217,7 +3217,7 @@
       "options": {},
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mscarries>\n      <mrow>\n        <munderover>\n          <mo>&#x2211;</mo>\n          <mo>&</mo>\n          <mtext>so</mtext>\n        </munderover>\n      </mrow>\n    </mscarries>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mscarries>\n    <mrow>\n      <munderover>\n        <mo>&#x2211;</mo>\n        <mo>&</mo>\n        <mtext>so</mtext>\n      </munderover>\n    </mrow>\n  </mscarries>\n</math>\n"
         }
       }
     },
@@ -3241,7 +3241,7 @@
       "options": {},
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mscarries/>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mscarries/>\n</math>\n"
         }
       }
     },
@@ -3271,7 +3271,7 @@
       "options": {},
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mscarries>\n      <mi>x</mi>\n    </mscarries>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mscarries>\n    <mi>x</mi>\n  </mscarries>\n</math>\n"
         }
       }
     },
@@ -3302,7 +3302,7 @@
       "options": {},
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msgroup>\n      <mi>x</mi>\n    </msgroup>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <msgroup>\n    <mi>x</mi>\n  </msgroup>\n</math>\n"
         }
       }
     },
@@ -3355,7 +3355,7 @@
       "options": {},
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msgroup>\n      <mrow>\n        <munderover>\n          <mo>&#x2211;</mo>\n          <mo>&</mo>\n          <mtext>so</mtext>\n        </munderover>\n      </mrow>\n    </msgroup>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <msgroup>\n    <mrow>\n      <munderover>\n        <mo>&#x2211;</mo>\n        <mo>&</mo>\n        <mtext>so</mtext>\n      </munderover>\n    </mrow>\n  </msgroup>\n</math>\n"
         }
       }
     },
@@ -3406,7 +3406,7 @@
       "options": {},
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msgroup/>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <msgroup/>\n</math>\n"
         }
       }
     },
@@ -3438,7 +3438,7 @@
       "options": {},
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msgroup>\n      <mi>x</mi>\n    </msgroup>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <msgroup>\n    <mi>x</mi>\n  </msgroup>\n</math>\n"
         }
       }
     },
@@ -3479,7 +3479,7 @@
       "options": {},
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mphantom>\n      <mpadded mpadded=\"{depth: &quot;0&quot;, height: &quot;0&quot;}\" phantom=\"true\">\n        <mi>x</mi>\n      </mpadded>\n    </mphantom>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mphantom>\n    <mpadded mpadded=\"{depth: &quot;0&quot;, height: &quot;0&quot;}\" phantom=\"true\">\n      <mi>x</mi>\n    </mpadded>\n  </mphantom>\n</math>\n"
         }
       }
     },
@@ -3519,7 +3519,7 @@
       "options": {},
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mphantom>\n      <mpadded mpadded=\"{width: &quot;0&quot;}\" phantom=\"true\">\n        <mi>x</mi>\n      </mpadded>\n    </mphantom>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mphantom>\n    <mpadded mpadded=\"{width: &quot;0&quot;}\" phantom=\"true\">\n      <mi>x</mi>\n    </mpadded>\n  </mphantom>\n</math>\n"
         }
       }
     },
@@ -3560,7 +3560,7 @@
       "options": {},
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mphantom>\n      <mpadded mpadded=\"{height: &quot;0&quot;, depth: &quot;0&quot;}\" phantom=\"false\">\n        <mi>x</mi>\n      </mpadded>\n    </mphantom>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mphantom>\n    <mpadded mpadded=\"{height: &quot;0&quot;, depth: &quot;0&quot;}\" phantom=\"false\">\n      <mi>x</mi>\n    </mpadded>\n  </mphantom>\n</math>\n"
         }
       }
     },
@@ -3594,7 +3594,7 @@
       "options": {},
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mphantom>\n      <mpadded>\n        <mi>x</mi>\n      </mpadded>\n    </mphantom>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mphantom>\n    <mpadded>\n      <mi>x</mi>\n    </mpadded>\n  </mphantom>\n</math>\n"
         }
       }
     },
@@ -3620,7 +3620,7 @@
       "options": {},
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi/>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mi/>\n</math>\n"
         }
       }
     },
@@ -3654,7 +3654,7 @@
       "options": {},
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi/>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mi/>\n</math>\n"
         }
       }
     },
@@ -3701,7 +3701,7 @@
       "options": {},
       "writers": {
         "mathml": {
-          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mi/>\n  </mstyle>\n</math>\n"
+          "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mi/>\n</math>\n"
         }
       }
     },
