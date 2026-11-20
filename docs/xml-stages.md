@@ -1,6 +1,6 @@
 # Generated XML stage preview
 
-With the `xml-stages` feature on a native target, the facade exposes the
+With the `xml-stages` feature on native and wasm32 targets, the facade exposes the
 upstream generated stage readers and Ruby-compatible XML writers:
 
 ```rust
@@ -37,13 +37,17 @@ stage PRs land, and all temporary pins move to verified main commits:
 - Both depend on the lutaml-rs#10 fork head
   `02340c77d8034826f285927520eda83cb89d4955`.
 
-XML stages are **native-only** for now. The stage SDK pins Moxml `c55a7ec`,
-while the facade needs `e49cdfc` for its source XML parser policies. Both
-Moxml revisions define the same wasm-bindgen exports. The upstream pins
-must align before these stage dependencies can enter one WASM binary.
-A root Cargo patch to a different revision of the same Git source is rejected
-by Cargo. Target-scoped dependencies preserve the existing facade WASM build,
-including with `--all-features`; no XML stage export is added to WASM yet.
+The facade pins Moxml `4e9c1b2869f95b3c5174d52a84ab8c172e78ceb5` with
+`default-features = false`, using the optional standalone WASM bindings change
+in lutaml/moxml-rs#28. The stage SDK still pins Moxml `c55a7ec`; only that
+revision exports its wasm-bindgen face. Both revisions retain their Rust
+model/document APIs, including the facade's source parser policies.
+This removes the duplicate-export linker blocker without a same-source Cargo
+patch. The Moxml pin is temporary until that PR merges; keep this facade PR
+draft until all upstream holds above and this new pin are resolved.
+
+On wasm32, the typed Rust stage API and raw C ABI are available. This does not
+add a TypeScript wrapper or route stage models through the common facade wire.
 
 ## Focused verification
 

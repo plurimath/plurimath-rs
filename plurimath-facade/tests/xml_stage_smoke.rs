@@ -1,4 +1,4 @@
-#![cfg(all(feature = "xml-stages", not(target_arch = "wasm32")))]
+#![cfg(feature = "xml-stages")]
 
 use plurimath_facade::xml_parse::stage::{self, Document};
 use serde_json::{json, Value};

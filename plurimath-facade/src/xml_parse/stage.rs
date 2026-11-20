@@ -1,7 +1,7 @@
 //! Opt-in generated XML stages. These models are not the common facade wire.
 //!
-//! Kept native-only until the stage SDK and facade use one Moxml revision:
-//! their two wasm-bindgen faces currently export the same symbol names.
+//! Available on native and wasm32 targets. The facade disables the standalone
+//! bindings on its direct Moxml dependency to avoid duplicate WASM exports.
 use serde_json::{json, Value};
 
 /// Generated document models, with OMML root namespace declarations retained.

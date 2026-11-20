@@ -22,16 +22,15 @@ serde_json = { version = "=1.0.140", features = ["arbitrary_precision", "preserv
 latexmath = { git = "https://github.com/plurimath/latexmath-rs", rev = "a02d96606dd215fed30762209bdae7d8bae4e2c4" }
 # umath-rs main on parsanol 1.5.9: replays all 747 unicode gen-5 raw-tree rows against Ruby.
 umath = { package = "plurimath-umath", git = "https://github.com/plurimath/umath-rs", rev = "72969db0e4b056e6a35301bd0d11d728d683cb4c" }
-moxml = { git = "https://github.com/lutaml/moxml-rs", rev = "e49cdfc97df78bc681c804947e122399f09c50ae" }
+moxml = { git = "https://github.com/lutaml/moxml-rs", rev = "4e9c1b2869f95b3c5174d52a84ab8c172e78ceb5", default-features = false }
 
 asciiunits = { git = "https://github.com/unitsml/asciiunits-rs", rev = "5d917151d5ef6964015af696e3d69ca4ceea0f1a" }
 unitsdb-rs = { git = "https://github.com/unitsml/unitsdb-rs", rev = "969a131b8992930a6ff6f869291f1f0d7cb68d33" }
 
 parsanol = "1.5.9"
 
-# The stage SDK pins an older Moxml with colliding wasm-bindgen exports.
-# Keep the native prestage opt-in until the upstream pins are aligned.
-[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+# The direct Moxml dependency disables standalone WASM exports so the older
+# stage SDK Moxml remains the only copy exporting its wasm-bindgen face.
 # TEMPORARY: mml-rs#4 and omml-rs#7 (includes #5); both use lutaml-rs#10.
 mml = { package = "mml-rs", git = "https://github.com/plurimath/mml-rs", rev = "890b13ae4d486d67d5d56a8502bbb4502540aed0", optional = true }
 omml = { package = "omml-rs", git = "https://github.com/plurimath/omml-rs", rev = "fb475290b6657d4a53fbf9dbf86f19902c744035", optional = true }

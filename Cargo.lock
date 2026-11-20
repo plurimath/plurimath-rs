@@ -223,7 +223,7 @@ name = "lutaml-rs"
 version = "0.1.0"
 source = "git+https://github.com/suleman-uzair/lutaml-rs?rev=02340c77d8034826f285927520eda83cb89d4955#02340c77d8034826f285927520eda83cb89d4955"
 dependencies = [
- "moxml 0.1.0 (git+https://github.com/lutaml/moxml-rs?rev=c55a7ecf60764d75a7a0ef54f0e483ec40df4b73)",
+ "moxml 0.1.0",
  "num-bigint",
  "num-rational",
  "num-traits",
@@ -270,11 +270,12 @@ dependencies = [
 
 [[package]]
 name = "moxml"
-version = "0.1.0"
-source = "git+https://github.com/lutaml/moxml-rs?rev=e49cdfc97df78bc681c804947e122399f09c50ae#e49cdfc97df78bc681c804947e122399f09c50ae"
+version = "0.1.7"
+source = "git+https://github.com/lutaml/moxml-rs?rev=4e9c1b2869f95b3c5174d52a84ab8c172e78ceb5#4e9c1b2869f95b3c5174d52a84ab8c172e78ceb5"
 dependencies = [
+ "quick-xml",
  "regex",
- "wasm-bindgen",
+ "serde_json",
 ]
 
 [[package]]
@@ -385,7 +386,7 @@ dependencies = [
  "asciiunits",
  "latexmath",
  "mml-rs",
- "moxml 0.1.0 (git+https://github.com/lutaml/moxml-rs?rev=e49cdfc97df78bc681c804947e122399f09c50ae)",
+ "moxml 0.1.7",
  "omml-rs",
  "parsanol",
  "plurimath-amath",
@@ -436,6 +437,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "985e7ec9bb745e6ce6535b544d84d6cd6f7ad8bd711c398938ae983b91a766d9"
 dependencies = [
  "unicode-ident",
+]
+
+[[package]]
+name = "quick-xml"
+version = "0.36.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f7649a7b4df05aed9ea7ec6f628c67c9953a43869b8bc50929569b2999d443fe"
+dependencies = [
+ "memchr",
 ]
 
 [[package]]

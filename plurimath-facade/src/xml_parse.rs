@@ -11,7 +11,7 @@ use std::sync::OnceLock;
 mod entity_wrapper;
 
 /// Generated XML stage models, separate from the common Plurimath wire.
-#[cfg(all(feature = "xml-stages", not(target_arch = "wasm32")))]
+#[cfg(feature = "xml-stages")]
 pub mod stage;
 
 const MATHML: &str = "http://www.w3.org/1998/Math/MathML";
