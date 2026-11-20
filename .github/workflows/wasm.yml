@@ -1,7 +1,7 @@
 name: WASM
 
-# Compile check for the wasm32-unknown-unknown target, the TS-WASM leg
-# of the stack. Build only; nothing is published from this workflow.
+# Build the TS-WASM leg and execute the facade against native/Ruby oracles.
+# Upload the tested CI artifact; nothing is published from this workflow.
 on:
   push:
     branches: [main]
@@ -18,6 +18,8 @@ concurrency:
 env:
   CARGO_TERM_COLOR: always
   CARGO_TARGET_DIR: target
+  CARGO_BUILD_JOBS: 2
+  CARGO_INCREMENTAL: 0
 
 jobs:
   wasm:
@@ -29,9 +31,35 @@ jobs:
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - name: Install Rust toolchain
         run: rustup toolchain install stable --profile minimal --target wasm32-unknown-unknown
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
       - name: Build the library for wasm32 (default features)
         run: cargo +stable build --locked --release --target wasm32-unknown-unknown --lib
       - name: Build the library for wasm32 (workspace, all features)
         run: cargo +stable build --locked --release --target wasm32-unknown-unknown --workspace --lib --all-features
+      - name: Build the facade runtime with its parser stack budget
+        env:
+          CARGO_TARGET_WASM32_UNKNOWN_UNKNOWN_RUSTFLAGS: -C link-arg=-zstack-size=8388608
+        run: cargo +stable build --locked --release --target wasm32-unknown-unknown -p plurimath-facade --lib
+      - name: Build the native differential oracle
+        run: cargo +stable build --locked --release -p plurimath-facade --example request
+      - name: Package the official web glue and source provenance
+        shell: bash
+        run: |
+          bindgen=$(python3 scripts/fetch_wasm_bindgen.py --lockfile Cargo.lock --output "$RUNNER_TEMP/wasm-bindgen")
+          python3 scripts/package_facade_wasm.py --bindgen "$bindgen" --wasm target/wasm32-unknown-unknown/release/plurimath_facade.wasm --output "$RUNNER_TEMP/plurimath-facade-wasm"
+      - name: Compare Node WASM with the native wire and frozen Ruby cases
+        shell: bash
+        run: |
+          node scripts/check_facade_wasm.mjs --wasm "$RUNNER_TEMP/plurimath-facade-wasm/facade_bg.wasm" --glue "$RUNNER_TEMP/plurimath-facade-wasm/facade.js" --native target/release/examples/request | tee "$RUNNER_TEMP/plurimath-facade-wasm/runtime-check.json"
+      - name: Upload the tested facade runtime
+        uses: actions/upload-artifact@v4
+        with:
+          name: plurimath-facade-wasm-runtime
+          path: ${{ runner.temp }}/plurimath-facade-wasm
+          if-no-files-found: error

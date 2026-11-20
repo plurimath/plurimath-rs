@@ -1,0 +1,64 @@
+{
+  "schema": "plurimath-facade-wasm-smoke/1",
+  "purpose": "Small runtime differential probe, not full corpus or LML realization parity. Ruby text-writer/model checks use the existing frozen native-slice-ruby.json.",
+  "writers": [
+    "asciimath",
+    "latex",
+    "unicodemath"
+  ],
+  "parse": [
+    {
+      "id": "ascii-fraction",
+      "format": "asciimath",
+      "input": "a/b"
+    },
+    {
+      "id": "ascii-sum",
+      "format": "asciimath",
+      "input": "x+y"
+    },
+    {
+      "id": "latex-integer",
+      "format": "latex",
+      "input": "1"
+    },
+    {
+      "id": "latex-decimal",
+      "format": "latex",
+      "input": "3.14"
+    },
+    {
+      "id": "unicode-round",
+      "format": "unicode",
+      "input": "(x)"
+    },
+    {
+      "id": "unicode-square-alias",
+      "format": "unicodemath",
+      "input": "[x]"
+    },
+    {
+      "id": "unicode-utf8",
+      "format": "unicode",
+      "input": "α"
+    }
+  ],
+  "refusals": [
+    {
+      "id": "invalid-json",
+      "wire": "{"
+    },
+    {
+      "id": "invalid-operation",
+      "wire": "{\"op\":\"not-an-operation\"}"
+    },
+    {
+      "id": "invalid-format",
+      "wire": "{\"op\":\"parse\",\"format\":\"not-a-format\",\"input\":\"x\"}"
+    },
+    {
+      "id": "invalid-input-type",
+      "wire": "{\"op\":\"parse\",\"format\":\"latex\",\"input\":4}"
+    }
+  ]
+}
