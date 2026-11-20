@@ -13,6 +13,19 @@ pub mod units_parse;
 pub mod writer;
 pub mod xml_parse;
 use serde_json::{json, Value};
+/// Parse a formula into the common model with the source's default options.
+///
+/// Format names and structured errors match [`request`], including the
+/// `unicode`/`unicodemath` alias. Use [`request`] for explicit parse options.
+pub fn parse(input: &str, format: &str) -> Result<Value, Value> {
+    let mut response = request(&json!({"op":"parse","input":input,"format":format}));
+    if response["ok"] == true {
+        Ok(response["model"].take())
+    } else {
+        Err(response["error"].take())
+    }
+}
+
 pub fn stage_tree(input: &str) -> Result<Value, String> {
     amath::Parser::new()
         .map_err(|e| e.to_string())?

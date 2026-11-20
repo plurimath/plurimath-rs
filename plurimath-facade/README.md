@@ -8,6 +8,29 @@ The current default-profile AsciiMath conversion matches160 source models. HTML 
 
 The full eight-input/six-writer contract remains in progress. Common IR is source-backed; generated per-class Rust API parity and universal writer parity are not claimed.
 
+## Rust parse API
+
+`plurimath_facade::parse(text, format)` returns `Result<serde_json::Value,
+serde_json::Value>`: the common model on success or the structured source error
+on failure. It uses the same route and default options as the JSON `parse`
+operation. Use `request` when supplying explicit options.
+
+```rust
+let model = plurimath_facade::parse("a/b", "asciimath").unwrap();
+assert_eq!(model["class"], "Math::Formula");
+```
+
+The AsciiMath, LaTeX and UnicodeMath routes consume exact git revisions of
+`amath-rs`, `latexmath-rs` and `umath-rs` in `Cargo.toml`. `unicode` and
+`unicodemath` select the same stage. `text_parse_smoke` checks six selected shared
+corpus inputs and their AsciiMath, LaTeX and UnicodeMath writer bytes. Fixture
+provenance records the source commit, generations and payload hashes; regenerate
+with `python scripts/export_text_parse_smoke.py`, or add `--check` to verify it
+(requires PyYAML).
+
+TODO: defer direct `mml-rs`/`omml-rs` dependencies until `lutaml-rs#9/#10` land.
+The current XML routes continue to use Moxml.
+
 ## C ABI
 
 `plurimath_facade_abi_version() ==1`; `plurimath_facade_json(input,length)` returns owned UTF-8 JSON; call `plurimath_facade_free` exactly once. The input remains caller-owned. Maximum request16MiB. Parser resource policies are explicit: AsciiMath capture depth budget1024; HTML preserves its source100-container normalization boundary. Requests:
