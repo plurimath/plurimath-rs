@@ -7,6 +7,10 @@ publish = false
 [lib]
 name = "plurimath_facade"
 crate-type = ["rlib", "cdylib"]
+[features]
+# Pre-staged until lutaml-rs#9/#10 and the XML stage PRs land.
+xml-stages = ["dep:mml", "dep:omml"]
+
 [dependencies]
 plurimath-json = { path = "transport" }
 # DECISION for root: amath `models` and lutaml-rs 945e6ad pin serde =1.0.219 exactly.
@@ -24,3 +28,10 @@ asciiunits = { git = "https://github.com/unitsml/asciiunits-rs", rev = "5d917151
 unitsdb-rs = { git = "https://github.com/unitsml/unitsdb-rs", rev = "969a131b8992930a6ff6f869291f1f0d7cb68d33" }
 
 parsanol = "1.5.9"
+
+# The stage SDK pins an older Moxml with colliding wasm-bindgen exports.
+# Keep the native prestage opt-in until the upstream pins are aligned.
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+# TEMPORARY: mml-rs#4 and omml-rs#7 (includes #5); both use lutaml-rs#10.
+mml = { package = "mml-rs", git = "https://github.com/plurimath/mml-rs", rev = "890b13ae4d486d67d5d56a8502bbb4502540aed0", optional = true }
+omml = { package = "omml-rs", git = "https://github.com/plurimath/omml-rs", rev = "fb475290b6657d4a53fbf9dbf86f19902c744035", optional = true }
