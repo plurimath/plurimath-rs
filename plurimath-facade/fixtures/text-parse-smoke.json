@@ -1,0 +1,81 @@
+{
+  "source": "plurimath/plurimath-testsuite",
+  "revision": "025eff6747230fed73da1316f2dc9aebb6e98801",
+  "purpose": "Focused facade routing and writer bytes; not full corpus or generated-class parity",
+  "payloads": [
+    {
+      "path": "stages/asciimath/generations/000006/payloads/frac.yaml",
+      "sha256": "254b15b16125084c30f02e888fb2073ad6bce2bb803f146c8e02e3910c2c5b30"
+    },
+    {
+      "path": "stages/latex/generations/000004/payloads/numbers.yaml",
+      "sha256": "21857e7964496d11fa9904c8312995848ed1a7ff470da9640b945c847b26b9f7"
+    },
+    {
+      "path": "stages/unicode/generations/000005/payloads/fences.yaml",
+      "sha256": "c9477714fddf180345561275215b7f8be30291e07b70ba3bf491b9d2445806b8"
+    }
+  ],
+  "rows": [
+    {
+      "id": "frac-simple",
+      "format": "asciimath",
+      "input": "a/b",
+      "expected": {
+        "asciimath": "frac(a)(b)",
+        "latex": "\\frac{a}{b}",
+        "unicodemath": "(a)/(b)"
+      }
+    },
+    {
+      "id": "frac-numeric",
+      "format": "asciimath",
+      "input": "2/3",
+      "expected": {
+        "asciimath": "frac(2)(3)",
+        "latex": "\\frac{2}{3}",
+        "unicodemath": "(2)/(3)"
+      }
+    },
+    {
+      "id": "latex-number-integer",
+      "format": "latex",
+      "input": "1",
+      "expected": {
+        "asciimath": "1",
+        "latex": "1",
+        "unicodemath": "1"
+      }
+    },
+    {
+      "id": "latex-number-decimal",
+      "format": "latex",
+      "input": "3.14",
+      "expected": {
+        "asciimath": "3.14",
+        "latex": "3.14",
+        "unicodemath": "3.14"
+      }
+    },
+    {
+      "id": "unicode-fence-round",
+      "format": "unicode",
+      "input": "(a)",
+      "expected": {
+        "asciimath": "(a)",
+        "latex": "( a )",
+        "unicodemath": "(a)"
+      }
+    },
+    {
+      "id": "unicode-fence-square",
+      "format": "unicode",
+      "input": "[a]",
+      "expected": {
+        "asciimath": "[a]",
+        "latex": "[ a ]",
+        "unicodemath": "[a]"
+      }
+    }
+  ]
+}
