@@ -69,6 +69,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4e7648175b45a9a48536d676f68d918270699102aa8dab5496df06904c914600"
 
 [[package]]
+name = "chrono"
+version = "0.4.42"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "145052bdd345b87320e369255277e3fb5152762ad123a901ef5c262dd38fe8d2"
+dependencies = [
+ "num-traits",
+]
+
+[[package]]
 name = "const-oid"
 version = "0.10.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -212,6 +221,19 @@ checksum = "b6d2cec3eae94f9f509c767b45932f1ada8350c4bdb85af2fcab4a3c14807981"
 [[package]]
 name = "lutaml-rs"
 version = "0.1.0"
+source = "git+https://github.com/suleman-uzair/lutaml-rs?rev=02340c77d8034826f285927520eda83cb89d4955#02340c77d8034826f285927520eda83cb89d4955"
+dependencies = [
+ "moxml 0.1.0",
+ "num-bigint",
+ "num-rational",
+ "num-traits",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "lutaml-rs"
+version = "0.1.0"
 source = "git+https://github.com/lutaml/lutaml-rs?rev=945e6ada11f52f77b959a5df1f05fdbd23092939#945e6ada11f52f77b959a5df1f05fdbd23092939"
 dependencies = [
  "num-bigint",
@@ -228,12 +250,32 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98"
 
 [[package]]
+name = "mml-rs"
+version = "0.1.0"
+source = "git+https://github.com/plurimath/mml-rs?rev=890b13ae4d486d67d5d56a8502bbb4502540aed0#890b13ae4d486d67d5d56a8502bbb4502540aed0"
+dependencies = [
+ "lutaml-rs 0.1.0 (git+https://github.com/suleman-uzair/lutaml-rs?rev=02340c77d8034826f285927520eda83cb89d4955)",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "moxml"
 version = "0.1.0"
-source = "git+https://github.com/lutaml/moxml-rs?rev=e49cdfc97df78bc681c804947e122399f09c50ae#e49cdfc97df78bc681c804947e122399f09c50ae"
+source = "git+https://github.com/lutaml/moxml-rs?rev=c55a7ecf60764d75a7a0ef54f0e483ec40df4b73#c55a7ecf60764d75a7a0ef54f0e483ec40df4b73"
 dependencies = [
  "regex",
  "wasm-bindgen",
+]
+
+[[package]]
+name = "moxml"
+version = "0.1.7"
+source = "git+https://github.com/lutaml/moxml-rs?rev=4e9c1b2869f95b3c5174d52a84ab8c172e78ceb5#4e9c1b2869f95b3c5174d52a84ab8c172e78ceb5"
+dependencies = [
+ "quick-xml",
+ "regex",
+ "serde_json",
 ]
 
 [[package]]
@@ -278,6 +320,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "omml-rs"
+version = "0.1.0"
+source = "git+https://github.com/plurimath/omml-rs?rev=fb475290b6657d4a53fbf9dbf86f19902c744035#fb475290b6657d4a53fbf9dbf86f19902c744035"
+dependencies = [
+ "chrono",
+ "lutaml-rs 0.1.0 (git+https://github.com/suleman-uzair/lutaml-rs?rev=02340c77d8034826f285927520eda83cb89d4955)",
+ "regex",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "once_cell"
 version = "1.21.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -318,7 +372,7 @@ name = "plurimath-amath"
 version = "0.1.0"
 source = "git+https://github.com/plurimath/amath-rs?rev=ae9de7e482f7db12efedec4d7ff107fefc88d987#ae9de7e482f7db12efedec4d7ff107fefc88d987"
 dependencies = [
- "lutaml-rs",
+ "lutaml-rs 0.1.0 (git+https://github.com/lutaml/lutaml-rs?rev=945e6ada11f52f77b959a5df1f05fdbd23092939)",
  "parsanol",
  "serde",
  "serde_json",
@@ -331,7 +385,9 @@ version = "0.1.0"
 dependencies = [
  "asciiunits",
  "latexmath",
- "moxml",
+ "mml-rs",
+ "moxml 0.1.7",
+ "omml-rs",
  "parsanol",
  "plurimath-amath",
  "plurimath-json",
@@ -381,6 +437,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "985e7ec9bb745e6ce6535b544d84d6cd6f7ad8bd711c398938ae983b91a766d9"
 dependencies = [
  "unicode-ident",
+]
+
+[[package]]
+name = "quick-xml"
+version = "0.36.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f7649a7b4df05aed9ea7ec6f628c67c9953a43869b8bc50929569b2999d443fe"
+dependencies = [
+ "memchr",
 ]
 
 [[package]]

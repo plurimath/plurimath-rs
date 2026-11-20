@@ -1,0 +1,141 @@
+{
+  "repository": "plurimath/plurimath-testsuite",
+  "scope": "stage XML output bytes and refusals; not common-model wire parity",
+  "sources": [
+    {
+      "revision": "674126a07fa1cf89c24bc50fadb305299e1d1b18",
+      "path": "stages/mathml/generations/000003/payloads/model-roundtrip-tokens.yaml",
+      "sha256": "6a2a6fee16103c73a90ed31fed41b7bdf0838b7d669db1c657d54cd22d828a00"
+    },
+    {
+      "revision": "674126a07fa1cf89c24bc50fadb305299e1d1b18",
+      "path": "stages/mathml/generations/000003/payloads/model-roundtrip-fractions.yaml",
+      "sha256": "49ed145d3649adae507c0f51ab391c318a86e6f2956f6f548fcdc8b97da3d6c9"
+    },
+    {
+      "revision": "674126a07fa1cf89c24bc50fadb305299e1d1b18",
+      "path": "stages/mathml/generations/000003/payloads/model-roundtrip-rejections.yaml",
+      "sha256": "fe416473e7407f4ff9f1a6b4693e65f1eb21d8fbfb32f62eceace4bb94e32cc2"
+    },
+    {
+      "revision": "9767c37a8d7bb21a0694780ecfcbc4f1fbd9eb39",
+      "path": "stages/omml/generations/000002/payloads/model-roundtrip-runs.yaml",
+      "sha256": "8d5af13a72562502cdbc247f6acceac78d6e390d2cac5ad1247bbbb8774e0c82"
+    },
+    {
+      "revision": "9767c37a8d7bb21a0694780ecfcbc4f1fbd9eb39",
+      "path": "stages/omml/generations/000002/payloads/model-roundtrip-rejections.yaml",
+      "sha256": "8a82db8d675b8d98a03721740edd853796611856f55a581a644ae407a804768c"
+    }
+  ],
+  "cases": [
+    {
+      "id": "mathml-tokens-001.model-roundtrip",
+      "format": "mathml",
+      "source": 0,
+      "input": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mo>&#x303;</mo></math>",
+      "expected": {
+        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n  <mo>̃</mo>\n</math>"
+      }
+    },
+    {
+      "id": "mathml-tokens-006.model-roundtrip",
+      "format": "mathml",
+      "source": 0,
+      "input": "<math>\n  <mo>Δ</mo>\n  <mrow>\n    <mi>ν</mi>\n  </mrow>\n</math>\n",
+      "expected": {
+        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n  <mo>Δ</mo>\n  <mrow>\n    <mi>ν</mi>\n  </mrow>\n</math>"
+      }
+    },
+    {
+      "id": "mathml-tokens-030.model-roundtrip",
+      "format": "mathml",
+      "source": 0,
+      "input": "<math>\n  <mrow>\n    F\n    <mo>&#x2061;</mo>\n    <mrow>\n      <mo fence=\"true\">(</mo>\n      A1\n      <mo separator=\"true\">,</mo>\n      ...\n      <mo separator=\"true\">,</mo>\n      A2\n      <mo separator=\"true\">,</mo>\n      An\n      <mo fence=\"true\">)</mo>\n    </mrow>\n  </mrow>\n</math>\n",
+      "expected": {
+        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n  <mrow>\n    F\n    <mo>⁡</mo><mrow><mo fence=\"true\">(</mo>\n      A1\n      <mo separator=\"true\">,</mo>\n      ...\n      <mo separator=\"true\">,</mo>\n      A2\n      <mo separator=\"true\">,</mo>\n      An\n      <mo fence=\"true\">)</mo></mrow>\n</mrow>\n</math>"
+      }
+    },
+    {
+      "id": "mathml-tokens-031.model-roundtrip",
+      "format": "mathml",
+      "source": 0,
+      "input": "<math>\n  <mrow>\n    B\n    <mrow>\n      x1\n      <mo separator=\"true\">,</mo>\n      ...\n      <mo separator=\"true\">,</mo>\n      xn\n    </mrow>\n    <mo separator=\"true\">.</mo>\n    S\n  </mrow>\n</math>\n",
+      "expected": {
+        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n  <mrow>\n    B\n    <mrow>\n      x1\n      <mo separator=\"true\">,</mo>\n      ...\n      <mo separator=\"true\">,</mo>\n      xn\n    </mrow>\n<mo separator=\"true\">.</mo>\n    S\n  </mrow>\n</math>"
+      }
+    },
+    {
+      "id": "mathml-fractions-003.model-roundtrip",
+      "format": "mathml",
+      "source": 1,
+      "input": "<math>\n  <mrow>\n    <mn> 2 </mn>\n    <mo> &#x2064;<!--INVISIBLE PLUS--> </mo>\n    <mfrac>\n      <mn> 3 </mn>\n      <mn> 4 </mn>\n    </mfrac>\n  </mrow>\n</math>\n",
+      "expected": {
+        "output": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n  <mrow>\n    <mn> 2 </mn>\n    <mo> ⁤<!--INVISIBLE PLUS--> </mo>\n    <mfrac>\n      <mn> 3 </mn>\n      <mn> 4 </mn>\n    </mfrac>\n  </mrow>\n</math>"
+      }
+    },
+    {
+      "id": "mathml-bare-text.model-roundtrip",
+      "format": "mathml",
+      "source": 2,
+      "input": "abc",
+      "expected": {
+        "refusal": {
+          "category": "parse_error",
+          "error_class": "Lutaml::Model::InvalidFormatError"
+        }
+      }
+    },
+    {
+      "id": "omml-runs-019.model-roundtrip",
+      "format": "omml",
+      "source": 3,
+      "input": "<m:oMath xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\"\n         xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\">\n  <m:r><m:t>x</m:t><w:br/></m:r>\n</m:oMath>\n",
+      "expected": {
+        "output": "<m:oMath xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\">\n  <m:r>\n    <m:t>x</m:t>\n    <w:br/>\n  </m:r>\n</m:oMath>"
+      }
+    },
+    {
+      "id": "omml-runs-023.model-roundtrip",
+      "format": "omml",
+      "source": 3,
+      "input": "<m:oMath xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\"\n         xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\">\n  <m:r><m:t>x</m:t><w:br/><m:t>y</m:t></m:r>\n</m:oMath>\n",
+      "expected": {
+        "output": "<m:oMath xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\">\n  <m:r>\n    <m:t>x</m:t>\n    <w:br/>\n    <m:t>y</m:t>\n  </m:r>\n</m:oMath>"
+      }
+    },
+    {
+      "id": "omml-runs-024.model-roundtrip",
+      "format": "omml",
+      "source": 3,
+      "input": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\">\n  <m:oMath><m:r><m:t>frac</m:t></m:r></m:oMath>\n</m:oMathPara>\n",
+      "expected": {
+        "output": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\">\n  <m:oMath>\n    <m:r>\n      <m:t>frac</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>"
+      }
+    },
+    {
+      "id": "omml-bare-text.model-roundtrip",
+      "format": "omml",
+      "source": 4,
+      "input": "abc",
+      "expected": {
+        "refusal": {
+          "category": "parse_error",
+          "error_class": "Omml::Errors::InvalidXmlError"
+        }
+      }
+    },
+    {
+      "id": "omml-unbound-prefix.model-roundtrip",
+      "format": "omml",
+      "source": 4,
+      "input": "<m:oMath><m:r><m:t>a</m:t></m:r></m:oMath>",
+      "expected": {
+        "refusal": {
+          "category": "parse_error",
+          "error_class": "Omml::Errors::UnsupportedRootElementError"
+        }
+      }
+    }
+  ]
+}
