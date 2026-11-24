@@ -7,6 +7,8 @@
 //! Everything is enabled by the `gpu` feature and tested on the CPU.
 
 #[cfg(feature = "gpu")]
+pub mod backend;
+#[cfg(feature = "gpu")]
 pub mod eft;
 #[cfg(feature = "gpu")]
 pub mod guard;
