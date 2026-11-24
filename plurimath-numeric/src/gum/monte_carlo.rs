@@ -1,4 +1,5 @@
 use super::*;
+use crate::prng::Philox4x32;
 use num_traits::{One, ToPrimitive};
 use std::collections::{BTreeMap, BTreeSet};
 
@@ -12,11 +13,38 @@ fn numerical(message: &'static str) -> Error {
     }
 }
 
+/// Counters reserved per block for `gum-par`; blocks never share a counter.
+const BLOCK_COUNTER_STRIDE: u128 = 1 << 40;
+
+/// Sequential uniform stream over one block's Philox counter range.
+struct Stream {
+    rng: Philox4x32,
+    first: u128,
+    next: u128,
+    spare: Option<f64>,
+}
+
+impl Stream {
+    fn draw(&mut self) -> Result<f64> {
+        if let Some(value) = self.spare.take() {
+            return Ok(value);
+        }
+        if self.next - self.first >= BLOCK_COUNTER_STRIDE {
+            return Err(numerical("Philox block counter range exhausted"));
+        }
+        let [a, b] = self.rng.uniform_pair(self.next);
+        self.next += 1;
+        self.spare = Some(b);
+        Ok(a)
+    }
+}
+
 struct Generator {
     initial: [u64; 4],
     state: [u64; 4],
     draws: u64,
     normal_spare: Option<f64>,
+    philox: Option<Stream>,
 }
 
 impl Generator {
@@ -38,10 +66,36 @@ impl Generator {
             state: initial,
             draws: 0,
             normal_spare: None,
+            philox: None,
         })
     }
 
+    /// Generator for one `gum-par` block: counters `block * STRIDE ..`.
+    fn philox(rng: Philox4x32, block: u64) -> Self {
+        let first = u128::from(block) * BLOCK_COUNTER_STRIDE;
+        Self {
+            initial: [0; 4],
+            state: [0; 4],
+            draws: 0,
+            normal_spare: None,
+            philox: Some(Stream {
+                rng,
+                first,
+                next: first,
+                spare: None,
+            }),
+        }
+    }
+
     fn uniform(&mut self) -> Result<f64> {
+        if let Some(stream) = &mut self.philox {
+            let draw = stream.draw()?;
+            self.draws += 1;
+            if !(draw > 0.0 && draw < 1.0) {
+                return Err(numerical("Philox uniform draw rounded to an endpoint"));
+            }
+            return Ok(draw);
+        }
         let mut sum = 0.0;
         for i in 0..4 {
             self.state[i] = (MULTIPLIERS[i] * self.state[i]) % MODULI[i];
@@ -207,6 +261,34 @@ impl Moments {
         }
     }
 
+    /// Block moments from fixed-tree pairwise sums (no data-order dependence).
+    fn pairwise(values: &[f64]) -> Self {
+        let count = values.len();
+        let mean = pairwise_sum(values) / count as f64;
+        let squares = pairwise_map_sum(values, &|v| (v - mean) * (v - mean));
+        Self {
+            count,
+            mean,
+            squares,
+        }
+    }
+
+    /// Chan et al. combination, applied in block order.
+    fn merge(&mut self, other: &Moments) {
+        if self.count == 0 {
+            self.count = other.count;
+            self.mean = other.mean;
+            self.squares = other.squares;
+            return;
+        }
+        let (a, b) = (self.count as f64, other.count as f64);
+        let total = a + b;
+        let delta = other.mean - self.mean;
+        self.squares += other.squares + delta * delta * a * b / total;
+        self.mean += delta * b / total;
+        self.count += other.count;
+    }
+
     fn uncertainty(&self) -> f64 {
         libm::sqrt(self.squares / (self.count - 1) as f64)
     }
@@ -257,6 +339,74 @@ fn summarize(
         result.insert("shortest_upper", values[first + q]);
     }
     Ok(result)
+}
+
+const PAIRWISE_LEAF: usize = 8;
+
+fn pairwise_sum(values: &[f64]) -> f64 {
+    pairwise_map_sum(values, &|v| v)
+}
+
+/// Sum over a fixed balanced tree: split at `len / 2`, sequential leaves of 8.
+fn pairwise_map_sum(values: &[f64], f: &dyn Fn(f64) -> f64) -> f64 {
+    if values.len() <= PAIRWISE_LEAF {
+        return values.iter().fold(0.0, |sum, v| sum + f(*v));
+    }
+    let (left, right) = values.split_at(values.len() / 2);
+    pairwise_map_sum(left, f) + pairwise_map_sum(right, f)
+}
+
+type BlockResult = Result<(Vec<f64>, (u128, u128), u64)>;
+
+fn fill_block(
+    batch: usize,
+    joint: &Option<JointNormal>,
+    distributions: &[Pdf],
+    model: &super::sampling_model::Model,
+    generator: &mut Generator,
+    deviations: &mut [f64],
+    values: &mut Vec<f64>,
+) -> Result<()> {
+    for _ in 0..batch {
+        if let Some(joint) = joint {
+            joint.draw(generator, deviations)?;
+        } else {
+            for (value, pdf) in deviations.iter_mut().zip(distributions) {
+                *value = pdf.draw(generator)?;
+            }
+        }
+        let value = model.evaluate(deviations)?;
+        if !value.is_finite() {
+            return Err(numerical("non-finite sampled model value"));
+        }
+        values.push(value);
+    }
+    Ok(())
+}
+
+/// One `gum-par` block: a pure function of (seed, block index).
+fn par_block(
+    rng: Philox4x32,
+    index: u64,
+    batch: usize,
+    joint: &Option<JointNormal>,
+    distributions: &[Pdf],
+    model: &super::sampling_model::Model,
+) -> BlockResult {
+    let mut generator = Generator::philox(rng, index);
+    let mut deviations = vec![0.0; distributions.len()];
+    let mut values = Vec::with_capacity(batch);
+    fill_block(
+        batch,
+        joint,
+        distributions,
+        model,
+        &mut generator,
+        &mut deviations,
+        &mut values,
+    )?;
+    let stream = generator.philox.as_ref().expect("philox stream");
+    Ok((values, (stream.first, stream.next), generator.draws))
 }
 
 fn compensated_sum(values: impl Iterator<Item = f64>) -> f64 {
@@ -323,8 +473,38 @@ pub(super) fn evaluate(params: &J) -> Result<J> {
             "max_samples",
             "joint_covariance",
             "joint_distribution",
+            "engine",
+            "seed",
+            "threads",
         ],
     )?;
+    let par = match params["engine"].as_str() {
+        None if params["engine"].is_null() => None,
+        Some("gum-ref") => None,
+        Some("gum-par") => {
+            Some(Philox4x32::new(params["seed"].as_u64().ok_or_else(
+                || invalid("gum-par requires an unsigned integer seed"),
+            )?))
+        }
+        _ => return Err(unsupported("engine must be gum-ref or gum-par")),
+    };
+    if par.is_some() != params["seeds"].is_null() {
+        return Err(invalid(
+            "gum-ref takes four WH seeds; gum-par takes a single seed and no WH seeds",
+        ));
+    }
+    if par.is_none() && !(params["seed"].is_null() && params["threads"].is_null()) {
+        return Err(invalid("seed and threads apply only to gum-par"));
+    }
+    let threads = match &params["threads"] {
+        J::Null => std::thread::available_parallelism()
+            .map_or(1, |n| n.get())
+            .min(8),
+        value => value
+            .as_u64()
+            .filter(|n| (1..=64).contains(n))
+            .ok_or_else(|| invalid("threads must lie in 1..64"))? as usize,
+    };
     let independent = match params["independent"].as_bool() {
         Some(true) => {
             if !params["joint_covariance"].is_null() || !params["joint_distribution"].is_null() {
@@ -409,7 +589,11 @@ pub(super) fn evaluate(params: &J) -> Result<J> {
         .and_then(|n| usize::try_from(n).ok())
         .filter(|n| n / batch >= 2)
         .ok_or_else(budget)?;
-    let mut generator = Generator::new(&params["seeds"])?;
+    let mut generator = if par.is_some() {
+        Generator::philox(Philox4x32::new(0), 0)
+    } else {
+        Generator::new(&params["seeds"])?
+    };
     let model =
         super::sampling_model::Model::build(&params["ast"], &variables, centers, &definitions)?;
     let joint = if independent {
@@ -427,26 +611,53 @@ pub(super) fn evaluate(params: &J) -> Result<J> {
     let mut overall = Moments::default();
     let mut deviations = vec![0.0; inputs.len()];
     let mut values = Vec::with_capacity(batch);
-    for _ in 0..max_samples / batch {
+    let blocks = max_samples / batch;
+    let mut pending: std::collections::VecDeque<BlockResult> = Default::default();
+    let mut ranges: Vec<(u128, u128)> = Vec::new();
+    let mut par_draws = 0_u64;
+    for block in 0..blocks {
         values.clear();
-        for _ in 0..batch {
-            if let Some(joint) = &joint {
-                joint.draw(&mut generator, &mut deviations)?;
-            } else {
-                for (value, pdf) in deviations.iter_mut().zip(&distributions) {
-                    *value = pdf.draw(&mut generator)?;
-                }
+        let batch_moments = if let Some(rng) = par {
+            if pending.is_empty() {
+                let count = threads.min(blocks - block);
+                let (joint, distributions, model) = (&joint, &distributions, &model);
+                pending.extend(std::thread::scope(|scope| {
+                    let handles: Vec<_> = (block..block + count)
+                        .map(|index| {
+                            scope.spawn(move || {
+                                par_block(rng, index as u64, batch, joint, distributions, model)
+                            })
+                        })
+                        .collect();
+                    handles
+                        .into_iter()
+                        .map(|handle| handle.join().expect("gum-par block thread"))
+                        .collect::<Vec<_>>()
+                }));
             }
-            let value = model.evaluate(&deviations)?;
-            if !value.is_finite() {
-                return Err(numerical("non-finite sampled model value"));
-            }
-            values.push(value);
-        }
-        overall.append(&values);
+            let (block_values, range, draws) = pending.pop_front().expect("pending block")?;
+            values = block_values;
+            ranges.push(range);
+            par_draws += draws;
+            let moments = Moments::pairwise(&values);
+            overall.merge(&moments);
+            moments
+        } else {
+            fill_block(
+                batch,
+                &joint,
+                &distributions,
+                &model,
+                &mut generator,
+                &mut deviations,
+                &mut values,
+            )?;
+            overall.append(&values);
+            let mut moments = Moments::default();
+            moments.append(&values);
+            moments
+        };
         all.extend_from_slice(&values);
-        let mut batch_moments = Moments::default();
-        batch_moments.append(&values);
         summaries.push(summarize(
             &mut values,
             &probability,
@@ -507,12 +718,25 @@ pub(super) fn evaluate(params: &J) -> Result<J> {
         } else {
             format!("{delta}.0")
         };
-        let mut stamp = json!({
-            "name":"plurimath-rust","version":env!("CARGO_PKG_VERSION"),
-            "method":"JCGM101-2008-7.9.4-v1",
-            "generator":"enhanced-Wichmann-Hill-C.3.3.3","initial_seeds":generator.initial,
-            "final_state":generator.state,"uniform_draws":generator.draws,
-        });
+        let mut stamp = if par.is_some() {
+            json!({
+                "name":"plurimath-rust","version":env!("CARGO_PKG_VERSION"),
+                "method":"JCGM101-2008-7.9.4-v1","id":"gum-par","accuracy":"limited",
+                "generator":"philox4x32-10","seed":params["seed"],
+                "counter_stride":BLOCK_COUNTER_STRIDE.to_string(),
+                "counter_ranges":ranges.iter().enumerate().map(|(block,(first,end))| json!({
+                    "block":block,"first":first.to_string(),"end":end.to_string(),
+                })).collect::<Vec<_>>(),
+                "uniform_draws":par_draws,"reduction":"pairwise-tree-leaf8-chan-merge-v1",
+            })
+        } else {
+            json!({
+                "name":"plurimath-rust","version":env!("CARGO_PKG_VERSION"),
+                "method":"JCGM101-2008-7.9.4-v1",
+                "generator":"enhanced-Wichmann-Hill-C.3.3.3","initial_seeds":generator.initial,
+                "final_state":generator.state,"uniform_draws":generator.draws,
+            })
+        };
         stamp.as_object_mut().expect("engine object").extend(
             model
                 .engine_fields()
