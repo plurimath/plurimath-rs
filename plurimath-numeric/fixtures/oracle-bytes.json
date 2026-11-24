@@ -1,0 +1,596 @@
+[
+  {
+    "file": "gum-f40",
+    "id": "producer-00",
+    "len": 985,
+    "fnv1a64": "7116a6e18329ee23"
+  },
+  {
+    "file": "gum-f40",
+    "id": "producer-01",
+    "len": 3425,
+    "fnv1a64": "d14dd7c285bdb545"
+  },
+  {
+    "file": "gum-f40",
+    "id": "producer-02",
+    "len": 3439,
+    "fnv1a64": "e181df7df2db1141"
+  },
+  {
+    "file": "gum-f40",
+    "id": "producer-03",
+    "len": 7476,
+    "fnv1a64": "208db09d53f8a3c9"
+  },
+  {
+    "file": "gum-f40",
+    "id": "producer-04",
+    "len": 5176,
+    "fnv1a64": "b8a77971f9d821e5"
+  },
+  {
+    "file": "gum-f40",
+    "id": "producer-05",
+    "len": 2367,
+    "fnv1a64": "c9bbe70e0cb9bcf2"
+  },
+  {
+    "file": "gum-f40",
+    "id": "producer-06",
+    "len": 1019,
+    "fnv1a64": "8a80d117eadbe814"
+  },
+  {
+    "file": "gum-f40",
+    "id": "producer-07",
+    "len": 1017,
+    "fnv1a64": "4e16380b66b88857"
+  },
+  {
+    "file": "gum-f40",
+    "id": "producer-08",
+    "len": 222,
+    "fnv1a64": "a692fbc2f9f0fed2"
+  },
+  {
+    "file": "gum-f40",
+    "id": "refusals-00",
+    "len": 329,
+    "fnv1a64": "1efeb79ddd63efdc"
+  },
+  {
+    "file": "gum-f40",
+    "id": "refusals-01",
+    "len": 185,
+    "fnv1a64": "ab233d0ea0ddaf0a"
+  },
+  {
+    "file": "gum-f40",
+    "id": "refusals-02",
+    "len": 184,
+    "fnv1a64": "e0b8a9f564fc8992"
+  },
+  {
+    "file": "gum-f40",
+    "id": "refusals-03",
+    "len": 181,
+    "fnv1a64": "be2f7ffbfae98332"
+  },
+  {
+    "file": "gum-f40",
+    "id": "refusals-04",
+    "len": 251,
+    "fnv1a64": "9486cc5a4870a87a"
+  },
+  {
+    "file": "gum-f40",
+    "id": "refusals-05",
+    "len": 164,
+    "fnv1a64": "7aa5a9c1dcf06854"
+  },
+  {
+    "file": "gum-f40",
+    "id": "refusals-06",
+    "len": 147,
+    "fnv1a64": "7147c93c195a1404"
+  },
+  {
+    "file": "gum-f40",
+    "id": "refusals-07",
+    "len": 200,
+    "fnv1a64": "92af57bd9365fd54"
+  },
+  {
+    "file": "gum-f40",
+    "id": "refusals-08",
+    "len": 192,
+    "fnv1a64": "47566768319adb0a"
+  },
+  {
+    "file": "gum-f40",
+    "id": "refusals-09",
+    "len": 149,
+    "fnv1a64": "c73fad548f23a9d2"
+  },
+  {
+    "file": "gum-f40",
+    "id": "refusals-10",
+    "len": 534,
+    "fnv1a64": "c2fafc16e9dbf6a2"
+  },
+  {
+    "file": "gum-f40",
+    "id": "refusals-11",
+    "len": 986,
+    "fnv1a64": "328c668314ed8896"
+  },
+  {
+    "file": "gum-f40",
+    "id": "refusals-12",
+    "len": 1445,
+    "fnv1a64": "aa51f8633a58b02b"
+  },
+  {
+    "file": "gum-f40",
+    "id": "refusals-13",
+    "len": 173,
+    "fnv1a64": "6eeccd53faf47ffc"
+  },
+  {
+    "file": "gum-f40",
+    "id": "coverage-00",
+    "len": 428,
+    "fnv1a64": "aa8ec3a4bcb70c03"
+  },
+  {
+    "file": "gum-f40",
+    "id": "coverage-01",
+    "len": 428,
+    "fnv1a64": "c9ced4bcec305116"
+  },
+  {
+    "file": "gum-f40",
+    "id": "coverage-02",
+    "len": 427,
+    "fnv1a64": "d872b9c17d58f8b4"
+  },
+  {
+    "file": "gum-f40",
+    "id": "coverage-03",
+    "len": 430,
+    "fnv1a64": "29622c27375d680b"
+  },
+  {
+    "file": "gum-f40",
+    "id": "coverage-04",
+    "len": 432,
+    "fnv1a64": "87bc826974c49931"
+  },
+  {
+    "file": "gum-f40",
+    "id": "coverage-05",
+    "len": 433,
+    "fnv1a64": "bd191cfdc4c1f1f5"
+  },
+  {
+    "file": "gum-f40",
+    "id": "coverage-06",
+    "len": 433,
+    "fnv1a64": "4c7ff21eb8bf2323"
+  },
+  {
+    "file": "gum-f40",
+    "id": "coverage-07",
+    "len": 433,
+    "fnv1a64": "b0095f07c215f96e"
+  },
+  {
+    "file": "gum-f40",
+    "id": "coverage-08",
+    "len": 433,
+    "fnv1a64": "971bb4b245748195"
+  },
+  {
+    "file": "gum-f40",
+    "id": "coverage-09",
+    "len": 434,
+    "fnv1a64": "0eebea677cf3f7e6"
+  },
+  {
+    "file": "gum-f40",
+    "id": "coverage-10",
+    "len": 434,
+    "fnv1a64": "2ab22a0e4248827d"
+  },
+  {
+    "file": "gum-f40",
+    "id": "coverage-11",
+    "len": 437,
+    "fnv1a64": "ea6395559ea1d537"
+  },
+  {
+    "file": "gum-f40",
+    "id": "coverage-12",
+    "len": 436,
+    "fnv1a64": "39bc8edbc19841a0"
+  },
+  {
+    "file": "gum-f40",
+    "id": "coverage-13",
+    "len": 174,
+    "fnv1a64": "a8636e6dbe9b4eb1"
+  },
+  {
+    "file": "gum-f40",
+    "id": "coverage-14",
+    "len": 180,
+    "fnv1a64": "0840a3517412e5da"
+  },
+  {
+    "file": "gum-f40",
+    "id": "coverage-15",
+    "len": 165,
+    "fnv1a64": "17202787f36ff585"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "producer-09",
+    "len": 1115,
+    "fnv1a64": "7fae3869a5df3755"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "producer-10",
+    "len": 1115,
+    "fnv1a64": "03530fdfb5f8ce8c"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "producer-11",
+    "len": 1115,
+    "fnv1a64": "96db3ab1343aae71"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "producer-12",
+    "len": 1119,
+    "fnv1a64": "9c91d44af9075f1e"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "producer-13",
+    "len": 1119,
+    "fnv1a64": "62ad16dfa28077aa"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "producer-14",
+    "len": 1124,
+    "fnv1a64": "1eb4ac10ee0c3f4f"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "producer-15",
+    "len": 1124,
+    "fnv1a64": "8b5b671602191aee"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "producer-16",
+    "len": 1124,
+    "fnv1a64": "87395060b34f99af"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "producer-17",
+    "len": 202,
+    "fnv1a64": "a7467ac8768839fd"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "producer-18",
+    "len": 1129,
+    "fnv1a64": "bafeda9595a44844"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "producer-19",
+    "len": 1124,
+    "fnv1a64": "c1c2937d923b012b"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "producer-20",
+    "len": 1114,
+    "fnv1a64": "875c16207d8bde1d"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "producer-21",
+    "len": 1128,
+    "fnv1a64": "4c5e3ead46b648c8"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "producer-22",
+    "len": 176,
+    "fnv1a64": "1657cf59e5073485"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "producer-23",
+    "len": 195,
+    "fnv1a64": "339e5a5e8b70ad36"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "producer-24",
+    "len": 195,
+    "fnv1a64": "339e5a5e8b70ad36"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "producer-25",
+    "len": 1114,
+    "fnv1a64": "9126f9048ae889fa"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "simple-upper-limit",
+    "len": 1116,
+    "fnv1a64": "af7b2778382aea11"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "guarded-acceptance-inner-upper",
+    "len": 1128,
+    "fnv1a64": "c4b19282fb34894e"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "guarded-acceptance-outside-inner",
+    "len": 1200,
+    "fnv1a64": "b00201e61c0ce1d8"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "three-zone-inner-upper",
+    "len": 1120,
+    "fnv1a64": "6cb8072d58f8bd51"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "three-zone-past-inner-upper",
+    "len": 1185,
+    "fnv1a64": "3646d9609dde2305"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "three-zone-outer-lower",
+    "len": 1115,
+    "fnv1a64": "d0d2230f5b7d5352"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "three-zone-past-outer-lower",
+    "len": 1195,
+    "fnv1a64": "3344ca2572356425"
+  },
+  {
+    "file": "gum-conformity",
+    "id": "three-zone-one-sided-open-lower",
+    "len": 1108,
+    "fnv1a64": "69fe52f45a4529dd"
+  },
+  {
+    "file": "gum-annex-methods",
+    "id": "h3-fit-20",
+    "len": 1515,
+    "fnv1a64": "c3cf611e3d89154e"
+  },
+  {
+    "file": "gum-annex-methods",
+    "id": "h3-fit-24.0085",
+    "len": 1516,
+    "fnv1a64": "a53e4cad7fbcaf5c"
+  },
+  {
+    "file": "gum-annex-methods",
+    "id": "h3-predict-0-mean_correction",
+    "len": 547,
+    "fnv1a64": "769973c80b85e9b0"
+  },
+  {
+    "file": "gum-annex-methods",
+    "id": "h3-predict-0-new_observation",
+    "len": 546,
+    "fnv1a64": "fbeefece44f818fa"
+  },
+  {
+    "file": "gum-annex-methods",
+    "id": "h3-correlation-0",
+    "len": 241,
+    "fnv1a64": "2e7a5ff6dd93c57c"
+  },
+  {
+    "file": "gum-annex-methods",
+    "id": "h3-predict-1-mean_correction",
+    "len": 547,
+    "fnv1a64": "769973c80b85e9b0"
+  },
+  {
+    "file": "gum-annex-methods",
+    "id": "h3-predict-1-new_observation",
+    "len": 546,
+    "fnv1a64": "fbeefece44f818fa"
+  },
+  {
+    "file": "gum-annex-methods",
+    "id": "h3-correlation-1",
+    "len": 245,
+    "fnv1a64": "1f179375e97a0240"
+  },
+  {
+    "file": "gum-annex-methods",
+    "id": "h3-refusal-0",
+    "len": 150,
+    "fnv1a64": "62e3142c233d343a"
+  },
+  {
+    "file": "gum-annex-methods",
+    "id": "h3-refusal-1",
+    "len": 218,
+    "fnv1a64": "3e0addb170f668b9"
+  },
+  {
+    "file": "gum-annex-methods",
+    "id": "implicit-pivot-0",
+    "len": 918,
+    "fnv1a64": "6aa77e60d0e807af"
+  },
+  {
+    "file": "gum-annex-methods",
+    "id": "implicit-pivot-1",
+    "len": 160,
+    "fnv1a64": "da03985e36d8e8da"
+  },
+  {
+    "file": "gum-annex-methods",
+    "id": "implicit-pivot-2",
+    "len": 173,
+    "fnv1a64": "6654228e9ad1d9d3"
+  },
+  {
+    "file": "gum-annex-methods",
+    "id": "implicit-ten-temperature",
+    "len": 99494,
+    "fnv1a64": "8d8f339c8c9146a2"
+  },
+  {
+    "file": "gum-annex-methods",
+    "id": "h6-resolution-and-unknown-dof",
+    "len": 2548,
+    "fnv1a64": "344360d762129b45"
+  },
+  {
+    "file": "gum-annex-methods",
+    "id": "implicit-exact-unit-and-zero",
+    "len": 839,
+    "fnv1a64": "ced09994950e5bff"
+  },
+  {
+    "file": "gum-annex-methods",
+    "id": "correlations-zero-and-negative-perfect",
+    "len": 190,
+    "fnv1a64": "1bff27deb5be8a37"
+  },
+  {
+    "file": "gum-annex-methods",
+    "id": "h2-derived-vector",
+    "len": 3425,
+    "fnv1a64": "d14dd7c285bdb545"
+  },
+  {
+    "file": "gum-annex-methods",
+    "id": "h2-correlations",
+    "len": 551,
+    "fnv1a64": "2cda4b5b86b880dc"
+  },
+  {
+    "file": "gum-annex-methods",
+    "id": "h2-derived-observations",
+    "len": 7476,
+    "fnv1a64": "208db09d53f8a3c9"
+  },
+  {
+    "file": "gum-annex-methods",
+    "id": "h4-derived-covariance",
+    "len": 1950,
+    "fnv1a64": "0c4a3dcaba27d1b3"
+  },
+  {
+    "file": "gum-annex-methods",
+    "id": "h4-ratio-approach",
+    "len": 10647,
+    "fnv1a64": "ce11931e0ff916ec"
+  },
+  {
+    "file": "gum-mcm",
+    "id": "jcgm101_table10_pdf",
+    "len": 1132,
+    "fnv1a64": "ee2a751f79db5b2c"
+  },
+  {
+    "file": "gum-mcm",
+    "id": "gum5_table8_1_pdf",
+    "len": 1131,
+    "fnv1a64": "f42c48e99ec25a42"
+  },
+  {
+    "file": "gum-mcm",
+    "id": "gum5_linear_1",
+    "len": 1116,
+    "fnv1a64": "5b9095bc71dce5de"
+  },
+  {
+    "file": "gum-mcm",
+    "id": "gum5_linear_2",
+    "len": 1121,
+    "fnv1a64": "121c3e420a060ed4"
+  },
+  {
+    "file": "gum-mcm",
+    "id": "gum5_linear_3",
+    "len": 1108,
+    "fnv1a64": "4660a3f26838d970"
+  },
+  {
+    "file": "gum-mcm",
+    "id": "gum6_bromine",
+    "len": 1145,
+    "fnv1a64": "6b4754fef8284979"
+  },
+  {
+    "file": "gum-mcm-joint-rational",
+    "id": "gum5_comparison_loss_1",
+    "len": 1335,
+    "fnv1a64": "a1dcd1b9c9d73430"
+  },
+  {
+    "file": "gum-mcm-joint-rational",
+    "id": "gum5_comparison_loss_2",
+    "len": 1316,
+    "fnv1a64": "d82d5a5fb4ac9ebe"
+  },
+  {
+    "file": "gum-mcm-joint-rational",
+    "id": "gum5_comparison_loss_3",
+    "len": 1306,
+    "fnv1a64": "794f00b021ffbab2"
+  },
+  {
+    "file": "gum-mcm-joint-rational",
+    "id": "gum5_comparison_loss_4",
+    "len": 1347,
+    "fnv1a64": "705b494236eb7a07"
+  },
+  {
+    "file": "gum-mcm-joint-rational",
+    "id": "gum5_comparison_loss_5",
+    "len": 1323,
+    "fnv1a64": "a81ed6fac705f1f4"
+  },
+  {
+    "file": "gum-mcm-joint-rational",
+    "id": "gum5_comparison_loss_6",
+    "len": 1315,
+    "fnv1a64": "7507a9cb3adb186e"
+  },
+  {
+    "file": "gum-mcm-joint-rational",
+    "id": "gum5_mass_calibration",
+    "len": 1245,
+    "fnv1a64": "e9f00728c1cef197"
+  }
+]
