@@ -280,11 +280,12 @@ pub struct Report {
     pub value: f64,
     /// `∂f/∂xᵢ` per input, in input order.
     pub gradient: Vec<f64>,
-    /// `∂²f/∂xᵢ²` per input (Hessian diagonal).
-    pub hessian_diagonal: Vec<f64>,
+    /// Full Hessian `∂²f/∂xᵢ∂xⱼ`.
+    pub hessian: Vec<Vec<f64>>,
     /// `Σᵢ cᵢ² uᵢ²` with `cᵢ = ∂f/∂xᵢ` (GUM first-order variance, independent inputs).
     pub first_order_variance: f64,
-    /// `½ Σᵢ ∂²f/∂xᵢ² uᵢ²`, the independent-input second-order correction term.
+    /// `½ Σᵢⱼ (∂²f/∂xᵢ∂xⱼ)² uᵢ² uⱼ²`: the squared-Hessian second-order term of the
+    /// note to GUM 5.1.2 (H.1.7). The `Σ fᵢ fᵢⱼⱼ` third-derivative term is not included.
     pub second_order_term: f64,
 }
 
@@ -298,86 +299,89 @@ fn names<'a>(inputs: &'a [Input]) -> Result<Vec<&'a str>, E> {
     Ok(inputs.iter().map(|i| i.name).collect())
 }
 
+fn seeded<T: Clone>(
+    inputs: &[Input],
+    names: &[&str],
+    make: impl Fn(usize, f64) -> T,
+) -> BTreeMap<String, T> {
+    names
+        .iter()
+        .zip(inputs)
+        .enumerate()
+        .map(|(i, (n, x))| (n.to_string(), make(i, x.estimate)))
+        .collect()
+}
+
+fn borrow<T>(m: &BTreeMap<String, T>) -> BTreeMap<&str, T>
+where
+    T: Clone,
+{
+    m.iter().map(|(k, v)| (k.as_str(), v.clone())).collect()
+}
+
 /// Gradient by one `Dual` pass per input.
 pub fn sensitivities(ast: &J, inputs: &[Input]) -> Result<Vec<f64>, E> {
     let names = names(inputs)?;
     (0..inputs.len())
         .map(|k| {
-            let vars = names
-                .iter()
-                .zip(inputs)
-                .enumerate()
-                .map(|(i, (n, x))| {
-                    (
-                        *n,
-                        Dual {
-                            v: x.estimate,
-                            d: f64::from(u8::from(i == k)),
-                        },
-                    )
-                })
-                .collect();
-            finite(eval(ast, &vars)?.d)
+            let vars = seeded(inputs, &names, |i, v| Dual {
+                v,
+                d: f64::from(u8::from(i == k)),
+            });
+            finite(eval(ast, &borrow(&vars))?.d)
         })
         .collect()
 }
 
-/// Hessian diagonal by one `HyperDual` pass per input.
-pub fn hessian_diagonal(ast: &J, inputs: &[Input]) -> Result<Vec<f64>, E> {
+/// Full Hessian by `HyperDual` passes seeded in directions `i` and `j`
+/// (`i == j` gives the diagonal `∂²f/∂xᵢ²`).
+#[allow(clippy::needless_range_loop)] // symmetric (i, j) fill
+pub fn hessian(ast: &J, inputs: &[Input]) -> Result<Vec<Vec<f64>>, E> {
     let names = names(inputs)?;
-    (0..inputs.len())
-        .map(|k| {
-            let vars = names
-                .iter()
-                .zip(inputs)
-                .enumerate()
-                .map(|(i, (n, x))| {
-                    let s = f64::from(u8::from(i == k));
-                    (
-                        *n,
-                        HyperDual {
-                            v: x.estimate,
-                            e1: s,
-                            e2: s,
-                            e12: 0.0,
-                        },
-                    )
-                })
-                .collect();
-            finite(eval(ast, &vars)?.e12)
-        })
-        .collect()
+    let n = inputs.len();
+    let mut h = vec![vec![0.0; n]; n];
+    for i in 0..n {
+        for j in i..n {
+            let vars = seeded(inputs, &names, |k, v| HyperDual {
+                v,
+                e1: f64::from(u8::from(k == i)),
+                e2: f64::from(u8::from(k == j)),
+                e12: 0.0,
+            });
+            let value = finite(eval(ast, &borrow(&vars))?.e12)?;
+            h[i][j] = value;
+            h[j][i] = value;
+        }
+    }
+    Ok(h)
 }
 
-/// Value, gradient, Hessian diagonal and the H.1.7 second-order term.
+/// Hessian diagonal (`∂²f/∂xᵢ²`).
+pub fn hessian_diagonal(ast: &J, inputs: &[Input]) -> Result<Vec<f64>, E> {
+    let h = hessian(ast, inputs)?;
+    Ok((0..h.len()).map(|i| h[i][i]).collect())
+}
+
+/// Value, gradient, Hessian and the H.1.7 second-order term.
 pub fn analyze(ast: &J, inputs: &[Input]) -> Result<Report, E> {
     let gradient = sensitivities(ast, inputs)?;
-    let hessian_diagonal = hessian_diagonal(ast, inputs)?;
+    let hessian = hessian(ast, inputs)?;
     let names = names(inputs)?;
-    let vars = names
-        .iter()
-        .zip(inputs)
-        .map(|(n, x)| {
-            (
-                *n,
-                Dual {
-                    v: x.estimate,
-                    d: 0.0,
-                },
-            )
-        })
-        .collect();
-    let value = finite(eval(ast, &vars)?.v)?;
-    let var = |f: &dyn Fn(usize) -> f64| (0..inputs.len()).map(f).sum::<f64>();
-    let first_order_variance =
-        var(&|i| gradient[i] * gradient[i] * inputs[i].uncertainty * inputs[i].uncertainty);
-    let second_order_term =
-        0.5 * var(&|i| hessian_diagonal[i] * inputs[i].uncertainty * inputs[i].uncertainty);
+    let vars = seeded(inputs, &names, |_, v| Dual { v, d: 0.0 });
+    let value = finite(eval(ast, &borrow(&vars))?.v)?;
+    let u2 = |i: usize| inputs[i].uncertainty * inputs[i].uncertainty;
+    let n = inputs.len();
+    let first_order_variance = (0..n).map(|i| gradient[i] * gradient[i] * u2(i)).sum();
+    let second_order_term = 0.5
+        * (0..n)
+            .flat_map(|i| (0..n).map(move |j| (i, j)))
+            .map(|(i, j)| hessian[i][j] * hessian[i][j] * u2(i) * u2(j))
+            .sum::<f64>();
     Ok(Report {
         class: "limited",
         value,
         gradient,
-        hessian_diagonal,
+        hessian,
         first_order_variance,
         second_order_term,
     })
