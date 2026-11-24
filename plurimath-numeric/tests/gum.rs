@@ -276,3 +276,47 @@ fn ruby_annex_calibration_and_implicit_cases() {
 fn source_coverage_metadata_diagnostics() {
     assert_frozen(include_str!("../fixtures/coverage-validation.json"), 49);
 }
+
+fn gum_par_request(case: usize, threads: u64) -> Value {
+    let fixture: Value = serde_json::from_str(include_str!("../fixtures/gum-mcm.json")).unwrap();
+    let mut request = fixture["cases"][case]["request"].clone();
+    let parameters = request["parameters"].as_object_mut().unwrap();
+    parameters.remove("seeds");
+    parameters.insert("engine".into(), json!("gum-par"));
+    parameters.insert("seed".into(), json!(20261124));
+    parameters.insert("threads".into(), json!(threads));
+    request
+}
+
+#[test]
+fn gum_par_is_identical_across_thread_counts_and_records_counter_ranges() {
+    let single = run(&gum_par_request(4, 1));
+    assert_eq!(single["ok"], true, "{single}");
+    for threads in [2, 3, 8] {
+        assert_eq!(
+            run(&gum_par_request(4, threads)),
+            single,
+            "threads={threads}"
+        );
+    }
+    let engine = &single["result"]["engine"];
+    assert_eq!(engine["id"], "gum-par");
+    assert_eq!(engine["accuracy"], "limited");
+    let ranges = engine["counter_ranges"].as_array().unwrap();
+    assert_eq!(
+        ranges.len() as u64,
+        single["result"]["batches"].as_u64().unwrap()
+    );
+    assert_eq!(ranges[1]["first"], engine["counter_stride"]);
+    assert_eq!(single["result"]["stabilized"], true);
+}
+
+#[test]
+fn gum_par_engine_selection_is_validated() {
+    let mut both = gum_par_request(4, 1);
+    both["parameters"]["seeds"] = json!([12345, 23456, 34567, 45678]);
+    assert_eq!(run(&both)["error"]["code"], "InvalidInput");
+    let mut unknown = gum_par_request(4, 1);
+    unknown["parameters"]["engine"] = json!("other");
+    assert_eq!(run(&unknown)["ok"], false);
+}
