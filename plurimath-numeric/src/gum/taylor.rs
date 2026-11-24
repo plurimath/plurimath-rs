@@ -1,4 +1,5 @@
 use super::*;
+use crate::scalar::Scalar;
 use num_traits::{One, ToPrimitive};
 use std::collections::BTreeMap;
 
@@ -83,7 +84,7 @@ impl Taylor {
                         "analytic derivative exceeds the bounded rational domain",
                     ));
                 }
-                out.insert(powers, x * y);
+                out.insert(powers, Scalar::mul(x, y));
                 if !TRUNCATE && out.0.len() > 128 {
                     return Err(unsupported("polynomial exceeds the bounded term domain"));
                 }

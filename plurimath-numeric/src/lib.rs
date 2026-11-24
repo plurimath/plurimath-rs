@@ -5,6 +5,7 @@ mod gum;
 mod quantity;
 #[cfg(feature = "quantity")]
 mod quantity_magnitude;
+mod scalar;
 use num_bigint::BigInt;
 use num_integer::Integer;
 use num_rational::BigRational as Q;
