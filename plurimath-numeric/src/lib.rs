@@ -1,6 +1,8 @@
 //! Canonical numeric JSON and optional unit-aware quantity evaluation.
 mod decimal_math;
 mod gum;
+#[allow(dead_code)]
+mod interval;
 #[cfg(feature = "quantity")]
 mod quantity;
 #[cfg(feature = "quantity")]
