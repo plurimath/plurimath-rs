@@ -1,0 +1,12 @@
+[package]
+name = "plurimath-gpu"
+version = "0.1.0"
+edition = "2021"
+license = "BSD-2-Clause"
+publish = false
+description = "GPU backend arithmetic representation choice and numerical guards (CPU-testable layer)"
+
+[features]
+# Optional: the representation and guard layer. A future `wgpu` device
+# layer builds on it; nothing here needs an adapter.
+gpu = []
