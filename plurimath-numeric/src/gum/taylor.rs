@@ -26,7 +26,7 @@ impl Taylor {
             return;
         }
         let value = self.0.entry(powers.clone()).or_default();
-        *value += coefficient;
+        *value = Scalar::add(value, &coefficient);
         if value.is_zero() {
             self.0.remove(&powers);
         }
@@ -53,13 +53,20 @@ impl Taylor {
         self
     }
 
+    pub(super) fn sub(mut self, rhs: Self) -> Self {
+        for (key, value) in rhs.0 {
+            self.insert(key, Scalar::sub(&Q::zero(), &value));
+        }
+        self
+    }
+
     pub(super) fn scale(mut self, value: &Q) -> Self {
         if value.is_zero() {
             return Self::default();
         }
         self.0
             .values_mut()
-            .for_each(|coefficient| *coefficient *= value);
+            .for_each(|coefficient| *coefficient = Scalar::mul(coefficient, value));
         self
     }
 
@@ -98,7 +105,7 @@ impl Taylor {
             code: "DivisionByZeroError",
             message: "analytic denominator is zero at the estimate",
         })?;
-        let reciprocal = constant.recip();
+        let reciprocal = Scalar::div(&Q::one(), &constant).expect("nonzero constant term");
         if !TRUNCATE {
             if !self.0.is_empty() {
                 return Err(unsupported(
@@ -175,7 +182,7 @@ fn walk<const TRUNCATE: bool>(node: &J, bindings: &BTreeMap<&str, Taylor>) -> Re
             let right = walk::<TRUNCATE>(&node["right"], bindings)?;
             match node["operator"].as_str() {
                 Some("+") => Ok(left.add(right)),
-                Some("-") => Ok(left.add(right.scale(&-Q::one()))),
+                Some("-") => Ok(left.sub(right)),
                 Some("*") => left.multiply::<TRUNCATE>(&right),
                 Some("/") => left.multiply::<TRUNCATE>(&right.reciprocal::<TRUNCATE>()?),
                 Some("^") => left.power::<TRUNCATE>(right),

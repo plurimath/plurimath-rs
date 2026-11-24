@@ -1,4 +1,4 @@
-use super::{decimal, guard_sqrt, qparse, roundq, BigInt, J, N, Q};
+use super::{decimal, qparse, roundq, scalar::Scalar, BigInt, J, N, Q};
 use num_traits::{Signed, Zero};
 use serde_json::json;
 
@@ -193,8 +193,10 @@ fn fmt_decimal(value: N) -> String {
 }
 
 fn root_decimal(value: &Q, digits: u32) -> Result<String> {
-    let quotient = roundq(value, digits).q().expect("finite rounded rational");
-    guard_sqrt(&quotient, digits)
+    let quotient = Scalar::quantize(value, digits)
+        .q()
+        .expect("finite rounded rational");
+    Scalar::sqrt(&quotient, digits)
         .map(fmt_decimal)
         .map_err(|_| invalid("negative variance"))
 }

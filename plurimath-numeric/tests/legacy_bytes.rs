@@ -16,6 +16,8 @@ const IDS: &[&str] = &[
     "producer-06",
     "refusals-10",
     "coverage-00",
+    "h6-resolution-and-unknown-dof",
+    "h4-ratio-approach",
 ];
 
 #[test]
@@ -47,6 +49,7 @@ fn bless() {
     for file in [
         include_str!("../fixtures/gum-f40.json"),
         include_str!("../fixtures/gum-conformity.json"),
+        include_str!("../fixtures/gum-annex-methods.json"),
     ] {
         let fixture: Value = serde_json::from_str(file).unwrap();
         cases.extend(fixture["cases"].as_array().unwrap().clone());
