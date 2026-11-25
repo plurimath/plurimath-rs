@@ -1,11 +1,15 @@
 //! Canonical numeric JSON and optional unit-aware quantity evaluation.
+pub mod ad;
 mod decimal_math;
 mod gum;
+#[allow(dead_code)]
+mod interval;
 pub mod prng;
 #[cfg(feature = "quantity")]
 mod quantity;
 #[cfg(feature = "quantity")]
 mod quantity_magnitude;
+mod scalar;
 use num_bigint::BigInt;
 use num_integer::Integer;
 use num_rational::BigRational as Q;

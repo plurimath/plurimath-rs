@@ -1,4 +1,4 @@
-use super::{decimal, guard_sqrt, qparse, roundq, BigInt, J, N, Q};
+use super::{decimal, qparse, roundq, scalar::Scalar, BigInt, J, N, Q};
 use num_traits::{Signed, Zero};
 use serde_json::json;
 
@@ -193,8 +193,10 @@ fn fmt_decimal(value: N) -> String {
 }
 
 fn root_decimal(value: &Q, digits: u32) -> Result<String> {
-    let quotient = roundq(value, digits).q().expect("finite rounded rational");
-    guard_sqrt(&quotient, digits)
+    let quotient = Scalar::quantize(value, digits)
+        .q()
+        .expect("finite rounded rational");
+    Scalar::sqrt(&quotient, digits)
         .map(fmt_decimal)
         .map_err(|_| invalid("negative variance"))
 }
@@ -208,6 +210,42 @@ fn decimal_payload(mut text: String) -> J {
 
 fn engine(method: &str) -> J {
     json!({"name":"plurimath-rust","version":env!("CARGO_PKG_VERSION"),"method":method})
+}
+
+/// Machine-precision AD sensitivities and second-order term; typed `limited`.
+fn analyze_ad(params: &J) -> Result<J> {
+    fields(params, &["ast", "inputs"])?;
+    let items = params["inputs"]
+        .as_array()
+        .filter(|items| !items.is_empty() && items.len() <= 16)
+        .ok_or_else(|| invalid("analytic inputs must be a nonempty ordered list"))?;
+    let mut inputs = Vec::new();
+    for item in items {
+        fields(item, &["name", "estimate", "uncertainty"])?;
+        let number = |key: &str| {
+            item[key]
+                .as_f64()
+                .filter(|x| x.is_finite())
+                .ok_or_else(|| invalid("inputs need numeric estimate and uncertainty"))
+        };
+        inputs.push(crate::ad::Input {
+            name: item["name"]
+                .as_str()
+                .filter(|name| crate::name(name))
+                .ok_or_else(|| invalid("variable names must be distinct strings"))?,
+            estimate: number("estimate")?,
+            uncertainty: number("uncertainty")?,
+        });
+    }
+    let report = crate::ad::analyze(&params["ast"], &inputs).map_err(|code| match code {
+        "UnsupportedModel" => unsupported("AD does not support this call"),
+        _ => invalid("AD evaluation failed"),
+    })?;
+    Ok(json!({
+        "class":report.class,"value":report.value,"gradient":report.gradient,
+        "hessian":report.hessian,"first_order_variance":report.first_order_variance,
+        "second_order_term":report.second_order_term,
+    }))
 }
 
 fn dispatch(request: &J) -> Result<J> {
@@ -232,6 +270,7 @@ fn dispatch(request: &J) -> Result<J> {
         "monte_carlo" => monte_carlo::evaluate(params),
         "propagate" => propagation::independent(params),
         "analyze" => taylor::analyze(params),
+        "analyze_ad" => analyze_ad(params),
         "propagate_covariance" => propagation::correlated(params),
         "propagate_vector" => propagation::transform(params),
         _ => Err(unsupported("unsupported GUM method")),
