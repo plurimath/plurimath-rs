@@ -25,3 +25,10 @@ num-integer = "=0.1.47"
 
 asciiunits = { git = "https://github.com/unitsml/asciiunits-rs", rev = "5d917151d5ef6964015af696e3d69ca4ceea0f1a", optional = true }
 unitsml-rs = { git = "https://github.com/unitsml/unitsml-rs", rev = "cdfbcc3087f271d8723b3c3d1e4764860601e570", optional = true }
+
+[dev-dependencies]
+criterion = "=0.5.1"
+
+[[bench]]
+name = "evaluate_gum"
+harness = false
