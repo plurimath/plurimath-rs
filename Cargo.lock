@@ -343,6 +343,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "plurimath-gpu"
+version = "0.1.0"
+dependencies = [
+ "plurimath-numeric",
+ "serde_json",
+]
+
+[[package]]
 name = "plurimath-json"
 version = "0.1.0"
 dependencies = [
