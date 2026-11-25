@@ -1,0 +1,18 @@
+[package]
+name = "plurimath-gpu"
+version = "0.1.0"
+edition = "2021"
+license = "BSD-2-Clause"
+publish = false
+description = "GPU backend arithmetic representation choice and numerical guards (CPU-testable layer)"
+
+[features]
+# Optional: the representation and guard layer. A future `wgpu` device
+# layer builds on it; nothing here needs an adapter.
+gpu = ["dep:plurimath-numeric", "dep:serde_json"]
+
+[dependencies]
+# CPU fallback: the gum-par engine is reached through the public
+# evaluate_json entry point only.
+plurimath-numeric = { path = "../plurimath-numeric", optional = true }
+serde_json = { version = "=1.0.140", optional = true }
