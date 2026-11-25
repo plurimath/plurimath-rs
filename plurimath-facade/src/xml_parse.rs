@@ -10,6 +10,10 @@ use std::sync::OnceLock;
 #[path = "xml_parse/entity_wrapper.rs"]
 mod entity_wrapper;
 
+/// Generated XML stage models, separate from the common Plurimath wire.
+#[cfg(feature = "xml-stages")]
+pub mod stage;
+
 const MATHML: &str = "http://www.w3.org/1998/Math/MathML";
 const OMML: &str = "http://schemas.openxmlformats.org/officeDocument/2006/math";
 const WORD: &str = "http://schemas.openxmlformats.org/wordprocessingml/2006/main";
