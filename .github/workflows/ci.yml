@@ -56,3 +56,20 @@ jobs:
           UNICODE675_SHARD: ${{ matrix.shard }}/8
           UNICODE675_SHOW: "1"
         run: cargo test --locked -p plurimath-facade --all-features --test unicode675 -- --nocapture
+  gpu-software-adapter:
+    name: GPU harness (software Vulkan adapter)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@1.95.0
+      - name: Install software Vulkan adapter (lavapipe)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends mesa-vulkan-drivers vulkan-tools
+          vulkaninfo --summary
+      - name: GPU harness including adapter-gated cases
+        env:
+          # The harness probes this variable until the wgpu device layer lands.
+          PLURIMATH_GPU_ADAPTER: lavapipe
+        run: cargo test --locked -p plurimath-gpu --features gpu --test harness -- --include-ignored
