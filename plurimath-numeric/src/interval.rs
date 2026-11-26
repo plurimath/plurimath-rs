@@ -17,6 +17,7 @@
 use crate::scalar::Scalar;
 use crate::E;
 use serde_json::{json, Value as J};
+use std::collections::BTreeMap;
 
 fn up(x: f64) -> f64 {
     if x.is_nan() || x == f64::INFINITY {
@@ -488,6 +489,96 @@ pub fn lpu_adequacy(
     })
 }
 
+fn ast_number(node: &J) -> Result<f64, E> {
+    node["text"]
+        .as_str()
+        .and_then(|t| t.parse::<f64>().ok())
+        .filter(|x| x.is_finite())
+        .ok_or("InvalidModelError")
+}
+
+fn ast_recip(x: &IDual) -> Result<IDual, E> {
+    IDual::constant(1.0).div(x).ok_or("NonFiniteResultError")
+}
+
+/// Evaluate a JSON model AST (the shape `ad` consumes) over interval duals.
+/// `sin`/`cos` are not enclosed by this backend and are refused.
+pub fn eval_ast(node: &J, vars: &BTreeMap<&str, IDual>) -> Result<IDual, E> {
+    match node["type"].as_str() {
+        Some("number") => Ok(IDual::constant(ast_number(node)?)),
+        Some("variable") => vars
+            .get(node["name"].as_str().unwrap_or(""))
+            .copied()
+            .ok_or("MissingVariableError"),
+        Some("unary") => {
+            let x = eval_ast(&node["operand"], vars)?;
+            Ok(if node["operator"] == "-" {
+                IDual::constant(0.0).sub(&x)
+            } else {
+                x
+            })
+        }
+        Some("binary") => {
+            let op = node["operator"].as_str().unwrap_or("");
+            if op == "^" {
+                let base = eval_ast(&node["left"], vars)?;
+                let e = &node["right"];
+                if e["type"] == "number" {
+                    let p = ast_number(e)?;
+                    if p.fract() == 0.0 && p.abs() <= 64.0 {
+                        let mut out = IDual::constant(1.0);
+                        for _ in 0..(p.abs() as u32) {
+                            out = out.mul(&base);
+                        }
+                        return if p < 0.0 { ast_recip(&out) } else { Ok(out) };
+                    }
+                }
+                let exponent = eval_ast(e, vars)?;
+                return exponent.mul(&base.ln(0)?).exp(0);
+            }
+            let l = eval_ast(&node["left"], vars)?;
+            let r = eval_ast(&node["right"], vars)?;
+            match op {
+                "+" => Ok(l.add(&r)),
+                "-" => Ok(l.sub(&r)),
+                "*" => Ok(l.mul(&r)),
+                "/" => l.div(&r).ok_or("NonFiniteResultError"),
+                _ => Err("InvalidModelError"),
+            }
+        }
+        Some("call") => {
+            let x = eval_ast(&node["argument"], vars)?;
+            match node["name"].as_str() {
+                Some("exp") => x.exp(0),
+                Some("ln") => x.ln(0),
+                Some("sqrt") => x.sqrt(0),
+                _ => Err("UnsupportedModel"),
+            }
+        }
+        _ => Err("InvalidModelError"),
+    }
+}
+
+/// `lpu_adequacy` for a JSON model AST with named inputs.
+pub fn lpu_adequacy_ast(
+    ast: &J,
+    names: &[&str],
+    c: &[f64],
+    u: &[f64],
+    k: f64,
+    threshold: f64,
+    budget: usize,
+) -> Result<Adequacy, E> {
+    if names.len() != c.len() {
+        return Err("ArgumentError");
+    }
+    let model = |args: &[IDual]| -> Result<IDual, E> {
+        let vars: BTreeMap<&str, IDual> = names.iter().copied().zip(args.iter().copied()).collect();
+        eval_ast(ast, &vars)
+    };
+    lpu_adequacy(&model, c, u, k, threshold, budget)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -568,6 +659,19 @@ mod tests {
         let r = lpu_adequacy(&sq, &[c], &[u], 1.0, 0.05, 64).unwrap();
         assert_eq!(r.verdict, Verdict::Adequate);
         assert!(r.error.mag() < 1e-9 && r.error.mag() < limit);
+    }
+
+    #[test]
+    fn ast_model_matches_closure() {
+        let ast = json!({"type":"binary","operator":"^",
+            "left":{"type":"variable","name":"x"},"right":{"type":"number","text":"2"}});
+        let r = lpu_adequacy_ast(&ast, &["x"], &[1.0], &[1.0], 1.0, 0.05, 64).unwrap();
+        assert_eq!(r.verdict, Verdict::Inadequate);
+        let sin = json!({"type":"call","name":"sin","argument":{"type":"variable","name":"x"}});
+        assert_eq!(
+            lpu_adequacy_ast(&sin, &["x"], &[1.0], &[0.1], 1.0, 0.05, 64).unwrap_err(),
+            "UnsupportedModel"
+        );
     }
 
     #[test]
