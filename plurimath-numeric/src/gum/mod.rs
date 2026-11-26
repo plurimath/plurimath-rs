@@ -248,6 +248,64 @@ fn analyze_ad(params: &J) -> Result<J> {
     }))
 }
 
+/// Rigorous interval LPU-adequacy verdict (issue #18). The result carries the
+/// verdict and the subdivision budget actually used and allowed.
+fn lpu_adequacy(params: &J) -> Result<J> {
+    fields(
+        params,
+        &["ast", "inputs", "coverage_factor", "threshold", "budget"],
+    )?;
+    let items = params["inputs"]
+        .as_array()
+        .filter(|items| !items.is_empty() && items.len() <= 16)
+        .ok_or_else(|| invalid("adequacy inputs must be a nonempty ordered list"))?;
+    let (mut names, mut estimates, mut uncertainties) = (Vec::new(), Vec::new(), Vec::new());
+    for item in items {
+        fields(item, &["name", "estimate", "uncertainty"])?;
+        let number = |key: &str| {
+            item[key]
+                .as_f64()
+                .filter(|x| x.is_finite())
+                .ok_or_else(|| invalid("inputs need numeric estimate and uncertainty"))
+        };
+        let name = item["name"]
+            .as_str()
+            .filter(|name| crate::name(name))
+            .filter(|name| !names.contains(name))
+            .ok_or_else(|| invalid("variable names must be distinct strings"))?;
+        names.push(name);
+        estimates.push(number("estimate")?);
+        uncertainties.push(number("uncertainty")?);
+    }
+    let positive = |key: &str| {
+        params[key]
+            .as_f64()
+            .filter(|x| x.is_finite() && *x > 0.0)
+            .ok_or_else(|| invalid("coverage_factor and threshold must be positive numbers"))
+    };
+    let budget = params["budget"]
+        .as_u64()
+        .filter(|b| (1..=100_000).contains(b))
+        .ok_or_else(|| invalid("budget must be an integer from 1 to 100000"))?;
+    let adequacy = crate::interval::lpu_adequacy_ast(
+        &params["ast"],
+        &names,
+        &estimates,
+        &uncertainties,
+        positive("coverage_factor")?,
+        positive("threshold")?,
+        budget as usize,
+    )
+    .map_err(|code| match code {
+        "UnsupportedModel" => unsupported("interval adequacy does not support this call"),
+        "DegenerateUncertaintyError" => invalid("combined uncertainty is not provably positive"),
+        _ => invalid("interval adequacy evaluation failed"),
+    })?;
+    let mut out = adequacy.to_json();
+    out["engine"] = engine("interval-LPU-adequacy-v1");
+    Ok(out)
+}
+
 fn dispatch(request: &J) -> Result<J> {
     fields(request, &["schema", "method", "parameters"])?;
     let method = request["method"]
@@ -271,6 +329,7 @@ fn dispatch(request: &J) -> Result<J> {
         "propagate" => propagation::independent(params),
         "analyze" => taylor::analyze(params),
         "analyze_ad" => analyze_ad(params),
+        "lpu_adequacy" => lpu_adequacy(params),
         "propagate_covariance" => propagation::correlated(params),
         "propagate_vector" => propagation::transform(params),
         _ => Err(unsupported("unsupported GUM method")),
