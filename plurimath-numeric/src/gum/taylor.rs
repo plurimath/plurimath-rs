@@ -1,38 +1,44 @@
 use super::*;
 use crate::scalar::Scalar;
-use num_traits::{One, ToPrimitive};
+use num_traits::ToPrimitive;
 use std::collections::BTreeMap;
 
 /// Degree-three expansion about the supplied estimates. Monomials are sorted
 /// variable indices, so each mixed partial has one exact coefficient.
-#[derive(Clone, Default)]
-pub(super) struct Taylor(pub(super) BTreeMap<Vec<usize>, Q>);
+#[derive(Clone)]
+pub(super) struct Taylor<S: Scalar = Q>(pub(super) BTreeMap<Vec<usize>, S>);
 
-impl Taylor {
-    pub(super) fn constant(value: Q) -> Self {
+impl<S: Scalar> Default for Taylor<S> {
+    fn default() -> Self {
+        Self(BTreeMap::new())
+    }
+}
+
+impl<S: Scalar> Taylor<S> {
+    pub(super) fn constant(value: S) -> Self {
         let mut terms = Self::default();
         terms.insert(Vec::new(), value);
         terms
     }
 
-    pub(super) fn variable(value: Q, index: usize) -> Self {
+    pub(super) fn variable(value: S, index: usize) -> Self {
         let mut terms = Self::constant(value);
-        terms.insert(vec![index], Q::one());
+        terms.insert(vec![index], S::s_one());
         terms
     }
 
-    fn insert(&mut self, powers: Vec<usize>, coefficient: Q) {
-        if coefficient.is_zero() {
+    fn insert(&mut self, powers: Vec<usize>, coefficient: S) {
+        if coefficient.s_is_zero() {
             return;
         }
-        let value = self.0.entry(powers.clone()).or_default();
+        let value = self.0.entry(powers.clone()).or_insert_with(S::s_zero);
         *value = Scalar::add(value, &coefficient);
-        if value.is_zero() {
+        if value.s_is_zero() {
             self.0.remove(&powers);
         }
     }
 
-    pub(super) fn derivative(&self, indices: &[usize]) -> Q {
+    pub(super) fn derivative(&self, indices: &[usize]) -> S {
         let mut sorted = indices.to_vec();
         sorted.sort_unstable();
         let factor = match sorted.as_slice() {
@@ -43,7 +49,7 @@ impl Taylor {
         };
         self.0
             .get(&sorted)
-            .map_or_else(Q::zero, |value| value * number(factor))
+            .map_or_else(S::s_zero, |value| Scalar::mul(value, &S::from_i32(factor)))
     }
 
     pub(super) fn add(mut self, rhs: Self) -> Self {
@@ -55,13 +61,13 @@ impl Taylor {
 
     pub(super) fn sub(mut self, rhs: Self) -> Self {
         for (key, value) in rhs.0 {
-            self.insert(key, Scalar::sub(&Q::zero(), &value));
+            self.insert(key, value.negate());
         }
         self
     }
 
-    pub(super) fn scale(mut self, value: &Q) -> Self {
-        if value.is_zero() {
+    pub(super) fn scale(mut self, value: &S) -> Self {
+        if value.s_is_zero() {
             return Self::default();
         }
         self.0
@@ -84,9 +90,7 @@ impl Taylor {
                 let mut powers = a.clone();
                 powers.extend(b);
                 powers.sort_unstable();
-                if x.numer().bits().max(x.denom().bits()) + y.numer().bits().max(y.denom().bits())
-                    > 1_000_000
-                {
+                if x.bit_size() + y.bit_size() > 1_000_000 {
                     return Err(unsupported(
                         "analytic derivative exceeds the bounded rational domain",
                     ));
@@ -105,7 +109,7 @@ impl Taylor {
             code: "DivisionByZeroError",
             message: "analytic denominator is zero at the estimate",
         })?;
-        let reciprocal = Scalar::div(&Q::one(), &constant).expect("nonzero constant term");
+        let reciprocal = Scalar::div(&S::s_one(), &constant).expect("nonzero constant term");
         if !TRUNCATE {
             if !self.0.is_empty() {
                 return Err(unsupported(
@@ -114,8 +118,8 @@ impl Taylor {
             }
             return Ok(Self::constant(reciprocal));
         }
-        let delta = self.scale(&-&reciprocal);
-        let one = Self::constant(Q::one());
+        let delta = self.scale(&reciprocal.negate());
+        let one = Self::constant(S::s_one());
         let mut sum = one.clone();
         let mut power = one;
         for _ in 0..3 {
@@ -130,18 +134,14 @@ impl Taylor {
             return Err(unsupported("variable exponents are unsupported"));
         }
         let exponent = exponent.derivative(&[]);
-        if !exponent.is_integer() {
-            return Err(unsupported(
-                "analytic differentiation requires an integer exponent",
-            ));
-        }
         let exponent = exponent
-            .to_integer()
-            .to_i32()
+            .to_i32_exact()
+            .ok_or_else(|| unsupported("analytic differentiation requires an integer exponent"))?;
+        let exponent = Some(exponent)
             .filter(|n| n.unsigned_abs() <= 4096)
             .ok_or_else(|| unsupported("analytic exponent exceeds the bounded domain"))?;
         let mut n = exponent.unsigned_abs();
-        let mut out = Self::constant(Q::one());
+        let mut out = Self::constant(S::s_one());
         while n > 0 {
             if n & 1 != 0 {
                 out = out.multiply::<TRUNCATE>(&self)?;
@@ -159,9 +159,12 @@ impl Taylor {
     }
 }
 
-fn walk<const TRUNCATE: bool>(node: &J, bindings: &BTreeMap<&str, Taylor>) -> Result<Taylor> {
+fn walk<S: Scalar, const TRUNCATE: bool>(
+    node: &J,
+    bindings: &BTreeMap<&str, Taylor<S>>,
+) -> Result<Taylor<S>> {
     let value = match node["type"].as_str() {
-        Some("number") => Ok(Taylor::constant(exact(&node["text"])?)),
+        Some("number") => Ok(Taylor::constant(S::from_q(&exact(&node["text"])?))),
         Some("variable") => bindings
             .get(node["name"].as_str().unwrap_or(""))
             .cloned()
@@ -170,16 +173,16 @@ fn walk<const TRUNCATE: bool>(node: &J, bindings: &BTreeMap<&str, Taylor>) -> Re
                 message: "missing analytic variable binding",
             }),
         Some("unary") => {
-            let value = walk::<TRUNCATE>(&node["operand"], bindings)?;
+            let value = walk::<S, TRUNCATE>(&node["operand"], bindings)?;
             Ok(if node["operator"] == "-" {
-                value.scale(&-Q::one())
+                value.scale(&S::s_one().negate())
             } else {
                 value
             })
         }
         Some("binary") => {
-            let left = walk::<TRUNCATE>(&node["left"], bindings)?;
-            let right = walk::<TRUNCATE>(&node["right"], bindings)?;
+            let left = walk::<S, TRUNCATE>(&node["left"], bindings)?;
+            let right = walk::<S, TRUNCATE>(&node["right"], bindings)?;
             match node["operator"].as_str() {
                 Some("+") => Ok(left.add(right)),
                 Some("-") => Ok(left.sub(right)),
@@ -235,7 +238,7 @@ pub(super) fn sampling_polynomial(
         .enumerate()
         .map(|(i, (name, estimate))| (name, Taylor::variable(estimate, i)))
         .collect();
-    let jet = walk::<false>(ast, &bindings)?;
+    let jet = walk::<Q, false>(ast, &bindings)?;
     let model = compile_polynomial(jet, variables.len())?;
     if model.degrees.iter().all(|degree| *degree == 0) {
         return Err(unsupported(
@@ -302,7 +305,7 @@ pub(super) fn analyze(params: &J) -> Result<J> {
         variables.push(name);
         components.push(input["component"].clone());
     }
-    let jet = walk::<true>(&params["ast"], &bindings)?;
+    let jet = walk::<Q, true>(&params["ast"], &bindings)?;
     let size = inputs.len();
     let gradient: Vec<_> = (0..size).map(|i| tagged(&jet.derivative(&[i]))).collect();
     let hessian: Vec<_> = (0..size)
@@ -333,4 +336,32 @@ pub(super) fn analyze(params: &J) -> Result<J> {
     out["hessian"] = json!(hessian);
     out["third"] = json!(third);
     Ok(out)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// The same jet code runs on `Q` and `f64`; both give the same derivatives
+    /// for `x^3 / y` about (2, 4): d/dx = 3, d2/dx2 = 3, d/dy = -1/2.
+    fn jet<S: Scalar>() -> Taylor<S> {
+        let x = Taylor::variable(S::from_i32(2), 0);
+        let y = Taylor::variable(S::from_i32(4), 1);
+        let cube = x.power::<true>(Taylor::constant(S::from_i32(3))).unwrap();
+        cube.multiply::<true>(&y.power::<true>(Taylor::constant(S::from_i32(-1))).unwrap())
+            .unwrap()
+    }
+
+    #[test]
+    fn q_and_f64_instances_agree() {
+        let q = jet::<Q>();
+        let f = jet::<f64>();
+        assert_eq!(q.derivative(&[]), Q::from_integer(2.into()));
+        assert_eq!(q.derivative(&[0]), Q::from_integer(3.into()));
+        assert_eq!(q.derivative(&[0, 0]), Q::from_integer(3.into()));
+        assert_eq!(f.derivative(&[]), 2.0);
+        assert_eq!(f.derivative(&[0]), 3.0);
+        assert_eq!(f.derivative(&[0, 0]), 3.0);
+        assert_eq!(f.derivative(&[1]), -0.5);
+    }
 }
