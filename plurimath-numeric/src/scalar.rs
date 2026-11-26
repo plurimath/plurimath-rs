@@ -8,8 +8,22 @@
 use super::{decimal_math, guard_sqrt, roundq, E, N, Q};
 use num_traits::Zero;
 
-pub(crate) trait Scalar: Sized {
+pub(crate) trait Scalar: Sized + Clone {
     type Wide;
+    fn s_zero() -> Self;
+    fn s_one() -> Self;
+    fn s_is_zero(&self) -> bool;
+    fn from_i32(n: i32) -> Self;
+    /// Convert an exact rational input into this instance.
+    fn from_q(q: &Q) -> Self;
+    /// Size of the value in bits, used to bound exact growth. Fixed-width
+    /// instances report 0 because they cannot grow.
+    fn bit_size(&self) -> u64;
+    /// The value as an `i32` when it is exactly an integer in range.
+    fn to_i32_exact(&self) -> Option<i32>;
+    fn negate(&self) -> Self {
+        Self::s_zero().sub(self)
+    }
     fn add(&self, rhs: &Self) -> Self;
     fn sub(&self, rhs: &Self) -> Self;
     fn mul(&self, rhs: &Self) -> Self;
@@ -31,6 +45,30 @@ fn q_guard(op: &str, q: &Q, digits: u32) -> Result<N, E> {
 
 impl Scalar for Q {
     type Wide = N;
+    fn s_zero() -> Self {
+        Zero::zero()
+    }
+    fn s_one() -> Self {
+        num_traits::One::one()
+    }
+    fn s_is_zero(&self) -> bool {
+        Zero::is_zero(self)
+    }
+    fn from_i32(n: i32) -> Self {
+        Q::from_integer(n.into())
+    }
+    fn from_q(q: &Q) -> Self {
+        q.clone()
+    }
+    fn bit_size(&self) -> u64 {
+        self.numer().bits().max(self.denom().bits())
+    }
+    fn to_i32_exact(&self) -> Option<i32> {
+        use num_traits::ToPrimitive;
+        self.is_integer()
+            .then(|| self.to_integer().to_i32())
+            .flatten()
+    }
     fn add(&self, rhs: &Self) -> Self {
         self + rhs
     }
@@ -67,6 +105,27 @@ fn finite(x: f64) -> Result<f64, E> {
 
 impl Scalar for f64 {
     type Wide = f64;
+    fn s_zero() -> Self {
+        0.0
+    }
+    fn s_one() -> Self {
+        1.0
+    }
+    fn s_is_zero(&self) -> bool {
+        *self == 0.0
+    }
+    fn from_i32(n: i32) -> Self {
+        f64::from(n)
+    }
+    fn from_q(q: &Q) -> Self {
+        num_traits::ToPrimitive::to_f64(q).unwrap_or(f64::NAN)
+    }
+    fn bit_size(&self) -> u64 {
+        0
+    }
+    fn to_i32_exact(&self) -> Option<i32> {
+        (self.fract() == 0.0 && self.abs() <= f64::from(i32::MAX)).then_some(*self as i32)
+    }
     fn add(&self, rhs: &Self) -> Self {
         self + rhs
     }

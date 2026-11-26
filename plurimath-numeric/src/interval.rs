@@ -100,6 +100,29 @@ fn fin(i: Interval) -> Result<Interval, E> {
 
 impl Scalar for Interval {
     type Wide = Interval;
+    fn s_zero() -> Self {
+        Interval::point(0.0)
+    }
+    fn s_one() -> Self {
+        Interval::point(1.0)
+    }
+    fn s_is_zero(&self) -> bool {
+        self.lo == 0.0 && self.hi == 0.0
+    }
+    fn from_i32(n: i32) -> Self {
+        Interval::point(f64::from(n))
+    }
+    fn from_q(q: &crate::Q) -> Self {
+        Interval::point(<f64 as Scalar>::from_q(q))
+    }
+    fn bit_size(&self) -> u64 {
+        0
+    }
+    fn to_i32_exact(&self) -> Option<i32> {
+        (self.lo == self.hi)
+            .then(|| <f64 as Scalar>::to_i32_exact(&self.lo))
+            .flatten()
+    }
     fn add(&self, r: &Self) -> Self {
         Interval::widen(self.lo + r.lo, self.hi + r.hi, 1)
     }
@@ -180,6 +203,27 @@ impl IDual {
 
 impl Scalar for IDual {
     type Wide = IDual;
+    fn s_zero() -> Self {
+        IDual::constant(0.0)
+    }
+    fn s_one() -> Self {
+        IDual::constant(1.0)
+    }
+    fn s_is_zero(&self) -> bool {
+        self.v.lo == 0.0 && self.v.hi == 0.0 && self.d.lo == 0.0 && self.d.hi == 0.0
+    }
+    fn from_i32(n: i32) -> Self {
+        IDual::constant(f64::from(n))
+    }
+    fn from_q(q: &crate::Q) -> Self {
+        IDual::constant(<f64 as Scalar>::from_q(q))
+    }
+    fn bit_size(&self) -> u64 {
+        0
+    }
+    fn to_i32_exact(&self) -> Option<i32> {
+        <f64 as Scalar>::to_i32_exact(&self.v.lo)
+    }
     fn add(&self, r: &Self) -> Self {
         IDual {
             v: self.v.add(&r.v),

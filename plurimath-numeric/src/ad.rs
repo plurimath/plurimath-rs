@@ -166,6 +166,27 @@ macro_rules! scalar_impl {
     ($t:ty) => {
         impl Scalar for $t {
             type Wide = $t;
+            fn s_zero() -> Self {
+                <Self as Jet>::constant(0.0)
+            }
+            fn s_one() -> Self {
+                <Self as Jet>::constant(1.0)
+            }
+            fn s_is_zero(&self) -> bool {
+                self.value() == 0.0
+            }
+            fn from_i32(n: i32) -> Self {
+                <Self as Jet>::constant(f64::from(n))
+            }
+            fn from_q(q: &crate::Q) -> Self {
+                <Self as Jet>::constant(<f64 as Scalar>::from_q(q))
+            }
+            fn bit_size(&self) -> u64 {
+                0
+            }
+            fn to_i32_exact(&self) -> Option<i32> {
+                <f64 as Scalar>::to_i32_exact(&self.v)
+            }
             fn add(&self, rhs: &Self) -> Self {
                 Jet::jadd(self, rhs)
             }
