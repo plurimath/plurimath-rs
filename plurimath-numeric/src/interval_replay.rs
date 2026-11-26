@@ -19,13 +19,16 @@
 //! Agreement rule. The MCM check compares interval endpoints within a
 //! tolerance; the interval check bounds the linearization error. They are not
 //! 1:1, so only two things are asserted:
-//!   * `inadequate` implies `not_validated`;
-//!   * `adequate` must not contradict `validated`.
+//!
+//! - `inadequate` implies `not_validated`;
+//! - `adequate` must not contradict `validated`.
+//!
 //! `adequate` against `not_validated` is not a contradiction (the MCM
 //! intervals of those cases are perturbed on purpose) and is counted
 //! separately. `inconclusive` is counted separately and never forced to a
 //! verdict. Refusal wires and wires that carry no adequacy symbol are not
 //! replayed and are counted as skipped.
+
 use crate::interval::{lpu_adequacy, Adequacy, IDual, Verdict};
 use crate::E;
 use serde_json::Value;
