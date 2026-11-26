@@ -899,4 +899,86 @@ mod tests {
             );
         }
     }
+
+    /// Case 4 of the frozen MCM fixture, switched to `gum-par`.
+    fn par_params(threads: u64, max_samples: Option<u64>) -> J {
+        let fixture: J = serde_json::from_str(include_str!("../../fixtures/gum-mcm.json")).unwrap();
+        let mut params = fixture["cases"][4]["request"]["parameters"].clone();
+        let object = params.as_object_mut().unwrap();
+        object.remove("seeds");
+        object.insert("engine".into(), json!("gum-par"));
+        object.insert("seed".into(), json!(20261124));
+        object.insert("threads".into(), json!(threads));
+        if let Some(max_samples) = max_samples {
+            object.insert("max_samples".into(), json!(max_samples));
+        }
+        params
+    }
+
+    fn par_ok(threads: u64, max_samples: Option<u64>) -> J {
+        evaluate(&par_params(threads, max_samples)).unwrap_or_else(|e| panic!("{e:?}"))
+    }
+
+    /// Everything except the requested budget, which legitimately differs.
+    fn without_budget(mut result: J) -> J {
+        result
+            .as_object_mut()
+            .unwrap()
+            .remove("requested_max_samples");
+        result
+    }
+
+    #[test]
+    fn gum_par_result_is_invariant_across_thread_counts() {
+        let base = par_ok(1, None);
+        // 3 and 7 do not divide the batch count; 64 exceeds it.
+        for threads in [2, 3, 7, 64] {
+            assert_eq!(par_ok(threads, None), base, "threads={threads}");
+        }
+    }
+
+    #[test]
+    fn gum_par_counter_ranges_are_disjoint_and_block_aligned() {
+        let result = par_ok(3, None);
+        let engine = &result["engine"];
+        let stride: u128 = engine["counter_stride"].as_str().unwrap().parse().unwrap();
+        assert_eq!(stride, BLOCK_COUNTER_STRIDE);
+        let ranges = engine["counter_ranges"].as_array().unwrap();
+        assert_eq!(ranges.len() as u64, result["batches"].as_u64().unwrap());
+        for (block, range) in ranges.iter().enumerate() {
+            let first: u128 = range["first"].as_str().unwrap().parse().unwrap();
+            let end: u128 = range["end"].as_str().unwrap().parse().unwrap();
+            assert_eq!(first, block as u128 * stride, "block {block} start");
+            assert!(end > first && end <= first + stride, "block {block} end");
+        }
+    }
+
+    #[test]
+    fn gum_par_stopping_is_decided_only_at_block_boundaries() {
+        let base = par_ok(1, None);
+        let batches = base["batches"].as_u64().unwrap();
+        let size = base["batch_size"].as_u64().unwrap();
+        assert_eq!(base["samples"].as_u64().unwrap(), batches * size);
+        let expected = without_budget(base);
+        // A budget ending exactly on the stopping block, and one that adds a
+        // partial block on top, both stop at the same block with equal output.
+        for budget in [batches * size, batches * size + size - 1] {
+            for threads in [1, 7, 64] {
+                assert_eq!(
+                    without_budget(par_ok(threads, Some(budget))),
+                    expected,
+                    "budget={budget} threads={threads}"
+                );
+            }
+        }
+        // One block short of the stopping block: never stabilizes, whatever
+        // the thread count or prefetch depth.
+        if batches > 2 {
+            for threads in [1, 7, 64] {
+                let error = evaluate(&par_params(threads, Some((batches - 1) * size)))
+                    .expect_err("budget one block short must not stabilize");
+                assert_eq!(error.code, "ConvergenceError", "threads={threads}");
+            }
+        }
+    }
 }
