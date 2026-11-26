@@ -4,6 +4,8 @@ mod decimal_math;
 mod gum;
 #[allow(dead_code)]
 mod interval;
+#[cfg(test)]
+mod interval_replay;
 pub mod prng;
 #[cfg(feature = "quantity")]
 mod quantity;
