@@ -136,6 +136,7 @@ fn ruby_spec_lpu_and_exact_singular_covariance() {
 
 #[test]
 fn annex_h1_analytic_derivatives_and_declared_pdf_lpu() {
+    let fixture: Value = serde_json::from_str(include_str!("../fixtures/gum-annex.json")).unwrap();
     let case = &fixture["h1"];
     let response = run(&case["request"]);
     assert_eq!(response["ok"], true, "{}", response["error"]);
@@ -174,6 +175,7 @@ fn exact_second_order_contractions_and_typed_analytic_refusals() {
     analyze["parameters"]["ast"] =
         json!({"type":"call","name":"sin","argument":{"type":"variable","name":"x"}});
     assert_eq!(run(&analyze)["error"]["code"], "UnsupportedModel");
+    let fixture: Value = serde_json::from_str(include_str!("../fixtures/gum-annex.json")).unwrap();
     for case in fixture["joint_gaussian"].as_array().unwrap() {
         let output = run(&case["request"]);
         for (key, value) in case["expected"].as_object().unwrap() {
