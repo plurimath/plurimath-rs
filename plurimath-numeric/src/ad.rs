@@ -175,6 +175,9 @@ macro_rules! scalar_impl {
             fn s_is_zero(&self) -> bool {
                 self.value() == 0.0
             }
+            fn s_is_negative(&self) -> bool {
+                self.value() < 0.0
+            }
             fn from_i32(n: i32) -> Self {
                 <Self as Jet>::constant(f64::from(n))
             }

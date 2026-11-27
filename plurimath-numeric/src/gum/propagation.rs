@@ -1,4 +1,5 @@
 use super::*;
+use crate::scalar::Scalar;
 
 const COMPONENT_FIELDS: &[&str] = &[
     "distribution",
@@ -215,12 +216,8 @@ pub(super) fn independent(params: &J) -> Result<J> {
         "guard_digits must be positive",
     )?;
     let (components, gradient, variances) = components(params, "gradient shape mismatch")?;
-    let contributions: Vec<_> = gradient
-        .iter()
-        .zip(&variances)
-        .map(|(g, v)| g.pow(2) * v)
-        .collect();
-    let mut variance = contributions.iter().sum::<Q>();
+    let contributions: Vec<Q> = contributions(&gradient, &variances);
+    let mut variance = total(contributions.iter());
     let mut estimate = exact(&params["estimate"])?;
     if order == 2 {
         if !normal_components(components) {
@@ -234,14 +231,7 @@ pub(super) fn independent(params: &J) -> Result<J> {
             n,
             "GUF2 requires complete analytic Hessian and third derivatives",
         )?;
-        for i in 0..n {
-            estimate += &h[i][i] * &variances[i] / number(2);
-            for j in 0..n {
-                variance += (h[i][j].pow(2) / number(2) + &gradient[i] * &t[i][j][j])
-                    * &variances[i]
-                    * &variances[j];
-            }
-        }
+        (estimate, variance) = guf2_independent(estimate, variance, &gradient, &variances, &h, &t);
         if variance.is_negative() {
             return Err(unsupported("Taylor approximation gives negative variance"));
         }
@@ -294,47 +284,131 @@ pub(super) fn independent(params: &J) -> Result<J> {
 fn checked(value: &J) -> Result<Vec<Vec<Q>>> {
     let invalid_shape = "covariance must be a nonempty square matrix";
     let matrix = matrix(value, invalid_shape, 1)?;
-    let n = matrix.len();
-    if matrix[0].len() != n {
+    if matrix[0].len() != matrix.len() {
         return Err(invalid(invalid_shape));
     }
+    check_psd(&matrix)?;
+    Ok(matrix)
+}
+
+/// Symmetry and positive-semidefinite check by exact elimination.
+fn check_psd<S: Scalar>(matrix: &[Vec<S>]) -> Result<()> {
+    let n = matrix.len();
     for (i, row) in matrix.iter().enumerate() {
-        if (0..i).any(|j| row[j] != matrix[j][i]) {
+        if (0..i).any(|j| !row[j].sub(&matrix[j][i]).s_is_zero()) {
             return Err(invalid("covariance must be symmetric"));
         }
     }
-    let mut remainder = matrix.clone();
+    let mut remainder = matrix.to_vec();
     let not_psd = || invalid("covariance is not positive semidefinite");
     for k in 0..n {
         let pivot = remainder[k][k].clone();
-        if pivot.is_negative() {
+        if pivot.s_is_negative() {
             return Err(not_psd());
         }
-        if pivot.is_zero() {
-            if (k + 1..n).any(|i| !remainder[i][k].is_zero()) {
+        if pivot.s_is_zero() {
+            if (k + 1..n).any(|i| !remainder[i][k].s_is_zero()) {
                 return Err(not_psd());
             }
             continue;
         }
         for i in k + 1..n {
             for j in i..n {
-                let decrement = &remainder[i][k] * &remainder[j][k] / &pivot;
-                remainder[i][j] -= decrement;
+                let decrement = remainder[i][k]
+                    .mul(&remainder[j][k])
+                    .div(&pivot)
+                    .expect("nonzero pivot");
+                remainder[i][j] = remainder[i][j].sub(&decrement);
                 remainder[j][i] = remainder[i][j].clone();
             }
         }
     }
-    Ok(matrix)
+    Ok(())
 }
 
-fn product(row: &[Q], matrix: &[Vec<Q>]) -> Vec<Q> {
-    (0..row.len())
-        .map(|j| row.iter().zip(matrix).map(|(a, m)| a * &m[j]).sum())
+fn total<'a, S: Scalar + 'a>(items: impl Iterator<Item = &'a S>) -> S {
+    items.fold(S::s_zero(), |acc, item| acc.add(item))
+}
+
+fn contributions<S: Scalar>(gradient: &[S], variances: &[S]) -> Vec<S> {
+    gradient
+        .iter()
+        .zip(variances)
+        .map(|(g, v)| g.mul(g).mul(v))
         .collect()
 }
 
-fn dot(a: &[Q], b: &[Q]) -> Q {
-    a.iter().zip(b).map(|(a, b)| a * b).sum()
+fn half<S: Scalar>(value: S) -> S {
+    value.div(&S::from_i32(2)).expect("two is nonzero")
+}
+
+/// Second-order GUF2 terms for independent normal inputs.
+fn guf2_independent<S: Scalar>(
+    mut estimate: S,
+    mut variance: S,
+    gradient: &[S],
+    variances: &[S],
+    h: &[Vec<S>],
+    t: &[Vec<Vec<S>>],
+) -> (S, S) {
+    for i in 0..variances.len() {
+        estimate = estimate.add(&half(h[i][i].mul(&variances[i])));
+        for j in 0..variances.len() {
+            let term = half(h[i][j].mul(&h[i][j])).add(&gradient[i].mul(&t[i][j][j]));
+            variance = variance.add(&term.mul(&variances[i]).mul(&variances[j]));
+        }
+    }
+    (estimate, variance)
+}
+
+/// Second-order GUF2 terms for a joint multivariate normal law.
+fn guf2_correlated<S: Scalar>(
+    mut estimate: S,
+    mut variance: S,
+    projected: &[S],
+    h: &[Vec<S>],
+    t: &[Vec<Vec<S>>],
+    covariance: &[Vec<S>],
+) -> (S, S) {
+    let n = covariance.len();
+    let hs: Vec<_> = h.iter().map(|row| product(row, covariance)).collect();
+    for i in 0..n {
+        let mut contracted_third = S::s_zero();
+        for j in 0..n {
+            estimate = estimate.add(&half(h[i][j].mul(&covariance[i][j])));
+            variance = variance.add(&half(hs[i][j].mul(&hs[j][i])));
+            contracted_third = contracted_third.add(&dot(&t[i][j], &covariance[j]));
+        }
+        variance = variance.add(&projected[i].mul(&contracted_third));
+    }
+    (estimate, variance)
+}
+
+fn product<S: Scalar>(row: &[S], matrix: &[Vec<S>]) -> Vec<S> {
+    (0..row.len())
+        .map(|j| {
+            row.iter()
+                .zip(matrix)
+                .fold(S::s_zero(), |acc, (a, m)| acc.add(&a.mul(&m[j])))
+        })
+        .collect()
+}
+
+fn dot<S: Scalar>(a: &[S], b: &[S]) -> S {
+    a.iter()
+        .zip(b)
+        .fold(S::s_zero(), |acc, (a, b)| acc.add(&a.mul(b)))
+}
+
+/// `J C J^T` for a Jacobian and covariance.
+fn propagate_matrix<S: Scalar>(jacobian: &[Vec<S>], covariance: &[Vec<S>]) -> Vec<Vec<S>> {
+    jacobian
+        .iter()
+        .map(|row| {
+            let projected = product(row, covariance);
+            jacobian.iter().map(|b| dot(&projected, b)).collect()
+        })
+        .collect()
 }
 
 pub(super) fn correlated(params: &J) -> Result<J> {
@@ -380,22 +454,12 @@ pub(super) fn correlated(params: &J) -> Result<J> {
                 "GUF2 covariance requires an explicitly joint multivariate normal law",
             ));
         }
-        let n = covariance.len();
         let (h, t) = tensors(
             params,
-            n,
+            covariance.len(),
             "complete analytic Hessian and third derivatives are required",
         )?;
-        let hs: Vec<_> = h.iter().map(|row| product(row, &covariance)).collect();
-        for i in 0..n {
-            let mut contracted_third = Q::zero();
-            for j in 0..n {
-                estimate += &h[i][j] * &covariance[i][j] / number(2);
-                variance += &hs[i][j] * &hs[j][i] / number(2);
-                contracted_third += dot(&t[i][j], &covariance[j]);
-            }
-            variance += &projected[i] * contracted_third;
-        }
+        (estimate, variance) = guf2_correlated(estimate, variance, &projected, &h, &t, &covariance);
         if variance.is_negative() {
             return Err(unsupported(
                 "Taylor covariance approximation gives negative variance",
@@ -437,13 +501,7 @@ pub(super) fn transform(params: &J) -> Result<J> {
         1000,
         "guard_digits must be positive",
     )?;
-    let output: Vec<Vec<_>> = jacobian
-        .iter()
-        .map(|row| {
-            let projected = product(row, &covariance);
-            jacobian.iter().map(|b| dot(&projected, b)).collect()
-        })
-        .collect();
+    let output = propagate_matrix(&jacobian, &covariance);
     let roots = output
         .iter()
         .enumerate()
