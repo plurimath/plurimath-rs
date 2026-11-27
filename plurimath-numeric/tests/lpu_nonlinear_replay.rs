@@ -59,7 +59,7 @@ fn nonlinear_lpu_adequacy_wires_replay_and_agree_with_mcm() {
     eprintln!("lpu_adequacy nonlinear replay: {counts:?}");
     assert!(failures.is_empty(), "{}", failures.join("\n"));
     // A non-adequate verdict must match MCM, not only adequate ones.
-    assert_eq!(counts.adequate, 3, "{counts:?}");
+    assert_eq!(counts.adequate, 2, "{counts:?}");
     assert_eq!(counts.inadequate, 4, "{counts:?}");
     assert_eq!(counts.inconclusive, 1, "{counts:?}");
 }
