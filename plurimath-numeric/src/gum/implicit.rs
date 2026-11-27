@@ -1,4 +1,43 @@
 use super::*;
+use crate::scalar::Scalar;
+
+/// `-C_Y^{-1} C_X` by Gauss-Jordan elimination on `[C_Y | -C_X]`, pivoting
+/// on the first nonzero entry of each column. `None` when `C_Y` is singular.
+fn sensitivities<S: Scalar>(cy: Vec<Vec<S>>, cx: Vec<Vec<S>>) -> Option<Vec<Vec<S>>> {
+    let n = cy.len();
+    let mut augmented: Vec<Vec<S>> = cy
+        .into_iter()
+        .zip(cx)
+        .map(|(mut output, input)| {
+            output.extend(input.iter().map(S::negate));
+            output
+        })
+        .collect();
+    for column in 0..n {
+        let pivot = (column..n).find(|&row| !augmented[row][column].s_is_zero())?;
+        augmented.swap(column, pivot);
+        let divisor = augmented[column][column].clone();
+        augmented[column]
+            .iter_mut()
+            .for_each(|value| *value = value.div(&divisor).expect("nonzero pivot"));
+        let pivot_row = augmented[column].clone();
+        for (row, values) in augmented.iter_mut().enumerate() {
+            if row == column {
+                continue;
+            }
+            let factor = values[column].clone();
+            for (value, pivot) in values.iter_mut().zip(&pivot_row) {
+                *value = value.sub(&factor.mul(pivot));
+            }
+        }
+    }
+    Some(
+        augmented
+            .into_iter()
+            .map(|mut row| row.split_off(n))
+            .collect(),
+    )
+}
 
 pub(super) fn propagate(params: &J) -> Result<J> {
     fields(
@@ -54,37 +93,11 @@ pub(super) fn propagate(params: &J) -> Result<J> {
             "supplied root residual exceeds declared tolerance",
         ));
     }
-    let mut augmented: Vec<Vec<Q>> = cy
-        .into_iter()
-        .zip(cx)
-        .map(|(mut output, input)| {
-            output.extend(input.into_iter().map(|value| -value));
-            output
-        })
-        .collect();
-    for column in 0..n {
-        let pivot = (column..n)
-            .find(|&row| !augmented[row][column].is_zero())
-            .ok_or_else(|| unsupported("implicit output Jacobian is singular"))?;
-        augmented.swap(column, pivot);
-        let divisor = augmented[column][column].clone();
-        augmented[column]
-            .iter_mut()
-            .for_each(|value| *value /= &divisor);
-        let pivot_row = augmented[column].clone();
-        for (row, values) in augmented.iter_mut().enumerate() {
-            if row == column {
-                continue;
-            }
-            let factor = values[column].clone();
-            for (value, pivot) in values.iter_mut().zip(&pivot_row) {
-                *value -= &factor * pivot;
-            }
-        }
-    }
-    let sensitivities: Vec<_> = augmented
-        .into_iter()
-        .map(|row| row[n..].iter().map(tagged).collect::<Vec<_>>())
+    let solved =
+        sensitivities(cy, cx).ok_or_else(|| unsupported("implicit output Jacobian is singular"))?;
+    let sensitivities: Vec<_> = solved
+        .iter()
+        .map(|row| row.iter().map(tagged).collect::<Vec<_>>())
         .collect();
     let mut result = super::propagation::transform(&json!({
         "estimates":params["estimates"],"jacobian":sensitivities,
@@ -105,4 +118,23 @@ pub(super) fn propagate(params: &J) -> Result<J> {
     result["root_solver"] = symbol("caller_supplied");
     result["engine"] = engine("implicit-Jacobian-LPU-v1");
     Ok(result)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// The same elimination runs on `Q` and `f64`.
+    #[test]
+    fn sensitivities_agree_for_q_and_f64() {
+        let int = |n: i64| Q::from_integer(n.into());
+        let exact = sensitivities(vec![vec![int(2)]], vec![vec![int(4), int(1)]]);
+        assert_eq!(
+            exact,
+            Some(vec![vec![int(-2), Q::new((-1).into(), 2.into())]])
+        );
+        let binary = sensitivities(vec![vec![2.0]], vec![vec![4.0, 1.0]]);
+        assert_eq!(binary, Some(vec![vec![-2.0, -0.5]]));
+        assert_eq!(sensitivities(vec![vec![0.0]], vec![vec![1.0]]), None);
+    }
 }
