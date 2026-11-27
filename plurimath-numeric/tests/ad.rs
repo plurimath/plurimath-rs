@@ -324,7 +324,11 @@ fn h1_monte_carlo_matches_ad_second_order_within_declared_tolerance() {
     assert_eq!(mc["method"]["symbol"], "adaptive_mcm");
     assert_eq!(mc["stabilized"], true);
     let mc_est: f64 = mc["estimate"].as_str().unwrap().parse().unwrap();
-    let mc_u: f64 = mc["standard_uncertainty"].as_str().unwrap().parse().unwrap();
+    let mc_u: f64 = mc["standard_uncertainty"]
+        .as_str()
+        .unwrap()
+        .parse()
+        .unwrap();
 
     let moments: Vec<(&str, f64, f64)> = params["inputs"]
         .as_array()
