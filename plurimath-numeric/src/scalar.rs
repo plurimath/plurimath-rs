@@ -13,6 +13,8 @@ pub(crate) trait Scalar: Sized + Clone {
     fn s_zero() -> Self;
     fn s_one() -> Self;
     fn s_is_zero(&self) -> bool;
+    /// True when the value is known to be below zero.
+    fn s_is_negative(&self) -> bool;
     fn from_i32(n: i32) -> Self;
     /// Convert an exact rational input into this instance.
     fn from_q(q: &Q) -> Self;
@@ -53,6 +55,9 @@ impl Scalar for Q {
     }
     fn s_is_zero(&self) -> bool {
         Zero::is_zero(self)
+    }
+    fn s_is_negative(&self) -> bool {
+        num_traits::Signed::is_negative(self)
     }
     fn from_i32(n: i32) -> Self {
         Q::from_integer(n.into())
@@ -113,6 +118,9 @@ impl Scalar for f64 {
     }
     fn s_is_zero(&self) -> bool {
         *self == 0.0
+    }
+    fn s_is_negative(&self) -> bool {
+        *self < 0.0
     }
     fn from_i32(n: i32) -> Self {
         f64::from(n)
