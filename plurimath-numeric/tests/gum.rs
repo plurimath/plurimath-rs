@@ -739,3 +739,68 @@ fn gum_1_consumer_without_provenance_sees_unchanged_schema() {
         assert_eq!(&on, plain, "{label}: provenance changed a /1 field");
     }
 }
+
+/// True when `value` holds a wire-tagged number anywhere inside it:
+/// `{"rational"}`, `{"decimal"}` or `{"kind":"float"}`.
+fn holds_tagged_number(value: &Value) -> bool {
+    match value {
+        Value::Object(object) => {
+            object.contains_key("rational")
+                || object.contains_key("decimal")
+                || object.get("kind").and_then(Value::as_str) == Some("float")
+                || object.values().any(holds_tagged_number)
+        }
+        Value::Array(items) => items.iter().any(holds_tagged_number),
+        _ => false,
+    }
+}
+
+/// Contract: the per-intermediate accuracy map is never empty, names only
+/// result fields, and has one entry for every result field that carries a
+/// rational, decimal or float tag.
+#[test]
+fn provenance_accuracy_covers_every_tagged_result_field() {
+    let mut tagged_fields = 0;
+    for (index, (request, plain)) in successful_object_cases().iter().enumerate() {
+        let label = format!(
+            "case {index} method {}",
+            request["method"].as_str().unwrap_or("?")
+        );
+        let on = run(&with_provenance(request.clone(), json!(true)));
+        let result = on["result"].as_object().unwrap();
+        let accuracy = on["result"]["engine"]["provenance"]["accuracy"]
+            .as_object()
+            .unwrap_or_else(|| panic!("{label}: accuracy is not a map"));
+        assert!(!accuracy.is_empty(), "{label}: empty accuracy map");
+        for field in accuracy.keys() {
+            assert!(
+                field != "engine" && result.contains_key(field),
+                "{label}: accuracy names {field}, which is not a result field"
+            );
+        }
+        if plain["result"]["engine"].get("generator").is_some() {
+            for field in [
+                "estimate",
+                "standard_uncertainty",
+                "intervals",
+                "twice_standard_errors",
+            ] {
+                assert!(
+                    accuracy.contains_key(field),
+                    "{label}: no class for {field}"
+                );
+            }
+            continue;
+        }
+        for (field, value) in result {
+            if field != "engine" && holds_tagged_number(value) {
+                tagged_fields += 1;
+                assert!(
+                    accuracy.contains_key(field),
+                    "{label}: tagged field {field} has no accuracy class"
+                );
+            }
+        }
+    }
+    assert!(tagged_fields > 0, "no tagged result field was exercised");
+}
