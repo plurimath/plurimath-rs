@@ -1,40 +1,130 @@
 use super::*;
+use crate::scalar::Scalar;
 
-struct Sample {
+struct Sample<S> {
     count: usize,
-    mean: Q,
-    sample_variance: Q,
-    variance: Q,
-    minimum: Q,
-    maximum: Q,
+    mean: S,
+    sample_variance: S,
+    variance: S,
+    minimum: S,
+    maximum: S,
 }
 
-impl Sample {
-    fn new(values: &[Q]) -> Result<Self> {
+impl<S: Scalar> Sample<S> {
+    fn new(values: &[S]) -> Result<Self> {
         let count = values.len();
         if count < 2 {
             return Err(invalid("Type A needs at least two observations"));
         }
-        let mean = values.iter().sum::<Q>() / number(count);
-        let sample_variance =
-            values.iter().map(|value| (value - &mean).pow(2)).sum::<Q>() / number(count - 1);
-        let variance = &sample_variance / number(count);
+        let mean = quotient(total(values.iter()), count);
+        let squares = values.iter().fold(S::s_zero(), |acc, value| {
+            let deviation = value.sub(&mean);
+            acc.add(&deviation.mul(&deviation))
+        });
+        let sample_variance = quotient(squares, count - 1);
+        let variance = quotient(sample_variance.clone(), count);
         Ok(Self {
             count,
             mean,
             sample_variance,
             variance,
-            minimum: values.iter().min().expect("nonempty sample").clone(),
-            maximum: values.iter().max().expect("nonempty sample").clone(),
+            minimum: extreme(values, |candidate, best| {
+                candidate.sub(best).s_is_negative()
+            }),
+            maximum: extreme(values, |candidate, best| {
+                best.sub(candidate).s_is_negative()
+            }),
         })
     }
+}
 
+impl Sample<Q> {
     fn wire(&self) -> J {
         json!({
             "count":self.count,"mean":tagged(&self.mean),"minimum":tagged(&self.minimum),
             "maximum":tagged(&self.maximum),"sample_variance":tagged(&self.sample_variance),
             "variance":tagged(&self.variance),"degrees_of_freedom":self.count-1,
             "distribution":symbol("unspecified"),
+        })
+    }
+}
+
+/// A sample count as a scalar. Counts are bounded by the 4096-entry input
+/// limit, so the exact rational conversion is lossless for every instance.
+fn from_count<S: Scalar>(n: usize) -> S {
+    S::from_q(&Q::from_integer(number(n)))
+}
+
+/// `value / n` for a positive count `n`.
+fn quotient<S: Scalar>(value: S, n: usize) -> S {
+    value.div(&from_count(n)).expect("positive count")
+}
+
+fn total<'a, S: Scalar + 'a>(items: impl Iterator<Item = &'a S>) -> S {
+    items.fold(S::s_zero(), |acc, item| acc.add(item))
+}
+
+/// The first value that no later value beats under `better`.
+fn extreme<S: Scalar>(values: &[S], better: impl Fn(&S, &S) -> bool) -> S {
+    let mut best = &values[0];
+    for value in &values[1..] {
+        if better(value, best) {
+            best = value;
+        }
+    }
+    best.clone()
+}
+
+/// Column means and the unbiased sample covariance of paired observations.
+fn sample_covariance<S: Scalar>(rows: &[Vec<S>]) -> (Vec<S>, Vec<Vec<S>>) {
+    let n = rows.len();
+    let width = rows[0].len();
+    let means: Vec<S> = (0..width)
+        .map(|i| quotient(total(rows.iter().map(|row| &row[i])), n))
+        .collect();
+    let covariance = (0..width)
+        .map(|i| {
+            (0..width)
+                .map(|j| {
+                    let products = rows.iter().fold(S::s_zero(), |acc, row| {
+                        acc.add(&row[i].sub(&means[i]).mul(&row[j].sub(&means[j])))
+                    });
+                    quotient(products, n - 1)
+                })
+                .collect()
+        })
+        .collect();
+    (means, covariance)
+}
+
+/// One-way balanced analysis of variance from group summaries.
+struct Groups<S> {
+    sample: Sample<S>,
+    between_square: S,
+    within_square: S,
+    between: S,
+    all: S,
+}
+
+impl<S: Scalar> Groups<S> {
+    fn new(means: &[S], within: &[S], k: usize) -> Result<Self> {
+        let j = means.len();
+        let sample = Sample::new(means)?;
+        let between_square = sample.sample_variance.mul(&from_count(k));
+        let within_square = quotient(total(within.iter()), j);
+        let between = quotient(between_square.sub(&within_square), k);
+        let all = quotient(
+            between_square
+                .mul(&from_count(j - 1))
+                .add(&within_square.mul(&from_count(j * (k - 1)))),
+            j * k - 1,
+        );
+        Ok(Self {
+            sample,
+            between_square,
+            within_square,
+            between,
+            all,
         })
     }
 }
@@ -53,22 +143,7 @@ pub(super) fn covariance(params: &J) -> Result<J> {
         2,
     )?;
     let n = rows.len();
-    let width = rows[0].len();
-    let means: Vec<_> = (0..width)
-        .map(|i| rows.iter().map(|row| &row[i]).sum::<Q>() / number(n))
-        .collect();
-    let covariance: Vec<Vec<Q>> = (0..width)
-        .map(|i| {
-            (0..width)
-                .map(|j| {
-                    rows.iter()
-                        .map(|row| (&row[i] - &means[i]) * (&row[j] - &means[j]))
-                        .sum::<Q>()
-                        / number(n - 1)
-                })
-                .collect()
-        })
-        .collect();
+    let (means, covariance) = sample_covariance(&rows);
     Ok(json!({
         "count":n,"means":means.iter().map(tagged).collect::<Vec<_>>(),
         "sample_covariance":covariance.iter().map(|row| row.iter().map(tagged).collect::<Vec<_>>()).collect::<Vec<_>>(),
@@ -207,16 +282,17 @@ pub(super) fn grouped(params: &J) -> Result<J> {
     if within.iter().any(Q::is_negative) {
         return Err(invalid("negative within-group variance"));
     }
-    let sample = Sample::new(&means)?;
-    let between_square = &sample.sample_variance * number(k);
-    let within_square = within.iter().sum::<Q>() / number(j);
-    let between = (&between_square - &within_square) / number(k);
+    let Groups {
+        sample,
+        between_square,
+        within_square,
+        between,
+        all,
+    } = Groups::new(&means, &within, k)?;
     let random = model == "random_group_effect";
     if random && between.is_negative() {
         return Err(unsupported("negative estimated group component requires an explicit constrained model; no clipping is inferred"));
     }
-    let all = (&between_square * number(j - 1) + &within_square * number(j * (k - 1)))
-        / number(j * k - 1);
     let variance = if random {
         sample.variance
     } else {
