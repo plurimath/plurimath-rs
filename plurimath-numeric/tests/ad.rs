@@ -186,3 +186,82 @@ fn json_operation_analyze_ad_is_typed_limited() {
     let expected = 0.5 * (16.0 * u2[0] * u2[0] + 2.0 * 36.0 * u2[0] * u2[1]);
     assert_eq!(r["second_order_term"].as_f64().unwrap(), expected);
 }
+
+fn rational_f64(tagged: &Value) -> f64 {
+    let parts = tagged["rational"].as_array().expect("tagged rational");
+    let n: f64 = parts[0].as_str().unwrap().parse().unwrap();
+    let d: f64 = parts[1].as_str().unwrap().parse().unwrap();
+    n / d
+}
+
+fn rel_close(actual: f64, exact: f64, what: &str) {
+    let bound = 1e-12 * exact.abs();
+    assert!(
+        (actual - exact).abs() <= bound,
+        "{what}: AD {actual} vs exact Q {exact}"
+    );
+}
+
+/// Run the exact `Q` oracle (`analyze`) on the same model and compare its
+/// gradient and Hessian with the machine-precision AD results.
+fn check_against_q_oracle(ast: &Value, inputs: &[(&str, &str, f64)]) {
+    let q_inputs: Vec<Value> = inputs
+        .iter()
+        .map(|(n, text, _)| {
+            json!({"name":n,"estimate":text,
+                "component":{"variance":"1/100","distribution":"normal"}})
+        })
+        .collect();
+    let req = json!({
+        "schema":"plurimath.evaluate.gum/1","method":"analyze",
+        "parameters":{"ast":ast,"inputs":q_inputs,"order":2,"independent":true,"guard_digits":40}
+    });
+    let q: Value =
+        serde_json::from_str(&plurimath_numeric::evaluate_json(&req.to_string())).unwrap();
+    assert_eq!(q["ok"], true, "{q}");
+    let ad_inputs: Vec<Input> = inputs.iter().map(|(n, _, v)| inp(n, *v, 0.1)).collect();
+    let ad = analyze(ast, &ad_inputs).unwrap();
+    assert_eq!(ad.class, "limited");
+    for (i, (name, _, _)) in inputs.iter().enumerate() {
+        let exact = rational_f64(&q["result"]["gradient"][i]);
+        rel_close(ad.gradient[i], exact, &format!("d/d{name}"));
+        for (j, (other, _, _)) in inputs.iter().enumerate() {
+            let exact = rational_f64(&q["result"]["hessian"][i][j]);
+            if exact == 0.0 {
+                assert_eq!(ad.hessian[i][j], 0.0, "d2/d{name}d{other}");
+            } else {
+                rel_close(ad.hessian[i][j], exact, &format!("d2/d{name}d{other}"));
+            }
+        }
+    }
+}
+
+/// Sensitivities and Hessian match the exact rational oracle, so the AD
+/// backend agrees with `Q` to rounding, with no finite-difference step error.
+#[test]
+fn matches_exact_q_oracle_on_rational_models() {
+    let ast = bin(
+        "+",
+        bin("*", bin("^", var("x"), num("2")), var("y")),
+        bin("/", var("x"), var("y")),
+    );
+    check_against_q_oracle(&ast, &[("x", "0.75", 0.75), ("y", "1.5", 1.5)]);
+}
+
+/// The H.1 end-gauge model of JCGM 100:2008, same inputs as
+/// `gum_h1_end_gauge_published_values`, against the exact oracle.
+#[test]
+fn h1_end_gauge_matches_exact_q_oracle() {
+    let (ast, _) = end_gauge();
+    check_against_q_oracle(
+        &ast,
+        &[
+            ("lS", "0.05", 0.05),
+            ("d", "0.000000215", 215e-9),
+            ("aS", "0.0000115", 11.5e-6),
+            ("th", "-0.1", -0.1),
+            ("da", "0", 0.0),
+            ("dth", "0", 0.0),
+        ],
+    );
+}
