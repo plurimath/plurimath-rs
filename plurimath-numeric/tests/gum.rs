@@ -728,6 +728,14 @@ fn gum_1_consumer_without_provenance_sees_unchanged_schema() {
             .unwrap()
             .remove("provenance")
             .unwrap_or_else(|| panic!("{label}: provenance missing when requested"));
+        // A result with no engine stamp gains one only to hold the certificate.
+        if plain["result"].get("engine").is_none() {
+            let empty = on["result"]["engine"]
+                .as_object()
+                .is_some_and(|e| e.is_empty());
+            assert!(empty, "{label}: engine gained members besides provenance");
+            on["result"].as_object_mut().unwrap().remove("engine");
+        }
         assert_eq!(&on, plain, "{label}: provenance changed a /1 field");
     }
 }
