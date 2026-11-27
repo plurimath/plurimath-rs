@@ -1,5 +1,6 @@
 use super::*;
 use crate::prng::Philox4x32;
+use crate::scalar::Scalar;
 use num_traits::{One, ToPrimitive};
 use std::collections::{BTreeMap, BTreeSet};
 
@@ -770,6 +771,37 @@ pub(super) fn evaluate(params: &J) -> Result<J> {
     })
 }
 
+/// Exact `L D L^T` factorization of a symmetric covariance, refusing a
+/// matrix that is not positive semidefinite.
+fn ldl<S: Scalar>(covariance: &[Vec<S>]) -> Result<(Vec<Vec<S>>, Vec<S>)> {
+    let size = covariance.len();
+    let mut lower = vec![vec![S::s_zero(); size]; size];
+    let mut diagonal = vec![S::s_zero(); size];
+    let not_psd = || invalid("joint covariance is not positive semidefinite");
+    for j in 0..size {
+        lower[j][j] = S::s_one();
+        let reduced = (0..j).fold(S::s_zero(), |acc, k| {
+            acc.add(&lower[j][k].mul(&lower[j][k]).mul(&diagonal[k]))
+        });
+        diagonal[j] = covariance[j][j].sub(&reduced);
+        if diagonal[j].s_is_negative() {
+            return Err(not_psd());
+        }
+        for i in j + 1..size {
+            let reduced = (0..j).fold(S::s_zero(), |acc, k| {
+                acc.add(&lower[i][k].mul(&lower[j][k]).mul(&diagonal[k]))
+            });
+            let numerator = covariance[i][j].sub(&reduced);
+            match numerator.div(&diagonal[j]) {
+                Some(value) => lower[i][j] = value,
+                None if !numerator.s_is_zero() => return Err(not_psd()),
+                None => {}
+            }
+        }
+    }
+    Ok((lower, diagonal))
+}
+
 struct JointNormal {
     covariance: Vec<Vec<Q>>,
     factor: Vec<Vec<f64>>,
@@ -798,30 +830,7 @@ impl JointNormal {
                 ));
             }
         }
-        let mut lower = vec![vec![Q::zero(); size]; size];
-        let mut diagonal = vec![Q::zero(); size];
-        let not_psd = || invalid("joint covariance is not positive semidefinite");
-        for j in 0..size {
-            lower[j][j] = Q::one();
-            diagonal[j] =
-                &covariance[j][j] - (0..j).map(|k| lower[j][k].pow(2) * &diagonal[k]).sum::<Q>();
-            if diagonal[j].is_negative() {
-                return Err(not_psd());
-            }
-            for i in j + 1..size {
-                let numerator = &covariance[i][j]
-                    - (0..j)
-                        .map(|k| &lower[i][k] * &lower[j][k] * &diagonal[k])
-                        .sum::<Q>();
-                if diagonal[j].is_zero() {
-                    if !numerator.is_zero() {
-                        return Err(not_psd());
-                    }
-                } else {
-                    lower[i][j] = numerator / &diagonal[j];
-                }
-            }
-        }
+        let (lower, diagonal) = ldl(&covariance)?;
         let mut factor = vec![vec![0.0; size]; size];
         let range = || invalid("joint factor exceeds binary64 range");
         for i in 0..size {
