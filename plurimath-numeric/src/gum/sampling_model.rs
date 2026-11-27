@@ -1,6 +1,7 @@
 use super::taylor::{compile_polynomial, sampling_polynomial, Polynomial, Taylor};
 use super::*;
-use num_traits::{One, ToPrimitive};
+use crate::scalar::Scalar;
+use num_traits::ToPrimitive;
 use std::collections::BTreeMap;
 
 pub(super) enum Model {
@@ -132,17 +133,18 @@ impl Model {
     }
 }
 
+/// An exact rational function as a numerator and denominator jet.
 #[derive(Clone)]
-struct Fraction {
-    numerator: Taylor,
-    denominator: Taylor,
+struct Fraction<S: Scalar = Q> {
+    numerator: Taylor<S>,
+    denominator: Taylor<S>,
 }
 
-impl Fraction {
-    fn new(numerator: Taylor) -> Self {
+impl<S: Scalar> Fraction<S> {
+    fn new(numerator: Taylor<S>) -> Self {
         Self {
             numerator,
-            denominator: Taylor::constant(Q::one()),
+            denominator: Taylor::constant(S::s_one()),
         }
     }
 
@@ -188,17 +190,15 @@ impl Fraction {
                 "finite output moments are not established for non-polynomial sampling models",
             ));
         }
-        let divisor = rhs.denominator.derivative(&[]);
-        if divisor.is_zero() {
-            return Err(invalid("zero sampling exponent denominator"));
-        }
-        let power = rhs.numerator.derivative(&[]) / divisor;
-        let power = power
-            .to_integer()
-            .to_i32()
-            .filter(|n| power.is_integer() && n.unsigned_abs() <= 32)
+        let power = rhs
+            .numerator
+            .derivative(&[])
+            .div(&rhs.denominator.derivative(&[]))
+            .ok_or_else(|| invalid("zero sampling exponent denominator"))?
+            .to_i32_exact()
+            .filter(|n| n.unsigned_abs() <= 32)
             .ok_or_else(|| unsupported("sampling requires integer powers within -32..32"))?;
-        let positive = Taylor::constant(Q::from_integer(power.unsigned_abs().into()));
+        let positive = Taylor::constant(S::from_i32(power.abs()));
         let fraction = Self {
             numerator: self.numerator.power::<false>(positive.clone())?,
             denominator: self.denominator.power::<false>(positive)?,
@@ -211,9 +211,11 @@ impl Fraction {
     }
 }
 
-fn walk(node: &J, variables: &BTreeMap<&str, Fraction>) -> Result<Fraction> {
+fn walk<S: Scalar>(node: &J, variables: &BTreeMap<&str, Fraction<S>>) -> Result<Fraction<S>> {
     match node["type"].as_str() {
-        Some("number") => Ok(Fraction::new(Taylor::constant(exact(&node["text"])?))),
+        Some("number") => Ok(Fraction::new(Taylor::constant(S::from_q(&exact(
+            &node["text"],
+        )?)))),
         Some("variable") => variables
             .get(node["name"].as_str().unwrap_or(""))
             .cloned()
@@ -224,7 +226,7 @@ fn walk(node: &J, variables: &BTreeMap<&str, Fraction>) -> Result<Fraction> {
         Some("unary") => {
             let mut value = walk(&node["operand"], variables)?;
             if node["operator"] == "-" {
-                value.numerator = value.numerator.scale(&-Q::one());
+                value.numerator = value.numerator.scale(&S::s_one().negate());
             }
             Ok(value)
         }
@@ -234,7 +236,7 @@ fn walk(node: &J, variables: &BTreeMap<&str, Fraction>) -> Result<Fraction> {
             match node["operator"].as_str() {
                 Some("+") => left.add(right),
                 Some("-") => {
-                    right.numerator = right.numerator.scale(&-Q::one());
+                    right.numerator = right.numerator.scale(&S::s_one().negate());
                     left.add(right)
                 }
                 Some("*") => left.multiply(right),
@@ -247,8 +249,31 @@ fn walk(node: &J, variables: &BTreeMap<&str, Fraction>) -> Result<Fraction> {
     }
 }
 
-fn interval(polynomial: &Taylor, supports: &[Option<[Q; 2]>]) -> Result<[Q; 2]> {
-    let mut total = [Q::zero(), Q::zero()];
+fn below<S: Scalar>(a: &S, b: &S) -> bool {
+    a.sub(b).s_is_negative()
+}
+
+/// The smallest and largest of nonempty `values`.
+fn bounds<S: Scalar>(values: &[S]) -> [S; 2] {
+    let (mut low, mut high) = (&values[0], &values[0]);
+    for value in &values[1..] {
+        if below(value, low) {
+            low = value;
+        }
+        if below(high, value) {
+            high = value;
+        }
+    }
+    [low.clone(), high.clone()]
+}
+
+fn power_of<S: Scalar>(value: &S, power: i32) -> S {
+    (0..power).fold(S::s_one(), |acc, _| acc.mul(value))
+}
+
+/// Exact interval enclosure of a polynomial over rectangular supports.
+fn interval<S: Scalar>(polynomial: &Taylor<S>, supports: &[Option<[S; 2]>]) -> Result<[S; 2]> {
+    let mut total = [S::s_zero(), S::s_zero()];
     for (indices, coefficient) in &polynomial.0 {
         let mut term = [coefficient.clone(), coefficient.clone()];
         let mut powers = BTreeMap::<usize, i32>::new();
@@ -260,27 +285,21 @@ fn interval(polynomial: &Taylor, supports: &[Option<[Q; 2]>]) -> Result<[Q; 2]> 
                 unsupported(
                 "finite output moments require finite certified rectangular denominator support")
             })?;
-            let a = lower.pow(power);
-            let b = upper.pow(power);
-            let low = if power % 2 == 0 && lower <= &Q::zero() && upper >= &Q::zero() {
-                Q::zero()
+            let [low, high] = bounds(&[power_of(lower, power), power_of(upper, power)]);
+            let straddles = (lower.s_is_negative() || lower.s_is_zero()) && !upper.s_is_negative();
+            let low = if power % 2 == 0 && straddles {
+                S::s_zero()
             } else {
-                a.clone().min(b.clone())
+                low
             };
-            let high = a.max(b);
-            let products = [
-                &term[0] * &low,
-                &term[0] * &high,
-                &term[1] * &low,
-                &term[1] * &high,
-            ];
-            term = [
-                products.iter().min().expect("four bounds").clone(),
-                products.iter().max().expect("four bounds").clone(),
-            ];
+            term = bounds(&[
+                term[0].mul(&low),
+                term[0].mul(&high),
+                term[1].mul(&low),
+                term[1].mul(&high),
+            ]);
         }
-        total[0] += &term[0];
-        total[1] += &term[1];
+        total = [total[0].add(&term[0]), total[1].add(&term[1])];
     }
     Ok(total)
 }
@@ -288,6 +307,7 @@ fn interval(polynomial: &Taylor, supports: &[Option<[Q; 2]>]) -> Result<[Q; 2]> 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use num_traits::One;
 
     fn reciprocal() -> J {
         json!({"type":"binary","operator":"/","left":{"type":"number","text":"1"},"right":{"type":"variable","name":"x"}})
@@ -324,5 +344,16 @@ mod tests {
             model.engine_fields()["denominator_interval"],
             json!(["1/1", "2/1"])
         );
+    }
+
+    #[test]
+    fn interval_enclosure_agrees_for_q_and_f64() {
+        let exact = Taylor(BTreeMap::from([(vec![0, 0], Q::one())]));
+        let support = [Some([-Q::one(), Q::from_integer(number(2))])];
+        let bounds = interval(&exact, &support).unwrap_or_else(|e| panic!("{e:?}"));
+        assert_eq!(bounds, [Q::zero(), Q::from_integer(number(4))]);
+        let binary = Taylor(BTreeMap::from([(vec![0, 0], 1.0_f64)]));
+        let bounds = interval(&binary, &[Some([-1.0, 2.0])]).unwrap_or_else(|e| panic!("{e:?}"));
+        assert_eq!(bounds, [0.0, 4.0]);
     }
 }
