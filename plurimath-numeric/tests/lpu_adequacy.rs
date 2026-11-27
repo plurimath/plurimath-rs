@@ -42,6 +42,38 @@ fn linear_model_is_adequate_and_budget_is_echoed() {
 }
 
 #[test]
+fn nonlinear_model_is_inadequate_at_the_wire_boundary() {
+    let mut p = params(bin("^", var("x"), num("2")), json!(64));
+    p["inputs"] = json!([{"name":"x","estimate":1.0,"uncertainty":1.0}]);
+    p["coverage_factor"] = json!(1.0);
+    // x^2 at 1 +/- 1 has linearization error 1 and u_c = 2.
+    let out = run(p);
+    assert_eq!(out["ok"], true, "{out}");
+    let r = &out["result"];
+    assert_eq!(r["verdict"], "inadequate", "{out}");
+    assert_eq!(r["subdivision"]["budget"], 64);
+    assert!(r["ratio_upper"].as_f64().unwrap() > 0.05, "{out}");
+}
+
+#[test]
+fn exhausted_budget_is_inconclusive_at_the_wire_boundary() {
+    let mut p = params(bin("^", var("x"), num("2")), json!(1));
+    p["inputs"] = json!([{"name":"x","estimate":1.0,"uncertainty":1.0}]);
+    p["coverage_factor"] = json!(1.0);
+    // The exact maximum error / u_c is 0.5. With a single box, the
+    // enclosure cannot prove either side of that boundary.
+    p["threshold"] = json!(0.5);
+    let out = run(p);
+    assert_eq!(out["ok"], true, "{out}");
+    let r = &out["result"];
+    assert_eq!(r["verdict"], "inconclusive", "{out}");
+    assert_eq!(r["subdivision"]["budget"], 1);
+    assert_eq!(r["subdivision"]["boxes_used"], 1);
+    assert_eq!(r["subdivision"]["max_depth"], 0);
+    assert_eq!(r["threshold"], 0.5);
+}
+
+#[test]
 fn sin_model_is_refused_as_unsupported() {
     let out = run(params(call("sin", var("x")), json!(64)));
     assert_eq!(out["ok"], false, "{out}");
