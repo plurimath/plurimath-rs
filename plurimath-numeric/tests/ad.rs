@@ -265,3 +265,98 @@ fn h1_end_gauge_matches_exact_q_oracle() {
         ],
     );
 }
+
+fn run_json(request: &Value) -> Value {
+    serde_json::from_str(&plurimath_numeric::evaluate_json(&request.to_string())).unwrap()
+}
+
+fn pdf_f64(pdf: &Value, key: &str) -> f64 {
+    pdf[key].as_str().unwrap().parse().unwrap()
+}
+
+/// Estimate and standard uncertainty of a sealed `gum-mcm.json` input PDF,
+/// using the same variance formulas as the library's propagation code
+/// (JCGM 101 Table 1 / JCGM 100 4.3).
+fn pdf_moments(pdf: &Value) -> (f64, f64) {
+    let mid = || (pdf_f64(pdf, "lower") + pdf_f64(pdf, "upper")) / 2.0;
+    let half = || (pdf_f64(pdf, "upper") - pdf_f64(pdf, "lower")) / 2.0;
+    match pdf["distribution"].as_str().unwrap() {
+        "normal" => (pdf_f64(pdf, "location"), pdf_f64(pdf, "sd")),
+        "student_t" => {
+            let nu = pdf["degrees_of_freedom"].as_f64().unwrap();
+            let u = pdf_f64(pdf, "scale") * (nu / (nu - 2.0)).sqrt();
+            (pdf_f64(pdf, "location"), u)
+        }
+        "rectangular" => (mid(), half() / 3f64.sqrt()),
+        "arcsine" => (mid(), half() / 2f64.sqrt()),
+        "curvilinear_trapezoid" => {
+            let d = pdf_f64(pdf, "boundary_half_width");
+            (mid(), (half().powi(2) / 3.0 + d * d / 9.0).sqrt())
+        }
+        other => panic!("unexpected distribution {other}"),
+    }
+}
+
+/// Part of #17: JCGM 101:2008 Table 10 (the H.1 end-gauge model) run through the
+/// real `monte_carlo` method with the sealed profile in `fixtures/gum-mcm.json`
+/// (seeds, max_samples, probability, significant digits all taken from the
+/// fixture unchanged), compared with the AD second-order combined standard
+/// uncertainty on the same model and input moments.
+///
+/// Tolerance: the fixture's own declared `numerical_tolerance` for the MCM run
+/// (0.5, the 2-significant-digit unit of the printed result); no new rule.
+#[test]
+fn h1_monte_carlo_matches_ad_second_order_within_declared_tolerance() {
+    let fixture: Value = serde_json::from_str(include_str!("../fixtures/gum-mcm.json")).unwrap();
+    let case = &fixture["cases"][0];
+    assert_eq!(case["id"], "jcgm101_table10_pdf");
+    let params = &case["request"]["parameters"];
+    assert_eq!(case["request"]["method"], "monte_carlo");
+    let tol: f64 = case["expected"]["numerical_tolerance"]
+        .as_str()
+        .unwrap()
+        .parse()
+        .unwrap();
+
+    let out = run_json(&case["request"]);
+    assert_eq!(out["ok"], true, "{out}");
+    let mc = &out["result"];
+    assert_eq!(mc["method"]["symbol"], "adaptive_mcm");
+    assert_eq!(mc["stabilized"], true);
+    let mc_est: f64 = mc["estimate"].as_str().unwrap().parse().unwrap();
+    let mc_u: f64 = mc["standard_uncertainty"].as_str().unwrap().parse().unwrap();
+
+    let moments: Vec<(&str, f64, f64)> = params["inputs"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .map(|i| {
+            let (m, u) = pdf_moments(&i["pdf"]);
+            (i["name"].as_str().unwrap(), m, u)
+        })
+        .collect();
+    let inputs: Vec<Input> = moments
+        .iter()
+        .map(|&(name, estimate, uncertainty)| Input {
+            name,
+            estimate,
+            uncertainty,
+        })
+        .collect();
+    let ad = analyze(&params["ast"], &inputs).unwrap();
+    let first = ad.first_order_variance.sqrt();
+    let second = (ad.first_order_variance + ad.second_order_term).sqrt();
+
+    // The AD estimate (model at the input means) and second-order uncertainty
+    // agree with the MCM within the declared tolerance (nm).
+    assert!((ad.value - mc_est).abs() <= tol, "{} vs {mc_est}", ad.value);
+    assert!(
+        (second - mc_u).abs() <= tol,
+        "AD second order {second} vs MCM {mc_u} (tol {tol})"
+    );
+    // The comparison is meaningful: first order alone misses the MCM value.
+    assert!(
+        (first - mc_u).abs() > tol,
+        "first order {first} unexpectedly within tol of MCM {mc_u}"
+    );
+}
