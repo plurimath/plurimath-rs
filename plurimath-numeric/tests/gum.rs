@@ -136,7 +136,6 @@ fn ruby_spec_lpu_and_exact_singular_covariance() {
 
 #[test]
 fn annex_h1_analytic_derivatives_and_declared_pdf_lpu() {
-    let fixture: Value = serde_json::from_str(include_str!("../fixtures/gum-annex.json")).unwrap();
     let case = &fixture["h1"];
     let response = run(&case["request"]);
     assert_eq!(response["ok"], true, "{}", response["error"]);
@@ -175,7 +174,6 @@ fn exact_second_order_contractions_and_typed_analytic_refusals() {
     analyze["parameters"]["ast"] =
         json!({"type":"call","name":"sin","argument":{"type":"variable","name":"x"}});
     assert_eq!(run(&analyze)["error"]["code"], "UnsupportedModel");
-    let fixture: Value = serde_json::from_str(include_str!("../fixtures/gum-annex.json")).unwrap();
     for case in fixture["joint_gaussian"].as_array().unwrap() {
         let output = run(&case["request"]);
         for (key, value) in case["expected"].as_object().unwrap() {
@@ -600,4 +598,134 @@ fn sampled_methods_keep_their_monte_carlo_accuracy_map() {
     let accuracy = &on["result"]["engine"]["provenance"]["accuracy"];
     assert_eq!(accuracy["estimate"], "limited_float");
     assert_eq!(accuracy["intervals"], "limited_float");
+}
+
+const GUM_FIXTURES: [&str; 6] = [
+    include_str!("../fixtures/gum-f40.json"),
+    include_str!("../fixtures/gum-annex-methods.json"),
+    include_str!("../fixtures/gum-conformity.json"),
+    include_str!("../fixtures/gum-mcm.json"),
+    include_str!("../fixtures/gum-mcm-joint-rational.json"),
+    include_str!("../fixtures/coverage-validation.json"),
+];
+
+/// Every gum/1 request in the frozen fixtures that succeeds with an object
+/// result, as `(request, plain response)`.
+fn successful_object_cases() -> Vec<(Value, Value)> {
+    let mut found = Vec::new();
+    for source in GUM_FIXTURES {
+        let fixture: Value = serde_json::from_str(source).unwrap();
+        for case in fixture["cases"].as_array().unwrap() {
+            let request = &case["request"];
+            if request["schema"] != "plurimath.evaluate.gum/1" {
+                continue;
+            }
+            let plain = run(request);
+            if plain["ok"] == true && plain["result"].is_object() {
+                found.push((request.clone(), plain));
+            }
+        }
+    }
+    found
+}
+
+fn assert_certificate_shape(provenance: &Value, label: &str) {
+    let keys: Vec<&str> = provenance
+        .as_object()
+        .unwrap_or_else(|| panic!("{label}: provenance is not an object"))
+        .keys()
+        .map(String::as_str)
+        .collect();
+    for key in ["engine_id", "rng", "reduction", "accuracy", "device"] {
+        assert!(keys.contains(&key), "{label}: missing {key}: {provenance}");
+    }
+    assert_eq!(keys.len(), 5, "{label}: unexpected members: {provenance}");
+    assert!(provenance["device"].is_null(), "{label}");
+    assert!(
+        provenance["accuracy"].is_object(),
+        "{label}: accuracy must be a map: {provenance}"
+    );
+    for (field, class) in provenance["accuracy"].as_object().unwrap() {
+        let class = class.as_str().unwrap_or("");
+        assert!(
+            class == "exact" || class.starts_with("limited"),
+            "{label}: accuracy class of {field} is {class:?}"
+        );
+    }
+}
+
+/// Contract: with provenance requested, every method of every engine returns
+/// a complete certificate (engine id, rng, reduction, accuracy map, device).
+#[test]
+fn provenance_certificate_is_complete_for_every_method_and_engine() {
+    let cases = successful_object_cases();
+    assert!(cases.len() > 50, "only {} cases found", cases.len());
+    let mut sampled = 0;
+    for (index, (request, plain)) in cases.iter().enumerate() {
+        let label = format!(
+            "case {index} method {}",
+            request["method"].as_str().unwrap_or("?")
+        );
+        let on = run(&with_provenance(request.clone(), json!(true)));
+        assert_eq!(on["ok"], true, "{label}: {on}");
+        let engine = &on["result"]["engine"];
+        let provenance = &engine["provenance"];
+        assert_certificate_shape(provenance, &label);
+        assert_eq!(provenance["engine_id"], "gum-ref", "{label}");
+        if plain["result"]["engine"].get("generator").is_some() {
+            sampled += 1;
+            let rng = &provenance["rng"];
+            assert!(rng["family"].is_string(), "{label}: {rng}");
+            assert!(provenance["accuracy"]["estimate"].is_string(), "{label}");
+        } else {
+            assert!(provenance["rng"].is_null(), "{label}");
+        }
+    }
+    assert!(sampled > 0, "no sampled (Monte Carlo) case was exercised");
+    // gum-par stamps itself without being asked and carries counter ranges.
+    for request in [
+        gum_par_request(4, 1),
+        with_provenance(gum_par_request(4, 2), json!(true)),
+    ] {
+        let response = run(&request);
+        assert_eq!(response["ok"], true, "{response}");
+        let provenance = &response["result"]["engine"]["provenance"];
+        assert_certificate_shape(provenance, "gum-par");
+        assert_eq!(provenance["engine_id"], "gum-par");
+        assert!(provenance["rng"]["counter_ranges"].is_array());
+        assert!(provenance["reduction"].is_string());
+    }
+}
+
+/// Additive evolution: a gum/1 consumer that never sets `provenance` gets
+/// the same bytes as before for every gum-ref method, still under /1, and an
+/// explicit `false` changes nothing. Turning it on only adds
+/// `engine.provenance`.
+#[test]
+fn gum_1_consumer_without_provenance_sees_unchanged_schema() {
+    for (index, (request, plain)) in successful_object_cases().iter().enumerate() {
+        let label = format!(
+            "case {index} method {}",
+            request["method"].as_str().unwrap_or("?")
+        );
+        assert_eq!(plain["schema"], "plurimath.evaluate.gum/1", "{label}");
+        if plain["result"]["engine"]["id"] == "gum-par" {
+            continue;
+        }
+        assert!(
+            plain["result"]["engine"].get("provenance").is_none(),
+            "{label}: provenance leaked into a /1 response"
+        );
+        let raw = evaluate_json(&request.to_string());
+        let off = evaluate_json(&with_provenance(request.clone(), json!(false)).to_string());
+        assert_eq!(raw, off, "{label}: provenance=false changed the bytes");
+        let mut on = run(&with_provenance(request.clone(), json!(true)));
+        assert_eq!(on["schema"], plain["schema"], "{label}");
+        on["result"]["engine"]
+            .as_object_mut()
+            .unwrap()
+            .remove("provenance")
+            .unwrap_or_else(|| panic!("{label}: provenance missing when requested"));
+        assert_eq!(&on, plain, "{label}: provenance changed a /1 field");
+    }
 }
