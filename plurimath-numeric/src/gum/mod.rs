@@ -311,7 +311,81 @@ fn dispatch(request: &J) -> Result<J> {
     let method = request["method"]
         .as_str()
         .ok_or_else(|| invalid("method must be a string"))?;
-    let params = &request["parameters"];
+    let (stripped, want_provenance) = take_provenance(&request["parameters"])?;
+    let params = &stripped;
+    let mut value = run_method(method, params)?;
+    attach_provenance(&mut value, want_provenance);
+    Ok(value)
+}
+
+/// Split the optional `provenance` flag off the method parameters so the
+/// per-method field allowlists (and the frozen corpus) never see it.
+fn take_provenance(params: &J) -> Result<(J, bool)> {
+    let Some(object) = params.as_object() else {
+        return Ok((params.clone(), false));
+    };
+    let Some(flag) = object.get("provenance") else {
+        return Ok((params.clone(), false));
+    };
+    let flag = flag
+        .as_bool()
+        .ok_or_else(|| invalid("provenance must be a boolean"))?;
+    let mut rest = object.clone();
+    rest.remove("provenance");
+    Ok((J::Object(rest), flag))
+}
+
+/// Add `engine.provenance` (additive, schema stays `/1`). Always for
+/// gum-par; for every other engine only when requested, so frozen bytes
+/// never move. Accuracy classes use the PM 1004 vocabulary.
+fn attach_provenance(result: &mut J, requested: bool) {
+    let Some(engine) = result.get_mut("engine").and_then(J::as_object_mut) else {
+        return;
+    };
+    let par = engine.get("id").and_then(J::as_str) == Some("gum-par");
+    if !(par || requested) {
+        return;
+    }
+    let sampled = engine.contains_key("generator");
+    let rng = if sampled {
+        let mut rng = serde_json::Map::new();
+        for (key, name) in [
+            ("generator", "family"),
+            ("seed", "seed"),
+            ("initial_seeds", "initial_seeds"),
+            ("final_state", "final_state"),
+            ("counter_stride", "counter_stride"),
+            ("counter_ranges", "counter_ranges"),
+            ("uniform_draws", "uniform_draws"),
+        ] {
+            if let Some(value) = engine.get(key) {
+                rng.insert(name.into(), value.clone());
+            }
+        }
+        J::Object(rng)
+    } else {
+        J::Null
+    };
+    let class = if par { "limited" } else { "limited_float" };
+    let accuracy = if sampled {
+        json!({
+            "estimate":class,"standard_uncertainty":class,
+            "intervals":class,"twice_standard_errors":class,
+        })
+    } else {
+        J::Null
+    };
+    let provenance = json!({
+        "engine_id":if par { "gum-par" } else { "gum-ref" },
+        "rng":rng,
+        "reduction":engine.get("reduction").cloned().unwrap_or(J::Null),
+        "accuracy":accuracy,
+        "device":J::Null,
+    });
+    engine.insert("provenance".into(), provenance);
+}
+
+fn run_method(method: &str, params: &J) -> Result<J> {
     match method {
         "type_a" => statistics::type_a_request(params),
         "type_a_covariance" => statistics::covariance(params),

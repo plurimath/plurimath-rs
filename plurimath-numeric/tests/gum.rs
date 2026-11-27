@@ -320,3 +320,89 @@ fn gum_par_engine_selection_is_validated() {
     unknown["parameters"]["engine"] = json!("other");
     assert_eq!(run(&unknown)["ok"], false);
 }
+
+fn gum_ref_request() -> Value {
+    let fixture: Value = serde_json::from_str(include_str!("../fixtures/gum-mcm.json")).unwrap();
+    fixture["cases"][4]["request"].clone()
+}
+
+fn with_provenance(mut request: Value, flag: Value) -> Value {
+    request["parameters"]["provenance"] = flag;
+    request
+}
+
+const ACCURACY_CLASSES: [&str; 2] = ["limited", "limited_float"];
+
+fn assert_provenance_complete(engine: &Value, id: &str) {
+    let provenance = &engine["provenance"];
+    assert_eq!(provenance["engine_id"], id, "{provenance}");
+    assert!(provenance["device"].is_null(), "{provenance}");
+    let rng = &provenance["rng"];
+    assert!(rng["family"].is_string() && rng["uniform_draws"].is_u64());
+    let accuracy = provenance["accuracy"].as_object().unwrap();
+    for key in [
+        "estimate",
+        "standard_uncertainty",
+        "intervals",
+        "twice_standard_errors",
+    ] {
+        assert!(ACCURACY_CLASSES.contains(&accuracy[key].as_str().unwrap()));
+    }
+    if id == "gum-par" {
+        assert_eq!(rng["family"], "philox4x32-10");
+        assert!(rng["counter_ranges"].is_array() && rng["seed"].is_u64());
+        assert!(provenance["reduction"].is_string());
+    } else {
+        assert!(rng["initial_seeds"].is_array() && rng["final_state"].is_array());
+        assert!(provenance["reduction"].is_null());
+    }
+}
+
+#[test]
+fn provenance_is_always_present_for_gum_par() {
+    let response = run(&gum_par_request(4, 2));
+    assert_eq!(response["ok"], true, "{response}");
+    assert_provenance_complete(&response["result"]["engine"], "gum-par");
+}
+
+#[test]
+fn provenance_is_opt_in_for_gum_ref_and_frozen_methods() {
+    let base = run(&gum_ref_request());
+    assert!(base["result"]["engine"].get("provenance").is_none());
+    let on = run(&with_provenance(gum_ref_request(), json!(true)));
+    assert_eq!(on["ok"], true, "{on}");
+    assert_provenance_complete(&on["result"]["engine"], "gum-ref");
+    let off = run(&with_provenance(gum_ref_request(), json!(false)));
+    assert_eq!(off, base);
+    let bad = run(&with_provenance(gum_ref_request(), json!("yes")));
+    assert_eq!(bad["ok"], false);
+    // A deterministic frozen method: opt-in adds the object with null rng.
+    let fixture: Value = serde_json::from_str(include_str!("../fixtures/gum-f40.json")).unwrap();
+    let request = fixture["cases"][0]["request"].clone();
+    let plain = run(&request);
+    assert_eq!(plain["ok"], true, "{plain}");
+    let on = run(&with_provenance(request, json!(true)));
+    assert_eq!(on["result"]["engine"]["provenance"]["rng"], Value::Null);
+    assert_eq!(on["result"]["engine"]["provenance"]["engine_id"], "gum-ref");
+}
+
+/// A /1 consumer reads only known fields. With provenance present, every
+/// pre-existing field of the response must be unchanged.
+#[test]
+fn legacy_consumer_reads_same_fields_with_and_without_provenance() {
+    let mut cases = vec![gum_ref_request()];
+    let fixture: Value = serde_json::from_str(include_str!("../fixtures/gum-f40.json")).unwrap();
+    cases.push(fixture["cases"][0]["request"].clone());
+    for request in cases {
+        let plain = run(&request);
+        let mut extended = run(&with_provenance(request, json!(true)));
+        assert_eq!(plain["schema"], "plurimath.evaluate.gum/1");
+        assert_eq!(extended["schema"], plain["schema"]);
+        extended["result"]["engine"]
+            .as_object_mut()
+            .unwrap()
+            .remove("provenance")
+            .expect("provenance present");
+        assert_eq!(extended, plain);
+    }
+}
