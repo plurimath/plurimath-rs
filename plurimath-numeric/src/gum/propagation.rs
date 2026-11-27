@@ -249,7 +249,7 @@ pub(super) fn independent(params: &J) -> Result<J> {
             !contribution.is_zero()
                 && symbol_name(&component["degrees_of_freedom"]) == Some("unknown")
         });
-    let mut denominator = Q::zero();
+    let mut terms = Vec::new();
     if !unknown {
         for (component, contribution) in components.iter().zip(&contributions) {
             let degrees = &component["degrees_of_freedom"];
@@ -260,9 +260,10 @@ pub(super) fn independent(params: &J) -> Result<J> {
             if !degrees.is_positive() {
                 return Err(invalid("degrees of freedom must be positive"));
             }
-            denominator += contribution.pow(2) / degrees;
+            terms.push((contribution, degrees));
         }
     }
+    let denominator = welch_satterthwaite_denominator(terms.iter().map(|(c, nu)| (*c, nu)));
     let (effective, status) = if variance.is_zero() {
         (J::Null, "not_applicable")
     } else if unknown {
@@ -270,7 +271,10 @@ pub(super) fn independent(params: &J) -> Result<J> {
     } else if denominator.is_zero() {
         (J::Null, "infinite")
     } else {
-        (tagged(&(variance.pow(2) / denominator)), "finite")
+        (
+            tagged(&effective_degrees(&variance, &denominator)),
+            "finite",
+        )
     };
     Ok(json!({
         "estimate":tagged(&estimate),"variance":tagged(&variance),
@@ -279,6 +283,29 @@ pub(super) fn independent(params: &J) -> Result<J> {
         "engine":engine("independent-gum-v1"),"effective_degrees_of_freedom":effective,
         "degrees_of_freedom_status":symbol(status),
     }))
+}
+
+/// Welch-Satterthwaite denominator `sum u_i^4 / nu_i` over the finite,
+/// positive degrees of freedom `nu_i` of the nonzero contributions `u_i^2`.
+fn welch_satterthwaite_denominator<'a, S: Scalar + 'a>(
+    terms: impl Iterator<Item = (&'a S, &'a S)>,
+) -> S {
+    terms.fold(S::s_zero(), |acc, (contribution, degrees)| {
+        acc.add(
+            &contribution
+                .mul(contribution)
+                .div(degrees)
+                .expect("positive degrees of freedom"),
+        )
+    })
+}
+
+/// `u_c^4 / denominator` for a nonzero Welch-Satterthwaite denominator.
+fn effective_degrees<S: Scalar>(variance: &S, denominator: &S) -> S {
+    variance
+        .mul(variance)
+        .div(denominator)
+        .expect("nonzero denominator")
 }
 
 fn checked(value: &J) -> Result<Vec<Vec<Q>>> {

@@ -51,7 +51,7 @@ impl Sample<Q> {
 
 /// A sample count as a scalar. Counts are bounded by the 4096-entry input
 /// limit, so the exact rational conversion is lossless for every instance.
-fn from_count<S: Scalar>(n: usize) -> S {
+pub(super) fn from_count<S: Scalar>(n: usize) -> S {
     S::from_q(&Q::from_integer(number(n)))
 }
 
