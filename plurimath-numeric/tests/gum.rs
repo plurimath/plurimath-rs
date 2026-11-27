@@ -406,3 +406,198 @@ fn legacy_consumer_reads_same_fields_with_and_without_provenance() {
         assert_eq!(extended, plain);
     }
 }
+
+fn fixture_request(source: &str, case: usize) -> Value {
+    let fixture: Value = serde_json::from_str(source).unwrap();
+    fixture["cases"][case]["request"].clone()
+}
+
+fn accuracy_of(request: &Value) -> Value {
+    let plain = run(request);
+    assert_eq!(plain["ok"], true, "{plain}");
+    assert!(plain["result"]["engine"].get("provenance").is_none());
+    assert_eq!(run(&with_provenance(request.clone(), json!(false))), plain);
+    let on = run(&with_provenance(request.clone(), json!(true)));
+    assert_eq!(on["ok"], true, "{on}");
+    let provenance = &on["result"]["engine"]["provenance"];
+    assert!(provenance["rng"].is_null(), "{provenance}");
+    provenance["accuracy"].clone()
+}
+
+#[test]
+fn accuracy_is_derived_from_value_tags_for_every_deterministic_method() {
+    const F40: &str = include_str!("../fixtures/gum-f40.json");
+    const ANNEX: &str = include_str!("../fixtures/gum-annex-methods.json");
+    const CONFORMITY: &str = include_str!("../fixtures/gum-conformity.json");
+    const VALIDATION: &str = include_str!("../fixtures/coverage-validation.json");
+    // rational => exact; decimal => limited_<guard_digits>; float => limited_float.
+    let cases = [
+        (
+            F40,
+            5,
+            "type_a",
+            json!({
+            "mean":"exact","minimum":"exact","maximum":"exact",
+            "sample_variance":"exact","variance":"exact"}),
+        ),
+        (F40, 10, "component", json!({"variance":"exact"})),
+        (
+            F40,
+            19,
+            "series",
+            json!({
+            "mean":"exact","minimum":"exact","maximum":"exact",
+            "sample_variance":"exact","variance":"exact",
+            "sample_standard_deviation":"limited_12",
+            "standard_uncertainty_of_mean":"limited_12"}),
+        ),
+        (
+            F40,
+            6,
+            "grouped_type_a",
+            json!({
+            "mean":"exact","within_group_variance":"exact","group_mean_variance":"exact",
+            "between_group_component":"exact","between_mean_square":"exact",
+            "within_mean_square":"exact","all_observations_sample_variance":"exact",
+            "f_statistic":"exact","variance":"exact","standard_uncertainty":"limited_50"}),
+        ),
+        (
+            F40,
+            23,
+            "coverage",
+            json!({
+            "coverage_factor":"limited_float","expanded_uncertainty":"limited_float",
+            "probability":"exact"}),
+        ),
+        (
+            F40,
+            1,
+            "propagate_vector",
+            json!({
+            "estimates":"exact","covariance":"exact","standard_uncertainties":"limited_50"}),
+        ),
+        (
+            ANNEX,
+            19,
+            "type_a_covariance",
+            json!({
+            "means":"exact","sample_covariance":"exact","covariance_of_mean":"exact"}),
+        ),
+        (
+            ANNEX,
+            0,
+            "linear_calibration",
+            json!({
+            "intercept":"exact","slope":"exact","covariance":"exact",
+            "reference_temperature":"exact","temperature_range":"exact","residuals":"exact",
+            "residual_variance":"exact","residual_standard_deviation":"limited_40"}),
+        ),
+        (
+            ANNEX,
+            2,
+            "predict_calibration",
+            json!({
+            "estimate":"exact","variance":"exact","standard_uncertainty":"limited_40"}),
+        ),
+        (
+            ANNEX,
+            10,
+            "propagate_implicit",
+            json!({
+            "estimates":"exact","covariance":"exact","standard_uncertainties":"limited_40",
+            "input_sensitivities":"exact","root_residuals":"exact","residual_tolerance":"exact"}),
+        ),
+        (
+            ANNEX,
+            14,
+            "analyze",
+            json!({
+            "estimate":"exact","variance":"exact","standard_uncertainty":"limited_50",
+            "gradient":"exact","hessian":"exact","third":"exact"}),
+        ),
+        (
+            ANNEX,
+            20,
+            "propagate_covariance",
+            json!({
+            "estimate":"exact","variance":"exact","standard_uncertainty":"limited_50"}),
+        ),
+        (
+            VALIDATION,
+            0,
+            "validate_coverage",
+            json!({
+            "probability":"exact","tolerance":"exact","monte_carlo_tolerance":"exact",
+            "endpoint_differences":"exact"}),
+        ),
+        (
+            CONFORMITY,
+            0,
+            "conformity",
+            json!({
+            "estimate":"exact","standard_uncertainty":"exact","coverage_factor":"exact",
+            "guard_ratio":"exact","conformance_probability":"limited_float",
+            "nonconformance_probability":"limited_float",
+            "specific_consumer_risk":"limited_float",
+            "maximum_specific_consumer_risk_if_accepted":"limited_float",
+            "tolerance":"exact","acceptance_interval":"exact","signed_guard_band":"exact",
+            "expanded_uncertainty":"exact","lower_residual":"exact",
+            "probability_resolution":"exact"}),
+        ),
+    ];
+    for (source, case, method, expected) in cases {
+        let request = fixture_request(source, case);
+        assert_eq!(request["method"], method);
+        assert_eq!(accuracy_of(&request), expected, "{method}");
+    }
+}
+
+#[test]
+fn accuracy_covers_propagate_and_the_float_only_methods() {
+    let propagate = accuracy_of(&request(
+        "propagate",
+        json!({
+            "estimate":10,"components":[{"variance":4,"degrees_of_freedom":8},{"variance":9}],
+            "gradient":[1,2],"independent":true,"guard_digits":40,
+        }),
+    ));
+    assert_eq!(propagate["variance"], "exact");
+    assert_eq!(propagate["standard_uncertainty"], "limited_40");
+
+    let ast = json!({"type":"binary","operator":"*",
+        "left":{"type":"variable","name":"x"},"right":{"type":"variable","name":"y"}});
+    let inputs = json!([
+        {"name":"x","estimate":3.0,"uncertainty":0.5},
+        {"name":"y","estimate":2.0,"uncertainty":0.25}]);
+    let ad = accuracy_of(&request("analyze_ad", json!({"ast":ast,"inputs":inputs})));
+    for key in ["value", "gradient", "hessian", "first_order_variance"] {
+        assert_eq!(ad[key], "limited_float", "{key}");
+    }
+    let adequacy = accuracy_of(&request(
+        "lpu_adequacy",
+        json!({"ast":ast,"inputs":inputs,"coverage_factor":2.0,"threshold":0.05,"budget":64}),
+    ));
+    for key in ["error_enclosure", "u_c_upper", "ratio_upper", "threshold"] {
+        assert_eq!(adequacy[key], "limited_float", "{key}");
+    }
+    assert!(adequacy.get("verdict").is_none());
+}
+
+#[test]
+fn accuracy_of_a_bare_matrix_result_is_left_unchanged() {
+    let fixture: Value =
+        serde_json::from_str(include_str!("../fixtures/gum-annex-methods.json")).unwrap();
+    let request = fixture["cases"][4]["request"].clone();
+    assert_eq!(request["method"], "correlation_matrix");
+    let plain = run(&request);
+    assert_eq!(plain["ok"], true, "{plain}");
+    assert_eq!(run(&with_provenance(request, json!(true))), plain);
+}
+
+#[test]
+fn sampled_methods_keep_their_monte_carlo_accuracy_map() {
+    let on = run(&with_provenance(gum_ref_request(), json!(true)));
+    let accuracy = &on["result"]["engine"]["provenance"]["accuracy"];
+    assert_eq!(accuracy["estimate"], "limited_float");
+    assert_eq!(accuracy["intervals"], "limited_float");
+}

@@ -337,16 +337,27 @@ fn take_provenance(params: &J) -> Result<(J, bool)> {
 
 /// Add `engine.provenance` (additive, schema stays `/1`). Always for
 /// gum-par; for every other engine only when requested, so frozen bytes
-/// never move. Accuracy classes use the PM 1004 vocabulary.
+/// never move. Accuracy classes use the PM 1004 vocabulary. Results that are
+/// not JSON objects (`correlation_matrix` returns a bare matrix) have no
+/// place for an `engine` member and are left unchanged.
 fn attach_provenance(result: &mut J, requested: bool) {
-    let Some(engine) = result.get_mut("engine").and_then(J::as_object_mut) else {
-        return;
-    };
-    let par = engine.get("id").and_then(J::as_str) == Some("gum-par");
+    let par = result.pointer("/engine/id").and_then(J::as_str) == Some("gum-par");
     if !(par || requested) {
         return;
     }
-    let sampled = engine.contains_key("generator");
+    let sampled = result.pointer("/engine/generator").is_some();
+    let derived = if sampled {
+        J::Null
+    } else {
+        derive_accuracy(result)
+    };
+    let Some(object) = result.as_object_mut() else {
+        return;
+    };
+    let engine = object.entry("engine").or_insert_with(|| json!({}));
+    let Some(engine) = engine.as_object_mut() else {
+        return;
+    };
     let rng = if sampled {
         let mut rng = serde_json::Map::new();
         for (key, name) in [
@@ -366,6 +377,7 @@ fn attach_provenance(result: &mut J, requested: bool) {
     } else {
         J::Null
     };
+    // Sampled results are Monte Carlo estimates whatever their wire tags say.
     let class = if par { "limited" } else { "limited_float" };
     let accuracy = if sampled {
         json!({
@@ -373,7 +385,7 @@ fn attach_provenance(result: &mut J, requested: bool) {
             "intervals":class,"twice_standard_errors":class,
         })
     } else {
-        J::Null
+        derived
     };
     let provenance = json!({
         "engine_id":if par { "gum-par" } else { "gum-ref" },
@@ -383,6 +395,119 @@ fn attach_provenance(result: &mut J, requested: bool) {
         "device":J::Null,
     });
     engine.insert("provenance".into(), provenance);
+}
+
+/// Value tags seen under one result field.
+#[derive(Default)]
+struct Tally {
+    exact: bool,
+    float: bool,
+    /// Smallest guard-digit count among decimal values.
+    digits: Option<u64>,
+    /// A decimal value whose result carries no `guard_digits`.
+    unsized_decimal: bool,
+}
+
+impl Tally {
+    fn decimal(&mut self, guard: Option<u64>) {
+        match guard {
+            Some(g) => self.digits = Some(self.digits.map_or(g, |d| d.min(g))),
+            None => self.unsized_decimal = true,
+        }
+    }
+
+    /// Same precedence as `accuracy()` in lib.rs: any float, else the least
+    /// decimal precision, else exact. `None` when the field holds no number.
+    fn class(&self) -> Option<String> {
+        if self.float {
+            Some("limited_float".into())
+        } else if let Some(p) = self.digits {
+            Some(format!("limited_{p}"))
+        } else if self.unsized_decimal {
+            Some("limited".into())
+        } else if self.exact {
+            Some("exact".into())
+        } else {
+            None
+        }
+    }
+}
+
+/// Map each numeric result field to its PM 1004 accuracy class, read from
+/// the wire tags: `{"rational"}` is exact, `{"decimal"}` is
+/// `limited_<guard_digits>`, binary64 values are `limited_float`. Untagged
+/// strings follow their spelling (`a/b` exact; a decimal literal is
+/// `limited_<guard_digits>`, or `limited_float` when the engine states a
+/// binary64 backend). Counts, symbols, names and booleans are not accuracy
+/// carrying and are omitted.
+fn derive_accuracy(result: &J) -> J {
+    let Some(object) = result.as_object() else {
+        return J::Null;
+    };
+    let guard = object.get("guard_digits").and_then(J::as_u64);
+    let binary64 = result
+        .pointer("/engine/numeric_backend")
+        .and_then(J::as_str)
+        .is_some_and(|backend| backend.starts_with("binary64"));
+    let mut map = serde_json::Map::new();
+    for (key, value) in object {
+        if key == "engine" {
+            continue;
+        }
+        let mut tally = Tally::default();
+        tally_value(value, guard, binary64, &mut tally);
+        if let Some(class) = tally.class() {
+            map.insert(key.clone(), J::String(class));
+        }
+    }
+    J::Object(map)
+}
+
+fn tally_value(value: &J, guard: Option<u64>, binary64: bool, tally: &mut Tally) {
+    match value {
+        J::Object(object) => {
+            if object.contains_key("rational") {
+                tally.exact = true;
+            } else if object.contains_key("decimal") {
+                tally.decimal(guard);
+            } else if object.get("kind").and_then(J::as_str) == Some("float") {
+                tally.float = true;
+            } else {
+                for member in object.values() {
+                    tally_value(member, guard, binary64, tally);
+                }
+            }
+        }
+        J::Array(items) => {
+            for item in items {
+                tally_value(item, guard, binary64, tally);
+            }
+        }
+        J::String(text) => match numeric_text(text) {
+            Some(true) => tally.exact = true,
+            Some(false) if binary64 => tally.float = true,
+            Some(false) => tally.decimal(guard),
+            None => {}
+        },
+        J::Number(number) if number.is_f64() => tally.float = true,
+        _ => {}
+    }
+}
+
+/// `Some(true)` for a rational literal `a/b`, `Some(false)` for a decimal
+/// literal, `None` for any other text.
+fn numeric_text(text: &str) -> Option<bool> {
+    let integer = |part: &str| {
+        let digits = part.strip_prefix('-').unwrap_or(part);
+        !digits.is_empty() && digits.bytes().all(|b| b.is_ascii_digit())
+    };
+    if let Some((numerator, denominator)) = text.split_once('/') {
+        return (integer(numerator) && integer(denominator)).then_some(true);
+    }
+    let decimal = text.bytes().any(|b| b.is_ascii_digit())
+        && text.bytes().all(|b| b"0123456789+-.eE".contains(&b))
+        && text.parse::<f64>().is_ok();
+    decimal.then_some(false)
 }
 
 fn run_method(method: &str, params: &J) -> Result<J> {
