@@ -40,6 +40,38 @@ jobs:
         run: cargo test --locked --workspace --all-features --no-fail-fast -- --skip unicode675_rows_match_ruby_source
       - name: Numeric default feature boundary
         run: cargo test --locked -p plurimath-numeric --no-default-features
+  q-path-bench:
+    # Issue #16: the Scalar refactor must not slow the Q oracle path. Both
+    # trees are measured in this one job so runner speed cancels out, and
+    # the ratio is checked against the pre-Scalar tree that #31 used.
+    name: Q-path bench ratio vs pre-Scalar (0cfb3a8)
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      BASE_SHA: 0cfb3a8
+      # #31 measured 0.975 locally; 1.10 leaves room for shared-runner noise.
+      MAX_RATIO: "1.10"
+      CARGO_TARGET_DIR: ${{ github.workspace }}/target
+      BENCH_ARGS: --warm-up-time 1 --measurement-time 3 --sample-size 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: dtolnay/rust-toolchain@1.95.0
+      - name: Prepare the pre-Scalar tree with the #31 bench
+        run: |
+          git worktree add "$RUNNER_TEMP/q-base" "$BASE_SHA"
+          mkdir -p "$RUNNER_TEMP/q-base/plurimath-numeric/benches"
+          cp plurimath-numeric/benches/evaluate_gum.rs "$RUNNER_TEMP/q-base/plurimath-numeric/benches/"
+          cp Cargo.lock "$RUNNER_TEMP/q-base/Cargo.lock"
+          printf '\n[dev-dependencies]\ncriterion = "=0.5.1"\n\n[[bench]]\nname = "evaluate_gum"\nharness = false\n' >> "$RUNNER_TEMP/q-base/plurimath-numeric/Cargo.toml"
+      - name: Bench the pre-Scalar tree
+        working-directory: ${{ runner.temp }}/q-base
+        run: cargo bench -p plurimath-numeric --bench evaluate_gum -- $BENCH_ARGS --save-baseline base
+      - name: Bench this tree
+        run: cargo bench --locked -p plurimath-numeric --bench evaluate_gum -- $BENCH_ARGS --save-baseline head
+      - name: Check head/base ratio
+        run: python3 scripts/check_q_path_bench.py "$CARGO_TARGET_DIR/criterion" "$MAX_RATIO"
   unicode675:
     name: UnicodeMath 675 shard ${{ matrix.shard }}/8
     runs-on: ubuntu-latest
