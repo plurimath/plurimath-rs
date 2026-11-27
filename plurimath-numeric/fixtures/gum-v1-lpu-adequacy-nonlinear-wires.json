@@ -5,7 +5,7 @@
       "id": "square-wide-inadequate",
       "profile": "lpu_adequacy",
       "request_json": "{\"method\":\"lpu_adequacy\",\"parameters\":{\"ast\":{\"left\":{\"name\":\"x\",\"type\":\"variable\"},\"operator\":\"^\",\"right\":{\"text\":\"2\",\"type\":\"number\"},\"type\":\"binary\"},\"budget\":256,\"coverage_factor\":1.96,\"inputs\":[{\"estimate\":1.0,\"name\":\"x\",\"uncertainty\":1.0}],\"threshold\":0.05},\"schema\":\"plurimath.evaluate.gum/1\"}",
-      "expected_wire": "",
+      "expected_wire": "{\"engine\":\"plurimath.gum/1\",\"ok\":true,\"result\":{\"engine\":{\"method\":\"interval-LPU-adequacy-v1\",\"name\":\"plurimath-rust\",\"version\":\"0.1.0\"},\"error_enclosure\":[-7.683200000000015,7.683200000000015],\"ratio_upper\":3.841600000000011,\"subdivision\":{\"boxes_used\":1,\"budget\":256,\"max_depth\":0},\"threshold\":0.05,\"u_c_upper\":2.0000000000000027,\"verdict\":\"inadequate\"},\"schema\":\"plurimath.evaluate.gum/1\"}",
       "mcm": {
         "samples": 1000000,
         "seed": 20261126,
@@ -27,7 +27,7 @@
       "id": "exp-wide-inadequate",
       "profile": "lpu_adequacy",
       "request_json": "{\"method\":\"lpu_adequacy\",\"parameters\":{\"ast\":{\"argument\":{\"name\":\"x\",\"type\":\"variable\"},\"name\":\"exp\",\"type\":\"call\"},\"budget\":256,\"coverage_factor\":1.96,\"inputs\":[{\"estimate\":0.0,\"name\":\"x\",\"uncertainty\":1.0}],\"threshold\":0.05},\"schema\":\"plurimath.evaluate.gum/1\"}",
-      "expected_wire": "",
+      "expected_wire": "{\"engine\":\"plurimath.gum/1\",\"ok\":true,\"result\":{\"engine\":{\"method\":\"interval-LPU-adequacy-v1\",\"name\":\"plurimath-rust\",\"version\":\"0.1.0\"},\"error_enclosure\":[-11.95468104770702,11.95468104770702],\"ratio_upper\":11.954681047707028,\"subdivision\":{\"boxes_used\":1,\"budget\":256,\"max_depth\":0},\"threshold\":0.05,\"u_c_upper\":1.0000000000000013,\"verdict\":\"inadequate\"},\"schema\":\"plurimath.evaluate.gum/1\"}",
       "mcm": {
         "samples": 1000000,
         "seed": 20261127,
@@ -49,7 +49,7 @@
       "id": "product-wide-inadequate",
       "profile": "lpu_adequacy",
       "request_json": "{\"method\":\"lpu_adequacy\",\"parameters\":{\"ast\":{\"left\":{\"name\":\"x\",\"type\":\"variable\"},\"operator\":\"*\",\"right\":{\"name\":\"y\",\"type\":\"variable\"},\"type\":\"binary\"},\"budget\":256,\"coverage_factor\":1.96,\"inputs\":[{\"estimate\":1.0,\"name\":\"x\",\"uncertainty\":1.0},{\"estimate\":1.0,\"name\":\"y\",\"uncertainty\":1.0}],\"threshold\":0.05},\"schema\":\"plurimath.evaluate.gum/1\"}",
-      "expected_wire": "",
+      "expected_wire": "{\"engine\":\"plurimath.gum/1\",\"ok\":true,\"result\":{\"engine\":{\"method\":\"interval-LPU-adequacy-v1\",\"name\":\"plurimath-rust\",\"version\":\"0.1.0\"},\"error_enclosure\":[-7.683200000000012,7.683200000000012],\"ratio_upper\":5.432842821212495,\"subdivision\":{\"boxes_used\":1,\"budget\":256,\"max_depth\":0},\"threshold\":0.05,\"u_c_upper\":1.4142135623730967,\"verdict\":\"inadequate\"},\"schema\":\"plurimath.evaluate.gum/1\"}",
       "mcm": {
         "samples": 1000000,
         "seed": 20261128,
@@ -71,7 +71,7 @@
       "id": "reciprocal-inadequate",
       "profile": "lpu_adequacy",
       "request_json": "{\"method\":\"lpu_adequacy\",\"parameters\":{\"ast\":{\"left\":{\"text\":\"1\",\"type\":\"number\"},\"operator\":\"/\",\"right\":{\"name\":\"x\",\"type\":\"variable\"},\"type\":\"binary\"},\"budget\":256,\"coverage_factor\":1.96,\"inputs\":[{\"estimate\":10.0,\"name\":\"x\",\"uncertainty\":1.0}],\"threshold\":0.05},\"schema\":\"plurimath.evaluate.gum/1\"}",
-      "expected_wire": "",
+      "expected_wire": "{\"engine\":\"plurimath.gum/1\",\"ok\":true,\"result\":{\"engine\":{\"method\":\"interval-LPU-adequacy-v1\",\"name\":\"plurimath-rust\",\"version\":\"0.1.0\"},\"error_enclosure\":[-0.010721031657632303,0.010721031657632303],\"ratio_upper\":1.0721031657632316,\"subdivision\":{\"boxes_used\":1,\"budget\":256,\"max_depth\":0},\"threshold\":0.05,\"u_c_upper\":0.010000000000000012,\"verdict\":\"inadequate\"},\"schema\":\"plurimath.evaluate.gum/1\"}",
       "mcm": {
         "samples": 1000000,
         "seed": 20261129,
@@ -93,7 +93,7 @@
       "id": "square-narrow-adequate",
       "profile": "lpu_adequacy",
       "request_json": "{\"method\":\"lpu_adequacy\",\"parameters\":{\"ast\":{\"left\":{\"name\":\"x\",\"type\":\"variable\"},\"operator\":\"^\",\"right\":{\"text\":\"2\",\"type\":\"number\"},\"type\":\"binary\"},\"budget\":256,\"coverage_factor\":1.96,\"inputs\":[{\"estimate\":10.0,\"name\":\"x\",\"uncertainty\":0.1}],\"threshold\":0.05},\"schema\":\"plurimath.evaluate.gum/1\"}",
-      "expected_wire": "",
+      "expected_wire": "{\"engine\":\"plurimath.gum/1\",\"ok\":true,\"result\":{\"engine\":{\"method\":\"interval-LPU-adequacy-v1\",\"name\":\"plurimath-rust\",\"version\":\"0.1.0\"},\"error_enclosure\":[-0.0768320000000061,0.0768320000000061],\"ratio_upper\":0.03841600000000309,\"subdivision\":{\"boxes_used\":1,\"budget\":256,\"max_depth\":0},\"threshold\":0.05,\"u_c_upper\":2.0000000000000027,\"verdict\":\"adequate\"},\"schema\":\"plurimath.evaluate.gum/1\"}",
       "mcm": {
         "samples": 1000000,
         "seed": 20261130,
@@ -114,7 +114,7 @@
     {
       "id": "sqrt-narrow-adequate",
       "profile": "lpu_adequacy",
-      "request_json": "{\"method\":\"lpu_adequacy\",\"parameters\":{\"ast\":{\"argument\":{\"name\":\"x\",\"type\":\"variable\"},\"name\":\"sqrt\",\"type\":\"call\"},\"budget\":256,\"coverage_factor\":1.96,\"inputs\":[{\"estimate\":100.0,\"name\":\"x\",\"uncertainty\":0.2}],\"threshold\":0.05},\"schema\":\"plurimath.evaluate.gum/1\"}",
+      "request_json": "{\"method\":\"lpu_adequacy\",\"parameters\":{\"ast\":{\"argument\":{\"name\":\"x\",\"type\":\"variable\"},\"name\":\"sqrt\",\"type\":\"call\"},\"budget\":256,\"coverage_factor\":1.96,\"inputs\":[{\"estimate\":4.0,\"name\":\"x\",\"uncertainty\":0.05}],\"threshold\":0.05},\"schema\":\"plurimath.evaluate.gum/1\"}",
       "expected_wire": "",
       "mcm": {
         "samples": 1000000,
@@ -122,12 +122,12 @@
         "generator": "python-random-mt19937-gauss",
         "probability": 0.95000421,
         "mcm_interval": [
-          9.98037895,
-          10.0195552
+          1.97534579,
+          2.02432008
         ],
         "guf_interval": [
-          9.9804,
-          10.0196
+          1.9755,
+          2.0245
         ],
         "tolerance": 0.0005,
         "symbol": "validated"
@@ -137,7 +137,7 @@
       "id": "product-narrow-adequate",
       "profile": "lpu_adequacy",
       "request_json": "{\"method\":\"lpu_adequacy\",\"parameters\":{\"ast\":{\"left\":{\"name\":\"x\",\"type\":\"variable\"},\"operator\":\"*\",\"right\":{\"name\":\"y\",\"type\":\"variable\"},\"type\":\"binary\"},\"budget\":256,\"coverage_factor\":1.96,\"inputs\":[{\"estimate\":10.0,\"name\":\"x\",\"uncertainty\":0.1},{\"estimate\":10.0,\"name\":\"y\",\"uncertainty\":0.1}],\"threshold\":0.05},\"schema\":\"plurimath.evaluate.gum/1\"}",
-      "expected_wire": "",
+      "expected_wire": "{\"engine\":\"plurimath.gum/1\",\"ok\":true,\"result\":{\"engine\":{\"method\":\"interval-LPU-adequacy-v1\",\"name\":\"plurimath-rust\",\"version\":\"0.1.0\"},\"error_enclosure\":[-0.07683200000000404,0.07683200000000404],\"ratio_upper\":0.040746321159118866,\"subdivision\":{\"boxes_used\":3,\"budget\":256,\"max_depth\":1},\"threshold\":0.05,\"u_c_upper\":1.4142135623730967,\"verdict\":\"adequate\"},\"schema\":\"plurimath.evaluate.gum/1\"}",
       "mcm": {
         "samples": 1000000,
         "seed": 20261132,
@@ -159,7 +159,7 @@
       "id": "square-one-box-inconclusive",
       "profile": "lpu_adequacy",
       "request_json": "{\"method\":\"lpu_adequacy\",\"parameters\":{\"ast\":{\"left\":{\"name\":\"x\",\"type\":\"variable\"},\"operator\":\"^\",\"right\":{\"text\":\"2\",\"type\":\"number\"},\"type\":\"binary\"},\"budget\":1,\"coverage_factor\":1.0,\"inputs\":[{\"estimate\":1.0,\"name\":\"x\",\"uncertainty\":1.0}],\"threshold\":0.5},\"schema\":\"plurimath.evaluate.gum/1\"}",
-      "expected_wire": "",
+      "expected_wire": "{\"engine\":\"plurimath.gum/1\",\"ok\":true,\"result\":{\"engine\":{\"method\":\"interval-LPU-adequacy-v1\",\"name\":\"plurimath-rust\",\"version\":\"0.1.0\"},\"error_enclosure\":[-2.0000000000000075,2.000000000000008],\"ratio_upper\":1.0000000000000049,\"subdivision\":{\"boxes_used\":1,\"budget\":1,\"max_depth\":0},\"threshold\":0.5,\"u_c_upper\":2.0000000000000027,\"verdict\":\"inconclusive\"},\"schema\":\"plurimath.evaluate.gum/1\"}",
       "mcm": {
         "samples": 1000000,
         "seed": 20261133,
