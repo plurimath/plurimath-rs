@@ -1,4 +1,5 @@
 use super::*;
+use crate::scalar::Scalar;
 use num_integer::Integer;
 use num_traits::{One, ToPrimitive};
 
@@ -10,37 +11,53 @@ const RULES: &[&str] = &[
     "three_zone",
 ];
 
-struct Limits {
-    lower: Option<Q>,
-    upper: Option<Q>,
+fn below<S: Scalar>(a: &S, b: &S) -> bool {
+    a.sub(b).s_is_negative()
 }
 
-impl Limits {
-    fn contains(&self, value: &Q) -> bool {
-        self.lower.as_ref().is_none_or(|limit| value >= limit)
-            && self.upper.as_ref().is_none_or(|limit| value <= limit)
+/// Tolerance or acceptance limits; `None` is an open side.
+struct Limits<S: Scalar = Q> {
+    lower: Option<S>,
+    upper: Option<S>,
+}
+
+impl<S: Scalar> Limits<S> {
+    fn contains(&self, value: &S) -> bool {
+        self.lower.as_ref().is_none_or(|limit| !below(value, limit))
+            && self.upper.as_ref().is_none_or(|limit| !below(limit, value))
     }
 
     fn possible(&self) -> bool {
-        !matches!((&self.lower,&self.upper),(Some(a),Some(b)) if a > b)
+        !matches!((&self.lower,&self.upper),(Some(a),Some(b)) if below(b, a))
     }
 
-    fn shift(&self, band: &Q) -> Self {
+    fn shift(&self, band: &S) -> Self {
         Self {
-            lower: self.lower.as_ref().map(|lower| lower + band),
-            upper: self.upper.as_ref().map(|upper| upper - band),
+            lower: self.lower.as_ref().map(|lower| lower.add(band)),
+            upper: self.upper.as_ref().map(|upper| upper.sub(band)),
         }
     }
 
+    fn boundary(&self, value: &S) -> bool {
+        let at = |limit: &S| limit.sub(value).s_is_zero();
+        self.lower.as_ref().is_some_and(at) || self.upper.as_ref().is_some_and(at)
+    }
+}
+
+/// Expanded uncertainty `k u` and the signed guard band `±r k u`.
+fn guard_band<S: Scalar>(k: &S, uncertainty: &S, ratio: &S, rejection: bool) -> (S, S) {
+    let expanded = k.mul(uncertainty);
+    let band = ratio.mul(&expanded);
+    let band = if rejection { band.negate() } else { band };
+    (expanded, band)
+}
+
+impl Limits<Q> {
     fn wire(&self) -> J {
         json!([
             self.lower.as_ref().map(fraction),
             self.upper.as_ref().map(fraction)
         ])
-    }
-
-    fn boundary(&self, value: &Q) -> bool {
-        self.lower.as_ref() == Some(value) || self.upper.as_ref() == Some(value)
     }
 
     fn probabilities(&self, mean: &Q, uncertainty: &Q) -> Result<(f64, f64)> {
@@ -175,12 +192,7 @@ pub(super) fn evaluate(params: &J) -> Result<J> {
     if rule == "iso14253_style" && (k != Q::from_integer(number(2)) || ratio != Q::one()) {
         return Err(invalid("JCGM106 ISO14253-style rule requires k=2 and r=1"));
     }
-    let expanded = &k * &uncertainty;
-    let band = if rule == "guarded_rejection" {
-        -(&ratio * &expanded)
-    } else {
-        &ratio * &expanded
-    };
+    let (expanded, band) = guard_band(&k, &uncertainty, &ratio, rule == "guarded_rejection");
     let acceptance = tolerance.shift(&band);
     let possible = acceptance.possible();
     let ceiling = optional(&params["consumer_risk_ceiling"])?;
