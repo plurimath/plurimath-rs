@@ -110,6 +110,9 @@ impl Scalar for Interval {
     fn s_is_zero(&self) -> bool {
         self.lo == 0.0 && self.hi == 0.0
     }
+    fn s_is_negative(&self) -> bool {
+        self.hi < 0.0
+    }
     fn from_i32(n: i32) -> Self {
         Interval::point(f64::from(n))
     }
@@ -212,6 +215,9 @@ impl Scalar for IDual {
     }
     fn s_is_zero(&self) -> bool {
         self.v.lo == 0.0 && self.v.hi == 0.0 && self.d.lo == 0.0 && self.d.hi == 0.0
+    }
+    fn s_is_negative(&self) -> bool {
+        self.v.hi < 0.0
     }
     fn from_i32(n: i32) -> Self {
         IDual::constant(f64::from(n))
