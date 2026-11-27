@@ -154,11 +154,11 @@ fn lpu_adequacy_agrees_with_coverage_validation_wires() {
     assert!(failures.is_empty(), "{}", failures.join("\n"));
     // 14 validated + 3 not_validated wires carry an adequacy symbol; 32 are
     // refusals or carry none.
-    assert_eq!(
-        counts.agree + counts.adequate_not_validated + counts.inconclusive,
-        17,
-        "{counts:?}"
-    );
+    // A linear model is provably adequate: accepting inconclusive here would
+    // hide a regression even if every replay stopped producing a proof.
+    assert_eq!(counts.agree, 14, "{counts:?}");
+    assert_eq!(counts.adequate_not_validated, 3, "{counts:?}");
+    assert_eq!(counts.inconclusive, 0, "{counts:?}");
     assert_eq!(counts.skipped, 32, "{counts:?}");
 }
 
